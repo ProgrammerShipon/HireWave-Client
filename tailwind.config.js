@@ -5,8 +5,9 @@ export default {
     extend: {
       colors: {
         green: "#33e2a0",
-        secondary: "#7c60d5",
+        purple: "#7c60d5",
         dark: "#1b0e3d",
+        gray: "#868894",
       },
     },
     container: {
