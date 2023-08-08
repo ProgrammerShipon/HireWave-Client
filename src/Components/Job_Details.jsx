@@ -84,7 +84,6 @@ const Job_Details = () => {
             <div>
                 <h2 className='text-4xl font-semibold'>These jobs may fit you</h2>
 
-
             </div>
         </div>
     );
