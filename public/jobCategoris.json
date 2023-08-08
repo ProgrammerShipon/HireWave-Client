@@ -1,0 +1,898 @@
+[
+    {
+        "_id": 1,
+        "category_name": "Information Technology",
+        "img": "https://i.ibb.co/80p2s87/Information-Technology.png",
+        "category_description": "Explore IT job opportunities",
+        "jobs": [
+            {
+                "job_id": 101,
+                "job_title": "Software Engineer",
+                "job_description": "Develop and maintain software applications",
+                "job_location": "City A",
+                "job_type": "Full-time",
+                "job_experience": "2-5 years"
+            },
+            {
+                "job_id": 102,
+                "job_title": "Web Developer",
+                "job_description": "Create and optimize websites",
+                "job_location": "City B",
+                "job_type": "Contract",
+                "job_experience": "1-3 years"
+            },
+            {
+                "job_id": 103,
+                "job_title": "Data Analyst",
+                "job_description": "Analyze and interpret data",
+                "job_location": "City C",
+                "job_type": "Full-time",
+                "job_experience": "3-6 years"
+            }
+        ]
+    },
+    {
+        "_id": 2,
+        "category_name": "Sales and Marketing",
+        "img": "https://i.ibb.co/4f13H2g/2660322.png",
+        "category_description": "Find exciting sales and marketing positions",
+        "jobs": [
+            {
+                "job_id": 201,
+                "job_title": "Sales Representative",
+                "job_description": "Promote and sell company products",
+                "job_location": "City D",
+                "job_type": "Full-time",
+                "job_experience": "0-2 years"
+            },
+            {
+                "job_id": 202,
+                "job_title": "Digital Marketing Specialist",
+                "job_description": "Plan and execute digital marketing campaigns",
+                "job_location": "City E",
+                "job_type": "Permanent",
+                "job_experience": "3-7 years"
+            },
+            {
+                "job_id": 203,
+                "job_title": "Brand Manager",
+                "job_description": "Develop and implement brand strategies",
+                "job_location": "City F",
+                "job_type": "Full-time",
+                "job_experience": "5-8 years"
+            }
+        ]
+    },
+    {
+        "_id": 3,
+        "category_name": "Finance and Accounting",
+        "img": "https://i.ibb.co/ysQ83dj/Finance-and-Accounting.png",
+        "category_description": "Explore finance and accounting job openings",
+        "jobs": [
+            {
+                "job_id": 301,
+                "job_title": "Financial Analyst",
+                "job_description": "Analyze financial data and prepare reports",
+                "job_location": "City G",
+                "job_type": "Full-time",
+                "job_experience": "2-4 years"
+            },
+            {
+                "job_id": 302,
+                "job_title": "Accountant",
+                "job_description": "Manage financial records and transactions",
+                "job_location": "City H",
+                "job_type": "Permanent",
+                "job_experience": "1-3 years"
+            },
+            {
+                "job_id": 303,
+                "job_title": "Tax Consultant",
+                "job_description": "Provide tax advice and compliance services",
+                "job_location": "City I",
+                "job_type": "Full-time",
+                "job_experience": "4-7 years"
+            }
+        ]
+    },
+    {
+        "_id": 4,
+        "category_name": "Engineering",
+        "img": "https://i.ibb.co/MSRn2xz/Engineering.png",
+        "category_description": "Explore engineering job opportunities",
+        "jobs": [
+            {
+                "job_id": 401,
+                "job_title": "Mechanical Engineer",
+                "job_description": "Design and analyze mechanical systems",
+                "job_location": "City J",
+                "job_type": "Full-time",
+                "job_experience": "3-6 years"
+            },
+            {
+                "job_id": 402,
+                "job_title": "Electrical Engineer",
+                "job_description": "Develop electrical systems and devices",
+                "job_location": "City K",
+                "job_type": "Permanent",
+                "job_experience": "2-5 years"
+            },
+            {
+                "job_id": 403,
+                "job_title": "Civil Engineer",
+                "job_description": "Plan and oversee construction projects",
+                "job_location": "City L",
+                "job_type": "Full-time",
+                "job_experience": "4-8 years"
+            }
+        ]
+    },
+    {
+        "_id": 5,
+        "category_name": "Healthcare",
+        "img": "https://i.ibb.co/fFQHSqT/healthcare.png",
+        "category_description": "Find healthcare job opportunities",
+        "jobs": [
+            {
+                "job_id": 501,
+                "job_title": "Registered Nurse",
+                "job_description": "Provide nursing care and support",
+                "job_location": "City M",
+                "job_type": "Full-time",
+                "job_experience": "1-3 years"
+            },
+            {
+                "job_id": 502,
+                "job_title": "Medical Laboratory Technician",
+                "job_description": "Perform laboratory tests and analyses",
+                "job_location": "City N",
+                "job_type": "Permanent",
+                "job_experience": "2-5 years"
+            },
+            {
+                "job_id": 503,
+                "job_title": "Physical Therapist",
+                "job_description": "Help patients recover from injuries",
+                "job_location": "City O",
+                "job_type": "Full-time",
+                "job_experience": "3-7 years"
+            }
+        ]
+    },
+    {
+        "_id": 6,
+        "category_name": "Education",
+        "img": "https://i.ibb.co/jztPtvP/education.png",
+        "category_description": "Explore education job opportunities",
+        "jobs": [
+            {
+                "job_id": 601,
+                "job_title": "Teacher",
+                "job_description": "Teach students in various subjects",
+                "job_location": "City P",
+                "job_type": "Full-time",
+                "job_experience": "1-5 years"
+            },
+            {
+                "job_id": 602,
+                "job_title": "School Counselor",
+                "job_description": "Provide guidance and support to students",
+                "job_location": "City Q",
+                "job_type": "Permanent",
+                "job_experience": "2-6 years"
+            },
+            {
+                "job_id": 603,
+                "job_title": "Curriculum Specialist",
+                "job_description": "Develop educational curricula",
+                "job_location": "City R",
+                "job_type": "Full-time",
+                "job_experience": "4-8 years"
+            }
+        ]
+    },
+    {
+        "_id": 7,
+        "category_name": "Customer Service",
+        "img": "https://i.ibb.co/Qv05HZJ/customer-service.png",
+        "category_description": "Find customer service job opportunities",
+        "jobs": [
+            {
+                "job_id": 701,
+                "job_title": "Customer Support Representative",
+                "job_description": "Assist customers with inquiries",
+                "job_location": "City S",
+                "job_type": "Full-time",
+                "job_experience": "0-2 years"
+            },
+            {
+                "job_id": 702,
+                "job_title": "Call Center Supervisor",
+                "job_description": "Manage call center operations",
+                "job_location": "City T",
+                "job_type": "Permanent",
+                "job_experience": "3-7 years"
+            },
+            {
+                "job_id": 703,
+                "job_title": "Technical Support Specialist",
+                "job_description": "Provide technical assistance to customers",
+                "job_location": "City U",
+                "job_type": "Full-time",
+                "job_experience": "2-4 years"
+            }
+        ]
+    },
+    {
+        "_id": 8,
+        "category_name": "Administration",
+        "img": "https://i.ibb.co/x5XvfcM/administration.png",
+        "category_description": "Explore administrative job opportunities",
+        "jobs": [
+            {
+                "job_id": 801,
+                "job_title": "Office Manager",
+                "job_description": "Supervise office operations",
+                "job_location": "City V",
+                "job_type": "Full-time",
+                "job_experience": "3-6 years"
+            },
+            {
+                "job_id": 802,
+                "job_title": "Executive Assistant",
+                "job_description": "Support executive-level staff",
+                "job_location": "City W",
+                "job_type": "Permanent",
+                "job_experience": "1-3 years"
+            },
+            {
+                "job_id": 803,
+                "job_title": "Data Entry Clerk",
+                "job_description": "Input and manage data",
+                "job_location": "City X",
+                "job_type": "Full-time",
+                "job_experience": "0-2 years"
+            }
+        ]
+    },
+    {
+        "_id": 9,
+        "category_name": "Manufacturing",
+        "img": "https://i.ibb.co/8xmV17W/Manufacturing.png",
+        "category_description": "Find manufacturing job opportunities",
+        "jobs": [
+            {
+                "job_id": 901,
+                "job_title": "Production Supervisor",
+                "job_description": "Oversee manufacturing processes",
+                "job_location": "City Y",
+                "job_type": "Full-time",
+                "job_experience": "3-7 years"
+            },
+            {
+                "job_id": 902,
+                "job_title": "Quality Control Inspector",
+                "job_description": "Ensure product quality and compliance",
+                "job_location": "City Z",
+                "job_type": "Permanent",
+                "job_experience": "2-4 years"
+            },
+            {
+                "job_id": 903,
+                "job_title": "Machine Operator",
+                "job_description": "Operate machinery in the production process",
+                "job_location": "City AA",
+                "job_type": "Full-time",
+                "job_experience": "1-3 years"
+            }
+        ]
+    },
+    {
+        "_id": 10,
+        "category_name": "Research and Development",
+        "img": "https://i.ibb.co/JQSGc1G/Research-and-Development.png",
+        "category_description": "Explore research and development job opportunities",
+        "jobs": [
+            {
+                "job_id": 1001,
+                "job_title": "Research Scientist",
+                "job_description": "Conduct scientific research",
+                "job_location": "City BB",
+                "job_type": "Full-time",
+                "job_experience": "5-10 years"
+            },
+            {
+                "job_id": 1002,
+                "job_title": "Product Development Specialist",
+                "job_description": "Develop new products and technologies",
+                "job_location": "City CC",
+                "job_type": "Permanent",
+                "job_experience": "3-6 years"
+            },
+            {
+                "job_id": 1003,
+                "job_title": "Lab Technician",
+                "job_description": "Assist in laboratory experiments",
+                "job_location": "City DD",
+                "job_type": "Full-time",
+                "job_experience": "1-3 years"
+            }
+        ]
+    },
+    {
+        "_id": 11,
+        "category_name": "Media and Communications",
+        "img": "https://i.ibb.co/5rpNy89/Media-and-Communications.png",
+        "category_description": "Find media and communications job opportunities",
+        "jobs": [
+            {
+                "job_id": 1101,
+                "job_title": "Journalist",
+                "job_description": "Report news and stories",
+                "job_location": "City EE",
+                "job_type": "Full-time",
+                "job_experience": "2-5 years"
+            },
+            {
+                "job_id": 1102,
+                "job_title": "Public Relations Manager",
+                "job_description": "Manage communication strategies",
+                "job_location": "City FF",
+                "job_type": "Permanent",
+                "job_experience": "4-8 years"
+            },
+            {
+                "job_id": 1103,
+                "job_title": "Content Creator",
+                "job_description": "Develop engaging content for various platforms",
+                "job_location": "City GG",
+                "job_type": "Full-time",
+                "job_experience": "1-3 years"
+            }
+        ]
+    },
+    {
+        "_id": 12,
+        "category_name": "Architecture and Design",
+        "img": "https://i.ibb.co/qWcNKFb/Architecture-and-Design.png",
+        "category_description": "Find architecture and design job opportunities",
+        "jobs": [
+            {
+                "job_id": 1201,
+                "job_title": "Architect",
+                "job_description": "Design and plan architectural projects",
+                "job_location": "City HH",
+                "job_type": "Full-time",
+                "job_experience": "3-7 years"
+            },
+            {
+                "job_id": 1202,
+                "job_title": "Interior Designer",
+                "job_description": "Create interior spaces and layouts",
+                "job_location": "City II",
+                "job_type": "Permanent",
+                "job_experience": "2-5 years"
+            },
+            {
+                "job_id": 1203,
+                "job_title": "Landscape Architect",
+                "job_description": "Design outdoor spaces and landscapes",
+                "job_location": "City JJ",
+                "job_type": "Full-time",
+                "job_experience": "4-8 years"
+            }
+        ]
+    },
+    {
+        "_id": 13,
+        "category_name": "Social Services",
+        "img": "https://i.ibb.co/PgDftJg/Social-Services.png",
+        "category_description": "Find social services job opportunities",
+        "jobs": [
+            {
+                "job_id": 1301,
+                "job_title": "Social Worker",
+                "job_description": "Assist individuals and families in need",
+                "job_location": "City KK",
+                "job_type": "Full-time",
+                "job_experience": "2-5 years"
+            },
+            {
+                "job_id": 1302,
+                "job_title": "Counselor",
+                "job_description": "Provide counseling and support",
+                "job_location": "City LL",
+                "job_type": "Permanent",
+                "job_experience": "3-6 years"
+            },
+            {
+                "job_id": 1303,
+                "job_title": "Youth Program Coordinator",
+                "job_description": "Coordinate programs for young individuals",
+                "job_location": "City MM",
+                "job_type": "Full-time",
+                "job_experience": "1-3 years"
+            }
+        ]
+    },
+    {
+        "_id": 14,
+        "category_name": "Legal",
+        "img": "https://i.ibb.co/cD8SZJR/Legal.png",
+        "category_description": "Find legal job opportunities",
+        "jobs": [
+            {
+                "job_id": 1401,
+                "job_title": "Lawyer",
+                "job_description": "Provide legal advice and representation",
+                "job_location": "City NN",
+                "job_type": "Full-time",
+                "job_experience": "5-10 years"
+            },
+            {
+                "job_id": 1402,
+                "job_title": "Legal Assistant",
+                "job_description": "Support legal professionals",
+                "job_location": "City OO",
+                "job_type": "Permanent",
+                "job_experience": "2-4 years"
+            },
+            {
+                "job_id": 1403,
+                "job_title": "Paralegal",
+                "job_description": "Assist with legal research and documentation",
+                "job_location": "City PP",
+                "job_type": "Full-time",
+                "job_experience": "1-3 years"
+            }
+        ]
+    },
+    {
+        "_id": 15,
+        "category_name": "Food and Beverage",
+        "img": "https://i.ibb.co/dcg2q16/Food-and-Beverage.png",
+        "category_description": "Find food and beverage job opportunities",
+        "jobs": [
+            {
+                "job_id": 1501,
+                "job_title": "Chef",
+                "job_description": "Create and prepare culinary dishes",
+                "job_location": "City QQ",
+                "job_type": "Full-time",
+                "job_experience": "3-7 years"
+            },
+            {
+                "job_id": 1502,
+                "job_title": "Bartender",
+                "job_description": "Serve beverages and cocktails",
+                "job_location": "City RR",
+                "job_type": "Permanent",
+                "job_experience": "1-3 years"
+            },
+            {
+                "job_id": 1503,
+                "job_title": "Restaurant Manager",
+                "job_description": "Oversee restaurant operations",
+                "job_location": "City SS",
+                "job_type": "Full-time",
+                "job_experience": "4-8 years"
+            }
+        ]
+    },
+    {
+        "_id": 16,
+        "category_name": "Retail",
+        "img": "https://i.ibb.co/L9TrvFR/Retail.png",
+        "category_description": "Find retail job opportunities",
+        "jobs": [
+            {
+                "job_id": 1601,
+                "job_title": "Retail Sales Associate",
+                "job_description": "Assist customers with purchases",
+                "job_location": "City TT",
+                "job_type": "Full-time",
+                "job_experience": "0-2 years"
+            },
+            {
+                "job_id": 1602,
+                "job_title": "Store Manager",
+                "job_description": "Manage retail store operations",
+                "job_location": "City UU",
+                "job_type": "Permanent",
+                "job_experience": "3-6 years"
+            },
+            {
+                "job_id": 1603,
+                "job_title": "Visual Merchandiser",
+                "job_description": "Create appealing store displays",
+                "job_location": "City VV",
+                "job_type": "Full-time",
+                "job_experience": "1-3 years"
+            }
+        ]
+    },
+    {
+        "_id": 17,
+        "category_name": "Transportation and Logistics",
+        "img": "https://i.ibb.co/hDcwp1M/Transportation-and-Logistics.png",
+        "category_description": "Find transportation and logistics job opportunities",
+        "jobs": [
+            {
+                "job_id": 1701,
+                "job_title": "Delivery Driver",
+                "job_description": "Transport goods and products",
+                "job_location": "City WW",
+                "job_type": "Full-time",
+                "job_experience": "1-3 years"
+            },
+            {
+                "job_id": 1702,
+                "job_title": "Logistics Coordinator",
+                "job_description": "Coordinate shipping and logistics",
+                "job_location": "City XX",
+                "job_type": "Permanent",
+                "job_experience": "2-5 years"
+            },
+            {
+                "job_id": 1703,
+                "job_title": "Fleet Manager",
+                "job_description": "Manage company vehicle fleet",
+                "job_location": "City YY",
+                "job_type": "Full-time",
+                "job_experience": "3-7 years"
+            }
+        ]
+    },
+    {
+        "_id": 18,
+        "category_name": "Real Estate",
+        "img": "https://i.ibb.co/RhdRf4w/Real-Estate.png",
+        "category_description": "Find real estate job opportunities",
+        "jobs": [
+            {
+                "job_id": 1801,
+                "job_title": "Real Estate Agent",
+                "job_description": "Assist clients with property transactions",
+                "job_location": "City ZZ",
+                "job_type": "Full-time",
+                "job_experience": "2-5 years"
+            },
+            {
+                "job_id": 1802,
+                "job_title": "Property Manager",
+                "job_description": "Oversee rental properties",
+                "job_location": "City AAA",
+                "job_type": "Permanent",
+                "job_experience": "3-6 years"
+            },
+            {
+                "job_id": 1803,
+                "job_title": "Real Estate Appraiser",
+                "job_description": "Evaluate property values",
+                "job_location": "City BBB",
+                "job_type": "Full-time",
+                "job_experience": "1-3 years"
+            }
+        ]
+    },
+    {
+        "_id": 19,
+        "category_name": "Science",
+        "img": "https://i.ibb.co/YPxSpVj/Science.png",
+        "category_description": "Find science job opportunities",
+        "jobs": [
+            {
+                "job_id": 1901,
+                "job_title": "Scientist",
+                "job_description": "Conduct scientific experiments",
+                "job_location": "City CCC",
+                "job_type": "Full-time",
+                "job_experience": "3-7 years"
+            },
+            {
+                "job_id": 1902,
+                "job_title": "Lab Manager",
+                "job_description": "Manage laboratory operations",
+                "job_location": "City DDD",
+                "job_type": "Permanent",
+                "job_experience": "2-5 years"
+            },
+            {
+                "job_id": 1903,
+                "job_title": "Research Assistant",
+                "job_description": "Assist in research projects",
+                "job_location": "City EEE",
+                "job_type": "Full-time",
+                "job_experience": "1-3 years"
+            }
+        ]
+    },
+    {
+        "_id": 20,
+        "category_name": "Fashion and Beauty",
+        "img": "https://i.ibb.co/fpqMFbk/Fashion-and-Beauty.png",
+        "category_description": "Find fashion and beauty job opportunities",
+        "jobs": [
+            {
+                "job_id": 2001,
+                "job_title": "Fashion Designer",
+                "job_description": "Create clothing and accessories",
+                "job_location": "City FFF",
+                "job_type": "Full-time",
+                "job_experience": "3-7 years"
+            },
+            {
+                "job_id": 2002,
+                "job_title": "Beauty Consultant",
+                "job_description": "Provide beauty advice and services",
+                "job_location": "City GGG",
+                "job_type": "Permanent",
+                "job_experience": "1-3 years"
+            },
+            {
+                "job_id": 2003,
+                "job_title": "Makeup Artist",
+                "job_description": "Apply makeup for clients",
+                "job_location": "City HHH",
+                "job_type": "Full-time",
+                "job_experience": "2-4 years"
+            }
+        ]
+    },
+    {
+        "_id": 21,
+        "category_name": "Sports and Recreation",
+        "img": "https://i.ibb.co/BycMpTt/Sports-and-Recreation.png",
+        "category_description": "Find sports and recreation job opportunities",
+        "jobs": [
+            {
+                "job_id": 2101,
+                "job_title": "Sports Coach",
+                "job_description": "Train and mentor athletes",
+                "job_location": "City III",
+                "job_type": "Full-time",
+                "job_experience": "2-5 years"
+            },
+            {
+                "job_id": 2102,
+                "job_title": "Fitness Instructor",
+                "job_description": "Lead fitness classes and sessions",
+                "job_location": "City JJJ",
+                "job_type": "Permanent",
+                "job_experience": "1-3 years"
+            },
+            {
+                "job_id": 2103,
+                "job_title": "Recreation Coordinator",
+                "job_description": "Organize recreational activities",
+                "job_location": "City KKK",
+                "job_type": "Full-time",
+                "job_experience": "3-6 years"
+            }
+        ]
+    },
+    {
+        "_id": 22,
+        "category_name": "Nonprofit",
+        "img": "https://i.ibb.co/tzN894v/Nonprofit.png",
+        "category_description": "Find nonprofit job opportunities",
+        "jobs": [
+            {
+                "job_id": 2201,
+                "job_title": "Program Manager",
+                "job_description": "Oversee nonprofit programs",
+                "job_location": "City LLL",
+                "job_type": "Full-time",
+                "job_experience": "3-7 years"
+            },
+            {
+                "job_id": 2202,
+                "job_title": "Fundraising Specialist",
+                "job_description": "Raise funds for nonprofit organizations",
+                "job_location": "City MMM",
+                "job_type": "Permanent",
+                "job_experience": "2-5 years"
+            },
+            {
+                "job_id": 2203,
+                "job_title": "Community Outreach Coordinator",
+                "job_description": "Engage with the community for social causes",
+                "job_location": "City NNN",
+                "job_type": "Full-time",
+                "job_experience": "1-3 years"
+            }
+        ]
+    },
+    {
+        "_id": 23,
+        "category_name": "Agriculture",
+        "img": "https://i.ibb.co/X8Kw6jk/Agriculture.png",
+        "category_description": "Find agriculture job opportunities",
+        "jobs": [
+            {
+                "job_id": 2301,
+                "job_title": "Farm Manager",
+                "job_description": "Oversee agricultural operations",
+                "job_location": "City OOO",
+                "job_type": "Full-time",
+                "job_experience": "3-7 years"
+            },
+            {
+                "job_id": 2302,
+                "job_title": "Agricultural Technician",
+                "job_description": "Assist in farming and cultivation",
+                "job_location": "City PPP",
+                "job_type": "Permanent",
+                "job_experience": "2-4 years"
+            },
+            {
+                "job_id": 2303,
+                "job_title": "Horticulturist",
+                "job_description": "Study and cultivate plants",
+                "job_location": "City QQQ",
+                "job_type": "Full-time",
+                "job_experience": "1-3 years"
+            }
+        ]
+    },
+    {
+        "_id": 24,
+        "category_name": "Aviation",
+        "img": "https://i.ibb.co/Fhbb4xC/Aviation.png",
+        "category_description": "Find aviation job opportunities",
+        "jobs": [
+            {
+                "job_id": 2401,
+                "job_title": "Pilot",
+                "job_description": "Fly aircraft and ensure safety",
+                "job_location": "City RRR",
+                "job_type": "Full-time",
+                "job_experience": "5-10 years"
+            },
+            {
+                "job_id": 2402,
+                "job_title": "Flight Attendant",
+                "job_description": "Ensure passenger comfort and safety",
+                "job_location": "City SSS",
+                "job_type": "Permanent",
+                "job_experience": "2-5 years"
+            },
+            {
+                "job_id": 2403,
+                "job_title": "Aircraft Mechanic",
+                "job_description": "Repair and maintain aircraft",
+                "job_location": "City TTT",
+                "job_type": "Full-time",
+                "job_experience": "3-7 years"
+            }
+        ]
+    },
+    {
+        "_id": 25,
+        "category_name": "Event Planning",
+        "img": "https://i.ibb.co/CwQRcdG/Event-Planning.png",
+        "category_description": "Find event planning job opportunities",
+        "jobs": [
+            {
+                "job_id": 2501,
+                "job_title": "Event Coordinator",
+                "job_description": "Organize and manage events",
+                "job_location": "City UUU",
+                "job_type": "Full-time",
+                "job_experience": "2-5 years"
+            },
+            {
+                "job_id": 2502,
+                "job_title": "Wedding Planner",
+                "job_description": "Plan and coordinate weddings",
+                "job_location": "City VVV",
+                "job_type": "Permanent",
+                "job_experience": "1-3 years"
+            },
+            {
+                "job_id": 2503,
+                "job_title": "Conference Manager",
+                "job_description": "Manage business conferences and events",
+                "job_location": "City WWW",
+                "job_type": "Full-time",
+                "job_experience": "3-6 years"
+            }
+        ]
+    },
+    {
+        "_id": 26,
+        "category_name": "Fitness and Wellness",
+        "img": "https://i.ibb.co/nPtMxsf/Fitness-and-Wellness.png",
+        "category_description": "Find fitness and wellness job opportunities",
+        "jobs": [
+            {
+                "job_id": 2601,
+                "job_title": "Personal Trainer",
+                "job_description": "Provide personalized fitness training",
+                "job_location": "City XXX",
+                "job_type": "Full-time",
+                "job_experience": "2-5 years"
+            },
+            {
+                "job_id": 2602,
+                "job_title": "Nutritionist",
+                "job_description": "Offer dietary advice and plans",
+                "job_location": "City YYY",
+                "job_type": "Permanent",
+                "job_experience": "3-6 years"
+            },
+            {
+                "job_id": 2603,
+                "job_title": "Wellness Coach",
+                "job_description": "Guide individuals on overall wellness",
+                "job_location": "City ZZZ",
+                "job_type": "Full-time",
+                "job_experience": "1-3 years"
+            }
+        ]
+    },
+    {
+        "_id": 27,
+        "category_name": "Architecture and Design",
+        "img": "https://i.ibb.co/MSRn2xz/Engineering.png",
+        "category_description": "Find architecture and design job opportunities",
+        "jobs": [
+            {
+                "job_id": 2701,
+                "job_title": "Architect",
+                "job_description": "Design and plan architectural projects",
+                "job_location": "City AAAA",
+                "job_type": "Full-time",
+                "job_experience": "3-7 years"
+            },
+            {
+                "job_id": 2702,
+                "job_title": "Interior Designer",
+                "job_description": "Create interior spaces and layouts",
+                "job_location": "City BBBB",
+                "job_type": "Permanent",
+                "job_experience": "2-5 years"
+            },
+            {
+                "job_id": 2703,
+                "job_title": "Landscape Architect",
+                "job_description": "Design outdoor spaces and landscapes",
+                "job_location": "City CCCC",
+                "job_type": "Full-time",
+                "job_experience": "4-8 years"
+            }
+        ]
+    },
+    {
+        "_id": 28,
+        "category_name": "Social Services",
+        "img": "https://i.ibb.co/znDVJj4/finance.png",
+        "category_description": "Find social services job opportunities",
+        "jobs": [
+            {
+                "job_id": 2801,
+                "job_title": "Social Worker",
+                "job_description": "Assist individuals and families in need",
+                "job_location": "City DDDD",
+                "job_type": "Full-time",
+                "job_experience": "2-5 years"
+            },
+            {
+                "job_id": 2802,
+                "job_title": "Counselor",
+                "job_description": "Provide counseling and support",
+                "job_location": "City EEEE",
+                "job_type": "Permanent",
+                "job_experience": "3-6 years"
+            },
+            {
+                "job_id": 2803,
+                "job_title": "Youth Program Coordinator",
+                "job_description": "Coordinate programs for young individuals",
+                "job_location": "City FFFF",
+                "job_type": "Full-time",
+                "job_experience": "1-3 years"
+            }
+        ]
+    }
+]
