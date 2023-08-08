@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import SideNav from "./SideNav";
 import NavItems from "../Components/NavItems";
+import SideNav from "./SideNav";
 
 // react icons
 import { FaBars, FaSearch } from 'react-icons/fa';
