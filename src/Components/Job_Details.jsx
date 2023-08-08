@@ -12,7 +12,7 @@ const Job_Details = () => {
     const { id, job_description, job_responsibility,skills, educational_requirements, experiences, job_title, contact_information, salary, benefits, weekend } = jobData
 
     return (
-        <div className='mt-40 lg:mt-12 container mx-auto'>
+        <section className='mt-40 lg:mt-12 container mx-auto'>
             <h1 className='text-4xl mt-10 font-semibold'>Job Details</h1>
             <hr className='hr' />
             <div className='flex flex-col lg:flex-row gap-5 justify-center p-5'>
@@ -85,7 +85,7 @@ const Job_Details = () => {
                 <h2 className='text-4xl font-semibold'>These jobs may fit you</h2>
 
             </div>
-        </div>
+        </section>
     );
 };
 

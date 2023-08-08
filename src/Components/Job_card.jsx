@@ -6,8 +6,7 @@ const Job_card = ({ data }) => {
     const { id, company_logo, job_title, startTime, postTime,
         jobType, duration, company_name, remote_or_onsite, location, fulltime_or_parttime, salary } = data
     return (
-        <div className='border-2 p-10 rounded-md '>
-            {/* <img className='w-40 h-10 ' src={company_logo} alt="" /> */}
+        <section className='border-2 p-10 rounded-md shadow-2xl shadow-gray-300'>
             <div>
                 <h3 className='text-2xl font-semibold mt-5 '>{job_title}</h3>
                 <p className='font-semibold opacity-75 mb-2'>{company_name}</p>
@@ -33,14 +32,14 @@ const Job_card = ({ data }) => {
 
                 </div>
                 <div className='border-t-2 my-3 py-3 flex justify-between '>
-                    <Link to='/jobdetails' state={data} className='btn'>View Details</Link>
+                    <Link to='/jobdetails' state={data} className='pop-btn '>View Details</Link>
                     <button className='btn'>Apply</button>
-                    
+
                 </div>
 
             </div>
 
-        </div>
+        </section>
     );
 };
 

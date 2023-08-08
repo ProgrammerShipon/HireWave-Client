@@ -8,7 +8,7 @@ const Special_Featurs = () => {
     const [q2, setQ2] = useState(false)
     const [q3, setQ3] = useState(false)
     return (
-        <div className="featured-bg bg-fixed text-white  pt-8 my-20 ">
+        <section className="featured-bg bg-fixed text-white  pt-8 my-20 ">
             <div className="bg-opacity-40 bg-black ">
 
                 <div className="flex flex-col md:flex-row gap-16  px-36 h-[90vh]">
@@ -72,7 +72,7 @@ const Special_Featurs = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
