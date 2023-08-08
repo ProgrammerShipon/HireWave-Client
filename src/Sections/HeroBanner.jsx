@@ -2,9 +2,9 @@ import { useForm } from 'react-hook-form';
 import Button from '../Components/Button';
 
 // react icons
+import { BiSearchAlt } from 'react-icons/bi';
 import { FaBriefcase } from 'react-icons/fa';
 import { FaLocationCrosshairs } from 'react-icons/fa6';
-import { BiSearchAlt } from 'react-icons/bi';
 
 const HeroBanner = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
