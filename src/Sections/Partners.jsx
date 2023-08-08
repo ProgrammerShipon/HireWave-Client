@@ -1,8 +1,17 @@
-import usePartners from "../Hooks/usePartners";
+import { useState } from "react";
 
 const Partners = () => {
-   const partner = usePartners()
-   console.log(partner)
+ console.log(isLoadingPartner, partnerData);const [partnerData, setData] = useState(null);
+ const [isLoadingPartner, setLoadingPartner] = useState(true);
+
+ useEffect(() => {
+   fetch("OurPartners.json")
+     .then((res) => res.json())
+     .then((data) => {
+       setData(data);
+       setLoadingPartner(false);
+     });
+ }, []);
 
    return (
      <section>
