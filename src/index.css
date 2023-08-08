@@ -4,4 +4,21 @@
 
 * {
   scroll-behavior: smooth;
+  text-transform: capitalize;
+  font-family: "poppins",
+    sans-serif;
+  ;
+}
+
+html::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #e61010;
+  border-radius: 5rem;
 }
