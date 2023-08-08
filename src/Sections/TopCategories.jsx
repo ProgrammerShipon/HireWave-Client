@@ -9,17 +9,17 @@ const TopCategories = () => {
             .then((data) => setJobCategory(data))
     }, [])
 
-    const fifteenCard = jobCategory.slice(0, 15)
+    const fifteenCard = jobCategory.slice(0, 10)
 
     return (
         <section className='bg-[#edf6f7]'>
             {/* title  */}
             <div className='text-center py-6'>
                 <h2 className='text-[#1b0e3d] text-5xl font-semibold'>Choose Your Desire Category</h2>
-                <p></p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid veniam vitae quidem sint ipsa laborum deleniti minus nisi inventore ducimus.</p>
             </div>
             {/* Categories  */}
-            <div className='grid grid-cols-1 md:grid-cols-5  py-8  mx-20'>
+            <div className='grid grid-cols-1 md:grid-cols-4  py-8  mx-20'>
 
                 {
                     fifteenCard.map((category) => (
