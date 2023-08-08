@@ -1,0 +1,8 @@
+li a:hover, .footer-items:hover{
+    text-decoration: underline;
+    color: rgb(4 120 87);
+}
+
+.footer-dropdown h1{
+    letter-spacing: 2px;
+}
