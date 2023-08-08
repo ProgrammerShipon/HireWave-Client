@@ -4,26 +4,36 @@
 
 * {
   margin: 0;
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   scroll-behavior: smooth;
+  text-transform: capitalize;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #e61010;
+  border-radius: 5rem;
 }
 
 .card-class {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
 }
 
 .rounded-btn {
-  @apply flex w-28 h-10 border-2 border-blue-500 rounded text-blue-600 font-semibold justify-center items-center
+  @apply flex w-28 h-10 border-2 border-blue-500 rounded text-blue-600 font-semibold justify-center items-center;
 }
 
 .btn {
-  @apply py-3 px-6 bg-blue-600 hover:bg-blue-800 text-white font-semibold rounded-lg transition duration-300 ease-in-out
+  @apply py-3 px-6 bg-blue-600 hover:bg-blue-800 text-white font-semibold rounded-lg transition duration-300 ease-in-out;
 }
 
 .text-flex {
-  @apply flex gap-2 items-center
+  @apply flex gap-2 items-center;
 }
 
-.pop-btn{
-  @apply px-4 py-2 bg-blue-700  rounded-md text-white outline-none focus:ring-4 shadow-lg transform active:scale-x-50 transition-transform  flex justify-center
+.pop-btn {
+  @apply px-4 py-2 bg-blue-700  rounded-md text-white outline-none focus:ring-4 shadow-lg transform active:scale-x-50 transition-transform  flex justify-center;
 }

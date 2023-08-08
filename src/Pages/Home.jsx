@@ -11,11 +11,19 @@ const Home = () => {
 
       <TopCategories />
       
-      <Job_Post></Job_Post>
+      <Job_Post />
       
-       <Special_Featurs></Special_Featurs>
-     </>
-   );
+      <Special_Featurs />
+      
+      {/* 
+        full bugs no change
+      <TopEmployee /> */}
+
+      {/*
+      full bugs
+       <TopRecruiters /> */}
+    </>
+  );
 };
 
 export default Home;
