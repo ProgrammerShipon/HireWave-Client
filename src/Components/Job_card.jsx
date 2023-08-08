@@ -33,7 +33,7 @@ const Job_card = ({ data }) => {
 
                 </div>
                 <div className='border-t-2 my-3 py-3 flex justify-between '>
-                    <Link to={`/job-detail/${id}`} className='btn'>View Details</Link>
+                    <Link to='/jobdetails' state={data} className='btn'>View Details</Link>
                     <button className='btn'>Apply</button>
                     
                 </div>

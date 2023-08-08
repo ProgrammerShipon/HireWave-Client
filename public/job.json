@@ -13,8 +13,21 @@
         "salary": "6000",
         "postTime": "just now",
         "jobType": "Internship",
+        "weekend": "Friday ",
+        "benefits": [
+            "Competitive salary",
+            "Health & Life insurance",
+            "Paid time off ",
+            "Leave encashment",
+            "Yearly 3 bonuses (2 Eids & Bengali New Year) ",
+            "Performance Bonus",
+            "Yearly performance review ",
+            "Regular tours and events ",
+            "Hybrid work"
+        ],
         "job_description": "We are looking for a software developer to join our team and help build software solutions for our clients.nd effective interfaces for software and web applications. This includes designing the layout, visual design, and interactivity of the user interface.",
         "job_responsibility": "Design, develop, test and maintain software applications. Collaborate with cross-functional teams to identify and solve complex software problems. Write clean, maintainable code that is scalable and efficient.roduct management, engineering, and marketing, to ensure that the user interface is aligned with business and technical requirements. You will need to be able to effectively communicate your design ideas and gather feedback from other team members",
+        "skills":"HTML 5 , CSS3 , CSS Freawork , JavaScript , React js ",
         "educational_requirements": "Bachelor's or Master's degree in Computer Science or a related field",
         "experiences": "3+ years of experience in software engineering",
         "contact_information": {
@@ -37,8 +50,21 @@
         "salary": "14,000",
         "postTime": "2 hour ago",
         "jobType": "Internship",
+        "weekend": "Friday ",
+        "benefits": [
+            "Competitive salary",
+            "Health & Life insurance",
+            "Paid time off ",
+            "Leave encashment",
+            "Yearly 3 bonuses (2 Eids & Bengali New Year) ",
+            "Performance Bonus",
+            "Yearly performance review ",
+            "Regular tours and events ",
+            "Hybrid work"
+        ],
         "job_description": "We are looking for a software developer to join our team and help build software solutions for our clients.nd effective interfaces for software and web applications. This includes designing the layout, visual design, and interactivity of the user interface.",
         "job_responsibility": "Design, develop, test and maintain software applications. Collaborate with cross-functional teams to identify and solve complex software problems. Write clean, maintainable code that is scalable and efficient.roduct management, engineering, and marketing, to ensure that the user interface is aligned with business and technical requirements. You will need to be able to effectively communicate your design ideas and gather feedback from other team members",
+        "skills":"HTML 5 , CSS3 , CSS Freawork , JavaScript , React js ",
         "educational_requirements": "Bachelor's or Master's degree in Computer Science or a related field",
         "experiences": "3+ years of experience in software engineering",
         "contact_information": {

@@ -9,14 +9,14 @@ const Job_Details = () => {
     const jobData = data.state;
     console.log(jobData)
 
-    const { id, job_description, job_responsibility, educational_requirements, experiences, job_title, contact_information, salary } = jobData
+    const { id, job_description, job_responsibility,skills, educational_requirements, experiences, job_title, contact_information, salary, benefits, weekend } = jobData
 
     return (
         <div className='mt-40 lg:mt-12 container mx-auto'>
             <h1 className='text-4xl mt-10 font-semibold'>Job Details</h1>
             <hr className='hr' />
             <div className='flex flex-col lg:flex-row gap-5 justify-center p-5'>
-                <div className='w-full lg:w-3/5 mx-auto  flex flex-col gap-6'>
+                <div className='w-full lg:w-3/5 mx-auto  flex flex-col gap-6 h-[70vh] overflow-y-scroll'>
                     <p>
                         <span className='font-bold '>Job Description:</span> <br />
                         <span className='opacity-80 font-medium '>{job_description}</span>
@@ -26,12 +26,23 @@ const Job_Details = () => {
                         <span className='opacity-80 font-medium'>{job_responsibility}</span>
                     </p>
                     <p>
+                        <span className='font-bold'>Basic Knowledge:</span> <br />
+                        <span className='opacity-80 font-medium'>{skills}</span>
+                    </p>
+                    <p>
                         <span className='font-bold'>Educational Requirements:</span> <br />
                         <span className='opacity-80 font-medium'>{educational_requirements}</span>
                     </p>
                     <p>
                         <span className='font-bold'>Experiences:</span> <br />
                         <span className='opacity-80 font-mono'> {experiences}</span>
+                    </p>
+                    <p>
+                       <span className='text-xl font-semibold'> Benefits:</span>  {benefits?.map(benefit => <li>{benefit}</li>)}
+                    </p>
+                    <p>
+                        <span className='font-bold'>Holiday :</span> <br />
+                        <span className='opacity-80 font-mono'> {weekend}</span>
                     </p>
                 </div>
                 <div>
@@ -64,16 +75,16 @@ const Job_Details = () => {
                         </p>
                     </div>
                     <button
-                    type='button'
-                    // onClick={() => applyJob(findJobDeatils)} 
-                    className='pop-btn w-full text-xl mt-2'  >Apply </button>
+                        type='button'
+                        // onClick={() => applyJob(findJobDeatils)} 
+                        className='pop-btn w-full text-xl mt-2'  >Apply </button>
                 </div>
             </div>
 
             <div>
-                <h2>These jobs may fit you</h2>
+                <h2 className='text-4xl font-semibold'>These jobs may fit you</h2>
 
-                
+
             </div>
         </div>
     );
