@@ -5,3 +5,16 @@
 * {
   scroll-behavior: smooth;
 }
+
+.card-class {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8
+}
+.rounded-btn{
+  @apply flex w-28 h-10 border-2 border-blue-500 rounded text-blue-600 font-semibold justify-center items-center
+}
+.btn{
+  @apply py-3 px-6 bg-blue-500 hover:bg-blue-600  text-white font-semibold rounded-lg transition duration-300 ease-in-out
+}
+.text-flex{
+  @apply flex gap-2 items-center
+}
