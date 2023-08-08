@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import "../Style/Feture.css"
-import { BiMobileAlt } from 'react-icons/bi';
 import { AiFillCaretRight, AiFillCaretUp } from 'react-icons/ai';
 import Fetures_Card from '../Components/Fetures_Card';
+import "../Style/Feture.css";
 const Special_Featurs = () => {
     const [q1, setQ1] = useState(false)
     const [q2, setQ2] = useState(false)
     const [q3, setQ3] = useState(false)
+
     return (
         <section className="featured-bg bg-fixed text-white  pt-8 my-20 ">
-            <div className="bg-opacity-40 bg-black ">
+            <div className="container bg-opacity-40 bg-black ">
 
-                <div className="flex flex-col md:flex-row gap-16  px-36 min:h-[90vh]">
+                <div className="gird grid-cols-1 md:grid-cols-2">
                     <div className=' w-auto md:w-2/5 pt-8'>
                         <h3 className='text-xl text-blue-600 bg-gray-800 inline rounded-2xl px-2 mb-12 font-semibold my-5'>Special Fetures</h3>
                         <h1 className='text-5xl font-bold my-4'>Bridge for industrial and corporate development.</h1>
