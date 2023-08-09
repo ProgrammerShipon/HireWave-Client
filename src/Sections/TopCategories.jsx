@@ -2,15 +2,10 @@ import { useEffect, useState } from 'react';
 import SectionTitle from '../Components/SectionTitle';
 import TopCategoryCard from '../Components/TopCategoryCard';
 import Button from '../Components/Button';
+import useCategoriesData from '../Hooks/useCategoriesData';
 
 const TopCategories = () => {
-    const [jobCategory, setJobCategory] = useState([]);
-
-    useEffect(() => {
-        fetch('./jobCategories.json')
-            .then((res) => res.json())
-            .then((data) => setJobCategory(data))
-    }, []);
+    const [categoriesData] = useCategoriesData();
 
     return (
         <section className='bg-[#edf6f7] py-16 md:py-20'>
@@ -22,7 +17,7 @@ const TopCategories = () => {
                 {/* categories  */}
                 <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 pt-12 md:pt-16'>
                     {
-                        jobCategory?.slice(0, 10).map((category) => (
+                        categoriesData?.slice(0, 10).map((category) => (
                             <TopCategoryCard
                                 key={category._id}
                                 category={category}

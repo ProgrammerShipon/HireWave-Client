@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.32.6",
     "autoprefixer": "^10.4.14",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
+    "moment": "^2.29.4",
     "postcss": "^8.4.27",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
