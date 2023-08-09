@@ -48,13 +48,14 @@ const Reviews = () => {
             className="mySwiper"
           >
             {
-              hiringRecommendations.map(recommendation => <SwiperSlide key={recommendation._id} className='flex flex-col px-5 md:px-10 pt-3 mb-12 py-6 border-2 border-black rounded-lg'>
+              hiringRecommendations.map(recommendation => <SwiperSlide key={recommendation._id} className='h-[280px] md:h-[340px] lg:h-[280px] relative flex flex-col px-5 md:px-8 mb-12 py-6 border-2 border-black rounded-lg'>
                 <div className='flex gap-3 pl-6'>
                   <img className='w-10 h-10' src={recommendation.companyImage} alt="" />
                   <h1 className='font-bold text-2xl md:text-3xl mb-5'>{recommendation.companyName}</h1>
                 </div>
                 {/* <img src={apostrophe} alt="" /> */}
-                <p className='mb-3 line-clamp-3'>"{recommendation.comment}"</p>
+                <p className='mb-3'>"{recommendation.comment}"</p>
+                <div className='absolute bottom-3'>
                 <Rating style={{ maxWidth: 100 }} value={Math.round(recommendation.rating || 0)} readOnly />
                 <div className='flex gap-6 items-center mt-5'>
                   <img className='rounded-full w-14' src={recommendation.recommenderImage} alt="" />
@@ -62,6 +63,7 @@ const Reviews = () => {
                     <p className='text-gray-500 '>{recommendation.recommenderName}</p>
                     <p className='text-gray-500 text-sm'>{recommendation.recommenderPosition}</p>
                   </div>
+                </div>
                 </div>
 
               </SwiperSlide>)
