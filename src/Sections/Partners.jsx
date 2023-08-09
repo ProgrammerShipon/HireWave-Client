@@ -12,17 +12,15 @@ const Partners = () => {
       });
   }, []);
 
-  console.log(partnerData);
-
   return (
-    <section>
+    <section className="">
       <div className="container">
         {/* TODO:  Section Title */}
 
         <div className="flex flex-wrap items-center justify-center gap-6">
           {partnerData &&
-            partnerData.map((partner) => (
-              <figure className="max-w-[150px] hover:">
+            partnerData.map((partner, i) => (
+              <figure key={i} className="max-w-[150px] hover:">
                 <img src={partner?.logoImg} alt={partner?.name} />
               </figure>
             ))}
