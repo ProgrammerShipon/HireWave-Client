@@ -23,12 +23,10 @@ const Reviews = () => {
 
   return (
     <section>
-      <div className='container mb-10'>
+      <div className='container'>
         <h1 className='text-center text-4xl mb-6 font-serif'>Backed by recognized brands and startups</h1>
         <div className='mx-auto'>
           <Swiper
-            slidesPerView={2}
-            spaceBetween={30}
             pagination={{
               clickable: true,
             }}
@@ -36,17 +34,27 @@ const Reviews = () => {
               delay: 2500,
               disableOnInteraction: false,
             }}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 30,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+              }
+            }}
             modules={[Autoplay, Pagination]}
             className="mySwiper"
           >
             {
-              hiringRecommendations.map(recommendation => <SwiperSlide key={recommendation._id} className='flex flex-col px-5 md:px-10 py-3 md:py-6 border-2 border-black rounded-lg'>
-                <div className='flex gap-3 pl-8'>
-                  <img className=' w-10 h-10' src={recommendation.companyImage} alt="" />
-                  <h1 className='font-bold text-2xl md:text-3xl  mb-2 md:mb-5'>{recommendation.companyName}</h1>
+              hiringRecommendations.map(recommendation => <SwiperSlide key={recommendation._id} className='flex flex-col px-5 md:px-10 pt-3 mb-12 py-6 border-2 border-black rounded-lg'>
+                <div className='flex gap-3 pl-6'>
+                  <img className='w-10 h-10' src={recommendation.companyImage} alt="" />
+                  <h1 className='font-bold text-2xl md:text-3xl mb-5'>{recommendation.companyName}</h1>
                 </div>
                 {/* <img src={apostrophe} alt="" /> */}
-                <p className='mb-3'>"{recommendation.comment}"</p>
+                <p className='mb-3 line-clamp-3'>"{recommendation.comment}"</p>
                 <Rating style={{ maxWidth: 100 }} value={Math.round(recommendation.rating || 0)} readOnly />
                 <div className='flex gap-6 items-center mt-5'>
                   <img className='rounded-full w-14' src={recommendation.recommenderImage} alt="" />
