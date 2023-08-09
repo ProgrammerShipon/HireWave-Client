@@ -3,13 +3,14 @@ import { FaPhone, FaPhoneAlt, FaRupeeSign } from 'react-icons/fa';
 import { } from "react-icons/io";
 import { MdLocationCity, MdLocationPin, MdMarkEmailRead } from 'react-icons/md';
 import { useLocation } from 'react-router-dom';
+import Button from './Button';
 
 const Job_Details = () => {
     const data = useLocation();
     const jobData = data.state;
     console.log(jobData)
 
-    const { id, job_description, job_responsibility,skills, educational_requirements, experiences, job_title, contact_information, salary, benefits, weekend } = jobData
+    const { job_description, job_responsibility, skills, educational_requirements, experiences, job_title, contact_information, benefits, weekend, salary } = jobData;
 
     return (
         <section className='mt-40 lg:mt-12 container mx-auto'>
@@ -38,26 +39,27 @@ const Job_Details = () => {
                         <span className='opacity-80 font-mono'> {experiences}</span>
                     </p>
                     <p>
-                       <span className='text-xl font-semibold'> Benefits:</span>  {benefits?.map(benefit => <li>{benefit}</li>)}
+                        <span className='text-xl font-semibold'> Benefits:</span>  {benefits?.map(benefit => <li>{benefit}</li>)}
                     </p>
                     <p>
-                        <span className='font-bold'>Holiday :</span> <br />
+                        <span className='font-bold'>Holiday :</span>
                         <span className='opacity-80 font-mono'> {weekend}</span>
                     </p>
                 </div>
                 <div>
-                    <div className='py-8 px-5 h-[460px] bg-gradient-to-r from-blue-50 to-blue-100 hover:from-blue-100 rounded-md border-2'>
+                    <div className='p-8  h-[460px] bg-gradient-to-r from-blue-50 to-blue-100 hover:from-blue-100 rounded-md '>
                         <h3 className='text-2xl font-bold '></h3> <hr className='hr' />
+                        <p className='flex items-center mb-2'>
+                            <span className='font-semibold mr-1'>Role : </span>
+                            <span className='font-medium  font-mono opacity-90 text-xl'>{job_title}</span>
+                        </p>
                         <p className='flex items-center mb-2'>
                             <span className='font-semibold mr-2'> Stipend :</span>
                             <span className='opacity-90 font-medium font-mono text-flex'><FaRupeeSign /> {salary}/Months</span>
                         </p>
-                        <p className='flex items-center mb-5'>
-                            <span className='font-semibold mr-1'>Role : </span>
-                            <span className='font-medium  font-mono opacity-90 text-xl'>{job_title}</span>
-                        </p>
+                       
 
-                        <h3 className='text-2xl font-bold '>Contact Info :</h3>
+                        <h3 className='text-xl font-bold '>Contact Info :</h3>
                         <hr className='hr' />
                         <p className='flex items-center  mb-2'>
                             <FaPhoneAlt className='w-4 mr-1' />
@@ -77,7 +79,7 @@ const Job_Details = () => {
                     <button
                         type='button'
                         // onClick={() => applyJob(findJobDeatils)} 
-                        className='pop-btn w-full text-xl mt-2'  >Apply </button>
+                        className='px-4 py-2   rounded-md bg-dark text-white outline-none focus:ring-4  shadow-lg transform active:scale-x-95 transition-transform   w-full text-xl mt-2'  >Apply </button>
                 </div>
             </div>
 

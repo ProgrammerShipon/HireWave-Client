@@ -5,8 +5,9 @@ export default {
     extend: {
       colors: {
         green: "#33e2a0",
-        secondary: "#7c60d5",
+        purple: "#7c60d5",
         dark: "#1b0e3d",
+        gray: "#868894",
       },
     },
     container: {
@@ -18,9 +19,10 @@ export default {
     screens: {
       sm: "540px",
       md: "768px",
-      lg: "1024px",
-      xl: "1172px",
+      lg: "1120px",
+      xl: "1240px",
     },
+    
   },
   plugins: [],
 };

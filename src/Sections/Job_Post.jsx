@@ -11,15 +11,15 @@ const Job_Post = () => {
     }, []);
     console.log(jobData)
     return (
-        <div className='card-class'>
-            {
-                jobData?.map(data=> 
-                <Job_card 
-                key={data._id}
-                data={data}
-                ></Job_card>)
-            }
+      <section>
+        <div className="container">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {jobData?.map((data) => (
+              <Job_card key={data._id} data={data}></Job_card>
+            ))}
+          </div>
         </div>
+      </section>
     );
 };
 
