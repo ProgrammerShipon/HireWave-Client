@@ -1,0 +1,46 @@
+{
+  "recruiters": [
+    {
+      "id": 1,
+      "img": "https://i.ibb.co/jDPFM9F/req-1.jpg",
+      "name": "John Recruiter",
+      "experience": "5 years",
+      "skill": "IT Recruitment"
+    },
+    {
+      "id": 2,
+      "img": "https://i.ibb.co/41bpfKJ/req-2.jpg",
+      "name": "Jane Hiring",
+      "experience": "3 years",
+      "skill": "Tech Recruitment"
+    },
+    {
+      "id": 3,
+      "img": "https://i.ibb.co/7C8Xrgh/req-3.jpg",
+      "name": "Alex Talent",
+      "experience": "7 years",
+      "skill": "Engineering Recruitment"
+    },
+    {
+      "id": 4,
+      "img": "https://i.ibb.co/tJK8Xrf/req-4.jpg",
+      "name": "Emily Staffer",
+      "experience": "4 years",
+      "skill": "HR Recruitment"
+    },
+    {
+      "id": 5,
+      "img": "https://i.ibb.co/X7PDNr2/req-5.jpg",
+      "name": "Sammy Sourcer",
+      "experience": "2 years",
+      "skill": "Sourcing"
+    },
+    {
+      "id": 6,
+      "img": "https://i.ibb.co/Nx5fH1d/req-6.jpg",
+      "name": "Max Headhunter",
+      "experience": "6 years",
+      "skill": "Executive Search"
+    }
+  ]
+}
