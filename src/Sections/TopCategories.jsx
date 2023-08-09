@@ -1,36 +1,41 @@
-import React, { useEffect, useState } from 'react';
-import JobCategoryCard from '../Components/JobCategoryCard';
+import { useEffect, useState } from 'react';
 import SectionTitle from '../Components/SectionTitle';
+import TopCategoryCard from '../Components/TopCategoryCard';
+import Button from '../Components/Button';
 
 const TopCategories = () => {
-    const [jobCategory, setJobCategory] = useState([])
+    const [jobCategory, setJobCategory] = useState([]);
+
     useEffect(() => {
-        fetch('./jobCategoris.json')
+        fetch('./jobCategories.json')
             .then((res) => res.json())
             .then((data) => setJobCategory(data))
-    }, [])
-
-    const fifteenCard = jobCategory.slice(0, 15)
+    }, []);
 
     return (
-        <section className='bg-[#edf6f7] py-20'>
-            {/* section title  */}
-            <SectionTitle title='Top Category' para='All Top Category' />
+        <section className='bg-[#edf6f7] py-16 md:py-20'>
+            <div className="container">
 
-            {/* categories  */}
-            <div className='grid grid-cols-1 md:grid-cols-5  pt-16  mx-20'>
+                {/* section title  */}
+                <SectionTitle title='Top Category' para='All Top Category' />
 
-                {
-                    fifteenCard.map((category) => (
-                        <JobCategoryCard
-                            key={category._id}
-                            category={category}
-                        ></JobCategoryCard>
-                    ))
-                }
-            </div>
-            <div className='text-center pb-8'>
-                <button className=' border px-2 py-2 font-medium text-[#1b0e3d] hover:bg-[#052e35] rounded-md hover:text-white ease-in-out duration-500'> View All Categories </button>
+                {/* categories  */}
+                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 pt-12 md:pt-16'>
+                    {
+                        jobCategory?.slice(0, 10).map((category) => (
+                            <TopCategoryCard
+                                key={category._id}
+                                category={category}
+                            />
+                        ))
+                    }
+                </div>
+
+                <div className='text-center mt-14'>
+                    <Button>
+                        Know More
+                    </Button>
+                </div>
             </div>
         </section>
     );
