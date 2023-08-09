@@ -3,12 +3,3 @@ li a:hover, .footer-items:hover{
     color: rgb(4 120 87);
 }
 
-.footer-dropdown h1{
-    letter-spacing: 2px;
-}
-
-.footer-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
