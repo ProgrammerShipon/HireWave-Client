@@ -11,7 +11,7 @@ const Special_Featurs = () => {
         <section className="featured-bg bg-fixed text-white  pt-8 my-20 ">
             <div className="bg-opacity-40 bg-black ">
 
-                <div className="flex flex-col md:flex-row gap-16  px-36 min:h-[90vh]">
+                <div className="flex flex-col md:flex-row gap-16  px-36 min-h-[90vh]">
                     <div className=' w-auto md:w-2/5 pt-8'>
                         <h3 className='text-xl text-blue-600 bg-gray-800 inline rounded-2xl px-2 mb-12 font-semibold my-5'>Special Fetures</h3>
                         <h1 className='text-5xl font-bold my-4'>Bridge for industrial and corporate development.</h1>
