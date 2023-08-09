@@ -1,3 +1,4 @@
+import FeaturedJobs from '../Sections/FeaturedJobs';
 import HeroBanner from '../Sections/HeroBanner';
 import Job_Post from '../Sections/Job_Post';
 import Partners from '../Sections/Partners';
@@ -12,17 +13,11 @@ const Home = () => {
 
       <TopCategories />
 
+      <FeaturedJobs />
+
       <Job_Post />
 
       <Special_Featurs />
-
-      {/* 
-        full bugs no change
-      <TopEmployee /> */}
-
-      {/*
-      full bugs
-       <TopRecruiters /> */}
 
       <Partners />
 

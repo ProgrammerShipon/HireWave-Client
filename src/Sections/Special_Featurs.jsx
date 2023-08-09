@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AiFillCaretRight, AiFillCaretUp } from 'react-icons/ai';
 import Fetures_Card from '../Components/Fetures_Card';
-import "../Style/Feture.css";
+
 const Special_Featurs = () => {
     const [q1, setQ1] = useState(false)
     const [q2, setQ2] = useState(false)
@@ -18,27 +18,27 @@ const Special_Featurs = () => {
                         <p className='text-lg font-semibold text-gray-600'>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae</p>
 
                         <div className='space-y-3 mt-5'>
-                        <div>
-                            <p className='text-flex cursor-pointer ' onClick={() => setQ1(!q1)} >
-                                {q1 ? <AiFillCaretUp className='text-blue-800' /> : <AiFillCaretRight />} Best Hiring Agency</p>
-                            {
-                                q1 && <p className='my-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quibusdam quia vitae sed harum sit?</p>
-                            }
-                        </div>
-                        <div>
-                            <p className='text-flex cursor-pointer' onClick={() => setQ2(!q2)} >
-                                {q2 ? <AiFillCaretUp className='text-blue-800' /> : <AiFillCaretRight />} Quality Opportunities</p>
-                            {
-                                q2 && <p className='my-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quibusdam quia vitae sed harum sit?</p>
-                            }
-                        </div>
-                        <div>
-                            <p className='text-flex cursor-pointer' onClick={() => setQ3(!q3)} >
-                                {q3 ? <AiFillCaretUp className='text-blue-800' /> : <AiFillCaretRight />} Career Coaching</p>
-                            {
-                                q3 && <p className='my-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quibusdam quia vitae sed harum sit?</p>
-                            }
-                        </div>
+                            <div>
+                                <p className='text-flex cursor-pointer ' onClick={() => setQ1(!q1)} >
+                                    {q1 ? <AiFillCaretUp className='text-blue-800' /> : <AiFillCaretRight />} Best Hiring Agency</p>
+                                {
+                                    q1 && <p className='my-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quibusdam quia vitae sed harum sit?</p>
+                                }
+                            </div>
+                            <div>
+                                <p className='text-flex cursor-pointer' onClick={() => setQ2(!q2)} >
+                                    {q2 ? <AiFillCaretUp className='text-blue-800' /> : <AiFillCaretRight />} Quality Opportunities</p>
+                                {
+                                    q2 && <p className='my-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quibusdam quia vitae sed harum sit?</p>
+                                }
+                            </div>
+                            <div>
+                                <p className='text-flex cursor-pointer' onClick={() => setQ3(!q3)} >
+                                    {q3 ? <AiFillCaretUp className='text-blue-800' /> : <AiFillCaretRight />} Career Coaching</p>
+                                {
+                                    q3 && <p className='my-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quibusdam quia vitae sed harum sit?</p>
+                                }
+                            </div>
                         </div>
 
                     </div>

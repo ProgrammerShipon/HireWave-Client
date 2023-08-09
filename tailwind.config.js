@@ -9,6 +9,9 @@ export default {
         dark: "#1b0e3d",
         gray: "#868894",
       },
+      boxShadow: {
+        '3xl': '0 15px 40px 15px rgba(51 226 160 / 0.1)',
+      }
     },
     container: {
       center: true,
@@ -22,7 +25,7 @@ export default {
       lg: "1120px",
       xl: "1240px",
     },
-    
+
   },
   plugins: [],
 };
