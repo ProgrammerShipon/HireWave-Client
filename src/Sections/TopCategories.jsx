@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import JobCategoryCard from '../Components/JobCategoryCard';
+import SectionTitle from '../Components/SectionTitle';
 
 const TopCategories = () => {
     const [jobCategory, setJobCategory] = useState([])
@@ -12,14 +13,12 @@ const TopCategories = () => {
     const fifteenCard = jobCategory.slice(0, 15)
 
     return (
-        <section className='bg-[#edf6f7]'>
-            {/* title  */}
-            <div className='text-center py-6'>
-                <h2 className='text-[#1b0e3d] text-5xl font-semibold'>Choose Your Desire Category</h2>
-                <p></p>
-            </div>
-            {/* Categories  */}
-            <div className='grid grid-cols-1 md:grid-cols-5  py-8  mx-20'>
+        <section className='bg-[#edf6f7] py-20'>
+            {/* section title  */}
+            <SectionTitle title='Top Category' para='All Top Category' />
+
+            {/* categories  */}
+            <div className='grid grid-cols-1 md:grid-cols-5  pt-16  mx-20'>
 
                 {
                     fifteenCard.map((category) => (
