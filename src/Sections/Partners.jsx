@@ -12,18 +12,23 @@ const Partners = () => {
       });
   }, []);
 
-  console.log(partnerData);
-
   return (
-    <section>
+    <section className="py-12 md:py-16 lg:py-20">
       <div className="container">
         {/* TODO:  Section Title */}
 
         <div className="flex flex-wrap items-center justify-center gap-6">
           {partnerData &&
-            partnerData.map((partner) => (
-              <figure className="max-w-[150px] hover:">
-                <img src={partner?.logoImg} alt={partner?.name} />
+            partnerData.map((partner, i) => (
+              <figure
+                key={i}
+                className="max-w-[150px] p-4 rounded-sm transition duration-200 border-green/10 shadow-md hover:shadow-green/50 cursor-pointer gap-5 hover:shadow-lg"
+              >
+                <img
+                  className="w-full h-auto"
+                  src={partner?.logoImg}
+                  alt={partner?.name}
+                />
               </figure>
             ))}
         </div>

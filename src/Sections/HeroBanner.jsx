@@ -40,7 +40,8 @@ const HeroBanner = () => {
                             <input
                                 id='search'
                                 className='w-full border text-lg pl-2 py-4 md:py-2 border-none focus:outline-none bg-transparent text-dark placeholder:text-gray placeholder:bg-transparent'
-                                placeholder="Job Title / Keywords or Company" {...register("search")}
+                                placeholder="Job Title / Keywords or Company"
+                                {...register("search")}
                             />
                         </div>
 
