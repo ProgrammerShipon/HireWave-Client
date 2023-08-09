@@ -1,52 +1,42 @@
 [
   {
-    "id": 1,
     "name": "Hotify",
-    "logo": "https://themezhub.net/workplex-demo/workplex/assets/img/l-1.png"
+    "logoImg": "https://themezhub.net/workplex-demo/workplex/assets/img/l-1.png"
   },
   {
-    "id": 2,
     "name": "GreenValley",
-    "logo": "https://themezhub.net/workplex-demo/workplex/assets/img/l-2.png"
+    "logoImg": "https://themezhub.net/workplex-demo/workplex/assets/img/l-2.png"
   },
   {
-    "id": 3,
     "name": "Albera Soft",
-    "logo": "https://themezhub.net/workplex-demo/workplex/assets/img/l-3.png"
+    "logoImg": "https://themezhub.net/workplex-demo/workplex/assets/img/l-3.png"
   },
   {
-    "id": 4,
     "name": "SkrillDot",
-    "logo": "https://themezhub.net/workplex-demo/workplex/assets/img/l-3.png"
+    "logoImg": "https://themezhub.net/workplex-demo/workplex/assets/img/l-3.png"
   },
   {
-    "id": 5,
     "name": "Rikada",
-    "logo": "https://themezhub.net/workplex-demo/workplex/assets/img/l-5.png"
+    "logoImg": "https://themezhub.net/workplex-demo/workplex/assets/img/l-5.png"
   },
   {
-    "id": 6,
     "name": "Hizroo Tech",
-    "logo": "https://themezhub.net/workplex-demo/workplex/assets/img/l-6.png"
+    "logoImg": "https://themezhub.net/workplex-demo/workplex/assets/img/l-6.png"
   },
   {
-    "id": 7,
     "name": "Rizak",
-    "logo": "https://themezhub.net/workplex-demo/workplex/assets/img/l-7.png"
+    "logoImg": "https://themezhub.net/workplex-demo/workplex/assets/img/l-7.png"
   },
   {
-    "id": 8,
     "name": "Roozle",
-    "logo": "https://themezhub.net/workplex-demo/workplex/assets/img/l-8.png"
+    "logoImg": "https://themezhub.net/workplex-demo/workplex/assets/img/l-8.png"
   },
   {
-    "id": 9,
     "name": "Aximum",
-    "logo": "https://themezhub.net/workplex-demo/workplex/assets/img/l-9.png"
+    "logoImg": "https://themezhub.net/workplex-demo/workplex/assets/img/l-9.png"
   },
   {
-    "id": 10,
     "name": "Fire Shoot",
-    "logo": "https://themezhub.net/workplex-demo/workplex/assets/img/l-10.png"
+    "logoImg": "https://themezhub.net/workplex-demo/workplex/assets/img/l-10.png"
   }
 ]
