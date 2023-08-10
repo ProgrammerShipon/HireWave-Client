@@ -8,6 +8,7 @@ export default {
         purple: "#7c60d5",
         dark: "#1b0e3d",
         gray: "#868894",
+        lightGray: "#686868"
       },
       boxShadow: {
         '3xl': '0 15px 40px 15px rgba(51 226 160 / 0.1)',

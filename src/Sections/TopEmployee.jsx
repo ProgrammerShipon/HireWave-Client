@@ -1,26 +1,25 @@
-import React, { useState, useEffect } from "react";
-import Employee from "../Components/Employee";
+import useEmployeeData from "../Hooks/useEmployeeData";
+import SectionTitle from "../Components/SectionTitle";
+import EmployeeCard from "../Components/EmployeeCard";
 
 export default function TopEmployee() {
-  const [user, setUser] = useState([]);
+    const [employeeData] = useEmployeeData();
 
-  useEffect(() => {
-    fetch("./employee.json")
-      .then((res) => res.json())
-      .then((data) => setUser(data))
-      .catch((err) => console.log(err));
-  }, []);
+    return (
+        <section className="py-16 md:py-20 duration-300">
+            <div className="container">
+                {/* section title */}
+                <SectionTitle title='Top Employer' para='Top Employer to hire' />
 
-  return (
-    <section className="py-10">
-      <div className="title text-center py-5">
-        <h1 className="text-5xl font-bold">top employ to hire</h1>
-      </div>
-      <div className="container grid grid-cols-[repeat(auto-fit,minmax(300px,max-content))] gap-5 justify-center">
-        {user.map((employ) => (
-          <Employee key={employ.id} employ={employ}></Employee>
-        ))}
-      </div>
-    </section>
-  );
+                {/* top employee content */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6 mt-12 md:mt-16">
+                    {
+                        employeeData?.map((employee) => (
+                            <EmployeeCard key={employee.id} employee={employee} />
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+    );
 }
