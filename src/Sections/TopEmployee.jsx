@@ -12,11 +12,11 @@ export default function TopEmployee() {
   }, []);
 
   return (
-    <section className="py-10">
+    <section className=" container py-10">
       <div className="title text-center py-5">
         <h1 className="text-5xl font-bold">top employ to hire</h1>
       </div>
-      <div className="container grid grid-cols-[repeat(auto-fit,minmax(300px,max-content))] gap-5 justify-center">
+      <div className=" grid grid-cols-[repeat(auto-fit,minmax(350px,max-content))] gap-5 justify-center">
         {user.map((employ) => (
           <Employee key={employ.id} employ={employ}></Employee>
         ))}

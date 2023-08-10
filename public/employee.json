@@ -41,7 +41,7 @@
     "skills": {
       "skill1": "Python",
       "skill2": "Machine Learning",
-      "skill3": "Data Analysis"
+      "skill3": "Analysis"
     }
   },
   {
@@ -84,9 +84,31 @@
     "about": "Experienced sales executive with a proven track record of driving growth.",
     "active": "online",
     "skills": {
-      "skill1": "Sales Strategy",
+      "skill1": "Strategy",
       "skill2": "Negotiation",
       "skill3": "Relationship"
+    }
+  },
+  {
+    "id": 7,
+    "images": "https://i.ibb.co/HpdTSQb/young-bearded-man-with-striped-shirt.jpg",
+    "name": "Olivia Taylor",
+    "profession": "Android Developer",
+    "skills": {
+      "skill-1": "Java",
+      "skill-2": "Android Studio",
+      "skill-3": "RESTful APIs"
+    }
+  },
+  {
+    "id": 8,
+    "img": "employee8.jpg",
+    "name": "https://i.ibb.co/wwrT2HL/mohammadreza-babaei-ufkj-NXaix-Vg-unsplash.jpg",
+    "profession": "Game Developer",
+    "skills": {
+      "skill-1": "Unity",
+      "skill-2": "C#",
+      "skill-3": "Game Design"
     }
   }
 ]
