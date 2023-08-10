@@ -20,12 +20,14 @@ const JobByLocation = () => {
 
                         <div key={location._id} className='' >
                             <Link>
-                                <div className='w-96 relative'>
-                                    <img src={location.image} className='h-48 w-full rounded-md border border-b-0 border-green' alt="" />
-                                    <span className=' text-lg absolute top-2 left-2  px-3 rounded-lg bg-blue-300'>{location.status}</span>
-                                    <div className='border border-t-0 border-green  my-2 p-2 rounded-md shadow-green'>
-                                        <h3 className='text-2xl font-semibold'>{location.name}</h3>
-                                        <div className='flex justify-between px-1'>
+                                <div className='w-96 mx-auto relative border-2 border-gray border-opacity-40 p-2 rounded-2xl hover:shadow-xl hover:shadow-green hover:duration-300'>
+                                    <img src={location.image} className='h-48 w-full rounded-xl ' alt="" />
+                                    <span className='  absolute top-5 left-5  px-3 rounded-lg bg-blue-200 text-blue-700'>{location.status}</span>
+                                    <div className='
+                                   
+                                     my-2 p-2 rounded-md '>
+                                        <h3 className='text-xl font-semibold'>{location.name}</h3>
+                                        <div className='flex justify-between px-1 opacity-70'>
                                             <p>{location.vacancy} Vacancy</p>
                                             <p>{location.companies} companies</p>
                                         </div>
