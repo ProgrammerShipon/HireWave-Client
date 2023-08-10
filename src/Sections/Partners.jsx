@@ -1,28 +1,21 @@
-import { useEffect, useState } from "react";
+import SectionTitle from "../Components/SectionTitle";
+import usePartnerData from "../Hooks/usePartnerData";
 
 const Partners = () => {
-  const [partnerData, setData] = useState(null);
-
-  // Todo: Partner Fetching Data 
-  useEffect(() => {
-    fetch("OurPartners.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-      });
-  }, []);
+  const [partnerData] = usePartnerData();
 
   return (
     <section className="py-12 md:py-16 lg:py-20">
       <div className="container">
-        {/* TODO:  Section Title */}
+        {/* section title */}
+        <SectionTitle title='Our Partners' para='We Have Worked with 10,000+ Trusted Companies' />
 
-        <div className="flex flex-wrap items-center justify-center gap-6">
-          {partnerData &&
+        <div className="flex flex-wrap items-center justify-center gap-6 mt-12 md:mt-16 max-w-6xl">
+          {
             partnerData.map((partner, i) => (
               <figure
                 key={i}
-                className="max-w-[150px] p-4 rounded-sm transition duration-200 border-green/10 shadow-md hover:shadow-green/50 cursor-pointer gap-5 hover:shadow-lg"
+                className="max-w-[150px] p-4 rounded-lg duration-300 shadow-xl shadow-green/10 cursor-pointer gap-5"
               >
                 <img
                   className="w-full h-auto"
@@ -30,7 +23,8 @@ const Partners = () => {
                   alt={partner?.name}
                 />
               </figure>
-            ))}
+            ))
+          }
         </div>
       </div>
     </section>

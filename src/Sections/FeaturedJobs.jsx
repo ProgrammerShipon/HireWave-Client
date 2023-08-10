@@ -11,12 +11,14 @@ const FeaturedJobs = () => {
                 {/* section title */}
                 <SectionTitle title='Featured Jobs' para='Your dream company' />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-5 lg:gap-0 pt-12 md:pt-16 lg:max-w-5xl mx-auto duration-300 lg:divide-y lg:divide-green/20">
+                {/* featured jobs content */}
+                <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-5 lg:gap-0 pt-12 md:pt-16 lg:max-w-5xl mx-auto duration-300 lg:divide-y lg:divide-green/20">
                     {
                         jobData?.slice(0, 4).map((job, index) => <FeaturedJobCard key={index} job={job} />)
                     }
                 </div>
 
+                {/* button */}
                 <div className="text-center mt-16">
                     <Link to='/' className="border border-green py-2 px-5 text-dark hover:text-green hover:shadow-lg hover:shadow-green/20 duration-300 rounded-lg">View More Jobs</Link>
                 </div>
