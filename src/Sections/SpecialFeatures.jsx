@@ -46,7 +46,7 @@ const SpecialFeatures = () => {
                             </div>
 
                             <div className="w-[70px] h-[70px] rounded-full flex items-center justify-center border border-green bg-transparent shadow-xl shadow-green/20 hover:bg-purple hover:border-purple hover:shadow-purple/40 group duration-300">
-                                <AiFillMail size='40px' className='text-green group-hover:text-white w-[70px]' />
+                                <SiThealgorithms size='40px' className='text-green group-hover:text-white w-[70px]' />
                             </div>
                         </div>
 
