@@ -32,7 +32,7 @@ const HeroBanner = () => {
                     <form onSubmit={handleSubmit(onSubmit)}
                         className='bg-white border border-green shadow-2xl shadow-green/20 grid grid-cols-1 md:grid-cols-5 items-center mt-16 p-2 rounded-xl duration-300'
                     >
-                        {/* search */}
+                        {/* Search */}
                         <div className='col-span-2 flex items-center border-b md:border-none border-green'>
                             <label htmlFor="search" className='pl-2 text-green'>
                                 <FaBriefcase size='20px' />
