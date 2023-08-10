@@ -41,7 +41,7 @@ const Reviews = () => {
     }
   ];
 
-  console.log(hiringRecommendations);
+  // console.log(hiringRecommendations);
 
 
   return (

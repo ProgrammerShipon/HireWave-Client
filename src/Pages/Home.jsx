@@ -1,9 +1,9 @@
 import HeroBanner from '../Sections/HeroBanner';
 import Job_Post from '../Sections/Job_Post';
-import Special_Featurs from '../Sections/Special_Featurs';
 import TopCategories from '../Sections/TopCategories';
 import Reviews from '../Sections/Reviews/Reviews';
 import SpecialFeatures from '../Sections/SpecialFeatures';
+import JobByLocation from '../Sections/JobByLocation';
 
 const Home = () => {
   return (
@@ -13,6 +13,7 @@ const Home = () => {
       <TopCategories />
 
       <Job_Post />
+      <JobByLocation></JobByLocation>
 
       {/* <Special_Featurs /> */}
       <SpecialFeatures></SpecialFeatures>

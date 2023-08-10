@@ -9,7 +9,7 @@ const Job_Post = () => {
             .then(data => setJobData(data))
 
     }, []);
-    console.log(jobData)
+    // console.log(jobData)
     return (
       <section>
         <div className="container">
