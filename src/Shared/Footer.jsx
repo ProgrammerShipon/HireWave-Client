@@ -19,11 +19,11 @@ const Footer = () => {
             <div className="mt-4 md:mt-8">
               <h1 className="mb-2">Follow Us:</h1>
               <div className="flex gap-2">
-                <FiFacebook className="text-4xl p-1 rounded-full border-2 border-white text-white hover:bg-slate-500" />
-                <FiTwitter className="text-4xl p-1 rounded-full border-2 border-white text-white hover:bg-slate-500" />
-                <AiOutlineYoutube className="text-4xl p-1 rounded-full border-2 border-white text-white hover:bg-slate-500" />
-                <BiLogoTelegram className="text-4xl p-1 rounded-full border-2 border-white text-white hover:bg-slate-500" />
-                <AiOutlineInstagram className="text-4xl p-1 rounded-full border-2 border-white text-white hover:bg-slate-500" />
+                <FiFacebook className="w-10 h-10 text-4xl p-[5px] rounded-full border-[1px] border-white text-white hover:bg-green cursor-pointer" />
+                <FiTwitter className="w-10 h-10 text-4xl p-[5px] rounded-full border-[1px] border-white text-white hover:bg-green cursor-pointer" />
+                <AiOutlineYoutube className="w-10 h-10 text-4xl p-[5px] rounded-full border-[1px] border-white text-white hover:bg-green cursor-pointer" />
+                <BiLogoTelegram className="w-10 h-10 text-4xl p-[5px] rounded-full border-[1px] border-white text-white hover:bg-green cursor-pointer" />
+                <AiOutlineInstagram className="w-10 h-10 text-4xl p-[5px] rounded-full border-[1px] border-white text-white hover:bg-green cursor-pointer" />
               </div>
             </div>
           </div>
@@ -133,8 +133,8 @@ const Footer = () => {
           </div>
           <div>
             <p>
-              <span className="footer-items">Privacy Policy</span> |{" "}
-              <span className="footer-items">Terms of Services</span>
+              <Link to="">Privacy Policy</Link > |{" "}
+              <Link to="">Terms of Services</Link >
             </p>
           </div>
         </div>
