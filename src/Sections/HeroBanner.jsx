@@ -32,7 +32,7 @@ const HeroBanner = () => {
                     <form onSubmit={handleSubmit(onSubmit)}
                         className='bg-white border border-green shadow-2xl shadow-green/20 grid grid-cols-1 md:grid-cols-5 items-center mt-16 p-2 rounded-xl duration-300'
                     >
-                        {/* search */}
+                        {/* Search */}
                         <div className='col-span-2 flex items-center border-b md:border-none border-green'>
                             <label htmlFor="search" className='pl-2 text-green'>
                                 <FaBriefcase size='20px' />
@@ -40,7 +40,8 @@ const HeroBanner = () => {
                             <input
                                 id='search'
                                 className='w-full border text-lg pl-2 py-4 md:py-2 border-none focus:outline-none bg-transparent text-dark placeholder:text-gray placeholder:bg-transparent'
-                                placeholder="Job Title / Keywords or Company" {...register("search")}
+                                placeholder="Job Title / Keywords or Company"
+                                {...register("search")}
                             />
                         </div>
 
