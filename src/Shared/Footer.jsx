@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaFacebookF, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 // logo
-import logo from '/Logo/black bg banner.png';
+import logo from '../Assets/images/logo-01.png';
 
 const Footer = () => {
   return (
@@ -13,7 +13,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-9 pt-12">
           {/* Logo, address, and social media links */}
           <div className="col-span-1 md:col-span-2">
-            <img className="w-1/2" src={logo} alt="hire wave logo" />
+            {/* logo */}
+            <Link to="/">
+              <img className="w-56" src={logo} alt="hire wave logo" />
+            </Link>
+
             <p className="mt-5 max-w-xs">Our platform is more than just a hiring agency. it's a dynamic ecosystem where talent meets opportunity, innovation meets collaboration, and dreams meet reality. </p>
 
             {/* social icons */}

@@ -16,7 +16,7 @@ const JobByLocation = () => {
                     {jobLocationData?.map((location) => (
                         <div key={location._id} >
                             <Link>
-                                <div className='w-96 mx-auto relative border border-green p-3 rounded-2xl  hover:shadow-xl hover:shadow-green/20 duration-300'>
+                                <div className='w-full relative border border-green p-3 rounded-2xl  hover:shadow-xl hover:shadow-green/20 duration-300'>
                                     <img src={location.image} className='h-48 w-full rounded-xl' alt="" />
                                     <span className='absolute top-5 left-5 px-4 rounded-md bg-purple/80 text-white'>{location.status}</span>
 

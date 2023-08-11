@@ -38,5 +38,13 @@
         "image": "https://i.ibb.co/hVKSbPc/swapnil-bhagwat-F7q-UX4-QAx4-E-unsplash.jpg",
         "vacancy": "45",
         "companies": 900
+    },
+    {
+        "_id": "06",
+        "name": "Italy",
+        "status": "trending",
+        "image": "https://i.ibb.co/nRmXLmx/location.jpg",
+        "vacancy": "85",
+        "companies": 300
     }
 ]
