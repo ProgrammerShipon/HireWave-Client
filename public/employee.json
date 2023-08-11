@@ -38,11 +38,19 @@
     "experience": "8yr(s)",
     "about": "Data scientist with a knack for extracting insights from complex.",
     "active": "offline",
+<<<<<<< HEAD
     "skills": [
       "Python",
       "Machine Learning",
       "Data Analysis"
     ]
+=======
+    "skills": {
+      "skill1": "Python",
+      "skill2": "Machine Learning",
+      "skill3": "Analysis"
+    }
+>>>>>>> 481b1b3e7179ffe1606266322bf938ec0f8aea4d
   },
   {
     "id": 4,
@@ -83,10 +91,40 @@
     "experience": "3yr(s)",
     "about": "Experienced sales executive with a proven track record of driving growth.",
     "active": "online",
+<<<<<<< HEAD
     "skills": [
       "Sales Strategy",
       "Negotiation",
       "Relationship"
     ]
+=======
+    "skills": {
+      "skill1": "Strategy",
+      "skill2": "Negotiation",
+      "skill3": "Relationship"
+    }
+  },
+  {
+    "id": 7,
+    "images": "https://i.ibb.co/HpdTSQb/young-bearded-man-with-striped-shirt.jpg",
+    "name": "Olivia Taylor",
+    "profession": "Android Developer",
+    "skills": {
+      "skill-1": "Java",
+      "skill-2": "Android Studio",
+      "skill-3": "RESTful APIs"
+    }
+  },
+  {
+    "id": 8,
+    "img": "employee8.jpg",
+    "name": "https://i.ibb.co/wwrT2HL/mohammadreza-babaei-ufkj-NXaix-Vg-unsplash.jpg",
+    "profession": "Game Developer",
+    "skills": {
+      "skill-1": "Unity",
+      "skill-2": "C#",
+      "skill-3": "Game Design"
+    }
+>>>>>>> 481b1b3e7179ffe1606266322bf938ec0f8aea4d
   }
 ]
