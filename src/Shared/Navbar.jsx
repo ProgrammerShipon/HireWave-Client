@@ -19,7 +19,7 @@ const Navbar = () => {
     const [navState, setNavState] = useState(false);
 
     const onNavScroll = () => {
-        if (window.scrollY > 100) {
+        if (window.scrollY > 300) {
             setNavState(true);
         } else {
             setNavState(false);
