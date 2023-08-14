@@ -1,5 +1,5 @@
-import useReview from '../Hooks/useReview';
 import SectionTitle from '../Components/SectionTitle';
+import useReview from '../Hooks/useReview';
 
 // react rating
 import { Rating } from '@smastrom/react-rating';
@@ -12,13 +12,14 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 const Reviews = () => {
+    // Review Date load
     const [reviewData] = useReview();
 
     return (
         <section className='py-16 md:py-20 duration-300'>
             <div className='container'>
                 {/* section title */}
-                <SectionTitle title='Employer Reviews' para='Backed by recognized brands and startups' />
+                <SectionTitle title='Our Reviews' para='Backed by recognized brands and startups' />
 
                 <div className='mx-auto mt-12 md:mt-16'>
                     <Swiper

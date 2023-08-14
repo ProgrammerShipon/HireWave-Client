@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
-import ErrorPage from "../ErrorPage/ErrorPage";
 import Job_Details from "../Components/Job_Details";
+import ErrorPage from "../ErrorPage/ErrorPage";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home";
 import Candidates from "../Pages/Candidates";

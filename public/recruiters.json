@@ -1,46 +1,82 @@
-{
-  "recruiters": [
-    {
-      "id": 1,
-      "img": "https://i.ibb.co/jDPFM9F/req-1.jpg",
-      "name": "John Recruiter",
-      "experience": "5 years",
-      "skill": "IT Recruitment"
-    },
-    {
-      "id": 2,
-      "img": "https://i.ibb.co/41bpfKJ/req-2.jpg",
-      "name": "Jane Hiring",
-      "experience": "3 years",
-      "skill": "Tech Recruitment"
-    },
-    {
-      "id": 3,
-      "img": "https://i.ibb.co/7C8Xrgh/req-3.jpg",
-      "name": "Alex Talent",
-      "experience": "7 years",
-      "skill": "Engineering Recruitment"
-    },
-    {
-      "id": 4,
-      "img": "https://i.ibb.co/tJK8Xrf/req-4.jpg",
-      "name": "Emily Staffer",
-      "experience": "4 years",
-      "skill": "HR Recruitment"
-    },
-    {
-      "id": 5,
-      "img": "https://i.ibb.co/X7PDNr2/req-5.jpg",
-      "name": "Sammy Sourcer",
-      "experience": "2 years",
-      "skill": "Sourcing"
-    },
-    {
-      "id": 6,
-      "img": "https://i.ibb.co/Nx5fH1d/req-6.jpg",
-      "name": "Max Headhunter",
-      "experience": "6 years",
-      "skill": "Executive Search"
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "companyName": "CodeNinjas Corp.",
+    "companyLogo": "https://i.ibb.co/n0VqPsN/33601834-8041916.jpg",
+    "companyLocation": "New York, USA",
+    "number": "(90)",
+    "openJobs": "8Open jobs"
+  },
+  {
+    "id": 2,
+    "companyName": "CodeCrafters Inc.",
+    "companyLogo": "https://i.ibb.co/r38mmHR/828163-preview.jpg",
+    "companyLocation": "San Francisco, USA",
+    "number": "(49)",
+    "openJobs": "5Open jobs"
+  },
+  {
+    "id": 3,
+    "companyName": "Web Wizards Ltd.",
+    "companyLogo": "https://i.ibb.co/2cDRcP6/839809-preview.jpg",
+    "companyLocation": "London, UK",
+    "number": "(78)",
+    "openJobs": "3Open jobs"
+  },
+  {
+    "id": 4,
+    "companyName": "AI Innovations Co.",
+    "companyLogo": "https://i.ibb.co/G5DN59D/840006-preview.jpg",
+    "companyLocation": "Tokyo, Japan",
+    "number": "(32)",
+    "openJobs": "6Open jobs"
+  },
+  {
+    "id": 5,
+    "companyName": "CodeNinjas Corp.",
+    "companyLogo": "https://i.ibb.co/pvBXwFb/952464-2127.jpg",
+    "companyLocation": "Toronto, Canada",
+    "number": "(55)",
+    "openJobs": "4Open jobs"
+  },
+  {
+    "id": 6,
+    "companyName": "ByteCraft Labs",
+    "companyLogo": "https://i.ibb.co/fxYfM6p/953272-OE60-WQ0.jpg",
+    "companyLocation": "Berlin, Germany",
+    "number": "(80)",
+    "openJobs": "2Open jobs"
+  },
+  {
+    "id": 7,
+    "companyName": "FutureTech Solutions",
+    "companyLogo": "https://i.ibb.co/BN4Ssqr/28755823-christmas-2012-new-6524.jpg",
+    "companyLocation": "New York, USA",
+    "number": "(97)",
+    "openJobs": "8Open jobs "
+  },
+  {
+    "id": 8,
+    "companyName": "CodeCrafters Inc.",
+    "companyLogo": "https://i.ibb.co/cNSN00B/23254568-647.jpg",
+    "companyLocation": "San Francisco, USA",
+    "number": "(82)",
+    "openJobs": "5Open jobs"
+  },
+  {
+    "id": 9,
+    "companyName": "Web Wizards Ltd.",
+    "companyLogo": "https://i.ibb.co/cJkhG17/29013948-7533464.jpg",
+    "companyLocation": "London, UK",
+    "number": "(77)",
+    "openJobs": "3Open jobs"
+  },
+  {
+    "id": 10,
+    "companyName": "AI Innovations Co.",
+    "companyLogo": "https://i.ibb.co/0ZdKxr3/33512856-8047058.jpg",
+    "companyLocation": "Tokyo, Japan",
+    "number": "(98)",
+    "openJobs": "6Open jobs"
+  }
+]

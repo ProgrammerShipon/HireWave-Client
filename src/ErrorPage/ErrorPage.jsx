@@ -1,23 +1,29 @@
-import React from "react";
+import Lottie from "lottie-react";
+import ErrorAnimation from "../../src/Assets/animation_ll61csxq.json";
+import { Link, useRouteError } from "react-router-dom";
+import Button from "../Components/Button";
 
 const ErrorPage = () => {
-	return (
-		<div className="flex flex-col items-center justify-center h-screen">
+  const { error, status } = useRouteError();
 
-			<span className="text-5xl mb-5">😕</span>
+  return (
+    <section className="flex flex-col justify-center h-screen item-center">
+      <div className="mx-auto w-96">
+        <Lottie animationData={ErrorAnimation} loop={true} />
+      </div>
 
-			<h1 className="text-4xl mb-2">Page Not Found</h1>
-
-			<p className="text-lg text-gray-600 mb-5">
-				Sorry, the page you are looking for cannot be found. Please check the URL and try again.
-			</p>
-
-			<a href="/" className="main-btn">
-				Go back to the homepage
-			</a>
-
-		</div>
-	);
+      <div className="text-center">
+        <p class="text-gray text-2xl">
+          Sorry, We couldn't find what you are looking for!
+          <br />
+          <span className="text-red-500">{error?.message}</span>
+        </p>
+        <Link className="inline-block mt-5 " to="/">
+          <Button>Back to Home </Button>
+        </Link>
+      </div>
+    </section>
+  );
 };
 
 export default ErrorPage;

@@ -1,11 +1,11 @@
-import ActiveLink from "./ActiveLink";
 import { Link } from "react-router-dom";
+import ActiveLink from "./ActiveLink";
 
 // react icons
 import { PiUser } from 'react-icons/pi';
 
 const NavItems = () => {
-    const role = 'user';
+    const role = "user";
     return (
         <>
             <li>
@@ -62,6 +62,7 @@ const NavItems = () => {
                 </>
             }
             {
+                
                 role === 'recruiter' && <>
                     <li>
                         <ActiveLink to='/find_talents'>

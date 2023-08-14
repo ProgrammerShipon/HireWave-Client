@@ -6,6 +6,7 @@ import Reviews from '../Sections/Reviews';
 import SpecialFeatures from '../Sections/SpecialFeatures';
 import TopCategories from '../Sections/TopCategories';
 import TopEmployee from '../Sections/TopEmployee';
+import TopRecruiters from '../Sections/TopRecruiters';
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <FeaturedJobs />
       <SpecialFeatures />
       <TopEmployee />
+      <TopRecruiters />
       <JobByLocation />
       <Partners />
       <Reviews />
