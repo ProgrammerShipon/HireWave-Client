@@ -1,3 +1,4 @@
+import Divider from '../Components/Divider';
 import FeaturedJobs from '../Sections/FeaturedJobs';
 import HeroBanner from '../Sections/HeroBanner';
 import JobByLocation from '../Sections/JobByLocation';
@@ -13,10 +14,25 @@ const Home = () => {
       <HeroBanner />
       <TopCategories />
       <FeaturedJobs />
+      {/* border */}
+      <Divider />
+
       <SpecialFeatures />
+      {/* border */}
+      <Divider />
+
       <TopEmployee />
+      {/* border */}
+      <Divider />
+
       <JobByLocation />
+      {/* border */}
+      <Divider />
+
       <Partners />
+      {/* border */}
+      <Divider />
+
       <Reviews />
     </>
   );

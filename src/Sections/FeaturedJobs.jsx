@@ -7,7 +7,7 @@ import Button from "../Components/Button";
 const FeaturedJobs = () => {
   const [jobData] = useJobData();
   return (
-    <section className="py-16 md:py-20 duration-300">
+    <section className="py-20 md:py-[120px] duration-300">
       <div className="container">
         {/* section title */}
         <SectionTitle title="Featured Jobs" para="Your dream company" />
