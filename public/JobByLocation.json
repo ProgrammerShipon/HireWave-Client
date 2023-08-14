@@ -39,5 +39,13 @@
         "image": "https://i.ibb.co/hVKSbPc/swapnil-bhagwat-F7q-UX4-QAx4-E-unsplash.jpg",
         "vacancy": "45",
         "companies": 900
+    },
+    {
+        "_id": "06",
+        "name": "Italy",
+        "status": "trending",
+        "image": "hhttps://i.ibb.co/bHZkkP7/henrique-ferreira-RKs-LQo-Snu-Tc-unsplash.jpg",
+        "vacancy": "85",
+        "companies": 300
     }
 ]

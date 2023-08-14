@@ -21,8 +21,8 @@ const NavItems = () => {
                         </ActiveLink>
                     </li>
                     <li>
-                        <ActiveLink to='/recruiters'>
-                            Recruiters
+                        <ActiveLink to='/candidates'>
+                            Candidates
                         </ActiveLink>
                     </li>
                     <li>

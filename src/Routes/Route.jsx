@@ -3,6 +3,7 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import Job_Details from "../Components/Job_Details";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home";
+import Candidates from "../Pages/Candidates";
 
 const Router = createBrowserRouter([
   {
@@ -18,8 +19,13 @@ const Router = createBrowserRouter([
         path: "/jobdetails",
         element: <Job_Details />,
       },
+      {
+        path: "/candidates",
+        element: <Candidates />,
+      },
     ],
   },
+
 ]);
 
-export default  Router
+export default Router
