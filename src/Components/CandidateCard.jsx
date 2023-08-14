@@ -1,30 +1,51 @@
-// React Icons
-import { FaCircle, FaStar } from 'react-icons/fa';
-import { Outlet } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-const CandidateCard = ({ candidate }) => {
-    const { name, role, profile_photo, rating, status } = candidate;
-    console.log(status)
+// react icons
+import { HiOutlineExternalLink } from 'react-icons/hi';
+
+const CandidateCard = ({ employee }) => {
+    const { name, pation, images, active, skills } = employee;
 
     return (
-        <div className=''>
+        <div className="bg-white w-64 sm:w-full mx-auto relative rounded-md p-3 border border-purple group overflow-hidden hover:shadow-xl hover:shadow-purple/20 duration-300">
+            <span
+                className={` ${active === "online"
+                    ? "text-green bg-green/10 px-3 text-sm py-[2px] rounded-md shadow-lg shadow-purple/10"
+                    : "text-[#ea2b33] bg-[#ffeced] text-sm py-[2px] px-3 rounded-md"}`}
+            >
+                {active === "online" ? "Online" : "Offline"}
+            </span>
 
-            <div className=' relative border  border-green rounded-2xl p-5 hover:shadow-xl hover:shadow-green/20 duration-300 text-center shadow-2xl'>
-                <div className='p-3 relative '>
-                    <img src={profile_photo} className='w-32 h-32 mt-5 md:mt-0 mx-auto rounded-full  object-cover' alt="" />
-
-                    <span className='absolute top-0 right-0 px-2 rounded-md  bg-green/40  text-gray flex items-center gap-1'><FaStar className='text-yellow-500' /> {rating}</span>
-
-                    <span className={status === "online" ? 'absolute top-10  lg:top-5  right-6 md:right-20 lg:right-24 xl:right-16 text-green' : 'absolute top-10 lg:top-5  right-6 lg:right-24 xl:right-16 text-red-500'}  > <FaCircle className='w-3' /> </span>
-
-                </div>
-                <h3 className='text-2xl text-dark font-semibold mt-2'>{name}</h3>
-                <h3 className=''>{role}</h3>
-                <button className="bg-dark text-white px-6 py-2 mt-3 text-lg rounded-md">
-                    View Details
-                </button>
+            {/* image */}
+            <div className="w-24 h-24 mx-auto rounded-full overflow-hidden mt-2 group-hover:shadow-xl group-hover:shadow-purple/30 duration-300">
+                <img
+                    className="w-full object-cover object-center"
+                    src={images}
+                    alt={name}
+                />
             </div>
-        </div >
+
+            {/* content */}
+            <div className="text-center mt-3">
+                <Link to='/' className="text-dark text-2xl font-medium capitalize">{name}</Link>
+
+                <h3 className="text-gray">{pation}</h3>
+
+                <div className="flex flex-wrap items-center justify-center gap-2 mt-4 duration-300">
+                    {skills.map((skill, index) => (
+                        <p
+                            key={index}
+                            className="bg-purple/20 hover:bg-white text-purple px-2 py-[2px] shadow-lg shadow-purple/10 hover:shadow-dark/20 rounded-md cursor-pointer duration-300"
+                        >{skill}</p>
+                    ))}
+                </div>
+            </div>
+
+            {/* button */}
+            <Link to='/' className="bg-purple text-white inline-block p-3 rounded-md absolute top-1 right-1 md:-right-16 group-hover:right-1 duration-300 hover:bg-dark shadow-xl shadow-purple/20 hover:shadow-dark/20">
+                <HiOutlineExternalLink size='20px' />
+            </Link>
+        </div>
     );
 };
 
