@@ -13,25 +13,27 @@ const TopCategories = () => {
 
     return (
         <section className='bg-[#edf6f7]'>
-            {/* title  */}
-            <div className='text-center py-6'>
-                <h2 className='text-[#1b0e3d] text-5xl font-semibold'>Choose Your Desire Category</h2>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid veniam vitae quidem sint ipsa laborum deleniti minus nisi inventore ducimus.</p>
-            </div>
-            {/* Categories  */}
-            <div className='grid grid-cols-1 md:grid-cols-4  py-8  mx-20'>
+            <div className='container'>
+                {/* title  */}
+                <div className='text-center py-6 '>
+                    <h2 className='text-[#1b0e3d] text-5xl font-semibold'>Choose Your Desire Category</h2>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid veniam vitae quidem sint ipsa laborum deleniti minus nisi inventore ducimus.</p>
+                </div>
+                {/* Categories  */}
+                <div className='grid grid-cols-1 md:grid-cols-4  py-8  mx-20'>
 
-                {
-                    fifteenCard.map((category) => (
-                        <JobCategoryCard
-                            key={category._id}
-                            category={category}
-                        ></JobCategoryCard>
-                    ))
-                }
-            </div>
-            <div className='text-center pb-8'>
-                <button className=' border px-2 py-2 font-medium text-[#1b0e3d] hover:bg-[#052e35] rounded-md hover:text-white ease-in-out duration-500'> View All Categories </button>
+                    {
+                        fifteenCard.map((category) => (
+                            <JobCategoryCard
+                                key={category._id}
+                                category={category}
+                            ></JobCategoryCard>
+                        ))
+                    }
+                </div>
+                <div className='text-center pb-8'>
+                    <button className=' border px-2 py-2 font-medium text-[#1b0e3d] hover:bg-[#052e35] rounded-md hover:text-white ease-in-out duration-500'> View All Categories </button>
+                </div>
             </div>
         </section>
     );
