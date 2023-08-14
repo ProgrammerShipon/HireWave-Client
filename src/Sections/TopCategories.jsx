@@ -9,7 +9,7 @@ const TopCategories = () => {
   const [allCategoris, setAllCategoris] = useState(false)
 
   return (
-    <section className="bg-[#edf6f7] py-16 md:py-20">
+    <section className="bg-[#edf6f7] py-20 md:py-[120px]">
       <div className="container">
         {/* section title  */}
         <SectionTitle title="Top Category" para="All Top Category" />
