@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Recruiters from "../Components/Recruiters";
+import SectionTitle from "../Components/SectionTitle";
 
 export default function TopRecruiters() {
   const [data, setData] = useState([]);
@@ -13,11 +14,9 @@ export default function TopRecruiters() {
 
   return (
     <section className="container py-10">
-      <div className="title text-center py-5">
-        <h1 className="text-5xl font-bold">top recruiters to hire</h1>
-      </div>
+      <SectionTitle title="Top Recruiters" para="top recruiters to hire" />
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,max-content))] gap-5 justify-center">
+      <div className="grid gap-5 grid-cols-1 md:grid-cols-3 lg:grid-cols-5 mt-8">
         {data.map((recruiter) => (
           <Recruiters key={recruiter.id} recruiter={recruiter} />
         ))}
