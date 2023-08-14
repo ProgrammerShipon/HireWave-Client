@@ -8,11 +8,7 @@
     "experience": "5yr(s)",
     "about": "Passionate software developer with a focus on web technologies.",
     "active": "online",
-    "skills": {
-      "skill1": "JavaScript",
-      "skill2": "React",
-      "skill3": "Node.js"
-    }
+    "skills": ["JavaScript", "React", "Node.js"]
   },
   {
     "id": 2,
@@ -23,11 +19,7 @@
     "experience": "7yr(s)",
     "about": "Enthusiastic mobile app developer specializing in Android development.",
     "active": "online",
-    "skills": {
-      "skill1": "Java",
-      "skill2": "Kotlin",
-      "skill3": "Firebase"
-    }
+    "skills": ["Java", "Kotlin", "Firebase"]
   },
   {
     "id": 3,
@@ -37,12 +29,8 @@
     "pation": "Data Scientist",
     "experience": "8yr(s)",
     "about": "Data scientist with a knack for extracting insights from complex.",
-    "active": "offline",
-    "skills": {
-      "skill1": "Python",
-      "skill2": "Machine Learning",
-      "skill3": "Data Analysis"
-    }
+    "active": "online",
+    "skills": ["Python", "Machine Learning", "Data Analysis"]
   },
   {
     "id": 4,
@@ -53,11 +41,7 @@
     "experience": "+10yr(s)",
     "about": "Creative UX designer passionate about creating user-centered experiences.",
     "active": "offline",
-    "skills": {
-      "skill1": "User Research",
-      "skill2": "Wireframing",
-      "skill3": "UI/UX"
-    }
+    "skills": ["User Research", "Wireframing", "UI/UX"]
   },
   {
     "id": 5,
@@ -68,11 +52,7 @@
     "experience": "5yr(s)",
     "about": "HR professional specializing in talent acquisition and employee relations.",
     "active": "online",
-    "skills": {
-      "skill1": "Recruitment",
-      "skill2": "Employee",
-      "skill3": "HR Policies"
-    }
+    "skills": ["Recruitment", "Employee", "HR Policies"]
   },
   {
     "id": 6,
@@ -83,10 +63,28 @@
     "experience": "3yr(s)",
     "about": "Experienced sales executive with a proven track record of driving growth.",
     "active": "online",
-    "skills": {
-      "skill1": "Sales Strategy",
-      "skill2": "Negotiation",
-      "skill3": "Relationship"
-    }
+    "skills": ["Sales Strategy", "Negotiation", "Relationship"]
+  },
+  {
+    "id": 7,
+    "name": "Shaw Johnson",
+    "images": "https://digity.netlify.app/assets/images/team/4.png",
+    "profession": "freelancer",
+    "pation": "Frontend Developer",
+    "experience": "3yr(s)",
+    "about": "Experienced sales executive with a proven track record of driving growth.",
+    "active": "offline",
+    "skills": ["React", "Javascript", "Node.js"]
+  },
+  {
+    "id": 8,
+    "name": "Thomas Zavala",
+    "images": "https://digity.netlify.app/assets/images/team/6.png",
+    "profession": "freelancer",
+    "pation": "MARKETING",
+    "experience": "3yr(s)",
+    "about": "Experienced sales executive with a proven track record of driving growth.",
+    "active": "online",
+    "skills": ["Seo", "Google", "Shopify"]
   }
 ]

@@ -1,90 +1,84 @@
+import useReview from '../Hooks/useReview';
+import SectionTitle from '../Components/SectionTitle';
 
+// react rating
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
-import { useEffect, useState } from 'react';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SectionTitle from '../Components/SectionTitle';
 
 const Reviews = () => {
-  const [hiringRecommendations, setHiringRecommendations] = useState([])
-  // added json file
-  useEffect(() => {
-    fetch('/reviews.json')
-      .then(res => res.json())
-      .then(data => setHiringRecommendations(data))
-  }, [])
-  console.log(hiringRecommendations);
+    const [reviewData] = useReview();
 
-  return (
-    <section className='container'>
+    return (
+        <section className='py-16 md:py-20 duration-300'>
+            <div className='container'>
+                {/* section title */}
+                <SectionTitle title='Our Reviews' para='Backed by recognized brands and startups' />
 
-        {/* Section title */}
-        <SectionTitle title="Top Reviews" para="What they say about us" />
+                <div className='mx-auto mt-12 md:mt-16'>
+                    <Swiper
+                        pagination={{
+                            clickable: true,
+                        }}
+                        autoplay={{
+                            delay: 4000,
+                            disableOnInteraction: false,
+                        }}
+                        breakpoints={{
+                            640: {
+                                slidesPerView: 1,
+                                spaceBetween: 30,
+                            },
+                            768: {
+                                slidesPerView: 2,
+                                spaceBetween: 30,
+                            }
+                        }}
+                        modules={[Autoplay, Pagination]}
+                    >
+                        {
+                            reviewData.map(review => <SwiperSlide key={review._id} className='p-4 border border-green rounded-lg mb-14'>
+                                {/* author */}
+                                <div className='flex gap-4 items-center'>
+                                    <img className='rounded-full w-14' src={review.recommenderImage} alt={review.recommenderName} />
 
-        {/* Whole Review part */}
-        <div className='mx-auto mt-10'>
-          <Swiper
-            pagination={{
-              clickable: true,
-            }}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-            }}
+                                    <div>
+                                        <h3 className='text-dark text-xl drop-shadow-lg'>{review.recommenderName}</h3>
+                                        <p className='text-gray'>{review.recommenderPosition}</p>
+                                    </div>
+                                </div>
 
-            // Responsive swiper
-            breakpoints={{
-              640: {
-                slidesPerView: 1,
-                spaceBetween: 30,
-              },
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 30,
-              }
-            }}
-            modules={[Autoplay, Pagination]}
-            className="mySwiper"
-          >
-            {
-              hiringRecommendations.map(recommendation => <SwiperSlide key={recommendation._id} className='h-[300px] md:h-[340px] lg:h-[280px] relative flex flex-col px-5 md:px-8 mb-12 py-6 border-2 border-green rounded-lg'>
+                                <div className='flex items-center justify-end gap-2 mt-3'>
+                                    {/* rating */}
+                                    <Rating style={{ maxWidth: 100 }} value={Math.round(review.rating || 0)} readOnly />
 
-                {/* Company image and name */}
-                <div className='flex gap-3 pl-6'>
-                  <img className='w-10 h-10' src={recommendation.companyImage} alt="" />
-                  <h1 className='font-bold text-2xl md:text-3xl mb-5'>{recommendation.companyName}</h1>
+                                    - <span className='text-lightGray text-sm italic'>02 july 2023</span>
+                                </div>
+
+                                {/* review */}
+                                <p className='mb-3 mt-1 text-dark line-clamp-3 lg:line-clamp-2'>"{review.comment}"</p>
+
+                                {/* company */}
+                                <div className='flex items-center gap-3 mt-3'>
+                                    <img className='w-16 h-16' src={review.companyImage} alt={review.companyName} />
+
+                                    <div>
+                                        <h1 className='text-dark font-medium text-2xl'>{review.companyName}</h1>
+                                        <p className='text-gray'>Los Angeles, CA</p>
+                                    </div>
+                                </div>
+                            </SwiperSlide>)
+                        }
+                    </Swiper>
                 </div>
-
-                {/* Comment */}
-                <p className='mb-3'>"{recommendation.comment}"</p>
-
-                {/* rating and date */}
-                <div className='w-full flex justify-between'>
-                  <Rating style={{ maxWidth: 100 }} value={Math.round(recommendation.rating || 0)} readOnly />
-                  <span className='text-sm mr-5'>{recommendation.date}</span>
-                </div>
-
-                {/* Recommender info (image, name and position) */}
-                <div className='absolute bottom-3'>
-                  <div className='flex gap-6 items-center mt-5'>
-                    <img className='rounded-full w-14' src={recommendation.recommenderImage} alt="" />
-                    <div className=''>
-                      <p className='text-gray-500 '>{recommendation.recommenderName}</p>
-                      <p className='text-gray-500 text-sm'>{recommendation.recommenderPosition}</p>
-                    </div>
-                  </div>
-                </div>
-
-              </SwiperSlide>)
-            }
-          </Swiper>
-        </div>
-    </section>
-  );
+            </div>
+        </section>
+    );
 };
 
 export default Reviews;

@@ -6,7 +6,7 @@ import Button from './Button';
 const Job_card = ({ data }) => {
     const {  job_title, startTime, postTime, jobType, duration, company_name, remote_or_onsite, salary } = data
     return (
-        <div className='border-2 border-green w-96  p-3 rounded-md shadow-2xl shadow-gray-300'>
+        <div className='border-2 border-green w-96 mx-auto  p-3 rounded-md shadow-2xl shadow-gray-300'>
             
             <div>
                 <h3 className='text-2xl font-semibold mt-5 '>{job_title}</h3>
