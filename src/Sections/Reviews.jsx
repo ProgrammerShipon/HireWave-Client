@@ -1,5 +1,5 @@
-import useReview from '../Hooks/useReview';
 import SectionTitle from '../Components/SectionTitle';
+import useReview from '../Hooks/useReview';
 
 // react rating
 import { Rating } from '@smastrom/react-rating';
@@ -12,6 +12,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 const Reviews = () => {
+    // Review Date load
     const [reviewData] = useReview();
 
     return (
