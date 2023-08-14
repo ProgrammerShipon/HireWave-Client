@@ -9,7 +9,7 @@ const TopCategories = () => {
   return (
     <section className="bg-[#edf6f7] py-16 md:py-20">
       <div className="container">
-        {/* section title  */}
+        {/* Section title  */}
         <SectionTitle title="Top Category" para="All Top Category" />
 
         {/* categories  */}
