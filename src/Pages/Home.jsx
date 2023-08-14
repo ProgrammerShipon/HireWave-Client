@@ -5,8 +5,9 @@ import JobByLocation from '../Sections/JobByLocation';
 import Partners from '../Sections/Partners';
 import Reviews from '../Sections/Reviews';
 import SpecialFeatures from '../Sections/SpecialFeatures';
+import TopCandidates from '../Sections/TopCandidates';
 import TopCategories from '../Sections/TopCategories';
-import TopEmployee from '../Sections/TopEmployee';
+import TopRecruiters from '../Sections/TopRecruiters';
 
 const Home = () => {
   return (
@@ -21,7 +22,11 @@ const Home = () => {
       {/* border */}
       <Divider />
 
-      <TopEmployee />
+      <TopCandidates />
+      {/* border */}
+      <Divider />
+
+      <TopRecruiters />
       {/* border */}
       <Divider />
 

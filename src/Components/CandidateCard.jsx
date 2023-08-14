@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // react icons
 import { HiOutlineExternalLink } from 'react-icons/hi';
 
-const EmployeeCard = ({ employee }) => {
+const CandidateCard = ({ employee }) => {
     const { name, pation, images, active, skills } = employee;
 
     return (
@@ -49,4 +49,4 @@ const EmployeeCard = ({ employee }) => {
     );
 };
 
-export default EmployeeCard;
+export default CandidateCard;
