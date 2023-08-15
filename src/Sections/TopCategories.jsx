@@ -3,6 +3,8 @@ import Button from "../Components/Button";
 import SectionTitle from "../Components/SectionTitle";
 import TopCategoryCard from "../Components/TopCategoryCard";
 import useCategoriesData from "../Hooks/useCategoriesData";
+import { SiFirefoxbrowser } from "react-icons/si";
+import { Link } from "react-router-dom";
 
 const TopCategories = () => {
   const [categoriesData] = useCategoriesData();
@@ -26,10 +28,23 @@ const TopCategories = () => {
               {categoriesData?.map((category) => (
                 <TopCategoryCard key={category._id} category={category} />
               ))}
+             <Link to="/allCategoris">
+             <div className='bg-white w-[250px] md:w-full mx-auto py-6 flex flex-col items-center rounded-2xl shadow-xl hover:shadow-green/10 border border-white hover:border-green duration-300'>
+                <div className=''>
+                  <SiFirefoxbrowser className="text-7xl text-green/40"/>
+                </div>
+
+                <p  className="text-dark font-semibold mt-3 drop-shadow-lg line-clamp-1">
+                 Browse More... 
+                </p>
+                <p className="text-gray">1000+jobs</p>
+
+              </div>
+             </Link>
             </div>
         }
         <button onClick={() => { setAllCategoris(!allCategoris) }} className="w-full text-center  mt-14">
-          <Button>Know More</Button>
+          <Button>{allCategoris ? "See More" : "See Less"}</Button>
         </button>
       </div>
     </section>

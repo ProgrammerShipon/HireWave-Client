@@ -4,6 +4,7 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home";
 import Candidates from "../Pages/Candidates";
+import AllCategoty from "../Pages/AllCategoty";
 
 const Router = createBrowserRouter([
   {
@@ -16,7 +17,11 @@ const Router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/job_details",
+        path: "/allCategoris",
+        element: <AllCategoty />,
+      },
+      {
+        path: "/jobdetails",
         element: <JobDetails />,
       },
       {
@@ -25,7 +30,6 @@ const Router = createBrowserRouter([
       },
     ],
   },
-
 ]);
 
 export default Router
