@@ -18,7 +18,7 @@ export default function TopRecruiters() {
       </div>
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,max-content))] gap-5 justify-center">
-        {data.map((recruiter) => (
+        {data.slice(1,10).map((recruiter) => (
           <Recruiters key={recruiter.id} recruiter={recruiter} />
         ))}
       </div>

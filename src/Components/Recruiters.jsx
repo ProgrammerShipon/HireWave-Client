@@ -52,7 +52,7 @@ export default function Recruiters({ recruiter }) {
 
         {/* Number of Open Jobs */}
         <div className="open--jobs hover:text-green">
-          <h3>{recruiter.openJobs}</h3>
+          <h3>{recruiter.openJobs} Open Jobs</h3>
         </div>
       </div>
     </section>
