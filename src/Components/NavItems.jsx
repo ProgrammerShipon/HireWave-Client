@@ -6,8 +6,8 @@ import { PiUser } from 'react-icons/pi';
 import Profile from "./Profile";
 
 const NavItems = () => {
-    const role = 'recruiter';
-    const user = true;
+    const role = 'user';
+    const user = false;
     return (
         <>
             <li>
@@ -28,8 +28,8 @@ const NavItems = () => {
                         </ActiveLink>
                     </li>
                     <li>
-                        <ActiveLink to='/candidates'>
-                            Candidates
+                        <ActiveLink to='/recruiters'>
+                            Recruiters
                         </ActiveLink>
                     </li>
                     <li>
@@ -63,7 +63,7 @@ const NavItems = () => {
 
             {/* recruiters route */}
             {
-                
+
                 role === 'recruiter' && <>
                     <li>
                         <ActiveLink to='/find_talents'>

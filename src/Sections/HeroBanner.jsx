@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { BiSearchAlt } from 'react-icons/bi';
 import { FaBriefcase } from 'react-icons/fa';
 import { FaLocationCrosshairs } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 const HeroBanner = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -22,9 +23,9 @@ const HeroBanner = () => {
 
                         <p className='text-gray md:text-lg mb-5'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
 
-                        <button className='bg-dark text-white px-6 py-4 text-lg rounded-xl hover:bg-green duration-300 shadow-xl hover:shadow-green/30'>
+                        <Link to='candidates' className='bg-dark text-white px-6 py-4 text-lg rounded-xl hover:bg-green duration-300 shadow-xl hover:shadow-green/30 inline-block'>
                             Know More
-                        </button>
+                        </Link>
                     </div>
 
                     {/* search bar */}
