@@ -43,12 +43,15 @@ const Footer = () => {
                 <FaLinkedin size="20px" />
               </Link>
 
-              <Link
-                to="/"
-                className="transition-all text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-300 hover:rounded-full"
-              >
-                <FaInstagram size="20px" />
-              </Link>
+            <div className="mt-4 md:mt-8">
+              <h1 className="mb-2">Follow Us:</h1>
+              <div className="flex gap-2">
+                <FaFacebookF className="text-4xl p-1 rounded-full border-2 border-white text-white hover:bg-slate-500" />
+                <FaTwitter className="text-4xl p-1 rounded-full border-2 border-white text-white hover:bg-slate-500" />
+                <AiOutlineYoutube className="text-4xl p-1 rounded-full border-2 border-white text-white hover:bg-slate-500" />
+                <BiLogoTelegram className="text-4xl p-1 rounded-full border-2 border-white text-white hover:bg-slate-500" />
+                <AiOutlineInstagram className="text-4xl p-1 rounded-full border-2 border-white text-white hover:bg-slate-500" />
+              </div>
             </div>
           </div>
 
@@ -170,20 +173,16 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* copy write */}
-      <div className="border-t border-green mt-14 shadow-3xl">
-        <div className="container">
-          <div className="flex flex-col md:flex-row items-center justify-between py-5">
-            <p>© 2023 Hire Wave. All rights reserved.</p>
-            <div className="flex items-center gap-1">
-              <Link to="/" className="hover:text-green duration-300">
-                Privacy Policy
-              </Link>{" "}
-              |
-              <Link to="/" className="hover:text-green duration-300">
-                Terms of Services
-              </Link>
-            </div>
+        {/* Bottom footer part */}
+        <div className="md:flex justify-center gap-10 mt-10 pb-5 text-center">
+          <div>
+            <p>© 2023 HireWave. All rights reserved.</p>
+          </div>
+          <div>
+            <p>
+              <span className="footer-items">Privacy Policy</span> |{" "}
+              <span className="footer-items">Terms of Services</span>
+            </p>
           </div>
         </div>
       </div>
