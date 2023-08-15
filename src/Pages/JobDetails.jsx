@@ -3,7 +3,7 @@ import { FaPhone, FaPhoneAlt, FaRupeeSign } from 'react-icons/fa';
 import { } from "react-icons/io";
 import { MdLocationCity, MdLocationPin, MdMarkEmailRead } from 'react-icons/md';
 import { useLocation } from 'react-router-dom';
-import Button from './Button';
+import Button from '../Components/Button';
 
 const Job_Details = () => {
     const data = useLocation();
@@ -57,7 +57,7 @@ const Job_Details = () => {
                             <span className='font-semibold mr-2'> Stipend :</span>
                             <span className='opacity-90 font-medium font-mono text-flex'><FaRupeeSign /> {salary}/Months</span>
                         </p>
-                       
+
 
                         <h3 className='text-xl font-bold '>Contact Info :</h3>
                         <hr className='hr' />
