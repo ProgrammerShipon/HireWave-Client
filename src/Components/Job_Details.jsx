@@ -1,9 +1,7 @@
-import React from 'react';
-import { FaPhone, FaPhoneAlt, FaRupeeSign } from 'react-icons/fa';
-import { } from "react-icons/io";
-import { MdLocationCity, MdLocationPin, MdMarkEmailRead } from 'react-icons/md';
+// React Icons 
+import {  FaPhoneAlt, FaRupeeSign } from 'react-icons/fa';
+import {  MdLocationPin, MdMarkEmailRead } from 'react-icons/md';
 import { useLocation } from 'react-router-dom';
-import Button from './Button';
 
 const Job_Details = () => {
     const data = useLocation();

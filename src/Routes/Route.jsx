@@ -4,6 +4,7 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home";
 import Candidates from "../Pages/Candidates";
+import AllCategoty from "../Pages/AllCategoty";
 
 const Router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const Router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/allCategoris",
+        element: <AllCategoty/>,
       },
       {
         path: "/jobdetails",
