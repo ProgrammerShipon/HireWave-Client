@@ -4,6 +4,14 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home";
 import Candidates from "../Pages/Candidates";
+import BrowseJobs from "../Pages/BrowseJobs";
+import Login from "../Pages/Login";
+import SignUp from "../Pages/SignUp";
+import Learning from "../Pages/Learning";
+import SavedJobs from "../Pages/SavedJobs";
+import FindTalents from "../Pages/FindTalents";
+import AppliedCandidates from "../Pages/AppliedCandidates";
+import PostJob from "../Pages/PostJob";
 import AllCategoty from "../Pages/AllCategoty";
 
 const Router = createBrowserRouter([
@@ -17,16 +25,48 @@ const Router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/browse_jobs",
+        element: <BrowseJobs />,
+      },
+      {
         path: "/allCategoris",
         element: <AllCategoty />,
       },
       {
-        path: "/jobdetails",
+        path: "/candidates",
+        element: <Candidates />,
+      },
+      {
+        path: "/job_details/:id",
         element: <JobDetails />,
       },
       {
-        path: "/candidates",
-        element: <Candidates />,
+        path: "/learning",
+        element: <Learning />,
+      },
+      {
+        path: "/saved_jobs",
+        element: <SavedJobs />,
+      },
+      {
+        path: "/find_talents",
+        element: <FindTalents />,
+      },
+      {
+        path: "/applied_candidates",
+        element: <AppliedCandidates />,
+      },
+      {
+        path: "/post_job",
+        element: <PostJob />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/sign_up",
+        element: <SignUp />,
       },
     ],
   },

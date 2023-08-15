@@ -1,50 +1,50 @@
 [
-    {
-        "_id": "01",
-        "name": "United States",
-        "status": "hot",
-        "image": "https://i.ibb.co/bvHKfZn/1.jpg",
-        "vacancy": "36",
-        "companies": 1200
-    },
-    {
-        "_id": "02",
-        "name": "Canada",
-        "status": "trending",
-        "image": "https://i.ibb.co/wYFtfjT/2.jpg",
-        "vacancy": "45",
-        "companies": 800
-    },
-    {
-        "_id": "03",
-        "name": "United Kingdom",
-        "status": "hot",
-        "image": "https://i.ibb.co/Dths4CF/3.jpg",
-        "vacancy": "14",
-        "companies": 1000
-    },
-    {
-        "_id": "04",
-        "name": "Australia",
-        "status": "trending",
-        "image": "https://i.ibb.co/qx41jYs/4.jpg",
-        "vacancy": "12",
-        "companies": 600
-    },
-    {
-        "_id": "05",
-        "name": "Germany",
-        "status": "hot",
-        "image": "https://i.ibb.co/xq0VpvQ/5.jpg",
-        "vacancy": "45",
-        "companies": 900
-    },
-    {
-        "_id": "06",
-        "name": "Italy",
-        "status": "trending",
-        "image": "https://i.ibb.co/FXXkxq0/6.jpg",
-        "vacancy": "85",
-        "companies": 300
-    }
+  {
+    "_id": "01",
+    "name": "United States",
+    "status": "hot",
+    "image": "https://i.ibb.co/bvHKfZn/1.jpg",
+    "vacancy": "36",
+    "companies": 1200
+  },
+  {
+    "_id": "02",
+    "name": "Canada",
+    "status": "trending",
+    "image": "https://i.ibb.co/wYFtfjT/2.jpg",
+    "vacancy": "45",
+    "companies": 800
+  },
+  {
+    "_id": "03",
+    "name": "United Kingdom",
+    "status": "hot",
+    "image": "https://i.ibb.co/Dths4CF/3.jpg",
+    "vacancy": "14",
+    "companies": 1000
+  },
+  {
+    "_id": "04",
+    "name": "Australia",
+    "status": "trending",
+    "image": "https://i.ibb.co/qx41jYs/4.jpg",
+    "vacancy": "12",
+    "companies": 600
+  },
+  {
+    "_id": "05",
+    "name": "Germany",
+    "status": "hot",
+    "image": "https://i.ibb.co/xq0VpvQ/5.jpg",
+    "vacancy": "45",
+    "companies": 900
+  },
+  {
+    "_id": "06",
+    "name": "Italy",
+    "status": "trending",
+    "image": "https://i.ibb.co/FXXkxq0/6.jpg",
+    "vacancy": "85",
+    "companies": 300
+  }
 ]

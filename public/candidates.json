@@ -1,286 +1,130 @@
 [
     {
-        "id": 101,
-        "name": "John Doe",
-        "role": "Software Engineer",
-        "profile_photo": "https://i.ibb.co/sK4gfW0/p1.jpg",
-        "rating": 5,
-        "status": "online",
-        "contact": {
-            "email": "john.doe@example.com",
-            "phone": "+1 (123) 456-7890"
-        },
-        "location": "San Francisco, CA",
-        "experience": [
-            {
-                "position": "Software Engineer",
-                "company": "TechCorp",
-                "duration": "2018 - Present",
-                "responsibilities": [
-                    "Developing and maintaining web applications",
-                    "Collaborating with cross-functional teams",
-                    "Participating in code reviews and technical discussions"
-                ]
-            },
-            {
-                "position": "Junior Developer",
-                "company": "CodeMasters",
-                "duration": "2016 - 2018",
-                "responsibilities": [
-                    "Assisting senior developers in project tasks",
-                    "Learning and applying coding best practices",
-                    "Troubleshooting and debugging issues"
-                ]
-            }
-        ],
+        "id": 1,
+        "name": "Olivia Johnson",
+        "images": "https://i.ibb.co/jDPFM9F/req-1.jpg",
+        "category": "Frontend Developer",
+        "profession": "freelancer",
+        "experience": "5yr(s)",
+        "about": "Passionate software developer with a focus on web technologies.",
+        "active": "online",
+        "location": "Los Angeles, CA",
         "skills": [
             "JavaScript",
-            "Python",
             "React",
-            "Node.js",
-            "Git",
-            "Agile Methodologies"
-        ],
-        "education": {
-            "degree": "Bachelor of Science in Computer Science",
-            "school": "University of Exampleville",
-            "graduation_year": "2016"
-        },
-        "languages": [
-            "English",
-            "Spanish"
-        ],
-        "interests": [
-            "Open-source projects",
-            "Machine learning",
-            "Hiking"
+            "Node.js"
         ]
     },
     {
-        "id": 102,
-        "name": "John Doe",
-        "role": "Software Engineer",
-        "profile_photo": "https://i.ibb.co/vLW2KGR/p2.jpg",
-        "rating": 5,
-        "status": "offline",
-        "contact": {
-            "email": "john.doe@example.com",
-            "phone": "+1 (123) 456-7890"
-        },
+        "id": 2,
+        "name": "Liam Smith",
+        "images": "https://i.ibb.co/41bpfKJ/req-2.jpg",
+        "profession": "freelancer",
+        "category": "Backend Developer",
+        "experience": "7yr(s)",
+        "about": "Enthusiastic mobile app developer specializing in Android development.",
+        "active": "online",
         "location": "San Francisco, CA",
-        "experience": [
-            {
-                "position": "Software Engineer",
-                "company": "TechCorp",
-                "duration": "2018 - Present",
-                "responsibilities": [
-                    "Developing and maintaining web applications",
-                    "Collaborating with cross-functional teams",
-                    "Participating in code reviews and technical discussions"
-                ]
-            },
-            {
-                "position": "Junior Developer",
-                "company": "CodeMasters",
-                "duration": "2016 - 2018",
-                "responsibilities": [
-                    "Assisting senior developers in project tasks",
-                    "Learning and applying coding best practices",
-                    "Troubleshooting and debugging issues"
-                ]
-            }
-        ],
         "skills": [
-            "JavaScript",
-            "Python",
-            "React",
-            "Node.js",
-            "Git",
-            "Agile Methodologies"
-        ],
-        "education": {
-            "degree": "Bachelor of Science in Computer Science",
-            "school": "University of Exampleville",
-            "graduation_year": "2016"
-        },
-        "languages": [
-            "English",
-            "Spanish"
-        ],
-        "interests": [
-            "Open-source projects",
-            "Machine learning",
-            "Hiking"
+            "Java",
+            "Kotlin",
+            "Firebase"
         ]
     },
     {
-        "id": 103,
-        "name": "John Doe",
-        "role": "Software Engineer",
-        "profile_photo": "https://i.ibb.co/mvCHJrH/p3.jpg",
-        "rating": 5,
-        "status": "online",
-        "contact": {
-            "email": "john.doe@example.com",
-            "phone": "+1 (123) 456-7890"
-        },
-        "location": "San Francisco, CA",
-        "experience": [
-            {
-                "position": "Software Engineer",
-                "company": "TechCorp",
-                "duration": "2018 - Present",
-                "responsibilities": [
-                    "Developing and maintaining web applications",
-                    "Collaborating with cross-functional teams",
-                    "Participating in code reviews and technical discussions"
-                ]
-            },
-            {
-                "position": "Junior Developer",
-                "company": "CodeMasters",
-                "duration": "2016 - 2018",
-                "responsibilities": [
-                    "Assisting senior developers in project tasks",
-                    "Learning and applying coding best practices",
-                    "Troubleshooting and debugging issues"
-                ]
-            }
-        ],
+        "id": 3,
+        "name": "Sophia Williams",
+        "images": "https://digity.netlify.app/assets/images/team/1.png",
+        "profession": "freelancer",
+        "category": "Data Scientist",
+        "experience": "8yr(s)",
+        "about": "Data scientist with a knack for extracting insights from complex.",
+        "active": "online",
+        "location": "Los Angeles, CA",
         "skills": [
-            "JavaScript",
             "Python",
-            "React",
-            "Node.js",
-            "Git",
-            "Agile Methodologies"
-        ],
-        "education": {
-            "degree": "Bachelor of Science in Computer Science",
-            "school": "University of Exampleville",
-            "graduation_year": "2016"
-        },
-        "languages": [
-            "English",
-            "Spanish"
-        ],
-        "interests": [
-            "Open-source projects",
-            "Machine learning",
-            "Hiking"
+            "Machine Learning",
+            "Data Analysis"
         ]
     },
     {
-        "id": 104,
-        "name": "John Doe",
-        "role": "Software Engineer",
-        "profile_photo": "https://i.ibb.co/mvCHJrH/p3.jpg",
-        "rating": 5,
-        "status": "offline",
-        "contact": {
-            "email": "john.doe@example.com",
-            "phone": "+1 (123) 456-7890"
-        },
-        "location": "San Francisco, CA",
-        "experience": [
-            {
-                "position": "Software Engineer",
-                "company": "TechCorp",
-                "duration": "2018 - Present",
-                "responsibilities": [
-                    "Developing and maintaining web applications",
-                    "Collaborating with cross-functional teams",
-                    "Participating in code reviews and technical discussions"
-                ]
-            },
-            {
-                "position": "Junior Developer",
-                "company": "CodeMasters",
-                "duration": "2016 - 2018",
-                "responsibilities": [
-                    "Assisting senior developers in project tasks",
-                    "Learning and applying coding best practices",
-                    "Troubleshooting and debugging issues"
-                ]
-            }
-        ],
+        "id": 4,
+        "name": "Noah Brown",
+        "images": "https://i.ibb.co/nbjYRxQ/req-5.jpg",
+        "profession": "freelancer",
+        "category": "UX Designer",
+        "experience": "+10yr(s)",
+        "about": "Creative UX designer passionate about creating user-centered experiences.",
+        "active": "offline",
+        "location": "London, UK",
         "skills": [
-            "JavaScript",
-            "Python",
-            "React",
-            "Node.js",
-            "Git",
-            "Agile Methodologies"
-        ],
-        "education": {
-            "degree": "Bachelor of Science in Computer Science",
-            "school": "University of Exampleville",
-            "graduation_year": "2016"
-        },
-        "languages": [
-            "English",
-            "Spanish"
-        ],
-        "interests": [
-            "Open-source projects",
-            "Machine learning",
-            "Hiking"
+            "User Research",
+            "Wireframing",
+            "UI/UX"
         ]
     },
     {
-        "id": 105,
-        "name": "John Doe",
-        "role": "Software Engineer",
-        "profile_photo": "https://i.ibb.co/mvCHJrH/p3.jpg",
-        "rating": 5,
-        "contact": {
-            "email": "john.doe@example.com",
-            "phone": "+1 (123) 456-7890"
-        },
-        "location": "San Francisco, CA",
-        "experience": [
-            {
-                "position": "Software Engineer",
-                "company": "TechCorp",
-                "duration": "2018 - Present",
-                "responsibilities": [
-                    "Developing and maintaining web applications",
-                    "Collaborating with cross-functional teams",
-                    "Participating in code reviews and technical discussions"
-                ]
-            },
-            {
-                "position": "Junior Developer",
-                "company": "CodeMasters",
-                "duration": "2016 - 2018",
-                "responsibilities": [
-                    "Assisting senior developers in project tasks",
-                    "Learning and applying coding best practices",
-                    "Troubleshooting and debugging issues"
-                ]
-            }
-        ],
+        "id": 5,
+        "name": "Ava Miller",
+        "images": "https://digity.netlify.app/assets/images/team/7.png",
+        "profession": "freelancer",
+        "category": "HR Manager",
+        "experience": "5yr(s)",
+        "about": "HR professional specializing in talent acquisition and employee relations.",
+        "active": "online",
+        "location": "Los Angeles, CA",
         "skills": [
-            "JavaScript",
-            "Python",
+            "Recruitment",
+            "Employee",
+            "HR Policies"
+        ]
+    },
+    {
+        "id": 6,
+        "name": "john doea",
+        "images": "https://digity.netlify.app/assets/images/team/8.png",
+        "profession": "freelancer",
+        "category": "Sales Executive",
+        "experience": "3yr(s)",
+        "about": "Experienced sales executive with a proven track record of driving growth.",
+        "active": "online",
+        "location": "London, UK",
+        "skills": [
+            "Sales Strategy",
+            "Negotiation",
+            "Relationship"
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Shaw Johnson",
+        "images": "https://digity.netlify.app/assets/images/team/4.png",
+        "profession": "freelancer",
+        "category": "Frontend Developer",
+        "experience": "3yr(s)",
+        "about": "Experienced sales executive with a proven track record of driving growth.",
+        "active": "offline",
+        "location": "New York, NY",
+        "skills": [
             "React",
-            "Node.js",
-            "Git",
-            "Agile Methodologies"
-        ],
-        "education": {
-            "degree": "Bachelor of Science in Computer Science",
-            "school": "University of Exampleville",
-            "graduation_year": "2016"
-        },
-        "languages": [
-            "English",
-            "Spanish"
-        ],
-        "interests": [
-            "Open-source projects",
-            "Machine learning",
-            "Hiking"
+            "Javascript",
+            "Node.js"
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Thomas Zavala",
+        "images": "https://digity.netlify.app/assets/images/team/6.png",
+        "profession": "freelancer",
+        "category": "Marketing",
+        "experience": "3yr(s)",
+        "about": "Experienced sales executive with a proven track record of driving growth.",
+        "active": "online",
+        "location": "San Francisco, CA",
+        "skills": [
+            "Seo",
+            "Google",
+            "Shopify"
         ]
     }
 ]

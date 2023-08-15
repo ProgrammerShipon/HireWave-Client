@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 // react icons
 import { HiOutlineExternalLink } from 'react-icons/hi';
 
-const CandidateCard = ({ employee }) => {
-    const { name, pation, images, active, skills } = employee;
+const CandidateCard = ({ candidate }) => {
+    const { name, category, images, active, skills } = candidate;
 
     return (
         <div className="bg-white w-64 sm:w-full mx-auto relative rounded-md p-3 border border-purple group overflow-hidden hover:shadow-xl hover:shadow-purple/20 duration-300">
@@ -27,22 +27,22 @@ const CandidateCard = ({ employee }) => {
 
             {/* content */}
             <div className="text-center mt-3">
-                <Link to='/' className="text-dark text-2xl font-medium capitalize">{name}</Link>
+                <Link to={`/candidate_details/${name}`} className="text-dark text-2xl font-medium capitalize">{name}</Link>
 
-                <h3 className="text-gray">{pation}</h3>
+                <h3 className="text-gray">{category}</h3>
 
                 <div className="flex flex-wrap items-center justify-center gap-2 mt-4 duration-300">
                     {skills.map((skill, index) => (
                         <p
                             key={index}
-                            className="bg-purple/20 hover:bg-white text-purple px-2 py-[2px] shadow-lg shadow-purple/10 hover:shadow-dark/20 rounded-md cursor-pointer duration-300"
+                            className="bg-purple/20 hover:bg-white text-purple px-2 py-[2px] shadow-lg shadow-purple/10 hover:shadow-dark/20 rounded-md cursor-pointer duration-300 capitalize"
                         >{skill}</p>
                     ))}
                 </div>
             </div>
 
             {/* button */}
-            <Link to='/' className="bg-purple text-white inline-block p-3 rounded-md absolute top-1 right-1 md:-right-16 group-hover:right-1 duration-300 hover:bg-dark shadow-xl shadow-purple/20 hover:shadow-dark/20">
+            <Link to={`/candidate_details/${name}`} className="bg-purple text-white inline-block p-3 rounded-md absolute top-1 right-1 md:-right-16 group-hover:right-1 duration-300 hover:bg-dark shadow-xl shadow-purple/20 hover:shadow-dark/20">
                 <HiOutlineExternalLink size='20px' />
             </Link>
         </div>

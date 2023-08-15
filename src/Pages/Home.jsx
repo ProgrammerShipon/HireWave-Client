@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import Divider from '../Components/Divider';
 import FeaturedJobs from '../Sections/FeaturedJobs';
 import HeroBanner from '../Sections/HeroBanner';
@@ -12,6 +13,11 @@ import TopRecruiters from '../Sections/TopRecruiters';
 const Home = () => {
   return (
     <>
+      {/* page title */}
+      <Helmet>
+        <title>Hire Wave - Hiring agency and communication platform</title>
+      </Helmet>
+
       <HeroBanner />
       <TopCategories />
       <FeaturedJobs />

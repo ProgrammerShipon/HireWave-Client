@@ -1,47 +1,100 @@
-import React from 'react';
 import { useForm } from "react-hook-form"
+
+// react icons
 import { ImFilter } from "react-icons/im";
-const CandidatesSearchBar = () => {
-    const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
+import { BiSearchAlt, BiMap, BiCategory } from "react-icons/bi";
+import { useEffect, useRef, useState } from "react";
 
-    const onSubmit = data => {
-        console.log(data)
+const CandidatesSearchBar = ({ candidatesData, candidates, searchName, setSearchName, setSearchLocation, setSearchCategory }) => {
+    const inputRef = useRef(null);
+    const [open, setOpen] = useState(false);
 
+    const handleClickOutside = (event) => {
+        if (inputRef.current && !inputRef.current.contains(event.target)) {
+            setOpen(false);
+        }
     };
 
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     return (
-        <section>
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
-                <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 justify-center gap-5 shadow-lg shadow-green/30 rounded p-4 md:py-6 ">
-                    <input type="text" placeholder="Search Candidates Name " className=" border border-green px-3 py-2 w-auto  rounded focus:outline-none" {...register("candidatesName")} required />
+        <div className="grid grid-cols-1 md:grid-cols-8 gap-5">
+            <div className="relative md:col-span-3 flex items-center gap-1 border border-purple px-3 py-3 rounded"
+                // onBeforeInput={() => setOpen(open)}
+                onFocus={() => setOpen(true)}
+                ref={inputRef}
+            >
+                <label htmlFor="name">
+                    <BiSearchAlt size='20px' className="text-gray" />
+                </label>
+                <input id="name" type="text"
+                    value={searchName}
+                    onChange={(e) => setSearchName(e.target.value)}
+                    placeholder="Search Candidates Name "
+                    className="w-full text-lg placeholder:bg-transparent focus:outline-none"
+                />
 
-                    <input type="text" placeholder="Search Candidates Location " className="border border-green px-3 py-2 w-auto rounded focus:outline-none" {...register("candidatesLocation")} required />
-
-                    <select {...register("jobRole")} className='border border-green px-4 py-2 w-auto rounded focus:outline-none ' required>
-                        <option value="" selected>Select Category </option>
-                        <option value="react">React Developer </option>
-                        <option value="mernStack">Mern Stack Developer</option>
-                        <option value="backEnd">Full Stack Developer</option>
-                        <option value="fontEnd">Font-end Developer</option>
-                        <option value="backEnd">Back-end Developer</option>
-                    </select>
-                    <select {...register("tag")} className='border border-green px-4 py-2 w-auto rounded focus:outline-none ' required>
-                        <option value="" selected>Select Skills </option>
-                        <option value="html">HTML5  </option>
-                        <option value="css">CSS 3</option>
-                        <option value="javaScript">JavaScript</option>
-                        <option value="python">Python</option>
-                        <option value="c">C </option>
-                        <option value="c++">C ++ </option>
-                    </select>
-                    <button type='submit' className='flex items-center justify-center gap-2 bg-dark text-white px-8 py-4 text-lg rounded-md ' >
-                        Filter  <ImFilter />
-                    </button>
-                    {/* <input type="submit" value="Filter" className='cursor-pointer  bg-dark text-white px-8 py-4 text-lg rounded-md' /> */}
+                {/* search name suggestions */}
+                <div className={`absolute top-full flex flex-col mt-2 rounded-md left-0 z-30 bg-white w-full p-6 shadow-xl ${candidates.length > 4 && 'h-96 overflow-y-scroll'} ${open && searchName.length ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0'} origin-top duration-300`}>
+                    {
+                        candidates.length > 0 ? candidates.map((person, index) => (
+                            <div key={index}
+                                className="drop-shadow-lg cursor-pointer tracking-wider flex items-center gap-3 border border-transparent rounded-md hover:border-green hover:shadow-lg hover:shadow-green/20 duration-300 p-3"
+                                onClick={() => setSearchName(person.name)}
+                            >
+                                <div className="w-12 h-12 overflow-hidden rounded-full shadow-lg">
+                                    <img src={person.images} className="w-full object-cover object-center" alt={person.name} />
+                                </div>
+                                <div>
+                                    <p className="leading-5 text-green">{person.name}</p>
+                                    <p className="text-gray italic text-sm">{person.category}</p>
+                                </div>
+                            </div>
+                        )) : <p className="text-center">No data found! </p>
+                    }
                 </div>
+            </div>
 
-            </form>
-        </section>
+            {/* location */}
+            <div className="relative md:col-span-2 flex items-center gap-1 border border-purple px-3 py-3 rounded">
+                <label htmlFor="location">
+                    <BiMap size='20px' className="text-gray" />
+                </label>
+                <input id="location" type="text"
+                    onChange={(e) => setSearchLocation(e.target.value)}
+                    placeholder="Search by Location"
+                    className="w-full text-lg placeholder:bg-transparent focus:outline-none" />
+            </div>
+
+            <div className="relative md:col-span-2 flex items-center gap-1 border border-purple px-3 py-3 rounded">
+                <label htmlFor="category">
+                    <BiCategory size='20px' className="text-gray" />
+                </label>
+                <select
+                    id="category"
+                    onChange={(e) => setSearchCategory(e.target.value)}
+                    className='md:col-span-2 w-full focus:outline-none' defaultValue='Select Category'>
+                    <option value="">Select Category</option>
+
+                    {
+                        Array.from(new Set(candidatesData.map(item => item.category))).map((category, index) => (
+                            <option key={index} value={category}>
+                                {category}
+                            </option>
+                        ))
+                    }
+                </select>
+            </div>
+
+            <button className='hidden lg:flex items-center justify-center gap-2 bg-dark text-white px-8 py-3 text-lg rounded-md hover:bg-green hover:shadow-green/20 duration-300' >
+                Filter  <ImFilter />
+            </button>
+        </div>
     );
 };
 

@@ -1,10 +1,15 @@
 import React from 'react';
 import Categoris from "../Sections/Categoris";
 import Breadcrumbs from '../Components/Breadcrumbs';
+import { Helmet } from 'react-helmet';
 const AllCategoty = () => {
     return (
         <>
-            <Breadcrumbs title="All Categoty"/>
+            {/* page title */}
+            <Helmet>
+                <title>All Category - Hire Wave</title>
+            </Helmet>
+            <Breadcrumbs title="All Categoty" />
             <Categoris />
         </>
     );
