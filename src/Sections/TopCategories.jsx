@@ -23,7 +23,7 @@ const TopCategories = () => {
               ))}
             </div> :
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 pt-12 md:pt-16">
-              {categoriesData?.map((category) => (
+              {categoriesData?.slice(0, 10).map((category) => (
                 <TopCategoryCard key={category._id} category={category} />
               ))}
             </div>
