@@ -11,7 +11,7 @@ import { SiThealgorithms, SiZwave } from "react-icons/si";
 
 const SpecialFeatures = () => {
     return (
-        <section className="py-16 md:py-20 duration-300">
+        <section className="py-20 md:py-[120px] duration-300">
             <div className='container'>
                 {/* section title */}
                 <SectionTitle title='Special Features' para='Our Special Features' />

@@ -3,7 +3,7 @@
         "_id": "01",
         "name": "United States",
         "status": "hot",
-        "image": "https://i.ibb.co/DWBvQHw/ansgar-scheffold-mtf-Tz0-Fnw-Bw-unsplash.jpg",
+        "image": "https://i.ibb.co/bvHKfZn/1.jpg",
         "vacancy": "36",
         "companies": 1200
     },
@@ -11,7 +11,7 @@
         "_id": "02",
         "name": "Canada",
         "status": "trending",
-        "image": "https://i.ibb.co/zXqvZQy/photoholgic-j-K9d-T34-Tfu-I-unsplash.jpg",
+        "image": "https://i.ibb.co/wYFtfjT/2.jpg",
         "vacancy": "45",
         "companies": 800
     },
@@ -19,7 +19,7 @@
         "_id": "03",
         "name": "United Kingdom",
         "status": "hot",
-        "image": "https://i.ibb.co/br7pHFB/susan-q-yin-Imo-Vrh-UBe-Fs-unsplash.jpg",
+        "image": "https://i.ibb.co/Dths4CF/3.jpg",
         "vacancy": "14",
         "companies": 1000
     },
@@ -27,7 +27,7 @@
         "_id": "04",
         "name": "Australia",
         "status": "trending",
-        "image": "https://i.ibb.co/QfkCfMJ/alex-shutin-uhn-U0s-Sx-FQ-unsplash.jpg",
+        "image": "https://i.ibb.co/qx41jYs/4.jpg",
         "vacancy": "12",
         "companies": 600
     },
@@ -35,7 +35,7 @@
         "_id": "05",
         "name": "Germany",
         "status": "hot",
-        "image": "https://i.ibb.co/hVKSbPc/swapnil-bhagwat-F7q-UX4-QAx4-E-unsplash.jpg",
+        "image": "https://i.ibb.co/xq0VpvQ/5.jpg",
         "vacancy": "45",
         "companies": 900
     },
@@ -43,7 +43,7 @@
         "_id": "06",
         "name": "Italy",
         "status": "trending",
-        "image": "https://i.ibb.co/nRmXLmx/location.jpg",
+        "image": "https://i.ibb.co/FXXkxq0/6.jpg",
         "vacancy": "85",
         "companies": 300
     }

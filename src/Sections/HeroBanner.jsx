@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form';
-import Button from '../Components/Button';
 
 // react icons
 import { BiSearchAlt } from 'react-icons/bi';
@@ -23,9 +22,9 @@ const HeroBanner = () => {
 
                         <p className='text-gray md:text-lg mb-5'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
 
-                        <Button>
+                        <button className='bg-dark text-white px-6 py-4 text-lg rounded-xl hover:bg-green duration-300 shadow-xl hover:shadow-green/30'>
                             Know More
-                        </Button>
+                        </button>
                     </div>
 
                     {/* search bar */}
@@ -58,7 +57,7 @@ const HeroBanner = () => {
                         </div>
 
                         {/* search button */}
-                        <button type="submit" className='bg-dark text-white px-6 py-4 text-lg rounded-xl flex items-center justify-center gap-2'><BiSearchAlt /> Find Job</button>
+                        <button type="submit" className='bg-dark text-white px-6 py-4 text-lg rounded-xl flex items-center justify-center gap-2 hover:shadow-xl hover:bg-green duration-300'><BiSearchAlt /> Find Job</button>
                     </form>
                 </div>
             </div>
