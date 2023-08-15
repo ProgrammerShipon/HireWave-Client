@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import Job_Details from "../Components/Job_Details";
+import JobDetails from "../Pages/JobDetails";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home";
@@ -16,8 +16,8 @@ const Router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/jobdetails",
-        element: <Job_Details />,
+        path: "/job_details",
+        element: <JobDetails />,
       },
       {
         path: "/candidates",
