@@ -38,7 +38,7 @@ const Recruiters = () => {
                 setRecruiters([]);
             }
         } else {
-            setAllChecked(false);
+            // setAllChecked(false);
             if (checked) {
                 setRecruiters((prevRecruiters) => [...prevRecruiters, ...data.filter((d) => d.industry === name)]);
             } else {
@@ -64,8 +64,6 @@ const Recruiters = () => {
 
     // Get unique locations from data
     const uniqueLocations = [...new Set(data.map(recruiter => recruiter.companyLocation))];
-
-
 
     return (
         <div className='container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pt-20'>

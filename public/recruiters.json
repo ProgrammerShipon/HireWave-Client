@@ -67,7 +67,7 @@
     "number": "(97)",
     "rating": 4.9,
     "industry": "Software",
-    "openJobs": "8Open jobs "
+    "openJobs": 80
   },
   {
     "id": 8,
@@ -81,7 +81,7 @@
   },
   {
     "id": 9,
-    "companyName": "Web Wizards Ltd.",
+    "companyName": "Web Giants Ltd.",
     "companyLogo": "https://i.ibb.co/cJkhG17/29013948-7533464.jpg",
     "companyLocation": "London, UK",
     "number": "(77)",
