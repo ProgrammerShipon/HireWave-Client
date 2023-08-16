@@ -1,18 +1,19 @@
 import { createBrowserRouter } from "react-router-dom";
-import JobDetails from "../Pages/JobDetails";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Main from "../Layout/Main";
-import Home from "../Pages/Home";
-import Candidates from "../Pages/Candidates";
-import BrowseJobs from "../Pages/BrowseJobs";
-import Login from "../Pages/Login";
-import SignUp from "../Pages/SignUp";
-import Learning from "../Pages/Learning";
-import SavedJobs from "../Pages/SavedJobs";
-import FindTalents from "../Pages/FindTalents";
 import AppliedCandidates from "../Pages/AppliedCandidates";
+import BrowseJobs from "../Pages/BrowseJobs";
+import Candidates from "../Pages/Candidates";
+import FindTalents from "../Pages/FindTalents";
+import Home from "../Pages/Home";
+import JobDetails from "../Pages/JobDetails";
+import Learning from "../Pages/Learning";
+import Login from "../Pages/Login";
 import PostJob from "../Pages/PostJob";
-import AllCategoty from "../Pages/AllCategoty";
+import RecruitersPage from "../Pages/RecruitersPage";
+import SavedJobs from "../Pages/SavedJobs";
+import SignUp from "../Pages/SignUp";
+import Contact from "../Pages/Contact";
 
 const Router = createBrowserRouter([
   {
@@ -68,6 +69,14 @@ const Router = createBrowserRouter([
         path: "/sign_up",
         element: <SignUp />,
       },
+      {
+        path: "/recruiters",
+        element: <RecruitersPage />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />
+      }
     ],
   },
 ]);

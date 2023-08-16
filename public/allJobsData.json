@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "company": "Tech Innovators",
+    "company_image": "https://i.ibb.co/bg7VGfT/33601834-8041916.jpg",
+    "company_cover": "https://i.ibb.co/wJdRVJs/top-5-programming-languages-hero1579801696278282.jpg",
+    "job_title": "Software Engineer",
+    "short_title": "Innovate Software Solutions",
+    "view": "563 (views)",
+    "job_time": "Full Time",
+    "location": "San Francisco",
+    "salary": "$100,000 - $120,000",
+    "application_deadline": "66 days left to apply",
+
+    "date_posted": "2023-08-14",
+    "closing_date": "2023-09-30",
+    "offered_salary": "$90,000 - $110,000",
+    "career_level": "Mid-Senior Level",
+    "qualification": "Computer Science",
+    "experience": "3-5 years",
+    "quantity": 2,
+    "description": "Join our dynamic team as a Programming Engineer and contribute to cutting-edge software solutions.",
+    "requirements": [
+      "Strong coding skills",
+      "Knowledge of algorithms and data structures",
+      "Experience with Java and C++."
+    ],
+    "skill_experience": [
+      "Experience with software development life cycle",
+      "Version control systems",
+      "Agile methodologies."
+    ],
+    "skills": ["Java", "C++", "Algorithms", "Data Structures"]
+  }
+]
