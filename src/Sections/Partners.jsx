@@ -5,7 +5,7 @@ const Partners = () => {
   const [partnerData] = usePartnerData();
 
   return (
-    <section className="py-12 md:py-16 lg:py-20">
+    <section className="py-20 md:py-[120px]">
       <div className="container">
         {/* section title */}
         <SectionTitle title='Our Partners' para='We Have Worked with 10,000+ Trusted Companies' />
