@@ -13,6 +13,7 @@ import PostJob from "../Pages/PostJob";
 import RecruitersPage from "../Pages/RecruitersPage";
 import SavedJobs from "../Pages/SavedJobs";
 import SignUp from "../Pages/SignUp";
+import Contact from "../Pages/Contact";
 
 const Router = createBrowserRouter([
   {
@@ -66,7 +67,11 @@ const Router = createBrowserRouter([
       },
       {
         path: "/recruiters",
-        element: <RecruitersPage/>,
+        element: <RecruitersPage />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />
       }
     ],
   },
