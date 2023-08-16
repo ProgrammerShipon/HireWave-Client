@@ -1,4 +1,8 @@
 import Lottie from "lottie-react";
+import { FaBusinessTime } from "react-icons/fa";
+import { FiDownloadCloud, FiSettings } from "react-icons/fi";
+import { MdOutlineBrowseGallery } from "react-icons/md";
+import { SiRoamresearch } from "react-icons/si";
 import Animation from "../../src/Assets/animation_ll40rvac.json";
 import SectionTitle from "../Components/SectionTitle";
 
