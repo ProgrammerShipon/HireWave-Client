@@ -76,10 +76,10 @@ const Router = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: <Contact />
-      }
+        element: <Contact />,
+      },
     ],
   },
 ]);
 
-export default Router
+export default Router;

@@ -14,14 +14,12 @@ export default function Recruiters({ recruiter }) {
           />
         </div>
 
-        <div className="inline-block mt-3 ">
+        <div className="inline-block mt-3">
           {/* Company Name */}
-          <h3 className="ml-2 text-sm duration-300  hover:text-green">
-            {recruiter.companyName}
-          </h3>
+          <h3 className="ml-2 hover:text-green">{recruiter.companyName}</h3>
 
           {/* Star Ratings */}
-          <div className="star flex items-center text-xs text-green ml-2 mb-1">
+          <div className="star flex items-center text-sm text-yellow-500 ml-2 mb-1">
             <span>
               <FaStar />
             </span>
@@ -46,13 +44,10 @@ export default function Recruiters({ recruiter }) {
       </div>
 
       {/* Summary */}
-      <div className="summary py-3 text-xs text-slate-500 flex items-center justify-between">
+      <div className="summary py-3 text-sm text-slate-500 flex items-center justify-between">
         {/* Company Location */}
-        <div className="location flex duration-300 hover:text-green">
-          <span className="">
-            <FaMapMarkerAlt />
-          </span>
-          <span className="ml-1">{recruiter.companyLocation}</span>
+        <div className="location hover:text-green">
+          <h3>{recruiter.companyLocation}</h3>
         </div>
 
         {/* Number of Open Jobs */}
