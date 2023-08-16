@@ -1,4 +1,5 @@
 import Button from "../Components/Button";
+import JobCategoryCard from "../Components/JobCategoryCard";
 import SectionTitle from "../Components/SectionTitle";
 import TopCategoryCard from "../Components/TopCategoryCard";
 import useCategoriesData from "../Hooks/useCategoriesData";
@@ -6,21 +7,30 @@ import useCategoriesData from "../Hooks/useCategoriesData";
 const TopCategories = () => {
   const [categoriesData] = useCategoriesData();
 
+
+
   return (
-    <section className="bg-[#edf6f7] py-16 md:py-20">
-      <div className="container">
-        {/* Section title  */}
-        <SectionTitle title="Top Category" para="All Top Category" />
-
-        {/* categories  */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 pt-12 md:pt-16">
-          {categoriesData?.slice(0, 10).map((category) => (
-            <TopCategoryCard key={category._id} category={category} />
-          ))}
+    <section className='bg-[#edf6f7]'>
+      <div className='container'>
+        {/* title  */}
+        <div className='text-center py-6 '>
+          <h2 className='text-[#1b0e3d] text-5xl font-semibold'>Choose Your Desire Category</h2>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid veniam vitae quidem sint ipsa laborum deleniti minus nisi inventore ducimus.</p>
         </div>
+        {/* Categories  */}
+        <div className='grid grid-cols-1 md:grid-cols-4  py-8  mx-20'>
 
-        <div className="text-center mt-14">
-          <Button>Know More</Button>
+          {
+            categoriesData.map((category) => (
+              <JobCategoryCard
+                key={category._id}
+                category={category}
+              ></JobCategoryCard>
+            ))
+          }
+        </div>
+        <div className='text-center pb-8'>
+          <button className=' border px-2 py-2 font-medium text-[#1b0e3d] hover:bg-[#052e35] rounded-md hover:text-white ease-in-out duration-500'> View All Categories </button>
         </div>
       </div>
     </section>
