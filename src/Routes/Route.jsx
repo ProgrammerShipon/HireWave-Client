@@ -14,6 +14,7 @@ import RecruitersPage from "../Pages/RecruitersPage";
 import SavedJobs from "../Pages/SavedJobs";
 import SignUp from "../Pages/SignUp";
 import Contact from "../Pages/Contact";
+import AllCategoty from "../Pages/AllCategoty";
 
 const Router = createBrowserRouter([
   {
