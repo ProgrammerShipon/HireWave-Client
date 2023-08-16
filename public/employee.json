@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "name": "Olivia Johnson",
+    "images": "https://i.ibb.co/jDPFM9F/req-1.jpg",
+    "pation": "Frontend Developer",
+    "profession": "freelancer",
+    "experience": "5yr(s)",
+    "about": "Passionate software developer with a focus on web technologies.",
+    "active": "online",
+    "skills": ["JavaScript", "React", "Node.js"]
+  },
+  {
+    "id": 2,
+    "name": "Liam Smith",
+    "images": "https://i.ibb.co/41bpfKJ/req-2.jpg",
+    "profession": "freelancer",
+    "pation": "Backend Developer",
+    "experience": "7yr(s)",
+    "about": "Enthusiastic mobile app developer specializing in Android development.",
+    "active": "online",
+    "skills": ["Java", "Kotlin", "Firebase"]
+  },
+  {
+    "id": 3,
+    "name": "Sophia Williams",
+    "images": "https://i.ibb.co/7C8Xrgh/req-3.jpg",
+    "profession": "freelancer",
+    "pation": "Data Scientist",
+    "experience": "8yr(s)",
+    "about": "Data scientist with a knack for extracting insights from complex.",
+    "active": "offline",
+    "skills": ["Python", "Machine Learning", "Data Analysis"]
+  },
+  {
+    "id": 4,
+    "name": "Noah Brown",
+    "images": "https://i.ibb.co/tJK8Xrf/req-4.jpg",
+    "profession": "freelancer",
+    "pation": "UX Designer",
+    "experience": "+10yr(s)",
+    "about": "Creative UX designer passionate about creating user-centered experiences.",
+    "active": "offline",
+    "skills": ["User Research", "Wireframing", "UI/UX"]
+  },
+  {
+    "id": 5,
+    "name": "Ava Miller",
+    "images": "https://i.ibb.co/X7PDNr2/req-5.jpg",
+    "profession": "freelancer",
+    "pation": "HR Manager",
+    "experience": "5yr(s)",
+    "about": "HR professional specializing in talent acquisition and employee relations.",
+    "active": "online",
+    "skills": ["Recruitment", "Employee", "HR Policies"]
+  },
+  {
+    "id": 6,
+    "name": "john doea",
+    "images": "https://i.ibb.co/Nx5fH1d/req-6.jpg",
+    "profession": "freelancer",
+    "pation": "Sales Executive",
+    "experience": "3yr(s)",
+    "about": "Experienced sales executive with a proven track record of driving growth.",
+    "active": "online",
+    "skills": ["Sales Strategy", "Negotiation", "Relationship"]
+  },
+  {
+    "id": 7,
+    "name": "Emily Smith",
+    "images": "https://i.ibb.co/wwrT2HL/mohammadreza-babaei-ufkj-NXaix-Vg-unsplash.jpg",
+    "profession": "Marketing Specialist",
+    "pation": "Digital Marketing",
+    "experience": "5yr(s)",
+    "about": "Passionate marketing specialist skilled in creating effective digital strategies.",
+    "active": "online",
+    "skills": ["Digital Advertising", "Social Media Management", "SEO"]
+  },
+  {
+    "id": 8,
+    "name": "Michael Johnson",
+    "images": "https://i.ibb.co/HpdTSQb/young-bearded-man-with-striped-shirt.jpg",
+    "profession": "Software Engineer",
+    "pation": "Web Development",
+    "experience": "8yr(s)",
+    "about": "Experienced software engineer with a focus on web development and user-centered design.",
+    "active": "online",
+    "skills": ["JavaScript", "React", "Node.js", "UI/UX Design"]
+  }
+]
