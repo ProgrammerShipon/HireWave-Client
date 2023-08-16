@@ -1,10 +1,15 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 // react icons
-import { FaFacebookF, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedin,
+  FaTwitter,
+} from "react-icons/fa";
 
 // logo
-import logo from '../Assets/images/logo-01.png';
+import logo from "../Assets/images/logo-01.png";
 
 const Footer = () => {
   return (
@@ -18,7 +23,11 @@ const Footer = () => {
               <img className="w-56" src={logo} alt="hire wave logo" />
             </Link>
 
-            <p className="mt-5 max-w-xs">Our platform is more than just a hiring agency. it's a dynamic ecosystem where talent meets opportunity, innovation meets collaboration, and dreams meet reality. </p>
+            <p className="mt-5 max-w-xs">
+              Our platform is more than just a hiring agency. it's a dynamic
+              ecosystem where talent meets opportunity, innovation meets
+              collaboration, and dreams meet reality.{" "}
+            </p>
 
             {/* social icons */}
             <div className="flex items-center gap-2 mt-8">

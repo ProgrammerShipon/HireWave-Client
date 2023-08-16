@@ -3,6 +3,7 @@ import JobDetails from "../Pages/JobDetails";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home";
+import RecruitersPage from "../Pages/RecruitersPage";
 import Candidates from "../Pages/Candidates";
 import BrowseJobs from "../Pages/BrowseJobs";
 import Login from "../Pages/Login";
@@ -63,6 +64,10 @@ const Router = createBrowserRouter([
         path: "/sign_up",
         element: <SignUp />,
       },
+      {
+        path: "/recruiters",
+        element: <RecruitersPage/>,
+      }
     ],
   },
 ]);

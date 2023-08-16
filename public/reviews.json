@@ -7,6 +7,7 @@
         "recommenderName": "Alexandra Thompson",
         "recommenderPosition": "CEO",
         "comment": "At TechGlobe, we have had the pleasure of working with the exceptional talents sourced by HireWave. Their dedication greatly impressed us.",
+        "date": "21 January, 2023",
         "rating": 4.7
     },
     {
@@ -16,7 +17,8 @@
         "recommenderName": "Michael Rodriguez",
         "recommenderImage": "https://i.ibb.co/C23DwmC/customer-2.png",
         "recommenderPosition": "Creative Director",
-        "comment": "HireWave consistently delivers remarkable designers. Their deep understanding of our industry, has consistently delivered remarkable designers to our team.",
+        "comment": "HireWave consistently delivers remarkable designers. Their deep understanding of our industry has delivered success to our team.",
+        "date": "05 March, 2023",
         "rating": 4.2
     },
     {
@@ -27,6 +29,7 @@
         "recommenderImage": "https://i.ibb.co/b32wRhT/customer-3.png",
         "recommenderPosition": "Head of Culinary Operations",
         "comment": "Partnering with HireWave has been a game-changer. For anyone searching for culinary brilliance, CulinaryConnections is the agency you need.",
+        "date": "20 February, 2023",
         "rating": 4.1
     },
     {
@@ -36,7 +39,8 @@
         "recommenderName": "Jonathan Parker",
         "recommenderImage": "https://i.ibb.co/QnB7nyK/customer-4.png",
         "recommenderPosition": "Sustainability Director",
-        "comment": "HireWave Agency consistently presents candidates who align with our mission. If you're serious about sustainability, GreenTalent Agency is the partner to collaborate with.",
+        "comment": "HireWave Agency consistently presents candidates who align with our mission. If you're serious about sustainability, here is the partner to collaborate with.",
+        "date": "16 April, 2023",
         "rating": 4.9
     }
 ]
