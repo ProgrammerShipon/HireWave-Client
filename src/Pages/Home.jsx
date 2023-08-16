@@ -11,42 +11,42 @@ import TopCategories from '../Sections/TopCategories';
 import TopRecruiters from '../Sections/TopRecruiters';
 
 const Home = () => {
-  return (
-    <>
-      {/* page title */}
-      <Helmet>
-        <title>Hire Wave - Hiring agency and communication platform</title>
-      </Helmet>
+    return (
+        <>
+            {/* page title */}
+            <Helmet>
+                <title>Hire Wave - Hiring agency and communication platform</title>
+            </Helmet>
 
-      <HeroBanner />
-      <TopCategories />
-      <FeaturedJobs />
-      {/* border */}
-      <Divider />
+            <HeroBanner />
+            <TopCategories />
+            <FeaturedJobs />
+            {/* border */}
+            <Divider />
 
-      <SpecialFeatures />
-      {/* border */}
-      <Divider />
+            <SpecialFeatures />
+            {/* border */}
+            <Divider />
 
-      <TopCandidates />
-      {/* border */}
-      <Divider />
+            <TopCandidates />
+            {/* border */}
+            <Divider />
 
-      <TopRecruiters />
-      {/* border */}
-      <Divider />
+            <TopRecruiters />
+            {/* border */}
+            <Divider />
 
-      <JobByLocation />
-      {/* border */}
-      <Divider />
+            <JobByLocation />
+            {/* border */}
+            <Divider />
 
-      <Partners />
-      {/* border */}
-      <Divider />
+            <Partners />
+            {/* border */}
+            <Divider />
 
-      <Reviews />
-    </>
-  );
+            <Reviews />
+        </>
+    );
 };
 
 export default Home;
