@@ -3,6 +3,7 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import Job_Details from "../Components/Job_Details";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home";
+import FindJobs from "../Sections/FindJobs";
 
 const Router = createBrowserRouter([
   {
@@ -20,6 +21,12 @@ const Router = createBrowserRouter([
       },
     ],
   },
+
+  {
+    path: "/find_jobs",
+    element: <FindJobs />,
+    children: [{}],
+  },
 ]);
 
-export default  Router
+export default Router;
