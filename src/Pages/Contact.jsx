@@ -1,10 +1,23 @@
-import React from 'react';
+import { Helmet } from "react-helmet";
+
+import ContactForm from "../Sections/ContactForm";
+import OurLocation from "../Sections/OurLocation";
+
+
+
 
 const Contact = () => {
     return (
-        <div>
-            <h1>This is our Contact page</h1>
-        </div>
+        <>
+            {/* page title */}
+            <Helmet>
+                <title>Contact - HireWave</title>
+            </Helmet>
+            {/* contact sections */}
+            <OurLocation />
+            <ContactForm />
+
+        </>
     );
 };
 
