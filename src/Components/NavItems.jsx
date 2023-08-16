@@ -1,11 +1,13 @@
-import ActiveLink from "./ActiveLink";
 import { Link } from "react-router-dom";
+import ActiveLink from "./ActiveLink";
 
 // react icons
 import { PiUser } from 'react-icons/pi';
+import Profile from "./Profile";
 
 const NavItems = () => {
     const role = 'user';
+    const user = false;
     return (
         <>
             <li>
@@ -14,10 +16,15 @@ const NavItems = () => {
                 </ActiveLink>
             </li>
             {
-                role !== 'employer' && role !== 'recruiter' && role !== 'admin' && <>
+                role !== 'candidate' && role !== 'recruiter' && role !== 'admin' && <>
                     <li>
-                        <ActiveLink to='/find_jobs'>
-                            Find Jobs
+                        <ActiveLink to='/browse_jobs'>
+                            Browse Jobs
+                        </ActiveLink>
+                    </li>
+                    <li>
+                        <ActiveLink to='/candidates'>
+                            Candidates
                         </ActiveLink>
                     </li>
                     <li>
@@ -26,42 +33,37 @@ const NavItems = () => {
                         </ActiveLink>
                     </li>
                     <li>
-                        <ActiveLink to='/employers'>
-                            Employers
-                        </ActiveLink>
-                    </li>
-                    <li>
                         <ActiveLink to='/contact'>
                             Contact
                         </ActiveLink>
                     </li>
                 </>
             }
+
+            {/* candidates route */}
             {
-                role === 'employer' && <>
+                role === 'candidate' && <>
                     <li>
-                        <ActiveLink to='/find_jobs'>
-                            Find Jobs
+                        <ActiveLink to='/browse_jobs'>
+                            Browse Jobs
                         </ActiveLink>
                     </li>
                     <li>
-                        <ActiveLink to='/courses'>
-                            Learning Courses
+                        <ActiveLink to='/learning'>
+                            Learning
                         </ActiveLink>
                     </li>
                     <li>
-                        <ActiveLink to='/events'>
-                            Events
-                        </ActiveLink>
-                    </li>
-                    <li>
-                        <ActiveLink to='/contact'>
-                            Contact
+                        <ActiveLink to='/saved_jobs'>
+                            Saved Jobs
                         </ActiveLink>
                     </li>
                 </>
             }
+
+            {/* recruiters route */}
             {
+
                 role === 'recruiter' && <>
                     <li>
                         <ActiveLink to='/find_talents'>
@@ -69,28 +71,25 @@ const NavItems = () => {
                         </ActiveLink>
                     </li>
                     <li>
+                        <ActiveLink to='/applied_candidates'>
+                            Applied Candidates
+                        </ActiveLink>
+                    </li>
+                    <li>
                         <ActiveLink to='/post_job'>
                             Post A Job
                         </ActiveLink>
                     </li>
-                    <li>
-                        <ActiveLink to='/events'>
-                            Events
-                        </ActiveLink>
-                    </li>
-                    <li>
-                        <ActiveLink to='/blogs'>
-                            Blogs
-                        </ActiveLink>
-                    </li>
                 </>
             }
-            <li>
-                <Link to='/login' className="flex items-center gap-2 py-2 text-green font-medium">
+
+            {/* User Profile Info */}
+            {
+                user ? <Profile /> : <Link to='/login' className="flex items-center gap-2 py-2 text-green font-medium">
                     <PiUser />
                     Login
                 </Link>
-            </li>
+            }
         </>
     );
 };
