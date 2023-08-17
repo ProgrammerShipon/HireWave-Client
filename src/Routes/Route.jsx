@@ -13,8 +13,8 @@ import PostJob from "../Pages/PostJob";
 import SavedJobs from "../Pages/SavedJobs";
 import SignUp from "../Pages/SignUp";
 import Contact from "../Pages/Contact";
-import AllCategoty from "../Pages/AllCategoty";
 import Recruiters from "../Pages/Recruiters";
+import AllCategories from "../Pages/AllCategories";
 
 const Router = createBrowserRouter([
   {
@@ -31,8 +31,8 @@ const Router = createBrowserRouter([
         element: <BrowseJobs />,
       },
       {
-        path: "/allCategoris",
-        element: <AllCategoty />,
+        path: "/all_categories",
+        element: <AllCategories />,
       },
       {
         path: "/candidates",
@@ -77,7 +77,7 @@ const Router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
-      },
+      }
     ],
   },
 ]);

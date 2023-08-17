@@ -13,11 +13,12 @@ const BrowseJobs = () => {
 
       <Breadcrumbs title="Browse Jobs" />
 
-            <FindJobs />
-            {/* border */}
-            <Divider />
-        </>
-    );
+      {/* sections */}
+      <FindJobs />
+      {/* border */}
+      <Divider />
+    </>
+  );
 };
 
 export default BrowseJobs;

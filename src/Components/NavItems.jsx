@@ -6,11 +6,9 @@ import { PiUser } from 'react-icons/pi';
 import Profile from "./Profile";
 
 const NavItems = () => {
-    // const role = "candidate";
-    const role = "recruiter"; 
-    // const role = "admin";
     // const role = 'user';
-
+    const role = 'candidate';
+    // const role = 'recruiter';
     const user = false;
     return (
         <>

@@ -1,10 +1,9 @@
-import React from 'react';
 import useAllCategories from '../Hooks/useAllCategories';
 import CategoryList from '../Components/CategoryList';
 
-const Categoris = () => {
+const Categories = () => {
     const [allCategoriesData] = useAllCategories();
-    console.log(allCategoriesData)
+
     return (
         <section>
             <div className='container'>
@@ -22,4 +21,4 @@ const Categoris = () => {
     );
 };
 
-export default Categoris;
+export default Categories;
