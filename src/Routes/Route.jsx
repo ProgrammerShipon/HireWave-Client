@@ -14,6 +14,7 @@ import SavedJobs from "../Pages/SavedJobs";
 import SignUp from "../Pages/SignUp";
 import Contact from "../Pages/Contact";
 import Recruiters from "../Pages/Recruiters";
+import AllCategories from "../Pages/AllCategories";
 
 const Router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const Router = createBrowserRouter([
       {
         path: "/browse_jobs",
         element: <BrowseJobs />,
+      },
+      {
+        path: "/all_categories",
+        element: <AllCategories />,
       },
       {
         path: "/candidates",
@@ -71,10 +76,10 @@ const Router = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: <Contact />
+        element: <Contact />,
       }
     ],
   },
 ]);
 
-export default Router
+export default Router;

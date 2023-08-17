@@ -29,7 +29,9 @@
     "pation": "Data Scientist",
     "experience": "8yr(s)",
     "about": "Data scientist with a knack for extracting insights from complex.",
+
     "active": "offline",
+
     "skills": ["Python", "Machine Learning", "Data Analysis"]
   },
   {
@@ -67,14 +69,26 @@
   },
   {
     "id": 7,
-    "name": "Emily Smith",
-    "images": "https://i.ibb.co/wwrT2HL/mohammadreza-babaei-ufkj-NXaix-Vg-unsplash.jpg",
-    "profession": "Marketing Specialist",
-    "pation": "Digital Marketing",
-    "experience": "5yr(s)",
-    "about": "Passionate marketing specialist skilled in creating effective digital strategies.",
+
+    "name": "Shaw Johnson",
+    "images": "https://digity.netlify.app/assets/images/team/4.png",
+    "profession": "freelancer",
+    "pation": "Frontend Developer",
+    "experience": "3yr(s)",
+    "about": "Experienced sales executive with a proven track record of driving growth.",
+    "active": "offline",
+    "skills": ["React", "Javascript", "Node.js"]
+  },
+  {
+    "id": 8,
+    "name": "Thomas Zavala",
+    "images": "https://digity.netlify.app/assets/images/team/6.png",
+    "profession": "freelancer",
+    "pation": "MARKETING",
+    "experience": "3yr(s)",
+    "about": "Experienced sales executive with a proven track record of driving growth.",
     "active": "online",
-    "skills": ["Digital Advertising", "Social Media Management", "SEO"]
+    "skills": ["Seo", "Google", "Shopify"]
   },
   {
     "id": 8,

@@ -1,7 +1,6 @@
 import RecruiterCard from "../Components/RecruiterCard";
 import SectionTitle from "../Components/SectionTitle";
 import useRecruiters from "../Hooks/useRecruiters";
-
 const TopRecruiters = () => {
     const [recruiterData] = useRecruiters();
 
