@@ -34,14 +34,9 @@ const ContactForm = () => {
                             name="message"
                             rows="6"
                             placeholder='Write your message'></textarea>
-
-
                         <button type='submit' className='bg-transparent text-dark hover:text-white px-5 py-[18px] rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20 w-full inline-block sm:col-span-2'>Send message</button>
-
                     </form>
                 </div>
-
-
             </div>
         </section>
     );

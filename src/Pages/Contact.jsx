@@ -2,6 +2,8 @@ import { Helmet } from "react-helmet";
 
 import ContactForm from "../Sections/ContactForm";
 import OurLocation from "../Sections/OurLocation";
+import FAQ from "../Sections/FAQ";
+import Divider from "../Components/Divider";
 
 
 
@@ -15,7 +17,14 @@ const Contact = () => {
             </Helmet>
             {/* contact sections */}
             <OurLocation />
+            {/* border */}
+            <Divider />
             <ContactForm />
+            {/* border */}
+            <Divider />
+            {/* FAQ */}
+            <FAQ />
+
 
         </>
     );
