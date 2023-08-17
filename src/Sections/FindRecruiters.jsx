@@ -11,17 +11,23 @@ const FindRecruiters = () => {
     const [filteredData, setFilteredData] = useState([]);
     const [location, setLocation] = useState('');
     const [checkBoxData, setCheckBoxData] = useState('');
-    console.log(checkBoxData.length)
 
+    // main filtering
     useEffect(() => {
-        if (checkBoxData.length === 0 || location) {
-            const filteredRecruiterData = recruiterData.filter(recruiter => recruiter.location.toLowerCase().includes(location.toLowerCase()) &&
-                checkBoxData.includes(recruiter.industry)
+        if (checkBoxData.length > 0) {
+            const filteredRecruiterData = recruiterData.filter(
+                (recruiter) =>
+                    recruiter.location.toLowerCase().includes(location.toLowerCase()) &&
+                    checkBoxData.includes(recruiter.industry)
             );
-
             setFilteredData(filteredRecruiterData);
+        } else if (location.length > 0) {
+            const filterByLocation = recruiterData.filter((rql) =>
+                rql.location.toLowerCase().includes(location.toLowerCase())
+            );
+            setFilteredData(filterByLocation);
         } else {
-            setFilteredData(recruiterData)
+            setFilteredData(recruiterData);
         }
     }, [location, checkBoxData, recruiterData]);
 
@@ -42,10 +48,10 @@ const FindRecruiters = () => {
     return (
         <section className="py-20 md:py-[120px] duration-300">
             <div className="container">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 space-y-6 md:space-y-0 md:gap-8">
 
                     {/* filter bar */}
-                    <div className="px-8">
+                    <div className="lg:px-8">
                         {/* filter by location */}
                         <div className='border border-gray/60 flex items-center py-4 md:py-3 rounded-md'>
                             <label htmlFor="location" className='pl-2 text-green'>
@@ -115,7 +121,7 @@ const FindRecruiters = () => {
 
                     {/* filtered recruiters card */}
                     <div className="col-span-2">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 duration-300">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 duration-300">
                             {
                                 filteredData.map((recruiter) => (
                                     <RecruiterCard key={recruiter.id} recruiter={recruiter} />
