@@ -18,7 +18,7 @@ const RecruiterCard = ({ recruiter }) => {
 		inactiveFillColor: '#d6c293'
 	}
 	return (
-		<div className="w-64 sm:w-full mx-auto p-3 border border-purple hover:border-green cursor-pointer rounded-lg hover:shadow-4xl hover:shadow-green/30 duration-300 group">
+		<div className="w-64 sm:w-full mx-auto p-3 border border-purple hover:border-green cursor-pointer rounded-lg hover:shadow-xl hover:shadow-green/20 duration-300 group">
 			<div className="flex items-center gap-3">
 				{/* logo */}
 				<img

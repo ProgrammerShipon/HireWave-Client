@@ -5,7 +5,7 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 
 const GetStart = () => {
     return (
-        <section className='bg-[url("https://i.ibb.co/Dg1bVQB/Breadcrumbs.jpg")] bg-right-top bg-no-repeat bg-cover xl:bg-center'>
+        <section className='bg-[url("https://i.ibb.co/Dg1bVQB/Breadcrumbs.jpg")] bg-fixed bg-right-top bg-no-repeat bg-cover xl:bg-center'>
             <div className='bg-green/70 py-20 md:py-24 duration-300'>
                 <div className='container'>
                     <div className='max-w-4xl mx-auto flex items-center justify-between'>
