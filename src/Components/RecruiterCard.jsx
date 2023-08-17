@@ -1,11 +1,14 @@
+import { Link, useLocation } from "react-router-dom";
+
 // react icons
-import { FaMapMarkerAlt } from "react-icons/fa";
+import { BiMap } from "react-icons/bi";
 
 // react rating
 import { Rating, Star } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 
 const RecruiterCard = ({ recruiter }) => {
+	const { pathname } = useLocation();
 	const { company, logo, location, totalRating, rating, openJobs } = recruiter;
 
 	// rating style
@@ -14,9 +17,8 @@ const RecruiterCard = ({ recruiter }) => {
 		activeFillColor: '#ffbd27',
 		inactiveFillColor: '#d6c293'
 	}
-
 	return (
-		<div className="w-64 sm:w-full mx-auto p-3 border border-purple cursor-pointer rounded-lg hover:shadow-4xl hover:shadow-purple/30 duration-300">
+		<div className="w-64 sm:w-full mx-auto p-3 border border-purple hover:border-green cursor-pointer rounded-lg hover:shadow-4xl hover:shadow-green/30 duration-300 group">
 			<div className="flex items-center gap-3">
 				{/* logo */}
 				<img
@@ -41,14 +43,19 @@ const RecruiterCard = ({ recruiter }) => {
 
 			{/* location */}
 			<div className="flex items-center gap-1 mt-3 text-gray">
-				<FaMapMarkerAlt />
+				<BiMap />
 				<p className="">{location}</p>
 			</div>
 
+
 			{/* Number of Open Jobs */}
-			<div className="text-right mt-1">
-				<p className="text-gray">{openJobs} Open Jobs</p>
-			</div>
+			{
+				pathname === '/' ? <div className="text-right mt-1">
+					<p className="text-gray">{openJobs} Open Jobs</p>
+				</div> : <div className="text-right mt-6 mb-2">
+					<Link to='/' className="text-gray group-hover:text-white px-5 py-2 rounded-md bg-purple/20 group-hover:bg-green duration-300 shadow-xl group-hover:shadow-green/20">{openJobs} Open Jobs</Link>
+				</div>
+			}
 		</div>
 	);
 };
