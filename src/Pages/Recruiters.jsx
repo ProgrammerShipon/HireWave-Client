@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../Components/Breadcrumbs';
 import FindRecruiters from '../Sections/FindRecruiters';
 import Divider from '../Components/Divider';
+import GetStart from '../Sections/GetStart';
 
 const Recruiters = () => {
     return (
@@ -15,8 +16,8 @@ const Recruiters = () => {
 
             {/* sections */}
             <FindRecruiters />
-            {/* border */}
-            <Divider />
+
+            <GetStart />
         </>
     );
 };

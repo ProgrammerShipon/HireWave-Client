@@ -9,6 +9,7 @@ import SpecialFeatures from '../Sections/SpecialFeatures';
 import TopCandidates from '../Sections/TopCandidates';
 import TopCategories from '../Sections/TopCategories';
 import TopRecruiters from '../Sections/TopRecruiters';
+import GetStart from '../Sections/GetStart';
 
 const Home = () => {
     return (
@@ -45,6 +46,7 @@ const Home = () => {
             <Divider />
 
             <Reviews />
+            <GetStart />
         </>
     );
 };
