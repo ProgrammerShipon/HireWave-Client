@@ -1,33 +1,35 @@
+import { useEffect } from "react";
 import RecruiterCard from "../Components/RecruiterCard";
 import useRecruiters from "../Hooks/useRecruiters";
 
 // react icons
-import { FaLocationCrosshairs } from 'react-icons/fa6';
+import { useState } from "react";
 import { BiCheck } from 'react-icons/bi';
-import { useEffect, useState } from "react";
+import { FaLocationCrosshairs } from 'react-icons/fa6';
 
 const FindRecruiters = () => {
     const [recruiterData] = useRecruiters();
     const [filteredData, setFilteredData] = useState([]);
     const [location, setLocation] = useState('');
     const [checkBoxData, setCheckBoxData] = useState('');
-    console.log(checkBoxData.length)
-
+    
     useEffect(() => {
-        if (checkBoxData.length === 0 || location) {
-            const filteredRecruiterData = recruiterData.filter(recruiter => recruiter.location.toLowerCase().includes(location.toLowerCase()) &&
-                checkBoxData.includes(recruiter.industry)
+        if (checkBoxData.length > 0) {
+        const filteredRecruiterData = recruiterData.filter(
+          (recruiter) =>
+            recruiter.location.toLowerCase().includes(location.toLowerCase()) &&
+            checkBoxData.includes(recruiter.industry)
+        );
+          setFilteredData(filteredRecruiterData);
+      } else if (location.length > 0) {
+            const filterByLocation = recruiterData.filter((rql) =>
+            rql.location.toLowerCase().includes(location.toLowerCase())
             );
-
-            setFilteredData(filteredRecruiterData);
-        } else {
-            setFilteredData(recruiterData)
-        }
-    }, [location, checkBoxData, recruiterData]);
-
-    useEffect(() => {
+            setFilteredData(filterByLocation);
+      } else {
         setFilteredData(recruiterData);
-    }, [recruiterData]);
+      }
+    }, [location, checkBoxData, recruiterData]);
 
     // industry filter
     const toggleCheckBox = (item) => {
