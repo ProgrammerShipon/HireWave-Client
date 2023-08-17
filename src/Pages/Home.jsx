@@ -13,49 +13,42 @@ import GetStart from '../Sections/GetStart';
 import StartApplying from '../Sections/StartApplying';
 
 const Home = () => {
-  return (
-    <>
-      {/* page title */}
-      <Helmet>
-        <title>Hire Wave - Hiring agency and communication platform</title>
-      </Helmet>
+    return (
+        <>
+            {/* page title */}
+            <Helmet>
+                <title>Hire Wave - Hiring agency and communication platform</title>
+            </Helmet>
 
-      <HeroBanner />
-      <GetStart />
-      {/* border */}
-      <Divider />
+            <HeroBanner />
+            <TopCategories />
+            <FeaturedJobs />
+            {/* border */}
+            <Divider />
 
-      <TopCategories />
+            <SpecialFeatures />
+            {/* border */}
+            <Divider />
 
-      <FeaturedJobs />
-      {/* border */}
-      <Divider />
-      <StartApplying />
-      {/* border */}
-      <Divider />
-      <SpecialFeatures />
-      {/* border */}
-      <Divider />
+            <TopCandidates />
+            {/* border */}
+            <Divider />
 
-      <TopCandidates />
-      {/* border */}
-      <Divider />
+            <TopRecruiters />
+            {/* border */}
+            <Divider />
 
-      <TopRecruiters />
-      {/* border */}
-      <Divider />
+            <JobByLocation />
+            {/* border */}
+            <Divider />
 
-      <JobByLocation />
-      {/* border */}
-      <Divider />
+            <Partners />
+            {/* border */}
+            <Divider />
 
-      <Partners />
-      {/* border */}
-      <Divider />
-
-      <Reviews />
-    </>
-  );
+            <Reviews />
+        </>
+    );
 };
 
 export default Home;

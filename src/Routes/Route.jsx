@@ -10,11 +10,11 @@ import JobDetails from "../Pages/JobDetails";
 import Learning from "../Pages/Learning";
 import Login from "../Pages/Login";
 import PostJob from "../Pages/PostJob";
-import RecruitersPage from "../Pages/RecruitersPage";
 import SavedJobs from "../Pages/SavedJobs";
 import SignUp from "../Pages/SignUp";
 import Contact from "../Pages/Contact";
 import AllCategoty from "../Pages/AllCategoty";
+import Recruiters from "../Pages/Recruiters";
 
 const Router = createBrowserRouter([
   {
@@ -72,7 +72,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "/recruiters",
-        element: <RecruitersPage />,
+        element: <Recruiters />,
       },
       {
         path: "/contact",

@@ -2,8 +2,8 @@ import SectionTitle from '../Components/SectionTitle';
 import useReview from '../Hooks/useReview';
 
 // react rating
-import { Rating } from '@smastrom/react-rating';
-import '@smastrom/react-rating/style.css';
+import { Rating, Star } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -15,6 +15,12 @@ const Reviews = () => {
   // Review Date load
   const [reviewData] = useReview();
 
+  // rating style
+  const myStyles = {
+    itemShapes: Star,
+    activeFillColor: '#33e2a0',
+    inactiveFillColor: '#33e29f61'
+  }
   return (
     <section className='py-20 md:py-[120px] duration-300'>
       <div className='container'>
@@ -56,7 +62,7 @@ const Reviews = () => {
 
                 <div className='flex items-center justify-end gap-2 mt-3'>
                   {/* rating */}
-                  <Rating style={{ maxWidth: 100 }} value={Math.round(review.rating || 0)} readOnly />
+                  <Rating className='max-w-[90px]' readOnly value={review.rating} itemStyles={myStyles} />
 
                   - <span className='text-lightGray text-sm italic'>02 july 2023</span>
                 </div>
