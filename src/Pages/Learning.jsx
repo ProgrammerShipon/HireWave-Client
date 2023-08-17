@@ -12,6 +12,8 @@ const Learning = () => {
       </Helmet>
 
       <Breadcrumbs title="Learning" />
+
+      {/* sections */}
       <LearningBlog />
       {/* border */}
       <Divider />

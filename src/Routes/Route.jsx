@@ -10,10 +10,11 @@ import JobDetails from "../Pages/JobDetails";
 import Learning from "../Pages/Learning";
 import Login from "../Pages/Login";
 import PostJob from "../Pages/PostJob";
-import RecruitersPage from "../Pages/RecruitersPage";
 import SavedJobs from "../Pages/SavedJobs";
 import SignUp from "../Pages/SignUp";
 import Contact from "../Pages/Contact";
+import Recruiters from "../Pages/Recruiters";
+import AllCategories from "../Pages/AllCategories";
 
 const Router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const Router = createBrowserRouter([
       {
         path: "/browse_jobs",
         element: <BrowseJobs />,
+      },
+      {
+        path: "/all_categories",
+        element: <AllCategories />,
       },
       {
         path: "/candidates",
@@ -67,12 +72,12 @@ const Router = createBrowserRouter([
       },
       {
         path: "/recruiters",
-        element: <RecruitersPage />,
+        element: <Recruiters />,
       },
       {
         path: "/contact",
         element: <Contact />,
-      },
+      }
     ],
   },
 ]);

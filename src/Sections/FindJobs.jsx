@@ -1,94 +1,86 @@
 import { useForm } from "react-hook-form";
+import useAllJobs from "../Hooks/useAllJobs";
+import FindJobBody from "../Components/FindJobBody";
 
 // react icons
-import { BiSearchAlt } from "react-icons/bi";
+import { BiSearchAlt, BiCategory } from "react-icons/bi";
 import { FaBriefcase } from "react-icons/fa";
 import { FaLocationCrosshairs } from "react-icons/fa6";
-import { Fragment } from "react";
-import useAllJobs from "../Hooks/useAllJobs";
-import BrowseJobs from "./../Pages/BrowseJobs";
-import { Outlet } from "react-router-dom";
 
 const FindJobs = () => {
-  const [allJobsData, loading, refetch] = useAllJobs();
+    const [allJobsData] = useAllJobs();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+    const { register, handleSubmit, formState: { errors }, } = useForm();
+    const onSubmit = (data) => {
+        console.log(data);
+    };
 
-  return (
-    <section className=" container  pt-36 md:pt-44 pb-20 md:pb-28">
-      <Fragment>
-        <div className="max-w-4xl mx-auto duration-300">
-          <div className="text-center">
-            <h1 className="text-dark text-4xl md:text-6xl font-semibold leading-10 md:leading-[64px] mb-3">
-              Find The Job That Fits Your Life
-            </h1>
-          </div>
+    return (
+        <section className="py-20 md:py-[120px]">
+            <div className="container">
+                {/* search bar */}
+                <div className="w-full duration-300">
+                    <form
+                        onSubmit={handleSubmit(onSubmit)}
+                        className="bg-white border border-green shadow-2xl shadow-green/20 grid grid-cols-1 md:grid-cols-7 items-center p-2 rounded-xl duration-300"
+                    >
+                        {/* Search */}
+                        <div className="col-span-2 flex items-center border-b md:border-none border-green">
+                            <label htmlFor="search" className="pl-2 text-green">
+                                <FaBriefcase size="20px" />
+                            </label>
+                            <input
+                                id="search"
+                                className="w-full border text-lg pl-2 py-2 border-none focus:outline-none bg-transparent text-dark placeholder:text-gray placeholder:bg-transparent"
+                                placeholder="Job Title / Keywords or Company"
+                                {...register("search")}
+                            />
+                        </div>
 
-          {/* search bar */}
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="bg-white border border-green shadow-2xl shadow-green/20 grid grid-cols-1 md:grid-cols-5 items-center mt-16 p-2 rounded-xl duration-300"
-          >
-            {/* Search */}
-            <div className="col-span-2 flex items-center border-b md:border-none border-green">
-              <label htmlFor="search" className="pl-2 text-green">
-                <FaBriefcase size="20px" />
-              </label>
-              <input
-                id="search"
-                className="w-full border text-lg pl-2 py-4 md:py-2 border-none focus:outline-none bg-transparent text-dark placeholder:text-gray placeholder:bg-transparent"
-                placeholder="Job Title / Keywords or Company"
-                {...register("search")}
-              />
+                        {/* location */}
+                        <div className="col-span-2 md:border-s border-green flex items-center">
+                            <label htmlFor="location" className="pl-2 text-green">
+                                <FaLocationCrosshairs size="20px" />
+                            </label>
+                            <input
+                                id="location"
+                                className="w-full border text-lg pl-2 py-2 border-none focus:outline-none bg-transparent text-dark placeholder:text-gray placeholder:bg-transparent"
+                                placeholder="Any Job Location"
+                                {...register("location")}
+                            />
+                        </div>
+
+                        {/* categories */}
+                        <div className="col-span-2 md:border-s border-green md:border-e flex items-center">
+                            <label htmlFor="categories" className="pl-2 text-green">
+                                <BiCategory size="20px" />
+                            </label>
+                            <input
+                                id="categories"
+                                className="w-full border text-lg pl-2 py-2 border-none focus:outline-none bg-transparent text-dark placeholder:text-gray placeholder:bg-transparent"
+                                placeholder="All Categories"
+                                {...register("category")}
+                            />
+                        </div>
+
+                        {/* search button */}
+                        <div className="w-full md:pl-2 border-green">
+                            <button
+                                type="submit"
+                                className="bg-dark w-full text-white px-6 py-2 text-lg rounded-full flex items-center justify-center gap-2 hover:bg-green hover:shadow-xl hover:shadow-green/20 duration-300"
+                            >
+                                <BiSearchAlt /> Search
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                {
+                    allJobsData.length > 0 && <FindJobBody allJobsData={allJobsData} />
+                }
             </div>
-
-            {/* location */}
-            <div className="col-span-2 md:border-s border-green  flex items-center">
-              <label htmlFor="location" className="pl-2 text-green">
-                <FaLocationCrosshairs size="20px" />
-              </label>
-              <input
-                id="location"
-                className="w-full border text-lg pl-2 py-4 md:py-2 border-none focus:outline-none bg-transparent text-dark placeholder:text-gray placeholder:bg-transparent"
-                placeholder="Any Job Location"
-                {...register("location")}
-              />
-            </div>
-
-            {/* search button */}
-            <button
-              type="submit"
-              className="bg-dark text-white px-6 py-4 text-lg rounded-xl flex items-center justify-center gap-2"
-            >
-              <BiSearchAlt /> Find Job
-            </button>
-          </form>
-        </div>
-
-        {/* job */}
-
-        <div className="mt-14">
-          {allJobsData.map((data) => (
-            <BrowseJobs key={data.id} data={data} />
-          ))}
-        </div>
-        {/* <div className="grid grid-cols-12">
-       
-
-          <div className="col-span-8">
-            <Outlet />
-          </div>
-        </div> */}
-      </Fragment>
-    </section>
-  );
+        </section>
+    );
 };
 
 export default FindJobs;

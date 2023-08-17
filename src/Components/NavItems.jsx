@@ -4,10 +4,11 @@ import ActiveLink from "./ActiveLink";
 // react icons
 import { PiUser } from "react-icons/pi";
 import Profile from "./Profile";
-import Candidates from "./../Pages/Candidates";
 
 const NavItems = () => {
-  const role = "Candidates";
+  // const role = 'user';
+  //   const role = "candidate";
+  const role = "recruiter";
   const user = false;
   return (
     <>
