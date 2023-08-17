@@ -1,11 +1,9 @@
 import { Helmet } from "react-helmet";
+import Breadcrumbs from "../Components/Breadcrumbs";
 import ContactForm from "../Sections/ContactForm";
 import OurLocation from "../Sections/OurLocation";
-import Breadcrumbs from "../Components/Breadcrumbs";
+import FAQ from "../Sections/FAQ";
 import Divider from "../Components/Divider";
-
-
-
 
 const Contact = () => {
     return (
@@ -17,12 +15,17 @@ const Contact = () => {
 
             <Breadcrumbs title="Contact" />
 
-            {/* contact sections */}
+            {/* sections */}
             <OurLocation />
             {/* border */}
             <Divider />
 
             <ContactForm />
+            {/* border */}
+            <Divider />
+
+            {/* FAQ */}
+            <FAQ />
         </>
     );
 };
