@@ -4,12 +4,13 @@ import ActiveLink from "./ActiveLink";
 // react icons
 import { PiUser } from 'react-icons/pi';
 import Profile from "./Profile";
+import useAuth from "../Hooks/useAuth";
 
 const NavItems = () => {
+    const { user } = useAuth();
     const role = 'user';
     // const role = 'candidate';
     // const role = 'recruiter';
-    const user = false;
     return (
         <>
             <li>
@@ -87,7 +88,7 @@ const NavItems = () => {
 
             {/* User Profile Info */}
             {
-                user ? <Profile /> : <Link to='/login' className="flex items-center gap-2 py-2 text-green font-medium">
+                user?.email ? <Profile /> : <Link to='/login' className="flex items-center gap-2 py-2 text-green font-medium">
                     <PiUser />
                     Login
                 </Link>
