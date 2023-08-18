@@ -88,7 +88,7 @@ const FindJobBody = ({ allJobsData }) => {
                 </div>
 
                 {/* job details */}
-                <div className="flex items-end justify-between gap-2 mt-4">
+                <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-2 mt-4 duration-300">
                     <div className="flex items-center gap-2">
                         <p className="text-purple bg-purple/10 px-4 py-[2px] shadow-lg shadow-purple/20 rounded-full capitalize">
                             {jobType}
@@ -101,7 +101,7 @@ const FindJobBody = ({ allJobsData }) => {
                     <Button>Apply Now</Button>
                 </div>
 
-                <div className="flex items-start gap-8 mb-6">
+                <div className="flex flex-col md:flex-row items-start md:gap-8 mb-6">
                     <div className="mt-5">
                         <p className="text-dark flex items-center gap-1">
                             <HiOutlineCurrencyDollar /> Salary: <span className="text-gray ml-1">${salary}/month</span>
@@ -110,7 +110,7 @@ const FindJobBody = ({ allJobsData }) => {
                             <AiOutlineCalendar /> Closing date: <span className="text-gray ml-1">{closingDate}</span>
                         </p>
                     </div>
-                    <div className="mt-5">
+                    <div className="mt-1 md:mt-5">
                         <p className="text-dark flex items-center gap-1">
                             <BsBuildingGear /> Experience: <span className="text-gray ml-1">{experience}</span>
                         </p>
