@@ -1,7 +1,9 @@
 import { Helmet } from 'react-helmet';
-import Breadcrumbs from '../Components/Breadcrumbs';
+import Breadcrumbs from '../Components/Breadcrumbs'; import SignUpForm from '../Sections/SignUpForm';
+;
 
 const SignUp = () => {
+
     return (
         <>
             {/* page title */}
@@ -10,6 +12,9 @@ const SignUp = () => {
             </Helmet>
 
             <Breadcrumbs title="Sign Up" />
+
+            {/* sections */}
+            <SignUpForm />
         </>
     );
 };

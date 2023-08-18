@@ -22,7 +22,7 @@ const FeaturedJobs = () => {
 
         {/* button */}
         <div className="text-center mt-16">
-          <Link to="/">
+          <Link to="/browse_jobs">
             <Button>View More Jobs</Button>
           </Link>
         </div>

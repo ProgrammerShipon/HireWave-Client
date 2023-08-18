@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import Breadcrumbs from "../Components/Breadcrumbs";
-import Divider from "../Components/Divider";
 import LearningBlog from "../Sections/LearningBlog";
+import GetStart from "../Sections/GetStart";
 
 const Learning = () => {
   return (
@@ -15,8 +15,7 @@ const Learning = () => {
 
       {/* sections */}
       <LearningBlog />
-      {/* border */}
-      <Divider />
+      <GetStart />
     </>
   );
 };

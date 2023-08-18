@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import SectionTitle from '../Components/SectionTitle';
 import { TECollapse } from 'tw-elements-react';
+
+// react icons
 import { IoIosArrowDown } from 'react-icons/io';
 
 const FAQ = () => {
@@ -22,43 +24,44 @@ const FAQ = () => {
     };
 
     return (
-        <section className="pt-16">
+        <section className="py-20 md:py-[120px] duration-300">
             <div className="container">
-                <SectionTitle title="Q & A" para="Frequently Asked Questions" />
+                <SectionTitle title="F A Q S" para="Frequently Asked Questions" />
 
-                <div id="accordionExample" className="space-y-3 max-w-4xl mx-auto  mt-12 md:mt-16">
+                <div id="accordionExample" className="space-y-4 max-w-4xl mx-auto  mt-12 md:mt-16">
                     {questions.map((faq, index) => (
                         <div
                             key={index}
-                            className={`rounded-lg border  drop-shadow-sm  ease-in-out duration-300 hover:drop-shadow-lg border-green ${index === activeElement
+                            className={`rounded-lg border border-green drop-shadow-sm ease-in-out duration-300 hover:drop-shadow-lg ${index === activeElement
                                 ? 'border-primary bg-white'
-                                : 'border-neutral-200 dark:border-neutral-600 dark:bg-neutral-800'
+                                : 'border-purple'
                                 }`}
                         >
                             <h2 className="mb-0" id={`heading${index}`}>
                                 <button
-                                    className={`group relative flex w-full items-center rounded-t-[15px] border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800  dark:text-white ${index === activeElement ? 'text-primary' : ''
-                                        }`}
-                                    type="button"
+                                    className={`text-dark text-xl bg-white w-full flex items-center text-left rounded-md hover:rounded-md px-5 py-4 focus:outline-non ${index === activeElement ? 'text-green' : ''}`}
+
                                     onClick={() => handleClick(index)}
                                     aria-expanded={index === activeElement}
                                     aria-controls={`collapse${index}`}
-                                > <span className='text-green font-medium px-1 '>Q: </span>
+                                >
                                     {faq.question}
                                     <span
-                                        className={`ml-auto h-5 w-5 shrink-0 fill-[#336dec] transition-transform duration-200 ease-in-out ${index === activeElement ? 'rotate-[-180deg]' : ''
-                                            }`}
+                                        className={`ml-auto h-5 w-5 shrink-0 duration-300 ease-in-out ${index === activeElement ? 'rotate-[-180deg]' : ''}`}
                                     >
-                                        <IoIosArrowDown />
+                                        <IoIosArrowDown
+                                            className={`${index === activeElement ? 'text-green' : 'text-purple'} duration-300`}
+                                            size='22'
+                                        />
                                     </span>
                                 </button>
                             </h2>
                             <TECollapse
                                 show={index === activeElement}
-                                className="!mt-0 !rounded-b-none !shadow-none"
+                                className="!mt-0 !rounded-b-none !shadow-none duration-300"
                             >
-                                <div className="px-5 py-4 text-justify ">
-                                    <strong>{faq.answerTitle}</strong> <span className='font-medium text-green'>Ans:</span> {faq.answer}
+                                <div className="px-5 pb-4 text-lightGray text-justify text-lg">
+                                    <strong>{faq.answerTitle}</strong>{faq.answer}
                                 </div>
                             </TECollapse>
                         </div>
