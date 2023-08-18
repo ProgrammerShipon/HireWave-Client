@@ -50,12 +50,15 @@ const Profile = () => {
                         <li>
                             <Link to='/my_profile' className='hover:text-green duration-300'>My Profile</Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link to='/events' className='hover:text-green duration-300'>Events</Link>
-                        </li>
+                        </li> */}
                         <li>
-                            <Link to='/contact' className='hover:text-green duration-300'>Contact</Link>
+                            <Link to='/learning' className='hover:text-green duration-300'>Learning</Link>
                         </li>
+                        {/* <li>
+                            <Link to='/contact' className='hover:text-green duration-300'>Contact</Link>
+                        </li> */}
                         <li>
                             <Link to='/dashboard' className='hover:text-green duration-300'>Dashboard</Link>
                         </li>
