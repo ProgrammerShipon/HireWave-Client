@@ -53,7 +53,7 @@ const FindRecruiters = () => {
                     {/* filter bar */}
                     <div className="lg:px-8">
                         {/* filter by location */}
-                        <div className=" sticky top-28 bg-white">
+                        <div className="sticky top-28 bg-white">
                             <div className='border border-gray/60 flex items-center py-4 md:py-3 rounded-md'>
                                 <label htmlFor="location" className='pl-2 text-green'>
                                     <FaLocationCrosshairs size='20px' className="animate-spin" />

@@ -1,6 +1,7 @@
 import RecruiterCard from "../Components/RecruiterCard";
 import SectionTitle from "../Components/SectionTitle";
 import useRecruiters from "../Hooks/useRecruiters";
+import Marquee from "react-fast-marquee";
 const TopRecruiters = () => {
     const [recruiterData] = useRecruiters();
 
@@ -10,12 +11,23 @@ const TopRecruiters = () => {
                 {/* section title */}
                 <SectionTitle title='Top Recruiters' para='Top Recruiters to hire' />
 
-                {/* content */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 justify-center mt-12 md:mt-16">
+                {/* Marquee 1st row */}
+                <Marquee pauseOnHover={true} speed={80}>
+                <div className="flex gap-5 pl-5 mt-12 md:mt-16">
                     {recruiterData.map((recruiter) => (
                         <RecruiterCard key={recruiter.id} recruiter={recruiter} />
                     ))}
                 </div>
+                </Marquee>
+
+                {/* Marquee 2nd row */}
+                <Marquee pauseOnHover={true} direction="right" speed={80}>
+                <div className="flex gap-5 pl-5 mt-12 md:mt-16">
+                    {recruiterData.map((recruiter) => (
+                        <RecruiterCard key={recruiter.id} recruiter={recruiter} />
+                    ))}
+                </div>
+                </Marquee>
             </div>
         </section>
     );
