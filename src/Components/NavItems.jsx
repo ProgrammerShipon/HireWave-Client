@@ -7,8 +7,11 @@ import Profile from "./Profile";
 
 const NavItems = () => {
   const role = "Candidates";
+  // const role = "recruiter";
+  // const role = "admin";
+
   const user = false;
-  
+
   return (
     <>
       <li>
