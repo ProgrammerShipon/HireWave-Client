@@ -5,23 +5,23 @@ import { FaRegHeart } from 'react-icons/fa';
 import GetAgoTime from "./GetAgoTime";
 
 const FeaturedJobCard = ({ job }) => {
-    const { logo, title_description, company, post_date, location, duration, industry, salary, technology } = job;
+    const { companyLogo, title, companyName, postedDate, location, jobType, industry, salary, skills } = job;
     return (
-        <div className="relative bg-white flex items-center justify-between border border-green lg:border-0 hover:shadow-3xl lg:hover:border-white rounded-lg lg:rounded-none hover:rounded-lg overflow-hidden lg:hover:scale-105 hover:z-20 p-5 lg:p-0 duration-300 group">
+        <div className="relative w-full bg-white flex items-center justify-between border lg:border-0 lg:border-b border-green/50 lg:last:border-transparent hover:shadow-3xl lg:hover:border-white rounded-lg lg:rounded-none hover:rounded-lg overflow-hidden scale-100 lg:hover:scale-105 clear-both hover:z-20 px-5 py-8 lg:py-6 lg:pr-0 duration-300 group">
             <div className="flex flex-col sm:flex-row items-center gap-10">
                 {/* company logo */}
-                <div className="w-44 sm:w-44 md:w-48 lg:w-56 pt-5 lg:p-6">
-                    <img className="w-full h-auto sm:h-28 lg:h-auto object-cover object-center" src={logo} alt={company} />
+                <div className="w-44 h-44 pt-5 lg:p-6 overflow-hidden">
+                    <img className="w-full object-cover object-center" src={companyLogo} alt={companyName} />
                 </div>
 
                 {/* card content */}
                 <div>
-                    <p className="text-green lg:text-purple bg-green/20 px-4 py-1 absolute lg:static top-2 left-2 rounded-md inline-block lg:mb-1 shadow-md shadow-green/10">{duration}</p>
+                    <p className="text-green lg:text-purple bg-green/20 px-4 py-1 absolute lg:static top-2 left-2 rounded-md inline-block lg:mb-1 shadow-md shadow-green/10 capitalize">{jobType}</p>
 
-                    <Link to='/' className="text-xl md:text-2xl text-dark group-hover:text-green duration-300 sm:mr-3 lg:mr-0 sm:line-clamp-1 max-w-lg">{title_description}</Link>
+                    <Link to='/' className="text-xl md:text-2xl text-dark group-hover:text-green duration-300 sm:mr-3 lg:mr-0 sm:line-clamp-1 max-w-lg">{title}</Link>
 
-                    <h5 className="mt-2 hidden lg:block duration-300">{company} - <span className="text-gray">
-                        <GetAgoTime datetime={post_date} />
+                    <h5 className="mt-2 hidden lg:block duration-300">{companyName} - <span className="text-gray">
+                        <GetAgoTime datetime={postedDate} />
                     </span></h5>
 
                     <div className="flex flex-col lg:flex-row lg:items-center text-center sm:text-left lg:gap-8 mt-1 duration-300">
@@ -34,7 +34,7 @@ const FeaturedJobCard = ({ job }) => {
 
                     <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mt-4 lg:mt-2 duration-300">
                         {
-                            technology?.map((item, index) => <p
+                            skills?.map((item, index) => <p
                                 key={index}
                                 className="bg-green/20 hover:bg-white text-green px-3 py-[2px] shadow-lg shadow-green/10 hover:shadow-dark/20 rounded-md cursor-pointer duration-300"
                             >{item}</p>)
@@ -44,7 +44,7 @@ const FeaturedJobCard = ({ job }) => {
             </div>
 
             {/* save button */}
-            <button className="absolute lg:relative bg-green text-white p-3 lg:pl-3 lg:pr-5 lg:py-2 rounded-e-md lg:rounded-e-none rounded-s-md top-2 right-2 lg:top-auto md:-right-14 shadow-lg shadow-green/30 md:group-hover:right-2 lg:group-hover:right-0 duration-300 delay-300">
+            <button className="absolute lg:relative bg-green text-white p-3 lg:pl-3 lg:pr-5 lg:py-2 rounded-e-md lg:rounded-e-none rounded-s-md top-2 right-2 lg:top-auto md:-right-14 shadow-lg shadow-green/30 md:group-hover:right-2 lg:group-hover:right-0 duration-300 delay-200">
                 <FaRegHeart size='20px' />
             </button>
         </div>
