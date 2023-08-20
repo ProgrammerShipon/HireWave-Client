@@ -19,7 +19,6 @@ const Contact = () => {
             <OurLocation />
             {/* border */}
             <Divider />
-
             <ContactForm />
             {/* border */}
             <Divider />
