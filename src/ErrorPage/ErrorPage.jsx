@@ -13,7 +13,7 @@ const ErrorPage = () => {
       </div>
 
       <div className="text-center">
-        <p class="text-gray text-2xl">
+        <p className="text-gray text-2xl">
           Sorry, We couldn't find what you are looking for!
           <br />
           <span className="text-red-500">{error?.message}</span>

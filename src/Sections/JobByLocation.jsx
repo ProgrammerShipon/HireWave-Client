@@ -14,7 +14,7 @@ const JobByLocation = () => {
                 {/* Job By Location content */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 md:mt-16">
                     {
-                        jobLocationData?.map((location) => <JobByLocationCard key={location.id} location={location} />)
+                        jobLocationData?.map((location) => <JobByLocationCard key={location._id} location={location} />)
                     }
                 </div>
             </div>
