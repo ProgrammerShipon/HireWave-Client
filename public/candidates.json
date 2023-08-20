@@ -14,7 +14,8 @@
             "React",
             "Node.js"
         ],
-        "rating": 4.9
+        "rating": 4.9,
+        "numberOfRating": 20
     },
     {
         "_id": 2,
@@ -31,7 +32,8 @@
             "Kotlin",
             "Firebase"
         ],
-        "rating": 4.7
+        "rating": 4.7,
+        "numberOfRating": 18
     },
     {
         "_id": 3,
@@ -48,7 +50,8 @@
             "Machine Learning",
             "Data Analysis"
         ],
-        "rating": 4.3
+        "rating": 4.3,
+        "numberOfRating": 15
     },
     {
         "_id": 4,
@@ -65,7 +68,8 @@
             "Wireframing",
             "UI/UX"
         ],
-        "rating": 4.5
+        "rating": 4.5,
+        "numberOfRating": 4
     },
     {
         "_id": 5,
@@ -82,7 +86,8 @@
             "Employee",
             "HR Policies"
         ],
-        "rating": 4.0
+        "rating": 4.0,
+        "numberOfRating": 17
     },
     {
         "_id": 6,
@@ -99,7 +104,8 @@
             "Negotiation",
             "Relationship"
         ],
-        "rating": 3.9
+        "rating": 3.9,
+        "numberOfRating": 10
     },
     {
         "_id": 7,
@@ -116,7 +122,8 @@
             "Javascript",
             "Node.js"
         ],
-        "rating": 4.4
+        "rating": 4.4,
+        "numberOfRating": 20
     },
     {
         "_id": 8,
@@ -133,6 +140,7 @@
             "Google",
             "Shopify"
         ],
-        "rating": 4.2
+        "rating": 4.2,
+        "numberOfRating": 12
     }
 ]
