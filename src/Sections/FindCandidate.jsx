@@ -20,21 +20,21 @@ const FindCandidate = () => {
 
     const searchTerm = watch('searchTerm');
     const location = watch('location');
-    const title = watch('title');
+    const category = watch('category');
 
     useEffect(() => {
-        const searchName = searchTerm ? searchTerm.toLowerCase() : "";
+        const searchTitle = searchTerm ? searchTerm.toLowerCase() : "";
         const searchLocation = location ? location.toLowerCase() : "";
-        const searchTitle = title ? title.toLowerCase() : "";
+        const searchCategory = category ? category.toLowerCase() : "";
 
         const filter = candidatesData.filter((cds) =>
-            (!searchName || cds.name.toLowerCase().includes(searchTitle)) &&
+            (!searchTitle || cds.name.toLowerCase().includes(searchTitle)) &&
             (!searchLocation || cds.location.toLowerCase().includes(searchLocation)) &&
-            (!searchTitle || cds.title.toLowerCase().includes(searchCategory))
+            (!searchCategory || cds.category.toLowerCase().includes(searchCategory))
         );
 
         setFilteredData(filter);
-    }, [searchTerm, location, title, candidatesData]);
+    }, [searchTerm, location, category, candidatesData]);
 
     useEffect(() => {
         setFilteredData(candidatesData);
@@ -75,7 +75,7 @@ const FindCandidate = () => {
                             />
                         </div>
 
-                        {/* title */}
+                        {/* categories */}
                         <div className="col-span-2 md:border-s border-green md:border-e flex items-center">
                             <label htmlFor="categories" className="pl-2 text-green">
                                 <BiCategory size="20px" className="animate-pulse" />
@@ -86,9 +86,9 @@ const FindCandidate = () => {
                             >
                                 <option value="">Select Category</option>
                                 {
-                                    Array.from(new Set(candidatesData.map(item => item.title))).map((title, index) => (
-                                        <option key={index} value={title}>
-                                            {title}
+                                    Array.from(new Set(candidatesData.map(item => item.category))).map((category, index) => (
+                                        <option key={index} value={category}>
+                                            {category}
                                         </option>
                                     ))
                                 }
@@ -102,7 +102,7 @@ const FindCandidate = () => {
                                 className="bg-dark w-full text-white px-6 py-2 text-lg rounded-full flex items-center justify-center gap-2 hover:bg-green hover:shadow-xl hover:shadow-green/20 duration-300"
                             >
                                 {
-                                    searchTerm || location || title ? <><AiOutlineClear className='text-[#ea2b33]' /> Clear</> : <><BiSearchAlt /> Search</>
+                                    searchTerm || location || category ? <><AiOutlineClear className='text-[#ea2b33]' /> Clear</> : <><BiSearchAlt /> Search</>
                                 }
                             </button>
                         </div>
