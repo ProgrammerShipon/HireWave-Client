@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 // react icons
 import { IoMdNotificationsOutline } from 'react-icons/io';
 import { MdOutlineMail } from 'react-icons/md';
+import useAuth from '../Hooks/useAuth';
 
 const Profile = () => {
-
+    const { user, logOut } = useAuth();
     return (
         <div className='flex items-center gap-3'>
             <button className='w-10 h-10 flex items-center justify-center text-green bg-green/10 rounded-full'>
@@ -20,16 +21,15 @@ const Profile = () => {
                     className="relative flex items-center cursor-pointer"
                 >
                     {
-                        true ? <img
+                        user?.photoURL ? <img
                             className="h-12 w-12 rounded-full object-cover shadow-lg group-hover:shadow-green/20 duration-300"
-                            src='https://lh3.googleusercontent.com/a/AAcHTtdQpnr_vzncOEN2wR4mMMXMPrkkrHMvOpC7UW3HGRvhrw=s96-c'
-                            alt="User avatar"
+                            src={user?.photoURL}
+                            alt={user?.displayName}
                         /> :
                             <p
-                                className="h-14 w-14 bg-blue text-white text-3xl flex items-center justify-center font-bold rounded-full shadow-lg group-hover:shadow-blue duration-300"
+                                className="h-14 w-14 bg-blue text-dark text-xl flex items-center justify-center font-bold rounded-full shadow-lg group-hover:shadow-blue duration-300 drop-shadow-xl"
                             >
-                                {/* {userData?.name?.slice(0, 1)} */}
-                                FH
+                                {user?.displayName?.slice(0, 2)}
                             </p>
                     }
                     <div className='absolute top-0 -right-0'>
@@ -50,12 +50,15 @@ const Profile = () => {
                         <li>
                             <Link to='/my_profile' className='hover:text-green duration-300'>My Profile</Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link to='/events' className='hover:text-green duration-300'>Events</Link>
-                        </li>
+                        </li> */}
                         <li>
-                            <Link to='/contact' className='hover:text-green duration-300'>Contact</Link>
+                            <Link to='/learning' className='hover:text-green duration-300'>Learning</Link>
                         </li>
+                        {/* <li>
+                            <Link to='/contact' className='hover:text-green duration-300'>Contact</Link>
+                        </li> */}
                         <li>
                             <Link to='/dashboard' className='hover:text-green duration-300'>Dashboard</Link>
                         </li>
@@ -63,7 +66,7 @@ const Profile = () => {
 
                     <button
                         className="w-full bg-red-400 text-white font-medium py-1 mt-2"
-                    // onClick={() => logOut()}
+                        onClick={() => logOut()}
                     >
                         LogOut
                     </button>

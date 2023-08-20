@@ -4,7 +4,7 @@ const LearningCard = ({ learning }) => {
     const { title, about, image, category, } = learning;
     return (
         <div className="p-3 rounded-lg hover:shadow-4xl hover:shadow-green/20 border border-transparent hover:border-green duration-300 group cursor-pointer">
-            <div className="h-[240px] rounded-lg overflow-hidden">
+            <div className="sm:h-[240px] rounded-lg overflow-hidden">
                 <img
                     className="object-cover object-center"
                     src={image}

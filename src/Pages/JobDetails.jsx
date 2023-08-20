@@ -1,12 +1,11 @@
 // React Icons 
-import {  FaPhoneAlt, FaRupeeSign } from 'react-icons/fa';
-import {  MdLocationPin, MdMarkEmailRead } from 'react-icons/md';
+import { FaPhoneAlt, FaRupeeSign } from 'react-icons/fa';
+import { MdLocationPin, MdMarkEmailRead } from 'react-icons/md';
 import { useLocation } from 'react-router-dom';
 
 const Job_Details = () => {
     const data = useLocation();
     const jobData = data.state;
-    console.log(jobData)
 
     const { job_description, job_responsibility, skills, educational_requirements, experiences, job_title, contact_information, benefits, weekend, salary } = jobData;
 
@@ -45,7 +44,7 @@ const Job_Details = () => {
                     </p>
                 </div>
                 <div>
-                    <div className='p-8  h-[460px] bg-gradient-to-r from-blue-50 to-blue-100 hover:from-blue-100 rounded-md '>
+                    <div className='p-8 h-[460px] bg-gradient-to-r from-blue-50 to-blue-100 hover:from-blue-100 rounded-md '>
                         <h3 className='text-2xl font-bold '></h3> <hr className='hr' />
                         <p className='flex items-center mb-2'>
                             <span className='font-semibold mr-1'>Role : </span>
