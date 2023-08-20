@@ -3,8 +3,7 @@
         "_id": 1,
         "name": "Olivia Johnson",
         "images": "https://i.ibb.co/jDPFM9F/req-1.jpg",
-        "category": "Frontend Developer",
-        "experience": "5yr(s)",
+        "title": "Frontend Developer",
         "about": "Passionate software developer with a focus on web technologies.",
         "status": "online",
         "location": "Los Angeles, CA",
@@ -14,14 +13,76 @@
             "Node.js"
         ],
         "rating": 4.9,
-        "numberOfRating": 20
+        "languages": [
+            {
+                "name": "english",
+                "level": "fluent"
+            },
+            {
+                "name": "German",
+                "level": "comfortable"
+            },
+            {
+                "name": "Bengali",
+                "level": "native"
+            }
+        ],
+        "recentReview": [
+            {
+                "recruiter": "Tanvir Alam",
+                "rating": 5.0,
+                "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
+                "date": "Aug 15, 2021"
+            },
+            {
+                "recruiter": "Siam Hossain",
+                "rating": 4.9,
+                "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
+                "date": "June 15, 2020"
+            }
+        ],
+        "hourlyRate": 15,
+        "recommendations": 1,
+        "salaryRange": "200-500",
+        "education": [
+            {
+                "institute": "Bangabandhu Govt. College",
+                "subject": "HSC, Economic",
+                "startDate": "June 23, 2020",
+                "currentStudying": true
+            },
+            {
+                "institute": "Bangabandhu Govt. College",
+                "subject": "SSC, Science",
+                "startDate": "June 23, 2020",
+                "endDate": "Sep 02, 2021",
+                "currentStudying": false
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://media.licdn.com/dms/imag",
+                "companyName": "Shomeka IT",
+                "jobType": "part time",
+                "startDate": "June 23, 2020",
+                "currentWorking": true
+            },
+            {
+                "logo": "https://media.licdn.com/dms/imag",
+                "companyName": "Shomeka IT",
+                "jobType": "part time",
+                "startDate": "June 23, 2020",
+                "endDate": "Apr 23, 2022",
+                "currentWorking": false
+            }
+        ],
+        "joinDate": "Aug 19, 2020"
     },
     {
         "_id": 2,
         "name": "Liam Smith",
         "images": "https://i.ibb.co/41bpfKJ/req-2.jpg",
-        "category": "Backend Developer",
-        "experience": "7yr(s)",
+        "title": "Backend Developer",
         "about": "Enthusiastic mobile app developer specializing in Android development.",
         "status": "online",
         "location": "San Francisco, CA",
@@ -31,14 +92,76 @@
             "Firebase"
         ],
         "rating": 4.7,
-        "numberOfRating": 18
+        "languages": [
+            {
+                "name": "english",
+                "level": "fluent"
+            },
+            {
+                "name": "German",
+                "level": "comfortable"
+            },
+            {
+                "name": "Bengali",
+                "level": "native"
+            }
+        ],
+        "recentReview": [
+            {
+                "recruiter": "Tanvir Alam",
+                "rating": 5.0,
+                "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
+                "date": "Aug 15, 2021"
+            },
+            {
+                "recruiter": "Siam Hossain",
+                "rating": 4.9,
+                "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
+                "date": "June 15, 2020"
+            }
+        ],
+        "hourlyRate": 15,
+        "recommendations": 1,
+        "salaryRange": "200-500",
+        "education": [
+            {
+                "institute": "Bangabandhu Govt. College",
+                "subject": "HSC, Economic",
+                "startDate": "June 23, 2020",
+                "currentStudying": true
+            },
+            {
+                "institute": "Bangabandhu Govt. College",
+                "subject": "SSC, Science",
+                "startDate": "June 23, 2020",
+                "endDate": "Sep 02, 2021",
+                "currentStudying": false
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://media.licdn.com/dms/imag",
+                "companyName": "Shomeka IT",
+                "jobType": "part time",
+                "startDate": "June 23, 2020",
+                "currentWorking": true
+            },
+            {
+                "logo": "https://media.licdn.com/dms/imag",
+                "companyName": "Shomeka IT",
+                "jobType": "part time",
+                "startDate": "June 23, 2020",
+                "endDate": "Apr 23, 2022",
+                "currentWorking": false
+            }
+        ],
+        "joinDate": "Aug 19, 2020"
     },
     {
         "_id": 3,
         "name": "Sophia Williams",
         "images": "https://digity.netlify.app/assets/images/team/1.png",
-        "category": "Data Scientist",
-        "experience": "8yr(s)",
+        "title": "Data Scientist",
         "about": "Data scientist with a knack for extracting insights from complex.",
         "status": "online",
         "location": "Los Angeles, CA",
@@ -48,14 +171,76 @@
             "Data Analysis"
         ],
         "rating": 4.3,
-        "numberOfRating": 15
+        "languages": [
+            {
+                "name": "english",
+                "level": "fluent"
+            },
+            {
+                "name": "German",
+                "level": "comfortable"
+            },
+            {
+                "name": "Bengali",
+                "level": "native"
+            }
+        ],
+        "recentReview": [
+            {
+                "recruiter": "Tanvir Alam",
+                "rating": 5.0,
+                "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
+                "date": "Aug 15, 2021"
+            },
+            {
+                "recruiter": "Siam Hossain",
+                "rating": 4.9,
+                "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
+                "date": "June 15, 2020"
+            }
+        ],
+        "hourlyRate": 15,
+        "recommendations": 1,
+        "salaryRange": "200-500",
+        "education": [
+            {
+                "institute": "Bangabandhu Govt. College",
+                "subject": "HSC, Economic",
+                "startDate": "June 23, 2020",
+                "currentStudying": true
+            },
+            {
+                "institute": "Bangabandhu Govt. College",
+                "subject": "SSC, Science",
+                "startDate": "June 23, 2020",
+                "endDate": "Sep 02, 2021",
+                "currentStudying": false
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://media.licdn.com/dms/imag",
+                "companyName": "Shomeka IT",
+                "jobType": "part time",
+                "startDate": "June 23, 2020",
+                "currentWorking": true
+            },
+            {
+                "logo": "https://media.licdn.com/dms/imag",
+                "companyName": "Shomeka IT",
+                "jobType": "part time",
+                "startDate": "June 23, 2020",
+                "endDate": "Apr 23, 2022",
+                "currentWorking": false
+            }
+        ],
+        "joinDate": "Aug 19, 2020"
     },
     {
         "_id": 4,
         "name": "Noah Brown",
         "images": "https://i.ibb.co/nbjYRxQ/req-5.jpg",
-        "category": "UX Designer",
-        "experience": "+10yr(s)",
+        "title": "UX Designer",
         "about": "Creative UX designer passionate about creating user-centered experiences.",
         "status": "offline",
         "location": "London, UK",
@@ -65,14 +250,76 @@
             "UI/UX"
         ],
         "rating": 4.5,
-        "numberOfRating": 4
+        "languages": [
+            {
+                "name": "english",
+                "level": "fluent"
+            },
+            {
+                "name": "German",
+                "level": "comfortable"
+            },
+            {
+                "name": "Bengali",
+                "level": "native"
+            }
+        ],
+        "recentReview": [
+            {
+                "recruiter": "Tanvir Alam",
+                "rating": 5.0,
+                "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
+                "date": "Aug 15, 2021"
+            },
+            {
+                "recruiter": "Siam Hossain",
+                "rating": 4.9,
+                "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
+                "date": "June 15, 2020"
+            }
+        ],
+        "hourlyRate": 15,
+        "recommendations": 1,
+        "salaryRange": "200-500",
+        "education": [
+            {
+                "institute": "Bangabandhu Govt. College",
+                "subject": "HSC, Economic",
+                "startDate": "June 23, 2020",
+                "currentStudying": true
+            },
+            {
+                "institute": "Bangabandhu Govt. College",
+                "subject": "SSC, Science",
+                "startDate": "June 23, 2020",
+                "endDate": "Sep 02, 2021",
+                "currentStudying": false
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://media.licdn.com/dms/imag",
+                "companyName": "Shomeka IT",
+                "jobType": "part time",
+                "startDate": "June 23, 2020",
+                "currentWorking": true
+            },
+            {
+                "logo": "https://media.licdn.com/dms/imag",
+                "companyName": "Shomeka IT",
+                "jobType": "part time",
+                "startDate": "June 23, 2020",
+                "endDate": "Apr 23, 2022",
+                "currentWorking": false
+            }
+        ],
+        "joinDate": "Aug 19, 2020"
     },
     {
         "_id": 5,
         "name": "Ava Miller",
         "images": "https://digity.netlify.app/assets/images/team/7.png",
-        "category": "HR Manager",
-        "experience": "5yr(s)",
+        "title": "HR Manager",
         "about": "HR professional specializing in talent acquisition and employee relations.",
         "status": "online",
         "location": "Los Angeles, CA",
@@ -82,14 +329,76 @@
             "HR Policies"
         ],
         "rating": 4.0,
-        "numberOfRating": 17
+        "languages": [
+            {
+                "name": "english",
+                "level": "fluent"
+            },
+            {
+                "name": "German",
+                "level": "comfortable"
+            },
+            {
+                "name": "Bengali",
+                "level": "native"
+            }
+        ],
+        "recentReview": [
+            {
+                "recruiter": "Tanvir Alam",
+                "rating": 5.0,
+                "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
+                "date": "Aug 15, 2021"
+            },
+            {
+                "recruiter": "Siam Hossain",
+                "rating": 4.9,
+                "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
+                "date": "June 15, 2020"
+            }
+        ],
+        "hourlyRate": 15,
+        "recommendations": 1,
+        "salaryRange": "200-500",
+        "education": [
+            {
+                "institute": "Bangabandhu Govt. College",
+                "subject": "HSC, Economic",
+                "startDate": "June 23, 2020",
+                "currentStudying": true
+            },
+            {
+                "institute": "Bangabandhu Govt. College",
+                "subject": "SSC, Science",
+                "startDate": "June 23, 2020",
+                "endDate": "Sep 02, 2021",
+                "currentStudying": false
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://media.licdn.com/dms/imag",
+                "companyName": "Shomeka IT",
+                "jobType": "part time",
+                "startDate": "June 23, 2020",
+                "currentWorking": true
+            },
+            {
+                "logo": "https://media.licdn.com/dms/imag",
+                "companyName": "Shomeka IT",
+                "jobType": "part time",
+                "startDate": "June 23, 2020",
+                "endDate": "Apr 23, 2022",
+                "currentWorking": false
+            }
+        ],
+        "joinDate": "Aug 19, 2020"
     },
     {
         "_id": 6,
         "name": "john doea",
         "images": "https://digity.netlify.app/assets/images/team/8.png",
-        "category": "Sales Executive",
-        "experience": "3yr(s)",
+        "title": "Sales Executive",
         "about": "Experienced sales executive with a proven track record of driving growth.",
         "status": "online",
         "location": "London, UK",
@@ -99,14 +408,76 @@
             "Relationship"
         ],
         "rating": 3.9,
-        "numberOfRating": 10
+        "languages": [
+            {
+                "name": "english",
+                "level": "fluent"
+            },
+            {
+                "name": "German",
+                "level": "comfortable"
+            },
+            {
+                "name": "Bengali",
+                "level": "native"
+            }
+        ],
+        "recentReview": [
+            {
+                "recruiter": "Tanvir Alam",
+                "rating": 5.0,
+                "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
+                "date": "Aug 15, 2021"
+            },
+            {
+                "recruiter": "Siam Hossain",
+                "rating": 4.9,
+                "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
+                "date": "June 15, 2020"
+            }
+        ],
+        "hourlyRate": 15,
+        "recommendations": 1,
+        "salaryRange": "200-500",
+        "education": [
+            {
+                "institute": "Bangabandhu Govt. College",
+                "subject": "HSC, Economic",
+                "startDate": "June 23, 2020",
+                "currentStudying": true
+            },
+            {
+                "institute": "Bangabandhu Govt. College",
+                "subject": "SSC, Science",
+                "startDate": "June 23, 2020",
+                "endDate": "Sep 02, 2021",
+                "currentStudying": false
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://media.licdn.com/dms/imag",
+                "companyName": "Shomeka IT",
+                "jobType": "part time",
+                "startDate": "June 23, 2020",
+                "currentWorking": true
+            },
+            {
+                "logo": "https://media.licdn.com/dms/imag",
+                "companyName": "Shomeka IT",
+                "jobType": "part time",
+                "startDate": "June 23, 2020",
+                "endDate": "Apr 23, 2022",
+                "currentWorking": false
+            }
+        ],
+        "joinDate": "Aug 19, 2020"
     },
     {
         "_id": 7,
         "name": "Shaw Johnson",
         "images": "https://digity.netlify.app/assets/images/team/4.png",
-        "category": "Frontend Developer",
-        "experience": "3yr(s)",
+        "title": "Frontend Developer",
         "about": "Experienced sales executive with a proven track record of driving growth.",
         "status": "offline",
         "location": "New York, NY",
@@ -116,14 +487,76 @@
             "Node.js"
         ],
         "rating": 4.4,
-        "numberOfRating": 20
+        "languages": [
+            {
+                "name": "english",
+                "level": "fluent"
+            },
+            {
+                "name": "German",
+                "level": "comfortable"
+            },
+            {
+                "name": "Bengali",
+                "level": "native"
+            }
+        ],
+        "recentReview": [
+            {
+                "recruiter": "Tanvir Alam",
+                "rating": 5.0,
+                "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
+                "date": "Aug 15, 2021"
+            },
+            {
+                "recruiter": "Siam Hossain",
+                "rating": 4.9,
+                "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
+                "date": "June 15, 2020"
+            }
+        ],
+        "hourlyRate": 15,
+        "recommendations": 1,
+        "salaryRange": "200-500",
+        "education": [
+            {
+                "institute": "Bangabandhu Govt. College",
+                "subject": "HSC, Economic",
+                "startDate": "June 23, 2020",
+                "currentStudying": true
+            },
+            {
+                "institute": "Bangabandhu Govt. College",
+                "subject": "SSC, Science",
+                "startDate": "June 23, 2020",
+                "endDate": "Sep 02, 2021",
+                "currentStudying": false
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://media.licdn.com/dms/imag",
+                "companyName": "Shomeka IT",
+                "jobType": "part time",
+                "startDate": "June 23, 2020",
+                "currentWorking": true
+            },
+            {
+                "logo": "https://media.licdn.com/dms/imag",
+                "companyName": "Shomeka IT",
+                "jobType": "part time",
+                "startDate": "June 23, 2020",
+                "endDate": "Apr 23, 2022",
+                "currentWorking": false
+            }
+        ],
+        "joinDate": "Aug 19, 2020"
     },
     {
         "_id": 8,
         "name": "Thomas Zavala",
         "images": "https://digity.netlify.app/assets/images/team/6.png",
-        "category": "Marketing",
-        "experience": "3yr(s)",
+        "title": "Marketing",
         "about": "Experienced sales executive with a proven track record of driving growth.",
         "status": "online",
         "location": "San Francisco, CA",
@@ -133,6 +566,69 @@
             "Shopify"
         ],
         "rating": 4.2,
-        "numberOfRating": 12
+        "languages": [
+            {
+                "name": "english",
+                "level": "fluent"
+            },
+            {
+                "name": "German",
+                "level": "comfortable"
+            },
+            {
+                "name": "Bengali",
+                "level": "native"
+            }
+        ],
+        "recentReview": [
+            {
+                "recruiter": "Tanvir Alam",
+                "rating": 5.0,
+                "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
+                "date": "Aug 15, 2021"
+            },
+            {
+                "recruiter": "Siam Hossain",
+                "rating": 4.9,
+                "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
+                "date": "June 15, 2020"
+            }
+        ],
+        "hourlyRate": 15,
+        "recommendations": 1,
+        "salaryRange": "200-500",
+        "education": [
+            {
+                "institute": "Bangabandhu Govt. College",
+                "subject": "HSC, Economic",
+                "startDate": "June 23, 2020",
+                "currentStudying": true
+            },
+            {
+                "institute": "Bangabandhu Govt. College",
+                "subject": "SSC, Science",
+                "startDate": "June 23, 2020",
+                "endDate": "Sep 02, 2021",
+                "currentStudying": false
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://media.licdn.com/dms/imag",
+                "companyName": "Shomeka IT",
+                "jobType": "part time",
+                "startDate": "June 23, 2020",
+                "currentWorking": true
+            },
+            {
+                "logo": "https://media.licdn.com/dms/imag",
+                "companyName": "Shomeka IT",
+                "jobType": "part time",
+                "startDate": "June 23, 2020",
+                "endDate": "Apr 23, 2022",
+                "currentWorking": false
+            }
+        ],
+        "joinDate": "Aug 19, 2020"
     }
 ]

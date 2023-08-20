@@ -5,7 +5,7 @@ import { HiOutlineExternalLink } from 'react-icons/hi';
 import { BiMap, BiSolidStar } from "react-icons/bi";
 
 const CandidateCard = ({ candidate }) => {
-    const { name, category, images, status, location, skills, rating } = candidate;
+    const { _id, name, title, images, status, location, skills, rating } = candidate;
 
     return (
         <div className="bg-white w-64 sm:w-full mx-auto relative rounded-md p-3 border border-purple group overflow-hidden hover:shadow-xl hover:shadow-purple/20 duration-300">
@@ -35,9 +35,9 @@ const CandidateCard = ({ candidate }) => {
 
             {/* content */}
             <div className="text-center mt-3">
-                <Link to={`/candidate_details/${name}`} className="text-dark text-3xl font-medium capitalize line-clamp-1">{name}</Link>
+                <Link to={`/candidate_details/${_id}`} className="text-dark text-3xl font-medium capitalize line-clamp-1">{name}</Link>
 
-                <h3 className="text-lightGray text-lg">{category}</h3>
+                <h3 className="text-lightGray text-lg">{title}</h3>
                 <p className="text-gray text-sm flex items-center justify-center italic"><BiMap /> {location}</p>
 
                 <div className="flex flex-wrap items-center justify-center gap-2 mt-4 duration-300">
@@ -51,7 +51,7 @@ const CandidateCard = ({ candidate }) => {
             </div>
 
             {/* button */}
-            <Link to={`/candidate_details/${name}`} className="bg-purple text-white inline-block p-3 rounded-md absolute top-1 right-1 md:-right-16 group-hover:right-1 duration-300 hover:bg-dark shadow-xl shadow-purple/20 hover:shadow-dark/20">
+            <Link state={candidate} to={`/candidate_details/${_id}`} className="bg-purple text-white inline-block p-3 rounded-md absolute top-1 right-1 md:-right-16 group-hover:right-1 duration-300 hover:bg-dark shadow-xl shadow-purple/20 hover:shadow-dark/20">
                 <HiOutlineExternalLink size='20px' />
             </Link>
         </div>
