@@ -1,42 +1,119 @@
 import { useEffect, useState } from 'react';
 import CandidateCard from '../Components/CandidateCard';
-import CandidatesSearchBar from '../Components/CandidatesSearchBar';
 import useCandidatesData from '../Hooks/useCandidatesData';
+import { useForm } from 'react-hook-form';
+
+// react icons
+import { BiSearchAlt, BiCategory } from "react-icons/bi";
+import { FaBriefcase } from "react-icons/fa";
+import { FaLocationCrosshairs } from "react-icons/fa6";
+import { AiOutlineClear } from "react-icons/ai";
 
 const FindCandidate = () => {
     const [candidatesData] = useCandidatesData();
+    const [filteredData, setFilteredData] = useState([]);
 
-    const [searchName, setSearchName] = useState('');
-    const [searchLocation, setSearchLocation] = useState('');
-    const [searchCategory, setSearchCategory] = useState('');
-    const [candidates, setCandidates] = useState(candidatesData);
+    const { register, watch, handleSubmit, reset } = useForm();
+    const onSubmit = () => {
+        reset();
+    }
+
+    const searchTerm = watch('searchTerm');
+    const location = watch('location');
+    const category = watch('category');
 
     useEffect(() => {
-        const filteredCandidates = candidatesData.filter(candidate =>
-            candidate.name.toLowerCase().includes(searchName.toLowerCase()) &&
-            candidate.location.toLowerCase().includes(searchLocation.toLowerCase()) &&
-            candidate.category.toLowerCase().includes(searchCategory.toLowerCase())
+        const searchTitle = searchTerm ? searchTerm.toLowerCase() : "";
+        const searchLocation = location ? location.toLowerCase() : "";
+        const searchCategory = category ? category.toLowerCase() : "";
+
+        const filter = candidatesData.filter((cds) =>
+            (!searchTitle || cds.name.toLowerCase().includes(searchTitle)) &&
+            (!searchLocation || cds.location.toLowerCase().includes(searchLocation)) &&
+            (!searchCategory || cds.category.toLowerCase().includes(searchCategory))
         );
-        setCandidates(filteredCandidates);
-    }, [searchName, searchLocation, searchCategory, candidatesData]);
+
+        setFilteredData(filter);
+    }, [searchTerm, location, category, candidatesData]);
+
+    useEffect(() => {
+        setFilteredData(candidatesData);
+    }, [candidatesData])
 
     return (
         <section className='py-20 md:py-[120px] duration-300'>
             <div className='container'>
-                <CandidatesSearchBar
-                    candidatesData={candidatesData}
-                    candidates={candidates}
-                    searchName={searchName}
-                    setSearchName={setSearchName}
-                    setSearchLocation={setSearchLocation}
-                    setSearchCategory={setSearchCategory}
-                />
+                {/* search bar */}
+                <div className="w-full duration-300">
+                    <form
+                        onSubmit={handleSubmit(onSubmit)}
+                        className="bg-white border border-green shadow-2xl shadow-green/20 grid grid-cols-1 md:grid-cols-7 items-center p-2 rounded-xl duration-300"
+                    >
+                        {/* Search */}
+                        <div className="col-span-2 flex items-center border-b md:border-none border-green">
+                            <label htmlFor="search" className="pl-2 text-green">
+                                <FaBriefcase size="20px" className="animate-bounce" />
+                            </label>
+                            <input
+                                id="search"
+                                className="w-full border text-lg pl-2 py-2 border-none focus:outline-none bg-white text-dark placeholder:text-gray"
+                                placeholder="Search Candidates Name"
+                                {...register("searchTerm")}
+                            />
+                        </div>
+
+                        {/* location */}
+                        <div className="col-span-2 md:border-s border-green flex items-center">
+                            <label htmlFor="location" className="pl-2 text-green">
+                                <FaLocationCrosshairs size="20px" className="animate-spin" />
+                            </label>
+                            <input
+                                id="location"
+                                className="w-full border text-lg pl-2 py-2 border-none focus:outline-none bg-transparent text-dark placeholder:text-gray placeholder:bg-transparent"
+                                placeholder="Search by Location"
+                                {...register("location")}
+                            />
+                        </div>
+
+                        {/* categories */}
+                        <div className="col-span-2 md:border-s border-green md:border-e flex items-center">
+                            <label htmlFor="categories" className="pl-2 text-green">
+                                <BiCategory size="20px" className="animate-pulse" />
+                            </label>
+                            <select name="category" id="category"
+                                {...register("category")}
+                                className="w-full border text-lg pl-2 py-2 border-none focus:outline-none bg-transparent text-dark placeholder:text-gray placeholder:bg-transparent"
+                            >
+                                <option value="">Select Category</option>
+                                {
+                                    Array.from(new Set(candidatesData.map(item => item.category))).map((category, index) => (
+                                        <option key={index} value={category}>
+                                            {category}
+                                        </option>
+                                    ))
+                                }
+                            </select>
+                        </div>
+
+                        {/* search button */}
+                        <div className="w-full md:pl-2 border-green">
+                            <button
+                                type="submit"
+                                className="bg-dark w-full text-white px-6 py-2 text-lg rounded-full flex items-center justify-center gap-2 hover:bg-green hover:shadow-xl hover:shadow-green/20 duration-300"
+                            >
+                                {
+                                    searchTerm || location || category ? <><AiOutlineClear className='text-[#ea2b33]' /> Clear</> : <><BiSearchAlt /> Search</>
+                                }
+                            </button>
+                        </div>
+                    </form>
+                </div>
                 {
-                    candidates.length > 0 ? <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-4 lg:gap-8 mt-8'>
+                    filteredData.length > 0 ? <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-4 lg:gap-8 mt-8'>
                         {
-                            candidates.map(candidate =>
+                            filteredData.map(candidate =>
                                 <CandidateCard
-                                    key={candidate.id}
+                                    key={candidate._id}
                                     candidate={candidate}
                                 ></CandidateCard>
                             )

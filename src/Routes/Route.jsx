@@ -15,6 +15,7 @@ import SignUp from "../Pages/SignUp";
 import Contact from "../Pages/Contact";
 import Recruiters from "../Pages/Recruiters";
 import AllCategories from "../Pages/AllCategories";
+import CandidateDetails from "../Pages/CandidateDetails";
 
 const Router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const Router = createBrowserRouter([
       {
         path: "/candidates",
         element: <Candidates />,
+      },
+      {
+        path: "/candidate_details/:name",
+        element: <CandidateDetails />,
       },
       {
         path: "/job_details/:id",
