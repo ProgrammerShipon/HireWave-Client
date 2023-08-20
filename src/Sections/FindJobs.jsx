@@ -102,7 +102,7 @@ const FindJobs = () => {
                                 className="bg-dark w-full text-white px-6 py-2 text-lg rounded-full flex items-center justify-center gap-2 hover:bg-green hover:shadow-xl hover:shadow-green/20 duration-300"
                             >
                                 {
-                                    searchTerm || location || category ? <><AiOutlineClear /> Clear</> : <><BiSearchAlt /> Search</>
+                                    searchTerm || location || category ? <><AiOutlineClear className='text-[#ea2b33]' /> Clear</> : <><BiSearchAlt /> Search</>
                                 }
                             </button>
                         </div>

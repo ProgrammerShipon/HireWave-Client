@@ -1,130 +1,138 @@
 [
     {
-        "id": 1,
+        "_id": 1,
         "name": "Olivia Johnson",
         "images": "https://i.ibb.co/jDPFM9F/req-1.jpg",
         "category": "Frontend Developer",
         "profession": "freelancer",
         "experience": "5yr(s)",
         "about": "Passionate software developer with a focus on web technologies.",
-        "active": "online",
+        "status": "online",
         "location": "Los Angeles, CA",
         "skills": [
             "JavaScript",
             "React",
             "Node.js"
-        ]
+        ],
+        "rating": 4.9
     },
     {
-        "id": 2,
+        "_id": 2,
         "name": "Liam Smith",
         "images": "https://i.ibb.co/41bpfKJ/req-2.jpg",
         "profession": "freelancer",
         "category": "Backend Developer",
         "experience": "7yr(s)",
         "about": "Enthusiastic mobile app developer specializing in Android development.",
-        "active": "online",
+        "status": "online",
         "location": "San Francisco, CA",
         "skills": [
             "Java",
             "Kotlin",
             "Firebase"
-        ]
+        ],
+        "rating": 4.7
     },
     {
-        "id": 3,
+        "_id": 3,
         "name": "Sophia Williams",
         "images": "https://digity.netlify.app/assets/images/team/1.png",
         "profession": "freelancer",
         "category": "Data Scientist",
         "experience": "8yr(s)",
         "about": "Data scientist with a knack for extracting insights from complex.",
-        "active": "online",
+        "status": "online",
         "location": "Los Angeles, CA",
         "skills": [
             "Python",
             "Machine Learning",
             "Data Analysis"
-        ]
+        ],
+        "rating": 4.3
     },
     {
-        "id": 4,
+        "_id": 4,
         "name": "Noah Brown",
         "images": "https://i.ibb.co/nbjYRxQ/req-5.jpg",
         "profession": "freelancer",
         "category": "UX Designer",
         "experience": "+10yr(s)",
         "about": "Creative UX designer passionate about creating user-centered experiences.",
-        "active": "offline",
+        "status": "offline",
         "location": "London, UK",
         "skills": [
             "User Research",
             "Wireframing",
             "UI/UX"
-        ]
+        ],
+        "rating": 4.5
     },
     {
-        "id": 5,
+        "_id": 5,
         "name": "Ava Miller",
         "images": "https://digity.netlify.app/assets/images/team/7.png",
         "profession": "freelancer",
         "category": "HR Manager",
         "experience": "5yr(s)",
         "about": "HR professional specializing in talent acquisition and employee relations.",
-        "active": "online",
+        "status": "online",
         "location": "Los Angeles, CA",
         "skills": [
             "Recruitment",
             "Employee",
             "HR Policies"
-        ]
+        ],
+        "rating": 4.0
     },
     {
-        "id": 6,
+        "_id": 6,
         "name": "john doea",
         "images": "https://digity.netlify.app/assets/images/team/8.png",
         "profession": "freelancer",
         "category": "Sales Executive",
         "experience": "3yr(s)",
         "about": "Experienced sales executive with a proven track record of driving growth.",
-        "active": "online",
+        "status": "online",
         "location": "London, UK",
         "skills": [
             "Sales Strategy",
             "Negotiation",
             "Relationship"
-        ]
+        ],
+        "rating": 3.9
     },
     {
-        "id": 7,
+        "_id": 7,
         "name": "Shaw Johnson",
         "images": "https://digity.netlify.app/assets/images/team/4.png",
         "profession": "freelancer",
         "category": "Frontend Developer",
         "experience": "3yr(s)",
         "about": "Experienced sales executive with a proven track record of driving growth.",
-        "active": "offline",
+        "status": "offline",
         "location": "New York, NY",
         "skills": [
             "React",
             "Javascript",
             "Node.js"
-        ]
+        ],
+        "rating": 4.4
     },
     {
-        "id": 8,
+        "_id": 8,
         "name": "Thomas Zavala",
         "images": "https://digity.netlify.app/assets/images/team/6.png",
         "profession": "freelancer",
         "category": "Marketing",
         "experience": "3yr(s)",
         "about": "Experienced sales executive with a proven track record of driving growth.",
-        "active": "online",
+        "status": "online",
         "location": "San Francisco, CA",
         "skills": [
             "Seo",
             "Google",
             "Shopify"
-        ]
+        ],
+        "rating": 4.2
     }
 ]

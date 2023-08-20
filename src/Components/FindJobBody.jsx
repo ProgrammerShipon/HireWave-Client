@@ -8,7 +8,6 @@ import GetAgoTime from "./GetAgoTime";
 // react icons
 import { BiHeart, BiMap } from "react-icons/bi";
 import { BsBuildingGear } from "react-icons/bs";
-import { MdOutlineVerified } from "react-icons/md";
 import { HiOutlineCurrencyDollar, HiOutlineFilter, HiOutlineUserGroup } from "react-icons/hi";
 import { AiOutlineShareAlt, AiOutlineCalendar } from "react-icons/ai";
 
