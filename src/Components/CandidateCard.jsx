@@ -27,7 +27,7 @@ const CandidateCard = ({ candidate }) => {
 
             {/* content */}
             <div className="text-center mt-3">
-                <Link to={`/candidate_details/${name}`} className="text-dark text-2xl font-medium capitalize">{name}</Link>
+                <Link  state={candidate} to={`/candidate_details/${name}`} className="text-dark text-2xl font-medium capitalize">{name}</Link>
 
                 <h3 className="text-gray">{category}</h3>
 
@@ -42,7 +42,7 @@ const CandidateCard = ({ candidate }) => {
             </div>
 
             {/* button */}
-            <Link to={`/candidate_details/${name}`} className="bg-purple text-white inline-block p-3 rounded-md absolute top-1 right-1 md:-right-16 group-hover:right-1 duration-300 hover:bg-dark shadow-xl shadow-purple/20 hover:shadow-dark/20">
+            <Link state={candidate} to={`/candidate_details/${name}`} className="bg-purple text-white inline-block p-3 rounded-md absolute top-1 right-1 md:-right-16 group-hover:right-1 duration-300 hover:bg-dark shadow-xl shadow-purple/20 hover:shadow-dark/20">
                 <HiOutlineExternalLink size='20px' />
             </Link>
         </div>

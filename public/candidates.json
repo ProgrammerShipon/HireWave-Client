@@ -3,16 +3,72 @@
         "id": 1,
         "name": "Olivia Johnson",
         "images": "https://i.ibb.co/jDPFM9F/req-1.jpg",
-        "category": "Frontend Developer",
         "profession": "freelancer",
+        "category": "Frontend Developer",
         "experience": "5yr(s)",
-        "about": "Passionate software developer with a focus on web technologies.",
+        "about": "In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar.",
         "active": "online",
-        "location": "Los Angeles, CA",
+        "location": "San Francisco, CA",
         "skills": [
             "JavaScript",
             "React",
             "Node.js"
+        ],
+        "age": "23",
+        "workRate": "25",
+        "currentJob": "Programming Hero",
+        "currentSalary": "22500",
+        "expectedSalary": "20-22",
+        "gender": "male",
+        "language": [
+            "English-Fluent",
+            "German-Uncomfortable",
+            "Spanish-native"
+        ],
+        "joinSince": "Aug 19, 2020",
+        "educationalLevel": "Masters Degree",
+        "education": [
+            {
+                "degree": "Masters in Computer Science ",
+                "institute": "Modern College",
+                "duration": "2012-2016",
+                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+                
+            },
+            {
+                "degree": "Bachelor in Computer Science ",
+                "institute": "Harvard University",
+                "duration": "2017-2018",
+                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+            }
+        ],
+        "workExperience": [
+            {
+                "position": "Product Designer",
+                "company": "Spotify Inc.",
+                "duration": "2019-2021",
+                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+            },
+            {
+                "position": "Sr UX Engineer",
+                "company": "Dropbox Inc.",
+                "duration": "2011-2022",
+                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+            }
+        ],
+        "awards": [
+            {
+                "awardsFrom": "Perfect Attendance Programs",
+                "awardsAs": "Software Algorithm",
+                "time": "2011-2022",
+                "testimonial": "Proud recipient of the Software Algorithm Award, recognizing exceptional innovation and problem-solving in the realm of technology. This accolade celebrates my dedication to pushing boundaries, creating elegant solutions"
+            },
+            {
+                "awardsFrom": "Top Performer Recognition",
+                "awardsAs": "Web Application",
+                "time": "2011-2022",
+                "testimonial": "Recipient of the Software Algorithm Award, exemplifying my dedication to pioneering transformative technological solutions. This recognition underscores my commitment to innovation and problem-solving in the digital realm"
+            }
         ]
     },
     {
@@ -22,13 +78,68 @@
         "profession": "freelancer",
         "category": "Backend Developer",
         "experience": "7yr(s)",
-        "about": "Enthusiastic mobile app developer specializing in Android development.",
+        "about": "In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar.",
         "active": "online",
         "location": "San Francisco, CA",
         "skills": [
             "Java",
             "Kotlin",
             "Firebase"
+        ],
+        "age": "23",
+        "workRate": "85",
+        "currentJob": "N/A",
+        "currentSalary": "N/A",
+        "expectedSalary": "20-22",
+        "gender": "male",
+        "language": [
+            "English-Fluent",
+            "German-Uncomfortable",
+            "Spanish-native"
+        ],
+        "joinSince": "Aug 19, 2020",
+        "educationalLevel": "Masters Degree",
+        "education": [
+            {
+                "degree": "Masters in Computer Science ",
+                "institute": "Modern College",
+                "duration": "2012-2016",
+                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+            },
+            {
+                "degree": "Bachelor in Computer Science ",
+                "institute": "Harvard University",
+                "duration": "2017-2018",
+                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+            }
+        ],
+        "workExperience": [
+            {
+                "position": "Product Designer",
+                "company": "Spotify Inc.",
+                "duration": "2019-2021",
+                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+            },
+            {
+                "position": "Sr UX Engineer",
+                "company": "Dropbox Inc.",
+                "duration": "2011-2022",
+                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+            }
+        ],
+        "awards": [
+            {
+                "awardsFrom": "Perfect Attendance Programs",
+                "awardsAs": "Software Algorithm",
+                "time": "2011-2022",
+                "testimonial": "Proud recipient of the Software Algorithm Award, recognizing exceptional innovation and problem-solving in the realm of technology. This accolade celebrates my dedication to pushing boundaries, creating elegant solutions"
+            },
+            {
+                "awardsFrom": "Top Performer Recognition",
+                "awardsAs": "Web Application",
+                "time": "2011-2022",
+                "testimonial": "Recipient of the Software Algorithm Award, exemplifying my dedication to pioneering transformative technological solutions. This recognition underscores my commitment to innovation and problem-solving in the digital realm"
+            }
         ]
     },
     {
@@ -38,13 +149,68 @@
         "profession": "freelancer",
         "category": "Data Scientist",
         "experience": "8yr(s)",
-        "about": "Data scientist with a knack for extracting insights from complex.",
+        "about": " In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar.",
         "active": "online",
         "location": "Los Angeles, CA",
         "skills": [
             "Python",
             "Machine Learning",
             "Data Analysis"
+        ],
+        "age": "23",
+        "workRate": "25",
+        "currentJob": "N/A",
+        "currentSalary": "N/A",
+        "expectedSalary": "20-22",
+        "gender": "male",
+       "language": [
+            "English-Fluent",
+            "German-Uncomfortable",
+            "Spanish-native"
+        ],
+        "joinSince": "Aug 19, 2020",
+        "educationalLevel": "Masters Degree",
+        "education": [
+            {
+                "degree": "Masters in Computer Science ",
+                "institute": "Modern College",
+                "duration": "2012-2016",
+                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+            },
+            {
+                "degree": "Bachelor in Computer Science ",
+                "institute": "Harvard University",
+                "duration": "2017-2018",
+                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+            }
+        ],
+        "workExperience": [
+            {
+                "position": "Product Designer",
+                "company": "Spotify Inc.",
+                "duration": "2019-2021",
+                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+            },
+            {
+                "position": "Sr UX Engineer",
+                "company": "Dropbox Inc.",
+                "duration": "2011-2022",
+                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+            }
+        ],
+        "awards": [
+            {
+                "awardsFrom": "Perfect Attendance Programs",
+                "awardsAs": "Software Algorithm",
+                "time": "2011-2022",
+                "testimonial": "Proud recipient of the Software Algorithm Award, recognizing exceptional innovation and problem-solving in the realm of technology. This accolade celebrates my dedication to pushing boundaries, creating elegant solutions"
+            },
+            {
+                "awardsFrom": "Top Performer Recognition",
+                "awardsAs": "Web Application",
+                "time": "2011-2022",
+                "testimonial": "Recipient of the Software Algorithm Award, exemplifying my dedication to pioneering transformative technological solutions. This recognition underscores my commitment to innovation and problem-solving in the digital realm"
+            }
         ]
     },
     {
@@ -54,13 +220,68 @@
         "profession": "freelancer",
         "category": "UX Designer",
         "experience": "+10yr(s)",
-        "about": "Creative UX designer passionate about creating user-centered experiences.",
+        "about": " In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar.",
         "active": "offline",
         "location": "London, UK",
         "skills": [
             "User Research",
             "Wireframing",
             "UI/UX"
+        ],
+        "age": "23",
+        "workRate": "25",
+        "currentJob": "N/A",
+        "currentSalary": "N/A",
+        "expectedSalary": "20-22",
+        "gender": "male",
+       "language": [
+            "English-Fluent",
+            "German-Uncomfortable",
+            "Spanish-native"
+        ],
+        "joinSince": "Aug 19, 2020",
+        "educationalLevel":"Masters Degree",
+        "education": [
+            {
+                "degree": "Masters in Computer Science ",
+                "institute": "Modern College",
+                "duration": "2012-2016",
+                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+            },
+            {
+                "degree": "Bachelor in Computer Science ",
+                "institute": "Harvard University",
+                "duration": "2017-2018",
+                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+            }
+        ],
+        "workExperience": [
+            {
+                "position": "Product Designer",
+                "company": "Spotify Inc.",
+                "duration": "2019-2021",
+                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+            },
+            {
+                "position": "Sr UX Engineer",
+                "company": "Dropbox Inc.",
+                "duration": "2011-2022",
+                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+            }
+        ],
+        "awards": [
+            {
+                "awardsFrom": "Perfect Attendance Programs",
+                "awardsAs": "Software Algorithm",
+                "time": "2011-2022",
+                "testimonial": "Proud recipient of the Software Algorithm Award, recognizing exceptional innovation and problem-solving in the realm of technology. This accolade celebrates my dedication to pushing boundaries, creating elegant solutions"
+            },
+            {
+                "awardsFrom": "Top Performer Recognition",
+                "awardsAs": "Web Application",
+                "time": "2011-2022",
+                "testimonial": "Recipient of the Software Algorithm Award, exemplifying my dedication to pioneering transformative technological solutions. This recognition underscores my commitment to innovation and problem-solving in the digital realm"
+            }
         ]
     },
     {
@@ -70,13 +291,68 @@
         "profession": "freelancer",
         "category": "HR Manager",
         "experience": "5yr(s)",
-        "about": "HR professional specializing in talent acquisition and employee relations.",
+        "about": "In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar.",
         "active": "online",
         "location": "Los Angeles, CA",
         "skills": [
             "Recruitment",
             "Employee",
             "HR Policies"
+        ],
+        "age": "23",
+        "workRate": "25",
+        "currentJob": "N/A",
+        "currentSalary": "N/A",
+        "expectedSalary": "20-22",
+        "gender": "female",
+       "language": [
+            "English-Fluent",
+            "German-Uncomfortable",
+            "Spanish-native"
+        ],
+        "joinSince": "Aug 19, 2020",
+        "educationalLevel":"Masters Degree",
+        "education": [
+            {
+                "degree": "Masters in Computer Science ",
+                "institute": "Modern College",
+                "duration": "2012-2016",
+                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+            },
+            {
+                "degree": "Bachelor in Computer Science ",
+                "institute": "Harvard University",
+                "duration": "2017-2018",
+                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+            }
+        ],
+        "workExperience": [
+            {
+                "position": "Product Designer",
+                "company": "Spotify Inc.",
+                "duration": "2019-2021",
+                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+            },
+            {
+                "position": "Sr UX Engineer",
+                "company": "Dropbox Inc.",
+                "duration": "2011-2022",
+                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+            }
+        ],
+        "awards": [
+            {
+                "awardsFrom": "Perfect Attendance Programs",
+                "awardsAs": "Software Algorithm",
+                "time": "2011-2022",
+                "testimonial": "Proud recipient of the Software Algorithm Award, recognizing exceptional innovation and problem-solving in the realm of technology. This accolade celebrates my dedication to pushing boundaries, creating elegant solutions"
+            },
+            {
+                "awardsFrom": "Top Performer Recognition",
+                "awardsAs": "Web Application",
+                "time": "2011-2022",
+                "testimonial": "Recipient of the Software Algorithm Award, exemplifying my dedication to pioneering transformative technological solutions. This recognition underscores my commitment to innovation and problem-solving in the digital realm"
+            }
         ]
     },
     {
@@ -86,13 +362,68 @@
         "profession": "freelancer",
         "category": "Sales Executive",
         "experience": "3yr(s)",
-        "about": "Experienced sales executive with a proven track record of driving growth.",
+        "about": "In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar.",
         "active": "online",
         "location": "London, UK",
         "skills": [
             "Sales Strategy",
             "Negotiation",
             "Relationship"
+        ],
+        "age": "23",
+        "workRate": "25",
+        "currentJob": "N/A",
+        "currentSalary": "N/A",
+        "expectedSalary": "20-22",
+        "gender": "male",
+       "language": [
+            "English-Fluent",
+            "German-Uncomfortable",
+            "Spanish-native"
+        ],
+        "joinSince": "Aug 19, 2020",
+        "educationalLevel": "Masters Degree",
+        "education": [
+            {
+                "degree": "Masters in Computer Science ",
+                "institute": "Modern College",
+                "duration": "2012-2016",
+                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+            },
+            {
+                "degree": "Bachelor in Computer Science ",
+                "institute": "Harvard University",
+                "duration": "2017-2018",
+                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+            }
+        ],
+        "workExperience": [
+            {
+                "position": "Product Designer",
+                "company": "Spotify Inc.",
+                "duration": "2019-2021",
+                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+            },
+            {
+                "position": "Sr UX Engineer",
+                "company": "Dropbox Inc.",
+                "duration": "2011-2022",
+                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+            }
+        ],
+        "awards": [
+            {
+                "awardsFrom": "Perfect Attendance Programs",
+                "awardsAs": "Software Algorithm",
+                "time": "2011-2022",
+                "testimonial": "Proud recipient of the Software Algorithm Award, recognizing exceptional innovation and problem-solving in the realm of technology. This accolade celebrates my dedication to pushing boundaries, creating elegant solutions"
+            },
+            {
+                "awardsFrom": "Top Performer Recognition",
+                "awardsAs": "Web Application",
+                "time": "2011-2022",
+                "testimonial": "Recipient of the Software Algorithm Award, exemplifying my dedication to pioneering transformative technological solutions. This recognition underscores my commitment to innovation and problem-solving in the digital realm"
+            }
         ]
     },
     {
@@ -102,13 +433,68 @@
         "profession": "freelancer",
         "category": "Frontend Developer",
         "experience": "3yr(s)",
-        "about": "Experienced sales executive with a proven track record of driving growth.",
+        "about": "In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar.",
         "active": "offline",
         "location": "New York, NY",
         "skills": [
             "React",
             "Javascript",
             "Node.js"
+        ],
+        "age": "23",
+        "workRate": "25",
+        "currentJob": "N/A",
+        "currentSalary": "N/A",
+        "expectedSalary": "20-22",
+        "gender": "male",
+       "language": [
+            "English-Fluent",
+            "German-Uncomfortable",
+            "Spanish-native"
+        ],
+        "joinSince": "Aug 19, 2020",
+        "educationalLevel": "Masters Degree",
+        "education": [
+            {
+                "degree": "Masters in Computer Science ",
+                "institute": "Modern College",
+                "duration": "2012-2016",
+                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+            },
+            {
+                "degree": "Bachelor in Computer Science ",
+                "institute": "Harvard University",
+                "duration": "2017-2018",
+                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+            }
+        ],
+        "workExperience": [
+            {
+                "position": "Product Designer",
+                "company": "Spotify Inc.",
+                "duration": "2019-2021",
+                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+            },
+            {
+                "position": "Sr UX Engineer",
+                "company": "Dropbox Inc.",
+                "duration": "2011-2022",
+                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+            }
+        ],
+        "awards": [
+            {
+                "awardsFrom": "Perfect Attendance Programs",
+                "awardsAs": "Software Algorithm",
+                "time": "2011-2022",
+                "testimonial": "Proud recipient of the Software Algorithm Award, recognizing exceptional innovation and problem-solving in the realm of technology. This accolade celebrates my dedication to pushing boundaries, creating elegant solutions"
+            },
+            {
+                "awardsFrom": "Top Performer Recognition",
+                "awardsAs": "Web Application",
+                "time": "2011-2022",
+                "testimonial": "Recipient of the Software Algorithm Award, exemplifying my dedication to pioneering transformative technological solutions. This recognition underscores my commitment to innovation and problem-solving in the digital realm"
+            }
         ]
     },
     {
@@ -118,13 +504,68 @@
         "profession": "freelancer",
         "category": "Marketing",
         "experience": "3yr(s)",
-        "about": "Experienced sales executive with a proven track record of driving growth.",
+        "about": "In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar.",
         "active": "online",
         "location": "San Francisco, CA",
         "skills": [
             "Seo",
             "Google",
             "Shopify"
+        ],
+        "age": "23",
+        "workRate": "25",
+        "currentJob": "N/A",
+        "currentSalary": "N/A",
+        "expectedSalary": "20-22",
+        "gender": "male",
+       "language": [
+            "English-Fluent",
+            "German-Uncomfortable",
+            "Spanish-native"
+        ],
+        "joinSince": "Aug 19, 2020",
+        "educationalLevel": "Masters Degree",
+        "education": [
+            {
+                "degree": "Masters in Computer Science ",
+                "institute": "Modern College",
+                "duration": "2012-2016",
+                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+            },
+            {
+                "degree": "Bachelor in Computer Science ",
+                "institute": "Harvard University",
+                "duration": "2017-2018",
+                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+            }
+        ],
+        "workExperience": [
+            {
+                "position": "Product Designer",
+                "company": "Spotify Inc.",
+                "duration": "2019-2021",
+                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+            },
+            {
+                "position": "Sr UX Engineer",
+                "company": "Dropbox Inc.",
+                "duration": "2011-2022",
+                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+            }
+        ],
+        "awards": [
+            {
+                "awardsFrom": "Perfect Attendance Programs",
+                "awardsAs": "Software Algorithm",
+                "time": "2011-2022",
+                "testimonial": "Proud recipient of the Software Algorithm Award, recognizing exceptional innovation and problem-solving in the realm of technology. This accolade celebrates my dedication to pushing boundaries, creating elegant solutions"
+            },
+            {
+                "awardsFrom": "Top Performer Recognition",
+                "awardsAs": "Web Application",
+                "time": "2011-2022",
+                "testimonial": "Recipient of the Software Algorithm Award, exemplifying my dedication to pioneering transformative technological solutions. This recognition underscores my commitment to innovation and problem-solving in the digital realm"
+            }
         ]
     }
 ]
