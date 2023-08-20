@@ -8,9 +8,9 @@ import useAuth from "../Hooks/useAuth";
 
 const NavItems = () => {
     const { user } = useAuth();
-    const role = 'user';
+    // const role = 'user';
     // const role = 'candidate';
-    // const role = 'recruiter';
+    const role = 'recruiter';
     return (
         <>
             <li>
