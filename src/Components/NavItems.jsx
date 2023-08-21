@@ -3,8 +3,8 @@ import ActiveLink from "./ActiveLink";
 
 // react icons
 import { PiUser } from 'react-icons/pi';
-import Profile from "./Profile";
 import useAuth from "../Hooks/useAuth";
+import Profile from "./Profile";
 
 const NavItems = () => {
     const { user } = useAuth();
