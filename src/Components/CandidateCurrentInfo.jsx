@@ -73,15 +73,6 @@ const CandidateCurrentInfo = ({ candidateDetails }) => {
                 </div>
                 <div className="flex items-center gap-4">
                     <span>
-                        <TbLanguageHiragana className="text-2xl" />
-                    </span>
-                    <div>
-                        <p className="text-lg opacity-90"> Language :</p>
-                        <p className="text-gray">{language}</p>
-                    </div>
-                </div>
-                <div className="flex items-center gap-4">
-                    <span>
                         <GoBook className="text-2xl" />
                     </span>
                     <div>
@@ -93,12 +84,12 @@ const CandidateCurrentInfo = ({ candidateDetails }) => {
             {/* Candidate Language Skill*/}
             <div className=" bg-slate-200 rounded-md  px-8 py-10">
                 <p className="text-2xl mb-3">Language</p>
-                <div className="flex flex-wrap items-center  gap-2  duration-300">
+                <div className=" duration-300">
                     {language.map((language, index) => (
-                        <li
+                        <p
                             key={index}
-                            className="  hover:bg-white text-purple px-2 py-[2px] shadow-lg shadow-purple/10 hover:shadow-dark/20 rounded-md cursor-pointer duration-300 capitalize"
-                        >{language}</li>
+                            className=" hover:bg-white text-purple px-2 py-[5px] shadow-lg shadow-purple/10 hover:shadow-dark/20 rounded-md cursor-pointer duration-300 capitalize"
+                        >{language}</p>
                     ))}
                 </div>
             </div>

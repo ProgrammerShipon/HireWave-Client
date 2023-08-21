@@ -1,571 +1,664 @@
 [
     {
-        "id": 1,
+        "_id": 1,
         "name": "Olivia Johnson",
         "images": "https://i.ibb.co/jDPFM9F/req-1.jpg",
-        "profession": "freelancer",
         "category": "Frontend Developer",
-        "experience": "5yr(s)",
-        "about": "In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar.",
-        "active": "online",
-        "location": "San Francisco, CA",
+        "about": "Passionate software developer with a focus on web technologies.",
+        "status": "online",
+        "location": "Los Angeles, CA",
         "skills": [
             "JavaScript",
             "React",
             "Node.js"
         ],
-        "age": "23",
-        "workRate": "25",
-        "currentJob": "Programming Hero",
-        "currentSalary": "22500",
-        "expectedSalary": "20-22",
-        "gender": "male",
-        "language": [
-            "English-Fluent",
-            "German-Uncomfortable",
-            "Spanish-native"
+        "rating": 4.9,
+        "languages": [
+            {
+                "name": "english",
+                "level": "fluent"
+            },
+            {
+                "name": "German",
+                "level": "comfortable"
+            },
+            {
+                "name": "Bengali",
+                "level": "native"
+            }
         ],
-        "joinSince": "Aug 19, 2020",
-        "educationalLevel": "Masters Degree",
+        "recentReview": [
+            {
+                "recruiter": "Tanvir Alam",
+                "rating": 5.0,
+                "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
+                "date": "Aug 15, 2021"
+            },
+            {
+                "recruiter": "Siam Hossain",
+                "rating": 4.9,
+                "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
+                "date": "June 15, 2020"
+            }
+        ],
+        "hourlyRate": 15,
+        "recommendations": 1,
+        "salaryRange": "100-300",
         "education": [
             {
-                "degree": "Masters in Computer Science ",
-                "institute": "Modern College",
-                "duration": "2012-2016",
-                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
-                
+                "institute": "Dhaka University",
+                "subject": "Bachelor in Computer Science",
+                "startDate": "June 23, 2020",
+                "currentStudying": true
             },
             {
-                "degree": "Bachelor in Computer Science ",
                 "institute": "Harvard University",
-                "duration": "2017-2018",
-                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+                "subject": "Masters in Computer Science ",
+                "startDate": "June 23, 2020",
+                "endDate": "Sep 02, 2021",
+                "currentStudying": false
             }
         ],
-        "workExperience": [
+        "experience": [
             {
-                "position": "Product Designer",
-                "company": "Spotify Inc.",
-                "duration": "2019-2021",
-                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQHrtYNljdjm9w/company-logo_100_100/0/1670441499328?e=1700092800&v=beta&t=0KzCPxcN0RYlHpKQkPgTEkoDLQWPpDXoUCBJc1V2Llk",
+                "companyName": "Adroit",
+                "position": "Front end Developer",
+                "jobType": "part time",
+                "location": "dhaka, Bangladesh",
+                "startDate": "June 23, 2020",
+                "currentWorking": true
             },
             {
-                "position": "Sr UX Engineer",
-                "company": "Dropbox Inc.",
-                "duration": "2011-2022",
-                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+                "logo": "https://media.licdn.com/dms/image/C4E0BAQEON_wWCCtPmA/company-logo_100_100/0/1629838391794?e=1700092800&v=beta&t=FqvUWhOvsmmKhANQW69W6fT-KzWh-E_b4mtWUeDTZkM",
+                "companyName": "Extend IT",
+                "position": "Front end Developer",
+                "jobType": "part time",
+                "location": "dhaka, Bangladesh",
+                "startDate": "June 23, 2020",
+                "endDate": "Apr 23, 2022",
+                "currentWorking": false
             }
         ],
-        "awards": [
-            {
-                "awardsFrom": "Perfect Attendance Programs",
-                "awardsAs": "Software Algorithm",
-                "time": "2011-2022",
-                "testimonial": "Proud recipient of the Software Algorithm Award, recognizing exceptional innovation and problem-solving in the realm of technology. This accolade celebrates my dedication to pushing boundaries, creating elegant solutions"
-            },
-            {
-                "awardsFrom": "Top Performer Recognition",
-                "awardsAs": "Web Application",
-                "time": "2011-2022",
-                "testimonial": "Recipient of the Software Algorithm Award, exemplifying my dedication to pioneering transformative technological solutions. This recognition underscores my commitment to innovation and problem-solving in the digital realm"
-            }
-        ]
+        "joinDate": "Aug 19, 2020"
     },
     {
-        "id": 2,
+        "_id": 2,
         "name": "Liam Smith",
         "images": "https://i.ibb.co/41bpfKJ/req-2.jpg",
-        "profession": "freelancer",
-        "category": "Backend Developer",
-        "experience": "7yr(s)",
-        "about": "In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar.",
-        "active": "online",
+        "category": "Data Scientist",
+        "about": "Enthusiastic mobile app developer specializing in Android development.",
+        "status": "online",
         "location": "San Francisco, CA",
         "skills": [
-            "Java",
-            "Kotlin",
-            "Firebase"
-        ],
-        "age": "23",
-        "workRate": "85",
-        "currentJob": "N/A",
-        "currentSalary": "N/A",
-        "expectedSalary": "20-22",
-        "gender": "male",
-        "language": [
-            "English-Fluent",
-            "German-Uncomfortable",
-            "Spanish-native"
-        ],
-        "joinSince": "Aug 19, 2020",
-        "educationalLevel": "Masters Degree",
-        "education": [
-            {
-                "degree": "Masters in Computer Science ",
-                "institute": "Modern College",
-                "duration": "2012-2016",
-                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
-            },
-            {
-                "degree": "Bachelor in Computer Science ",
-                "institute": "Harvard University",
-                "duration": "2017-2018",
-                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
-            }
-        ],
-        "workExperience": [
-            {
-                "position": "Product Designer",
-                "company": "Spotify Inc.",
-                "duration": "2019-2021",
-                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
-            },
-            {
-                "position": "Sr UX Engineer",
-                "company": "Dropbox Inc.",
-                "duration": "2011-2022",
-                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
-            }
-        ],
-        "awards": [
-            {
-                "awardsFrom": "Perfect Attendance Programs",
-                "awardsAs": "Software Algorithm",
-                "time": "2011-2022",
-                "testimonial": "Proud recipient of the Software Algorithm Award, recognizing exceptional innovation and problem-solving in the realm of technology. This accolade celebrates my dedication to pushing boundaries, creating elegant solutions"
-            },
-            {
-                "awardsFrom": "Top Performer Recognition",
-                "awardsAs": "Web Application",
-                "time": "2011-2022",
-                "testimonial": "Recipient of the Software Algorithm Award, exemplifying my dedication to pioneering transformative technological solutions. This recognition underscores my commitment to innovation and problem-solving in the digital realm"
-            }
-        ]
-    },
-    {
-        "id": 3,
-        "name": "Sophia Williams",
-        "images": "https://digity.netlify.app/assets/images/team/1.png",
-        "profession": "freelancer",
-        "category": "Data Scientist",
-        "experience": "8yr(s)",
-        "about": " In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar.",
-        "active": "online",
-        "location": "Los Angeles, CA",
-        "skills": [
             "Python",
+            "Scala",
             "Machine Learning",
             "Data Analysis"
         ],
-        "age": "23",
-        "workRate": "25",
-        "currentJob": "N/A",
-        "currentSalary": "N/A",
-        "expectedSalary": "20-22",
-        "gender": "male",
-       "language": [
-            "English-Fluent",
-            "German-Uncomfortable",
-            "Spanish-native"
+        "rating": 4.7,
+        "languages": [
+            {
+                "name": "english",
+                "level": "fluent"
+            },
+            {
+                "name": "German",
+                "level": "comfortable"
+            },
+            {
+                "name": "Bengali",
+                "level": "native"
+            }
         ],
-        "joinSince": "Aug 19, 2020",
-        "educationalLevel": "Masters Degree",
+        "recentReview": [
+            {
+                "recruiter": "Thomas lio",
+                "rating": 5.0,
+                "review": "Robert's leadership and ability to motivate his team have led to remarkable outcomes. His dedication to collaboration is truly inspiring.",
+                "date": "Aug 15, 2021"
+            },
+            {
+                "recruiter": "Aksam Ali",
+                "rating": 4.9,
+                "review": "Emily's creative solutions have turned challenges into opportunities. Her contributions have elevated our projects to new heights",
+                "date": "June 15, 2020"
+            }
+        ],
+        "hourlyRate": 35,
+        "recommendations": 3,
+        "salaryRange": "200-500",
         "education": [
             {
-                "degree": "Masters in Computer Science ",
-                "institute": "Modern College",
-                "duration": "2012-2016",
-                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+                "institute": "Modern College,London",
+                "subject": "Bachelor in Mathematics",
+                "startDate": "June 23, 2020",
+                "currentStudying": false
             },
             {
-                "degree": "Bachelor in Computer Science ",
-                "institute": "Harvard University",
-                "duration": "2017-2018",
-                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+                "institute": "Peking University",
+                "subject": "Masters in Data Analysis",
+                "startDate": "June 23, 2020",
+                "endDate": "Sep 02, 2021",
+                "currentStudying": true
             }
         ],
-        "workExperience": [
+        "experience": [
             {
-                "position": "Product Designer",
-                "company": "Spotify Inc.",
-                "duration": "2019-2021",
-                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+                "logo": "https://media.licdn.com/dms/image/D560BAQHurzRis9UPKQ/company-logo_100_100/0/1681965367146?e=1700092800&v=beta&t=fv93tJtrK5mfRoi8zbedUYxwyCta70YCaHdHn7Hfyvc",
+                "companyName": "Charlie",
+                "position": "Data Scientist",
+                "jobType": "part time",
+                "location": "dhaka, Bangladesh",
+                "startDate": "June 23, 2020",
+                "currentWorking": true
             },
             {
-                "position": "Sr UX Engineer",
-                "company": "Dropbox Inc.",
-                "duration": "2011-2022",
-                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+                "logo": "https://media.licdn.com/dms/image/D560BAQFdTqUuVnvvSQ/company-logo_100_100/0/1681952885576?e=1700092800&v=beta&t=o5dObE1iakR5ps7UcktDHWa5wDC8L-W2eapQuNpwiSM",
+                "companyName": "Fletch",
+                "position": "Data Scientist",
+                "jobType": "full time",
+                "location": "dhaka, Bangladesh",
+                "startDate": "June 23, 2017",
+                "endDate": "Apr 23, 2019",
+                "currentWorking": false
             }
         ],
-        "awards": [
-            {
-                "awardsFrom": "Perfect Attendance Programs",
-                "awardsAs": "Software Algorithm",
-                "time": "2011-2022",
-                "testimonial": "Proud recipient of the Software Algorithm Award, recognizing exceptional innovation and problem-solving in the realm of technology. This accolade celebrates my dedication to pushing boundaries, creating elegant solutions"
-            },
-            {
-                "awardsFrom": "Top Performer Recognition",
-                "awardsAs": "Web Application",
-                "time": "2011-2022",
-                "testimonial": "Recipient of the Software Algorithm Award, exemplifying my dedication to pioneering transformative technological solutions. This recognition underscores my commitment to innovation and problem-solving in the digital realm"
-            }
-        ]
+        "joinDate": "Aug 19, 2020"
     },
     {
-        "id": 4,
+        "_id": 3,
+        "name": "Sophia Williams",
+        "images": "https://digity.netlify.app/assets/images/team/1.png",
+        "category": "Backend Developer",
+        "about": "DI am a Backend Developer dedicated to creating the engine that powers seamless digital experiences. Proficient in designing, implementing, and maintaining server-side logic, databases, and APIs, I bring life to the behind-the-scenes magic of web applications.",
+        "status": "online",
+        "location": "Los Angeles, CA",
+        "skills": [
+            "Python",
+            "Java",
+            "Ruby",
+            "Node.js (JavaScript)"
+        ],
+        "rating": 4.3,
+        "languages": [
+            {
+                "name": "english",
+                "level": "fluent"
+            },
+            {
+                "name": "German",
+                "level": "comfortable"
+            },
+            {
+                "name": "Bengali",
+                "level": "native"
+            }
+        ],
+        "recentReview": [
+            {
+                "recruiter": "Tim Cook",
+                "rating": 5.0,
+                "review": "David's relentless pursuit of excellence has had a transformative impact. His dedication to improvement has set a remarkable standard.",
+                "date": "Aug 15, 2021"
+            },
+            {
+                "recruiter": "Satya Nadella",
+                "rating": 4.9,
+                "review": "Sarah's exceptional problem-solving skills have saved us time and resources. Her quick thinking and adaptability are truly commendable.",
+                "date": "June 15, 2020"
+            }
+        ],
+        "hourlyRate": 20,
+        "recommendations": 3,
+        "salaryRange": "200-500",
+        "education": [
+            {
+                "institute": "Tsinghua University",
+                "subject": "Masters in Electrical and Electronics Eng.",
+                "startDate": "June 23, 2021",
+                "currentStudying": true
+            },
+            {
+                "institute": "Fudan University",
+                "subject": "Bachelor in Electrical",
+                "startDate": "June 23, 2016",
+                "endDate": "Sep 02, 2020",
+                "currentStudying": false
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://media.licdn.com/dms/image/D560BAQH2h7L7udwh2g/company-logo_100_100/0/1689867433365?e=1700092800&v=beta&t=lFkjo-ecCKzCajkxlZjM1SOzMHKLnBrSeUXZD2gErhw",
+                "companyName": "Patreon",
+                "position": "Backend Developer",
+                "jobType": "part time",
+                "location": "dhaka, Bangladesh",
+                "startDate": "June 23, 2020",
+                "currentWorking": true
+            },
+            {
+                "logo": "https://media.licdn.com/dms/image/C560BAQFHEC-DJzR0Gg/company-logo_100_100/0/1663442902561?e=1700092800&v=beta&t=VUNfHrYIXCLxwi3D15wymPsQfvBly73INvLAsOIPwlA",
+                "companyName": "Numeric",
+                "position": "Backend Developer",
+                "jobType": "part time",
+                "location": "Pabna, Bangladesh",
+                "startDate": "June 23, 2020",
+                "endDate": "Apr 23, 2022",
+                "currentWorking": false
+            }
+        ],
+        "joinDate": "Aug 19, 2021"
+    },
+    {
+        "_id": 4,
         "name": "Noah Brown",
         "images": "https://i.ibb.co/nbjYRxQ/req-5.jpg",
-        "profession": "freelancer",
         "category": "UX Designer",
-        "experience": "+10yr(s)",
-        "about": " In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar.",
-        "active": "offline",
+        "about": "Creative UX designer passionate about creating user-centered experiences.",
+        "status": "offline",
         "location": "London, UK",
         "skills": [
             "User Research",
-            "Wireframing",
-            "UI/UX"
+            "Information Architecture",
+            "Prototyping"
         ],
-        "age": "23",
-        "workRate": "25",
-        "currentJob": "N/A",
-        "currentSalary": "N/A",
-        "expectedSalary": "20-22",
-        "gender": "male",
-       "language": [
-            "English-Fluent",
-            "German-Uncomfortable",
-            "Spanish-native"
+        "rating": 4.5,
+        "languages": [
+            {
+                "name": "english",
+                "level": "fluent"
+            },
+            {
+                "name": "German",
+                "level": "comfortable"
+            },
+            {
+                "name": "Bengali",
+                "level": "native"
+            }
         ],
-        "joinSince": "Aug 19, 2020",
-        "educationalLevel":"Masters Degree",
+        "recentReview": [
+            {
+                "recruiter": "Chuck Robbins ",
+                "rating": 5.0,
+                "review": "Michael's consistency and reliability have fostered a positive work environment. His professionalism and positive attitude are contagious.",
+                "date": "Aug 15, 2022"
+            },
+            {
+                "recruiter": "Shantanu Narayen",
+                "rating": 4.9,
+                "review": "Jessica's ability to handle multiple tasks seamlessly is truly impressive. Her efficiency and organization have been crucial to our success.",
+                "date": "June 15, 2020"
+            }
+        ],
+        "hourlyRate": 15,
+        "recommendations": 1,
+        "salaryRange": "200-500",
         "education": [
             {
-                "degree": "Masters in Computer Science ",
-                "institute": "Modern College",
-                "duration": "2012-2016",
-                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+                "institute": "Zhejiang Collage",
+                "subject": "HSC, Economic",
+                "startDate": "June 23, 2022",
+                "currentStudying": true
             },
             {
-                "degree": "Bachelor in Computer Science ",
-                "institute": "Harvard University",
-                "duration": "2017-2018",
-                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+                "institute": "Bangabandhu Govt. School and College",
+                "subject": "SSC, Science",
+                "startDate": "June 23, 2020",
+                "endDate": "Sep 02, 2021",
+                "currentStudying": false
             }
         ],
-        "workExperience": [
+        "experience": [
             {
-                "position": "Product Designer",
-                "company": "Spotify Inc.",
-                "duration": "2019-2021",
-                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+                "logo": "https://media.licdn.com/dms/image/C560BAQEY0aYzJXnsAQ/company-logo_100_100/0/1652112258427?e=1700092800&v=beta&t=X43Uw6Jp9qbGCkAGOGqxdIcsRZFMRz2fZXIgDSbx770",
+                "companyName": "Avispa IT",
+                "position": "UX Designer",
+                "jobType": "part time",
+                "location": "dhaka, Bangladesh",
+                "startDate": "June 23, 2020",
+                "currentWorking": true
             },
             {
-                "position": "Sr UX Engineer",
-                "company": "Dropbox Inc.",
-                "duration": "2011-2022",
-                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+                "companyName": "Eleos IT",
+                "position": "UX Designer",
+                "jobType": "part time",
+                "location": "dhaka, Bangladesh",
+                "startDate": "June 23, 2020",
+                "endDate": "Apr 23, 2022",
+                "currentWorking": false
             }
         ],
-        "awards": [
-            {
-                "awardsFrom": "Perfect Attendance Programs",
-                "awardsAs": "Software Algorithm",
-                "time": "2011-2022",
-                "testimonial": "Proud recipient of the Software Algorithm Award, recognizing exceptional innovation and problem-solving in the realm of technology. This accolade celebrates my dedication to pushing boundaries, creating elegant solutions"
-            },
-            {
-                "awardsFrom": "Top Performer Recognition",
-                "awardsAs": "Web Application",
-                "time": "2011-2022",
-                "testimonial": "Recipient of the Software Algorithm Award, exemplifying my dedication to pioneering transformative technological solutions. This recognition underscores my commitment to innovation and problem-solving in the digital realm"
-            }
-        ]
+        "joinDate": "Aug 19, 2020"
     },
     {
-        "id": 5,
+        "_id": 5,
         "name": "Ava Miller",
         "images": "https://digity.netlify.app/assets/images/team/7.png",
-        "profession": "freelancer",
         "category": "HR Manager",
-        "experience": "5yr(s)",
-        "about": "In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar.",
-        "active": "online",
+        "about": "HR professional specializing in talent acquisition and employee relations.",
+        "status": "online",
         "location": "Los Angeles, CA",
         "skills": [
             "Recruitment",
             "Employee",
             "HR Policies"
         ],
-        "age": "23",
-        "workRate": "25",
-        "currentJob": "N/A",
-        "currentSalary": "N/A",
-        "expectedSalary": "20-22",
-        "gender": "female",
-       "language": [
-            "English-Fluent",
-            "German-Uncomfortable",
-            "Spanish-native"
+        "rating": 4.0,
+        "languages": [
+            {
+                "name": "english",
+                "level": "fluent"
+            },
+            {
+                "name": "German",
+                "level": "comfortable"
+            },
+            {
+                "name": "Bengali",
+                "level": "native"
+            }
         ],
-        "joinSince": "Aug 19, 2020",
-        "educationalLevel":"Masters Degree",
+        "recentReview": [
+            {
+                "recruiter": "Marc Beniof",
+                "rating": 5.0,
+                "review": "Thomas's continuous learning and proactive approach have helped us stay ahead in a rapidly evolving industry. His thirst for knowledge is remarkable",
+                "date": "Aug 15, 2017"
+            },
+            {
+                "recruiter": "Siam Hossain",
+                "rating": 4.9,
+                "review": "Thanks to Ava Miller's charismatic leadership style, our team's morale and productivity have soared, leading to remarkable achievements and record-breaking results",
+                "date": "June 15, 2020"
+            }
+        ],
+        "hourlyRate": 10,
+        "recommendations": 1,
+        "salaryRange": "100-150",
         "education": [
             {
-                "degree": "Masters in Computer Science ",
-                "institute": "Modern College",
-                "duration": "2012-2016",
-                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+                "institute": "Tongji University",
+                "subject": "Economic",
+                "startDate": "June 23, 2020",
+                "currentStudying": true
             },
             {
-                "degree": "Bachelor in Computer Science ",
-                "institute": "Harvard University",
-                "duration": "2017-2018",
-                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+                "institute": "Titumir  College",
+                "subject": "SSC, Arts",
+                "startDate": "June 23, 2020",
+                "endDate": "Sep 02, 2021",
+                "currentStudying": false
             }
         ],
-        "workExperience": [
+        "experience": [
             {
-                "position": "Product Designer",
-                "company": "Spotify Inc.",
-                "duration": "2019-2021",
-                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+                "logo": "https://media.licdn.com/dms/image/C4E0BAQHSdHOx66MCFw/company-logo_100_100/0/1669710167236?e=1700092800&v=beta&t=msqltyeBuQYmCGPky9bpzqqtxERz_tpZwXFcHwpuY2c",
+                "companyName": "Prothom Alo",
+                "position": "HR Manager",
+                "jobType": "full time",
+                "location": "dhaka, Bangladesh",
+                "startDate": "June 23, 2020",
+                "currentWorking": true
             },
             {
-                "position": "Sr UX Engineer",
-                "company": "Dropbox Inc.",
-                "duration": "2011-2022",
-                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+                "logo": "https://media.licdn.com/dms/image/D4D0BAQGXuMvXtEhsTg/company-logo_100_100/0/1689151685253?e=1700092800&v=beta&t=e7fwkQikGJ4liYdJmtp4GZgZlxkTd2J8bl5yV3MIpgI",
+                "companyName": "Doinik Potrika",
+                "position": "HR Manager",
+                "jobType": "full time",
+                "location": "dhaka, Bangladesh",
+                "startDate": "June 23, 2020",
+                "endDate": "Apr 23, 2022",
+                "currentWorking": false
             }
         ],
-        "awards": [
-            {
-                "awardsFrom": "Perfect Attendance Programs",
-                "awardsAs": "Software Algorithm",
-                "time": "2011-2022",
-                "testimonial": "Proud recipient of the Software Algorithm Award, recognizing exceptional innovation and problem-solving in the realm of technology. This accolade celebrates my dedication to pushing boundaries, creating elegant solutions"
-            },
-            {
-                "awardsFrom": "Top Performer Recognition",
-                "awardsAs": "Web Application",
-                "time": "2011-2022",
-                "testimonial": "Recipient of the Software Algorithm Award, exemplifying my dedication to pioneering transformative technological solutions. This recognition underscores my commitment to innovation and problem-solving in the digital realm"
-            }
-        ]
+        "joinDate": "Aug 19, 2020"
     },
     {
-        "id": 6,
+        "_id": 6,
         "name": "john doea",
         "images": "https://digity.netlify.app/assets/images/team/8.png",
-        "profession": "freelancer",
         "category": "Sales Executive",
-        "experience": "3yr(s)",
-        "about": "In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar.",
-        "active": "online",
+        "about": "Experienced sales executive with a proven track record of driving growth.",
+        "status": "online",
         "location": "London, UK",
         "skills": [
             "Sales Strategy",
             "Negotiation",
             "Relationship"
         ],
-        "age": "23",
-        "workRate": "25",
-        "currentJob": "N/A",
-        "currentSalary": "N/A",
-        "expectedSalary": "20-22",
-        "gender": "male",
-       "language": [
-            "English-Fluent",
-            "German-Uncomfortable",
-            "Spanish-native"
+        "rating": 3.9,
+        "languages": [
+            {
+                "name": "english",
+                "level": "fluent"
+            },
+            {
+                "name": "hindi",
+                "level": "comfortable"
+            },
+            {
+                "name": "Bengali",
+                "level": "native"
+            }
         ],
-        "joinSince": "Aug 19, 2020",
-        "educationalLevel": "Masters Degree",
+        "recentReview": [
+            {
+                "recruiter": "Thantesh",
+                "rating": 5.0,
+                "review": "Working with john doea has been an absolute game-changer for our business. Their unmatched dedication, profound market knowledge, and exceptional communication skills have consistently translated into outstanding results.",
+                "date": "Aug 15, 2021"
+            },
+            {
+                "recruiter": "Passuk Lomas",
+                "rating": 4.9,
+                "review": " john doea possesses an uncanny ability to understand the unique needs of our clients and tailor solutions that go above and beyond expectations. Their relentless work ethic, coupled with a genuine passion for serving customers, sets a standard of excellence that inspires the entire sales team.",
+                "date": "June 15, 2020"
+            }
+        ],
+        "hourlyRate": 5,
+        "recommendations": 2,
+        "salaryRange": "50-100",
         "education": [
             {
-                "degree": "Masters in Computer Science ",
-                "institute": "Modern College",
-                "duration": "2012-2016",
-                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+                "institute": "Shaheed Bulbul Govt. College",
+                "subject": "HSC, Economic",
+                "startDate": "June 23, 2020",
+                "currentStudying": true
             },
             {
-                "degree": "Bachelor in Computer Science ",
-                "institute": "Harvard University",
-                "duration": "2017-2018",
-                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+                "institute": "Pabna Zilla School",
+                "subject": "SSC, Science",
+                "startDate": "June 23, 2020",
+                "endDate": "Sep 02, 2021",
+                "currentStudying": false
             }
         ],
-        "workExperience": [
+        "experience": [
             {
-                "position": "Product Designer",
-                "company": "Spotify Inc.",
-                "duration": "2019-2021",
-                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+                "logo": "https://media.licdn.com/dms/image/C560BAQHXCmnygAOyPQ/company-logo_100_100/0/1672611214226?e=1700092800&v=beta&t=XqhkuqMvq3A6iQGOF2e97oN_FB0XM-gtmPHoBoC-TF0",
+                "companyName": "SM Molas",
+                "position": "Sales Executive",
+                "jobType": "full time",
+                "location": "dhaka, Bangladesh",
+                "startDate": "June 23, 2020",
+                "currentWorking": true
             },
             {
-                "position": "Sr UX Engineer",
-                "company": "Dropbox Inc.",
-                "duration": "2011-2022",
-                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEXQfDNMAE2OA/company-logo_100_100/0/1670553576447?e=1700092800&v=beta&t=__HYtgX244p1k6tUSneolBcMR3OBJB-UuXRN8Y15X0U",
+                "companyName": "Mindpal",
+                "position": "Sales Executive",
+                "jobType": "full time",
+                "location": "dhaka, Bangladesh",
+                "startDate": "June 23, 2020",
+                "endDate": "Apr 23, 2022",
+                "currentWorking": false
             }
         ],
-        "awards": [
-            {
-                "awardsFrom": "Perfect Attendance Programs",
-                "awardsAs": "Software Algorithm",
-                "time": "2011-2022",
-                "testimonial": "Proud recipient of the Software Algorithm Award, recognizing exceptional innovation and problem-solving in the realm of technology. This accolade celebrates my dedication to pushing boundaries, creating elegant solutions"
-            },
-            {
-                "awardsFrom": "Top Performer Recognition",
-                "awardsAs": "Web Application",
-                "time": "2011-2022",
-                "testimonial": "Recipient of the Software Algorithm Award, exemplifying my dedication to pioneering transformative technological solutions. This recognition underscores my commitment to innovation and problem-solving in the digital realm"
-            }
-        ]
+        "joinDate": "Aug 19, 2020"
     },
     {
-        "id": 7,
+        "_id": 7,
         "name": "Shaw Johnson",
         "images": "https://digity.netlify.app/assets/images/team/4.png",
-        "profession": "freelancer",
         "category": "Frontend Developer",
-        "experience": "3yr(s)",
-        "about": "In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar.",
-        "active": "offline",
+        "about": "Experienced sales executive with a proven track record of driving growth.",
+        "status": "offline",
         "location": "New York, NY",
         "skills": [
             "React",
             "Javascript",
             "Node.js"
         ],
-        "age": "23",
-        "workRate": "25",
-        "currentJob": "N/A",
-        "currentSalary": "N/A",
-        "expectedSalary": "20-22",
-        "gender": "male",
-       "language": [
-            "English-Fluent",
-            "German-Uncomfortable",
-            "Spanish-native"
+        "rating": 4.4,
+        "languages": [
+            {
+                "name": "english",
+                "level": "fluent"
+            },
+            {
+                "name": "hindi",
+                "level": "comfortable"
+            },
+            {
+                "name": "Bengali",
+                "level": "native"
+            }
         ],
-        "joinSince": "Aug 19, 2020",
-        "educationalLevel": "Masters Degree",
+        "recentReview": [
+            {
+                "recruiter": "Atlan",
+                "rating": 5.0,
+                "review": " Shaw Johnson has a unique ability to transform complex ideas into intuitive and visually stunning user interfaces. Their attention to detail, combined with an innate sense of user experience",
+                "date": "Aug 15, 2021"
+            },
+            {
+                "recruiter": " Hossain",
+                "rating": 4.9,
+                "review": "What truly sets Shaw Johnson apart is their proactive approach to problem-solving and their dedication to staying current with the latest industry trends. ",
+                "date": "June 15, 2020"
+            }
+        ],
+        "hourlyRate": 15,
+        "recommendations": 1,
+        "salaryRange": "200-500",
         "education": [
             {
-                "degree": "Masters in Computer Science ",
-                "institute": "Modern College",
-                "duration": "2012-2016",
-                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+                "institute": "Rajshahi University",
+                "subject": "Masters in Computer Science ",
+                "startDate": "June 23, 2022",
+                "currentStudying": true
             },
             {
-                "degree": "Bachelor in Computer Science ",
-                "institute": "Harvard University",
-                "duration": "2017-2018",
-                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+                "institute": "Rajshahi University",
+                "subject": "Bachelor in Data Information ",
+                "startDate": "June 23, 2017",
+                "endDate": "Sep 02, 2021",
+                "currentStudying": false
             }
         ],
-        "workExperience": [
+        "experience": [
             {
-                "position": "Product Designer",
-                "company": "Spotify Inc.",
-                "duration": "2019-2021",
-                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+                "logo": "https://media.licdn.com/dms/image/C560BAQGkgVuykicFDg/company-logo_100_100/0/1630459002808?e=1700092800&v=beta&t=QgLMRxyzhxFOXI_IJuOfzoRUx7c4MIGnn8zSZk7iFHs",
+                "companyName": "AppLab",
+                "position": "Front end Developer",
+                "jobType": "full time",
+                "location": "dhaka, Bangladesh",
+                "startDate": "June 23, 2020",
+                "currentWorking": true
             },
             {
-                "position": "Sr UX Engineer",
-                "company": "Dropbox Inc.",
-                "duration": "2011-2022",
-                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+                "logo": "https://media.licdn.com/dms/image/D4D0BAQEQn1pDkyWBxA/company-logo_100_100/0/1689455917226?e=1700092800&v=beta&t=YeBXa66KQDcSic2rDzfPPonoQXaW7ZjwpjqCB89iots",
+                "companyName": "Yassir Limited ",
+                "position": "Front end Developer",
+                "jobType": "part time",
+                "location": "dhaka, Bangladesh",
+                "startDate": "June 23, 2020",
+                "endDate": "Apr 23, 2022",
+                "currentWorking": false
             }
         ],
-        "awards": [
-            {
-                "awardsFrom": "Perfect Attendance Programs",
-                "awardsAs": "Software Algorithm",
-                "time": "2011-2022",
-                "testimonial": "Proud recipient of the Software Algorithm Award, recognizing exceptional innovation and problem-solving in the realm of technology. This accolade celebrates my dedication to pushing boundaries, creating elegant solutions"
-            },
-            {
-                "awardsFrom": "Top Performer Recognition",
-                "awardsAs": "Web Application",
-                "time": "2011-2022",
-                "testimonial": "Recipient of the Software Algorithm Award, exemplifying my dedication to pioneering transformative technological solutions. This recognition underscores my commitment to innovation and problem-solving in the digital realm"
-            }
-        ]
+        "joinDate": "Aug 19, 2020"
     },
     {
-        "id": 8,
+        "_id": 8,
         "name": "Thomas Zavala",
         "images": "https://digity.netlify.app/assets/images/team/6.png",
-        "profession": "freelancer",
         "category": "Marketing",
-        "experience": "3yr(s)",
-        "about": "In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. Mauris nec erat ut libero vulputate pulvinar.",
-        "active": "online",
+        "about": "Experienced sales executive with a proven track record of driving growth.",
+        "status": "online",
         "location": "San Francisco, CA",
         "skills": [
             "Seo",
             "Google",
             "Shopify"
         ],
-        "age": "23",
-        "workRate": "25",
-        "currentJob": "N/A",
-        "currentSalary": "N/A",
-        "expectedSalary": "20-22",
-        "gender": "male",
-       "language": [
-            "English-Fluent",
-            "German-Uncomfortable",
-            "Spanish-native"
+        "rating": 4.2,
+        "languages": [
+            {
+                "name": "english",
+                "level": "fluent"
+            },
+            {
+                "name": "Bengali",
+                "level": "native"
+            }
         ],
-        "joinSince": "Aug 19, 2020",
-        "educationalLevel": "Masters Degree",
+        "recentReview": [
+            {
+                "recruiter": "Almar",
+                "rating": 5.0,
+                "review": " Thomas Zavala has been an invaluable asset to our company's growth and brand positioning. Their strategic thinking, combined with a deep understanding of consumer behavior, has led to impactful marketing campaigns that consistently exceed our goals",
+                "date": "Aug 15, 2021"
+            },
+            {
+                "recruiter": "Siossain",
+                "rating": 4.9,
+                "review": "is a true visionary, always able to identify unique angles that set our brand apart in a crowded marketplace. ",
+                "date": "June 15, 2020"
+            }
+        ],
+        "hourlyRate": 18,
+        "recommendations": 2,
+        "salaryRange": "100-150",
         "education": [
             {
-                "degree": "Masters in Computer Science ",
-                "institute": "Modern College",
-                "duration": "2012-2016",
-                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+                "institute": "Jahangirnagar University",
+                "subject": "Dept. Marketing",
+                "startDate": "June 23, 2020",
+                "currentStudying": true
             },
             {
-                "degree": "Bachelor in Computer Science ",
-                "institute": "Harvard University",
-                "duration": "2017-2018",
-                "testimonial": "Discover self-expression like never before with our collage testimonial. Piece together memories, ideas, and emotions into a unique visual narrative that celebrates your journey."
+                "institute": "Rangpur Govt. College",
+                "subject": "SSC, Arts",
+                "startDate": "June 23, 2070",
+                "endDate": "Sep 02, 2019",
+                "currentStudying": false
             }
         ],
-        "workExperience": [
+        "experience": [
             {
-                "position": "Product Designer",
-                "company": "Spotify Inc.",
-                "duration": "2019-2021",
-                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQHrtYNljdjm9w/company-logo_100_100/0/1670441499328?e=1700092800&v=beta&t=0KzCPxcN0RYlHpKQkPgTEkoDLQWPpDXoUCBJc1V2Llk",
+                "companyName": "Amsek Group",
+                "position": "Marketing",
+                "jobType": "part time",
+                "location": "dhaka, Bangladesh",
+                "startDate": "June 23, 2020",
+                "currentWorking": true
             },
             {
-                "position": "Sr UX Engineer",
-                "company": "Dropbox Inc.",
-                "duration": "2011-2022",
-                "testimonial":"Joining this company was a game-changer for me. The dynamic work environment, supportive team, and opportunities for growth have transformed my career in unimaginable ways. Grateful to be part of such an inspiring workplace."
+                "logo": "https://media.licdn.com/dms/image/C560BAQFHEC-DJzR0Gg/company-logo_100_100/0/1663442902561?e=1700092800&v=beta&t=VUNfHrYIXCLxwi3D15wymPsQfvBly73INvLAsOIPwlA",
+                "companyName": "New Asha",
+                "position": "Marketing",
+                "jobType": "full time",
+                "location": "dhaka, Bangladesh",
+                "startDate": "June 23, 2020",
+                "endDate": "Apr 23, 2022",
+                "currentWorking": false
             }
         ],
-        "awards": [
-            {
-                "awardsFrom": "Perfect Attendance Programs",
-                "awardsAs": "Software Algorithm",
-                "time": "2011-2022",
-                "testimonial": "Proud recipient of the Software Algorithm Award, recognizing exceptional innovation and problem-solving in the realm of technology. This accolade celebrates my dedication to pushing boundaries, creating elegant solutions"
-            },
-            {
-                "awardsFrom": "Top Performer Recognition",
-                "awardsAs": "Web Application",
-                "time": "2011-2022",
-                "testimonial": "Recipient of the Software Algorithm Award, exemplifying my dedication to pioneering transformative technological solutions. This recognition underscores my commitment to innovation and problem-solving in the digital realm"
-            }
-        ]
+        "joinDate": "Aug 19, 2020"
     }
 ]
