@@ -35,7 +35,7 @@ const FindJobBody = ({ allJobsData }) => {
                         <label htmlFor="select">Sort by</label>
                         <select
                             id="select"
-                            className="border border-green rounded-md px-2 py-1 focus:outline-none cursor-pointer"
+                            className="border border-purple rounded-md px-2 py-1 focus:outline-none cursor-pointer"
                         >
                             <option>Newest</option>
                             <option>Oldest</option>
@@ -57,7 +57,7 @@ const FindJobBody = ({ allJobsData }) => {
             </div>
 
             {/* right content */}
-            <div className="lg:col-span-6 border border-green p-4 rounded-lg">
+            <div className="lg:col-span-6 border border-purple p-4 rounded-lg">
                 <div className="flex items-start justify-between">
                     <div>
                         <h1 className="text-2xl font-medium text-dark">{title}</h1>

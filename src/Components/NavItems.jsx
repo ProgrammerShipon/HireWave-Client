@@ -6,10 +6,12 @@ import { PiUser } from "react-icons/pi";
 import Profile from "./Profile";
 
 const NavItems = () => {
-  // const role = 'user';
-  //   const role = "candidate";
-  const role = "recruiter";
+  const role = "Candidates";
+  // const role = "recruiter";
+  // const role = "admin";
+
   const user = false;
+
   return (
     <>
       <li>
@@ -68,7 +70,7 @@ const NavItems = () => {
       ) : (
         <Link
           to="/login"
-          className="flex items-center gap-2 py-2 text-green font-medium"
+          className="flex items-center gap-2 py-2 font-medium text-green"
         >
           <PiUser />
           Login

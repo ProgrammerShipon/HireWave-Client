@@ -8,7 +8,7 @@ import { IoIosFlash } from "react-icons/io";
 const JobCard = ({ job, setJobDetails }) => {
     const { title, companyName, companyLogo, category, location, jobType, applied, salary, postedDate } = job;
     return (
-        <div className="sticky top-28 bg-white border border-green p-4 rounded-lg hover:shadow-4xl hover:shadow-green/20 duration-300 cursor-pointer"
+        <div className="sticky top-28 bg-white border border-purple p-4 rounded-lg hover:shadow-4xl hover:shadow-green/20 duration-300 cursor-pointer"
             onClick={() => setJobDetails(job)}
         >
             <div className="flex items-start justify-between">

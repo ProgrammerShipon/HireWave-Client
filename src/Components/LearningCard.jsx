@@ -1,20 +1,25 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
-export default function LearningCard({ learning }) {
-  return (
-    <div className="cursor-pointer mx-auto md:w-auto w-96 duration-300 bg-[#ffffff]">
-      <img
-        className="rounded-lg pb-1 h-60 object-cover"
-        src={learning.image}
-        alt="learning-images"
-      />
-      <span className="hover:underline text-blue-700 ">
-        {learning.category}
-      </span>
-      <h3 className="text-2xl hover:text-blue-700 py-1 text-slate-dark font-semibold">
-        {learning.title.slice(0, 50)}...
-      </h3>
-      <p className="text-slate-950 text-lg">{learning.about.slice(0, 90)}...</p>
-    </div>
-  );
-}
+const LearningCard = ({ learning }) => {
+    const { title, about, image, category, } = learning;
+    return (
+        <div className="p-3 rounded-lg hover:shadow-4xl hover:shadow-green/20 border border-transparent hover:border-green duration-300 group cursor-pointer">
+            <div className="h-[240px] rounded-lg overflow-hidden">
+                <img
+                    className="object-cover object-center"
+                    src={image}
+                    alt={title}
+                />
+            </div>
+            <Link to='/' className="text-purple duration-300 group-hover:underline">
+                {category}
+            </Link>
+            <h3 className="text-2xl text-dark font-semibold line-clamp-2 drop-shadow-xl">
+                {title}
+            </h3>
+            <p className="text-slate-950 text-lg line-clamp-3 mt-4">{about}</p>
+        </div>
+    );
+};
+
+export default LearningCard;
