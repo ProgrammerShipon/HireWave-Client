@@ -40,7 +40,7 @@ const Router = createBrowserRouter([
         element: <Candidates />,
       },
       {
-        path: "/candidate_details/:name",
+        path: "/candidate_details/:id",
         element: <CandidateDetails />,
       },
       {

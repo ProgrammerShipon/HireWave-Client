@@ -41,7 +41,7 @@ const CandidateCard = ({ candidate }) => {
                 <p className="text-gray text-sm flex items-center justify-center italic"><BiMap /> {location}</p>
 
                 <div className="flex flex-wrap items-center justify-center gap-2 mt-4 duration-300">
-                    {skills.map((skill, index) => (
+                    {skills.slice(0, 3).map((skill, index) => (
                         <p
                             key={index}
                             className="bg-purple/20 hover:bg-white text-purple px-2 py-[2px] shadow-lg shadow-purple/10 hover:shadow-dark/20 rounded-md cursor-pointer duration-300 capitalize"

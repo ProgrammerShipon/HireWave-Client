@@ -4,7 +4,7 @@
         "name": "Olivia Johnson",
         "images": "https://i.ibb.co/jDPFM9F/req-1.jpg",
         "category": "Frontend Developer",
-        "about": "Passionate software developer with a focus on web technologies.",
+        "about": "Hello there! My name is Alan Walker. I am a graphic designer, and I’m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!",
         "status": "online",
         "location": "Los Angeles, CA",
         "skills": [
@@ -30,12 +30,16 @@
         "recentReview": [
             {
                 "recruiter": "Tanvir Alam",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+                "location": "Los Angeles, CA",
                 "rating": 5.0,
                 "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
                 "date": "Aug 15, 2021"
             },
             {
                 "recruiter": "Siam Hossain",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+                "location": "Los Angeles, CA",
                 "rating": 4.9,
                 "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
                 "date": "June 15, 2020"
@@ -43,17 +47,17 @@
         ],
         "hourlyRate": 15,
         "recommendations": 1,
-        "salaryRange": "200-500",
+        "salaryRange": "100-300",
         "education": [
             {
-                "institute": "Bangabandhu Govt. College",
-                "subject": "HSC, Economic",
+                "institute": "Dhaka University",
+                "subject": "Bachelor in Computer Science",
                 "startDate": "June 23, 2020",
                 "currentStudying": true
             },
             {
-                "institute": "Bangabandhu Govt. College",
-                "subject": "SSC, Science",
+                "institute": "Harvard University",
+                "subject": "Masters in Computer Science",
                 "startDate": "June 23, 2020",
                 "endDate": "Sep 02, 2021",
                 "currentStudying": false
@@ -61,8 +65,8 @@
         ],
         "experience": [
             {
-                "logo": "https://media.licdn.com/dms/imag",
-                "companyName": "Shomeka IT",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQHrtYNljdjm9w/company-logo_100_100/0/1670441499328?e=1700092800&v=beta&t=0KzCPxcN0RYlHpKQkPgTEkoDLQWPpDXoUCBJc1V2Llk",
+                "companyName": "Adroit",
                 "position": "Front end Developer",
                 "jobType": "part time",
                 "location": "dhaka, Bangladesh",
@@ -70,8 +74,8 @@
                 "currentWorking": true
             },
             {
-                "logo": "https://media.licdn.com/dms/imag",
-                "companyName": "Shomeka IT",
+                "logo": "https://media.licdn.com/dms/image/C4E0BAQEON_wWCCtPmA/company-logo_100_100/0/1629838391794?e=1700092800&v=beta&t=FqvUWhOvsmmKhANQW69W6fT-KzWh-E_b4mtWUeDTZkM",
+                "companyName": "Extend IT",
                 "position": "Front end Developer",
                 "jobType": "part time",
                 "location": "dhaka, Bangladesh",
@@ -87,13 +91,14 @@
         "name": "Liam Smith",
         "images": "https://i.ibb.co/41bpfKJ/req-2.jpg",
         "category": "Data Scientist",
-        "about": "Enthusiastic mobile app developer specializing in Android development.",
+        "about": "Hello there! My name is Alan Walker. I am a graphic designer, and I’m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!",
         "status": "online",
         "location": "San Francisco, CA",
         "skills": [
-            "Java",
-            "Kotlin",
-            "Firebase"
+            "Python",
+            "Scala",
+            "Machine",
+            "Data Analysis"
         ],
         "rating": 4.7,
         "languages": [
@@ -112,54 +117,58 @@
         ],
         "recentReview": [
             {
-                "recruiter": "Tanvir Alam",
+                "recruiter": "Thomas lio",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+                "location": "Los Angeles, CA",
                 "rating": 5.0,
-                "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
+                "review": "Robert's leadership and ability to motivate his team have led to remarkable outcomes. His dedication to collaboration is truly inspiring.",
                 "date": "Aug 15, 2021"
             },
             {
-                "recruiter": "Siam Hossain",
+                "recruiter": "Aksam Ali",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+                "location": "Los Angeles, CA",
                 "rating": 4.9,
-                "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
+                "review": "Emily's creative solutions have turned challenges into opportunities. Her contributions have elevated our projects to new heights",
                 "date": "June 15, 2020"
             }
         ],
-        "hourlyRate": 15,
-        "recommendations": 1,
+        "hourlyRate": 35,
+        "recommendations": 3,
         "salaryRange": "200-500",
         "education": [
             {
-                "institute": "Bangabandhu Govt. College",
-                "subject": "HSC, Economic",
+                "institute": "Modern College,London",
+                "subject": "Bachelor in Mathematics",
                 "startDate": "June 23, 2020",
-                "currentStudying": true
+                "currentStudying": false
             },
             {
-                "institute": "Bangabandhu Govt. College",
-                "subject": "SSC, Science",
+                "institute": "Peking University",
+                "subject": "Masters in Data Analysis",
                 "startDate": "June 23, 2020",
                 "endDate": "Sep 02, 2021",
-                "currentStudying": false
+                "currentStudying": true
             }
         ],
         "experience": [
             {
-                "logo": "https://media.licdn.com/dms/imag",
-                "companyName": "Shomeka IT",
-                "position": "Front end Developer",
+                "logo": "https://media.licdn.com/dms/image/D560BAQHurzRis9UPKQ/company-logo_100_100/0/1681965367146?e=1700092800&v=beta&t=fv93tJtrK5mfRoi8zbedUYxwyCta70YCaHdHn7Hfyvc",
+                "companyName": "Charlie",
+                "position": "Data Scientist",
                 "jobType": "part time",
                 "location": "dhaka, Bangladesh",
                 "startDate": "June 23, 2020",
                 "currentWorking": true
             },
             {
-                "logo": "https://media.licdn.com/dms/imag",
-                "companyName": "Shomeka IT",
-                "position": "Front end Developer",
-                "jobType": "part time",
+                "logo": "https://media.licdn.com/dms/image/D560BAQFdTqUuVnvvSQ/company-logo_100_100/0/1681952885576?e=1700092800&v=beta&t=o5dObE1iakR5ps7UcktDHWa5wDC8L-W2eapQuNpwiSM",
+                "companyName": "Fletch",
+                "position": "Data Scientist",
+                "jobType": "full time",
                 "location": "dhaka, Bangladesh",
-                "startDate": "June 23, 2020",
-                "endDate": "Apr 23, 2022",
+                "startDate": "June 23, 2017",
+                "endDate": "Apr 23, 2019",
                 "currentWorking": false
             }
         ],
@@ -169,14 +178,15 @@
         "_id": 3,
         "name": "Sophia Williams",
         "images": "https://digity.netlify.app/assets/images/team/1.png",
-        "category": "Data Scientist",
-        "about": "Data scientist with a knack for extracting insights from complex.",
+        "category": "Backend Developer",
+        "about": "Hello there! My name is Alan Walker. I am a graphic designer, and I’m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!",
         "status": "online",
         "location": "Los Angeles, CA",
         "skills": [
             "Python",
-            "Machine Learning",
-            "Data Analysis"
+            "Java",
+            "Ruby",
+            "Node.js (JavaScript)"
         ],
         "rating": 4.3,
         "languages": [
@@ -195,71 +205,75 @@
         ],
         "recentReview": [
             {
-                "recruiter": "Tanvir Alam",
+                "recruiter": "Tim Cook",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+                "location": "Los Angeles, CA",
                 "rating": 5.0,
-                "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
+                "review": "David's relentless pursuit of excellence has had a transformative impact. His dedication to improvement has set a remarkable standard.",
                 "date": "Aug 15, 2021"
             },
             {
-                "recruiter": "Siam Hossain",
+                "recruiter": "Satya Nadella",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+                "location": "Los Angeles, CA",
                 "rating": 4.9,
-                "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
+                "review": "Sarah's exceptional problem-solving skills have saved us time and resources. Her quick thinking and adaptability are truly commendable.",
                 "date": "June 15, 2020"
             }
         ],
-        "hourlyRate": 15,
-        "recommendations": 1,
+        "hourlyRate": 20,
+        "recommendations": 3,
         "salaryRange": "200-500",
         "education": [
             {
-                "institute": "Bangabandhu Govt. College",
-                "subject": "HSC, Economic",
-                "startDate": "June 23, 2020",
+                "institute": "Tsinghua University",
+                "subject": "Masters in Electrical and Electronics Eng.",
+                "startDate": "June 23, 2021",
                 "currentStudying": true
             },
             {
-                "institute": "Bangabandhu Govt. College",
-                "subject": "SSC, Science",
-                "startDate": "June 23, 2020",
-                "endDate": "Sep 02, 2021",
+                "institute": "Fudan University",
+                "subject": "Bachelor in Electrical",
+                "startDate": "June 23, 2016",
+                "endDate": "Sep 02, 2020",
                 "currentStudying": false
             }
         ],
         "experience": [
             {
-                "logo": "https://media.licdn.com/dms/imag",
-                "companyName": "Shomeka IT",
-                "position": "Front end Developer",
+                "logo": "https://media.licdn.com/dms/image/D560BAQH2h7L7udwh2g/company-logo_100_100/0/1689867433365?e=1700092800&v=beta&t=lFkjo-ecCKzCajkxlZjM1SOzMHKLnBrSeUXZD2gErhw",
+                "companyName": "Patreon",
+                "position": "Backend Developer",
                 "jobType": "part time",
                 "location": "dhaka, Bangladesh",
                 "startDate": "June 23, 2020",
                 "currentWorking": true
             },
             {
-                "logo": "https://media.licdn.com/dms/imag",
-                "companyName": "Shomeka IT",
-                "position": "Front end Developer",
+                "logo": "https://media.licdn.com/dms/image/C560BAQFHEC-DJzR0Gg/company-logo_100_100/0/1663442902561?e=1700092800&v=beta&t=VUNfHrYIXCLxwi3D15wymPsQfvBly73INvLAsOIPwlA",
+                "companyName": "Numeric",
+                "position": "Backend Developer",
                 "jobType": "part time",
-                "location": "dhaka, Bangladesh",
+                "location": "Pabna, Bangladesh",
                 "startDate": "June 23, 2020",
                 "endDate": "Apr 23, 2022",
                 "currentWorking": false
             }
         ],
-        "joinDate": "Aug 19, 2020"
+        "joinDate": "Aug 19, 2021"
     },
     {
         "_id": 4,
         "name": "Noah Brown",
         "images": "https://i.ibb.co/nbjYRxQ/req-5.jpg",
         "category": "UX Designer",
-        "about": "Creative UX designer passionate about creating user-centered experiences.",
+        "about": "Hello there! My name is Alan Walker. I am a graphic designer, and I’m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!",
         "status": "offline",
         "location": "London, UK",
         "skills": [
-            "User Research",
-            "Wireframing",
-            "UI/UX"
+            "Research",
+            "Architecture",
+            "Prototyping"
         ],
         "rating": 4.5,
         "languages": [
@@ -278,15 +292,19 @@
         ],
         "recentReview": [
             {
-                "recruiter": "Tanvir Alam",
+                "recruiter": "Chuck Robbins ",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+                "location": "Los Angeles, CA",
                 "rating": 5.0,
-                "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
-                "date": "Aug 15, 2021"
+                "review": "Michael's consistency and reliability have fostered a positive work environment. His professionalism and positive attitude are contagious.",
+                "date": "Aug 15, 2022"
             },
             {
-                "recruiter": "Siam Hossain",
+                "recruiter": "Shantanu Narayen",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+                "location": "Los Angeles, CA",
                 "rating": 4.9,
-                "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
+                "review": "Jessica's ability to handle multiple tasks seamlessly is truly impressive. Her efficiency and organization have been crucial to our success.",
                 "date": "June 15, 2020"
             }
         ],
@@ -295,13 +313,13 @@
         "salaryRange": "200-500",
         "education": [
             {
-                "institute": "Bangabandhu Govt. College",
+                "institute": "Zhejiang Collage",
                 "subject": "HSC, Economic",
-                "startDate": "June 23, 2020",
+                "startDate": "June 23, 2022",
                 "currentStudying": true
             },
             {
-                "institute": "Bangabandhu Govt. College",
+                "institute": "Bangabandhu Govt. School and College",
                 "subject": "SSC, Science",
                 "startDate": "June 23, 2020",
                 "endDate": "Sep 02, 2021",
@@ -310,18 +328,18 @@
         ],
         "experience": [
             {
-                "logo": "https://media.licdn.com/dms/imag",
-                "companyName": "Shomeka IT",
-                "position": "Front end Developer",
+                "logo": "https://media.licdn.com/dms/image/C560BAQEY0aYzJXnsAQ/company-logo_100_100/0/1652112258427?e=1700092800&v=beta&t=X43Uw6Jp9qbGCkAGOGqxdIcsRZFMRz2fZXIgDSbx770",
+                "companyName": "Avispa IT",
+                "position": "UX Designer",
                 "jobType": "part time",
                 "location": "dhaka, Bangladesh",
                 "startDate": "June 23, 2020",
                 "currentWorking": true
             },
             {
-                "logo": "https://media.licdn.com/dms/imag",
-                "companyName": "Shomeka IT",
-                "position": "Front end Developer",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+                "companyName": "Eleos IT",
+                "position": "UX Designer",
                 "jobType": "part time",
                 "location": "dhaka, Bangladesh",
                 "startDate": "June 23, 2020",
@@ -336,7 +354,7 @@
         "name": "Ava Miller",
         "images": "https://digity.netlify.app/assets/images/team/7.png",
         "category": "HR Manager",
-        "about": "HR professional specializing in talent acquisition and employee relations.",
+        "about": "Hello there! My name is Alan Walker. I am a graphic designer, and I’m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!",
         "status": "online",
         "location": "Los Angeles, CA",
         "skills": [
@@ -361,31 +379,35 @@
         ],
         "recentReview": [
             {
-                "recruiter": "Tanvir Alam",
+                "recruiter": "Marc Beniof",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+                "location": "Los Angeles, CA",
                 "rating": 5.0,
-                "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
-                "date": "Aug 15, 2021"
+                "review": "Thomas's continuous learning and proactive approach have helped us stay ahead in a rapidly evolving industry. His thirst for knowledge is remarkable",
+                "date": "Aug 15, 2017"
             },
             {
                 "recruiter": "Siam Hossain",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+                "location": "Los Angeles, CA",
                 "rating": 4.9,
-                "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
+                "review": "Thanks to Ava Miller's charismatic leadership style, our team's morale and productivity have soared, leading to remarkable achievements and record-breaking results",
                 "date": "June 15, 2020"
             }
         ],
-        "hourlyRate": 15,
+        "hourlyRate": 10,
         "recommendations": 1,
-        "salaryRange": "200-500",
+        "salaryRange": "100-150",
         "education": [
             {
-                "institute": "Bangabandhu Govt. College",
-                "subject": "HSC, Economic",
+                "institute": "Tongji University",
+                "subject": "Economic",
                 "startDate": "June 23, 2020",
                 "currentStudying": true
             },
             {
-                "institute": "Bangabandhu Govt. College",
-                "subject": "SSC, Science",
+                "institute": "Titumir  College",
+                "subject": "SSC, Arts",
                 "startDate": "June 23, 2020",
                 "endDate": "Sep 02, 2021",
                 "currentStudying": false
@@ -393,19 +415,19 @@
         ],
         "experience": [
             {
-                "logo": "https://media.licdn.com/dms/imag",
-                "companyName": "Shomeka IT",
-                "position": "Front end Developer",
-                "jobType": "part time",
+                "logo": "https://media.licdn.com/dms/image/C4E0BAQHSdHOx66MCFw/company-logo_100_100/0/1669710167236?e=1700092800&v=beta&t=msqltyeBuQYmCGPky9bpzqqtxERz_tpZwXFcHwpuY2c",
+                "companyName": "Prothom Alo",
+                "position": "HR Manager",
+                "jobType": "full time",
                 "location": "dhaka, Bangladesh",
                 "startDate": "June 23, 2020",
                 "currentWorking": true
             },
             {
-                "logo": "https://media.licdn.com/dms/imag",
-                "companyName": "Shomeka IT",
-                "position": "Front end Developer",
-                "jobType": "part time",
+                "logo": "https://media.licdn.com/dms/image/D4D0BAQGXuMvXtEhsTg/company-logo_100_100/0/1689151685253?e=1700092800&v=beta&t=e7fwkQikGJ4liYdJmtp4GZgZlxkTd2J8bl5yV3MIpgI",
+                "companyName": "Doinik Potrika",
+                "position": "HR Manager",
+                "jobType": "full time",
                 "location": "dhaka, Bangladesh",
                 "startDate": "June 23, 2020",
                 "endDate": "Apr 23, 2022",
@@ -419,7 +441,7 @@
         "name": "john doea",
         "images": "https://digity.netlify.app/assets/images/team/8.png",
         "category": "Sales Executive",
-        "about": "Experienced sales executive with a proven track record of driving growth.",
+        "about": "Hello there! My name is Alan Walker. I am a graphic designer, and I’m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!",
         "status": "online",
         "location": "London, UK",
         "skills": [
@@ -434,7 +456,7 @@
                 "level": "fluent"
             },
             {
-                "name": "German",
+                "name": "hindi",
                 "level": "comfortable"
             },
             {
@@ -444,30 +466,34 @@
         ],
         "recentReview": [
             {
-                "recruiter": "Tanvir Alam",
+                "recruiter": "Thantesh",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+                "location": "Los Angeles, CA",
                 "rating": 5.0,
-                "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
+                "review": "Working with john doea has been an absolute game-changer for our business. Their unmatched dedication, profound market knowledge, and exceptional communication skills have consistently translated into outstanding results.",
                 "date": "Aug 15, 2021"
             },
             {
-                "recruiter": "Siam Hossain",
+                "recruiter": "Passuk Lomas",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+                "location": "Los Angeles, CA",
                 "rating": 4.9,
-                "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
+                "review": " john doea possesses an uncanny ability to understand the unique needs of our clients and tailor solutions that go above and beyond expectations. Their relentless work ethic, coupled with a genuine passion for serving customers, sets a standard of excellence that inspires the entire sales team.",
                 "date": "June 15, 2020"
             }
         ],
-        "hourlyRate": 15,
-        "recommendations": 1,
-        "salaryRange": "200-500",
+        "hourlyRate": 5,
+        "recommendations": 2,
+        "salaryRange": "50-100",
         "education": [
             {
-                "institute": "Bangabandhu Govt. College",
+                "institute": "Shaheed Bulbul Govt. College",
                 "subject": "HSC, Economic",
                 "startDate": "June 23, 2020",
                 "currentStudying": true
             },
             {
-                "institute": "Bangabandhu Govt. College",
+                "institute": "Pabna Zilla School",
                 "subject": "SSC, Science",
                 "startDate": "June 23, 2020",
                 "endDate": "Sep 02, 2021",
@@ -476,19 +502,19 @@
         ],
         "experience": [
             {
-                "logo": "https://media.licdn.com/dms/imag",
-                "companyName": "Shomeka IT",
-                "position": "Front end Developer",
-                "jobType": "part time",
+                "logo": "https://media.licdn.com/dms/image/C560BAQHXCmnygAOyPQ/company-logo_100_100/0/1672611214226?e=1700092800&v=beta&t=XqhkuqMvq3A6iQGOF2e97oN_FB0XM-gtmPHoBoC-TF0",
+                "companyName": "SM Molas",
+                "position": "Sales Executive",
+                "jobType": "full time",
                 "location": "dhaka, Bangladesh",
                 "startDate": "June 23, 2020",
                 "currentWorking": true
             },
             {
-                "logo": "https://media.licdn.com/dms/imag",
-                "companyName": "Shomeka IT",
-                "position": "Front end Developer",
-                "jobType": "part time",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEXQfDNMAE2OA/company-logo_100_100/0/1670553576447?e=1700092800&v=beta&t=__HYtgX244p1k6tUSneolBcMR3OBJB-UuXRN8Y15X0U",
+                "companyName": "Mindpal",
+                "position": "Sales Executive",
+                "jobType": "full time",
                 "location": "dhaka, Bangladesh",
                 "startDate": "June 23, 2020",
                 "endDate": "Apr 23, 2022",
@@ -502,7 +528,7 @@
         "name": "Shaw Johnson",
         "images": "https://digity.netlify.app/assets/images/team/4.png",
         "category": "Frontend Developer",
-        "about": "Experienced sales executive with a proven track record of driving growth.",
+        "about": "Hello there! My name is Alan Walker. I am a graphic designer, and I’m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!",
         "status": "offline",
         "location": "New York, NY",
         "skills": [
@@ -517,7 +543,7 @@
                 "level": "fluent"
             },
             {
-                "name": "German",
+                "name": "hindi",
                 "level": "comfortable"
             },
             {
@@ -527,15 +553,19 @@
         ],
         "recentReview": [
             {
-                "recruiter": "Tanvir Alam",
+                "recruiter": "Atlan",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+                "location": "Los Angeles, CA",
                 "rating": 5.0,
-                "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
+                "review": " Shaw Johnson has a unique ability to transform complex ideas into intuitive and visually stunning user interfaces. Their attention to detail, combined with an innate sense of user experience",
                 "date": "Aug 15, 2021"
             },
             {
-                "recruiter": "Siam Hossain",
+                "recruiter": " Hossain",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+                "location": "Los Angeles, CA",
                 "rating": 4.9,
-                "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
+                "review": "What truly sets Shaw Johnson apart is their proactive approach to problem-solving and their dedication to staying current with the latest industry trends. ",
                 "date": "June 15, 2020"
             }
         ],
@@ -544,32 +574,32 @@
         "salaryRange": "200-500",
         "education": [
             {
-                "institute": "Bangabandhu Govt. College",
-                "subject": "HSC, Economic",
-                "startDate": "June 23, 2020",
+                "institute": "Rajshahi University",
+                "subject": "Masters in Computer Science ",
+                "startDate": "June 23, 2022",
                 "currentStudying": true
             },
             {
-                "institute": "Bangabandhu Govt. College",
-                "subject": "SSC, Science",
-                "startDate": "June 23, 2020",
+                "institute": "Rajshahi University",
+                "subject": "Bachelor in Data Information ",
+                "startDate": "June 23, 2017",
                 "endDate": "Sep 02, 2021",
                 "currentStudying": false
             }
         ],
         "experience": [
             {
-                "logo": "https://media.licdn.com/dms/imag",
-                "companyName": "Shomeka IT",
+                "logo": "https://media.licdn.com/dms/image/C560BAQGkgVuykicFDg/company-logo_100_100/0/1630459002808?e=1700092800&v=beta&t=QgLMRxyzhxFOXI_IJuOfzoRUx7c4MIGnn8zSZk7iFHs",
+                "companyName": "AppLab",
                 "position": "Front end Developer",
-                "jobType": "part time",
+                "jobType": "full time",
                 "location": "dhaka, Bangladesh",
                 "startDate": "June 23, 2020",
                 "currentWorking": true
             },
             {
-                "logo": "https://media.licdn.com/dms/imag",
-                "companyName": "Shomeka IT",
+                "logo": "https://media.licdn.com/dms/image/D4D0BAQEQn1pDkyWBxA/company-logo_100_100/0/1689455917226?e=1700092800&v=beta&t=YeBXa66KQDcSic2rDzfPPonoQXaW7ZjwpjqCB89iots",
+                "companyName": "Yassir Limited ",
                 "position": "Front end Developer",
                 "jobType": "part time",
                 "location": "dhaka, Bangladesh",
@@ -585,7 +615,7 @@
         "name": "Thomas Zavala",
         "images": "https://digity.netlify.app/assets/images/team/6.png",
         "category": "Marketing",
-        "about": "Experienced sales executive with a proven track record of driving growth.",
+        "about": "Hello there! My name is Alan Walker. I am a graphic designer, and I’m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!",
         "status": "online",
         "location": "San Francisco, CA",
         "skills": [
@@ -600,61 +630,61 @@
                 "level": "fluent"
             },
             {
-                "name": "German",
-                "level": "comfortable"
-            },
-            {
                 "name": "Bengali",
                 "level": "native"
             }
         ],
         "recentReview": [
             {
-                "recruiter": "Tanvir Alam",
+                "recruiter": "Almar",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+                "location": "Los Angeles, CA",
                 "rating": 5.0,
-                "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
+                "review": " Thomas Zavala has been an invaluable asset to our company's growth and brand positioning. Their strategic thinking, combined with a deep understanding of consumer behavior, has led to impactful marketing campaigns that consistently exceed our goals",
                 "date": "Aug 15, 2021"
             },
             {
-                "recruiter": "Siam Hossain",
+                "recruiter": "Siossain",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+                "location": "Los Angeles, CA",
                 "rating": 4.9,
-                "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
+                "review": "is a true visionary, always able to identify unique angles that set our brand apart in a crowded marketplace. ",
                 "date": "June 15, 2020"
             }
         ],
-        "hourlyRate": 15,
-        "recommendations": 1,
-        "salaryRange": "200-500",
+        "hourlyRate": 18,
+        "recommendations": 2,
+        "salaryRange": "100-150",
         "education": [
             {
-                "institute": "Bangabandhu Govt. College",
-                "subject": "HSC, Economic",
+                "institute": "Jahangirnagar University",
+                "subject": "Dept. Marketing",
                 "startDate": "June 23, 2020",
                 "currentStudying": true
             },
             {
-                "institute": "Bangabandhu Govt. College",
-                "subject": "SSC, Science",
-                "startDate": "June 23, 2020",
-                "endDate": "Sep 02, 2021",
+                "institute": "Rangpur Govt. College",
+                "subject": "SSC, Arts",
+                "startDate": "June 23, 2070",
+                "endDate": "Sep 02, 2019",
                 "currentStudying": false
             }
         ],
         "experience": [
             {
-                "logo": "https://media.licdn.com/dms/imag",
-                "companyName": "Shomeka IT",
-                "position": "Front end Developer",
+                "logo": "https://media.licdn.com/dms/image/C4D0BAQHrtYNljdjm9w/company-logo_100_100/0/1670441499328?e=1700092800&v=beta&t=0KzCPxcN0RYlHpKQkPgTEkoDLQWPpDXoUCBJc1V2Llk",
+                "companyName": "Amsek Group",
+                "position": "Marketing",
                 "jobType": "part time",
                 "location": "dhaka, Bangladesh",
                 "startDate": "June 23, 2020",
                 "currentWorking": true
             },
             {
-                "logo": "https://media.licdn.com/dms/imag",
-                "companyName": "Shomeka IT",
-                "position": "Front end Developer",
-                "jobType": "part time",
+                "logo": "https://media.licdn.com/dms/image/C560BAQFHEC-DJzR0Gg/company-logo_100_100/0/1663442902561?e=1700092800&v=beta&t=VUNfHrYIXCLxwi3D15wymPsQfvBly73INvLAsOIPwlA",
+                "companyName": "New Asha",
+                "position": "Marketing",
+                "jobType": "full time",
                 "location": "dhaka, Bangladesh",
                 "startDate": "June 23, 2020",
                 "endDate": "Apr 23, 2022",
