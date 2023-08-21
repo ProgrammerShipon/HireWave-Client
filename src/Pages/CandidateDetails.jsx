@@ -15,7 +15,7 @@ const CandidateDetails = () => {
 
             <Breadcrumbs title="Candidates Details" />
 
-            {/* Candidate About */}
+            {/* sections */}
             <CandidateDetailsContent candidateDetails={candidateDetails} />
         </>
     );
