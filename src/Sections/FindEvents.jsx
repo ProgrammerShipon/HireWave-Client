@@ -4,7 +4,7 @@ import Button from '../Components/Button';
 
 const FindEvents = () => {
     const [eventData] = useEvents();
-    console.log(eventData[0])
+    // console.log(eventData[0])
 
     return (
         <section>
