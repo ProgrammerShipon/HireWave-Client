@@ -1,0 +1,62 @@
+[
+    {
+      "event_name": "Hiring Fair for Senior Developers (JS, Python and Mobile)",
+      "event_date": "September 25 - 26, 2023 • 9:00am - 10:00pm (GMT+6)",
+      "event_type": "Hiring Event",
+      "about": "Join us for the TechRecruit Virtual Summit, where industry experts and thought leaders will discuss the latest trends in tech hiring and talent acquisition.",
+      "location": "City Convention Center, New York",
+      "speakers": [
+        "John Smith",
+        "Jane Doe",
+        "Michael Johnson"
+      ],
+      "event_image": "https://i.ibb.co/p4D5sTc/090663d2-888b-4f17-ac4e-d20b91ff1b6f-2.jpg",
+      "reason_to_join": "Learn about innovative hiring strategies, network with fellow recruiters, and gain insights into attracting top tech talent.",
+      "years_of_experience_required": "7+",
+      "skills_required": [
+        "Javascript",
+        "Python",
+        "Mobile Development",
+        "Swift"
+      ],
+      "english_skill_required": "Upper-Intermediate"
+    },
+    {
+        "event_name": "Virtual career fair 2023",
+        "event_date": "October 21, 2023 • 9:00pm - 12:00am (GMT+6)",
+        "event_type": "Workshop",
+        "about": "The FutureWork Conference is a one-day event bringing together HR professionals, recruiters, and industry leaders to explore the future of work and its impact on hiring.",
+        "location": "Online",
+        "speakers": [
+          "Emily Williams",
+          "David Lee",
+          "Sarah Miller"
+        ],
+        "event_image": "https://i.ibb.co/fGB5z63/image-3.png",
+        "reason_to_join": "Discover strategies for adapting to changing workplace dynamics, hear success stories, and connect with fellow HR experts."
+    },
+    {
+        "event_name": "Digital technology: Tactics to Boost Career Opportunities",
+        "event_date": "November 14, 2023 • 9:00pm - 11:30am (GMT+6)",
+        "event_type": "Webinar",
+        "about": "The FutureWork Conference is a one-day event bringing together HR professionals, recruiters, and industry leaders to explore the future of work and its impact on hiring.",
+        "location": "Online",
+        "speakers": [
+          "Emily Williams",
+          "David Lee",
+          "Sarah Miller"
+        ],
+        "event_image": "https://i.ibb.co/k5qDnSf/image.png",
+        "reason_to_join": "Discover strategies for adapting to changing workplace dynamics, hear success stories, and connect with fellow HR experts.",
+        "years_of_experience": "2+",
+        "skills_required": [
+          "Javascript",
+          "React",
+          "Python",
+          "MongoDB",
+          "MySQL"
+        ],
+        "english_skill_required": "Intermediate"
+      }
+  ]
+  
