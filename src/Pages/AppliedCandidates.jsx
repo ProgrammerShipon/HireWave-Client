@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
 import Breadcrumbs from "../Components/Breadcrumbs";
 import Divider from "../Components/Divider";
+import AppliedCandidatesDetails from "../Sections/AppliedCandidatesDetails";
 
 const AppliedCandidates = () => {
     return (
@@ -12,7 +13,8 @@ const AppliedCandidates = () => {
 
             <Breadcrumbs title="Applied Candidates" />
 
-            {/* section here */}
+            {/* section */}
+            <AppliedCandidatesDetails></AppliedCandidatesDetails>
             {/* border */}
             <Divider />
         </>
