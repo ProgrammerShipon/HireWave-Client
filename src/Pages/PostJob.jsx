@@ -10,6 +10,7 @@ const PostJob = () => {
         <title>Post Job - Hire Wave</title>
       </Helmet>
       <Breadcrumbs title="Post Job" />
+
       <PostJobFrom />
     </>
   );
