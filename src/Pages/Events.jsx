@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../Components/Breadcrumbs';
 import FindEvents from '../Sections/FindEvents';
+import Divider from '../Components/Divider';
 
 const Events = () => {
     return (
@@ -15,6 +16,8 @@ const Events = () => {
 
             {/* sections */}
             <FindEvents />
+            {/* border */}
+            <Divider />
         </>
     );
 };
