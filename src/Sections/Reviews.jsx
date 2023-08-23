@@ -52,11 +52,11 @@ const Reviews = () => {
               reviewData.map(review => <SwiperSlide key={review._id} className='p-4 border border-green rounded-lg mb-14'>
                 {/* author */}
                 <div className='flex gap-4 items-center'>
-                  <img className='rounded-full w-14' src={review.recommenderImage} alt={review.recommenderName} />
+                  <img className='rounded-full w-14' src={review.authorImage} alt={review.authorName} />
 
                   <div>
-                    <h3 className='text-dark text-xl drop-shadow-lg'>{review.recommenderName}</h3>
-                    <p className='text-gray'>{review.recommenderPosition}</p>
+                    <h3 className='text-dark text-xl drop-shadow-lg'>{review.authorName}</h3>
+                    <p className='text-gray'>{review.authorPosition}</p>
                   </div>
                 </div>
 
@@ -72,11 +72,11 @@ const Reviews = () => {
 
                 {/* company */}
                 <div className='flex items-center gap-3 mt-3'>
-                  <img className='w-16 h-16' src={review.companyImage} alt={review.companyName} />
+                  <img className='w-16 h-16' src={review.logo} alt={review.companyName} />
 
                   <div>
                     <h1 className='text-dark font-medium text-2xl'>{review.companyName}</h1>
-                    <p className='text-gray'>Los Angeles, CA</p>
+                    <p className='text-gray'>{review.companyLocation}</p>
                   </div>
                 </div>
               </SwiperSlide>)

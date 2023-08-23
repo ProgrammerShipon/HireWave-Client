@@ -10,8 +10,8 @@
         "salary": "450-900",
         "closingDate": "2023-10-24",
         "experience": "Entry Level",
-        "quantity": "02",
-        "applied": "56",
+        "quantity": 2,
+        "applied": 56,
         "overview": "We are Uxper. With a presence in more than 60 countries, we’re a growing global organization that helps amazing companies engage with customers through mobile messaging, email, voice and video.",
         "requirements": [
             "Be heavily involved in turning user stories into testable, maintainable and high-quality code. This is a hands-on code design and coding role!",
@@ -43,8 +43,8 @@
         "salary": "Paid internship",
         "closingDate": "2023-09-15",
         "experience": "Internship",
-        "quantity": "5",
-        "applied": "40",
+        "quantity": 5,
+        "applied": 40,
         "overview": "CodeCrafters is offering an exciting web development internship opportunity for aspiring programmers. Join us to gain hands-on experience in building dynamic and responsive web applications.",
         "requirements": [
             "Basic knowledge of HTML, CSS, and JavaScript.",
@@ -77,11 +77,11 @@
         "category": "Marketing",
         "location": "London",
         "jobType": "full-time",
-        "salary": "600 - $800",
+        "salary": "600 - 800",
         "closingDate": "2023-09-10",
         "experience": "Mid-Senior Level",
-        "quantity": "1",
-        "applied": "45",
+        "quantity": 1,
+        "applied": 45,
         "overview": "Global Innovations is seeking an experienced Marketing Manager to lead our marketing initiatives. Join our dynamic team and contribute to our global brand expansion.",
         "requirements": [
             "Bachelor's degree in Marketing, Business, or related field.",
@@ -103,6 +103,78 @@
             "Digital Marketing",
             "Team Management",
             "Market Analysis"
+        ]
+    },
+    {
+        "title": "Content Writer",
+        "postedDate": "2023-08-12 10:30 AM",
+        "companyName": "Mindpal",
+        "companyLogo": "https://media.licdn.com/dms/image/C4D0BAQEXQfDNMAE2OA/company-logo_100_100/0/1670553576447?e=1700092800&v=beta&t=__HYtgX244p1k6tUSneolBcMR3OBJB-UuXRN8Y15X0U",
+        "category": "Writing",
+        "location": "California, US",
+        "jobType": "part time",
+        "salary": "450-900",
+        "closingDate": "2023-09-12",
+        "experience": "Entry Level",
+        "quantity": 3,
+        "applied": 23,
+        "overview": "Join VerbalCraft as a Content Writer and create compelling and engaging written content for various platforms. Enhance your writing skills while contributing to our content marketing efforts.",
+        "requirements": [
+            "Excellent written and verbal communication skills.",
+            "Ability to research and write on diverse topics.",
+            "Basic understanding of SEO principles is a plus."
+        ],
+        "skillsExperience": [
+            "Experience in blog writing or content creation.",
+            "Familiarity with content management systems (CMS).",
+            "Strong attention to detail and ability to meet deadlines."
+        ],
+        "benefits": [
+            "Flexible work hours to accommodate your schedule.",
+            "Opportunity to work with a variety of clients and industries.",
+            "Regular feedback and guidance from experienced editors."
+        ],
+        "skills": [
+            "Content Writing",
+            "Research",
+            "SEO",
+            "Time Management"
+        ]
+    },
+    {
+        "title": "Software Engineer",
+        "postedDate": "2023-08-14 02:00 PM",
+        "companyName": "Yassir",
+        "companyLogo": "https://media.licdn.com/dms/image/D4D0BAQEQn1pDkyWBxA/company-logo_100_100/0/1689455917226?e=1700092800&v=beta&t=YeBXa66KQDcSic2rDzfPPonoQXaW7ZjwpjqCB89iots",
+        "category": "Technology",
+        "location": "Palo Alto, CA",
+        "jobType": "full time",
+        "salary": "700-1000",
+        "closingDate": "2023-09-14",
+        "experience": "Mid Level",
+        "quantity": 1,
+        "applied": 37,
+        "overview": "Join TechSolutions as a Software Engineer and be part of our dynamic team developing innovative software solutions. Contribute to the design, development, and testing of cutting-edge applications.",
+        "requirements": [
+            "Bachelor's degree in Computer Science or related field.",
+            "Proficiency in one or more programming languages (e.g., Java, Python, C++)",
+            "Strong problem-solving skills and attention to detail."
+        ],
+        "skillsExperience": [
+            "Experience with software development life cycle (SDLC).",
+            "Familiarity with version control systems (e.g., Git).",
+            "Ability to work collaboratively in an Agile environment."
+        ],
+        "benefits": [
+            "Competitive salary and performance-based bonuses.",
+            "Opportunity to work on diverse and challenging projects.",
+            "Healthcare, dental, and retirement benefits."
+        ],
+        "skills": [
+            "Java",
+            "Python",
+            "Agile Development",
+            "Problem-Solving"
         ]
     }
 ]

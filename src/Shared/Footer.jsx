@@ -33,28 +33,28 @@ const Footer = () => {
             <div className="flex items-center gap-2 mt-8">
               <Link
                 to="/"
-                className="transition-all text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-300 hover:rounded-full"
+                className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
               >
                 <FaFacebookF size="20px" />
               </Link>
 
               <Link
                 to="/"
-                className="transition-all text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-300 hover:rounded-full"
+                className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
               >
                 <FaTwitter size="20px" />
               </Link>
 
               <Link
                 to="/"
-                className="transition-all text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-300 hover:rounded-full"
+                className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
               >
                 <FaLinkedin size="20px" />
               </Link>
 
               <Link
                 to="/"
-                className="transition-all text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-300 hover:rounded-full"
+                className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
               >
                 <FaInstagram size="20px" />
               </Link>

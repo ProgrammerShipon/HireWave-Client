@@ -1,54 +1,54 @@
 [
-    {
-        "id":101,
-        "category": "Website & Software",
-        "vacancy": 6215 ,
-        "relatedJobs1":[
-            "HTML (4)",
-            "CSS (8)",
-            "Software Development (10)",
-            "Android App (14)",
-            "Mobile Design (10)"
-        ],
-        "relatedJobs2" : [
-            "Wordpress Development (10)",
-            "Mobile Design (10)",
-            "Web Design (10)",
-            "Web Development (10)",
-            "Proggaming (10)"
-        ],
-        "relatedJobs3" : [
-            "JavaScript (10)",
-            "PHP Development (10)",
-            "Website Security (10)",
-            "Animation Create (10)",
-            "Game Development (10)"
-        ]
-    },
-    {
-        "id":102,
-        "category": "Data Analysis & Management",
-        "vacancy": 6215 ,
-        "relatedJobs1":[
-            "HTML (4)",
-            "CSS (8)",
-            "Software Development (10)",
-            "Android App (14)",
-            "Mobile Design (10)"
-        ],
-        "relatedJobs2" : [
-            "Wordpress Development (10)",
-            "Mobile Design (10)",
-            "Web Design (10)",
-            "Web Development (10)",
-            "Proggaming (10)"
-        ],
-        "relatedJobs3" : [
-            "JavaScript (10)",
-            "PHP Development (10)",
-            "Website Security (10)",
-            "Animation Create (10)",
-            "Game Development (10)"
-        ]
-    }
+  {
+    "id": 101,
+    "category": "Website & Software",
+    "vacancy": 6215,
+    "relatedJobs1": [
+      "HTML (4)",
+      "CSS (8)",
+      "Software Development (10)",
+      "Android App (14)",
+      "Mobile Design (10)"
+    ],
+    "relatedJobs2": [
+      "Wordpress Development (10)",
+      "Mobile Design (10)",
+      "Web Design (10)",
+      "Web Development (10)",
+      "Proggaming (10)"
+    ],
+    "relatedJobs3": [
+      "JavaScript (10)",
+      "PHP Development (10)",
+      "Website Security (10)",
+      "Animation Create (10)",
+      "Game Development (10)"
+    ]
+  },
+  {
+    "id": 102,
+    "category": "Data Analysis & Management",
+    "vacancy": 6215,
+    "relatedJobs1": [
+      "HTML (4)",
+      "CSS (8)",
+      "Software Development (10)",
+      "Android App (14)",
+      "Mobile Design (10)"
+    ],
+    "relatedJobs2": [
+      "Wordpress Development (10)",
+      "Mobile Design (10)",
+      "Web Design (10)",
+      "Web Development (10)",
+      "Proggaming (10)"
+    ],
+    "relatedJobs3": [
+      "JavaScript (10)",
+      "PHP Development (10)",
+      "Website Security (10)",
+      "Animation Create (10)",
+      "Game Development (10)"
+    ]
+  }
 ]
