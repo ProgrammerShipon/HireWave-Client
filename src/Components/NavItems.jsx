@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import ActiveLink from "./ActiveLink";
 
 // react icons
-import { PiUser } from 'react-icons/pi';
+import { PiUser } from "react-icons/pi";
 import useAuth from "../Hooks/useAuth";
 import Profile from "./Profile";
 

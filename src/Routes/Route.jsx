@@ -18,6 +18,7 @@ import AllCategories from "../Pages/AllCategories";
 import CandidateDetails from "../Pages/CandidateDetails";
 import Events from "../Pages/Events";
 import EventDetails from "../Pages/EventDetails";
+import RecruitersDetails from "./../Pages/RecruitersDetails";
 
 const Router = createBrowserRouter([
   {
@@ -82,17 +83,21 @@ const Router = createBrowserRouter([
         element: <Recruiters />,
       },
       {
+        path: "/recruiters_details",
+        element: <RecruitersDetails />,
+      },
+      {
         path: "/contact",
         element: <Contact />,
       },
       {
         path: "/events",
-        element: <Events/>
+        element: <Events />,
       },
       {
         path: "/event_details/:name",
-        element: <EventDetails/>
-      }
+        element: <EventDetails />,
+      },
     ],
   },
 ]);
