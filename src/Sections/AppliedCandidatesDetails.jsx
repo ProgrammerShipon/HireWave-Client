@@ -1,127 +1,153 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import useAppliedCandidates from '../Hooks/useAppliedCandidates';
-import { useState } from 'react';
 import AppliedCandidatesTable from '../Components/AppliedCandidatesTable';
 
+// react icons
+import { FaLocationCrosshairs } from 'react-icons/fa6';
+import { BiCheck } from 'react-icons/bi';
+import useCandidatesData from '../Hooks/useCandidatesData';
+
 const AppliedCandidatesDetails = () => {
-    const [appliedCandidates]= useAppliedCandidates()
-    // console.log(appliedCandidates)
-    const [applicants, setApplicants] = useState(appliedCandidates);
-    const [selectedSort, setSelectedSort] = useState(null);
-    const [selectedFilters, setSelectedFilters] = useState([]);
-  
-    const handleSortChange = (key) => {
-      setSelectedSort(key);
-      sortData(key);
+    const [candidatesData] = useCandidatesData();
+    const [filteredData, setFilteredData] = useState(candidatesData);
+    const [location, setLocation] = useState('');
+    const [checkBoxData, setCheckBoxData] = useState('');
+
+    // main filtering
+    useEffect(() => {
+        if (checkBoxData.length > 0) {
+            const filteredCandidatesData = candidatesData.filter(
+                (candidate) =>
+                    candidate.location.toLowerCase().includes(location.toLowerCase()) &&
+                    checkBoxData.includes(candidate.category)
+            );
+            setFilteredData(filteredCandidatesData);
+        } else if (location.length > 0) {
+            const filterByLocation = candidatesData.filter((rql) =>
+                rql.location.toLowerCase().includes(location.toLowerCase())
+            );
+            setFilteredData(filterByLocation);
+        } else {
+            setFilteredData(candidatesData);
+        }
+    }, [location, checkBoxData, candidatesData]);
+
+    useEffect(() => {
+        setFilteredData(candidatesData);
+    }, [candidatesData]);
+
+    // category filter
+    const toggleCheckBox = (item) => {
+        if (checkBoxData.includes(item)) {
+            setCheckBoxData(checkBoxData.filter((data) => data !== item));
+        } else {
+            setCheckBoxData([...checkBoxData, item]);
+        }
     };
-  
-    const handleFilterChange = (jobTitle) => {
-      if (selectedFilters.includes(jobTitle)) {
-        setSelectedFilters(selectedFilters.filter(filter => filter !== jobTitle));
-      } else {
-        setSelectedFilters([...selectedFilters, jobTitle]);
-      }
-      filterData(selectedFilters);
-    };
-  
-    const sortData = (key) => {
-      const sortedApplicants = [...applicants].sort((a, b) =>
-        key === 'applicantRating'
-          ? b.applicantRating - a.applicantRating
-          : new Date(b.applicationDate) - new Date(a.applicationDate)
-      );
-      setApplicants(sortedApplicants);
-    };
-  
-    const filterData = (filters) => {
-      if (filters.length === 0) {
-        setApplicants(applicantsData);
-      } else {
-        const filteredApplicants = applicantsData.filter(applicant =>
-          filters.includes(applicant.jobTitle)
-        );
-        setApplicants(filteredApplicants);
-      }
-    };
+    const category = [...new Set(candidatesData.map(candidate => candidate.category))]
 
     return (
         <div className='py-20 md:py-[120px] duration-300'>
             <div className="container">
-                <div className="grid grid-cols-1 md:grid-cols-4 space-y-6 md:space-y-0 md:gap-8 duration-300">
+                <div className="grid grid-cols-1 lg:grid-cols-4 duration-300">
 
-                    {/* Sort bar */}
-                    <div className="lg:px-8 col-span-1">
-
-                        {/* Sort by best match */}
-                        <div className='flex gap-3 items-center mb-3'>
-                            <input
-                            type="checkbox"
-                            className='h-5 w-5'
-                            />
-                            <label>Sort by Best Match</label>
-                        </div>
-
-                        {/* Sort by rating */}
-                        <div className='flex gap-3 items-center mb-3'>
-                            <input
-                            type="checkbox"
-                            className='h-5 w-5'
-                            checked={selectedSort === 'applicantRating'}
-                            onChange={() => handleSortChange('applicantRating')}
-                            />
-                            <label>Sort by Rating</label>
-                        </div>
-
-                        {/* Sort by application date */}
-                        <div className='flex gap-3 items-center mb-3'>
-                            <input
-                            type="checkbox"
-                            className='h-5 w-5'
-                            checked={selectedSort === 'applicationDate'}
-                            onChange={() => handleSortChange('applicationDate')}
-                            />
-                            <label>Sort by Application Date</label>
-                        </div>
-
-                        {/* filter by job title */}
-                        <div className='mt-5'>
-                            <h1 className='text-xl mb-3'>Filter by Job Title</h1>
-
-                            <div className='pl-5 flex gap-3 items-center mb-2'>
+                    {/* filter bar */}
+                    <div className="lg:px-8">
+                        {/* filter by location */}
+                        <div className="sticky top-28 bg-white">
+                            <div className='border border-gray/60 flex items-center py-4 md:py-3 rounded-md'>
+                                <label htmlFor="location" className='pl-2 text-green'>
+                                    <FaLocationCrosshairs size='20px' className="animate-spin" />
+                                </label>
                                 <input
-                                type="checkbox"
-                                className='h-5 w-5'
-                                checked={selectedFilters.includes('Software Developer')}
-                                onChange={() => handleFilterChange('Software Developer')}
+                                    id='location'
+                                    className='w-full border text-lg border-none focus:outline-none bg-transparent pl-2 text-gray placeholder:text-gray/60 placeholder:bg-transparent'
+                                    placeholder="Search by Location"
+                                    onChange={(e) => setLocation(e.target.value)}
                                 />
-                                <label>Software Developers</label>
                             </div>
 
-                            <div className='pl-5 flex gap-3 items-center mb-2'>
-                                <input
-                                type="checkbox"
-                                className='h-5 w-5'
-                                checked={selectedFilters.includes('Graphic Designer')}
-                                onChange={() => handleFilterChange('Graphic Designer')}
-                                />
-                                <label>Graphic Designers</label>
-                            </div>
+                            {/* filter by Category */}
+                            <div className="mt-6">
+                                <h2 className="text-2xl capitalize mb-4">Category</h2>
+                                <div className="space-y-2">
+                                    <div className="flex items-center justify-between gap-2">
+                                        <div className="flex items-center gap-2 relative"
+                                            onClick={() => setCheckBoxData([])}
+                                        >
+                                            <input id='all' type="checkbox" className="h-6 w-full opacity-0 absolute" />
+                                            <span
+                                                className={`flex items-center justify-center h-6 w-6 rounded-md border border-gray/50 text-white ${checkBoxData.length === 0 ? 'bg-purple' : ''}`}>
+                                                <BiCheck size='22' />
+                                            </span>
+                                            <label htmlFor='all'
+                                                className="text-lg text-gray"
+                                            >All</label>
+                                        </div>
 
-                            <div className='pl-5 flex gap-3 items-center mb-2'>
-                                <input
-                                type="checkbox"
-                                className='h-5 w-5'
-                                checked={selectedFilters.includes('Sales Representative')}
-                                onChange={() => handleFilterChange('Sales Representative')}
-                                />
-                                <label>Sales Representatives</label>
+                                        <span className="w-10 h-6 flex text-purple items-center justify-center bg-purple/30 rounded-lg">
+                                            {
+                                                candidatesData.length
+                                            }
+                                        </span>
+                                    </div>
+                                    {
+                                        category.map((item, index) => <div
+                                            key={index}
+                                            className="flex items-center justify-between gap-2"
+                                        >
+                                            <div className="flex items-center gap-2 relative"
+                                                onClick={() => toggleCheckBox(item)}
+                                            >
+                                                <input id={'industry' + index} type="checkbox" className="h-6 w-full opacity-0 absolute" />
+
+                                                <span
+                                                    className={`flex items-center justify-center h-6 w-6 rounded-md border border-gray/50 text-white ${checkBoxData.includes(item) ? 'bg-purple' : ''}`}>
+                                                    <BiCheck size='22' />
+                                                </span>
+
+                                                <label htmlFor={'industry' + index}
+                                                    className="text-lg text-gray"
+                                                >{item}</label>
+                                            </div>
+                                            <span className="w-10 h-6 flex text-purple items-center justify-center bg-purple/30 rounded-lg">
+                                                {
+                                                    candidatesData.filter(i => i.category === item).length
+                                                }
+                                            </span>
+                                        </div>)
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Candidate Details */}
-                    <AppliedCandidatesTable appliedCandidates={appliedCandidates} selectedSort={selectedSort}></AppliedCandidatesTable>
-                    
+                    {/* candidate table */}
+                    <div className='lg:col-span-3 relative overflow-x-auto'>
+                        <table className='table w-[900px] md:w-full text-center border border-gray/40'>
+                            <thead className='bg-green text-white text-lg'>
+                                <tr>
+                                    <th className='px-2 py-3 font-medium'>#</th>
+                                    <th className='px-2 py-3 font-medium'>Image</th>
+                                    <th className='px-2 py-3 font-medium'>Applicant</th>
+                                    <th className='px-2 py-3 font-medium'>Job Applied</th>
+                                    <th className='px-2 py-3 font-medium'>Hourly Rate</th>
+                                    <th className='px-2 py-3 font-medium'>Rating</th>
+                                    <th className='px-10 py-3 font-medium'>Location</th>
+                                    <th className='px-2 py-3 font-medium'>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    filteredData.map((candidate, index) => <AppliedCandidatesTable
+                                        key={index}
+                                        index={index}
+                                        candidate={candidate}
+                                    />)
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

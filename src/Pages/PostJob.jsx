@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
 import Breadcrumbs from "../Components/Breadcrumbs";
 import PostJobFrom from "../Sections/PostJobFrom";
+import Divider from "../Components/Divider";
 
 const PostJob = () => {
   return (
@@ -12,6 +13,8 @@ const PostJob = () => {
       <Breadcrumbs title="Post Job" />
 
       <PostJobFrom />
+      {/* border */}
+      <Divider />
     </>
   );
 };

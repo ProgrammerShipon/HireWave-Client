@@ -8,7 +8,7 @@ import Profile from "./Profile";
 
 const NavItems = () => {
     const { user } = useAuth();
-    //   const role = 'user';
+    // const role = 'user';
     const role = 'candidate';
     // const role = 'recruiter';
     return (
