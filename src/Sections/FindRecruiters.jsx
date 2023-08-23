@@ -1,10 +1,10 @@
+import { useEffect, useState } from "react";
 import RecruiterCard from "../Components/RecruiterCard";
 import useRecruiters from "../Hooks/useRecruiters";
 
 // react icons
 import { FaLocationCrosshairs } from 'react-icons/fa6';
 import { BiCheck } from 'react-icons/bi';
-import { useEffect, useState } from "react";
 
 const FindRecruiters = () => {
     const [recruiterData] = useRecruiters();

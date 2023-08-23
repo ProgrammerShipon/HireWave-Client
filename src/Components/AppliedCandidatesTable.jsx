@@ -1,91 +1,38 @@
-import React from 'react';
-import Button from './Button';
+import { Link } from 'react-router-dom';
 
-const AppliedCandidatesTable = ({ appliedCandidates, selectedSort }) => {
+// react icons
+import { HiOutlineExternalLink } from 'react-icons/hi';
+import { BiSolidStar } from "react-icons/bi";
+
+const AppliedCandidatesTable = ({ index, candidate }) => {
+    const { _id, name, category, images, hourlyRate, status, location, skills, rating } = candidate;
     return (
-        <>
-            {/* Table for bigger devices */}
-            <div className='hidden md:block duration-300 col-span-3'>
-                <table className='text-center border border-purple/40'>
-                    <thead className='border-b border-purple/50 bg-green/20'>
-                        <tr>
-                        <th className='px-2 py-3'></th>
-                        <th className='px-5'></th>
-                        <th className='px-2 py-3'>Applicant</th>
-                        <th className='px-2 py-3'>Job Applied</th>
-                        <th className='px-2 py-3'>Hourly Rate</th>
-                        <th className='px-2 py-3'>Rating</th>
-                        <th className='px-10 py-3'>Location</th>
-                        <th className='px-2 py-3'>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            appliedCandidates.map((sortedData, index)=><tr key={sortedData.id} className='border-b border-purple/40'>
-                            <td className='px-5 py-3 text-green'>{index+1}</td>
-                            <td><img className='w-10 rounded-full' src={sortedData.applicantImage} alt="" /></td>
-                            <td className='px-5 py-3'>{sortedData.applicantName}</td>
-                            <td className='px-5 py-3'>{sortedData.jobTitle}</td>
-                            <td className='px-10 py-3'>{sortedData.applicantHourlyRate}$</td>
-                            <td className='px-5 py-3'>{sortedData.applicantRating}</td>
-                            <td className='px-5 py-3'>{sortedData.applicantLocation}</td>
-                            <td className='px-2 py-3'><div className='w-32'><Button>View Details</Button></div></td>
-                        </tr>)
-                        }
-                    </tbody>
-                </table> 
-            </div>  
-
-            {/* Table for smaller devices */}
-            <div className='block md:hidden'>
-                {
-                    appliedCandidates.map((sortedData, index)=> <div key={sortedData.id} className='border border-purple hover:border-green rounded hover:shadow-xl hover:shadow-green/20 duration-300 mb-2'>
-
-                        {/* Index + image */}
-                        <div className='flex items-center justify-between gap-5 px-5 pt-5'>
-                            <p className='text-purple hover:text-green border px-3 py-1 w-fit rounded-full'>{index+1}</p>
-                            <img className='w-20 rounded-full' src={sortedData.applicantImage} alt="" />
-                        </div>
-
-                        {/* Applicant Name */}
-                        <div className='flex items-center justify-between gap-5 px-5 py-3'>
-                            <p>Applicant</p>
-                            <p>{sortedData.applicantName}</p>
-                        </div>
-
-                        {/* Job Title */}
-                        <div className='flex items-center justify-between gap-5 px-5 py-3'>
-                            <p>Job Applied</p>
-                            <p>{sortedData.jobTitle}</p>
-                        </div>
-
-                        {/* Hourly Rate */}
-                        <div className='flex items-center justify-between gap-5 px-5 py-3'>
-                            <p>Hourly Rate</p>
-                            <p>{sortedData.applicantHourlyRate}</p>
-                        </div>
-
-                        {/* Rating */}
-                        <div className='flex items-center justify-between gap-5 px-5 py-3'>
-                            <p>Rating</p>
-                            <p>{sortedData.applicantRating}</p>
-                        </div>
-
-                        {/* Applicant Location */}
-                        <div className='flex items-center justify-between gap-5 px-5 py-3'>
-                            <p>Location</p>
-                            <p>{sortedData.applicantLocation}</p>
-                        </div>
-
-                        {/* View Details */}
-                        <div className='flex items-center justify-end pr-5 py-3'>
-                            <p><Button>View Details</Button></p>
-                        </div>
-                    </div>)
-                }
-
-            </div>
-        </>
+        <tr
+            key={candidate.id}
+            className='even:bg-dark text-black even:text-white group'
+        >
+            <td className='px-5 py-3 text-green group-even:text-white'>{index + 1}</td>
+            <td>
+                <div className='w-14 h-14 mx-auto rounded-full overflow-hidden'>
+                    <img className='w-full object-cover object-center' src={images} alt={name} />
+                </div>
+            </td>
+            <td className='px-5 py-3'>{name}</td>
+            <td className='px-5 py-3'>{category}</td>
+            <td className='px-10 py-3'>{hourlyRate}$</td>
+            <td className='px-5 py-3'>
+                <p className='text-[#FDCC0D] font-medium flex items-center'>
+                    {rating} <BiSolidStar />
+                </p>
+            </td>
+            <td className='px-5 py-3'>{location}</td>
+            <td className='px-2 py-3'>
+                {/* button */}
+                <Link state={candidate} title='View Details' to={`/candidate_details/${_id}`} className="bg-purple text-white py-3 rounded-md duration-300 hover:bg-green shadow-xl shadow-purple/20 hover:shadow-dark/20 flex items-center justify-center">
+                    <HiOutlineExternalLink size='20px' />
+                </Link>
+            </td>
+        </tr>
     );
 };
 
