@@ -3,7 +3,7 @@ import useAuth from '../Hooks/useAuth';
 
 const DashboardHome = () => {
     const { user } = useAuth();
-    console.log(user.displayName)
+    console.log(user?.displayName)
     return (
         <div>
             <h2 className='mt-10 text-center text-4xl text-green/80 font-semibold'>Welcome to Dashboard Home</h2>
