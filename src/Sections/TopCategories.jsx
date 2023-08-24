@@ -14,8 +14,8 @@ const TopCategories = () => {
                 <SectionTitle title="Top Category" para="All Top Category" />
 
                 {/* categories 1st row */}
-                <Marquee className="-mb-10" pauseOnHover={true} speed={80}>
-                    <div className="grid grid-cols-10 gap-5 pl-5 pt-12 md:pt-16">
+                <Marquee className="-mb-16" pauseOnHover={true} speed={80}>
+                    <div className="grid grid-cols-10 gap-5 pl-5 pt-12 md:pt-16 mb-10">
                         {categoriesData?.slice(0, 10).map((category) => (
                             <TopCategoryCard key={category._id} category={category} />
                         ))}
@@ -24,7 +24,7 @@ const TopCategories = () => {
 
                 {/* categories 2nd row */}
                 <Marquee pauseOnHover={true} direction="right" speed={80}>
-                    <div className="grid grid-cols-10 gap-5 pl-5 pt-16 md:pt-16">
+                    <div className="grid grid-cols-10 gap-5 pl-5 pt-16 md:pt-16 mb-10">
                         {categoriesData?.slice(10, 20).map((category) => (
                             <TopCategoryCard key={category._id} category={category} />
                         ))}

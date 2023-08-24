@@ -14,7 +14,7 @@ const AppliedCandidates = () => {
             <Breadcrumbs title="Applied Candidates" />
 
             {/* section */}
-            <AppliedCandidatesDetails></AppliedCandidatesDetails>
+            <AppliedCandidatesDetails />
             {/* border */}
             <Divider />
         </>

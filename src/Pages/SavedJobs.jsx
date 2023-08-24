@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
 import Breadcrumbs from "../Components/Breadcrumbs";
 import Divider from "../Components/Divider";
+import SavedJob from "../Sections/SavedJob";
 
 const SavedJobs = () => {
     return (
@@ -15,6 +16,8 @@ const SavedJobs = () => {
             {/* section here */}
             {/* border */}
             <Divider />
+            
+            <SavedJob />
         </>
     );
 };
