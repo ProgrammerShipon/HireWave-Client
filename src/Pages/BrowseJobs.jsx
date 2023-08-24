@@ -1,6 +1,5 @@
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../Components/Breadcrumbs';
-import Divider from '../Components/Divider';
 import FindJobs from '../Sections/FindJobs';
 import GetStart from '../Sections/GetStart';
 

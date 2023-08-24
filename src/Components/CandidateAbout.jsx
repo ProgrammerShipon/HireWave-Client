@@ -1,4 +1,3 @@
-import CandidateAchievement from "./CandidateAchievement";
 import CandidateCurrentInfo from "./CandidateCurrentInfo";
 import CandidateEducation from "./CandidateEducation";
 import CandidateWorkExperience from "./CandidateWorkExperience";
@@ -12,7 +11,7 @@ const CandidateAbout = ({ candidateDetails }) => {
 
                 {/* Candidate Current All Information And Social Link Is Here */}
                 <div className="md:col-span-3 lg:col-span-4">
-                    <CandidateCurrentInfo candidateDetails={candidateDetails} />
+                    {/* <CandidateCurrentInfo candidateDetails={candidateDetails} /> */}
                 </div>
 
                 <div className="md:col-span-5 lg:col-span-8 bg-slate-200 px-8 py-10 rounded-md">
@@ -24,9 +23,6 @@ const CandidateAbout = ({ candidateDetails }) => {
 
                     {/* Candidate Work Qualification */}
                     <CandidateWorkExperience candidateDetails={candidateDetails} />
-
-                    {/* Candidate Achievement */}
-                    <CandidateAchievement candidateDetails={candidateDetails} />
                 </div>
             </div>
         </div>

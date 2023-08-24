@@ -1,6 +1,8 @@
 import SocialLogin from "../Components/SocialLogin";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import useAuth from '../Hooks/useAuth';
+import { toast } from "react-toastify";
 
 // react icons
 import { MdAlternateEmail, MdLockOutline } from 'react-icons/md';
@@ -9,9 +11,51 @@ import { BiUserPin } from 'react-icons/bi';
 import { BsShieldCheck } from 'react-icons/bs';
 
 const SignUpForm = () => {
+    const { signUpUser, profileUpdate } = useAuth();
+
+    // navigate
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data)
+        if (data.password.length < 6) {
+            return toast.warning('password should be 6 characters', {
+                position: "top-right",
+                autoClose: 4000,
+                theme: "light",
+            });
+        }
+        if (data.password !== data.confirm) {
+            return toast.warning("password didn't match", {
+                position: "top-right",
+                autoClose: 4000,
+                theme: "light",
+            });
+        }
+
+        signUpUser(data.email, data.password)
+            .then((result) => {
+                profileUpdate(result.user, data.name, data.photo)
+                    .then(() => {
+                        const user = { name: data.name, email: data.email, role: 'user', photo: data.photo };
+                        navigate(from, { replace: true })
+                    }).catch((error) => {
+                        toast.error(error.message, {
+                            position: "top-right",
+                            autoClose: 4000,
+                            theme: "light",
+                        });
+                    });
+            })
+            .catch(error => {
+                toast.error(error.message, {
+                    position: "top-right",
+                    autoClose: 4000,
+                    theme: "light",
+                });
+            })
     };
 
     return (

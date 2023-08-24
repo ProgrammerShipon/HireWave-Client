@@ -15,7 +15,7 @@ const Footer = () => {
   return (
     <footer className="text-dark pt-10">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-9 pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-9 pt-12 ">
           {/* Logo, address, and social media links */}
           <div className="col-span-1 md:col-span-2">
             {/* logo */}
@@ -33,38 +33,38 @@ const Footer = () => {
             <div className="flex items-center gap-2 mt-8">
               <Link
                 to="/"
-                className="transition-all text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-300 hover:rounded-full"
+                className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
               >
                 <FaFacebookF size="20px" />
               </Link>
 
               <Link
                 to="/"
-                className="transition-all text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-300 hover:rounded-full"
+                className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
               >
                 <FaTwitter size="20px" />
               </Link>
 
               <Link
                 to="/"
-                className="transition-all text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-300 hover:rounded-full"
+                className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
               >
                 <FaLinkedin size="20px" />
               </Link>
 
               <Link
                 to="/"
-                className="transition-all text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-300 hover:rounded-full"
+                className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
               >
                 <FaInstagram size="20px" />
               </Link>
             </div>
           </div>
 
-          {/* Job seekers */}
-          <div>
+          {/* Candidate */}
+          <div className="md:hidden lg:block">
             <h3 className="text-2xl font-medium text-dark capitalize drop-shadow-lg">
-              Job seekers
+              Candidate
             </h3>
             <ul className="flex flex-col gap-1 mt-5 text-gray">
               <li>
@@ -94,11 +94,23 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-
-          {/* Employers */}
+          {/* Contact for Medium Screen */}
+          <div className="hidden md:block lg:hidden">
+            <h3 className="text-2xl font-medium text-dark capitalize drop-shadow-lg">
+              Contact Us
+            </h3>
+            <div className="text-gray">
+              <p className="mt-5">
+                43/7 Northern Tower, Banani, Dhaka-1263, Bangladesh
+              </p>
+              <p className="mt-4 lowercase">support@hirewave.com</p>
+              <p>+8801543653473</p>
+            </div>
+          </div>
+          {/* Recruiters */}
           <div>
             <h3 className="text-2xl font-medium text-dark capitalize drop-shadow-lg">
-              Employers
+              Recruiters
             </h3>
             <ul className="flex flex-col gap-1 mt-5 text-gray">
               <li>
@@ -128,7 +140,6 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-
           {/* Resources */}
           <div>
             <h3 className="text-2xl font-medium text-dark capitalize drop-shadow-lg">
@@ -164,7 +175,7 @@ const Footer = () => {
           </div>
 
           {/* contact */}
-          <div>
+          <div className="md:hidden lg:block">
             <h3 className="text-2xl font-medium text-dark capitalize drop-shadow-lg">
               Contact Us
             </h3>
@@ -176,6 +187,40 @@ const Footer = () => {
               <p>+8801543653473</p>
             </div>
           </div>
+          {/* Candidate for Medium Screen */}
+          <div className="hidden md:block lg:hidden">
+            <h3 className="text-2xl font-medium text-dark capitalize drop-shadow-lg">
+              Job seekers
+            </h3>
+            <ul className="flex flex-col gap-1 mt-5 text-gray">
+              <li>
+                <Link to="/" className="hover:text-green duration-300">
+                  Browse Jobs
+                </Link>
+              </li>
+              <li>
+                <Link to="/" className="hover:text-green duration-300">
+                  Salary Tools
+                </Link>
+              </li>
+              <li>
+                <Link to="/" className="hover:text-green duration-300">
+                  Career Advice
+                </Link>
+              </li>
+              <li>
+                <Link to="/" className="hover:text-green duration-300">
+                  Student Career Center
+                </Link>
+              </li>
+              <li>
+                <Link to="/" className="hover:text-green duration-300">
+                  Resume writing services
+                </Link>
+              </li>
+            </ul>
+          </div>
+
         </div>
       </div>
 
