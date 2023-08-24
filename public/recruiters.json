@@ -1,16 +1,40 @@
 [
   {
-    "id": 1,
-    "company": "Adroit",
+    "_id": 1,
+    "company": "Adroit Resources",
     "logo": "https://media.licdn.com/dms/image/C4D0BAQHrtYNljdjm9w/company-logo_100_100/0/1670441499328?e=1700092800&v=beta&t=0KzCPxcN0RYlHpKQkPgTEkoDLQWPpDXoUCBJc1V2Llk",
+    "companyEmail": "adroit@gmail.com",
+    "companyBanner": "https://media.licdn.com/dms/image/D4D3DAQH8IiionfK2nA/image-scale_191_1128/0/1669924583491?e=1693461600&v=beta&t=PDheOW-ym2SdeWViSYjOMIJz-NZBjYhMzk2ZpJccq6U",
+    "followers": 998,
+    "about": "Adroit Resources is a wholly-owned subsidiary of Nisum, a global technology consulting firm headquartered in Southern California. A preferred partner to leading Fortune 500 brands, Adroit Resources, Inc. is a certified, minority-owned, dynamic Information Technology services company.  Our offerings range from staff augmentation to technology consulting. Adroit Resources works on IT and Non-IT positions for emerging start-ups, mid-size, and Fortune 100 companies, nationwide. We staff in the Internet, Retail/eCommerce, Semiconductor, Healthcare, Media/Television/Streaming, Manufacturing, Storage, and Security space.",
+    "specialties": "IT Solutions and Services, Permanent Recruitment, Temporary Recruitment, Contract Recruitment, VMS/MSP Programs, Contract to Hire Placements, Contingent Workforce Supplier, SOW, and Cloud, UI, Java, DevOps, Release, QE",
+    "recentReview": [
+      {
+        "name": "MD Forid Hossain",
+        "image": "https://lh3.googleusercontent.com/a/AAcHTtdQpnr_vzncOEN2wR4mMMXMPrkkrHMvOpC7UW3HGRvhrw=s96-c",
+        "location": "Los Angeles, CA",
+        "rating": 5.0,
+        "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
+        "date": "Aug 15, 2021"
+      },
+      {
+        "name": "Siam Hossain",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+        "location": "Los Angeles, CA",
+        "rating": 4.9,
+        "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
+        "date": "June 15, 2020"
+      }
+    ],
     "location": "New York, USA",
     "totalRating": "90",
     "rating": 4.6,
-    "industry": "Software",
-    "openJobs": 80
+    "industry": "Staffing and Recruiting",
+    "openJobs": 80,
+    "joinDate": "Sep 10, 2019"
   },
   {
-    "id": 2,
+    "_id": 2,
     "company": "Extend",
     "logo": "https://media.licdn.com/dms/image/C4E0BAQEON_wWCCtPmA/company-logo_100_100/0/1629838391794?e=1700092800&v=beta&t=FqvUWhOvsmmKhANQW69W6fT-KzWh-E_b4mtWUeDTZkM",
     "location": "San Francisco, USA",
@@ -20,7 +44,7 @@
     "openJobs": 50
   },
   {
-    "id": 3,
+    "_id": 3,
     "company": "Charlie",
     "logo": "https://media.licdn.com/dms/image/D560BAQHurzRis9UPKQ/company-logo_100_100/0/1681965367146?e=1700092800&v=beta&t=fv93tJtrK5mfRoi8zbedUYxwyCta70YCaHdHn7Hfyvc",
     "location": "London, UK",
@@ -30,7 +54,7 @@
     "openJobs": 30
   },
   {
-    "id": 4,
+    "_id": 4,
     "company": "Fletch",
     "logo": "https://media.licdn.com/dms/image/D560BAQFdTqUuVnvvSQ/company-logo_100_100/0/1681952885576?e=1700092800&v=beta&t=o5dObE1iakR5ps7UcktDHWa5wDC8L-W2eapQuNpwiSM",
     "location": "Tokyo, Japan",
@@ -40,7 +64,7 @@
     "openJobs": 60
   },
   {
-    "id": 5,
+    "_id": 5,
     "company": "Patreon",
     "logo": "https://media.licdn.com/dms/image/D560BAQH2h7L7udwh2g/company-logo_100_100/0/1689867433365?e=1700092800&v=beta&t=lFkjo-ecCKzCajkxlZjM1SOzMHKLnBrSeUXZD2gErhw",
     "location": "Toronto, Canada",
@@ -50,7 +74,7 @@
     "openJobs": 40
   },
   {
-    "id": 6,
+    "_id": 6,
     "company": "Numeric",
     "logo": "https://media.licdn.com/dms/image/C560BAQFHEC-DJzR0Gg/company-logo_100_100/0/1663442902561?e=1700092800&v=beta&t=VUNfHrYIXCLxwi3D15wymPsQfvBly73INvLAsOIPwlA",
     "location": "Berlin, Germany",
@@ -60,7 +84,7 @@
     "openJobs": 20
   },
   {
-    "id": 7,
+    "_id": 7,
     "company": "Avispa",
     "logo": "https://media.licdn.com/dms/image/C560BAQEY0aYzJXnsAQ/company-logo_100_100/0/1652112258427?e=1700092800&v=beta&t=X43Uw6Jp9qbGCkAGOGqxdIcsRZFMRz2fZXIgDSbx770",
     "location": "New York, USA",
@@ -70,7 +94,7 @@
     "openJobs": 80
   },
   {
-    "id": 8,
+    "_id": 8,
     "company": "Eleos",
     "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
     "location": "San Francisco",
@@ -80,7 +104,7 @@
     "openJobs": 50
   },
   {
-    "id": 9,
+    "_id": 9,
     "company": "Prevail",
     "logo": "https://media.licdn.com/dms/image/C560BAQFYYoXrfko87g/company-logo_100_100/0/1656702414708?e=1700092800&v=beta&t=vjjcsTGdjD_WONEaNC5_f1gcmU_pAtkB0kK2tgqRMuk",
     "location": "San Francisco",
@@ -90,7 +114,7 @@
     "openJobs": 23
   },
   {
-    "id": 10,
+    "_id": 10,
     "company": "A Society",
     "logo": "https://media.licdn.com/dms/image/C4E0BAQHSdHOx66MCFw/company-logo_100_100/0/1669710167236?e=1700092800&v=beta&t=msqltyeBuQYmCGPky9bpzqqtxERz_tpZwXFcHwpuY2c",
     "location": "San Francisco",
@@ -100,7 +124,7 @@
     "openJobs": 16
   },
   {
-    "id": 11,
+    "_id": 11,
     "company": "Emonics",
     "logo": "https://media.licdn.com/dms/image/D4D0BAQGXuMvXtEhsTg/company-logo_100_100/0/1689151685253?e=1700092800&v=beta&t=e7fwkQikGJ4liYdJmtp4GZgZlxkTd2J8bl5yV3MIpgI",
     "location": "New Jersey, US",
@@ -110,7 +134,7 @@
     "openJobs": 12
   },
   {
-    "id": 12,
+    "_id": 12,
     "company": "Mindpal",
     "logo": "https://media.licdn.com/dms/image/C4D0BAQEXQfDNMAE2OA/company-logo_100_100/0/1670553576447?e=1700092800&v=beta&t=__HYtgX244p1k6tUSneolBcMR3OBJB-UuXRN8Y15X0U",
     "location": "California, US",
@@ -120,7 +144,7 @@
     "openJobs": 23
   },
   {
-    "id": 13,
+    "_id": 13,
     "company": "Avispa",
     "logo": "https://media.licdn.com/dms/image/C560BAQHXCmnygAOyPQ/company-logo_100_100/0/1672611214226?e=1700092800&v=beta&t=XqhkuqMvq3A6iQGOF2e97oN_FB0XM-gtmPHoBoC-TF0",
     "location": "San Francisco, USA",
@@ -130,7 +154,7 @@
     "openJobs": 32
   },
   {
-    "id": 14,
+    "_id": 14,
     "company": "AppLab",
     "logo": "https://media.licdn.com/dms/image/C560BAQGkgVuykicFDg/company-logo_100_100/0/1630459002808?e=1700092800&v=beta&t=QgLMRxyzhxFOXI_IJuOfzoRUx7c4MIGnn8zSZk7iFHs",
     "location": "Princeton, NJ",
@@ -140,7 +164,7 @@
     "openJobs": 70
   },
   {
-    "id": 15,
+    "_id": 15,
     "company": "Yassir",
     "logo": "https://media.licdn.com/dms/image/D4D0BAQEQn1pDkyWBxA/company-logo_100_100/0/1689455917226?e=1700092800&v=beta&t=YeBXa66KQDcSic2rDzfPPonoQXaW7ZjwpjqCB89iots",
     "location": "Palo Alto, CA",

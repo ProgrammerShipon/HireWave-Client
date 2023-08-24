@@ -96,7 +96,7 @@ const Router = createBrowserRouter([
         element: <Recruiters />,
       },
       {
-        path: "/recruiters_details",
+        path: "/recruiters_details/:id",
         element: <RecruitersDetails />,
       },
       {
@@ -115,25 +115,25 @@ const Router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard/>,
-    errorElement: <ErrorPage/>,
-    children:[
+    element: <Dashboard />,
+    errorElement: <ErrorPage />,
+    children: [
       //Common Routes
       {
         path: "dashboardHome",
-        element: <DashboardHome/>
+        element: <DashboardHome />
       },
       {
         path: "myProfile",
-        element: <MyProfile/>
+        element: <MyProfile />
       },
       {
         path: "changePassword",
-        element: <ChangePassword/>
+        element: <ChangePassword />
       },
       {
         path: "logout",
-        element: <Logout/>
+        element: <Logout />
       },
 
       // Candidate routes
@@ -143,37 +143,37 @@ const Router = createBrowserRouter([
       },
       {
         path: "myResume",
-        element: <MyResume/>
+        element: <MyResume />
       },
 
       // Recruiter routes
       {
         path: "messages",
-        element: <Messages/>
+        element: <Messages />
       },
       {
         path: "postedJobs",
-        element: <PostedJobs/>
+        element: <PostedJobs />
       },
 
       //Admin Routes
       {
         path: "manageUsers",
-        element: <ManageUsers/>
+        element: <ManageUsers />
       },
       {
         path: "manageJobs",
-        element: <ManageJobs/>
+        element: <ManageJobs />
       },
       {
         path: "candidateList",
-        element: <CandidateList/>
+        element: <CandidateList />
       },
       {
         path: "recruiterList",
-        element: <RecruiterList/>
+        element: <RecruiterList />
       }
-      
+
     ]
   }
 ]);

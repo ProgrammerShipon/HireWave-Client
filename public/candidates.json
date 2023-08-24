@@ -7,7 +7,11 @@
     "about": "Hello there! My name is Alan Walker. I am a graphic designer, and I’m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!",
     "status": "online",
     "location": "Los Angeles, CA",
-    "skills": ["JavaScript", "React", "Node.js"],
+    "skills": [
+      "JavaScript",
+      "React",
+      "Node.js"
+    ],
     "rating": 4.9,
     "languages": [
       {
@@ -25,16 +29,16 @@
     ],
     "recentReview": [
       {
-        "recruiter": "Tanvir Alam",
-        "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+        "name": "Tanvir Alam",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
         "location": "Los Angeles, CA",
         "rating": 5.0,
         "review": "Amazing! I've used him for a couple projects and they are always exactly what I asked for. Thank you!",
         "date": "Aug 15, 2021"
       },
       {
-        "recruiter": "Siam Hossain",
-        "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+        "name": "Siam Hossain",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
         "location": "Los Angeles, CA",
         "rating": 4.9,
         "review": "Fantastic eBay listings at reasonable prices. I would definitely use him again!",
@@ -90,7 +94,12 @@
     "about": "Hello there! My name is Alan Walker. I am a graphic designer, and I’m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!",
     "status": "online",
     "location": "San Francisco, CA",
-    "skills": ["Python", "Scala", "Machine", "Data Analysis"],
+    "skills": [
+      "Python",
+      "Scala",
+      "Machine",
+      "Data Analysis"
+    ],
     "rating": 4.7,
     "languages": [
       {
@@ -108,16 +117,16 @@
     ],
     "recentReview": [
       {
-        "recruiter": "Thomas lio",
-        "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+        "name": "Thomas lio",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
         "location": "Los Angeles, CA",
         "rating": 5.0,
         "review": "Robert's leadership and ability to motivate his team have led to remarkable outcomes. His dedication to collaboration is truly inspiring.",
         "date": "Aug 15, 2021"
       },
       {
-        "recruiter": "Aksam Ali",
-        "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+        "name": "Aksam Ali",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
         "location": "Los Angeles, CA",
         "rating": 4.9,
         "review": "Emily's creative solutions have turned challenges into opportunities. Her contributions have elevated our projects to new heights",
@@ -173,7 +182,12 @@
     "about": "Hello there! My name is Alan Walker. I am a graphic designer, and I’m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!",
     "status": "online",
     "location": "Los Angeles, CA",
-    "skills": ["Python", "Java", "Ruby", "Node.js (JavaScript)"],
+    "skills": [
+      "Python",
+      "Java",
+      "Ruby",
+      "Node.js (JavaScript)"
+    ],
     "rating": 4.3,
     "languages": [
       {
@@ -191,15 +205,15 @@
     ],
     "recentReview": [
       {
-        "recruiter": "Tim Cook",
-        "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+        "name": "Tim Cook",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
         "location": "Los Angeles, CA",
         "rating": 5.0,
         "review": "David's relentless pursuit of excellence has had a transformative impact. His dedication to improvement has set a remarkable standard.",
         "date": "Aug 15, 2021"
       },
       {
-        "recruiter": "Satya Nadella",
+        "name": "Satya Nadella",
         "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
         "location": "Los Angeles, CA",
         "rating": 4.9,
@@ -256,7 +270,11 @@
     "about": "Hello there! My name is Alan Walker. I am a graphic designer, and I’m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!",
     "status": "offline",
     "location": "London, UK",
-    "skills": ["Research", "Architecture", "Prototyping"],
+    "skills": [
+      "Research",
+      "Architecture",
+      "Prototyping"
+    ],
     "rating": 4.5,
     "languages": [
       {
@@ -274,16 +292,16 @@
     ],
     "recentReview": [
       {
-        "recruiter": "Chuck Robbins ",
-        "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+        "name": "Chuck Robbins ",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
         "location": "Los Angeles, CA",
         "rating": 5.0,
         "review": "Michael's consistency and reliability have fostered a positive work environment. His professionalism and positive attitude are contagious.",
         "date": "Aug 15, 2022"
       },
       {
-        "recruiter": "Shantanu Narayen",
-        "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+        "name": "Shantanu Narayen",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
         "location": "Los Angeles, CA",
         "rating": 4.9,
         "review": "Jessica's ability to handle multiple tasks seamlessly is truly impressive. Her efficiency and organization have been crucial to our success.",
@@ -339,7 +357,11 @@
     "about": "Hello there! My name is Alan Walker. I am a graphic designer, and I’m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!",
     "status": "online",
     "location": "Los Angeles, CA",
-    "skills": ["Recruitment", "Employee", "HR Policies"],
+    "skills": [
+      "Recruitment",
+      "Employee",
+      "HR Policies"
+    ],
     "rating": 4.0,
     "languages": [
       {
@@ -357,16 +379,16 @@
     ],
     "recentReview": [
       {
-        "recruiter": "Marc Beniof",
-        "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+        "name": "Marc Beniof",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
         "location": "Los Angeles, CA",
         "rating": 5.0,
         "review": "Thomas's continuous learning and proactive approach have helped us stay ahead in a rapidly evolving industry. His thirst for knowledge is remarkable",
         "date": "Aug 15, 2017"
       },
       {
-        "recruiter": "Siam Hossain",
-        "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+        "name": "Siam Hossain",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
         "location": "Los Angeles, CA",
         "rating": 4.9,
         "review": "Thanks to Ava Miller's charismatic leadership style, our team's morale and productivity have soared, leading to remarkable achievements and record-breaking results",
@@ -422,7 +444,11 @@
     "about": "Hello there! My name is Alan Walker. I am a graphic designer, and I’m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!",
     "status": "online",
     "location": "London, UK",
-    "skills": ["Sales Strategy", "Negotiation", "Relationship"],
+    "skills": [
+      "Sales Strategy",
+      "Negotiation",
+      "Relationship"
+    ],
     "rating": 3.9,
     "languages": [
       {
@@ -440,16 +466,16 @@
     ],
     "recentReview": [
       {
-        "recruiter": "Thantesh",
-        "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+        "name": "Thantesh",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
         "location": "Los Angeles, CA",
         "rating": 5.0,
         "review": "Working with john doea has been an absolute game-changer for our business. Their unmatched dedication, profound market knowledge, and exceptional communication skills have consistently translated into outstanding results.",
         "date": "Aug 15, 2021"
       },
       {
-        "recruiter": "Passuk Lomas",
-        "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+        "name": "Passuk Lomas",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
         "location": "Los Angeles, CA",
         "rating": 4.9,
         "review": " john doea possesses an uncanny ability to understand the unique needs of our clients and tailor solutions that go above and beyond expectations. Their relentless work ethic, coupled with a genuine passion for serving customers, sets a standard of excellence that inspires the entire sales team.",
@@ -505,7 +531,11 @@
     "about": "Hello there! My name is Alan Walker. I am a graphic designer, and I’m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!",
     "status": "offline",
     "location": "New York, NY",
-    "skills": ["React", "Javascript", "Node.js"],
+    "skills": [
+      "React",
+      "Javascript",
+      "Node.js"
+    ],
     "rating": 4.4,
     "languages": [
       {
@@ -523,16 +553,16 @@
     ],
     "recentReview": [
       {
-        "recruiter": "Atlan",
-        "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+        "name": "Atlan",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
         "location": "Los Angeles, CA",
         "rating": 5.0,
         "review": " Shaw Johnson has a unique ability to transform complex ideas into intuitive and visually stunning user interfaces. Their attention to detail, combined with an innate sense of user experience",
         "date": "Aug 15, 2021"
       },
       {
-        "recruiter": " Hossain",
-        "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+        "name": " Hossain",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
         "location": "Los Angeles, CA",
         "rating": 4.9,
         "review": "What truly sets Shaw Johnson apart is their proactive approach to problem-solving and their dedication to staying current with the latest industry trends. ",
@@ -588,7 +618,11 @@
     "about": "Hello there! My name is Alan Walker. I am a graphic designer, and I’m very passionate and dedicated to my work. With 20 years experience as a professional a graphic designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis illum fuga eveniet. Deleniti asperiores, commodi quae ipsum quas est itaque, ipsa, dolore beatae voluptates nemo blanditiis iste eius officia minus. Id nisi, consequuntur sunt impedit quidem, vitae mollitia!",
     "status": "online",
     "location": "San Francisco, CA",
-    "skills": ["Seo", "Google", "Shopify"],
+    "skills": [
+      "Seo",
+      "Google",
+      "Shopify"
+    ],
     "rating": 4.2,
     "languages": [
       {
@@ -602,16 +636,16 @@
     ],
     "recentReview": [
       {
-        "recruiter": "Almar",
-        "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+        "name": "Almar",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
         "location": "Los Angeles, CA",
         "rating": 5.0,
         "review": " Thomas Zavala has been an invaluable asset to our company's growth and brand positioning. Their strategic thinking, combined with a deep understanding of consumer behavior, has led to impactful marketing campaigns that consistently exceed our goals",
         "date": "Aug 15, 2021"
       },
       {
-        "recruiter": "Siossain",
-        "logo": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+        "name": "Siossain",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
         "location": "Los Angeles, CA",
         "rating": 4.9,
         "review": "is a true visionary, always able to identify unique angles that set our brand apart in a crowded marketplace. ",

@@ -9,7 +9,7 @@ import '@smastrom/react-rating/style.css'
 
 const RecruiterCard = ({ recruiter }) => {
 	const { pathname } = useLocation();
-	const { company, logo, location, totalRating, rating, openJobs } = recruiter;
+	const { _id, company, logo, location, totalRating, rating, openJobs } = recruiter;
 
 	// rating style
 	const myStyles = {
@@ -18,7 +18,7 @@ const RecruiterCard = ({ recruiter }) => {
 		inactiveFillColor: '#d6c293'
 	}
 	return (
-		<div className="w-64 sm:w-full mx-auto p-3 border border-purple hover:border-green cursor-pointer rounded-lg hover:shadow-xl hover:shadow-green/20 duration-300 group">
+		<Link to={`recruiters_details/${_id}`} className="block w-64 sm:w-full mx-auto p-3 border border-purple hover:border-green cursor-pointer rounded-lg hover:shadow-xl hover:shadow-green/20 duration-300 group">
 			<div className="flex items-center gap-3">
 				{/* logo */}
 				<img
@@ -29,7 +29,7 @@ const RecruiterCard = ({ recruiter }) => {
 
 				<div>
 					{/* company name */}
-					<h3 className="text-xl text-purple font-medium duration-300 hover:text-green mb-1 drop-shadow-lg">
+					<h3 className="text-xl text-purple font-medium duration-300 hover:text-green mb-1 drop-shadow-lg line-clamp-1">
 						{company}
 					</h3>
 
@@ -56,7 +56,7 @@ const RecruiterCard = ({ recruiter }) => {
 					<Link to='/' className="text-gray group-hover:text-white px-5 py-2 rounded-md bg-purple/20 group-hover:bg-green duration-300 shadow-xl group-hover:shadow-green/20">{openJobs} Open Jobs</Link>
 				</div>
 			}
-		</div>
+		</Link>
 	);
 };
 
