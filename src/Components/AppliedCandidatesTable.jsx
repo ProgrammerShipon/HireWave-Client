@@ -9,7 +9,7 @@ const AppliedCandidatesTable = ({ index, candidate }) => {
     return (
         <tr
             key={candidate.id}
-            className='even:bg-dark text-black even:text-white group'
+            className='even:bg-black/50 text-black even:text-white group'
         >
             <td className='px-5 py-3 text-green group-even:text-white'>{index + 1}</td>
             <td>

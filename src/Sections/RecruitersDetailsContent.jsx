@@ -194,7 +194,7 @@ export default function RecruitersDetailsContent({ recruiterData }) {
                     <h2 className="text-3xl text-dark font-medium mb-4 drop-shadow-xl">Latest Jobs</h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                        {postedJob.map((job, index) => (
+                        {postedJob.length > 0 && postedJob.map((job, index) => (
                             <JobCard key={index} job={job} setJobDetails={null} />
                         ))}
                     </div>
