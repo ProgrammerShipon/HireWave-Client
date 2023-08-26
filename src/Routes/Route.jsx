@@ -31,7 +31,6 @@ import ManageUsers from "../Dashboard/ManageUsers";
 import ManageJobs from "../Dashboard/ManageJobs";
 import CandidateList from "../Dashboard/CandidateList";
 import RecruiterList from "../Dashboard/RecruiterList";
-import Logout from "../Dashboard/Logout";
 
 const Router = createBrowserRouter([
   {
@@ -130,10 +129,6 @@ const Router = createBrowserRouter([
       {
         path: "changePassword",
         element: <ChangePassword />
-      },
-      {
-        path: "logout",
-        element: <Logout />
       },
 
       // Candidate routes

@@ -1,10 +1,12 @@
-import React from 'react';
+import DashTitle from './DashTitle';
 
 const ManageJobs = () => {
     return (
-        <div>
-            <h2 className='mt-10 text-center text-4xl text-green/80 font-semibold'>Manage Jobs</h2>
-        </div>
+        <section className='m-5 rounded-md'>
+            <DashTitle title='Manage Jobs' />
+
+            <h2 className='mt-10 text-4xl text-green/80 font-semibold'>Manage Jobs</h2>
+        </section>
     );
 };
 

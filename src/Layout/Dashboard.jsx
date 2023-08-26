@@ -1,19 +1,20 @@
 import { Outlet } from 'react-router-dom';
-import NavItemsDashboard from '../Components/NavItemsDashboard';
 import DashNav from '../Shared/DashNav';
 import DashNavItems from '../Components/DashNavItems';
+import StayTop from '../Components/StayTop';
 
 const Dashboard = () => {
     return (
         <>
+            <StayTop />
             <DashNav />
 
             <div className='flex'>
-                {/* Sidebar */}
+                {/* sidebar */}
                 <DashNavItems />
 
                 {/* Outlet */}
-                <main className='flex-1 w-full'>
+                <main className='flex-1 w-full pt-[71px] bg-[#f5fcf8]'>
                     <Outlet />
                 </main>
             </div>
