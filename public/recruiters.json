@@ -64,7 +64,8 @@
         "totalRating": "45",
         "rating": 4.4,
         "industry": "Technology",
-        "openJobs": 30
+        "openJobs": 30,
+        "joinDate": "Jan 09, 2022"
     },
     {
         "_id": 3,

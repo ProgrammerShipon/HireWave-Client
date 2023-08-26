@@ -83,7 +83,8 @@ const AdminDashboard = () => {
                 </div>
             </div>
 
-            <div className='grid grid-cols-2 gap-8 mt-10'>
+            {/* chart area */}
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 mt-10'>
                 <ApplicationLineChart />
 
                 <BarChart />

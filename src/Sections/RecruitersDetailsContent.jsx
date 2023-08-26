@@ -130,7 +130,7 @@ export default function RecruitersDetailsContent({ recruiterData }) {
                     <div className="lg:col-span-3 p-3 shadow-4xl shadow-gray/40 rounded-lg overflow-hidden">
                         <h3 className="text-2xl font-medium text-dark drop-shadow-lg">Locations</h3>
                         <h6 className="text-dark font-medium bg-gray/30 w-fit px-3 rounded-full mt-4">Primary</h6>
-                        <p className="text-sm text-lightGray mt-1">46231 Landing Pkwy, Fremont, California 94538, US</p>
+                        <p className="text-sm text-lightGray mt-1">{location}</p>
                         <iframe
                             className="mt-5"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58313.32936238924!2d89.208406036506!3d24.010495144173714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fe84d98fa5bf3d%3A0xb038902617eb9884!2sPabna!5e0!3m2!1sen!2sbd!4v1692681736855!5m2!1sen!2sbd"
@@ -149,7 +149,7 @@ export default function RecruitersDetailsContent({ recruiterData }) {
 
                         {/* Recent Review */}
                         <div>
-                            <h3 className="text-xl mb-2">Recent Review (0{recentReview.length})</h3>
+                            <h3 className="text-xl mb-2">Recent Review (0{recentReview?.length})</h3>
                             <RecentReviewSlider recentReview={recentReview} />
                         </div>
 

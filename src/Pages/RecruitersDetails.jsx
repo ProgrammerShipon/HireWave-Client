@@ -2,10 +2,10 @@ import { Helmet } from "react-helmet";
 import Breadcrumbs from "../Components/Breadcrumbs";
 import RecruitersDetailsContent from "../Sections/RecruitersDetailsContent";
 import Divider from "../Components/Divider";
-import useRecruiters from "../Hooks/useRecruiters";
+import { useLoaderData } from "react-router-dom";
 
 export default function RecruitersDetails() {
-  const [recruiterData, loading] = useRecruiters();
+  const singleRecruiter = useLoaderData();
 
   return (
     <>
@@ -17,7 +17,7 @@ export default function RecruitersDetails() {
 
       {/* sections */}
       {
-        !loading ? <RecruitersDetailsContent recruiterData={recruiterData} /> : <h1 className="text-4xl">Loading ...</h1>
+        singleRecruiter.length > 0 ? <RecruitersDetailsContent recruiterData={singleRecruiter} /> : <h1 className="text-4xl">Loading ...</h1>
       }
 
       {/* border */}
