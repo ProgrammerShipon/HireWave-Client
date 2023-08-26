@@ -1,41 +1,42 @@
-import { useEffect, useState } from "react";
-import RecruiterCard from "../Components/RecruiterCard";
-import useRecruiters from "../Hooks/useRecruiters";
+import { useState, useEffect } from 'react';
+import useAppliedCandidates from '../Hooks/useAppliedCandidates';
+import AppliedCandidatesTable from '../Components/AppliedCandidatesTable';
 
 // react icons
 import { FaLocationCrosshairs } from 'react-icons/fa6';
 import { BiCheck } from 'react-icons/bi';
+import useCandidatesData from '../Hooks/useCandidatesData';
 
-const FindRecruiters = () => {
-    const [recruiterData] = useRecruiters();
-    const [filteredData, setFilteredData] = useState([]);
+const AppliedCandidatesDetails = () => {
+    const [candidatesData] = useCandidatesData();
+    const [filteredData, setFilteredData] = useState(candidatesData);
     const [location, setLocation] = useState('');
     const [checkBoxData, setCheckBoxData] = useState('');
 
     // main filtering
     useEffect(() => {
         if (checkBoxData.length > 0) {
-            const filteredRecruiterData = recruiterData.filter(
-                (recruiter) =>
-                    recruiter.location.toLowerCase().includes(location.toLowerCase()) &&
-                    checkBoxData.includes(recruiter.industry)
+            const filteredCandidatesData = candidatesData.filter(
+                (candidate) =>
+                    candidate.location.toLowerCase().includes(location.toLowerCase()) &&
+                    checkBoxData.includes(candidate.category)
             );
-            setFilteredData(filteredRecruiterData);
+            setFilteredData(filteredCandidatesData);
         } else if (location.length > 0) {
-            const filterByLocation = recruiterData.filter((rql) =>
+            const filterByLocation = candidatesData.filter((rql) =>
                 rql.location.toLowerCase().includes(location.toLowerCase())
             );
             setFilteredData(filterByLocation);
         } else {
-            setFilteredData(recruiterData);
+            setFilteredData(candidatesData);
         }
-    }, [location, checkBoxData, recruiterData]);
+    }, [location, checkBoxData, candidatesData]);
 
     useEffect(() => {
-        setFilteredData(recruiterData);
-    }, [recruiterData]);
+        setFilteredData(candidatesData);
+    }, [candidatesData]);
 
-    // industry filter
+    // category filter
     const toggleCheckBox = (item) => {
         if (checkBoxData.includes(item)) {
             setCheckBoxData(checkBoxData.filter((data) => data !== item));
@@ -43,12 +44,12 @@ const FindRecruiters = () => {
             setCheckBoxData([...checkBoxData, item]);
         }
     };
-    const industry = [...new Set(recruiterData.map(recruiter => recruiter.industry))]
+    const category = [...new Set(candidatesData.map(candidate => candidate.category))]
 
     return (
-        <section className="py-20 md:py-[120px] duration-300">
+        <div className='py-20 md:py-[120px] duration-300'>
             <div className="container">
-                <div className="grid grid-cols-1 md:grid-cols-3 space-y-6 md:space-y-0 md:gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-4 duration-300">
 
                     {/* filter bar */}
                     <div className="lg:px-8">
@@ -66,9 +67,9 @@ const FindRecruiters = () => {
                                 />
                             </div>
 
-                            {/* filter by industry */}
+                            {/* filter by Category */}
                             <div className="mt-6">
-                                <h2 className="text-2xl capitalize mb-4">industry</h2>
+                                <h2 className="text-2xl capitalize mb-4">Category</h2>
                                 <div className="space-y-2">
                                     <div className="flex items-center justify-between gap-2">
                                         <div className="flex items-center gap-2 relative"
@@ -86,12 +87,12 @@ const FindRecruiters = () => {
 
                                         <span className="w-10 h-6 flex text-purple items-center justify-center bg-purple/30 rounded-lg">
                                             {
-                                                recruiterData.length
+                                                candidatesData.length
                                             }
                                         </span>
                                     </div>
                                     {
-                                        industry.map((item, index) => <div
+                                        category.map((item, index) => <div
                                             key={index}
                                             className="flex items-center justify-between gap-2"
                                         >
@@ -111,7 +112,7 @@ const FindRecruiters = () => {
                                             </div>
                                             <span className="w-10 h-6 flex text-purple items-center justify-center bg-purple/30 rounded-lg">
                                                 {
-                                                    recruiterData.filter(i => i.industry === item).length
+                                                    candidatesData.filter(i => i.category === item).length
                                                 }
                                             </span>
                                         </div>)
@@ -121,20 +122,36 @@ const FindRecruiters = () => {
                         </div>
                     </div>
 
-                    {/* filtered recruiters card */}
-                    <div className="col-span-2">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 duration-300">
-                            {
-                                filteredData.map((recruiter) => (
-                                    <RecruiterCard key={recruiter.id} recruiter={recruiter} />
-                                ))
-                            }
-                        </div>
+                    {/* candidate table */}
+                    <div className='lg:col-span-3 relative overflow-x-auto'>
+                        <table className='table w-[900px] md:w-full text-center border border-gray/40'>
+                            <thead className='bg-green text-white text-lg'>
+                                <tr>
+                                    <th className='px-2 py-3 font-medium'>#</th>
+                                    <th className='px-2 py-3 font-medium'>Image</th>
+                                    <th className='px-2 py-3 font-medium'>Applicant</th>
+                                    <th className='px-2 py-3 font-medium'>Job Applied</th>
+                                    <th className='px-2 py-3 font-medium'>Hourly Rate</th>
+                                    <th className='px-2 py-3 font-medium'>Rating</th>
+                                    <th className='px-10 py-3 font-medium'>Location</th>
+                                    <th className='px-2 py-3 font-medium'>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    filteredData.map((candidate, index) => <AppliedCandidatesTable
+                                        key={index}
+                                        index={index}
+                                        candidate={candidate}
+                                    />)
+                                }
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     );
 };
 
-export default FindRecruiters;
+export default AppliedCandidatesDetails;

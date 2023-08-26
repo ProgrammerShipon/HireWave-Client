@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 import ActiveLink from "./ActiveLink";
 
 // react icons
-import { PiUser } from 'react-icons/pi';
-import Profile from "./Profile";
+import { PiUser } from "react-icons/pi";
 import useAuth from "../Hooks/useAuth";
+import Profile from "./Profile";
 
 const NavItems = () => {
     const { user } = useAuth();
-    // const role = 'user';
-    const role = 'candidate';
+    const role = 'user';
+    // const role = 'candidate';
     // const role = 'recruiter';
     return (
         <>
