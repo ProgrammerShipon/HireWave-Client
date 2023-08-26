@@ -24,7 +24,7 @@ const Profile = () => {
                             alt={user?.displayName}
                         /> :
                             <p
-                                className="h-14 w-14 bg-blue text-dark text-xl flex items-center justify-center font-bold rounded-full shadow-lg group-hover:shadow-blue duration-300 drop-shadow-xl"
+                                className="h-14 w-14 bg-blue text-dark text-xl flex items-center justify-center font-bold rounded-full shadow-lg group-hover:shadow-blue duration-300 drop-shadow-xl uppercase"
                             >
                                 {user?.displayName?.slice(0, 2)}
                             </p>

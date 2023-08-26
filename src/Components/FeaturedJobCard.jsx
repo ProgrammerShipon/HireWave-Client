@@ -6,7 +6,7 @@ import GetAgoTime from "./GetAgoTime";
 
 const FeaturedJobCard = ({ job }) => {
     const { pathname } = useLocation();
-    console.log(pathname)
+
     const { companyLogo, title, companyName, postedDate, location, jobType, industry, salary, skills } = job;
 
     return (
