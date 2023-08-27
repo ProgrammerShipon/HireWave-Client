@@ -1,54 +1,751 @@
 [
   {
-    "id": 101,
-    "category": "Website & Software",
-    "vacancy": 6215,
-    "relatedJobs1": [
-      "HTML (4)",
-      "CSS (8)",
-      "Software Development (10)",
-      "Android App (14)",
-      "Mobile Design (10)"
-    ],
-    "relatedJobs2": [
-      "Wordpress Development (10)",
-      "Mobile Design (10)",
-      "Web Design (10)",
-      "Web Development (10)",
-      "Proggaming (10)"
-    ],
-    "relatedJobs3": [
-      "JavaScript (10)",
-      "PHP Development (10)",
-      "Website Security (10)",
-      "Animation Create (10)",
-      "Game Development (10)"
+    "name": "Graphics & Design",
+    "subcategories": [
+      {
+        "name": "Logo & Brand Identity",
+        "jobs": [
+          "Design a modern logo for your business",
+          "Create a unique emblem logo",
+          "Brand Style Guides",
+          "Business Cards & Stationery",
+          "Fonts & Typograph",
+          "Logo Maker Tool"
+        ]
+      },
+      {
+        "name": "Illustration",
+        "jobs": [
+          "Illustration",
+          "AI ArtistsNEW",
+          "Children's Book Illustration",
+          "Portraits & Caricatures",
+          "Cartoons & Comics",
+          "Pattern Design",
+          "Tattoo Design",
+          "Storyboards",
+          "NFT Art"
+        ]
+      },
+      {
+        "name": "Web & App Design",
+        "jobs": [
+          "Web & App Design",
+          "User Experience (UX) Design",
+          "User Interface (UI) Design",
+          "Interaction Design",
+          "Mobile App Design",
+          "Responsive Design",
+          "Wireframing & Prototyping"
+        ]
+      },
+      {
+        "name": "Visual Design",
+        "jobs": [
+          "Image Editing",
+          "Presentation Design",
+          "Background Removal",
+          "Infographic Design",
+          "Vector Tracing",
+          "Resume Design"
+        ]
+      },
+
+      {
+        "name": "Architecture & Building Design",
+
+        "jobs": [
+          "Architecture & Building Design",
+          "Architect",
+          "Interior Designer",
+          "Urban Planner",
+          "Landscape Architect",
+          "Structural Engineer",
+          "Construction Project Manager",
+          "CAD Technician"
+        ]
+      },
+      {
+        "name": "Marketing Design",
+        "jobs": [
+          "Social Media Design",
+          "Social Posts & Banners",
+          "Email Design",
+          "Web Banners",
+          "Signage Design"
+        ]
+      }
     ]
   },
   {
-    "id": 102,
-    "category": "Data Analysis & Management",
-    "vacancy": 6215,
-    "relatedJobs1": [
-      "HTML (4)",
-      "CSS (8)",
-      "Software Development (10)",
-      "Android App (14)",
-      "Mobile Design (10)"
-    ],
-    "relatedJobs2": [
-      "Wordpress Development (10)",
-      "Mobile Design (10)",
-      "Web Design (10)",
-      "Web Development (10)",
-      "Proggaming (10)"
-    ],
-    "relatedJobs3": [
-      "JavaScript (10)",
-      "PHP Development (10)",
-      "Website Security (10)",
-      "Animation Create (10)",
-      "Game Development (10)"
+    "name": "Programming & Tech",
+    "subcategories": [
+      {
+        "name": "Website Development",
+        "jobs": [
+          "Frontend Developer",
+          "Backend Developer",
+          "Full Stack Developer",
+          "UI/UX Designer",
+          "Web Application Architect",
+          "E-commerce Developer",
+          "WordPress Developer"
+        ]
+      },
+      {
+        "name": "Software Development",
+        "jobs": [
+          "Software Engineer",
+          "DevOps Engineer",
+          "Embedded Systems Developer",
+          "Quality Assurance Tester",
+          "Database Developer",
+          "Mobile Application Developer",
+          "Cloud Solutions Architect"
+        ]
+      },
+      {
+        "name": "Mobile App Development",
+        "jobs": [
+          "iOS App Developer",
+          "Android App Developer",
+          "Cross-Platform App Developer",
+          "Mobile UI/UX Designer",
+          "Mobile App Tester",
+          "Mobile App Product Manager",
+          "AR/VR App Developer"
+        ]
+      },
+      {
+        "name": "AI Development",
+        "jobs": [
+          "Machine Learning Engineer",
+          "Data Scientist",
+          "AI Research Scientist",
+          "Natural Language Processing Engineer",
+          "Computer Vision Engineer",
+          "AI Ethics Specialist",
+          "Chatbot Developer"
+        ]
+      },
+      {
+        "name": "Game Development",
+        "jobs": [
+          "Game Programmer",
+          "Game Designer",
+          "3D Artist",
+          "Game Artist",
+          "Game QA Tester",
+          "Level Designer",
+          "Game Producer"
+        ]
+      },
+      {
+        "name": "Website Platforms",
+        "jobs": [
+          "Shopify Developer",
+          "Wix Designer",
+          "Squarespace Developer",
+          "Joomla Developer",
+          "Drupal Developer",
+          "Magento Developer",
+          "PrestaShop Developer"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Digital Marketing",
+    "subcategories": [
+      {
+        "name": "Search",
+        "jobs": [
+          "Search Engine Optimization Specialist",
+          "Paid Search Analyst",
+          "SEO Content Writer",
+          "Keyword Researcher",
+          "Search Marketing Manager",
+          "Search Analyst",
+          "E-commerce SEO Specialist"
+        ]
+      },
+      {
+        "name": "Social",
+        "jobs": [
+          "Social Media Manager",
+          "Influencer Marketing Coordinator",
+          "Social Media Strategist",
+          "Community Manager",
+          "Content Creator",
+          "Social Media Advertising Specialist",
+          "Social Media Analyst"
+        ]
+      },
+      {
+        "name": "Methods & Techniques",
+        "jobs": [
+          "Agile Coach",
+          "Six Sigma Black Belt",
+          "Design Thinking Facilitator",
+          "Lean Process Improvement Specialist",
+          "Scrum Master",
+          "Kaizen Event Coordinator",
+          "Business Process Reengineering Consultant"
+        ]
+      },
+      {
+        "name": "Analytics & Strategy",
+        "jobs": [
+          "Data Analyst",
+          "Business Intelligence Manager",
+          "Marketing Analyst",
+          "Digital Analytics Specialist",
+          "Market Researcher",
+          "Strategy Consultant",
+          "Competitive Intelligence Analyst"
+        ]
+      },
+      {
+        "name": "Industry & Purpose-Specific",
+        "jobs": [
+          "Healthcare IT Project Manager",
+          "Environmental Sustainability Coordinator",
+          "Fashion E-commerce Manager",
+          "Automotive Product Designer",
+          "Travel and Tourism Consultant",
+          "Nonprofit Fundraising Manager",
+          "Digital Banking Product Manager"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Video & Animation",
+    "subcategories": [
+      {
+        "name": "Editing & Post-Production",
+        "jobs": [
+          "Video Editing",
+          "Color Correction",
+          "Audio Editing",
+          "Visual Effects (VFX)",
+          "Motion Graphics",
+          "Subtitle & Captioning",
+          "Green Screen Removal"
+        ]
+      },
+      {
+        "name": "Animation",
+        "jobs": [
+          "2D Animation",
+          "3D Animation",
+          "Character Animation",
+          "Motion Capture",
+          "Stop Motion Animation",
+          "Whiteboard Animation",
+          "Explainer Videos"
+        ]
+      },
+      {
+        "name": "Miscellaneous",
+        "jobs": [
+          "Video Transcription",
+          "Video Conversion",
+          "Video Compression",
+          "Video Stabilization",
+          "Aspect Ratio Adjustment",
+          "Video Enhancement",
+          "Video Cleanup"
+        ]
+      },
+      {
+        "name": "Social & Marketing Videos",
+        "jobs": [
+          "Social Media Ads",
+          "Promotional Videos",
+          "Testimonial Videos",
+          "Tutorial Videos",
+          "Product Demos",
+          "Event Highlight Videos",
+          "Influencer Collaboration"
+        ]
+      },
+      {
+        "name": "Filmed Video Production",
+        "jobs": [
+          "Cinematography",
+          "Location Scouting",
+          "Storyboarding",
+          "Scriptwriting",
+          "Director of Photography (DP)",
+          "Casting Director",
+          "Crew Management"
+        ]
+      },
+      {
+        "name": "Product Videos",
+        "jobs": [
+          "Product Showcase",
+          "Unboxing Videos",
+          "How-to-Use Videos",
+          "Features Explanation",
+          "Comparative Analysis",
+          "Customer Testimonial Videos",
+          "Assembly & Installation Guides"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Writing & Translation",
+    "subcategories": [
+      {
+        "name": "Content Writing",
+        "jobs": [
+          "Blog Post Writing",
+          "SEO Article Writing",
+          "Social Media Content Creation",
+          "Website Copywriting",
+          "Product Descriptions",
+          "Whitepaper Writing",
+          "Ebook Ghostwriting",
+          "Press Release Writing",
+          "Email Newsletter Copy",
+          "Scriptwriting"
+        ]
+      },
+      {
+        "name": "Editing & Critique",
+        "jobs": [
+          "Manuscript Editing",
+          "Proofreading",
+          "Copy Editing",
+          "Content Review",
+          "Academic Paper Editing",
+          "Technical Document Review",
+          "Website Content Editing",
+          "Creative Writing Critique",
+          "Resume/CV Review",
+          "Video Script Review"
+        ]
+      },
+      {
+        "name": "Business & Marketing Copy",
+        "jobs": [
+          "Advertising Copywriting",
+          "Brochure Content Writing",
+          "Sales Email Copy",
+          "Company Profile Writing",
+          "Tagline/Slogan Creation",
+          "Marketing Campaign Copy",
+          "Social Media Ad Copy",
+          "Product Naming",
+          "Direct Response Copywriting",
+          "Landing Page Copy"
+        ]
+      },
+      {
+        "name": "Translation & Transcription",
+        "jobs": [
+          "Document Translation",
+          "Audio Transcription",
+          "Video Subtitling",
+          "Website Localization",
+          "Legal Document Translation",
+          "Medical Report Translation",
+          "Technical Manual Translation",
+          "Interpretation Services",
+          "Captioning",
+          "Language Tutoring"
+        ]
+      },
+      {
+        "name": "Career Writing",
+        "jobs": [
+          "Resume/CV Writing",
+          "Cover Letter Writing",
+          "LinkedIn Profile Optimization",
+          "Job Application Writing",
+          "Personal Statement Writing",
+          "Career Coaching Content",
+          "Interview Thank-You Notes",
+          "Professional Bio Writing",
+          "Networking Email Drafting",
+          "Online Portfolio Content"
+        ]
+      },
+      {
+        "name": "Miscellaneous",
+        "jobs": [
+          "Ghostwriting",
+          "Travel Blog Writing",
+          "Recipe Development",
+          "Academic Research Writing",
+          "Grant Proposal Writing",
+          "Video Game Scriptwriting",
+          "Wedding Speech Writing",
+          "Song Lyric Writing",
+          "Real Estate Listing Copy",
+          "Event Invitation Copy"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Music & Audio",
+    "subcategories": [
+      {
+        "name": "Lessons & Transcriptions",
+        "jobs": [
+          "Online Language Tutor",
+          "Academic Tutor",
+          "Music Transcriptionist",
+          "Online Yoga Instructor",
+          "Coding Bootcamp Instructor",
+          "Online Cooking Class Instructor",
+          "Art Workshop Facilitator"
+        ]
+      },
+      {
+        "name": "Streaming & Audio",
+        "jobs": [
+          "Podcast Host",
+          "Live Streamer",
+          "Audio Content Creator",
+          "Online Radio DJ",
+          "Gaming Streamer",
+          "Music Playlist Curator",
+          "ASMR Creator"
+        ]
+      },
+      {
+        "name": "Audio Engineering & Post Production",
+        "jobs": [
+          "Sound Designer",
+          "Mixing Engineer",
+          "Mastering Engineer",
+          "Foley Artist",
+          "Audio Plugin Developer",
+          "Studio Recording Engineer",
+          "Post-Production Sound Mixer"
+        ]
+      },
+      {
+        "name": "DJing",
+        "jobs": [
+          "Club DJ",
+          "Wedding DJ",
+          "Radio DJ",
+          "Event DJ",
+          "Virtual DJ for Online Parties",
+          "Cruise Ship DJ",
+          "Mobile DJ for Parties"
+        ]
+      },
+      {
+        "name": "Voice Over & Narration",
+        "jobs": [
+          "Commercial Voice Over Artist",
+          "E-Learning Course Narrator",
+          "Animation Voice Actor",
+          "Audiobook Narrator",
+          "Video Game Character Voice",
+          "IVR System Voice",
+          "Voice Actor for Documentaries"
+        ]
+      },
+      {
+        "name": "Music Production & Writing",
+        "jobs": [
+          "Songwriter",
+          "Music Producer",
+          "Jingle Composer",
+          "Film Score Composer",
+          "Arranger",
+          "Ghost Producer",
+          "Electronic Music Artist"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Business",
+    "subcategories": [
+      {
+        "name": "Business Formation",
+        "jobs": [
+          "Business Consultant",
+          "Legal Advisor",
+          "Corporate Secretary",
+          "Tax Specialist",
+          "Business Coach",
+          "Startup Mentor",
+          "Business Plan Writer"
+        ]
+      },
+      {
+        "name": "General & Administrative",
+        "jobs": [
+          "Office Manager",
+          "Administrative Assistant",
+          "Executive Assistant",
+          "Receptionist",
+          "Facilities Coordinator",
+          "Data Entry Clerk",
+          "Virtual Assistant"
+        ]
+      },
+      {
+        "name": "Sales & Customer Care",
+        "jobs": [
+          "Sales Representative",
+          "Customer Service Agent",
+          "Sales Manager",
+          "Account Manager",
+          "Customer Support Specialist",
+          "Telemarketer",
+          "E-commerce Specialist"
+        ]
+      },
+      {
+        "name": "Accounting & Finance",
+        "jobs": [
+          "Financial Analyst",
+          "Accountant",
+          "Bookkeeper",
+          "Tax Accountant",
+          "Financial Controller",
+          "Auditor",
+          "Budget Analyst"
+        ]
+      },
+      {
+        "name": "Business Growth",
+        "jobs": [
+          "Marketing Manager",
+          "Business Development Manager",
+          "Digital Marketing Specialist",
+          "PR Specialist",
+          "Market Research Analyst",
+          "Social Media Manager",
+          "Content Strategist"
+        ]
+      },
+      {
+        "name": "Legal Services",
+        "jobs": [
+          "Corporate Lawyer",
+          "Intellectual Property Attorney",
+          "Contracts Specialist",
+          "Employment Law Advisor",
+          "Real Estate Attorney",
+          "Litigation Lawyer",
+          "Privacy & Data Protection Counsel"
+        ]
+      },
+      {
+        "name": "Professional Development",
+        "jobs": [
+          "Training Coordinator",
+          "Learning & Development Specialist",
+          "Career Coach",
+          "Mentorship Program Manager",
+          "Professional Speaker",
+          "Certification Program Manager",
+          "Leadership Coach"
+        ]
+      },
+      {
+        "name": "Miscellaneous",
+        "jobs": [
+          "Event Planner",
+          "Travel Coordinator",
+          "Freelance Writer",
+          "Graphic Designer",
+          "Translator",
+          "Personal Assistant",
+          "Lifestyle Coach"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Data",
+    "subcategories": [
+      {
+        "name": "Data Collection",
+        "jobs": [
+          "Market Research Analyst",
+          "Social Media Data Collector",
+          "Survey Researcher",
+          "Field Data Collector",
+          "IoT Data Collector",
+          "Web Scraping Specialist",
+          "Clinical Data Collector"
+        ]
+      },
+      {
+        "name": "Data Management",
+        "jobs": [
+          "Data Quality Analyst",
+          "Database Administrator",
+          "Data Governance Manager",
+          "Master Data Management Specialist",
+          "ETL Developer",
+          "Data Privacy Officer",
+          "Metadata Manager"
+        ]
+      },
+      {
+        "name": "Data Analysis",
+        "jobs": [
+          "Business Intelligence Analyst",
+          "Data Scientist",
+          "Quantitative Analyst",
+          "Market Data Analyst",
+          "Statistical Analyst",
+          "Healthcare Data Analyst",
+          "Financial Data Analyst"
+        ]
+      },
+      {
+        "name": "Data Storage",
+        "jobs": [
+          "Database Engineer",
+          "Cloud Storage Architect",
+          "Backup and Recovery Specialist",
+          "Data Warehouse Specialist",
+          "Storage System Administrator",
+          "Archival Data Manager",
+          "Distributed Systems Engineer"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Photography",
+    "subcategories": [
+      {
+        "name": "Products & Lifestyle",
+        "jobs": [
+          "Product Photography",
+          "Food Styling & Photography",
+          "Fashion Photography",
+          "Interior Design Photography",
+          "Beauty Product Photography",
+          "Jewelry Photography",
+          "Lifestyle Blogger Photography",
+          "Travel Products Photography",
+          "Fitness & Wellness Photography"
+        ]
+      },
+      {
+        "name": "Local Photography",
+        "jobs": [
+          "Cityscape Photography",
+          "Street Photography",
+          "Landmark Photography",
+          "Cultural Event Photography",
+          "Urban Exploration Photography",
+          "Community Portrait Photography",
+          "Local Wildlife Photography",
+          "Historical Site Photography",
+          "Nature in the City Photography"
+        ]
+      },
+      {
+        "name": "People & Scenes",
+        "jobs": [
+          "Portrait Photography",
+          "Wedding Photography",
+          "Family Photography",
+          "Event Photography",
+          "Candid Photography",
+          "Street Scenes Photography",
+          "Group Photos Photography",
+          "Couples Photography",
+          "Social Documentary Photography"
+        ]
+      },
+      {
+        "name": "Miscellaneous",
+        "jobs": [
+          "Aerial Photography",
+          "Underwater Photography",
+          "Night Photography",
+          "Macro Photography",
+          "Time-Lapse Photography",
+          "Architectural Photography",
+          "Experimental Photography",
+          "Abstract Photography",
+          "Composite Photography"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "AI Services",
+    "subcategories": [
+      {
+        "name": "Build your AI app",
+        "jobs": [
+          "AI Application Developer",
+          "Machine Learning Engineer",
+          "Frontend Developer",
+          "Backend Developer",
+          "UI/UX Designer",
+          "Data Scientist",
+          "Product Manager"
+        ]
+      },
+      {
+        "name": "AI Artists",
+        "jobs": [
+          "Digital Illustrator",
+          "Concept Artist",
+          "Character Designer",
+          "Environment Artist",
+          "Texture Artist",
+          "Storyboard Artist",
+          "Visual Effects Artist"
+        ]
+      },
+      {
+        "name": "Refine AI with experts",
+        "jobs": [
+          "AI Ethicist",
+          "Data Annotation Specialist",
+          "Human-in-the-Loop Specialist",
+          "AI Bias Analyst",
+          "User Experience Researcher",
+          "AI Quality Assurance Tester",
+          "Legal and Compliance Expert"
+        ]
+      },
+      {
+        "name": "Get your data right",
+        "jobs": [
+          "Data Engineer",
+          "Data Curator",
+          "Data Collection Specialist",
+          "Data Cleansing Analyst",
+          "Data Privacy Officer",
+          "Data Governance Manager",
+          "Data Quality Analyst"
+        ]
+      },
+      {
+        "name": "Creative services",
+        "jobs": [
+          "Creative Director",
+          "Content Writer",
+          "Graphic Designer",
+          "Video Editor",
+          "Marketing Strategist",
+          "Brand Consultant",
+          "Social Media Manager"
+        ]
+      }
     ]
   }
 ]

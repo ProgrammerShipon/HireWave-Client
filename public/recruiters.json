@@ -40,8 +40,8 @@
     "companyEmail": "extend@gmail.com",
     "companyBanner": "https://i.ibb.co/jMtyFTB/img-2.jpg",
     "followers": 800,
-    "about": "Extend is a technology company specializing in digital solutions. We provide cutting-edge software and services to help businesses thrive in the digital age.",
-    "specialties": "Digital Solutions, Software Development, UI/UX Design, Cloud Computing",
+    "about": "Extend is a technology company that extends its expertise beyond the digital realm into the property sector. We harness cutting-edge software and services to empower businesses to flourish in today's dynamic real estate landscape. Our comprehensive suite of solutions combines technology with industry insights, enabling property professionals to streamline operations, make informed decisions, and maximize returns. We are committed to shaping the future of property management through innovation and digital transformation. From property listings to tenant management, we provide the tools and resources to thrive in this ever-evolving market.",
+    "specialties": "Our property-focused specialties encompass property listings, tenant management, real estate analytics, and asset optimization. We leverage technology to elevate property management efficiency and performance.",
     "recentReview": [
       {
         "name": "Eva Martinez",
@@ -73,8 +73,8 @@
     "companyEmail": "charlie@gmail.com",
     "companyBanner": "https://i.ibb.co/XtVv7ZS/img-3.jpg",
     "followers": 600,
-    "about": "Charlie is a software company focused on creating innovative solutions for businesses. We're passionate about technology and its impact on society.",
-    "specialties": "Software Development, Artificial Intelligence, Machine Learning, Web Development",
+    "about": "Charlie stands as a software company at the forefront of driving innovation in business solutions. Our core dedication revolves around harnessing technology to craft ingenious answers for modern challenges. With a profound passion for all things tech, we aspire to not only create cutting-edge solutions but also to shape their profound societal impacts. Our journey is a testament to our commitment to ushering progress hand in hand with technology.",
+    "specialties": "Our specialties span diverse technological domains—software development, artificial intelligence, machine learning, and web development. Through these, we engineer future-focused solutions that transform businesses and propel them forward.",
     "recentReview": [
       {
         "name": "Laura Johnson",
@@ -106,8 +106,8 @@
     "companyEmail": "fletch@gmail.com",
     "companyBanner": "https://i.ibb.co/j8JvKgp/img-4.jpg",
     "followers": 700,
-    "about": "Fletch is a software development company with a focus on crafting user-friendly applications. Our team is dedicated to creating elegant solutions.",
-    "specialties": "User-Centric Design, Web Development, Mobile Apps, UI/UX Design",
+    "about": "Fletch stands as a distinguished software development company, driven by the pursuit of creating user-friendly applications. Our paramount focus resides in fashioning solutions that seamlessly merge elegance with functionality. Committed to excellence, our team meticulously crafts each application to resonate with user needs and desires. With a profound dedication to innovation, we take pride in transforming complex challenges into intuitive and efficient digital experiences.",
+    "specialties": "At Fletch, our specialties encompass the realms of user-centric design, encompassing UI/UX design, web development, and mobile apps. These proficiencies converge to construct solutions that redefine digital interactions and empower businesses.",
     "recentReview": [
       {
         "name": "Sophia Garcia",
@@ -139,8 +139,8 @@
     "companyEmail": "patreon@gmail.com",
     "companyBanner": "https://i.ibb.co/pjWPP9F/img-5.jpg",
     "followers": 1500,
-    "about": "Patreon is a platform that enables content creators to monetize their work and connect with their fans. We're dedicated to supporting creative communities.",
-    "specialties": "Crowdfunding, Creative Content, Community Engagement, Subscription Services",
+    "about": "Patreon stands as a unique platform empowering content creators to realize the full potential of their work by fostering monetization and fan connectivity. Our unwavering dedication resides in bolstering creative communities, offering them the means to thrive. By providing innovative monetization avenues, we enable creators to focus on producing remarkable content while maintaining a strong bond with their audience.",
+    "specialties": "Patreon's specialties encompass crowdfunding, creative content across diverse domains, community engagement strategies, and subscription services that sustain the vibrant relationship between creators and their patrons.",
     "recentReview": [
       {
         "name": "Emily Wilson",
@@ -172,8 +172,8 @@
     "companyEmail": "numeric@gmail.com",
     "companyBanner": "https://i.ibb.co/23c5nMZ/img-6.jpg",
     "followers": 998,
-    "about": "Numeric is a cutting-edge technology company that thrives on pushing the boundaries of Numeric. With a team of creative minds, we develop groundbreaking solutions that reshape industries and drive progress. Our mission is to lead the way in technology evolution and create a brighter future.",
-    "specialties": "Artificial Intelligence, Blockchain, Emerging Technologies",
+    "about": "Numeric is an avant-garde technology company relentlessly compelled to redefine the limits of what's Numeric. Boasting a cadre of ingenious minds, we forge revolutionary solutions that redefine sectors and propel advancement. Our core mission orbits around spearheading technological evolution to craft a more promising tomorrow.",
+    "specialties": "Numeric specializes in Artificial Intelligence, which simulates human intelligence in machines, Blockchain, a tamper-resistant digital ledger, and other emerging technologies that foster innovation across domains.",
     "recentReview": [
       {
         "name": "Alice Roberts",
@@ -210,7 +210,7 @@
     "recentReview": [
       {
         "name": "Emily Young",
-        "image": "https://example.com/emilyyoung.jpg",
+        "image": "https://randomuser.me/api/portraits/men/10.jpg",
         "location": "Los Angeles, CA",
         "rating": 4.9,
         "review": "Fantastic work! Their IoT solutions are revolutionary.",
@@ -218,7 +218,7 @@
       },
       {
         "name": "Daniel Green",
-        "image": "https://example.com/danielgreen.jpg",
+        "image": "https://randomuser.me/api/portraits/women/72.jpg",
         "location": "New York",
         "rating": 4.7,
         "review": "Exceptional team and transformative tech!",
@@ -238,8 +238,8 @@
     "companyEmail": "eleos@gmail.com",
     "companyBanner": "https://i.ibb.co/Fz57v0y/img-8.jpg",
     "followers": 998,
-    "about": "Eleos is a leading technology consultancy dedicated to helping businesses embrace digital transformation. With a team of experts, we deliver tailored solutions that drive efficiency and elevate performance. Our focus is on delivering tangible results through technology excellence.",
-    "specialties": "Custom Software Development, Cloud Solutions, Data Analytics",
+    "about": "Eleos stands as a premier technology consultancy committed to aiding businesses in adopting digital metamorphosis. Through a cadre of adept professionals, we furnish personalized solutions fostering efficiency and amplifying performance. Our emphasis resides in furnishing palpable outcomes through technological prowess.",
+    "specialties": "Eleos excels in Custom Software Development, crafting tailored software; Cloud Solutions, delivering remote computing power; and Data Analytics, extracting insights from information to empower decisions.",
     "recentReview": [
       {
         "name": "Sophia Mitchell",
@@ -271,8 +271,8 @@
     "companyEmail": "prevail@gmail.com",
     "companyBanner": "https://i.ibb.co/TKmm0Dp/img-9.jpg",
     "followers": 998,
-    "about": "Prevail is a trailblazing IT solutions provider that empowers businesses to thrive in the digital era. With a dedicated team, we deliver innovative solutions that drive efficiency and growth. Our goal is to shape the future of technology with transformative solutions.",
-    "specialties": "IT Consulting, Cloud Migration, Data Science",
+    "about": "Prevail pioneers as an avant-garde IT solutions provider, enabling businesses to prosper in the digital epoch. Backed by a resolute team, we dispense innovative solutions fostering efficiency and fostering expansion. Our objective orbits around molding the technological future through transformative solutions.",
+    "specialties": "Prevail specializes in IT Consulting, offering expert advisory; Cloud Migration, seamlessly transitioning to cloud environments; and Data Science, extracting insights from data for informed decisions.",
     "recentReview": [
       {
         "name": "Oliver Johnson",
@@ -304,8 +304,8 @@
     "companyEmail": "asociety@gmail.com",
     "companyBanner": "https://i.ibb.co/HFHWjHp/img-10.jpg",
     "followers": 998,
-    "about": "A Society is a dynamic software development company that pioneers groundbreaking solutions for businesses. Our innovative team is dedicated to creating software products that amplify performance and drive results. We believe in technology that harmonizes with business goals.",
-    "specialties": "Software Development, UI/UX Design, Mobile Apps",
+    "about": "A Society is a dynamic software development company at the forefront of pioneering groundbreaking solutions for businesses. Our dedicated and innovative team focuses on creating software products that not only enhance performance but also drive tangible results. We firmly believe in the power of technology that seamlessly harmonizes with and advances business goals, fostering a synergy that fuels success.",
+    "specialties": "A Society specializes in Software Development, crafting reliable and efficient solutions; UI/UX Design, ensuring exceptional user experiences; and Mobile Apps, developing on-the-go solutions for modern needs.",
     "recentReview": [
       {
         "name": "Sophia Walker",
@@ -337,8 +337,8 @@
     "companyEmail": "emonics@gmail.com",
     "companyBanner": "https://i.ibb.co/Y3YnRMj/img-11.jpg",
     "followers": 998,
-    "about": "Emonics is a leading technology consulting firm headquartered in New Jersey, US. We specialize in IT Solutions and Services, offering a wide range of services including Permanent and Temporary Recruitment, Contract Recruitment, VMS/MSP Programs, and more. With a dedicated team of experts, we cater to diverse industries such as Internet, Retail/eCommerce, Semiconductor, Healthcare, and more.",
-    "specialties": "Cloud Computing, UI/UX Design, Java Development, DevOps, Quality Engineering",
+    "about": "Emonics, headquartered in New Jersey, US, is a prominent technology consulting firm. Our specialization lies in comprehensive IT solutions and services, encompassing a spectrum from Permanent and Temporary Recruitment, Contract Recruitment to VMS/MSP Programs, and beyond. Driven by a team of dedicated experts, we extend our services across diverse industries including Internet, Retail/eCommerce, Semiconductor, and Healthcare. With a strategic approach, we empower businesses to navigate the realm of technology and human resources seamlessly.",
+    "specialties": "Emonics excels in Cloud Computing, UI/UX Design, Java Development, DevOps, and Quality Engineering, ensuring cutting-edge solutions that align technology with business objectives.v",
     "recentReview": [
       {
         "name": "Alex Johnson",
@@ -370,8 +370,8 @@
     "companyEmail": "mindpal@gmail.com",
     "companyBanner": "https://i.ibb.co/bbZcPLd/img-12.jpg",
     "followers": 998,
-    "about": "Mindpal is a creative and forward-thinking company based in California, US. With a passion for innovation, we offer a wide range of services, including IT Solutions, Permanent and Temporary Recruitment, Contract Placements, and more. Our expertise spans various areas, such as Cloud Computing, UI/UX Design, Java Development, and Quality Engineering.",
-    "specialties": "Innovation, IT Solutions, Creative Design, Recruitment, Contract Placements",
+    "about": "Mindpal, located in California, US, is a dynamic and innovative company. Our core strength lies in providing diverse services like IT Solutions, Permanent and Temporary Recruitment, Contract Placements, and beyond. Fueled by a passion for creativity and advancement, we embrace innovation at every step. Our expertise spans various domains, including Cloud Computing, UI/UX Design, Java Development, and Quality Engineering, enabling us to deliver holistic solutions that drive growth and transformation.",
+    "specialties": "Mindpal specializes in fostering innovation, offering IT Solutions, Creative Design, and Recruitment services. Our strengths encompass Cloud Computing, UI/UX Design, Java Development, and Quality Engineering.",
     "recentReview": [
       {
         "name": "Ethan Brown",
@@ -403,8 +403,8 @@
     "companyEmail": "codeWave@gmail.com",
     "companyBanner": "https://i.ibb.co/ZB8kZcF/lo.jpg",
     "followers": 998,
-    "about": "CodeWave is a dynamic software development company located in San Francisco, USA. Committed to excellence, we provide top-notch IT Solutions and Services, including Custom Software Development, Mobile App Development, and more. Our team of skilled professionals excels in various domains, such as UI/UX Design, Java Development, and DevOps.",
-    "specialties": "Custom Software Development, Mobile App Development, UI/UX Design, Java Development, DevOps",
+    "about": "Headquartered in San Francisco, USA, CodeWave is a dynamic software development company. Our unwavering commitment to excellence drives us to deliver premium IT Solutions and Services. From Custom Software Development to Mobile App Development and beyond, our skilled professionals excel in diverse domains. With a focus on innovation, we stand out through our expertise in UI/UX Design, Java Development, and DevOps, ensuring that our solutions are not only functional but also aesthetically superior.",
+    "specialties": "CodeWave specializes in Custom Software Development, Mobile App Development, UI/UX Design, Java Development, and DevOps. Our solutions merge functionality with aesthetics to meet modern business demands effectively.",
     "recentReview": [
       {
         "name": "Daniel White",
@@ -436,8 +436,8 @@
     "companyEmail": "applab@gmail.com",
     "companyBanner": "https://i.ibb.co/19hy473/img-14.jpg",
     "followers": 998,
-    "about": "AppLab is a cutting-edge technology solutions provider based in Princeton, NJ. Our offerings encompass a wide range of IT Solutions and Services, including Software Development, Cloud Solutions, and more. With a skilled team, we excel in areas such as UI/UX Design, Java Development, DevOps, and Quality Engineering.",
-    "specialties": "Software Development, Cloud Solutions, UI/UX Design, Java Development, DevOps",
+    "about": "Headquartered in Princeton, NJ, AppLab stands at the forefront of technology solutions. Our comprehensive portfolio covers a wide spectrum of IT Solutions and Services, ranging from impactful Software Development to robust Cloud Solutions. Our skilled team excels in various domains, notably UI/UX Design, Java Development, DevOps, and Quality Engineering. With a commitment to innovation, we deliver solutions that drive business growth and technological advancement.",
+    "specialties": "AppLab specializes in Software Development, Cloud Solutions, UI/UX Design, Java Development, and DevOps. We combine expertise and creativity to provide transformative solutions that meet evolving industry demands.",
     "recentReview": [
       {
         "name": "Sophia Miller",
@@ -469,8 +469,8 @@
     "companyEmail": "yassir@gmail.com",
     "companyBanner": "https://i.ibb.co/0nKR3c1/img-15.jpg",
     "followers": 998,
-    "about": "Yassir is a pioneering IT services and consulting company headquartered in Palo Alto, CA. We provide comprehensive IT Solutions and Services, including Software Development, IT Consulting, and more. Our team excels in areas such as Cloud Computing, UI/UX Design, Java Development, and DevOps.",
-    "specialties": "IT Services, IT Consulting, Software Development, UI/UX Design, Java Development, DevOps",
+    "about": "Based in Palo Alto, CA, Yassir is a trailblazing IT services and consulting company. Our offerings span a broad spectrum of IT Solutions and Services, encompassing dynamic Software Development, strategic IT Consulting, and more. Our accomplished team thrives in diverse domains, notably Cloud Computing, UI/UX Design, Java Development, and DevOps. With innovation as our guiding principle, we empower businesses to embrace the digital future.",
+    "specialties": "Yassir specializes in IT Services, IT Consulting, Software Development, UI/UX Design, Java Development, and DevOps. Our holistic approach delivers transformative solutions that align with industry trends and client objectives.",
     "recentReview": [
       {
         "name": "Oliver Turner",
