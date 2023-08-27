@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "name": "Adroit Resources, Inc.",
+    "industry": "Staffing and Recruiting",
+    "followers": "32,880 followers",
+    "candidates": "54 candidates",
+    "email": "jane@example.com",
+    "phone": "987-654-3210",
+    "location": "Los Angeles, CA",
+    "status": "online",
+    "joinDate": "Aug 19, 2020",
+    "specialization": "Engineering",
+    "title": "Engineering Recruitment Manager",
+    "about": "Experienced in sourcing and placing engineers in cutting-edge technology companies. With over a decade of experience in the industry, I have developed a keen eye for identifying top engineering talent and matching them with companies where they can thrive and make a significant impact. My passion lies in creating successful connections that drive innovation and growth.",
+    "WaysToAttractTopTalent": [
+      "Proactive and reactive recruiting",
+      "Employee referral program",
+      "Social media recruiting and outreach",
+      "Campus recruiting",
+      "Regular Meetups/Networking Events /Diversity Events",
+      "Targeted marketing for passive job seekers",
+      "Enhanced competitive benefits for our consultants",
+      "Applicant Tracking System (ATS) with 150,000+ applicants",
+      "AI recruitment solutions"
+    ],
+
+    "Certifications": [
+      "Minority Certified -WRMSDC",
+      "MBE- Supplier Clearing House (CPUC)"
+    ],
+    "LocationsOffice": [
+      "Fremont, CA (Bay Area)",
+      "Brea, CA (HQ)",
+      "Hyderabad, India",
+      "Vadodara, India"
+    ],
+    "companySize": ["51-200 employees", "54 on LinkedIn"],
+    "Headquarters": "Fremont, California",
+    "Founded": "2011",
+    "Specialties": "IT Solutions and Services, Permanent Recruitment, Temporary Recruitment, Contract Recruitment, VMS/MSP Programs, Contract to Hire Placements, Contingent Workforce Supplier, SOW, and Cloud, UI, Java, DevOps, Release, QE",
+    "availability": "Not actively seeking new clients at the moment.",
+    "languages": ["English", "Mandarin"],
+    "profileImage": "https://media.licdn.com/dms/image/C4D0BAQHrtYNljdjm9w/company-logo_100_100/0/1670441499328?e=1700092800&v=beta&t=0KzCPxcN0RYlHpKQkPgTEkoDLQWPpDXoUCBJc1V2Llk"
+  }
+]

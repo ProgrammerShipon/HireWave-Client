@@ -1,17 +1,36 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import SocialLogin from '../Components/SocialLogin';
+import useAuth from '../Hooks/useAuth';
 
 // react icons
 import { MdAlternateEmail, MdLockOutline } from 'react-icons/md';
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
-import SocialLogin from '../Components/SocialLogin';
 
 const LoginForm = () => {
+    const { signIn } = useAuth();
+
+    // navigate
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
     const [type, setType] = useState('password');
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data)
+        signIn(data.email, data.password)
+            .then(() => {
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                toast.error(error.message, {
+                    position: "top-center",
+                    autoClose: 3000,
+                    theme: "light",
+                });
+            })
     };
 
     return (

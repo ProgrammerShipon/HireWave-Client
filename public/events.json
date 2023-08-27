@@ -1,0 +1,137 @@
+[
+    {
+      "event_name": "Hiring Fair for Senior Developers (JS, Python and Mobile)",
+      "event_date": "September 25 - 26, 2023 • 9:00am - 10:00pm (GMT+6)",
+      "event_type": "Hiring Event",
+      "about": "Are you a seasoned developer with over 7 years of experience?Do you hunger for new horizons, eager to forge global connections with top-notch Canadian, European, and American companies? Well, get ready to embark on an exhilarating journey at the TechRecruit Virtual Summit's Hiring Fair for Senior Developers!<br/><br/> Imagine this: a dynamic event where industry experts and thought leaders converge to discuss the latest trends in tech hiring and talent acquisition. But it's not just about discussions – it's about making tangible connections. This event will immerse you in direct interactions with company representatives, granting you the opportunity to showcase your expertise and secure those sought-after interviews.<br/><br/> And the best part? Whether you're aiming to relocate or work remotely, the options are boundless. The Hiring Fair opens doors to a realm of exciting relocation and remote prospects, all conveniently consolidated in one place.<br/><br/> But this isn't your run-of-the-mill hiring event; it's a chance to foster genuine, impactful relationships. Connect with peers who share your aspirations, exchange invaluable insights, and gain access to a dedicated support member – there to guide you on your journey.<br/><br/> What skills are we seeking? JavaScript, Python, Mobile Development (iOS and Android), and even Swift.<br/><br/> So, what's your unique contribution? Beyond your impressive 7+ years of professional software development experience, we're seeking that unquenchable thirst for knowledge and the eagerness to continuously learn and evolve.<br/><br/> Here's a secret tip: applications with comprehensive profiles and attached resumes receive top priority. Don't procrastinate – put your best foot forward and apply now!<br/><br/> Keep in mind, slots fill up swiftly, and applications close two weeks prior to the event. Seize this golden opportunity, and let's craft something magical together!",
+      "location": "City Convention Center, New York",
+      "speakers": [
+        {
+            "name": "John Smith",
+            "image": "https://img.freepik.com/free-photo/medium-shot-happy-man-smiling_23-2148221808.jpg?size=626&ext=jpg&ga=GA1.2.670690934.1670350375&semt=ais",
+            "position": "Senior Software Engineer, Zenotech"
+        },
+        {
+            "name": "Jane Doe",
+            "image": "https://img.freepik.com/free-photo/european-man-smiling-cheerful-expression-closeup-portrait_53876-160764.jpg?size=626&ext=jpg&ga=GA1.2.670690934.1670350375&semt=ais",
+            "position": "Tech Recruiter, Machintosh"
+        },
+        {
+            "name": "Michael Johnson",
+            "image": "https://img.freepik.com/free-photo/indoor-portrait-pleased-handsome-ordinary-european-man-with-moustache-beard-smiling-broadly-feeling-confident-happy-while-making-arrangement-wedding-gray-wall_176420-22384.jpg?size=626&ext=jpg&ga=GA1.2.670690934.1670350375&semt=ais",
+            "position": "Software Development Manager, SumitIT"
+        }
+      ],
+      "event_image": "https://i.ibb.co/p4D5sTc/090663d2-888b-4f17-ac4e-d20b91ff1b6f-2.jpg",
+      "reason_to_join": [
+        {
+            "reason": "Network",
+            "details": "Connect with industry experts and peers to expand your professional network."
+        },
+        {
+            "reason": "Information",
+            "details": "Gain insights into the latest tech hiring trends and talent acquisition strategies."
+        },
+        {
+            "reason": "Great Speakers",
+            "details": "Listen to renowned speakers who will share their expertise and success stories."
+        }
+      ],    
+      "years_of_experience_required": "7+",
+      "skills_required": [
+        "Javascript",
+        "Python",
+        "Mobile Development",
+        "Swift"
+      ],
+      "english_skill_required": "Upper-Intermediate"
+    },
+    {
+        "event_name": "Virtual career fair 2023",
+        "event_date": "October 21, 2023 • 9:00pm - 12:00am (GMT+6)",
+        "event_type": "Workshop",
+        "about": "Are you intrigued by the evolving landscape of work and its impact on hiring? Are you an HR professional, recruiter, or industry leader ready to explore the future of work? Welcome to Hirewave's Virtual Career Fair 2023!<br/><br/>Imagine a day where HR experts, recruiters, and industry luminaries converge to dissect the future of work and its implications for hiring. It's not just a day of lectures; it's a day of interaction. This event offers you the chance to delve into strategies for adapting to dynamic workplace trends, bask in success stories, and form connections with fellow HR trailblazers.<br/><br/>And guess what? It's all happening online, conveniently accessible from wherever you are.",
+        "location": "Online",
+        "speakers": [
+            {
+                "name": "Emily Williams",
+                "image": "https://img.freepik.com/free-photo/smiling-natural-redhead-girl-cross-arms-chest-looks-confident-determined-camera-professional-woman-t-shirt-standing-against-white-background_176420-46504.jpg?size=626&ext=jpg&ga=GA1.2.670690934.1670350375&semt=ais",
+                "position": "HR Expert"
+            },
+            {
+                "name": "David Lee",
+                "image": "https://img.freepik.com/free-photo/lifestyle-summer-people-emotions-concept-enthusiastic-handsome-male-model-with-happy-smile-white-teeth-standing-casual-t-shirt-yellow-background-satisfied_1258-60040.jpg?size=626&ext=jpg&ga=GA1.2.670690934.1670350375&semt=ais",
+                "position": "Talent Acquisition Manager"
+            },
+            {
+                "name": "Sarah Miller",
+                "image": "https://img.freepik.com/free-photo/red-haired-woman-smiling_23-2147847015.jpg?size=626&ext=jpg&ga=GA1.2.670690934.1670350375&semt=ais",
+                "position": "Industry Leader"
+            }
+        ],
+        "event_image": "https://i.ibb.co/fGB5z63/image-3.png",
+        "reason_to_join": [
+            {
+                "reason": "Networking",
+                "details": "Interact with HR professionals and industry leaders to build valuable connections."
+            },
+            {
+                "reason": "Learning",
+                "details": "Explore the future of work and strategies to adapt to changing workplace trends."
+            },
+            {
+                "reason": "Inspiring Speakers",
+                "details": "Engage with inspiring speakers who will share their insights and experiences."
+            }
+        ]        
+    },
+    {
+        "event_name": "Digital technology: Tactics to Boost Career Opportunities",
+        "event_date": "November 14, 2023 • 9:00pm - 11:30am (GMT+6)",
+        "event_type": "Webinar",
+        "about": "Are you fascinated by the potential of digital technology to catapult your career? Do you yearn to grasp strategies that will set you apart in the ever-changing tech landscape? Join us for a groundbreaking webinar: 'Digital technology: Tactics to Boost Career Opportunities.'<br/><br/>Imagine a virtual gathering of minds, where digital technology enthusiasts come together to explore ways to elevate their careers. This isn't just a passive experience – it's an interactive journey. Delve into strategies for navigating fluid workplace dynamics, listen to triumph tales, and engage with fellow tech aficionados.<br/><br/>And here's the beauty of it: you can participate from the comfort of your own space, thanks to the magic of online connectivity.<br/><br/>These events are all about embracing opportunities, making connections, and propelling your career to new heights. Whether you're a senior developer with years of experience or someone just starting out, there's something here for you. Don't miss out on these chances to learn, grow, and network in the ever-evolving world of technology and work.",
+        "location": "Online",
+        "speakers": [
+            {
+                "name": "Peter Parker",
+                "image": "https://img.freepik.com/free-photo/portrait-happy-male-with-broad-smile_176532-8175.jpg?size=626&ext=jpg&ga=GA1.2.670690934.1670350375&semt=ais",
+                "position": "Technology Evangelist"
+            },
+            {
+                "name": "Joe Reynolds",
+                "image": "https://img.freepik.com/free-photo/indoor-shot-young-brunette-female-wears-white-t-shirt-smiles-broadly-fells-happy_295783-16002.jpg?size=626&ext=jpg&ga=GA1.2.670690934.1670350375&semt=ais",
+                "position": "Tech Career Coach"
+            },
+            {
+                "name": "Brad Haddin",
+                "image": "https://img.freepik.com/free-photo/portrait-casual-guy-posing-studio_176420-28907.jpg?size=626&ext=jpg&ga=GA1.2.670690934.1670350375&semt=ais",
+                "position": "Digital Transformation Specialist"
+            }   
+        ],
+        "event_image": "https://i.ibb.co/k5qDnSf/image.png",
+        "reason_to_join": [
+            {
+                "reason": "Networking",
+                "details": "Connect with fellow tech enthusiasts and professionals to broaden your network."
+            },
+            {
+                "reason": "Learning",
+                "details": "Discover strategies to leverage digital technology for career advancement."
+            },
+            {
+                "reason": "Expert Insights",
+                "details": "Engage with expert speakers who will provide valuable insights into career growth."
+            }
+        ],
+        "years_of_experience": "2+",
+        "skills_required": [
+          "Javascript",
+          "React",
+          "Python",
+          "MongoDB",
+          "MySQL"
+        ],
+        "english_skill_required": "Intermediate"
+      }
+  ]
+  
