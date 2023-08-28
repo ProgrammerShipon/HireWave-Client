@@ -49,3 +49,8 @@
   text-transform: capitalize;
   font-family: "Jost", sans-serif !important;
 }
+
+/* count__up */
+.count__up span {
+  font-weight: 600;
+}
