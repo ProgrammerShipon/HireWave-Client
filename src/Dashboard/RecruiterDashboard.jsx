@@ -1,18 +1,22 @@
+import DoughnutChart from '../Components/DoughnutChart';
+import AreaChart from '../Components/AreaChart';
 import CountUp from 'react-countup';
 
 // react icons
-import { BsBriefcase, BsBookmarkCheck } from 'react-icons/bs';
+import { BsBriefcase } from 'react-icons/bs';
 import { IoDocumentTextOutline, IoAnalyticsOutline } from 'react-icons/io5';
-import { PiUsersThreeLight } from 'react-icons/pi';
-import LineChart from '../Components/LineChart';
-import BarChart from '../Components/BarChart';
+import { RiChatFollowUpLine } from 'react-icons/ri';
+import { AiOutlineFundView } from 'react-icons/ai';
 
-const AdminDashboard = () => {
+const RecruiterDashboard = () => {
+    const labels = ['Applications', 'Profile Views', 'Open Jobs'];
+    const chartData = [135, 75, 234];
 
+    const profileViewsData = [80, 200, 160, 260, 220, 400, 350];
     return (
         <div>
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10'>
-                {/* posted jobs */}
+                {/* open jobs */}
                 <div className='bg-white shadow-4xl shadow-gray/40 rounded-md px-3 group'>
                     <div className='flex items-center justify-between border-b border-purple/40'>
                         <div className='w-16 h-16 bg-purple text-white flex items-center justify-center rounded-lg shadow-xl shadow-purple/50 -mt-10 group-hover:-mt-14 duration-300'>
@@ -20,9 +24,9 @@ const AdminDashboard = () => {
                         </div>
                         <div className='text-right pt-1 pb-2'>
                             <span className='text-purple text-4xl drop-shadow-xl count__up'>
-                                <CountUp duration={3} end={234} />
+                                <CountUp duration={3} end={chartData[2]} />
                             </span>
-                            <h3 className='text-dark tracking-wider drop-shadow-xl'>Posted Jobs</h3>
+                            <h3 className='text-dark tracking-wider drop-shadow-xl'>Open Jobs</h3>
                         </div>
                     </div>
                     <p className='py-2 text-lightGray flex gap-2 line-clamp-1'>
@@ -40,7 +44,7 @@ const AdminDashboard = () => {
                         </div>
                         <div className='text-right pt-1 pb-2'>
                             <span className='text-green text-4xl drop-shadow-xl count__up'>
-                                <CountUp duration={3} end={135} />
+                                <CountUp duration={3} end={chartData[0]} />
                             </span>
                             <h3 className='text-dark tracking-wider drop-shadow-xl'>Application</h3>
                         </div>
@@ -52,17 +56,17 @@ const AdminDashboard = () => {
                     </p>
                 </div>
 
-                {/* shortlist */}
+                {/* profile view */}
                 <div className='bg-white shadow-4xl shadow-gray/40 rounded-md px-3 group'>
                     <div className='flex items-center justify-between border-b border-[#FF9671]/40'>
                         <div className='w-16 h-16 bg-[#FF9671] text-white flex items-center justify-center rounded-lg shadow-xl shadow-[#FF9671]/50 -mt-10 group-hover:-mt-14 duration-300'>
-                            <BsBookmarkCheck size='36' />
+                            <AiOutlineFundView size='36' />
                         </div>
                         <div className='text-right pt-1 pb-2'>
                             <span className='text-[#FF9671] text-4xl drop-shadow-xl count__up'>
-                                <CountUp duration={3} end={456} />
+                                <CountUp duration={3} end={chartData[1]} />
                             </span>
-                            <h3 className='text-dark tracking-wider drop-shadow-xl'>Shortlist</h3>
+                            <h3 className='text-dark tracking-wider drop-shadow-xl'>Profile Views</h3>
                         </div>
                     </div>
                     <p className='py-2 text-lightGray flex gap-2 line-clamp-1'>
@@ -72,17 +76,17 @@ const AdminDashboard = () => {
                     </p>
                 </div>
 
-                {/* total users */}
+                {/* followers */}
                 <div className='bg-white shadow-4xl shadow-gray/40 rounded-md px-3 group'>
                     <div className='flex items-center justify-between border-b border-[#18025B]/40'>
                         <div className='w-16 h-16 bg-[#18025B] text-white flex items-center justify-center rounded-lg shadow-xl shadow-[#18025B]/50 -mt-10 group-hover:-mt-14 duration-300'>
-                            <PiUsersThreeLight size='36' />
+                            <RiChatFollowUpLine size='36' />
                         </div>
                         <div className='text-right pt-1 pb-2'>
                             <span className='text-[#18025B] text-4xl drop-shadow-xl count__up'>
-                                <CountUp duration={3} end={112} />
+                                <CountUp duration={3} end={122} />
                             </span>
-                            <h3 className='text-dark tracking-wider drop-shadow-xl'>Total Users</h3>
+                            <h3 className='text-dark tracking-wider drop-shadow-xl'>Followers</h3>
                         </div>
                     </div>
                     <p className='py-2 text-lightGray flex gap-2 line-clamp-1'>
@@ -93,14 +97,12 @@ const AdminDashboard = () => {
                 </div>
             </div>
 
-            {/* chart area */}
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 mt-10'>
-                <LineChart />
-
-                <BarChart />
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mt-8'>
+                <DoughnutChart labels={labels} chartData={chartData} />
+                <AreaChart profileViewsData={profileViewsData} />
             </div>
         </div>
     );
 };
 
-export default AdminDashboard;
+export default RecruiterDashboard;
