@@ -1,7 +1,6 @@
 import DashTitle from "./DashTitle";
 import useAllJobs from "./../Hooks/useAllJobs";
 import ManageJobTable from "../Components/ManageJobTable";
-import { FaRegStar } from "react-icons/fa";
 
 const ManageJobs = () => {
   const [allJobsData] = useAllJobs();
@@ -9,9 +8,9 @@ const ManageJobs = () => {
   return (
     <section className="m-5">
       <DashTitle title="Job Management" />
-      <div className="w-[1000px] overflow-x-auto hover:shadow-md duration-300 mt-5 rounded-xl bg-green">
-        {/* festering option */}
-        <div className="flex justify-between  w-full bg-white text-dark px-5 py-3 font-medium">
+      <div className="hover:shadow-md w-full lg:w-full overflow-x-scroll lg:overflow-hidden duration-300 mt-5 rounded-xl ">
+        {/* filtering option */}
+        <div className="flex justify-between w-[900px] lg:w-full bg-white text-dark px-5 py-3 font-medium">
           <div className="">
             <h2 className="text-3xl font-medium">
               Engineer <span className="text-sm text-lightGray">5 jobs</span>
@@ -46,7 +45,7 @@ const ManageJobs = () => {
             <select
               name="filter"
               id="filter"
-              className="py-1  bg-white border border-slate-200 ml-1 rounded-md px-3"
+              className="py-1 bg-white border border-slate-200 ml-1 rounded-md px-3"
             >
               <option value="Engineer">Recent</option>
               <option value="designer">Oldest</option>
@@ -54,8 +53,8 @@ const ManageJobs = () => {
           </div>
         </div>
         {/* table */}
-        <table className="table  text-left ">
-          <thead className="bg-green border text-dark text-lg">
+        <table className="table bg-green w-[900px] lg:w-full text-left ">
+          <thead className=" text-dark text-lg">
             <tr>
               <th className="px-5 py-3 ">Job Title</th>
               <th className="px-5 py-3 ">Category</th>
