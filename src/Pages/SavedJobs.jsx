@@ -15,9 +15,8 @@ const SavedJobs = () => {
 
             {/* section here */}
             {/* border */}
-            <Divider />
-            
             <SavedJob />
+            <Divider />
         </>
     );
 };

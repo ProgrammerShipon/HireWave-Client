@@ -3,6 +3,7 @@
         "title": "UI/UX Designer",
         "postedDate": "2023-08-09 07:00 PM",
         "companyName": "Adroit",
+        "companyEmail": "adroit@gmail.com",
         "companyLogo": "https://media.licdn.com/dms/image/C4D0BAQHrtYNljdjm9w/company-logo_100_100/0/1670441499328?e=1700092800&v=beta&t=0KzCPxcN0RYlHpKQkPgTEkoDLQWPpDXoUCBJc1V2Llk",
         "category": "Design & Creative",
         "location": "California",
@@ -175,6 +176,40 @@
             "Python",
             "Agile Development",
             "Problem-Solving"
+        ]
+    },
+    {
+        "title": "Backend Developer",
+        "postedDate": "2023-08-09 07:00 PM",
+        "companyName": "Adroit",
+        "companyEmail": "adroit@gmail.com",
+        "companyLogo": "https://media.licdn.com/dms/image/D4E0BAQHIE0lOuytShA/company-logo_100_100/0/1688732811920?e=1700697600&v=beta&t=tUkpBHlEDVEthFa7PdebIy2b_M3hHp0hshdM0SM7P9I",
+        "category": "Programming & Tech",
+        "location": "California",
+        "jobType": "remote",
+        "salary": "450-900",
+        "closingDate": "2023-10-24",
+        "experience": "Entry Level",
+        "quantity": 2,
+        "applied": 56,
+        "overview": "We are Uxper. With a presence in more than 60 countries, we’re a growing global organization that helps amazing companies engage with customers through mobile messaging, email, voice and video.",
+        "requirements": [
+            "Be heavily involved in turning user stories into testable, maintainable and high-quality code. This is a hands-on code design and coding role!",
+            "Be heavily involved in turning user stories into testable, maintainable and high-quality code. This is a hands-on code design and coding role!"
+        ],
+        "skillsExperience": [
+            "You have at least 3 years of experience working as a Product Designer.",
+            "You have experience using Sketch and InVision or Framer X",
+            "You are familiar with using Jira and Confluence in your workflow"
+        ],
+        "benefits": [
+            "Competitive compensation package with a meaningful equity stake, rewarding you for your role in the company's sustained success."
+        ],
+        "skills": [
+            "React",
+            "Javascript",
+            "Redux",
+            "MongoDB"
         ]
     }
 ]

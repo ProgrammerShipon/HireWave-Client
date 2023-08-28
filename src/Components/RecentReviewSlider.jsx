@@ -32,13 +32,13 @@ const RecentReviewSlider = ({ recentReview }) => {
                     <div className="flex items-start gap-3 mb-1">
 
                         {/* company logo */}
-                        <div className="h-14 w-14 shadow-xl shadow-purple/30 overflow-hidden rounded-full">
-                            <img className="w-full object-cover object-center" src={rvw.logo} alt={rvw.recruiter} />
+                        <div className="h-14 w-14 shadow-xl shadow-purple/30 overflow-hidden rounded-md">
+                            <img className="w-full object-cover object-center" src={rvw.image} alt={rvw.name} />
                         </div>
 
                         {/* review content */}
                         <div>
-                            <h3 className="text-dark font-medium text-lg">{rvw.recruiter}</h3>
+                            <h3 className="text-dark font-medium text-lg">{rvw.name}</h3>
                             <p className="text-lightGray -mt-1">{rvw.location}</p>
 
                             {/* rating */}

@@ -57,7 +57,7 @@ const Profile = () => {
                             <Link to='/learning' className='hover:text-green duration-300'>Learning</Link>
                         </li>
                         <li>
-                            <Link to='/dashboard' className='hover:text-green duration-300'>Dashboard</Link>
+                            <Link to='/dashboard/dashboardHome' className='hover:text-green duration-300'>Dashboard</Link>
                         </li>
                     </ul>
 
