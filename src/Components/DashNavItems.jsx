@@ -1,64 +1,71 @@
-import ActiveLink from "./ActiveLink";
+import DashNavItemsByRole from "./DashNavItemsByRole";
+import DashLink from "./DashLink";
+import useAuth from "../Hooks/useAuth";
 
 // react icons
-import { AiOutlineHome } from 'react-icons/ai';
-import { VscAccount } from 'react-icons/vsc';
-import { RiLockPasswordLine } from 'react-icons/ri';
-import { IoMdLogOut } from 'react-icons/io';
+import { VscAccount } from "react-icons/vsc";
+import { TbLockCog } from "react-icons/tb";
+import { MdLogout } from "react-icons/md";
+import { LiaHomeSolid } from "react-icons/lia";
+import { LuLayoutDashboard } from "react-icons/lu";
 
 const DashNavItems = () => {
-    // const role = 'candidate';
-    const role = 'recruiter';
-    // const role = 'admin';
+  const { logOut } = useAuth();
+  // const role = 'candidate';
+  // const role = 'recruiter';
+  const role = "admin";
 
-    return (
-        <aside className="shadow-xl w-[300px] xxl:w-[360px] bg-purple/10 duration-300 h-screen">
-            <ul className="flex flex-col items-center justify-center">
-                {/* Dashboard Home */}
-                <li className=''>
-                    <ActiveLink to='/dashboard/dashboardHome'>
-                        <div className='flex items-center gap-3 pl-10 pr-auto w-64 py-3 hover:bg-green/10 rounded'>
-                            <AiOutlineHome size={24} />
-                            <p>Dashboard</p>
-                        </div>
-                    </ActiveLink>
-                </li>
+  return (
+    <aside className="sticky top-0 shadow-4xl shadow-gray/40 w-auto md:w-[300px] bg-white duration-300 h-screen pt-[71px] overflow-y-auto">
+      <ul className="flex flex-col items-center gap-3 ml-4 md:ml-10 pt-6">
+        {/* Dashboard Home */}
+        <li className="w-full">
+          <DashLink to="/dashboard/dashboardHome">
+            <LuLayoutDashboard size={24} />
+            <p className="hidden md:inline">Dashboard</p>
+          </DashLink>
+        </li>
 
-                {/* My Profile */}
-                <li className=''>
-                    <ActiveLink to='/dashboard/myProfile'>
-                        <div className='flex items-center gap-3 pl-10 pr-auto w-64 py-3 hover:bg-green/10 rounded'>
-                            <VscAccount size={24} />
-                            <p>My Profile</p>
-                        </div>
-                    </ActiveLink>
-                </li>
+        {/* My Profile */}
+        <li className="w-full">
+          <DashLink to="/dashboard/myProfile">
+            <VscAccount size={24} />
+            <p className="hidden md:inline">My Profile</p>
+          </DashLink>
+        </li>
 
-                {/* Routes per Role */}
-                {/* <NavItemsDashboardByRole role={role}/> */}
+        {/* Routes per Role */}
+        <DashNavItemsByRole role={role} />
 
-                {/* Change Password */}
-                <li className=''>
-                    <ActiveLink to='/dashboard/changePassword'>
-                        <div className='flex items-center gap-3 pl-10 pr-auto w-64 py-3 hover:bg-green/10 rounded'>
-                            <RiLockPasswordLine size={24} />
-                            <p>Change Password</p>
-                        </div>
-                    </ActiveLink>
-                </li>
+        {/* Change Password */}
+        <li className="w-full">
+          <DashLink to="/dashboard/changePassword">
+            <TbLockCog size={24} />
+            <p className="hidden md:inline">Change Password</p>
+          </DashLink>
+        </li>
 
-                {/* Logout */}
-                <li className=''>
-                    <ActiveLink to='/dashboard/logOut'>
-                        <div className='flex items-center gap-3 pl-10 pr-auto w-64 py-3 hover:bg-green/10 rounded'>
-                            <IoMdLogOut size={24} />
-                            <p>Logout</p>
-                        </div>
-                    </ActiveLink>
-                </li>
-            </ul>
-        </aside>
-    );
+        {/* back to home */}
+        <li className="w-full">
+          <DashLink to="/">
+            <LiaHomeSolid size={24} />
+            <p className="hidden md:inline">Back Home</p>
+          </DashLink>
+        </li>
+
+        {/* Logout */}
+        <li className="w-full">
+          <button
+            onClick={() => logOut()}
+            className="text-red-500 font-medium text-lg py-3 pl-7 flex items-center gap-2 bg-transparent hover:text-white bg-red-200 hover:bg-red-400 w-full rounded-s-full duration-300"
+          >
+            <MdLogout size={24} />
+            <p className="hidden md:inline">Logout</p>
+          </button>
+        </li>
+      </ul>
+    </aside>
+  );
 };
 
 export default DashNavItems;
