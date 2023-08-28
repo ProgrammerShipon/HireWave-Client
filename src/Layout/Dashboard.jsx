@@ -19,7 +19,7 @@ const Dashboard = () => {
                 </div>
 
                 {/* Outlet */}
-                <main className='flex-1 mt-24 ml-[300px] xxl:ml-[360px] px-8'>
+                <main className='flex-1 mt-10 ml-[300px] xxl:ml-[360px]'>
                     <Outlet />
                 </main>
             </div>
