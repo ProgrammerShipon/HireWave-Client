@@ -1,6 +1,5 @@
 // react icons
 import { Link } from 'react-router-dom';
-import Button from './Button';
 import GetAgoTime from './GetAgoTime';
 
 
@@ -40,26 +39,16 @@ const SavedJobsCard = ({ job }) => {
                                 className="bg-green/20 hover:bg-white text-green px-3 py-[2px] shadow-lg shadow-green/10 hover:shadow-dark/20 rounded-md cursor-pointer duration-300"
                             >{item}</p>)
                         }
-
                     </div>
-
-
                 </div>
             </div>
 
-            {/* save button */}
-
             {/* Apply Now Button */}
-            <Button className="bg-green  text-white py-2 px-4 rounded-lg mr-4">
-                Apply Now
-            </Button>
-
-
-
-
-
-
-
+            <div>
+                <Link to='/' className="w-fit bg-transparent text-dark hover:text-white px-5 py-2 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20">
+                    Apply Now
+                </Link>
+            </div>
         </div>
     );
 };

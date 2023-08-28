@@ -3,12 +3,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from '../Hooks/useAuth';
 import { toast } from "react-toastify";
+import Swal from 'sweetalert2'
 
 // react icons
 import { MdAlternateEmail, MdLockOutline } from 'react-icons/md';
-import { HiOutlinePhotograph } from 'react-icons/hi';
 import { BiUserPin } from 'react-icons/bi';
 import { BsShieldCheck } from 'react-icons/bs';
+import useAxios from "../Hooks/useAxios";
 
 const SignUpForm = () => {
     const { signUpUser, profileUpdate } = useAuth();
@@ -20,6 +21,7 @@ const SignUpForm = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
+
         if (data.password.length < 6) {
             return toast.warning('password should be 6 characters', {
                 position: "top-right",
@@ -34,13 +36,33 @@ const SignUpForm = () => {
                 theme: "light",
             });
         }
+        if (data.role === null) {
+            return toast.warning("Select Candidate or Recruiter", {
+                position: "top-right",
+                autoClose: 4000,
+                theme: "light",
+            });
+        }
 
         signUpUser(data.email, data.password)
             .then((result) => {
-                profileUpdate(result.user, data.name, data.photo)
+                profileUpdate(result.user, data.name)
                     .then(() => {
-                        const user = { name: data.name, email: data.email, role: 'user', photo: data.photo };
-                        navigate(from, { replace: true })
+                        const user = { name: data.name, email: data.email, role: data.role };
+                        useAxios.post('/users', user)
+                            .then(data => {
+                                if (data.status === 200) {
+                                    Swal.fire({
+                                        position: 'center',
+                                        icon: 'success',
+                                        title: 'Sign Up successfully',
+                                        showConfirmButton: false,
+                                        timer: 2500
+                                    });
+                                    navigate(from, { replace: true })
+                                }
+                            })
+
                     }).catch((error) => {
                         toast.error(error.message, {
                             position: "top-right",
@@ -81,7 +103,7 @@ const SignUpForm = () => {
                     {/* password input */}
                     <div className='flex items-center border border-green rounded-lg gap-3 p-3 mt-3'>
                         <label htmlFor="password"> <MdLockOutline className='text-green text-2xl' /></label>
-                        <input type='password' className='w-full border-none outline-none' id='password' placeholder="password" {...register("password", { required: true })} />
+                        <input type='password' className='w-full border-none outline-none' id='password' placeholder="Password" {...register("password", { required: true })} />
                     </div>
                     {errors.password && <span className='text-sm text-red-400 ml-1'>Password is required</span>}
 
@@ -92,20 +114,14 @@ const SignUpForm = () => {
                     </div>
                     {errors.password && <span className='text-sm text-red-400 ml-1'>Confirm password is required</span>}
 
-                    {/* photo input */}
-                    <div className='flex items-center border border-green rounded-lg gap-3 p-3 mt-3'>
-                        <label htmlFor="photo"> <HiOutlinePhotograph className='text-green text-2xl' /></label>
-                        <input className='w-full border-none outline-none' id='photo' placeholder="Photo URL" {...register("photo")} />
-                    </div>
-
                     {/* select role */}
                     <div className="flex items-center gap-5 mt-5 text-xl text-gray">
                         <div className="flex items-center gap-2">
-                            <input type="radio" name="role" id="candidate" className="h-4 w-4" />
+                            <input type="radio" name="role" id="candidate" className="h-4 w-4" value='candidate' {...register('role')} />
                             <label htmlFor="candidate">Candidate</label>
                         </div>
                         <div className="flex items-center gap-2">
-                            <input type="radio" name="role" id="recruiter" className="h-4 w-4" />
+                            <input type="radio" name="role" id="recruiter" className="h-4 w-4" value='recruiter' {...register('role')} />
                             <label htmlFor="recruiter">Recruiter</label>
                         </div>
                     </div>
