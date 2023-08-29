@@ -34,7 +34,7 @@ const MyAccount = () => {
         }
     }
 
-    // "Location" div handler
+    // "Job Expectations" div handler
     const handleLocationDiv= (e) => {
         if(e == "edit") setLocationDiv(true)
         else if (e == "cancel") setLocationDiv(false)
@@ -73,10 +73,10 @@ const MyAccount = () => {
                         </div>
                         {
                             !jobExpectationsDiv?
-                            <FiEdit onClick={()=> handleJobExpectationsDiv("edit")} className='cursor-pointer duration-300 hover:text-green' />:
+                            <FiEdit onClick={()=> handleJobExpectationsDiv("edit")} className='cursor-pointer hover:text-green' />:
                             <div className='flex items-center'>
-                                <div onClick={()=> handleJobExpectationsDiv("save")} className='text-green text-xl cursor-pointer duration-300 hover:bg-green/10 rounded-full p-2'><BsCheckCircle /></div>
-                                <div onClick={()=> handleJobExpectationsDiv("cancel")} className='text-red-500 text-xl cursor-pointer duration-300 hover:bg-red-100 rounded-full p-2'><ImCancelCircle /></div>
+                                <div onClick={()=> handleJobExpectationsDiv("save")} className='text-green text-xl cursor-pointer hover:bg-green/10 rounded-full p-2'><BsCheckCircle /></div>
+                                <div onClick={()=> handleJobExpectationsDiv("cancel")} className='text-red-500 text-xl cursor-pointer hover:bg-red-100 rounded-full p-2'><ImCancelCircle /></div>
                             </div>
                         }
                     </div>
@@ -129,10 +129,10 @@ const MyAccount = () => {
                         </div>
                         {
                             !locationDiv?
-                            <FiEdit onClick={()=> handleLocationDiv("edit")} className='cursor-pointer duration-300 hover:text-green' />:
+                            <FiEdit onClick={()=> handleLocationDiv("edit")} className='cursor-pointer hover:text-green' />:
                             <div className='flex items-center'>
-                                <div onClick={()=> handleLocationDiv("save")} className='text-green text-xl cursor-pointer duration-300 hover:bg-green/10 rounded-full p-2'><BsCheckCircle /></div>
-                                <div onClick={()=> handleLocationDiv("cancel")} className='text-red-500 text-xl cursor-pointer duration-300 hover:bg-red-100 rounded-full p-2'><ImCancelCircle /></div>
+                                <div onClick={()=> handleLocationDiv("save")} className='text-green text-xl cursor-pointer hover:bg-green/10 rounded-full p-2'><BsCheckCircle /></div>
+                                <div onClick={()=> handleLocationDiv("cancel")} className='text-red-500 text-xl cursor-pointer hover:bg-red-100 rounded-full p-2'><ImCancelCircle /></div>
                             </div>
                         } 
                     </div>
@@ -191,12 +191,12 @@ const MyAccount = () => {
                     <>
                         <p className='flex-1'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, quaerat beatae laboriosam autem assumenda soluta modi sint porro provident quidem id perferendis saepe est nobis exercitationem atque dolores architecto officia ipsum. Vitae repellendus deserunt, rerum delectus vero, ratione ipsa eos odit accusamus esse nulla nobis facilis quis odio doloribus rem! Quod possimus tenetur totam! Quidem quam, maiores consequatur dolores corrupti, dolorem doloribus repudiandae placeat id voluptates recusandae quasi animi veniam, cupiditate ea nisi optio illo? Qui quos, omnis maiores cupiditate obcaecati assumenda consequatur odit odio aspernatur vel quod fugiat vitae repudiandae eveniet earum.</p> 
 
-                        <FiEdit onClick={() => handleAboutDiv("edit")} className='cursor-pointer duration-300 hover:text-green' />
+                        <FiEdit onClick={() => handleAboutDiv("edit")} className='cursor-pointer hover:text-green' />
                     </> : <>
                         <textarea placeholder='Write within 250 words' className='h-24 w-full border border-green/60 outline-none rounded-lg px-4 py-2' name="about" id="about"></textarea>
                         <div>
-                            <div onClick={()=> handleAboutDiv("save")} className='text-green text-2xl cursor-pointer duration-300 hover:bg-green/10 rounded-full p-2'><BsCheckCircle /></div>
-                            <div onClick={()=> handleAboutDiv("cancel")} className='text-red-500 text-2xl cursor-pointer duration-300 hover:bg-red-100 rounded-full p-2'><ImCancelCircle /></div>
+                            <div onClick={()=> handleAboutDiv("save")} className='text-green text-2xl cursor-pointer hover:bg-green/10 rounded-full p-2'><BsCheckCircle /></div>
+                            <div onClick={()=> handleAboutDiv("cancel")} className='text-red-500 text-2xl cursor-pointer hover:bg-red-100 rounded-full p-2'><ImCancelCircle /></div>
                         </div>
                     </>
                 }

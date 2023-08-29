@@ -48,7 +48,7 @@ const SkillDiv = ({skill}) => {
                     !skillDiv?
                     <>
                         <button onClick={()=> handleEdit("edit")} className='hover:text-green cursor-pointer duration-300 mr-3'><FiEdit  /></button>
-                        <button onClick={()=> handleDelete(_id)} className='hover:text-red-500 cursor-pointer duration-300'><AiOutlineDelete /></button>
+                        <button onClick={handleDelete} className='hover:text-red-500 cursor-pointer duration-300'><AiOutlineDelete /></button>
                     </>:
                     <>
                         <div onClick={()=> handleEdit("save")} className='text-green cursor-pointer duration-300 hover:bg-green/10 rounded-full p-2'><BsCheckCircle /></div>

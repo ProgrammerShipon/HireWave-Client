@@ -1,16 +1,18 @@
 import React from 'react';
-import { GrUserExpert } from 'react-icons/gr';
-import ExperienceDiv from '../Components/ExperienceDiv';
-import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import Modal from '../Components/Modal';
-import Button from '../Components/Button';
+import { AiOutlineDelete } from 'react-icons/ai';
+import { FiEdit } from 'react-icons/fi';
+import Modal from './Modal';
+import { useForm } from 'react-hook-form';
+import Button from './Button';
+import { formatDate } from './FormatDate';
 
-const Experiences = () => {
-    const [isExperienceModalOpen, setIsExperienceModalOpen] = useState(false);
+const ExperienceDiv = ({experience}) => {
+    const { id, profile, organization, location, starting_date, ending_date, description }= experience
+    const [experienceDiv, setExperienceDiv]= useState(false)
     const [workFromHome, setWorkFromHome] = useState(false);
     const [present, setPresent] = useState(false);
-    const { register, handleSubmit, reset, watch, setValue } = useForm();
+    const { register, handleSubmit,setValue, watch, reset } = useForm();
 
     const onExperienceSubmit = data => {
         console.log(data)
@@ -25,67 +27,35 @@ const Experiences = () => {
         console.log(updatedExperience)
 
         //TODO: Update Experience data
-        setIsExperienceModalOpen(false)
+        setExperienceDiv(false)
         reset();
     }
-    
-    const handleExperienceModal =(e) => {
-        if(e == "edit") setIsExperienceModalOpen(true)
-        else if (e == "cancel") setIsExperienceModalOpen(false)
+    const handleDelete= () =>{
+        //ToDo: Delete operation with confirmation message
     }
 
-    const experiences= [
-        {
-            "id" : 1,
-            "profile" : "Software Developer",
-            "organization" : "SupraIT Ltd",
-            "location" : "Work from home",
-            "starting_date" : "2022-02-01",
-            "ending_date" : "2023-02-02",
-            "description" : "It is my first ever work experience and I have learned a lot of thing working in this organization. My basic introduction to work environment started from here.",
-        },
-        {
-            "id" : 2,
-            "profile" : "Front-End Developer",
-            "organization" : "Mahitech Ltd",
-            "location" : "Dhaka, Bangladesh",
-            "starting_date" : "2023-03-03",
-            "ending_date" : "Present",
-            "description" : "It is my first ever work experience and I have learned a lot of thing working in this organization. My basic introduction to work environment started from here.",
-        }
-    ]
+    const handleEdit= (e)=> {
+        if(e == "edit") setExperienceDiv(true)
+        else if (e == "cancel") setExperienceDiv(false)
+    }
     return (
-        <div className='bg-white px-5 rounded-lg mb-10 pb-5 shadow-xl'>
-            {/* Heading */}
-            <h2 className='px-2 pt-4 pb-2 flex items-center gap-2 border-b border-dark/20 mb-5'>
-                <GrUserExpert size={18}/>
-                <p className='text-dark text-xl'>Experiences</p>
-            </h2>
-
-            {/* All Experiences */}
-           <div className='w-fit mx-auto'>
-            {
-                experiences.map(experience => <ExperienceDiv key={experience.id} experience={experience}></ExperienceDiv>)
-            }
-           </div>
-
-            {/* Add Experience Button */}
-            <div className='flex justify-center'>
-                {
-                    experiences.length < 5 ?
-                        <button onClick={() => handleExperienceModal("edit")} className='text-blue-600'>+ Add Experiences</button> :
-                        <p className='text-sm'>Maximum limit reached</p>
-                }
+        <div className='border border-green/60 hover:shadow-lg hover:shadow-green/20 duration-300 rounded-lg px-5 py-3 mb-5 flex gap-8 items-start justify-between'>
+            <div className=''>
+                <h4 className='font-semibold text-xl mb-1'>{profile}</h4>
+                <p>{organization}{location && " | "} {location}</p>
+                <p>{formatDate(starting_date)} - {ending_date == "Present" ? ending_date : formatDate(ending_date)}</p>
+                <p className='max-w-lg'>{description}</p>
             </div>
-
+            
+            {/* Edit and Delete Buttons */}
+            <div className='flex gap-3 justify-center'>
+                <button onClick={()=> handleEdit("edit")} className='hover:text-green cursor-pointer duration-300'><FiEdit size={18} /></button>
+                <button onClick={handleDelete} className='hover:text-red-500 cursor-pointer duration-300'><AiOutlineDelete size={20} /></button>
+            </div>
+            
             {
-                isExperienceModalOpen &&
-                <Modal isModalOpen={isExperienceModalOpen} setIsModalOpen={setIsExperienceModalOpen} handleModal={handleExperienceModal}>
-                    {/* Modal Heading */}
-                    <h2 className='px-2 pt-4 pb-2 flex items-center gap-2 border-b border-dark/20 mb-5 -mt-3'>
-                        <GrUserExpert fill='green' size={20}/>
-                        <p className='text-dark text-xl'>Add Experience</p>
-                    </h2>
+                experienceDiv &&
+                <Modal isModalOpen={experienceDiv} setIsModalOpen={setExperienceDiv} handleModal={handleEdit}>
 
                      {/* Modal content */}
                      <form onSubmit={handleSubmit(onExperienceSubmit)}>
@@ -93,6 +63,7 @@ const Experiences = () => {
                         <div>
                             <label className='text-dark block mb-1 mt-5'>Profile</label>
                             <input
+                            defaultValue={profile}
                             className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
                             type="text" 
                             placeholder='e.g: Front-End Developer'
@@ -105,6 +76,7 @@ const Experiences = () => {
                             <div className='w-full'>
                                 <label className='text-dark block mb-1 mt-5'>Organization</label>
                                 <input 
+                                defaultValue={organization}
                                 className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
                                 type="text" 
                                 placeholder='e.g: Mahitech Ltd'
@@ -114,12 +86,12 @@ const Experiences = () => {
                             <div className='w-full'>
                                 <label className='text-dark block mb-1 mt-5'>Location (optional)</label>
                                 <input 
+                                defaultValue={location}
                                 className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
                                 type="text"
                                 {...register("location")}
                                 readOnly={watch("location") === 'Work from home'}
                                 />
-                                
                             </div>
                         </div>
 
@@ -134,6 +106,7 @@ const Experiences = () => {
                                 if (e.target.checked) setValue('location', 'Work from home')
                                 else setValue('location', '')
                             }}
+                            defaultChecked={location === 'Work from home'}
                             />
                         </div>
                         
@@ -142,6 +115,7 @@ const Experiences = () => {
                             <div className='w-full'>
                                 <label className='text-dark block mb-1'>Start date</label>
                                 <input 
+                                defaultValue={starting_date}
                                 className='rounded outline-none h-10 border border-dark/20 w-full px-3'
                                 type="date"
                                 {...register("starting_date")}
@@ -158,6 +132,7 @@ const Experiences = () => {
                                     />
                                 ) : (
                                     <input
+                                        defaultValue={ending_date}
                                         className='rounded outline-none h-10 border border-dark/20 w-full px-3'
                                         type='date'
                                         {...register('ending_date')}
@@ -177,11 +152,13 @@ const Experiences = () => {
                                 if (e.target.checked) setValue('ending_date', 'Present')
                                 else setValue('ending_date', '')
                             }}
+                            defaultChecked={ending_date === 'Present'}
                             />
                         </div>
 
                         {/* Description */}
                         <label className='text-dark block mb-1'>Description (optional)</label>
+                        {/* Tips */}
                         <div className='border border-dark rounded mb-3 px-3 py-2 bg-dark/5'>
                             <p className='font-semibold mb-2'>Pro tip:</p>
                             <ul className="list-disc ml-5">
@@ -190,8 +167,8 @@ const Experiences = () => {
                                 <li>Use numbers and percentages wherever possible</li>
                             </ul>
                         </div>
-                           
                         <textarea
+                        defaultValue={description}
                         className='rounded outline-none h-32 border border-dark/20 w-full px-3 py-2'  
                         placeholder='Write within 250 words'
                         {...register("description")}
@@ -209,4 +186,4 @@ const Experiences = () => {
     );
 };
 
-export default Experiences;
+export default ExperienceDiv;
