@@ -1,14 +1,15 @@
 import React from 'react';
-import { FaGraduationCap } from 'react-icons/fa';
-import EducationDiv from '../Components/EducationDiv';
-import Modal from '../Components/Modal';
-import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import Button from '../Components/Button';
+import { AiOutlineDelete } from 'react-icons/ai';
+import { FiEdit } from 'react-icons/fi';
+import Modal from './Modal';
+import { useForm } from 'react-hook-form';
+import Button from './Button';
 
-const Education = () => {
+const EducationDiv = ({ education }) => {
+    const { id, degree, institution, subject, starting_year, ending_year, performance_scale, performance } = education
 
-    const [isEducationModalOpen, setIsEducationModalOpen] = useState(false);
+    const [educationDiv, setEducationDiv]= useState(false)
     const { register, handleSubmit, reset } = useForm();
 
     const onEducationSubmit = data => {
@@ -25,91 +26,48 @@ const Education = () => {
         console.log(updatedEducation)
 
         //TODO: Update education data
-        setIsEducationModalOpen(false)
+        setEducationDiv(false)
         reset();
     }
 
-    const handleEducationModal =(e) => {
-       if(e == "edit") setIsEducationModalOpen(true)
-       else if (e == "cancel") setIsEducationModalOpen(false)
-   }
+    const handleDelete= () =>{
+        //ToDo: Delete operation with confirmation message
+    }
 
-    const educations= [
-        {
-            "id" : 1,
-            "degree" : "B.Sc (Hons.)",
-            "subject" : "Computer Science & Engineering",
-            "institution" : "International University Of Business Agriculture & Technology",
-            "starting_year" : 2021,
-            "ending_year" : 2025,
-            "performance" : 3.88,
-            "performance_scale" : 4,
-        },
-        {
-            "id" : 2,
-            "degree" : "M.Sc",
-            "subject" : "Data Science",
-            "institution" : "Dhaka University",
-            "starting_year" : 2025,
-            "ending_year" : 2027,
-            "performance" : 3.47,
-            "performance_scale" : 4,
-        },
-        {
-            "id" : 3,
-            "degree" : "HSC",
-            "institution" : "Uttara High School and College",
-            "starting_year" : 2017,
-            "ending_year" : 2019,
-            "performance" : 4.58,
-            "performance_scale" : 5,
-        }
-    ]
+    const handleEdit= (e)=> {
+        if(e == "edit") setEducationDiv(true)
+        else if (e == "cancel") setEducationDiv(false)
+    }
 
-    // Sort educations by starting_year in ascending order
-    educations.sort((a, b) => a.starting_year - b.starting_year);
     return (
-        <div className='bg-white px-5 rounded-lg mb-10 pb-5 shadow-xl'>
-            {/* Heading */}
-            <h2 className='px-2 pt-4 pb-2 flex items-center gap-2 border-b border-dark/20 mb-5'>
-                <FaGraduationCap fill='purple' size={20}/>
-                <p className='text-dark text-xl'>Education</p>
-            </h2>
-
-            {/* All Educations */}
-            <div className='w-fit mx-auto'>
-            {
-                educations.map(education => <EducationDiv key={education.id} education={education}></EducationDiv>)
-            }
+        <div className='border border-green/60 hover:shadow-lg hover:shadow-green/20 duration-300 rounded-lg px-5 py-3 mb-5 flex gap-8 items-start justify-between'>
+            <div className=''>
+                <h4 className='font-semibold text-xl mb-1'>{degree}{subject && ","} {subject}</h4>
+                <p>{institution}</p>
+                <p>{starting_year} - {ending_year}</p>
+                <p>CGPA: {performance}/{performance_scale}</p>
+            </div>
+            
+            {/* Edit and Delete Buttons */}
+            <div className='flex gap-3 justify-center'>
+                <button onClick={()=> handleEdit("edit")} className='hover:text-green cursor-pointer duration-300'><FiEdit size={18} /></button>
+                <button onClick={handleDelete} className='hover:text-red-500 cursor-pointer duration-300'><AiOutlineDelete size={20} /></button>
             </div>
 
-            {/* Add Education Button */}
-            <div className='flex justify-center'>
-                {
-                    educations.length < 5 ?
-                        <button onClick={() => handleEducationModal("edit")} className='text-blue-600'>+ Add Educations</button> :
-                        <p className='text-sm'>Maximum limit reached</p>
-
-                }
-            </div>
             {
-                isEducationModalOpen &&
-                <Modal isModalOpen={isEducationModalOpen} setIsModalOpen={setIsEducationModalOpen} handleModal={handleEducationModal}>
-                    {/* Modal Heading */}
-                    <h2 className='px-2 pt-4 pb-2 flex items-center gap-2 border-b border-dark/20 mb-5 -mt-3'>
-                        <FaGraduationCap fill='green' size={20}/>
-                        <p className='text-dark text-xl'>Add Education</p>
-                    </h2>
+                educationDiv &&
+                <Modal isModalOpen={educationDiv} setIsModalOpen={setEducationDiv} handleModal={handleEdit}>
 
-                     {/* Modal content */}
-                     <form onSubmit={handleSubmit(onEducationSubmit)}>
+                    {/* Modal content */}
+                    <form onSubmit={handleSubmit(onEducationSubmit)}>
                         {/* Institution Name */}
                         <div>
                             <label className='text-dark block mb-1 mt-5'>Institution Name</label>
-                            <input
+                            <input 
+                            defaultValue={institution} 
                             className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
                             type="text" 
-                            placeholder='e.g: Front-End Developer'
+                            placeholder='e.g: Dhaka University'
                             {...register("institution")}
                             />
                         </div>
@@ -119,6 +77,7 @@ const Education = () => {
                             <div className='w-full'>
                                 <label className='text-dark block mb-1 mt-5'>Start Year</label>
                                 <input 
+                                defaultValue={starting_year} 
                                 className='rounded outline-none h-10 border border-dark/20 w-full px-3'
                                 type="text"
                                 {...register("starting_year")}
@@ -127,13 +86,13 @@ const Education = () => {
                             <div className='w-full'>
                                 <label className='text-dark block mb-1 mt-5'>End Year</label>
                                 <input 
+                                defaultValue={ending_year} 
                                 className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
                                 type="text"
                                 {...register("ending_year")}
                                 />
                             </div>
-                            {/* 
-                            
+                            {/*
                             TODO: Validate ending year
                             
                             {
@@ -146,6 +105,7 @@ const Education = () => {
                             <div className='w-full'>
                                 <label className='text-dark block mb-1 mt-5'>Degree</label>
                                 <input 
+                                defaultValue={degree} 
                                 className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
                                 type="text" 
                                 placeholder='e.g: B.Sc (Hons)'
@@ -155,6 +115,7 @@ const Education = () => {
                             <div className='w-full'>
                                 <label className='text-dark block mb-1 mt-5'>Subject (optional)</label>
                                 <input 
+                                defaultValue={subject} 
                                 className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
                                 type="text" 
                                 placeholder='e.g: Computer Science'
@@ -168,6 +129,7 @@ const Education = () => {
                             <div className='w-full'>
                                 <label className='text-dark block mb-1 mt-5'>Performance scale (optional)</label>
                                 <select 
+                                defaultValue={`CGPA (scale of ${performance_scale})`} 
                                 className='rounded outline-none h-10 border border-dark/20 w-full px-3'
                                 {...register("performance_scale")}
                                 >
@@ -183,6 +145,7 @@ const Education = () => {
                             <div className='w-full'>
                                 <label className='text-dark block mb-1 mt-5'>Performance (optional)</label>
                                 <input 
+                                defaultValue={performance} 
                                 className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
                                 type="text"
                                 {...register("performance")}
@@ -190,7 +153,7 @@ const Education = () => {
                             </div>
 
                             {/* 
-                            TODO: validate performance
+                            TODO: Validate Performance
                             
                             {
                                 performance > performance_scale && <p className='text-red-500'>Please enter a value less than or equal to {performance_scale}</p>
@@ -208,4 +171,4 @@ const Education = () => {
     );
 };
 
-export default Education;
+export default EducationDiv;

@@ -5,17 +5,33 @@ import { FiEdit } from 'react-icons/fi';
 import { useState } from 'react';
 import Modal from './Modal';
 import { ImUserCheck } from 'react-icons/im';
+import { useForm } from 'react-hook-form';
+import Button from './Button';
 
 const BasicInformation = () => {
     const [isBasicInfoModalOpen, setIsBasicInfoModalOpen] = useState(false);
+    const { register, handleSubmit, reset } = useForm();
+
+    const onSubmit = data => {
+        console.log(data)
+        const updatedBasicInformation= {
+            name: data.name,
+            job_title: data.job_title,
+            facebook: data.facebook,
+            twitter: data.twitter,
+            linkedin: data.linkedin,
+            github: data.github
+        }
+        console.log(updatedBasicInformation)
+
+        //TODO: Update education data
+        setIsBasicInfoModalOpen(false)
+        reset();
+    }
 
      const handleBasicInfoModal =(e) => {
         if(e == "edit") setIsBasicInfoModalOpen(true)
         else if (e == "cancel") setIsBasicInfoModalOpen(false)
-        else if (e == "save") {
-            // ToDo: make logic for saving basic info info here and create alert for success
-            setIsBasicInfoModalOpen(false)
-        }
     }
     
     return (
@@ -74,50 +90,81 @@ const BasicInformation = () => {
                     </h2>
                     
                     {/* Modal content */}
-                    <div>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         {/* Full Name */}
                         <div className='mb-2'>
                             <label className='text-dark block mb-1'>Full Name</label>
-                            <input className='rounded outline-none h-10 border border-dark/20 w-full px-3' type="text" placeholder='Your full name' />
+                            <input 
+                            className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
+                            type="text" 
+                            placeholder='Your full name'
+                            {...register("name")}
+                            />
                         </div>
 
                         {/* Job Title */}
                         <div className='mb-2'>
                             <label className='text-dark block mb-1'>Job Title</label>
-                            <select defaultValue="" className='rounded outline-none h-10 border border-dark/20 w-full px-3'>
+                            <select 
+                            defaultValue="Front-end Developer" 
+                            className='rounded outline-none h-10 border border-dark/20 w-full px-3'
+                            {...register("job_title")}
+                            >
                                 <option value="" disabled>Select Job Title</option>
-                                <option value="full-time">Front-end Developer</option>
-                                <option value="part-time">Back-End Developer</option>
-                                <option value="freelance">Sales Manager</option>
-                                <option value="freelance">Sales Manager</option>
-                                <option value="freelance">Sales Manager</option>
+                                <option value="Banker">Banker</option>
+                                <option value="Front-end Developer">Front-end Developer</option>
+                                <option value="Sales Manager">Sales Manager</option>
+                                <option value="Back-End Developer">Back-End Developer</option>
+                                <option value="Psychiatrist">Psychiatrist</option>
                             </select>
                         </div>
 
                         {/* Facebook */}
                         <div className='mb-2'>
                             <label className='text-dark block mb-1'>Facebook</label>
-                            <input className='rounded outline-none h-10 border border-dark/20 w-full px-3' type="text" placeholder='Your facebook id link' />
+                            <input 
+                            className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
+                            type="text"
+                            placeholder='Your facebook id link'
+                            {...register("facebook")}
+                            />
                         </div>
 
                         {/* Twitter */}
                         <div className='mb-2'>
                             <label className='text-dark block mb-1'>Twitter</label>
-                            <input className='rounded outline-none h-10 border border-dark/20 w-full px-3' type="text" placeholder='Your twitter id link' />
+                            <input className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
+                            type="text"
+                            placeholder='Your twitter id link'
+                            {...register("twitter")}
+                            />
                         </div>
 
                         {/* LinkedIn */}
                         <div className='mb-2'>
                             <label className='text-dark block mb-1'>LinkedIn</label>
-                            <input className='rounded outline-none h-10 border border-dark/20 w-full px-3' type="text" placeholder='Your linkedin id link' />
+                            <input className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
+                            type="text"
+                            placeholder='Your linkedin id link'
+                            {...register("linkedin")}
+                            />
                         </div>
 
                         {/* GitHub */}
                         <div>
                             <label className='text-dark block mb-1'>GitHub</label>
-                            <input className='rounded outline-none h-10 border border-dark/20 w-full px-3' type="text" placeholder='Your github id link' />
+                            <input className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
+                            type="text"
+                            placeholder='Your github id link'
+                            {...register("github")}
+                            />
                         </div>
-                    </div>
+
+                        {/* Save changes */}
+                        <div className='flex justify-end mt-5'>
+                            <Button type='submit'>Save changes</Button>
+                        </div>
+                    </form>
                 </Modal>
             }
         </div>

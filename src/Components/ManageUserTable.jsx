@@ -1,29 +1,35 @@
 import React, { useState } from "react";
-import { FaRegStar } from "react-icons/fa";
-import moment from "moment";
+import Button from "./Button";
 
-export default function ManageJobTable({ managejobs }) {
-  const { title, postedDate, applied, jobType, category } = managejobs;
+export default function ManageUserTable({ manageuser }) {
+  const { name, images, category } = manageuser;
   const [showDropdown, setShowDropdown] = useState(false);
-  const [status, setStatus] = useState("Offline");
+  const [status, setStatus] = useState("Pending");
 
   const handleStatusChange = (newStatus) => {
     setStatus(newStatus);
     setShowDropdown(false);
   };
+
   return (
-    <tr className="bg-white  text-slate-600  border-b-2 border-slate-50">
-      <td className="px-3 py-4 font-medium text-dark flex items-center ">
-        <FaRegStar className="mr-2 text-green" />
-        {title}
+    <tr className="bg-white text-slate-600 border-b-2 border-slate-50">
+      <td className="px-3 py-4 font-medium text-dark flex items-center relative">
+        <img
+          className="w-12 h-12 object-cover rounded-full mr-3"
+          src={images}
+          alt={name}
+        />
+        {name}
       </td>
+
       <td className="px-5 py-4">{category}</td>
-      <td className="px-5 py-4">{moment(postedDate).format("MMM Do YYYY")}</td>
-      <td className="py-4 text-center">{applied}</td>
+      <td className="px-5 py-4">example@gmail.com</td>
+      <td className="px-5 py-4">user</td>
       <td className="px-5 py-4">
         {status}
         {/* dropdown option */}
-        {status === "Offline" && (
+
+        {status === "Pending" && (
           <button
             type="button"
             className="ml-2 text-primary-500 focus:outline-none"
@@ -71,6 +77,9 @@ export default function ManageJobTable({ managejobs }) {
             </div>
           </div>
         )}
+      </td>
+      <td className="px-5 py-4">
+        <Button>Apply</Button>
       </td>
     </tr>
   );

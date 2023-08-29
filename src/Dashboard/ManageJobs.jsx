@@ -53,7 +53,7 @@ const ManageJobs = () => {
           </div>
         </div>
         {/* table */}
-        <table className="table bg-green w-[900px] lg:w-full text-left ">
+        <table className="table bg-white w-[900px] lg:w-full text-left ">
           <thead className=" text-dark text-lg">
             <tr>
               <th className="px-5 py-3 ">Job Title</th>
