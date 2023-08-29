@@ -11,9 +11,9 @@ import { VscAccount } from "react-icons/vsc";
 
 const DashNavItems = () => {
   const { logOut } = useAuth();
-  const role = 'candidate';
+  // const role = 'candidate';
   // const role = 'recruiter';
-  // const role = "admin";
+  const role = "admin";
 
   return (
     <aside className="sticky top-0 shadow-4xl shadow-gray/40 w-auto md:w-[300px] bg-white duration-300 h-screen pt-[71px] overflow-y-auto">
