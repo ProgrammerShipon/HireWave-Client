@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../Components/Breadcrumbs';
+import LoginForm from '../Sections/LoginForm';
 
 const Login = () => {
     return (
@@ -10,6 +11,9 @@ const Login = () => {
             </Helmet>
 
             <Breadcrumbs title="Login" />
+
+            {/* sections */}
+            <LoginForm />
         </>
     );
 };

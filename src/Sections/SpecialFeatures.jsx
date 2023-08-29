@@ -3,10 +3,10 @@ import Animation from "../../src/Assets/animation_ll40rvac.json";
 import SectionTitle from "../Components/SectionTitle";
 
 // react icons
-import { FaFileContract } from 'react-icons/fa';
-import { RiGpsFill } from 'react-icons/ri';
 import { BiSearchAlt } from "react-icons/bi";
 import { DiGoogleAnalytics } from 'react-icons/di';
+import { FaFileContract } from 'react-icons/fa';
+import { RiGpsFill } from 'react-icons/ri';
 import { SiThealgorithms, SiZwave } from "react-icons/si";
 
 const SpecialFeatures = () => {

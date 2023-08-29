@@ -5,6 +5,7 @@
 * {
   margin: 0;
   font-family: "Jost", sans-serif;
+  font-weight: 400;
   scroll-behavior: smooth;
 }
 
@@ -21,4 +22,35 @@
   background-color: #33e2a0 !important;
   border: 1px solid #33e2a0;
   transform: scale(1.4);
+}
+
+/* tags field */
+.react-tagsinput {
+  border-color: #33e2a0 !important;
+  padding-left: 10px !important;
+  padding-top: 10px !important;
+  border-radius: 6px !important;
+  font-size: 16px !important;
+}
+
+.react-tagsinput-tag {
+  background-color: #33e2a0 !important;
+  color: #fff !important;
+  font-size: 16px !important;
+  font-family: "Jost", sans-serif !important;
+  border: none !important;
+  padding: 3px 10px !important;
+  margin-bottom: 10px !important;
+  border-radius: 4px !important;
+  text-transform: capitalize;
+}
+
+.react-tagsinput-input {
+  text-transform: capitalize;
+  font-family: "Jost", sans-serif !important;
+}
+
+/* count__up */
+.count__up span {
+  font-weight: 600;
 }

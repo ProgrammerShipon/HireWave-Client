@@ -15,6 +15,22 @@ import SignUp from "../Pages/SignUp";
 import Contact from "../Pages/Contact";
 import Recruiters from "../Pages/Recruiters";
 import AllCategories from "../Pages/AllCategories";
+import CandidateDetails from "../Pages/CandidateDetails";
+import Events from "../Pages/Events";
+import EventDetails from "../Pages/EventDetails";
+import RecruitersDetails from "./../Pages/RecruitersDetails";
+import Dashboard from "../Layout/Dashboard"
+import DashboardHome from "../Dashboard/DashboardHome"
+import ChangePassword from "../Dashboard/ChangePassword";
+import AppliedJobs from "../Dashboard/AppliedJobs";
+import MyProfile from "../Dashboard/MyProfile";
+import MyResume from "../Dashboard/MyResume";
+import Messages from "../Dashboard/Messages";
+import PostedJobs from "../Dashboard/PostedJobs";
+import ManageUsers from "../Dashboard/ManageUsers";
+import ManageJobs from "../Dashboard/ManageJobs";
+import CandidateList from "../Dashboard/CandidateList";
+import RecruiterList from "../Dashboard/RecruiterList";
 
 const Router = createBrowserRouter([
   {
@@ -37,6 +53,10 @@ const Router = createBrowserRouter([
       {
         path: "/candidates",
         element: <Candidates />,
+      },
+      {
+        path: "/candidate_details/:id",
+        element: <CandidateDetails />,
       },
       {
         path: "/job_details/:id",
@@ -75,11 +95,83 @@ const Router = createBrowserRouter([
         element: <Recruiters />,
       },
       {
+        path: "/recruiters_details/:id",
+        element: <RecruitersDetails />,
+        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/recruiters/${params.id}`)
+      },
+      {
         path: "/contact",
         element: <Contact />,
-      }
+      },
+      {
+        path: "/events",
+        element: <Events />,
+      },
+      {
+        path: "/event_details/:name",
+        element: <EventDetails />,
+      },
     ],
   },
+  {
+    path: "dashboard",
+    element: <Dashboard />,
+    errorElement: <ErrorPage />,
+    children: [
+      //Common Routes
+      {
+        path: "dashboardHome",
+        element: <DashboardHome />
+      },
+      {
+        path: "myProfile",
+        element: <MyProfile />
+      },
+      {
+        path: "changePassword",
+        element: <ChangePassword />
+      },
+
+      // Candidate routes
+      {
+        path: "appliedJobs",
+        element: <AppliedJobs />
+      },
+      {
+        path: "myResume",
+        element: <MyResume />
+      },
+
+      // Recruiter routes
+      {
+        path: "messages",
+        element: <Messages />
+      },
+      {
+        path: "postedJobs",
+        element: <PostedJobs />
+      },
+
+      //Admin Routes
+      {
+        path: "manageUsers",
+        element: <ManageUsers />
+      },
+      {
+        path: "manageJobs",
+        element: <ManageJobs />
+      },
+      {
+        path: "candidateList",
+        element: <CandidateList />
+      },
+      {
+        path: "recruiterList",
+        element: <RecruiterList />
+      }
+
+    ]
+  }
 ]);
 
 export default Router;

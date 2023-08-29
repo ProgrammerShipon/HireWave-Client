@@ -35,7 +35,7 @@ const HeroBanner = () => {
                         {/* Search */}
                         <div className='col-span-2 flex items-center border-b md:border-none border-green'>
                             <label htmlFor="search" className='pl-2 text-green'>
-                                <FaBriefcase size='20px' />
+                                <FaBriefcase size='20px' className="animate-bounce" />
                             </label>
                             <input
                                 id='search'
@@ -48,7 +48,7 @@ const HeroBanner = () => {
                         {/* location */}
                         <div className='col-span-2 md:border-s border-green  flex items-center'>
                             <label htmlFor="location" className='pl-2 text-green'>
-                                <FaLocationCrosshairs size='20px' />
+                                <FaLocationCrosshairs size='20px' className="animate-spin" />
                             </label>
                             <input
                                 id='location'

@@ -1,18 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 
-export default function useLearning() {
+const useEvents = () => {
   const {
-    data: learning = [],
+    data: eventData = [],
     isLoading: loading,
     refetch,
   } = useQuery({
-    queryKey: ["learning"],
+    queryKey: ["eventData"],
     queryFn: async () => {
-      const res = await fetch("/learning.json");
+      const res = await fetch("/events.json");
       const data = await res.json();
       return data;
     },
   });
 
-  return [learning, loading, refetch];
-}
+  return [eventData, loading, refetch];
+};
+
+export default useEvents;

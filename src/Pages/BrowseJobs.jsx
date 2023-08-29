@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../Components/Breadcrumbs';
-import Divider from '../Components/Divider';
 import FindJobs from '../Sections/FindJobs';
+import GetStart from '../Sections/GetStart';
 
 const BrowseJobs = () => {
   return (
@@ -15,8 +15,7 @@ const BrowseJobs = () => {
 
       {/* sections */}
       <FindJobs />
-      {/* border */}
-      <Divider />
+      <GetStart />
     </>
   );
 };
