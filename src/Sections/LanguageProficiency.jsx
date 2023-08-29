@@ -3,17 +3,30 @@ import { GrLanguage } from 'react-icons/gr';
 import LanguageDiv from '../Components/LanguageDiv';
 import { useState } from 'react';
 import Modal from '../Components/Modal';
+import { useForm } from 'react-hook-form';
+import Button from '../Components/Button';
 
 const LanguageProficiency = () => {
     const [isLanguageModalOpen, setIsLanguageModalOpen] = useState(false);
+    const { register, handleSubmit, reset } = useForm();
+
+    const onLanguageSubmit = data => {
+        console.log(data)
+
+        const updatedLanguage= {
+            language: data.language,
+            level: data.level
+        }
+        console.log(updatedLanguage)
+
+        // ToDo: make logic for saving skill info here and create alert for success
+        setIsLanguageModalOpen(false)
+        reset();
+    }
 
     const handleLanguageModal =(e) => {
        if(e == "edit") setIsLanguageModalOpen(true)
        else if (e == "cancel") setIsLanguageModalOpen(false)
-       else if (e == "save") {
-           // ToDo: make logic for saving skill info here and create alert for success
-           setIsLanguageModalOpen(false)
-       }
     }
 
     const languages = [
@@ -28,11 +41,7 @@ const LanguageProficiency = () => {
         {
             "name" : "Hindi",
             "level" : "Conversational"
-        },
-        {
-            "name" : "Arabic",
-            "level" : "Basic"
-        },
+        }
     ]
 
     return (
@@ -51,7 +60,11 @@ const LanguageProficiency = () => {
 
             {/* Add Language Button */}
             <div className='flex justify-center'>
-                <button onClick={() => handleLanguageModal("edit")} className='text-blue-600'>+ Add Language</button>
+                {
+                    languages.length < 8? 
+                    <button onClick={() => handleLanguageModal("edit")} className='text-blue-600'>+ Add Language</button> :
+                    <p className='text-sm'>Maximum Language limit reached</p>
+                }
             </div>
 
             {
@@ -64,13 +77,38 @@ const LanguageProficiency = () => {
                     </h2>
                     
                     {/* Modal content */}
-                    <div>
-                        {/* Skill Name */}
+                    <form onSubmit={handleSubmit(onLanguageSubmit)}>
+                        {/* Language Name */}
                         <div className='mb-2'>
                             <label className='text-dark block mb-1'>Language Name</label>
-                            <input className='rounded outline-none h-10 border border-dark/20 w-full px-3' type="text" placeholder='e.g: French' />
+                            <input 
+                            className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
+                            type="text" 
+                            placeholder='e.g: French'
+                            {...register("language")}
+                            />
                         </div>
-                    </div>
+
+                        {/* Language level */}
+                        <div className='my-2'>
+                            <label className='text-dark block mb-1'>Proficiency</label>
+                            <select 
+                            defaultValue="" 
+                            className='rounded outline-none h-10 border border-dark/20 w-full px-3'
+                            {...register("level")}
+                            >
+                                <option value="" disabled>Level</option>
+                                <option value="Native">Native</option>
+                                <option value="Conversational">Conversational</option>
+                                <option value="Basic">Basic</option>
+                            </select>
+                        </div>
+
+                        {/* Save changes */}
+                        <div className='flex justify-end mt-5'>
+                            <Button type='submit'>Save changes</Button>
+                        </div>
+                    </form>
                 </Modal>
             }
         </div>

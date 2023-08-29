@@ -3,18 +3,31 @@ import { GiSkills } from 'react-icons/gi';
 import SkillDiv from '../Components/SkillDiv';
 import Modal from '../Components/Modal';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import Button from '../Components/Button';
 
 const CandidateSkills = () => {
 
     const [isSkillModalOpen, setIsSkillModalOpen] = useState(false);
+    const { register, handleSubmit, reset } = useForm();
+
+    const onSkillSubmit = data => {
+        console.log(data)
+
+        const updatedSkill= {
+            skill: data.skill,
+            level: data.level
+        }
+        console.log(updatedSkill)
+
+        //TODO: Update skill data
+        setIsSkillModalOpen(false)
+        reset();
+    }
 
     const handleSkillModal =(e) => {
        if(e == "edit") setIsSkillModalOpen(true)
        else if (e == "cancel") setIsSkillModalOpen(false)
-       else if (e == "save") {
-           // ToDo: make logic for saving skill info here and create alert for success
-           setIsSkillModalOpen(false)
-       }
    }
 
     const skills= [
@@ -41,7 +54,7 @@ const CandidateSkills = () => {
         {
             "name": "Express.js",
             "level": "Beginner"
-        },
+        }
     ]
 
     return (
@@ -60,7 +73,12 @@ const CandidateSkills = () => {
 
             {/* Add Skills Button */}
             <div className='flex justify-center'>
-                <button onClick={() => handleSkillModal("edit")} className='text-blue-600'>+ Add Skills</button>
+                {
+                    skills.length < 15 ?
+                        <button onClick={() => handleSkillModal("edit")} className='text-blue-600'>+ Add Skills</button> :
+                        <p className='text-sm'>Maximum skill limit reached</p>
+
+                }
             </div>
 
             {
@@ -73,13 +91,40 @@ const CandidateSkills = () => {
                     </h2>
                     
                     {/* Modal content */}
-                    <div>
+                    <form onSubmit={handleSubmit(onSkillSubmit)}>
                         {/* Skill Name */}
-                        <div className='mb-2'>
+                        <div>
                             <label className='text-dark block mb-1'>Skill Name</label>
-                            <input className='rounded outline-none h-10 border border-dark/20 w-full px-3' type="text" placeholder='e.g: Front-End Developer' />
+                            <input 
+                            className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
+                            type="text" 
+                            placeholder='e.g: Front-End Developer'
+                            {...register("skill")}
+                            />
                         </div>
-                    </div>
+
+                        {/* Skill level */}
+                        <div className='my-2'>
+                            <label className='text-dark block mb-1'>Skill Level</label>
+                            <select 
+                            defaultValue="" 
+                            className='rounded outline-none h-10 border border-dark/20 w-full px-3'
+                            {...register("level")}
+                            >
+                                <option value="" disabled>Level</option>
+                                <option value="Advanced">Advanced</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Beginner">Beginner</option>
+                            </select>
+                        </div>
+
+                        <p className='text-sm mt-1'>N.B. Maximum skill limit is 15</p>
+
+                        {/* Save changes */}
+                        <div className='flex justify-end mt-5'>
+                            <Button type='submit'>Save changes</Button>
+                        </div>
+                    </form>
                 </Modal>
             }
         </div>

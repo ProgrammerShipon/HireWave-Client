@@ -1,17 +1,18 @@
 import React from 'react';
-import { MdWorkOutline } from 'react-icons/md';
-import TrainingOrCoursesDiv from '../Components/TrainingOrCoursesDiv';
-import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import Modal from '../Components/Modal';
-import Button from '../Components/Button';
+import { AiOutlineDelete } from 'react-icons/ai';
+import { FiEdit } from 'react-icons/fi';
+import Modal from './Modal';
+import { useForm } from 'react-hook-form';
+import Button from './Button';
+import { formatDate } from './FormatDate';
 
-const TrainingsOrCourses = () => {
-
-    const [isTrainingModalOpen, setIsTrainingModalOpen] = useState(false);
-    const [workFromHome, setWorkFromHome] = useState(false);
+const TrainingOrCoursesDiv = ({ training }) => {
+    const { id, program, organization, location, starting_date, ending_date, description }= training
+    const [trainingDiv, setTrainingDiv]= useState(false)
+    const [online, setOnline] = useState(false);
     const [present, setPresent] = useState(false);
-    const { register, handleSubmit, reset, watch, setValue } = useForm();
+    const { register, handleSubmit, setValue, watch, reset } = useForm();
 
     const onTrainingSubmit = data => {
         console.log(data)
@@ -26,68 +27,47 @@ const TrainingsOrCourses = () => {
         console.log(updatedTraining)
 
         //TODO: Update Training data
-        setIsTrainingModalOpen(false)
+        setTrainingDiv(false)
         reset();
     }
 
-    const handleTrainingModal =(e) => {
-        if(e == "edit") setIsTrainingModalOpen(true)
-        else if (e == "cancel") setIsTrainingModalOpen(false)
+    const handleDelete= () =>{
+        //ToDo: Delete operation with confirmation message
     }
 
-    const trainings=[
-        {
-            "id" : 1,
-            "program" : "Complete Web Development Course With Jhankar Mahbub",
-            "organization" : "Programming Hero",
-            "location" : "Online",
-            "starting_date" : "2022-02-01",
-            "ending_date" : "2023-02-02",
-            "description" : "Learned MREN stack from this course from the basic of coding."
-        }
-    ]
+    const handleEdit= (e)=> {
+        if(e == "edit") setTrainingDiv(true)
+        else if (e == "cancel") setTrainingDiv(false)
+    }
     return (
-        <div className='bg-white px-5 rounded-lg mb-10 pb-5'>
-            {/* Heading */}
-            <h2 className='px-2 pt-4 pb-2 flex items-center gap-2 border-b border-dark/20 mb-5'>
-                <MdWorkOutline fill='green' size={20}/>
-                <p className='text-dark text-xl'>Training / Courses</p>
-            </h2>
-
-            {/* All Trainings */}
-            <div className='w-fit mx-auto'>
-            {
-                trainings.map(training => <TrainingOrCoursesDiv key={training.id} training={training}></TrainingOrCoursesDiv>)
-            }
-           </div>
-
-            {/* Add Training / Courses Button */}
-            <div className='flex justify-center'>
-                {
-                    trainings.length < 5 ?
-                        <button onClick={() => handleTrainingModal("edit")} className='text-blue-600'>+ Add Training / Courses</button> :
-                        <p className='text-sm'>Maximum limit reached</p>
-                }
+        <div className='border border-green/60 hover:shadow-lg hover:shadow-green/20 duration-300 rounded-lg px-5 py-3 mb-5 flex gap-8 items-start justify-between'>
+            <div className=''>
+                <h4 className='font-semibold text-xl mb-1'>{program}</h4>
+                <p>{organization}{location && " | "} {location}</p>
+                <p>{formatDate(starting_date)} - {ending_date == "Present" ? ending_date : formatDate(ending_date)}</p>
+                <p className='max-w-lg'>{description}</p>
             </div>
-
+            
+            {/* Edit and Delete Buttons */}
+            <div className='flex gap-3 justify-center'>
+                <button onClick={()=> handleEdit("edit")} className='hover:text-green cursor-pointer duration-300'><FiEdit size={18} /></button>
+                <button onClick={handleDelete} className='hover:text-red-500 cursor-pointer duration-300'><AiOutlineDelete size={20} /></button>
+            </div>
+            
             {
-                isTrainingModalOpen &&
-                <Modal isModalOpen={isTrainingModalOpen} setIsModalOpen={setIsTrainingModalOpen} handleModal={handleTrainingModal}>
-                    {/* Modal Heading */}
-                    <h2 className='px-2 pt-4 pb-2 flex items-center gap-2 border-b border-dark/20 mb-5 -mt-3'>
-                        <MdWorkOutline fill='green' size={20}/>
-                        <p className='text-dark text-xl'>Add Training / Courses</p>
-                    </h2>
+                trainingDiv &&
+                <Modal isModalOpen={trainingDiv} setIsModalOpen={setTrainingDiv} handleModal={handleEdit}>
 
                      {/* Modal content */}
                      <form onSubmit={handleSubmit(onTrainingSubmit)}>
-                        {/* Program */}
+                        {/* program */}
                         <div>
                             <label className='text-dark block mb-1 mt-5'>Program</label>
                             <input
+                            defaultValue={program}
                             className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
                             type="text" 
-                            placeholder='e.g: Web Development'
+                            placeholder='e.g: Front-End Developer'
                             {...register("program")}
                             />
                         </div>
@@ -97,6 +77,7 @@ const TrainingsOrCourses = () => {
                             <div className='w-full'>
                                 <label className='text-dark block mb-1 mt-5'>Organization</label>
                                 <input 
+                                defaultValue={organization}
                                 className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
                                 type="text" 
                                 placeholder='e.g: Mahitech Ltd'
@@ -106,12 +87,12 @@ const TrainingsOrCourses = () => {
                             <div className='w-full'>
                                 <label className='text-dark block mb-1 mt-5'>Location (optional)</label>
                                 <input 
+                                defaultValue={location}
                                 className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
                                 type="text"
                                 {...register("location")}
                                 readOnly={watch("location") === 'Online'}
                                 />
-                                
                             </div>
                         </div>
 
@@ -122,10 +103,11 @@ const TrainingsOrCourses = () => {
                             className='ml-2' 
                             type="checkbox"
                             onChange={e => {
-                                setWorkFromHome(e.target.checked);
+                                setOnline(e.target.checked);
                                 if (e.target.checked) setValue('location', 'Online')
                                 else setValue('location', '')
                             }}
+                            defaultChecked={location === 'Online'}
                             />
                         </div>
                         
@@ -134,6 +116,7 @@ const TrainingsOrCourses = () => {
                             <div className='w-full'>
                                 <label className='text-dark block mb-1'>Start date</label>
                                 <input 
+                                defaultValue={starting_date}
                                 className='rounded outline-none h-10 border border-dark/20 w-full px-3'
                                 type="date"
                                 {...register("starting_date")}
@@ -150,6 +133,7 @@ const TrainingsOrCourses = () => {
                                     />
                                 ) : (
                                     <input
+                                        defaultValue={ending_date}
                                         className='rounded outline-none h-10 border border-dark/20 w-full px-3'
                                         type='date'
                                         {...register('ending_date')}
@@ -158,7 +142,7 @@ const TrainingsOrCourses = () => {
                             </div>
                         </div>
 
-                        {/* Checkbox for Currently ongoing */}
+                        {/* Checkbox for currently working */}
                         <div className='flex justify-end items-center mt-1'>
                             <label className=''>Currently Ongoing</label>
                             <input 
@@ -169,13 +153,15 @@ const TrainingsOrCourses = () => {
                                 if (e.target.checked) setValue('ending_date', 'Present')
                                 else setValue('ending_date', '')
                             }}
+                            defaultChecked={ending_date === 'Present'}
                             />
                         </div>
 
                         {/* Description */}
                         <div>
-                            <label className='text-dark block mb-1'>Description (optional)</label>                         
+                            <label className='text-dark block mb-1'>Description (optional)</label>
                             <textarea
+                            defaultValue={description}
                             className='rounded outline-none h-32 border border-dark/20 w-full px-3 py-2'  
                             placeholder='Write within 250 words'
                             {...register("description")}
@@ -190,9 +176,8 @@ const TrainingsOrCourses = () => {
                     </form>
                 </Modal>
             }
-
         </div>
     );
 };
 
-export default TrainingsOrCourses;
+export default TrainingOrCoursesDiv;
