@@ -4,6 +4,8 @@ import useAuth from '../Hooks/useAuth';
 
 // react icons
 import { FaGithub } from 'react-icons/fa';
+import useAxios from '../Hooks/useAxios';
+import Swal from 'sweetalert2';
 
 const SocialLogin = () => {
     const { googleSignIn, gitHubSignIn } = useAuth();
@@ -16,7 +18,22 @@ const SocialLogin = () => {
     const handleGoogleLogin = () => {
         googleSignIn()
             .then(res => {
-                navigate(from, { replace: true });
+                const user = res.user;
+                const newUser = { name: user.displayName, email: user.email, role: 'user' };
+
+                useAxios.post('/users', newUser)
+                    .then(data => {
+                        if (data.status === 200) {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Sign Up successfully',
+                                showConfirmButton: false,
+                                timer: 2500
+                            });
+                        }
+                    })
+                navigate(from, { replace: true })
             }).catch((error) => {
                 if (error.message) {
                     toast.error(error.message, {
@@ -36,6 +53,21 @@ const SocialLogin = () => {
     const handleGithubLogin = () => {
         gitHubSignIn()
             .then(res => {
+                const user = res.user;
+                const newUser = { name: user.displayName, email: user.email, role: 'user' };
+
+                useAxios.post('/users', newUser)
+                    .then(data => {
+                        if (data.status === 200) {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Sign Up successfully',
+                                showConfirmButton: false,
+                                timer: 2500
+                            });
+                        }
+                    })
                 navigate(from, { replace: true });
             }).catch((error) => {
                 if (error.message) {

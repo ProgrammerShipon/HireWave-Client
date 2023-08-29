@@ -13,7 +13,7 @@ const TopRecruiters = () => {
                 {/* content */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 justify-center mt-12 md:mt-16">
                     {recruiterData.map((recruiter) => (
-                        <RecruiterCard key={recruiter.id} recruiter={recruiter} />
+                        <RecruiterCard key={recruiter._id} recruiter={recruiter} />
                     ))}
                 </div>
             </div>

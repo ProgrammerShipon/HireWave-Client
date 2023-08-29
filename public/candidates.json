@@ -28,6 +28,15 @@
         "recruiter": "Emily Adams",
         "logo": "https://i.ibb.co/v3ygypq/brooke-cagle-JBwcen-Ou-RCg-unsplash.jpg",
         "location": "Los Angeles, CA",
+        "skills": ["JavaScript", "React", "Node.js"],
+        "socialLink": [
+          {
+            "linkedin": "https://www.linkedin.com/in/oliviajohnson/"
+          },
+          {
+            "github": "https://www.github.com/oliviajohnson/"
+          }
+        ],
         "rating": 4.9,
         "review": "Working with Olivia was a great experience. She delivered outstanding results and showed excellent teamwork.",
         "date": "Sep 15, 2023"
