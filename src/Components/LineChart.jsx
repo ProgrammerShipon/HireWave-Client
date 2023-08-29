@@ -16,7 +16,7 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 // react icons 
 import { BsArrowUpShort } from 'react-icons/bs';
 
-const ApplicationLineChart = () => {
+const LineChart = () => {
     const labels = [
         'Day 02', 'Day 03', 'Day 04', 'Day 05', 'Day 06', 'Day 07',
         'Day 08', 'Day 09', 'Day 10'
@@ -26,10 +26,10 @@ const ApplicationLineChart = () => {
         labels: labels, // Dates
         datasets: [
             {
+                fill: false,
                 data: [10, 50, 30, 78, 45, 62, 40, 90, 53],
                 borderColor: '#fff',
                 backgroundColor: '#fff',
-                fill: true,
             },
         ]
     };
@@ -77,4 +77,4 @@ const ApplicationLineChart = () => {
     );
 };
 
-export default ApplicationLineChart;
+export default LineChart;

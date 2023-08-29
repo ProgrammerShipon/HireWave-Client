@@ -1,19 +1,19 @@
-import DashNavItemsByRole from "./DashNavItemsByRole";
-import DashLink from "./DashLink";
 import useAuth from "../Hooks/useAuth";
+import DashLink from "./DashLink";
+import DashNavItemsByRole from "./DashNavItemsByRole";
 
 // react icons
-import { VscAccount } from "react-icons/vsc";
-import { TbLockCog } from "react-icons/tb";
-import { MdLogout } from "react-icons/md";
 import { LiaHomeSolid } from "react-icons/lia";
 import { LuLayoutDashboard } from "react-icons/lu";
+import { MdLogout } from "react-icons/md";
+import { TbLockCog } from "react-icons/tb";
+import { VscAccount } from "react-icons/vsc";
 
 const DashNavItems = () => {
   const { logOut } = useAuth();
-  // const role = 'candidate';
+  const role = 'candidate';
   // const role = 'recruiter';
-  const role = "admin";
+  // const role = "admin";
 
   return (
     <aside className="sticky top-0 shadow-4xl shadow-gray/40 w-auto md:w-[300px] bg-white duration-300 h-screen pt-[71px] overflow-y-auto">
