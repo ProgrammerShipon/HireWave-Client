@@ -15,7 +15,7 @@ const Footer = () => {
   return (
     <footer className="pt-10 text-dark">
       <div className="container">
-        <div className="grid grid-cols-1 pt-12 md:grid-cols-3 lg:grid-cols-6 gap-9">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-9 pt-12 ">
           {/* Logo, address, and social media links */}
           <div className="order-first col-span-1 md:col-span-2">
             {/* logo */}
@@ -61,10 +61,10 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Job seekers */}
-          <div className="order-none md:order-last lg:order-none">
-            <h3 className="text-2xl font-medium capitalize text-dark drop-shadow-lg">
-              Candidates
+          {/* Candidate */}
+          <div className="md:hidden lg:block">
+            <h3 className="text-2xl font-medium text-dark capitalize drop-shadow-lg">
+              Candidate
             </h3>
             <ul className="flex flex-col gap-1 mt-5 text-gray">
               <li>
@@ -94,10 +94,22 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-
-          {/* Employers */}
-          <div className="">
-            <h3 className="text-2xl font-medium capitalize text-dark drop-shadow-lg">
+          {/* Contact for Medium Screen */}
+          <div className="hidden md:block lg:hidden">
+            <h3 className="text-2xl font-medium text-dark capitalize drop-shadow-lg">
+              Contact Us
+            </h3>
+            <div className="text-gray">
+              <p className="mt-5">
+                43/7 Northern Tower, Banani, Dhaka-1263, Bangladesh
+              </p>
+              <p className="mt-4 lowercase">support@hirewave.com</p>
+              <p>+8801543653473</p>
+            </div>
+          </div>
+          {/* Recruiters */}
+          <div>
+            <h3 className="text-2xl font-medium text-dark capitalize drop-shadow-lg">
               Recruiters
             </h3>
             <ul className="flex flex-col gap-1 mt-5 text-gray">
@@ -128,7 +140,6 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-
           {/* Resources */}
           <div className="order-none">
             <h3 className="text-2xl font-medium capitalize text-dark drop-shadow-lg">
@@ -159,8 +170,8 @@ const Footer = () => {
           </div>
 
           {/* contact */}
-          <div className="order-none md:order-first lg:order-last">
-            <h3 className="text-2xl font-medium capitalize text-dark drop-shadow-lg">
+          <div className="md:hidden lg:block">
+            <h3 className="text-2xl font-medium text-dark capitalize drop-shadow-lg">
               Contact Us
             </h3>
             <div className="text-gray">
@@ -171,6 +182,40 @@ const Footer = () => {
               <p>+8801543653473</p>
             </div>
           </div>
+          {/* Candidate for Medium Screen */}
+          <div className="hidden md:block lg:hidden">
+            <h3 className="text-2xl font-medium text-dark capitalize drop-shadow-lg">
+              Job seekers
+            </h3>
+            <ul className="flex flex-col gap-1 mt-5 text-gray">
+              <li>
+                <Link to="/" className="hover:text-green duration-300">
+                  Browse Jobs
+                </Link>
+              </li>
+              <li>
+                <Link to="/" className="hover:text-green duration-300">
+                  Salary Tools
+                </Link>
+              </li>
+              <li>
+                <Link to="/" className="hover:text-green duration-300">
+                  Career Advice
+                </Link>
+              </li>
+              <li>
+                <Link to="/" className="hover:text-green duration-300">
+                  Student Career Center
+                </Link>
+              </li>
+              <li>
+                <Link to="/" className="hover:text-green duration-300">
+                  Resume writing services
+                </Link>
+              </li>
+            </ul>
+          </div>
+
         </div>
       </div>
 
