@@ -1,35 +1,50 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import Button from "./Button";
-
-export default function ManageUserTable({ manageuser }) {
-  const { name, images, category } = manageuser;
+import moment from "moment";
+import { RiShareBoxFill } from "react-icons/ri";
+export default function AppliedJobTable({ AppliedJobs }) {
+  const {
+    companyName,
+    companyLogo,
+    postedDate,
+    title,
+    applied,
+    name,
+    category,
+  } = AppliedJobs;
   const [showDropdown, setShowDropdown] = useState(false);
-  const [status, setStatus] = useState("Pending");
+  const [status, setStatus] = useState("Active");
 
   const handleStatusChange = (newStatus) => {
     setStatus(newStatus);
     setShowDropdown(false);
   };
-
   return (
     <tr className="bg-white border-b-2 text-slate-600 border-slate-50">
-      <td className="relative flex items-center px-3 py-4 font-medium text-dark">
+      <td className="flex items-center gap-2 px-3 py-4 font-medium text-dark">
         <img
-          className="object-cover w-12 h-12 mr-3 rounded-full"
-          src={images}
+          className="object-cover w-12 h-12 rounded-full"
+          src={companyLogo}
           alt={name}
         />
-        {name}
+        {companyName}
       </td>
-
+      <td className="px-5 py-4 ">
+        <div className="flex items-center gap-2 cursor-pointer">
+          {title.slice(0, 15)}
+          <RiShareBoxFill className="text-lightGray" />
+        </div>
+      </td>
       <td className="px-5 py-4">{category}</td>
-      <td className="px-5 py-4">example@gmail.com</td>
-      <td className="px-5 py-4">user</td>
-      <td className="px-5 py-4">
+      <td className="px-5 py-4">{moment(postedDate).format("MMM Do YYYY")}</td>
+      <td className="px-5 py-4">{applied}</td>
+
+      <td className="px-5 py-4 ">
         {status}
         {/* dropdown option */}
 
-        {status === "Pending" && (
+        {status === "Active" && (
           <button
             type="button"
             className="ml-2 text-primary-500 focus:outline-none"
@@ -54,32 +69,25 @@ export default function ManageUserTable({ manageuser }) {
           <div className="absolute z-10 w-32 bg-white rounded-md shadow-lg ring-black ring-opacity-5">
             <div className="py-1" role="none">
               <button
-                onClick={() => handleStatusChange("Active")}
+                onClick={() => handleStatusChange("Open")}
                 className="block px-4 py-2 text-sm text-left text-slate-700 hover:bg-slate-100 hover:text-slate-900"
                 role="menuitem"
               >
-                Active
+                Open
               </button>
               <button
-                onClick={() => handleStatusChange("Online")}
+                onClick={() => handleStatusChange("Close")}
                 className="block px-4 py-2 text-sm text-left text-slate-700 hover:bg-slate-100 hover:text-slate-900"
                 role="menuitem"
               >
-                Pending
-              </button>
-              <button
-                onClick={() => handleStatusChange("Offline")}
-                className="block px-4 py-2 text-sm text-left text-slate-700 hover:bg-slate-100 hover:text-slate-900"
-                role="menuitem"
-              >
-                Suspend
+                Close
               </button>
             </div>
           </div>
         )}
       </td>
       <td className="px-5 py-4">
-        <Button>Apply</Button>
+        <Button>view</Button>
       </td>
     </tr>
   );

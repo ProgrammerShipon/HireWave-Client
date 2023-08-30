@@ -11,13 +11,13 @@ import { VscAccount } from "react-icons/vsc";
 
 const DashNavItems = () => {
   const { logOut } = useAuth();
-  // const role = 'candidate';
-  // const role = 'recruiter';
-  const role = "admin";
+  const role = "candidate";
+  // const role = "recruiter";
+  // const role = "admin";
 
   return (
     <aside className="sticky top-0 shadow-4xl shadow-gray/40 w-auto md:w-[300px] bg-white duration-300 h-screen pt-[71px] overflow-y-auto">
-      <ul className="flex flex-col items-center gap-3 ml-4 md:ml-10 pt-6">
+      <ul className="flex flex-col items-center gap-3 pt-6 ml-4 md:ml-10">
         {/* Dashboard Home */}
         <li className="w-full">
           <DashLink to="/dashboard/dashboardHome">
@@ -57,7 +57,7 @@ const DashNavItems = () => {
         <li className="w-full">
           <button
             onClick={() => logOut()}
-            className="text-red-500 font-medium text-lg py-3 pl-7 flex items-center gap-2 bg-transparent hover:text-white bg-red-200 hover:bg-red-400 w-full rounded-s-full duration-300"
+            className="flex items-center w-full gap-2 py-3 text-lg font-medium text-red-500 duration-300 bg-transparent bg-red-200 pl-7 hover:text-white hover:bg-red-400 rounded-s-full"
           >
             <MdLogout size={24} />
             <p className="hidden md:inline">Logout</p>
