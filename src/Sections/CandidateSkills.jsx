@@ -58,14 +58,14 @@ const CandidateSkills = () => {
     ]
 
     return (
-        <div className='bg-white px-5 rounded-lg mb-10 pb-5 shadow-xl'>
+        <div className='bg-white px-5 rounded-lg mb-10 pb-5 flex-1 shadow-xl'>
             {/* Heading */}
             <h2 className='px-2 pt-4 pb-2 flex items-center gap-2 border-b border-dark/20 mb-5'>
                 <GiSkills fill='green' size={20}/>
                 <p className='text-dark text-xl'>Skills</p>
             </h2>
 
-            <div className='grid md:grid-cols-2 lg:grid-cols-3 xxl:grid-cols-4 gap-5 mx-5 mb-5'>
+            <div className='grid xl:grid-cols-2 gap-5 mx-5 mb-5'>
                 {
                     skills.map(skill => <SkillDiv key={skill.name} skill={skill}></SkillDiv>)
                 }  
@@ -118,7 +118,7 @@ const CandidateSkills = () => {
                             </select>
                         </div>
 
-                        <p className='text-sm mt-1'>N.B. Maximum skill limit is 15</p>
+                        <p className='text-sm mt-1'>N.B.  You cannot add more than 15 skills</p>
 
                         {/* Save changes */}
                         <div className='flex justify-end mt-5'>

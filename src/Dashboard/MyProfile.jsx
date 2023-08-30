@@ -19,29 +19,38 @@ const MyProfile = () => {
             {/* My Account */}
             <MyAccount />
 
-             {/* Skills */}
-            <CandidateSkills />
+            <div className='md:flex gap-8'>
+                {/* Education */}
+                <Education />
 
-            {/* Education */}
-            <Education />
+                {/* Experiences */}
+                <Experiences />
+            </div>
 
-            {/* Experiences */}
-            <Experiences />
+            <div className='md:flex gap-8'>
+                {/* Training and Courses */}
+                <TrainingsOrCourses />
 
-            {/* Academics / Personal Projects */}
-            <Projects />
+                {/* Academics / Personal Projects */}
+                <Projects />
+            </div>
 
-            {/* Training and Courses */}
-            <TrainingsOrCourses />
+            <div className='md:flex gap-8'>
+                {/* Skills */}
+                <CandidateSkills />
 
-            {/* Accomplishment */}
-            <Accomplishment />
+                {/* Language Proficiency */}
+                <LanguageProficiency />
+             </div>
 
-            {/* Language Proficiency */}
-            <LanguageProficiency />
+            
+            <div className='md:flex gap-8'>
+                {/* Portfolio */}
+                <Portfolio /> 
 
-            {/* Portfolio */}
-            <Portfolio />  
+                {/* Accomplishment */}
+                <Accomplishment />
+            </div>
 
             {/* Generate Resume Button */}
             <div>
