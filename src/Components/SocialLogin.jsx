@@ -9,7 +9,8 @@ import useAxios from '../Hooks/useAxios';
 
 const SocialLogin = () => {
     const { googleSignIn, gitHubSignIn } = useAuth();
-    const [ axiosSecure ] = useAxios()
+const { axiosSecure } = useAxios();
+
 
     // navigate
     const navigate = useNavigate();

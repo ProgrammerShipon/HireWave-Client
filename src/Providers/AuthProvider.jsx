@@ -1,7 +1,6 @@
-import React, { createContext, useEffect, useState } from "react";
 import {
-  GoogleAuthProvider,
   GithubAuthProvider,
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
@@ -10,6 +9,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import React, { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
 
 export const AuthContext = createContext();
@@ -64,8 +64,24 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-
       setLoading(false);
+
+      if (currentUser && currentUser?.email) {
+        fetch("http://localhost:3030/api/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ email: currentUser?.email }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data)
+            const token = data?.token
+            localStorage.setItem("hire-wave-token", token);
+          });
+      }
+
     });
 
     return () => {

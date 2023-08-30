@@ -14,6 +14,7 @@ import useAxios from "../Hooks/useAxios";
 const SignUpForm = () => {
     const { signUpUser, profileUpdate } = useAuth();
     const [axiosSecure] = useAxios();
+    console.log(axiosSecure);
 
     // navigate
     const navigate = useNavigate();
