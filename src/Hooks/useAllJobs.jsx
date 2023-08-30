@@ -10,6 +10,7 @@ export default function useAllJobs() {
     queryFn: async () => {
       const res = await fetch("/allJobsData.json");
       const data = await res.json();
+      console.log(data)
       return data;
     },
   });

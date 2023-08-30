@@ -55,7 +55,7 @@ const Experiences = () => {
         }
     ]
     return (
-        <div className='bg-white px-5 rounded-lg mb-10 pb-5 shadow-xl'>
+        <div className='bg-white px-5 rounded-lg mb-10 pb-5 flex-1 shadow-xl'>
             {/* Heading */}
             <h2 className='px-2 pt-4 pb-2 flex items-center gap-2 border-b border-dark/20 mb-5'>
                 <GrUserExpert size={18}/>
@@ -197,6 +197,7 @@ const Experiences = () => {
                         {...register("description")}
                         />
 
+                        <p className='text-sm'>N.B. You cannot add more than 5 Experience details</p>
 
                         {/* Save changes */}
                         <div className='flex justify-end mt-5'>

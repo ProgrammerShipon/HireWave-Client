@@ -119,7 +119,7 @@ const FindJobBody = ({ allJobsData }) => {
                 <BiMap /> {location}
               </p>
             </div>
-            <Button>Apply Now</Button>
+            <Button><Link to={`/apply_job/${title}`}>Apply Now</Link></Button>
           </div>
 
           <div className="flex flex-col items-start mb-6 md:flex-row md:gap-8">
