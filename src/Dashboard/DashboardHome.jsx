@@ -1,14 +1,29 @@
-import React from 'react';
 import useAuth from '../Hooks/useAuth';
+import AdminDashboard from './AdminDashboard';
+import CandidateDashboard from './CandidateDashboard';
+import DashTitle from './DashTitle';
+import RecruiterDashboard from './RecruiterDashboard';
 
 const DashboardHome = () => {
     const { user } = useAuth();
-    console.log(user?.displayName)
+
+    // const role = 'admin';
+    const role = 'recruiter';
+    // const role = 'candidate';
     return (
-        <div>
-            <h2 className='mt-10 text-center text-4xl text-green/80 font-semibold'>Welcome to Dashboard Home</h2>
-            <p className='text-center text-2xl text-green/80 font-semibold'>{user?.displayName}</p>
-        </div>
+        <section className='m-5 rounded-md'>
+            <DashTitle title='Dashboard' />
+
+            {
+                role === 'admin' && <AdminDashboard />
+            }
+            {
+                role === 'recruiter' && <RecruiterDashboard />
+            }
+            {
+                role === 'candidate' && <CandidateDashboard />
+            }
+        </section>
     );
 };
 

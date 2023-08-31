@@ -31,7 +31,6 @@ import ManageUsers from "../Dashboard/ManageUsers";
 import ManageJobs from "../Dashboard/ManageJobs";
 import CandidateList from "../Dashboard/CandidateList";
 import RecruiterList from "../Dashboard/RecruiterList";
-import Logout from "../Dashboard/Logout";
 import ApplyJob from "../Pages/ApplyJob";
 
 const Router = createBrowserRouter([
@@ -101,8 +100,9 @@ const Router = createBrowserRouter([
         element: <Recruiters />,
       },
       {
-        path: "/recruiters_details",
+        path: "/recruiters_details/:id",
         element: <RecruitersDetails />,
+        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/recruiters/${params.id}`)
       },
       {
         path: "/contact",
@@ -120,25 +120,21 @@ const Router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard/>,
-    errorElement: <ErrorPage/>,
-    children:[
+    element: <Dashboard />,
+    errorElement: <ErrorPage />,
+    children: [
       //Common Routes
       {
         path: "dashboardHome",
-        element: <DashboardHome/>
+        element: <DashboardHome />
       },
       {
         path: "myProfile",
-        element: <MyProfile/>
+        element: <MyProfile />
       },
       {
         path: "changePassword",
-        element: <ChangePassword/>
-      },
-      {
-        path: "logout",
-        element: <Logout/>
+        element: <ChangePassword />
       },
 
       // Candidate routes
@@ -148,37 +144,37 @@ const Router = createBrowserRouter([
       },
       {
         path: "myResume",
-        element: <MyResume/>
+        element: <MyResume />
       },
 
       // Recruiter routes
       {
         path: "messages",
-        element: <Messages/>
+        element: <Messages />
       },
       {
         path: "postedJobs",
-        element: <PostedJobs/>
+        element: <PostedJobs />
       },
 
       //Admin Routes
       {
         path: "manageUsers",
-        element: <ManageUsers/>
+        element: <ManageUsers />
       },
       {
         path: "manageJobs",
-        element: <ManageJobs/>
+        element: <ManageJobs />
       },
       {
         path: "candidateList",
-        element: <CandidateList/>
+        element: <CandidateList />
       },
       {
         path: "recruiterList",
-        element: <RecruiterList/>
+        element: <RecruiterList />
       }
-      
+
     ]
   }
 ]);

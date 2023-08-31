@@ -11,9 +11,6 @@ const Portfolio = () => {
             </h2>
 
             <div className=''>
-
-
-
                 {/* Add Portfolio Button */}
                 <div className='flex justify-center'>
                     <button className='text-blue-600'>+ Add Portfolio</button>
