@@ -13,7 +13,6 @@ import { useForm } from 'react-hook-form';
 import Button from '../Components/Button';
 
 const ApplyJob = () => {
-    
     const { register, handleSubmit, reset } = useForm();
 
     const onApplyJobSubmit = data => {

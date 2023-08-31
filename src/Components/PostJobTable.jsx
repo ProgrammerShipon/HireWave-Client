@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { FaRegStar } from "react-icons/fa";
 import moment from "moment";
-
-export default function ManageJobTable({ managejobs }) {
-  const { title, postedDate, applied, jobType, category } = managejobs;
+export default function PostJobTable({ PostJob }) {
+  const { title, postedDate, applied, closingDate, category } = PostJob;
   const [showDropdown, setShowDropdown] = useState(false);
-  const [status, setStatus] = useState("Offline");
+  const [status, setStatus] = useState("Open");
 
   const handleStatusChange = (newStatus) => {
     setStatus(newStatus);
@@ -13,17 +11,19 @@ export default function ManageJobTable({ managejobs }) {
   };
   return (
     <tr className="bg-white border-b-2 text-slate-600 border-slate-50">
-      <td className="flex items-center px-3 py-4 font-medium text-dark ">
-        <FaRegStar className="mr-2 text-green" />
-        {title}
-      </td>
+      <td className="px-5 py-4">{title}</td>
       <td className="px-5 py-4">{category}</td>
-      <td className="px-5 py-4">{moment(postedDate).format("MMM Do YYYY")}</td>
-      <td className="py-4 text-center">{applied}</td>
+      <td className="px-5 py-4">
+        {moment(postedDate).format("MMM Do YYYY")}
+        <br />
+        {moment(closingDate).format("MMM Do YYYY")}
+      </td>
+      <td className="px-5 py-4">{applied} Candidates</td>
       <td className="px-5 py-4">
         {status}
         {/* dropdown option */}
-        {status === "Offline" && (
+
+        {status === "Open" && (
           <button
             type="button"
             className="ml-2 text-primary-500 focus:outline-none"
@@ -48,25 +48,18 @@ export default function ManageJobTable({ managejobs }) {
           <div className="absolute z-10 w-32 bg-white rounded-md shadow-lg ring-black ring-opacity-5">
             <div className="py-1" role="none">
               <button
-                onClick={() => handleStatusChange("Active")}
+                onClick={() => handleStatusChange("Close")}
                 className="block px-4 py-2 text-sm text-left text-slate-700 hover:bg-slate-100 hover:text-slate-900"
                 role="menuitem"
               >
-                Active
+                Close
               </button>
               <button
-                onClick={() => handleStatusChange("Online")}
+                onClick={() => handleStatusChange("Edit")}
                 className="block px-4 py-2 text-sm text-left text-slate-700 hover:bg-slate-100 hover:text-slate-900"
                 role="menuitem"
               >
-                Pending
-              </button>
-              <button
-                onClick={() => handleStatusChange("Offline")}
-                className="block px-4 py-2 text-sm text-left text-slate-700 hover:bg-slate-100 hover:text-slate-900"
-                role="menuitem"
-              >
-                Suspend
+                Edit
               </button>
             </div>
           </div>
