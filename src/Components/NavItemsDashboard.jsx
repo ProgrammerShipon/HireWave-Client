@@ -8,8 +8,8 @@ import { IoMdLogOut } from "react-icons/io";
 import NavItemsDashboardByRole from "./NavItemsDashboardByRole";
 
 const NavItemsDashboard = () => {
-  //   const role = "candidate";
-  //   const role = "recruiter";
+  // const role = "candidate";
+  // const role = "recruiter";
   //   const role = "admin";
 
   return (

@@ -8,7 +8,7 @@ const ManageJobs = () => {
   return (
     <section className="m-5">
       <DashTitle title="Job Management" />
-      <div className="hover:shadow-md w-full lg:w-full overflow-x-scroll lg:overflow-hidden duration-300 mt-5 rounded-xl ">
+      <div className="w-full mt-5 overflow-x-scroll duration-300 hover:shadow-md lg:w-full lg:overflow-hidden rounded-xl ">
         {/* filtering option */}
         <div className="flex justify-between w-[900px] lg:w-full bg-white text-dark px-5 py-3 font-medium">
           <div className="">
@@ -22,7 +22,7 @@ const ManageJobs = () => {
             <select
               name="filter"
               id="filter"
-              className="py-1 bg-white border border-slate-200 ml-1 rounded-md px-3"
+              className="px-3 py-1 ml-1 bg-white border rounded-md border-slate-200"
             >
               <option value="Engineer">Engineer</option>
               <option value="designer">Designer</option>
@@ -34,7 +34,7 @@ const ManageJobs = () => {
             <select
               name="filter"
               id="filter"
-              className="py-1 bg-white border border-slate-200 ml-1 rounded-md px-3"
+              className="px-3 py-1 ml-1 bg-white border rounded-md border-slate-200"
             >
               <option value="Engineer">Engineer</option>
               <option value="designer">Designer</option>
@@ -45,7 +45,7 @@ const ManageJobs = () => {
             <select
               name="filter"
               id="filter"
-              className="py-1 bg-white border border-slate-200 ml-1 rounded-md px-3"
+              className="px-3 py-1 ml-1 bg-white border rounded-md border-slate-200"
             >
               <option value="Engineer">Recent</option>
               <option value="designer">Oldest</option>
@@ -54,12 +54,12 @@ const ManageJobs = () => {
         </div>
         {/* table */}
         <table className="table bg-white w-[900px] lg:w-full text-left ">
-          <thead className=" text-dark text-lg">
+          <thead className="text-lg text-dark">
             <tr>
               <th className="px-5 py-3 ">Job Title</th>
               <th className="px-5 py-3 ">Category</th>
               <th className="px-5 py-3">Post Date</th>
-              <th className="text-center px-5 py-3 ">Applied</th>
+              <th className="px-5 py-3 text-center ">Applied</th>
               <th className="px-5 py-3 ">Status</th>
             </tr>
           </thead>
