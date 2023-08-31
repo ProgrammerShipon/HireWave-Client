@@ -36,7 +36,15 @@ const FindJobBody = ({ allJobsData }) => {
     benefits,
     skills,
   } = jobDetails;
-  
+  // console.log(jobDetails);
+  const handleApplyJob = () => {
+    const appliedInfo = {
+      companyName: companyName,
+      companyMail: category,
+      JobId: "64e78e7663f90b252c6891d0"
+    }
+    console.log(appliedInfo)
+  }
   return (
     <div className="grid grid-cols-1 gap-5 mt-16 lg:grid-cols-10">
       {/* left content  */}

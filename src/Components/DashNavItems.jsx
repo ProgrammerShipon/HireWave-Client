@@ -11,8 +11,8 @@ import { VscAccount } from "react-icons/vsc";
 
 const DashNavItems = () => {
   const { logOut } = useAuth();
-  // const role = "candidate";
-  const role = "recruiter";
+  // const role = 'candidate';
+  const role = 'recruiter';
   // const role = "admin";
 
   return (

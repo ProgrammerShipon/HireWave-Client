@@ -1,6 +1,6 @@
-import MyAccount from '../Sections/MyAccount';
-import Button from '../Components/Button';
 import { AiOutlineFileAdd } from 'react-icons/ai';
+import Button from '../Components/Button';
+import MyAccount from '../Sections/MyAccount';
 import DashTitle from './DashTitle';
 
 const MyProfile = () => {
