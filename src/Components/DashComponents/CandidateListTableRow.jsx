@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 
-const ManageUserTableRow = ({ user }) => {
-    const { _id, name, images, category } = user;
+const CandidateListTableRow = ({ candidate }) => {
+    const { _id, name, images, category, location } = candidate;
     const email = 'forid123@gmail.com';
-    const role = 'candidate';
-    const status = 'active';
+    const status = 'approve';
     return (
         <tr className="border-b border-green/20 hover:bg-green/10 duration-300 group">
             <td className="px-3 py-3 flex gap-2">
@@ -20,15 +19,15 @@ const ManageUserTableRow = ({ user }) => {
                 {category}
             </td>
 
-            <td className="px-3 py-4 text-center capitalize">{role}</td>
+            <td className="px-3 py-4 text-center text-lightGray">{location}</td>
 
             <td className="px-3 py-4 text-center">
-                <div className={`relative flex gap-1 items-center justify-center px-2 rounded-full capitalize w-fit mx-auto ${status === 'active' && 'bg-green/10 text-green font-medium shadow-lg shadow-green/20'} ${status === 'pending' && 'bg-orange-300/10 text-orange-300'} ${status === 'suspend' && 'bg-red-500/10 text-red-500'}`}
+                <div className={`relative flex gap-1 items-center justify-center px-2 rounded-full capitalize w-fit mx-auto ${status === 'approve' && 'bg-green/10 text-green font-medium shadow-lg shadow-green/20'} ${status === 'pending' && 'bg-orange-300/10 text-orange-300'} ${status === 'suspend' && 'bg-red-500/10 text-red-500'}`}
                 >
                     <select name="status" id="status" defaultValue={status}
                         className="focus:outline-none bg-transparent"
                     >
-                        <option value="active">Active</option>
+                        <option value="approve">Approve</option>
                         <option value="pending">Pending</option>
                         <option value="suspend">Suspend</option>
                     </select>
@@ -41,4 +40,4 @@ const ManageUserTableRow = ({ user }) => {
     );
 };
 
-export default ManageUserTableRow;
+export default CandidateListTableRow;

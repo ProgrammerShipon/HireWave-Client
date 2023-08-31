@@ -11,7 +11,6 @@ const ChangePassword = () => {
     const { changePassword } = useAuth();
     const [newPass, setNewPass] = useState('');
     const [show, setShow] = useState(false);
-    console.log(newPass)
 
     const handlePassChange = () => {
         changePassword(newPass)
@@ -37,7 +36,7 @@ const ChangePassword = () => {
 
             <div className="py-28 max-w-xl mx-auto">
                 <div className="flex flex-col items-start justify-center gap-4 bg-white p-6 rounded-md shadow-4xl shadow-gray/40">
-                    <h2 className="mt-10 text-4xl text-green/80 font-semibold text-left">
+                    <h2 className="mt-5 text-4xl text-green/80 font-semibold text-left">
                         Enter New Password
                     </h2>
                     <label htmlFor="password"

@@ -6,7 +6,7 @@ import { BiHeart, BiSolidCrown, BiMap } from "react-icons/bi";
 import { IoIosFlash } from "react-icons/io";
 
 const JobCard = ({ job, setJobDetails }) => {
-    const { title, companyName, companyLogo, category, location, jobType, applied, salary, postedDate } = job;
+    const { _id, title, companyName, companyLogo, category, location, jobType, applied, salary, postedDate } = job;
     return (
         <div className="sticky top-28 bg-white border border-purple p-4 rounded-lg hover:shadow-4xl hover:shadow-green/20 duration-300 cursor-pointer"
             onClick={() => setJobDetails(job)}
@@ -23,12 +23,12 @@ const JobCard = ({ job, setJobDetails }) => {
                         </div>
                     </div>
                     <div className="mt-1">
-                        <h2 className="text-dark text-xl font-medium drop-shadow-lg hover:text-green duration-300 line-clamp-2">{title}</h2>
+                        <Link to={`/job_details/${_id}`} className="text-dark text-xl font-medium drop-shadow-lg hover:text-green duration-300 line-clamp-2">{title}</Link>
                         <p className="text-gray flex items-center flex-wrap gap-1">
                             by
-                            <Link to='/' className="text-dark hover:text-green duration-300">{companyName}</Link>
+                            <Link to={`/job_details/${_id}`} className="text-dark hover:text-green duration-300">{companyName}</Link>
                             in
-                            <Link to='/' className="text-dark hover:text-green duration-300">{category}</Link>
+                            <Link to={`/recruiters_details/${_id}`} className="text-dark hover:text-green duration-300">{category}</Link>
                         </p>
                     </div>
                 </div>

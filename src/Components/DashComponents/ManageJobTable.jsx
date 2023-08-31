@@ -12,7 +12,7 @@ const ManageJobTable = ({ job }) => {
             <td className="px-3 py-4 font-medium text-dark w-72 md:w-[340px]">
                 <div className="flex items-center w-full">
                     <FaRegStar className="mr-2 text-purple" />
-                    <Link to={`/jobDetails/${_id}`}
+                    <Link to={`/job_details/${_id}`}
                         className="font-medium group-hover:text-green duration-300 w-full line-clamp-1"
                     >{title}</Link>
                 </div>

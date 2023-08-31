@@ -5,7 +5,8 @@ import Button from "../Components/Button";
 import useAllJobs from "../Hooks/useAllJobs";
 
 const FeaturedJobs = () => {
-  const [allJobsData] = useAllJobs();
+  const [allJobsData, loading] = useAllJobs();
+
   return (
     <section className="py-20 md:py-[120px] duration-300">
       <div className="container">
@@ -13,11 +14,14 @@ const FeaturedJobs = () => {
         <SectionTitle title="Featured Jobs" para="Your dream company" />
 
         {/* featured jobs content */}
-        <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-5 lg:gap-0 pt-12 md:pt-16 lg:max-w-4xl mx-auto duration-300 relative">
-          {allJobsData.length > 0 &&
-            allJobsData?.slice(0, 4)
-              .map((job, index) => <FeaturedJobCard key={index} job={job} />)}
-        </div>
+        {
+          !loading ? <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-5 lg:gap-0 pt-12 md:pt-16 lg:max-w-4xl mx-auto duration-300 relative">
+            {
+              allJobsData.slice(0, 4)
+                .map(job => <FeaturedJobCard key={job._id} job={job} />)
+            }
+          </div> : <h1>Loading ...</h1>
+        }
 
         {/* button */}
         <div className="text-center mt-16">

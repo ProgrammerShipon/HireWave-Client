@@ -30,6 +30,7 @@ import ManageUsers from "../Dashboard/ManageUsers";
 import ManageJobs from "../Dashboard/ManageJobs";
 import CandidateList from "../Dashboard/CandidateList";
 import RecruiterList from "../Dashboard/RecruiterList";
+import ApplyJob from "../Pages/ApplyJob";
 
 const Router = createBrowserRouter([
   {
@@ -61,6 +62,12 @@ const Router = createBrowserRouter([
       {
         path: "/job_details/:id",
         element: <JobDetails />,
+        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`)
+      },
+      {
+        path: "/apply_job/:id",
+        element: <ApplyJob />,
+        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`)
       },
       {
         path: "/learning",

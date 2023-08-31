@@ -8,7 +8,7 @@ export default function useAllJobs() {
   } = useQuery({
     queryKey: ["allJobsData"],
     queryFn: async () => {
-      const res = await fetch("/allJobsData.json");
+      const res = await fetch("https://hire-wave-server.vercel.app/api/allJobs");
       const data = await res.json();
       return data;
     },
