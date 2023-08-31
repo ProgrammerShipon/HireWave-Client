@@ -1,44 +1,20 @@
 import React from 'react';
-import { useState } from 'react';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { FiEdit } from 'react-icons/fi';
 import Modal from './Modal';
 import { useForm } from 'react-hook-form';
 import Button from './Button';
+import useModal from './useModal';
+import useHookForm from './useHookForm';
+import useHandleDelete from './useHandleDelete';
 
 const EducationDiv = ({ education }) => {
     const { id, degree, institution, subject, starting_year, ending_year, performance_scale, performance } = education
-
-    const [educationDiv, setEducationDiv]= useState(false)
-    const { register, handleSubmit, reset } = useForm();
-
-    const onEducationSubmit = data => {
-        console.log(data)
-        const updatedEducation= {
-            institution: data.institution,
-            starting_year: data.starting_year,
-            ending_year: data.ending_year,
-            degree: data.degree,
-            subject: data.subject,
-            performance_scale: data.performance_scale,
-            performance: data.performance,
-        }
-        console.log(updatedEducation)
-
-        //TODO: Update education data
-        setEducationDiv(false)
-        reset();
-    }
-
-    const handleDelete= () =>{
-        //ToDo: Delete operation with confirmation message
-    }
-
-    const handleEdit= (e)=> {
-        if(e == "edit") setEducationDiv(true)
-        else if (e == "cancel") setEducationDiv(false)
-    }
-
+    const { isModalOpen,setIsModalOpen, handleModal } = useModal();
+    const { onHookFormSubmit }= useHookForm("put")
+    const { handleSubmit, register } = useForm();
+    const { handleDelete } =useHandleDelete()
+    
     return (
         <div className='border border-green/60 hover:shadow-lg hover:shadow-green/20 duration-300 rounded-lg px-5 py-3 mb-5 flex gap-8 items-start justify-between'>
             <div className=''>
@@ -50,16 +26,16 @@ const EducationDiv = ({ education }) => {
             
             {/* Edit and Delete Buttons */}
             <div className='flex gap-3 justify-center'>
-                <button onClick={()=> handleEdit("edit")} className='hover:text-green cursor-pointer duration-300'><FiEdit size={18} /></button>
-                <button onClick={handleDelete} className='hover:text-red-500 cursor-pointer duration-300'><AiOutlineDelete size={20} /></button>
+                <button onClick={()=> handleModal("edit")} className='hover:text-green cursor-pointer duration-300'><FiEdit size={18} /></button>
+                <button onClick={()=> handleDelete(id)} className='hover:text-red-500 cursor-pointer duration-300'><AiOutlineDelete size={20} /></button>
             </div>
 
             {
-                educationDiv &&
-                <Modal isModalOpen={educationDiv} setIsModalOpen={setEducationDiv} handleModal={handleEdit}>
+                isModalOpen &&
+                <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} handleModal={handleModal}>
 
                     {/* Modal content */}
-                    <form onSubmit={handleSubmit(onEducationSubmit)}>
+                    <form onSubmit={handleSubmit(onHookFormSubmit)}>
                         {/* Institution Name */}
                         <div>
                             <label className='text-dark block mb-1 mt-5'>Institution Name</label>

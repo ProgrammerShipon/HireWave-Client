@@ -31,6 +31,7 @@ import ManageUsers from "../Dashboard/ManageUsers";
 import ManageJobs from "../Dashboard/ManageJobs";
 import CandidateList from "../Dashboard/CandidateList";
 import RecruiterList from "../Dashboard/RecruiterList";
+import ApplyJob from "../Pages/ApplyJob";
 
 const Router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const Router = createBrowserRouter([
       {
         path: "/browse_jobs",
         element: <BrowseJobs />,
+      },
+      {
+        path: "/apply_job/:title",
+        element: <ApplyJob />
       },
       {
         path: "/all_categories",

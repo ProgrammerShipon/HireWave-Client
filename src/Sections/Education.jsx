@@ -3,36 +3,14 @@ import { FaGraduationCap } from 'react-icons/fa';
 import EducationDiv from '../Components/EducationDiv';
 import Modal from '../Components/Modal';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
 import Button from '../Components/Button';
+import useModal from '../Components/useModal';
+import useHookForm from '../Components/useHookForm';
 
 const Education = () => {
-
-    const [isEducationModalOpen, setIsEducationModalOpen] = useState(false);
-    const { register, handleSubmit, reset } = useForm();
-
-    const onEducationSubmit = data => {
-        console.log(data)
-        const updatedEducation= {
-            institution: data.institution,
-            starting_year: data.starting_year,
-            ending_year: data.ending_year,
-            degree: data.degree,
-            subject: data.subject,
-            performance_scale: data.performance_scale,
-            performance: data.performance,
-        }
-        console.log(updatedEducation)
-
-        //TODO: Update education data
-        setIsEducationModalOpen(false)
-        reset();
-    }
-
-    const handleEducationModal =(e) => {
-       if(e == "edit") setIsEducationModalOpen(true)
-       else if (e == "cancel") setIsEducationModalOpen(false)
-   }
+    const { isModalOpen,setIsModalOpen, handleModal } = useModal();
+    const { onHookFormSubmit }= useHookForm("post")
+    const { handleSubmit, register } = useForm();
 
     const educations= [
         {
@@ -69,7 +47,7 @@ const Education = () => {
     // Sort educations by starting_year in ascending order
     educations.sort((a, b) => a.starting_year - b.starting_year);
     return (
-        <div className='bg-white px-5 rounded-lg mb-10 pb-5 shadow-xl'>
+        <div className='bg-white px-5 rounded-lg mb-10 pb-5 flex-1 shadow-xl'>
             {/* Heading */}
             <h2 className='px-2 pt-4 pb-2 flex items-center gap-2 border-b border-dark/20 mb-5'>
                 <FaGraduationCap fill='purple' size={20}/>
@@ -87,14 +65,14 @@ const Education = () => {
             <div className='flex justify-center'>
                 {
                     educations.length < 5 ?
-                        <button onClick={() => handleEducationModal("edit")} className='text-blue-600'>+ Add Educations</button> :
+                        <button onClick={() => handleModal("edit")} className='text-blue-600'>+ Add Educations</button> :
                         <p className='text-sm'>Maximum limit reached</p>
 
                 }
             </div>
             {
-                isEducationModalOpen &&
-                <Modal isModalOpen={isEducationModalOpen} setIsModalOpen={setIsEducationModalOpen} handleModal={handleEducationModal}>
+                isModalOpen &&
+                <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} handleModal={handleModal}>
                     {/* Modal Heading */}
                     <h2 className='px-2 pt-4 pb-2 flex items-center gap-2 border-b border-dark/20 mb-5 -mt-3'>
                         <FaGraduationCap fill='green' size={20}/>
@@ -102,7 +80,7 @@ const Education = () => {
                     </h2>
 
                      {/* Modal content */}
-                     <form onSubmit={handleSubmit(onEducationSubmit)}>
+                     <form onSubmit={handleSubmit(onHookFormSubmit)}>
                         {/* Institution Name */}
                         <div>
                             <label className='text-dark block mb-1 mt-5'>Institution Name</label>
@@ -196,6 +174,8 @@ const Education = () => {
                                 performance > performance_scale && <p className='text-red-500'>Please enter a value less than or equal to {performance_scale}</p>
                             } */}
                         </div>
+
+                        <p className='text-sm mt-2'>N.B. You cannot add more than 5 Education details</p>
 
                         {/* Save changes */}
                         <div className='flex justify-end mt-5'>

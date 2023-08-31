@@ -52,7 +52,7 @@ const Projects = () => {
         }
     ]
     return (
-        <div className='bg-white px-5 rounded-lg mb-10 pb-5'>
+        <div className='bg-white px-5 rounded-lg mb-10 flex-1 pb-5 shadow-xl'>
             {/* Heading */}
             <h2 className='px-2 pt-4 pb-2 flex items-center gap-2 border-b border-dark/20 mb-5'>
                 <AiFillProject fill='green' size={20}/>
@@ -142,7 +142,7 @@ const Projects = () => {
 
                         {/* Description */}
                         <div>
-                            <label className='text-dark block mb-1 mt-5'>Description (optional)</label>
+                            <label className='text-dark block mb-1'>Description (optional)</label>
                             <textarea
                             className='rounded outline-none h-32 border border-dark/20 w-full px-3 py-2'  
                             placeholder='Write within 250 words'
@@ -152,7 +152,7 @@ const Projects = () => {
 
                         {/* Project link */}
                         <div>
-                            <label className='text-dark block mb-1 mt-5'>Project Link</label>
+                            <label className='text-dark block mb-1 mt-2'>Project Link</label>
                             <input
                             className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
                             type="text" 
@@ -160,6 +160,8 @@ const Projects = () => {
                             {...register("project_link")}
                             />
                         </div>
+
+                        <p className='text-sm mt-2'>N.B. You cannot add more than 5 Project details</p>
 
                         {/* Save changes */}
                         <div className='flex justify-end mt-5'>

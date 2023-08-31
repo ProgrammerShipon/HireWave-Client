@@ -2,6 +2,10 @@
   {
     "_id": 1,
     "name": "Olivia Johnson",
+    "jobType": "full time",
+    "JobNeeded": "Open to work",
+    "address": "Uttara Model Town, 1230",
+    "jobTitle": "Front End Developer | React Developer",
     "images": "https://i.ibb.co/jDPFM9F/req-1.jpg",
     "category": "Frontend Developer",
     "about": "Hello there! My name is Olivia Johnson. I am a frontend developer, and I’m very passionate and dedicated to my work. With 5 years of experience as a professional frontend developer, I have acquired the skills and knowledge necessary to make your project a success.",
@@ -28,6 +32,15 @@
         "recruiter": "Emily Adams",
         "logo": "https://i.ibb.co/v3ygypq/brooke-cagle-JBwcen-Ou-RCg-unsplash.jpg",
         "location": "Los Angeles, CA",
+        "skills": ["JavaScript", "React", "Node.js"],
+        "socialLink": [
+          {
+            "linkedin": "https://www.linkedin.com/in/oliviajohnson/"
+          },
+          {
+            "github": "https://www.github.com/oliviajohnson/"
+          }
+        ],
         "rating": 4.9,
         "review": "Working with Olivia was a great experience. She delivered outstanding results and showed excellent teamwork.",
         "date": "Sep 15, 2023"

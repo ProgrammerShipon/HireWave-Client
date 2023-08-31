@@ -47,7 +47,7 @@ const TrainingsOrCourses = () => {
         }
     ]
     return (
-        <div className='bg-white px-5 rounded-lg mb-10 pb-5'>
+        <div className='bg-white px-5 rounded-lg mb-10 flex-1 pb-5 shadow-xl'>
             {/* Heading */}
             <h2 className='px-2 pt-4 pb-2 flex items-center gap-2 border-b border-dark/20 mb-5'>
                 <MdWorkOutline fill='green' size={20}/>
@@ -182,6 +182,7 @@ const TrainingsOrCourses = () => {
                             />
                         </div>
 
+                        <p className='text-sm'>N.B. You cannot add more than 5 Training / Course details</p>
 
                         {/* Save changes */}
                         <div className='flex justify-end mt-5'>
