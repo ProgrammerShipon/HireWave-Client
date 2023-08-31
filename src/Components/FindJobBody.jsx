@@ -2,10 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import Divider from "./Divider";
-import JobCard from "./JobCard";
 import GetAgoTime from "./GetAgoTime";
+import JobCard from "./JobCard";
 
 // react icons
+import { AiOutlineCalendar, AiOutlineShareAlt } from "react-icons/ai";
 import { BiHeart, BiMap } from "react-icons/bi";
 import { BsBuildingGear } from "react-icons/bs";
 import {
@@ -13,7 +14,6 @@ import {
   HiOutlineFilter,
   HiOutlineUserGroup,
 } from "react-icons/hi";
-import { AiOutlineShareAlt, AiOutlineCalendar } from "react-icons/ai";
 
 const FindJobBody = ({ allJobsData }) => {
   const [jobDetails, setJobDetails] = useState(allJobsData[0]);
@@ -36,6 +36,7 @@ const FindJobBody = ({ allJobsData }) => {
     benefits,
     skills,
   } = jobDetails;
+  
   return (
     <div className="grid grid-cols-1 gap-5 mt-16 lg:grid-cols-10">
       {/* left content  */}
@@ -46,7 +47,7 @@ const FindJobBody = ({ allJobsData }) => {
             <button className="flex items-center gap-1 text-xl text-gray">
               <HiOutlineFilter size="22px" /> Filter
             </button>
-            <h3 className="text-xl text-dark">{allJobsData.length} Jobs</h3>
+            <h3 className="text-xl text-dark">{allJobsData?.length} Jobs</h3>
           </div>
 
           {/* sort */}
@@ -119,7 +120,7 @@ const FindJobBody = ({ allJobsData }) => {
                 <BiMap /> {location}
               </p>
             </div>
-            <Button><Link to={`/apply_job/${title}`}>Apply Now</Link></Button>
+            <Button><Link to={`/apply_job/${_id}`}>Apply Now</Link></Button>
           </div>
 
           <div className="flex flex-col items-start mb-6 md:flex-row md:gap-8">
