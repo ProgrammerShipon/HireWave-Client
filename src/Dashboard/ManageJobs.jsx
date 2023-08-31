@@ -8,10 +8,10 @@ const ManageJobs = () => {
 
   return (
     <section className="m-5">
-      <DashTitle title="Job Management" />
-      <div className="w-[1000px] overflow-x-auto hover:shadow-md duration-300 mt-5 rounded-xl bg-green">
+      <DashTitle title="Manage Jobs" />
+      <div className=" hover:shadow-md w-full md:w-[600px] lg:w-full  overflow-x-scroll duration-300 mt-5 rounded-xl ">
         {/* festering option */}
-        <div className="flex justify-between  w-full bg-white text-dark px-5 py-3 font-medium">
+        <div className="flex justify-between w-full md:w-[900px] lg:w-full bg-white text-dark px-5 py-3 font-medium">
           <div className="">
             <h2 className="text-3xl font-medium">
               Engineer <span className="text-sm text-lightGray">5 jobs</span>
@@ -54,9 +54,9 @@ const ManageJobs = () => {
           </div>
         </div>
         {/* table */}
-        <table className="table  text-left ">
+        <table className="table bg-green w-full md:w-[900px] lg:w-full text-left ">
           <thead className=" text-dark text-lg">
-            <tr className="">
+            <tr >
               <th className="px-5 py-3 ">Job Title</th>
               <th className="px-5 py-3 ">Category</th>
               <th className="px-5 py-3">Post Date</th>
@@ -64,7 +64,7 @@ const ManageJobs = () => {
               <th className="px-5 py-3 ">Status</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody >
             {allJobsData?.map((data) => (
               <ManageJobTable key={data.id} managejobs={data} />
             ))}
