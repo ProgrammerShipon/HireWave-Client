@@ -37,6 +37,8 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
         skills,
     } = candidateDetails;
 
+    const formattedAbout = about.map(pa => pa === "" ? "\u00A0" : pa);
+
     // rating style
     const myStyles = {
         itemShapes: Star,
@@ -60,7 +62,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                                 />
 
                                 <span
-                                    className={`absolute top-1 right-1 text-white px-3 rounded-full text-sm capitalize ${status == "online" ? "bg-green" : "bg-red-400"
+                                    className={`absolute top-1 right-1 text-white px-3 rounded-full text-sm capitalize ${status ? "bg-green" : "bg-red-400"
                                         }`}
                                 >
                                     {status}
@@ -210,7 +212,12 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                         {/* about */}
                         <div>
                             <h2 className="mb-1 text-3xl font-medium text-dark">About</h2>
-                            <p>{about}</p>
+                            {
+                                formattedAbout.map((para, index) => <p
+                                    key={index}
+                                    className="text-lg text-lightGray"
+                                >{para}</p>)
+                            }
                         </div>
 
                         {/* education */}

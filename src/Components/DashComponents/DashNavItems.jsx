@@ -1,4 +1,4 @@
-import useAuth from "../Hooks/useAuth";
+import useAuth from "../../Hooks/useAuth";
 import DashLink from "./DashLink";
 import DashNavItemsByRole from "./DashNavItemsByRole";
 
@@ -16,7 +16,7 @@ const DashNavItems = () => {
   // const role = "admin";
 
   return (
-    <aside className="sticky top-0 shadow-4xl shadow-gray/40 w-auto md:w-[300px] bg-white duration-300 h-screen pt-[71px] overflow-y-auto">
+    <aside className="fixed top-0 shadow-4xl shadow-gray/40 w-auto md:w-[300px] bg-white duration-300 h-screen pt-[71px] overflow-y-auto z-20">
       <ul className="flex flex-col items-center gap-3 ml-4 md:ml-10 pt-6">
         {/* Dashboard Home */}
         <li className="w-full">

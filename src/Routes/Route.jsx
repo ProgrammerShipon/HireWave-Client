@@ -24,7 +24,6 @@ import DashboardHome from "../Dashboard/DashboardHome"
 import ChangePassword from "../Dashboard/ChangePassword";
 import AppliedJobs from "../Dashboard/AppliedJobs";
 import MyProfile from "../Dashboard/MyProfile";
-import MyResume from "../Dashboard/MyResume";
 import Messages from "../Dashboard/Messages";
 import PostedJobs from "../Dashboard/PostedJobs";
 import ManageUsers from "../Dashboard/ManageUsers";
@@ -57,6 +56,7 @@ const Router = createBrowserRouter([
       {
         path: "/candidate_details/:id",
         element: <CandidateDetails />,
+        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/jobCandidates/${params.id}`)
       },
       {
         path: "/job_details/:id",
@@ -136,10 +136,6 @@ const Router = createBrowserRouter([
       {
         path: "appliedJobs",
         element: <AppliedJobs />
-      },
-      {
-        path: "myResume",
-        element: <MyResume />
       },
 
       // Recruiter routes

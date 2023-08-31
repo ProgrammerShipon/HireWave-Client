@@ -3,14 +3,30 @@
     "_id": 1,
     "name": "Olivia Johnson",
     "images": "https://i.ibb.co/jDPFM9F/req-1.jpg",
-    "category": "Frontend Developer",
-    "about": "Hello there! My name is Olivia Johnson. I am a frontend developer, and I’m very passionate and dedicated to my work. With 5 years of experience as a professional frontend developer, I have acquired the skills and knowledge necessary to make your project a success.",
-    "status": "online",
+    "title": "Mern Stack Developer | React Developer",
+    "jobType": "As Needed - Open to work",
+    "openToWork": false,
+    "address": "Uttara Model Town, 1230",
     "location": "Los Angeles, CA",
-    "skills": ["JavaScript", "React", "Node.js"],
+    "category": "Frontend Developer",
+    "about": [
+      "Hello there! My name is Olivia Johnson. I am a frontend developer, and I’m very passionate and dedicated to my work. With 5 years of experience as a professional frontend developer, I have acquired the skills and knowledge necessary to make your project a success.",
+      "",
+      "a professional frontend developer, I have acquired the skills and knowledge necessary to make your project a success."
+    ],
+    "status": true,
+    "skills": [
+      "JavaScript",
+      "React",
+      "Node.js"
+    ],
     "socialLink": [
-      { "linkedin": "https://www.linkedin.com/in/oliviajohnson/" },
-      { "github": "https://www.github.com/oliviajohnson/" }
+      {
+        "linkedin": "https://www.linkedin.com/in/oliviajohnson/"
+      },
+      {
+        "github": "https://www.github.com/oliviajohnson/"
+      }
     ],
     "rating": 4.9,
     "languages": [
@@ -28,7 +44,11 @@
         "recruiter": "Emily Adams",
         "logo": "https://i.ibb.co/v3ygypq/brooke-cagle-JBwcen-Ou-RCg-unsplash.jpg",
         "location": "Los Angeles, CA",
-        "skills": ["JavaScript", "React", "Node.js"],
+        "skills": [
+          "JavaScript",
+          "React",
+          "Node.js"
+        ],
         "socialLink": [
           {
             "linkedin": "https://www.linkedin.com/in/oliviajohnson/"
@@ -78,12 +98,27 @@
     "_id": 2,
     "name": "Liam Smith",
     "images": "https://i.ibb.co/41bpfKJ/req-2.jpg",
-    "category": "Data Scientist",
-    "about": "Hello there! My name is Liam Smith. I am a data scientist, and I’m very passionate and dedicated to my work. With 3 years of experience as a professional data scientist, I have acquired the skills and knowledge necessary to make your project a success.",
-    "status": "online",
+    "title": "Data Scientist",
+    "jobType": "As Needed - Open to work",
+    "openToWork": true,
+    "address": "Uttara Model Town, 1230",
     "location": "San Francisco, CA",
-    "skills": ["Python", "R", "Machine Learning", "Data Analysis"],
-    "socialLink": [{ "linkedin": "https://www.linkedin.com/in/liamsmith/" }],
+    "category": "Data Scientist",
+    "about": [
+      "Hello there! My name is Liam Smith. I am a data scientist, and I’m very passionate and dedicated to my work. With 3 years of experience as a professional data scientist, I have acquired the skills and knowledge necessary to make your project a success."
+    ],
+    "status": true,
+    "skills": [
+      "Python",
+      "R",
+      "Machine Learning",
+      "Data Analysis"
+    ],
+    "socialLink": [
+      {
+        "linkedin": "https://www.linkedin.com/in/liamsmith/"
+      }
+    ],
     "rating": 4.8,
     "languages": [
       {
@@ -147,16 +182,35 @@
     "_id": 3,
     "name": "Sophia Williams",
     "images": "https://digity.netlify.app/assets/images/team/1.png",
+    "title": "Backend Developer",
+    "jobType": "Remote",
+    "openToWork": false,
+    "address": "Uttara Model Town, 1230",
+    "location": "America, US",
     "category": "Backend Developer",
-    "about": "Hello there! My name is Sophia Williams. I am a backend developer, and I’m very passionate and dedicated to my work. With 5 years of experience as a professional developer, I have acquired the skills and knowledge necessary to make your project a success.",
-    "status": "online",
-    "location": "America",
-    "skills": ["Python", "Java", "Ruby", "Node.js (JavaScript)"],
+    "about": [
+      "Hello there! My name is Sophia Williams. I am a backend developer, and I’m very passionate and dedicated to my work. With 5 years of experience as a professional developer, I have acquired the skills and knowledge necessary to make your project a success."
+    ],
+    "status": false,
+    "skills": [
+      "Python",
+      "Java",
+      "Ruby",
+      "Node.js (JavaScript)"
+    ],
     "socialLink": [
-      { "facebook": "https://www.facebook.com/sophia.williams" },
-      { "linkedin": "https://www.linkedin.com/in/sophiawilliams" },
-      { "github": "https://www.github.com/sophiadev" },
-      { "twitter": "https://www.twitter.com/sophiadeveloper" }
+      {
+        "facebook": "https://www.facebook.com/sophia.williams"
+      },
+      {
+        "linkedin": "https://www.linkedin.com/in/sophiawilliams"
+      },
+      {
+        "github": "https://www.github.com/sophiadev"
+      },
+      {
+        "twitter": "https://www.twitter.com/sophiadeveloper"
+      }
     ],
     "rating": 4.3,
     "languages": [
@@ -233,14 +287,28 @@
     "_id": 4,
     "name": "Noah Brown",
     "images": "https://i.ibb.co/nbjYRxQ/req-5.jpg",
-    "category": "UX Designer",
-    "about": "Hello there! My name is Noah Brown. I am a UX designer, and I’m very passionate and dedicated to my work. With 8 years of experience as a professional designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit",
-    "status": "offline",
+    "title": "UX Designer",
+    "jobType": "Full Time",
+    "openToWork": true,
+    "address": "Uttara Model Town, 1230",
     "location": "London, UK",
-    "skills": ["Research", "Architecture", "Prototyping"],
+    "category": "UX Designer",
+    "about": [
+      "Hello there! My name is Noah Brown. I am a UX designer, and I’m very passionate and dedicated to my work. With 8 years of experience as a professional designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit"
+    ],
+    "status": true,
+    "skills": [
+      "Research",
+      "Architecture",
+      "Prototyping"
+    ],
     "socialLink": [
-      { "github": "https://www.github.com/sophiadev" },
-      { "twitter": "https://www.twitter.com/sophiadeveloper" }
+      {
+        "github": "https://www.github.com/sophiadev"
+      },
+      {
+        "twitter": "https://www.twitter.com/sophiadeveloper"
+      }
     ],
     "rating": 4.5,
     "languages": [
@@ -317,20 +385,42 @@
     "_id": 5,
     "name": "Alan Walker",
     "images": "https://digity.netlify.app/assets/images/team/7.png",
-    "category": "Graphic Designer",
-    "about": "Hello Alan Walker, talented graphic designer! Let your creativity unfold and colors dance on your canvas, shaping visions into captivating realities. Your designs speak a language beyond words.",
-    "status": "online",
+    "title": "Graphic Designer",
+    "jobType": "Remote",
+    "openToWork": true,
+    "address": "Uttara Model Town, 1230",
     "location": "New York, NY",
-    "skills": ["Graphic Design", "Illustration", "UI/UX Design"],
+    "category": "Graphic Designer",
+    "about": [
+      "Hello Alan Walker, talented graphic designer! Let your creativity unfold and colors dance on your canvas, shaping visions into captivating realities. Your designs speak a language beyond words."
+    ],
+    "status": false,
+    "skills": [
+      "Graphic Design",
+      "Illustration",
+      "UI/UX Design"
+    ],
     "socialLink": [
-      { "facebook": "https://www.facebook.com/alanwalker" },
-      { "twitter": "https://www.twitter.com/alanwalker" },
-      { "linkedin": "https://www.linkedin.com/in/alanwalker" }
+      {
+        "facebook": "https://www.facebook.com/alanwalker"
+      },
+      {
+        "twitter": "https://www.twitter.com/alanwalker"
+      },
+      {
+        "linkedin": "https://www.linkedin.com/in/alanwalker"
+      }
     ],
     "rating": 4.5,
     "languages": [
-      { "name": "English", "level": "fluent" },
-      { "name": "Spanish", "level": "intermediate" }
+      {
+        "name": "English",
+        "level": "fluent"
+      },
+      {
+        "name": "Spanish",
+        "level": "intermediate"
+      }
     ],
     "recentReview": [
       {
@@ -378,19 +468,39 @@
     "_id": 6,
     "name": "Emma Watson",
     "images": "https://digity.netlify.app/assets/images/team/8.png",
-    "category": "Software Engineer",
-    "about": "Hello, I'm Emma Watson, a dedicated software engineer with a flair for innovation. Let's code the future together!Unlocking possibilities through code: Emma Watson, your trusted software engineer, here to bring your ideas to life.",
-    "status": "offline",
+    "title": "Software Engineer",
+    "jobType": "Contact",
+    "openToWork": false,
+    "address": "Uttara Model Town, 1230",
     "location": "San Australia, CA",
-    "skills": ["Java", "Python", "Web Development"],
+    "category": "Software Engineer",
+    "about": [
+      "Hello, I'm Emma Watson, a dedicated software engineer with a flair for innovation. Let's code the future together!Unlocking possibilities through code: Emma Watson, your trusted software engineer, here to bring your ideas to life."
+    ],
+    "status": true,
+    "skills": [
+      "Java",
+      "Python",
+      "Web Development"
+    ],
     "socialLink": [
-      { "linkedin": "https://www.linkedin.com/in/emmawatson" },
-      { "github": "https://www.github.com/emmawatson" }
+      {
+        "linkedin": "https://www.linkedin.com/in/emmawatson"
+      },
+      {
+        "github": "https://www.github.com/emmawatson"
+      }
     ],
     "rating": 4.2,
     "languages": [
-      { "name": "English", "level": "fluent" },
-      { "name": "French", "level": "intermediate" }
+      {
+        "name": "English",
+        "level": "fluent"
+      },
+      {
+        "name": "French",
+        "level": "intermediate"
+      }
     ],
     "recentReview": [
       {
@@ -432,23 +542,40 @@
         "endDate": "Present"
       }
     ],
-
     "joinDate": "June 10, 2020"
   },
   {
     "_id": 7,
     "name": "Shaw Johnson",
     "images": "https://digity.netlify.app/assets/images/team/4.png",
-    "category": "Frontend Developer",
-    "about": "Hello there! My name is Shaw Johnson. I am a passionate frontend developer dedicated to creating amazing user experiences. With 10 years of experience in web development, I can bring your ideas to life. Let's build something great together!",
-    "status": "offline",
+    "title": "React Developer",
+    "jobType": "Full Time",
+    "openToWork": true,
+    "address": "Uttara Model Town, 1230",
     "location": "United States, NY",
-    "skills": ["React", "JavaScript", "Node.js"],
+    "category": "Frontend Developer",
+    "about": [
+      "Hello there! My name is Shaw Johnson. I am a passionate frontend developer dedicated to creating amazing user experiences. With 10 years of experience in web development, I can bring your ideas to life. Let's build something great together!"
+    ],
+    "status": false,
+    "skills": [
+      "React",
+      "JavaScript",
+      "Node.js"
+    ],
     "socialLink": [
-      { "facebook": "https://www.facebook.com/shaw.johnson" },
-      { "twitter": "https://www.twitter.com/shawjohnson" },
-      { "linkedin": "https://www.linkedin.com/in/shaw-johnson" },
-      { "github": "https://www.github.com/shawjohnson" }
+      {
+        "facebook": "https://www.facebook.com/shaw.johnson"
+      },
+      {
+        "twitter": "https://www.twitter.com/shawjohnson"
+      },
+      {
+        "linkedin": "https://www.linkedin.com/in/shaw-johnson"
+      },
+      {
+        "github": "https://www.github.com/shawjohnson"
+      }
     ],
     "rating": 4.4,
     "languages": [
@@ -528,14 +655,28 @@
     "_id": 8,
     "name": "Thomas Zavala",
     "images": "https://digity.netlify.app/assets/images/team/6.png",
+    "title": "Digital Marketing",
+    "jobType": "Part Time",
+    "openToWork": false,
+    "address": "Uttara Model Town, 1230",
+    "location": "Delhe, IND",
     "category": "Marketing",
-    "about": "Hello there! I'm Thomas Zavala, a marketing expert with a passion for driving brand growth. With over 15 years of experience, I specialize in SEO, Google advertising, and Shopify. Let's take your brand to the next level!",
-    "status": "online",
-    "location": "India",
-    "skills": ["SEO", "Google Ads", "Shopify"],
+    "about": [
+      "Hello there! I'm Thomas Zavala, a marketing expert with a passion for driving brand growth. With over 15 years of experience, I specialize in SEO, Google advertising, and Shopify. Let's take your brand to the next level!"
+    ],
+    "status": true,
+    "skills": [
+      "SEO",
+      "Google Ads",
+      "Shopify"
+    ],
     "socialLink": [
-      { "facebook": "https://www.facebook.com/thomas.zavala" },
-      { "linkedin": "https://www.linkedin.com/in/thomas-zavala" }
+      {
+        "facebook": "https://www.facebook.com/thomas.zavala"
+      },
+      {
+        "linkedin": "https://www.linkedin.com/in/thomas-zavala"
+      }
     ],
     "rating": 4.2,
     "languages": [

@@ -1,4 +1,4 @@
-import DashTitle from './DashTitle';
+import DashTitle from "../Components/DashComponents/DashTitle";
 
 const CandidateList = () => {
     return (

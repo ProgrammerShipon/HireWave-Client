@@ -10,11 +10,11 @@ const CandidateCard = ({ candidate }) => {
     return (
         <div className="bg-white w-64 sm:w-full mx-auto relative rounded-md p-3 border border-purple group overflow-hidden hover:shadow-xl hover:shadow-purple/20 duration-300">
             <span
-                className={` ${status === "online"
+                className={` ${status
                     ? "text-green bg-green/10 px-3 text-sm py-[2px] rounded-md shadow-lg shadow-purple/10"
                     : "text-[#ea2b33] bg-[#ffeced] text-sm py-[2px] px-3 rounded-md"}`}
             >
-                {status === "online" ? "Online" : "Offline"}
+                {status ? "Online" : "Offline"}
             </span>
 
             {/* image */}

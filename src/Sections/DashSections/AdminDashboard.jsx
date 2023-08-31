@@ -1,11 +1,12 @@
 import CountUp from 'react-countup';
+import LineChart from '../../Components/Charts/LineChart';
+import BarChart from '../../Components/Charts/BarChart';
 
 // react icons
 import { BsBriefcase, BsBookmarkCheck } from 'react-icons/bs';
 import { IoDocumentTextOutline, IoAnalyticsOutline } from 'react-icons/io5';
 import { PiUsersThreeLight } from 'react-icons/pi';
-import LineChart from '../Components/LineChart';
-import BarChart from '../Components/BarChart';
+
 
 const AdminDashboard = () => {
 
