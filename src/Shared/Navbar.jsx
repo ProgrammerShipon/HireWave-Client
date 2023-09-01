@@ -30,7 +30,7 @@ const Navbar = () => {
     }, []);
 
     return (
-        <header className={`fixed w-full shadow-xl duration-300 ease-in-out ${navState ? 'backdrop-blur-md bg-white/60 py-2 shadow-green/10' : 'bg-white py-3'} z-50`}>
+        <header className={`fixed w-full shadow-xl duration-300 ease-in-out ${navState ? 'backdrop-blur-md bg-white/60 py-2 shadow-green/10' : 'bg-white py-3 backdrop-blur-md'} z-50`}>
             <nav className="container flex items-center justify-between">
                 {/* logo */}
                 <Link to="/">

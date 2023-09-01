@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../Components/Breadcrumbs';
 import ApplyJobForm from '../Sections/ApplyJobForm';
