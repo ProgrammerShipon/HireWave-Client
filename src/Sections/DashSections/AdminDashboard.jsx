@@ -12,6 +12,7 @@ const AdminDashboard = () => {
 
     return (
         <div>
+            {/* top card */}
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10'>
                 {/* posted jobs */}
                 <div className='bg-white shadow-4xl shadow-gray/40 rounded-md px-3 group'>

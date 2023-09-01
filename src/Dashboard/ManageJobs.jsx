@@ -10,7 +10,7 @@ const ManageJobs = () => {
             <DashTitle title="Manage Jobs" />
 
             {/* filtering option */}
-            <div className="flex flex-col lg:flex-row items-center gap-3 justify-between bg-white p-4 rounded-md mt-10">
+            <div className="flex flex-col lg:flex-row items-center gap-3 justify-between bg-white p-4 rounded-md shadow-xl mt-10">
                 {/* search by title */}
                 <div className="w-full sm:w-72">
                     <input
@@ -61,7 +61,7 @@ const ManageJobs = () => {
             </div>
 
             {/* manage jobs table */}
-            <div className="w-full overflow-x-auto duration-300 rounded-md shadow-4xl shadow-gray/40 bg-white mt-4">
+            <div className="w-full overflow-x-auto duration-300 rounded-md shadow-4xl shadow-gray/40 bg-white mt-6">
                 {
                     !loading ? <table className="table lg:w-full w-[800px] text-left">
                         <thead className="text-lg text-green border-b border-green/40">
