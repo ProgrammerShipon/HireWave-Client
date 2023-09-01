@@ -1,145 +1,87 @@
-import PostJobTable from "../Components/PostJobTable";
-import DashTitle from "./DashTitle";
-import useAllJobs from "./../Hooks/useAllJobs";
-import React, { useState } from "react";
-import ReactPaginate from "react-paginate";
+import DashTitle from "../Components/DashComponents/DashTitle";
+import PostedJobTableRow from "../Components/DashComponents/PostedJobTableRow";
+import useAllJobs from "../Hooks/useAllJobs";
 
 const PostedJobs = () => {
-  const [allJobsData] = useAllJobs(); // No need to destructure as it's an array
-  const itemsPerPage = 5;
-  const [currentPage, setCurrentPage] = useState(0);
-  const pageCount = Math.ceil(allJobsData.length / itemsPerPage);
+    const [allJobsData, loading] = useAllJobs();
 
-  const handlePageChange = (selectedPage) => {
-    setCurrentPage(selectedPage.selected);
-  };
+    return (
+        <section className='m-5 rounded-md'>
+            <DashTitle title='Posted Jobs' />
 
-  const displayedItems = allJobsData.slice(
-    currentPage * itemsPerPage,
-    (currentPage + 1) * itemsPerPage
-  );
-  return (
-    <section className="m-5 rounded-md">
-      <DashTitle title="Posted Jobs" />
+            {/* filtering option */}
+            <div className="flex flex-col lg:flex-row items-center gap-3 justify-between bg-white p-4 rounded-md mt-10">
+                {/* search by title */}
+                <div className="w-full sm:w-72">
+                    <input
+                        type="text"
+                        placeholder="Search job title"
+                        className="border border-gray/40 p-2 rounded-md bg-white focus:outline-none focus:border-green w-full"
+                    />
+                </div>
 
-      <div className="grid grid-cols-1 gap-5 px-2 py-5 bg-white shadow-md gird md:grid-cols-2 lg:grid-cols-4 rounded-xl">
-        {/* all job */}
-        <div className="">
-          <select
-            name="filter"
-            id="filter"
-            className="w-full px-3 py-3 ml-1 bg-white border rounded-md text-lightGray border-slate-200"
-          >
-            <option value="Engineer">All Jobs</option>
-          </select>
-        </div>
-        {/* location */}
-        <div className="">
-          <select
-            name="filter"
-            id="filter"
-            className="w-full px-3 py-3 ml-1 bg-white border rounded-md text-lightGray border-slate-200"
-          >
-            <option value="Engineer">Location</option>
-          </select>
-        </div>
-        {/* category */}
-        <div className="">
-          <select
-            name="filter"
-            id="filter"
-            className="w-full px-3 py-3 ml-1 bg-white border rounded-md text-lightGray border-slate-200"
-          >
-            <option value="Engineer">Category</option>
-          </select>
-        </div>
-        {/* date range */}
-        <div className="">
-          <select
-            name="filter"
-            id="filter"
-            className="w-full px-3 py-3 ml-1 bg-white border rounded-md text-lightGray border-slate-200"
-          >
-            <option value="Engineer">Date Range</option>
-          </select>
-        </div>
+                <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+                    <h2 className="text-lg text-dark">Filter By: </h2>
 
-        <div className="flex items-center ">
-          <h2>Show All Filter:</h2>
-          <select
-            name="filter"
-            id="filter"
-            className="px-3 py-1 ml-1 bg-white border rounded-md border-slate-200"
-          >
-            <option value="Engineer">Recent</option>
-            <option value="designer">Lasted</option>
-          </select>
-        </div>
-      </div>
+                    {/* filter by status */}
+                    <select
+                        name="status"
+                        className="py-1 border border-gray/40 text-lightGray focus:outline-none focus:border-green rounded-md px-2 w-full sm:w-auto"
+                    >
+                        <option value="">Status</option>
+                        <option value="open">Open</option>
+                        <option value="close">Close</option>
+                    </select>
 
-      {/* filtering option */}
+                    {/* filter by category */}
+                    <select
+                        name="category"
+                        className="py-1 border border-gray/40 text-lightGray focus:outline-none focus:border-green rounded-md px-2 w-full sm:w-auto"
+                    >
+                        <option value="">Category</option>
+                        {
+                            Array.from(new Set(allJobsData.map(item => item.category))).map((category, index) => (
+                                <option key={index} value={category}>
+                                    {category}
+                                </option>
+                            ))
+                        }
+                    </select>
 
-      <div className="flex items-center justify-end mt-10">
-        <h2>Filter By:</h2>
-        <select
-          name="filter"
-          id="filter"
-          className="px-3 py-1 ml-1 bg-white border rounded-md border-slate-200"
-        >
-          <option value="Engineer">Recent</option>
-          <option value="designer">Lasted</option>
-        </select>
-      </div>
-      <div className="w-full mt-5 overflow-x-scroll duration-300 hover:shadow-md lg:w-full lg:overflow-hidden rounded-xl ">
-        {/* table */}
-        <table className="table bg-white w-[900px] lg:w-full text-left ">
-          <thead className="text-lg text-dark">
-            <tr>
-              <th className="px-5 py-3 ">Job</th>
-              <th className="px-5 py-3 ">Category</th>
-              <th className="px-5 py-3">Post & End Date</th>
-              <th className="px-5 py-3">Applied</th>
-              <th className="px-5 py-3 ">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allJobsData?.map((data) => (
-              <PostJobTable key={data.id} PostJob={data} />
-            ))}
-          </tbody>
-        </table>
-      </div>
+                    {/* filter by date */}
+                    <select
+                        name="date"
+                        className="py-1 border border-gray/40 text-lightGray focus:outline-none focus:border-green rounded-md px-2 w-full sm:w-auto"
+                    >
+                        <option value="recent">Recent</option>
+                        <option value="oldest">Oldest</option>
+                    </select>
+                </div>
+            </div>
 
-      <div className="flex items-center justify-between mt-5">
-        {/* filtering option */}
-        <div className="flex items-center">
-          <h2>Show</h2>
-          <select
-            name="filter"
-            id="filter"
-            className="px-3 py-1 ml-1 bg-white border rounded-md border-slate-200"
-          >
-            <option value="Engineer">10</option>
-            <option value="designer">20</option>
-          </select>
-          <h3 className="ml-2 text-sm text-slate-800">of 100 result</h3>
-        </div>
-        {/* pagination option */}
-        <div className="">
-          <ReactPaginate
-            className="flex items-center gap-4"
-            displayedItems={3}
-            pageCount={pageCount}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
-            onPageChange={handlePageChange}
-            containerClassName={"pagination"}
-            activeClassName={"active"}
-          />
-        </div>
-      </div>
-    </section>
-  );
+            {/* posted jobs table */}
+            <div className="w-full overflow-x-auto duration-300 rounded-md shadow-4xl shadow-gray/40 bg-white mt-4">
+                {
+                    !loading ? <table className="table lg:w-full w-[800px] text-left">
+                        <thead className="text-lg text-green border-b border-green/40">
+                            <tr>
+                                <th className="px-3 py-3 font-medium">Job Title</th>
+                                <th className="px-3 py-3 font-medium">Category</th>
+                                <th className="px-3 py-3 font-medium">Post Date</th>
+                                <th className="px-3 py-3 font-medium text-center">Applied</th>
+                                <th className="px-3 py-3 font-medium text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {allJobsData.map((job) => (
+                                <PostedJobTableRow key={job._id} job={job} />
+                            ))}
+                        </tbody>
+                    </table> : <h1>Loading ...</h1>
+                }
+            </div>
+        </section>
+    );
 };
 
 export default PostedJobs;

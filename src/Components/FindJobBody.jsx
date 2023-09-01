@@ -19,6 +19,7 @@ const FindJobBody = ({ allJobsData }) => {
   const [jobDetails, setJobDetails] = useState(allJobsData[0]);
 
   const {
+    _id,
     title,
     companyName,
     companyLogo,
@@ -85,7 +86,7 @@ const FindJobBody = ({ allJobsData }) => {
         <div className="p-4 border rounded-lg border-purple">
           <div className="flex items-start justify-between">
             <div>
-              <h1 className="text-2xl font-medium text-dark">{title}</h1>
+              <Link to={`/job_details/${_id}`} className="text-2xl font-medium text-dark">{title}</Link>
               <p className="text-sm italic text-gray">
                 Posted <GetAgoTime datetime={postedDate} />
               </p>
@@ -128,7 +129,9 @@ const FindJobBody = ({ allJobsData }) => {
                 <BiMap /> {location}
               </p>
             </div>
-            <Button><Link to={`/apply_job/${_id}`}>Apply Now</Link></Button>
+            <Link to={`/apply_job/${_id}`} >
+              <Button>Apply Now</Button>
+            </Link>
           </div>
 
           <div className="flex flex-col items-start mb-6 md:flex-row md:gap-8">

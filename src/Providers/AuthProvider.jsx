@@ -1,16 +1,6 @@
-import React, { createContext, useEffect, useState } from "react";
-import {
-  GoogleAuthProvider,
-  GithubAuthProvider,
-  createUserWithEmailAndPassword,
-  getAuth,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
-  updateProfile,
-} from "firebase/auth";
-import app from "../firebase/firebase.config";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updatePassword, updateProfile } from "firebase/auth";
+import React, { createContext, useEffect, useState } from 'react';
+import app from '../firebase/firebase.config';
 
 export const AuthContext = createContext();
 
@@ -41,12 +31,19 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-  // google sign in
-  const googleSignIn = () => {
-    setLoading(true);
-    const googleProvider = new GoogleAuthProvider();
-    return signInWithPopup(auth, googleProvider);
-  };
+    // change password
+    const changePassword = (newPassword) => {
+        setLoading(true)
+        const user = auth.currentUser;
+        return updatePassword(user, newPassword);
+    }
+
+    // google sign in
+    const googleSignIn = () => {
+        setLoading(true);
+        const googleProvider = new GoogleAuthProvider();
+        return signInWithPopup(auth, googleProvider)
+    }
 
   // google sign in
   const gitHubSignIn = () => {
@@ -64,28 +61,48 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      // console.log(currentUser);
       setLoading(false);
+
+      if (currentUser && currentUser?.email) {
+        fetch("http://localhost:3030/api/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ email: currentUser?.email }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data)
+            const token = data?.token
+            localStorage.setItem("hire-wave-token", token);
+          });
+      }
+
     });
 
     return () => {
       return unsubscribe();
-    };
+    }
   }, []);
 
-  const authInfo = {
-    user,
-    loading,
-    signUpUser,
-    signIn,
-    profileUpdate,
-    googleSignIn,
-    gitHubSignIn,
-    logOut,
-  };
-  return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
-  );
+    const authInfo = {
+        user,
+        loading,
+        signUpUser,
+        signIn,
+        profileUpdate,
+        googleSignIn,
+        gitHubSignIn,
+        logOut,
+        changePassword
+    }
+
+    return (
+        <AuthContext.Provider value={authInfo}>
+            {children}
+        </AuthContext.Provider>
+    );
 };
 
 export default AuthProvider;

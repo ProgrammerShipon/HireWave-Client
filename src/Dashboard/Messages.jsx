@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import DashTitle from "./DashTitle";
 import { useState } from "react";
 import Conversation from "../Components/Conversation";
 import ChatBox from "../Components/ChatBox";
@@ -7,6 +6,7 @@ import { io } from "socket.io-client";
 // import useChat from "../Hooks/useChat";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../Hooks/useAxios";
+import DashTitle from "../Components/DashComponents/DashTitle";
 const messages = () => {
   const [currentChat, setCurrentChat] = useState(null);
   const [sendMessage, setSendMessage] = useState(null);
@@ -17,10 +17,13 @@ const messages = () => {
   // const currentUserId = "64ea2151fb969b46f42b40e0";
   const currentUserId = "64ea1e92f5c8ebb47d388cb7";
 
-
-  // Fetch All Chat List 
-  const { data: chatHistory = [], isLoading: loading, refetch } = useQuery({
-    queryKey: ['chatHistory'],
+  // Fetch All Chat List
+  const {
+    data: chatHistory = [],
+    isLoading: loading,
+    refetch,
+  } = useQuery({
+    queryKey: ["chatHistory"],
     queryFn: async () => {
       const res = await useAxios.get(`/chat/${currentUserId}`);
       return res.data;
@@ -36,23 +39,21 @@ const messages = () => {
     });
   }, []);
 
-console.log('sendMessage' , sendMessage)
-  // Send message socket.io 
+  console.log("sendMessage", sendMessage);
+  // Send message socket.io
   useEffect(() => {
     if (sendMessage !== null) {
       socket.current.emit("send-message", sendMessage);
     }
   }, [sendMessage]);
 
-
   // Get the message from socket server
   useEffect(() => {
     socket.current.on("receive-message", (data) => {
-      console.log(data)
+      console.log(data);
       setReceivedMessage(data);
     });
   }, []);
-
 
   const userActiveStatus = (chat) => {
     const chatMember = chat.members.find((member) => member !== currentUserId);
@@ -66,31 +67,33 @@ console.log('sendMessage' , sendMessage)
 
       <div className="grid grid-cols-12 gap-4 min-h-full">
         <div className="col-span-4 px-2 border-r-2 border-gray/30">
-          {chatHistory?.map((chat) =>
+          {chatHistory?.map((chat) => (
             <Conversation
               key={chat._id}
               chat={chat}
               userActiveStatus={chat}
               activeStatus={userActiveStatus(chat)}
               setCurrentChat={setCurrentChat}
-              currentUserId={currentUserId} />
-          )}
+              currentUserId={currentUserId}
+            />
+          ))}
         </div>
 
-        {
-          currentChat !== null ?
-            <div className="col-span-7 rounded-md ">
-              <ChatBox
-                chat={currentChat}
-                currentUserId={currentUserId}
-                receivedMessage={receivedMessage}
-                setSendMessage={setSendMessage}
-              />
-            </div> : <h3 className="text-green">Tap To Create A New Chat </h3>
-        }
+        {currentChat !== null ? (
+          <div className="col-span-7 rounded-md ">
+            <ChatBox
+              chat={currentChat}
+              currentUserId={currentUserId}
+              receivedMessage={receivedMessage}
+              setSendMessage={setSendMessage}
+            />
+          </div>
+        ) : (
+          <h3 className="text-green">Tap To Create A New Chat </h3>
+        )}
       </div>
     </section>
   );
-}
+};
 
 export default messages;

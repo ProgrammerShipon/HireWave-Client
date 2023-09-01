@@ -1,37 +1,39 @@
-import AppliedJobTable from "../Components/AppliedJobTable";
+import DashTitle from "../Components/DashComponents/DashTitle";
 import useAllJobs from "../Hooks/useAllJobs";
-import DashTitle from "./DashTitle";
+import AppliedJobTableRow from "../Components/DashComponents/AppliedJobTableRow";
 
 const AppliedJobs = () => {
-  const [allJobsData] = useAllJobs();
+    const [allJobsData, loading] = useAllJobs();
 
-  return (
-    <section className="m-5 rounded-md">
-      <DashTitle title="Applied Jobs" />
+    return (
+        <section className='m-5 rounded-md'>
+            <DashTitle title='Applied Jobs' />
 
-      <div className="w-full mt-5 overflow-x-scroll duration-300 hover:shadow-md lg:w-full lg:overflow-hidden rounded-xl ">
-        {/* table */}
-        <table className="table bg-white w-[900px] lg:w-full text-left">
-          <thead className="text-lg text-dark">
-            <tr>
-              <th className="px-5 py-3 ">Company</th>
-              <th className="px-5 py-3 ">Title</th>
-              <th className="px-5 py-3 ">Category</th>
-              <th className="px-5 py-3">Applied On</th>
-              <th className="px-5 py-3">Applications</th>
-              <th className="px-5 py-3 ">Status</th>
-              <th className="py-3 text-center">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allJobsData?.map((data) => (
-              <AppliedJobTable key={data.id} AppliedJobs={data} />
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
-  );
+            {/*applied jobs table */}
+            <div className="mt-10 w-full overflow-x-auto duration-300 rounded-md shadow-4xl shadow-gray/40 bg-white">
+                {/* table */}
+                {
+                    !loading ? <table className="table lg:w-full w-[800px] text-left">
+                        <thead className="text-lg text-green border-b border-green/40">
+                            <tr>
+                                <th className="px-3 py-3 font-medium">Company</th>
+                                <th className="px-3 py-3 font-medium">Job Title</th>
+                                <th className="px-3 py-3 font-medium text-center">Applied On</th>
+                                <th className="px-3 py-3 font-medium text-center">Applications</th>
+                                <th className="px-3 py-3 font-medium">Status</th>
+                                <th className="py-3 text-center font-medium">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {allJobsData.map((job) => (
+                                <AppliedJobTableRow key={job._id} job={job} />))
+                            }
+                        </tbody>
+                    </table> : <h1>Loading ...</h1>
+                }
+            </div>
+        </section>
+    );
 };
 
 export default AppliedJobs;

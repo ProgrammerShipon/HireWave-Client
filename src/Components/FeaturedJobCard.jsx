@@ -6,7 +6,8 @@ import GetAgoTime from "./GetAgoTime";
 
 const FeaturedJobCard = ({ job }) => {
     const { pathname } = useLocation();
-    const { companyLogo, title, companyName, postedDate, location, jobType, industry, salary, skills } = job;
+
+    const { _id, companyLogo, title, companyName, postedDate, location, jobType, industry, salary, skills } = job;
 
     return (
         <div className="relative w-full bg-white flex items-center justify-between border lg:border-0 lg:border-b border-green/50 lg:last:border-transparent hover:shadow-3xl lg:hover:border-white rounded-lg lg:rounded-none hover:rounded-lg overflow-hidden scale-100 lg:hover:scale-105 clear-both hover:z-20 px-5 py-8 lg:py-6 lg:pr-0 duration-300 group">
@@ -20,7 +21,7 @@ const FeaturedJobCard = ({ job }) => {
                 <div>
                     <p className="text-green lg:text-purple bg-green/20 px-4 py-1 absolute lg:static top-2 left-2 rounded-md inline-block lg:mb-1 shadow-md shadow-green/10 capitalize">{jobType}</p>
 
-                    <Link to='/' className="text-xl md:text-2xl text-dark group-hover:text-green duration-300 sm:mr-3 lg:mr-0 sm:line-clamp-1 max-w-lg">{title}</Link>
+                    <Link to={`/job_details/${_id}`} className="text-xl md:text-2xl text-dark group-hover:text-green duration-300 sm:mr-3 lg:mr-0 sm:line-clamp-1 max-w-lg">{title}</Link>
 
                     <h5 className="mt-2 hidden lg:block duration-300">{companyName} - <span className="text-gray">
                         <GetAgoTime datetime={postedDate} />

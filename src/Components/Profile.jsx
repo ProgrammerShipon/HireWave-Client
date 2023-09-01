@@ -45,7 +45,7 @@ const Profile = () => {
                         className="flex flex-col gap-1 text-dark"
                     >
                         <li>
-                            <Link to='/my_profile' className='hover:text-green duration-300'>My Profile</Link>
+                            <Link to='/dashboard/myProfile' className='hover:text-green duration-300'>My Profile</Link>
                         </li>
                         <li>
                             <Link to='/events' className='hover:text-green duration-300'>Events</Link>
