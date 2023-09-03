@@ -6,7 +6,7 @@ import ApplyJobForm from '../Sections/ApplyJobForm';
 const ApplyJob = () => {
 
     return (
-        <div>
+        <>
             {/* page title */}
             <Helmet>
                 <title>Apply Job - HireWave</title>
@@ -14,9 +14,9 @@ const ApplyJob = () => {
 
             <Breadcrumbs title="Apply Job" />
 
-            {/* Main content */}
+            {/* Apply form section*/}
             <ApplyJobForm />
-        </div>
+        </>
     );
 };
 
