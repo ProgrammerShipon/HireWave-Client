@@ -10,7 +10,6 @@ export default function useAllJobs() {
     queryFn: async () => {
       const res = await fetch("https://hire-wave-server.vercel.app/api/allJobs");
       const data = await res.json();
-      console.log(data)
       return data;
     },
   });

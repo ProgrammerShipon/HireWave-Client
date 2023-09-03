@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import NavItems from "../Components/NavItems";
-import SideNav from "./SideNav";
 
 // react icons
 import { FaBars, FaSearch } from 'react-icons/fa';
 
 // logo
 import Logo from '../Assets/images/logo-01.png';
+import NavItems from "../Components/NavItems";
+import SideNav from "./SideNav";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -25,6 +25,8 @@ const Navbar = () => {
             setNavState(false);
         }
     };
+
+    // scroll top
     useEffect(() => {
         window.addEventListener("scroll", onNavScroll);
     }, []);
