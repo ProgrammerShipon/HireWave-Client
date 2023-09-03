@@ -2,12 +2,11 @@ import React from "react";
 import useAxios from "../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 
-const Conversation = ({ chat, setCurrentChat,activeStatus, currentUserId }) => {
+const Conversation = ({ chat, setCurrentChat,activeStatus,userProfile, currentUserId }) => {
 
-  console.log("chat from ", activeStatus)
 
   const receiverUserId = chat?.members?.find((id) => id !== currentUserId);
-  // console.log(receiverUserId)
+  console.log(receiverUserId)
 
 
   const { data: receiverUser = [], isLoading: receiverUserLoading, refetch: refetchReceiverData } = useQuery({
@@ -32,9 +31,9 @@ const Conversation = ({ chat, setCurrentChat,activeStatus, currentUserId }) => {
   return (
     <div onClick={handleChat} className="flex items-center gap-2 cursor-pointer bg-gray/30 rounded px-4 py-2 ">
       <img
-        src="https://i.ibb.co/mvCHJrH/p3.jpg"
+        src={receiverUser?.userProfile}
         className="w-14 h-14 rounded-full"
-        alt=""
+        alt={receiverUser?.name}
       />
       <h3 className="text-2xl">{receiverUser?.name}</h3>
     </div>

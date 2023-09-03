@@ -48,20 +48,21 @@ const SignUpForm = () => {
             .then((result) => {
                 profileUpdate(result.user, data.name)
                     .then(() => {
-                        const user = { name: data.name, email: data.email, role: data.role };
-                        useAxios.post('/users', user)
-                            .then(data => {
-                                if (data.status === 200) {
-                                    Swal.fire({
-                                        position: 'center',
-                                        icon: 'success',
-                                        title: 'Sign Up successfully',
-                                        showConfirmButton: false,
-                                        timer: 2500
-                                    });
-                                    navigate(from, { replace: true })
-                                }
-                            })
+                        // const user = { name: data.name, email: data.email, role: data.role };
+                        // useAxios.post('/users', user)
+                        //     .then(data => {
+                        //         if (data.status === 200) {
+                        //             Swal.fire({
+                        //                 position: 'center',
+                        //                 icon: 'success',
+                        //                 title: 'Sign Up successfully',
+                        //                 showConfirmButton: false,
+                        //                 timer: 2500
+                        //             });
+                        //             navigate('/login')
+                        //         }
+                        //     })
+                        navigate('/login')
 
                     }).catch((error) => {
                         toast.error(error.message, {

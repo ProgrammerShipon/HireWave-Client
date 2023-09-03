@@ -3,10 +3,10 @@ import CandidateCard from "../Components/CandidateCard";
 import Button from "../Components/Button";
 import useCandidatesData from "../Hooks/useCandidatesData";
 import { Link } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
 
 const TopCandidates = () => {
     const [candidatesData] = useCandidatesData();
-
     return (
         <section className="py-20 md:py-[120px] duration-300">
             <div className="container">
