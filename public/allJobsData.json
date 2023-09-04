@@ -27,12 +27,7 @@
     "benefits": [
       "Competitive compensation package with a meaningful equity stake, rewarding you for your role in the company's sustained success."
     ],
-    "skills": [
-      "React",
-      "Javascript",
-      "Redux",
-      "MongoDB"
-    ],
+    "skills": ["React", "Javascript", "Redux", "MongoDB"],
     "email": "uiuxdesigner@adroit.com"
   },
   {
@@ -66,13 +61,7 @@
       "Mentorship from experienced developers in the field.",
       "Networking opportunities with industry professionals."
     ],
-    "skills": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "React",
-      "Git"
-    ],
+    "skills": ["HTML", "CSS", "JavaScript", "React", "Git"],
     "email": "internship@numeric.com"
   },
   {
@@ -145,12 +134,7 @@
       "Opportunity to work with a variety of clients and industries.",
       "Regular feedback and guidance from experienced editors."
     ],
-    "skills": [
-      "Content Writing",
-      "Research",
-      "SEO",
-      "Time Management"
-    ],
+    "skills": ["Content Writing", "Research", "SEO", "Time Management"],
     "email": "contentwriter@mindpal.com"
   },
   {
@@ -184,12 +168,7 @@
       "Opportunity to work on diverse and challenging projects.",
       "Healthcare, dental, and retirement benefits."
     ],
-    "skills": [
-      "Java",
-      "Python",
-      "Agile Development",
-      "Problem-Solving"
-    ],
+    "skills": ["Java", "Python", "Agile Development", "Problem-Solving"],
     "email": "softwareengineer@yassir.com"
   }
 ]

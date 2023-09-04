@@ -1151,6 +1151,18 @@
   resolved "https://registry.npmjs.org/@emoji-mart/react/-/react-1.1.1.tgz"
   integrity sha512-NMlFNeWgv1//uPsvLxvGQoIerPuVdXwK/EUek8OOkJ6wVOWPUizRBJU0hDqWZCOROVpfBgCemaC3m6jDOXi03g==
 
+"@emotion/is-prop-valid@^0.8.2":
+  version "0.8.8"
+  resolved "https://registry.npmjs.org/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz"
+  integrity sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==
+  dependencies:
+    "@emotion/memoize" "0.7.4"
+
+"@emotion/memoize@0.7.4":
+  version "0.7.4"
+  resolved "https://registry.npmjs.org/@emotion/memoize/-/memoize-0.7.4.tgz"
+  integrity sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==
+
 "@esbuild/win32-x64@0.18.19":
   version "0.18.19"
   resolved "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.18.19.tgz"
@@ -2167,7 +2179,7 @@
 
 "@tkwant/react-steps@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@tkwant/react-steps/-/react-steps-1.0.0.tgz#689575d98083d6215b5050456f4c5d877880ccad"
+  resolved "https://registry.npmjs.org/@tkwant/react-steps/-/react-steps-1.0.0.tgz"
   integrity sha512-5RyM3JxBTUtAT/4KLFkpMpflz+06igrPVb6+1lZdVe8m0z1YubJLTL77LzVtAm3jPYIUth2zTKY7k3PAgDPeGA==
 
 "@tsconfig/node10@^1.0.7":
@@ -3668,6 +3680,15 @@ fraction.js@^4.2.0:
   version "4.2.0"
   resolved "https://registry.npmjs.org/fraction.js/-/fraction.js-4.2.0.tgz"
   integrity sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==
+
+framer-motion@^10.16.2:
+  version "10.16.2"
+  resolved "https://registry.npmjs.org/framer-motion/-/framer-motion-10.16.2.tgz"
+  integrity sha512-aY6L9YMvqMWtfOQptaUvvr8dp97jskXY5UYLQM0vOPxKeERrG/Z034EIQZ/52u7MeCT0HlCQy3/l0HdUZCB9Tw==
+  dependencies:
+    tslib "^2.4.0"
+  optionalDependencies:
+    "@emotion/is-prop-valid" "^0.8.2"
 
 fresh@0.5.2:
   version "0.5.2"
@@ -5519,7 +5540,7 @@ react-devtools-core@^4.27.2:
     shell-quote "^1.6.1"
     ws "^7"
 
-"react-dom@^16.8 || ^17 || ^18", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", react-dom@^18.0.0, react-dom@^18.2.0, "react-dom@>= 16.8.0 || 18.0.0", react-dom@>=16, react-dom@>=16.14.0, react-dom@>=16.8, react-dom@>=17, react-dom@>=17.0.x:
+"react-dom@^16.8 || ^17 || ^18", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", react-dom@^18.0.0, react-dom@^18.2.0, "react-dom@>= 16.8.0 || 18.0.0", react-dom@>=16, react-dom@>=16.14.0, react-dom@>=16.8, react-dom@>=17, react-dom@>=17.0.0, react-dom@>=17.0.x:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
@@ -5654,7 +5675,7 @@ react-refresh@^0.4.0:
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.4.3.tgz"
   integrity sha512-Hwln1VNuGl/6bVwnd0Xdn1e84gT/8T9aYNL+HAKDArLCS7LWjwr7StE30IEYbIkx0Vi3vs+coQxe+SQDbGbbpA==
 
-react-router-dom@^6.11.1, react-router-dom@^6.14.2:
+react-router-dom@^6.11.1, react-router-dom@^6.14.2, react-router-dom@>=5.2.1:
   version "6.14.2"
   resolved "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.14.2.tgz"
   integrity sha512-5pWX0jdKR48XFZBuJqHosX3AAHjRAzygouMTyimnBPOLdY3WjzUSKhus2FVMihUFWzeLebDgr4r8UeQFAct7Bg==
@@ -5687,6 +5708,11 @@ react-side-effect@^2.1.0:
   resolved "https://registry.npmjs.org/react-side-effect/-/react-side-effect-2.1.2.tgz"
   integrity sha512-PVjOcvVOyIILrYoyGEpDN3vmYNLdy1CajSFNt4TDsVQC5KpTijDvWVoR+/7Rz2xT978D8/ZtFceXxzsPwZEDvw==
 
+react-step-progress@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/react-step-progress/-/react-step-progress-1.0.3.tgz"
+  integrity sha512-AsebjdBZsoZzZuN50p24TMwKt8JVdyhsAPL/xvpY4c3dpQ9XBiRcZlADD0BoKP3iIxpEm+7ufwITmwY66FEfjQ==
+
 react-tagsinput@^3.20.3:
   version "3.20.3"
   resolved "https://registry.npmjs.org/react-tagsinput/-/react-tagsinput-3.20.3.tgz"
@@ -5707,7 +5733,7 @@ react-tooltip@^5.21.1:
     "@floating-ui/dom" "^1.0.0"
     classnames "^2.3.0"
 
-react@*, "react@^16 || ^17 || ^18", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.3.0 || ^17.0.0 || ^18.0.0", "react@^16.8 || ^17 || ^18", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || 17.x || ^18", react@^18.0.0, "react@^18.0.0 || ^17.0.0 || ^16.0.0 || ^15.0.0", react@^18.2.0, "react@>= 16.3.0", "react@>= 16.8.0 || 18.0.0", react@>=16, react@>=16.13.1, react@>=16.14.0, react@>=16.3.0, react@>=16.8, react@>=17, react@>=17.0.x, react@18.2.0:
+react@*, "react@^16 || ^17 || ^18", react@^16.0.0, "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.3.0 || ^17.0.0 || ^18.0.0", "react@^16.8 || ^17 || ^18", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || 17.x || ^18", react@^18.0.0, "react@^18.0.0 || ^17.0.0 || ^16.0.0 || ^15.0.0", react@^18.2.0, "react@>= 16.3.0", "react@>= 16.8.0 || 18.0.0", react@>=16, react@>=16.13.1, react@>=16.14.0, react@>=16.3.0, react@>=16.8, react@>=17, react@>=17.0.0, react@>=17.0.x, react@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
@@ -6466,7 +6492,7 @@ ts-node@^10.9.1, ts-node@>=9.0.0:
     v8-compile-cache-lib "^3.0.1"
     yn "3.1.1"
 
-tslib@^2.0.1, tslib@^2.1.0:
+tslib@^2.0.1, tslib@^2.1.0, tslib@^2.4.0:
   version "2.6.1"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.6.1.tgz"
   integrity sha512-t0hLfiEKfMUoqhG+U1oid7Pva4bbDPHYfJNiB7BiIjRkj1pyC++4N3huJfqY6aRH6VTB0rvtzQwjM4K6qpfOig==
