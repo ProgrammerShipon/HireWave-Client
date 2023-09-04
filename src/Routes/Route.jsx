@@ -31,6 +31,7 @@ import ManageJobs from "../Dashboard/ManageJobs";
 import CandidateList from "../Dashboard/CandidateList";
 import RecruiterList from "../Dashboard/RecruiterList";
 import ApplyJob from "../Pages/ApplyJob";
+import Conference from "../Pages/Conference";
 
 const Router = createBrowserRouter([
   {
@@ -153,6 +154,10 @@ const Router = createBrowserRouter([
       {
         path: "messages",
         element: <Messages />
+      },
+      {
+        path: "room",
+        element: <Conference />
       },
       {
         path: "postedJobs",

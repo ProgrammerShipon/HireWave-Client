@@ -65,7 +65,7 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
 
       if (currentUser && currentUser?.email) {
-        fetch("http://localhost:3030/api/jwt", {
+        fetch("https://hire-wave-server.vercel.app/api/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -89,7 +89,7 @@ const AuthProvider = ({ children }) => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:3030/api/users/byEmail/${user.email}`)
+    fetch(`https://hire-wave-server.vercel.app/api/users/byEmail/${user.email}`)
       .then(res => res.json())
       .then(data => {
         console.log(data._id)
