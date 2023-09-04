@@ -5,7 +5,7 @@
 
   <h2 align="center">HireWave Agency </h2>
 
-  This website is a fully responsive personal portfolio, <br />Responsive for all devices, built using Redux,Mongoose,Socket.io and JWT.
+  This website is a fully responsive hiring agency <br />Responsive for all devices, built using Redux,Mongoose,Socket.io and JWT.
 
   <a href="https://hire-wave.web.app/"><strong>➥ Live Demo</strong></a>
 
@@ -16,15 +16,16 @@
 ### Demo Screenshots
 
   
-  <img src="" />
+  <img src="https://i.ibb.co/rHyYMT8/website-img-com.jpg" />
 
 ## Website Features
 
-- Responsive portfolio website using HTML, CSS & JavaScript
-- Smooth scrolling in each section
-- Developed using the Mobile First methodology
-- Compatible with all mobile devices and has a beautiful user interface
+Certainly, here's the shortened text with strong tags added:
 
+- <strong>Technical Expertise:</strong> We have deep knowledge of programming languages, frameworks, and technologies, accurately assessing candidates.
+- <strong>Comprehensive Skills Assessment:</strong> Our system evaluates both technical and soft skills through customized tests, simulations, 
+- <strong>Ongoing Candidate Development:</strong> We provide continuous career development and coaching to foster long-term success.
+- <strong>Cultural Fit and Soft Skills:</strong> We assess candidates for teamwork, communication, and adaptability, crucial for project success.
 
 ## Developer team of HireWave Agency 
 
