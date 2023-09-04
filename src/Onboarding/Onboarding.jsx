@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { Stepper, Step } from "@tkwant/react-steps";
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { AiOutlinePlus, AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 
 const Onboarding = () => {
-    const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
+    const { control, register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
     const isMobile = window.innerWidth > 768;
     const [curStep, setCurStep] = useState(0);
     const [finished, setFinished]= useState(false)
+    const [hidden, setHidden] = useState(true)
 
     // States for skill checking
     const [skills, setSkills] = useState([{ id: 1, value: "" }]); 
@@ -29,7 +30,7 @@ const Onboarding = () => {
                     jobType: data?.job_type,
                     location: data?.country,
                     address: data?.address,
-                    skills: skills.map((skill) => skill?.value),
+                    skills: data?.skills?.map((skill) => skill),
                     education: [
                     {
                         institute: data?.institution,
@@ -59,7 +60,7 @@ const Onboarding = () => {
                     jobType: data?.job_type,
                     location: data?.country,
                     address: data?.address,
-                    skills: skills.map((skill) => skill.value),
+                    skills: data?.skills?.map((skill) => skill),
                     education: [
                     {
                         institute: data?.institution,
@@ -102,23 +103,42 @@ const Onboarding = () => {
     const [present, setPresent] = useState(false);
     const [workFromHome, setWorkFromHome] = useState(false);
 
-     // Functions used for Skill checking
-     const handleIncreaseSkillField = () => {
-         if (skills.length < 10) {
-         const newId = skills.length + 1;
-         setSkills([...skills, { id: newId, value: "" }]);
-         }
-         else setMaximumWarning(true)
-     };
+         // Skills states
+    const [inputValue, setInputValue] = useState('');
+    const [suggestions, setSuggestions] = useState([]);
+    const [selectedSkills, setSelectedSkills] = useState([]);
 
-     const handleSuggestedSkillClick = (suggestedSkill) => {
-        // Check if the skill already exists
-        if (!skills.find((skill) => skill.value === suggestedSkill)) {
-          // Add the suggested skill to the skills array
-          const newId = skills.length + 1;
-          setSkills([...skills, { id: newId, value: suggestedSkill }]);
-        }
-      };
+    // Skills functions
+    const skillsData = [ "JavaScript", "React.js", "Node.js", "Python", "Java", "SQL", "HTML/CSS", "Angular", "Vue.js", "Ruby on Rails", "C#", "PHP", "Swift", "Android Development", "iOS Development","DevOps","Data Science","UI/UX Design","Project Management","Machine Learning","Cloud Computing","Cybersecurity","Database Administration","Frontend Development","Backend Development","Full Stack Development","Web Design","Mobile App Design","Network Engineering","Digital Marketing","Content Writing","Search Engine Optimization (SEO)","Social Media Marketing","Product Management","Agile Methodologies","Blockchain","Artificial Intelligence (AI)","Augmented Reality (AR)","Virtual Reality (VR)","Customer Service","Public Speaking","Graphic Design","Video Editing","Data Analysis","Financial Analysis","Copywriting","Leadership","Team Management","Foreign Languages","Photography","Event Planning","Salesmanship","Negotiation","Project Coordination","Research Skills","Time Management","Conflict Resolution","Customer Relationship Management","Legal Research","Creative Problem Solving","Content Strategy","Market Research","Data Entry","Logistics","Quality Control","Healthcare Management","Clinical Research","Teaching","Public Relations","Social Work","Event Management","Database Management","Content Management","E-commerce","Mechanical Engineering","Electrical Engineering","Human Resources Management","Market Analysis","Financial Planning","Supply Chain Management","Video Production","Artificial Intelligence (AI)","Digital Illustration","Laboratory Techniques","Multilingualism","Public Policy Analysis","Business Intelligence","Legal Writing","Data Visualization","Event Coordination","Foreign Exchange Trading","Interior Design","Statistical Analysis","Sustainable Agriculture","Travel Planning","Content Marketing","Video Game Design","Public Health","Bio-informatics","Legal Research and Analysis","Machine Learning","Industrial Design","Crisis Management","Bilingual Communication","User Experience (UX) Research","Environmental Sustainability","Financial Modeling","Political Science","Medical Coding","Digital Advertising","Network Security","Conflict Mediation","Renewable Energy","Forensic Accounting","Machine Vision","Quantitative Analysis","Environmental Engineering","Blockchain Development","Social Psychology","Biotechnology","Strategic Planning","International Relations","Robotics Programming","Digital Forensics","Art Restoration","Urban Planning","Aerospace Engineering","Copy Editing","Clinical Psychology","Geographic Information Systems (GIS)","Fashion Design","Marine Biology","Community Outreach","Neuroscience","Artificial Intelligence Ethics","Digital Artistry","Astronomy","Clinical Research Coordination","Disaster Management"];
+
+
+    const handleInputChange = (e) => {
+    const value = e.target.value;
+    setHidden(false)
+    setInputValue(value);
+    generateSuggestions(value);
+    };
+
+    const generateSuggestions = (inputValue) => {
+    const matchingSkills = skillsData.filter((skill) =>
+        skill.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    setSuggestions(matchingSkills);
+    };
+
+    const selectSkill = (skill) => {
+    if (!selectedSkills.includes(skill)) {
+        register(`skills[${selectedSkills.length}]`, { value: skill });
+        setSelectedSkills([...selectedSkills, skill]);
+        setInputValue('');
+    }
+    };
+
+    const removeSelectedSkill = (index) => {
+    const updatedSkills = [...selectedSkills];
+    updatedSkills.splice(index, 1);
+    setSelectedSkills(updatedSkills);
+    };
 
      //States and Functions used for visibility checking
      const [visibleChecked, setVisibleChecked] = useState(false);
@@ -502,33 +522,41 @@ const Onboarding = () => {
                             {/* Skill field */}
                             <div>
                                 <label className='text-dark block mb-1'>Add a Skill</label>
-                                {skills.map((skill, index) => (
-                                    <div key={skill.id} className='flex items-center gap-5 mb-3'>
-                                    <input
-                                        type='text'
-                                        className='rounded outline-none h-10 border border-dark/20 w-full px-3 py-2 max-w-5xl'
-                                        {...register(`skill[${index}]`)}
-                                        value={skill.value}
-                                        onChange={(e) => {
-                                        const updatedSkills = [...skills];
-                                        updatedSkills[index].value = e.target.value;
-                                        setSkills(updatedSkills);
-                                        }}
-                                    />
-                                    {index === skills.length - 1 && (
-                                        <IoMdAddCircleOutline
-                                        onClick={handleIncreaseSkillField}
-                                        className='cursor-pointer hover:bg-green/10 rounded-full p-1'
-                                        fill='green'
-                                        size={32}
-                                        />
-                                    )}
+                                <div className="flex flex-wrap gap-3 mb-3 mt-3">
+                                    {selectedSkills?.map((selectedSkill, index) => (
+                                    <div className="border border-green pl-3 rounded-full" key={index}>
+                                        {selectedSkill}
+                                        <button className='text-sm hover:font-semibold hover:text-red-500 rounded-full px-1 border border-red-500 ml-2'
+                                        onClick={() => removeSelectedSkill(index)}
+                                        >
+                                        ✕
+                                        </button>
                                     </div>
-                                ))}
-                                {
-                                    maximumWarning && <p className='text-red-500'>Maximum skill field reached</p>
-                                }
-                            </div> 
+                                    ))}
+                                </div>
+                                <Controller
+                                    name="skills"
+                                    control={control}
+                                    defaultValue={[]}
+                                    render={({ field }) => (
+                                    <input
+                                        type="text"
+                                        {...field}
+                                        className='rounded outline-none h-10 border border-dark/20 w-full px-3 py-2 max-w-5xl'
+                                        {...field}
+                                        value={inputValue}
+                                        onChange={handleInputChange}
+                                        placeholder="Search for a skill"
+                                    />
+                                    )}
+                                />
+                                <ul className={`bg-slate-100 rounded-b-lg max-h-28 overflow-y-scroll px-5 py-2 ${hidden? 'hidden' : 'block'}`}>
+                                    {suggestions.map((suggestion, index) => (
+                                    <li key={index} className='cursor-pointer'
+                                    onClick={() => selectSkill(suggestion)} >{suggestion}</li>
+                                    ))}
+                                </ul>
+                            </div>
 
                             {/* Divider */}
                             <p className='border border-green mt-10 mb-6'></p>
@@ -543,7 +571,7 @@ const Onboarding = () => {
                                     <div
                                         key={suggestedSkill}
                                         className='flex items-center gap-3 px-5 py-2 border border-dark hover:border-green hover:shadow-lg rounded-lg cursor-pointer group'
-                                        onClick={() => handleSuggestedSkillClick(suggestedSkill)}
+                                        onClick={() => selectSkill(suggestedSkill)}
                                     >
                                         <AiOutlinePlus className='group-hover:text-green' />
                                         <p>{suggestedSkill}</p>
