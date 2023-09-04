@@ -5,18 +5,18 @@
 
   <h2 align="center">HireWave Agency </h2>
 
-  This website is fully responsive personal portfolio, <br />Responsive for all devices, built using HTML, CSS, and JavaScript.
+  This website is a fully responsive personal portfolio, <br />Responsive for all devices, built using Redux,Mongoose,Socket.io and JWT.
 
-  <a href="https://hire-wave.netlify.app/"><strong>➥ Live Demo</strong></a>
+  <a href="https://hire-wave.web.app/"><strong>➥ Live Demo</strong></a>
 
 </div>
 
 <br />
 
-### Demo Screeshots
+### Demo Screenshots
 
   
-  <img src="https://i.ibb.co/LNNZ31C/readme.png" />
+  <img src="" />
 
 ## Website Features
 
@@ -28,56 +28,30 @@
 
 ## Developer team of HireWave Agency 
 
-- Shaif Arfan
-- Anwar saeed
-- MD Moniruzzaman Sojol
-- Lovekesh Pal
-- Houmayan Rashid Chy
+- Forid Islam
+- Radif Hussain 
+- Mehedi Hasan Siam
+- Bokhtiyar Fahinm
+- Rayhan Uddin
+
+
 
 
 ## What we are going to learn
 
-- HTML, CSS
-- CSS Grid
-- Scroll Animation
-- Netlify Deployment
-- Netlify Form functionality
+- React, Redux
+- MonogDB, Mongos 
+- Socket.io
+- JWT
 - More . . .
 
-# Resource
-
-    Boxicons: https://boxicons.com/
-
-    Google font: https://fonts.google.com/
-
-    GlideJs: https://glidejs.com/docs/
-
-    Hover effect: https://github.com/robin-dela/hover-effect
-
-    Images: https://unsplash.com/
-
-
-## Tools Used
-
-
-    Boxicons: https://boxicons.com/
-
-    Google font: https://fonts.google.com/
-
-    GlideJs: https://glidejs.com/docs/
-
-    Hover effect: https://github.com/robin-dela/hover-effect
-
-    Images: https://unsplash.com/
 
 
 ### Contact
 
-If you want to contact with me you can reach me at [Twitter](https://www.twitter.com/codewithsadee).
+If you want to contact me you can reach me at [Twitter](https://www.twitter.com/).
 
 
-## License
-This project is free to use and does not contain any specific license.
 
 <br>
 
