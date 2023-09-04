@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { Stepper, Step } from "@tkwant/react-steps";
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
-import useAllCategories from '../Hooks/useAllCategories';
-import { IoMdAddCircleOutline } from 'react-icons/io';
 
 const EmployerOnboarding = () => {
     const allCategoriesData= [
@@ -759,44 +757,50 @@ const EmployerOnboarding = () => {
         }
       ]
       
-    const { register, handleSubmit, setValue, watch, getValues, formState: { errors } } = useForm();
+    const { control, register, handleSubmit, setValue, watch, reset, formState: { errors } } = useForm();
     const isMobile = window.innerWidth > 768;
     const [curStep, setCurStep] = useState(0);
     const [finished, setFinished]= useState(false)
+    const [hidden, setHidden] = useState(true)
+    const [workFromHome, setWorkFromHome] = useState(false);
     const navigate= useNavigate()
 
     //Watch
     const selectedCategory = watch('job_category', '');
-    const selectedSubCategory = watch('sub_category', []);
+    const selectedSubCategory = watch('sub_category', '');
     const singleCategory= allCategoriesData.find(category => category.name === selectedCategory)
-    // console.log(selectedCategory && singleCategory);
+    const selectedJobType = watch('job_type', '');
+    const selectedExperience = watch('experience', '');
+    const selectedCompensationPackage = watch('compensation_package', '');
 
-    //Offered jobs according to sub_category
-    const offeredJobs = selectedSubCategory.reduce((jobs, selectedCategory) => {
-        const category = singleCategory.subcategories.find((subcategory) => subcategory.name === selectedCategory);
-        return category ? jobs.concat(category.jobs) : jobs;
-    }, []);
-    console.log(offeredJobs);
-
-    const selectedJobs= watch('jobs', []);
-    console.log(selectedJobs)
-
-    const [skills, setSkills] = useState([{ id: 1, value: "" }]); 
-    const [maximumWarning, setMaximumWarning]= useState(false)
-
-    const handleIncreaseSkillField = () => {
-        if (skills.length < 10) {
-        const newId = skills.length + 1;
-        setSkills([...skills, { id: newId, value: "" }]);
-        }
-        else setMaximumWarning(true)
-    };
     //Form Submit function
     const onSubmit = data => {
-        console.log(data);
-        // console.log(selectedSubCategory);
-        setCurStep(curStep + 1)
+        const recruiterData= {
+            role: "recruiter",
+            userInfo: {
+                name: data?.company_name, //found in both recruiterData and jobData object
+                phone: [data?.country_code, data?.phone],
+                category: data?.job_category, //found in both recruiterData and jobData object
+                subcategory: data?.sub_category
+                },
+            location: data?.country,
+            address: data?.address,
+            no_of_employees : data?.no_of_employees,
+        }
+        const jobData = {
+            companyName : data?.company_name, //found in both recruiterData and jobData object
+            title: data?.job_title,
+            category : data?.job_category, //found in both recruiterData and jobData object
+            location : data?.location,
+            quantity : data?.vacancy,
+            skills: data?.skills?.map((skill) => skill),
+            jobType : data?.job_type,
+            experience : data?.experience,
+            benefits : [data?.compensation_package]
+        }
+        console.log(recruiterData, jobData);
 
+        setCurStep(curStep + 1)
         //TODO: Backend integration
         finished && navigate('/')
     }
@@ -806,67 +810,248 @@ const EmployerOnboarding = () => {
         setCurStep(curStep - 1);
     };
 
+    const countryCodes = ["+1", "+44", "+49", "+33", "+81", "+86", "+91", "+61", "+7", "+55", "+54", "+51", "+52", "+53", "+20", "+27", "+82", "+62", "+92", "+94", "+62", "+63", "+66", "+84", "+95", "+670", "+975", "+380", "+375", "+373", "+377", "+423", "+41", "+46", "+47", "+48", "+351", "+34", "+39", "+31", "+420", "+421", "+386", "+385", "+385", "+352", "+352", "+43", "+353", "+354", "+880"]
+
+    // Skills states
+    const [inputValue, setInputValue] = useState('');
+    const [suggestions, setSuggestions] = useState([]);
+    const [selectedSkills, setSelectedSkills] = useState([]);
+
+    // Skills functions
+    const skillsData = [ "JavaScript", "React.js", "Node.js", "Python", "Java", "SQL", "HTML/CSS", "Angular", "Vue.js", "Ruby on Rails", "C#", "PHP", "Swift", "Android Development", "iOS Development","DevOps","Data Science","UI/UX Design","Project Management","Machine Learning","Cloud Computing","Cybersecurity","Database Administration","Frontend Development","Backend Development","Full Stack Development","Web Design","Mobile App Design","Network Engineering","Digital Marketing","Content Writing","Search Engine Optimization (SEO)","Social Media Marketing","Product Management","Agile Methodologies","Blockchain","Artificial Intelligence (AI)","Augmented Reality (AR)","Virtual Reality (VR)","Customer Service","Public Speaking","Graphic Design","Video Editing","Data Analysis","Financial Analysis","Copywriting","Leadership","Team Management","Foreign Languages","Photography","Event Planning","Salesmanship","Negotiation","Project Coordination","Research Skills","Time Management","Conflict Resolution","Customer Relationship Management","Legal Research","Creative Problem Solving","Content Strategy","Market Research","Data Entry","Logistics","Quality Control","Healthcare Management","Clinical Research","Teaching","Public Relations","Social Work","Event Management","Database Management","Content Management","E-commerce","Mechanical Engineering","Electrical Engineering","Human Resources Management","Market Analysis","Financial Planning","Supply Chain Management","Video Production","Artificial Intelligence (AI)","Digital Illustration","Laboratory Techniques","Multilingualism","Public Policy Analysis","Business Intelligence","Legal Writing","Data Visualization","Event Coordination","Foreign Exchange Trading","Interior Design","Statistical Analysis","Sustainable Agriculture","Travel Planning","Content Marketing","Video Game Design","Public Health","Bio-informatics","Legal Research and Analysis","Machine Learning","Industrial Design","Crisis Management","Bilingual Communication","User Experience (UX) Research","Environmental Sustainability","Financial Modeling","Political Science","Medical Coding","Digital Advertising","Network Security","Conflict Mediation","Renewable Energy","Forensic Accounting","Machine Vision","Quantitative Analysis","Environmental Engineering","Blockchain Development","Social Psychology","Biotechnology","Strategic Planning","International Relations","Robotics Programming","Digital Forensics","Art Restoration","Urban Planning","Aerospace Engineering","Copy Editing","Clinical Psychology","Geographic Information Systems (GIS)","Fashion Design","Marine Biology","Community Outreach","Neuroscience","Artificial Intelligence Ethics","Digital Artistry","Astronomy","Clinical Research Coordination","Disaster Management"];
+
+
+    const handleInputChange = (e) => {
+    const value = e.target.value;
+    setHidden(false)
+    setInputValue(value);
+    generateSuggestions(value);
+    };
+
+    const generateSuggestions = (inputValue) => {
+    const matchingSkills = skillsData.filter((skill) =>
+        skill.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    setSuggestions(matchingSkills);
+    };
+
+    const selectSkill = (skill) => {
+    if (!selectedSkills.includes(skill)) {
+        register(`skills[${selectedSkills.length}]`, { value: skill });
+        setSelectedSkills([...selectedSkills, skill]);
+        setInputValue('');
+    }
+    };
+
+    const removeSelectedSkill = (index) => {
+    const updatedSkills = [...selectedSkills];
+    updatedSkills.splice(index, 1);
+    setSelectedSkills(updatedSkills);
+    };
+      
     const renderContent = () => {
         switch (curStep) {
 
+            //Company Information
+            case 0: 
+                return(
+                    <div className='w-96 md:w-[600px] border border-green rounded mt-10 mb-20 px-10 py-10 mx-auto'>
+                        <h1 className='font-semibold text-2xl text-green mb-2'>Create an employer account</h1>
+                        <p className='text-sm mb-8'>You'll need to create an employer account before posting a job</p>
+                        <form className='relative' onSubmit={handleSubmit(onSubmit)}>
+                            {/* Company Name */}
+                            <div>
+                                <label className='text-dark block mb-1 mt-5'>Company Name <sup className='text-red-500'>*</sup></label>
+                                <input
+                                className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
+                                type="text"
+                                placeholder='Mahitech Ltd.'
+                                {...register("company_name", { required: true })}
+                                />
+                            </div>
+                            {errors.company_name?.type === 'required' && <span className='text-red-500 duration-300'>Company Name is required</span>}
+
+                            {/* No of employees */}
+                            <div>
+                                <label className='text-dark block mb-1 mt-5'>Company's no. of Employees <sup className='text-red-500'>*</sup></label>
+                                <select 
+                                    defaultValue=""
+                                    className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
+                                    {...register("no_of_employees", { required: true })}
+                                >
+                                    <option value="" disabled>No. of employee of your company</option>
+                                    <option value="<100">&lt; 100</option>
+                                    <option value="100-200">100-200</option>
+                                    <option value="200-500">200-500</option>
+                                    <option value="500-800">500-800</option>
+                                    <option value="800-1000">800-1000</option>
+                                    <option value="1000+">1000+</option>
+                                </select>
+                            </div>
+                            {errors.no_of_employees?.type === 'required' && <span className='text-red-500 duration-300'>Employee numbers are required</span>}
+
+                             {/* Divider */}
+                             <p className='border border-green mt-10 mb-6'></p>
+
+                             <h1 className='font-semibold text-2xl text-green mb-2'>Address and Contact Information</h1>
+                            {/* Country */}
+                            <div>
+                                <label className='text-dark block mb-1 mt-5'>Country <sup className='text-red-500'>*</sup></label>
+                                <select 
+                                    defaultValue=""
+                                    className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
+                                    {...register("country", { required: true })}
+                                >
+                                <option value="" disabled>Select country</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="USA">USA</option>
+                                    <option value="Bangladesh">Bangladesh</option>
+                                    <option value="UK">UK</option>
+                                    <option value="France">France</option>
+                                    <option value="Germany">Germany</option>
+                                </select>
+                            </div>
+                            {errors.country?.type === 'required' && <span className='text-red-500 duration-300'>Country is required</span>}
+
+                            {/* Full address */}
+                            <div>
+                                <label className='text-dark block mb-1 mt-5'>Full Address</label>
+                                <input
+                                className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
+                                type="text"
+                                placeholder='e.g. 45 West Sandore, Sector-5'
+                                {...register("address")}
+                                />
+                            </div>
+
+                            {/* Phone number */}
+                            <div className='flex items-center gap-2 mt-5'>
+                                <div className='w-40'>
+                                <label className='text-dark block mb-1'>Country code</label>
+                                    <select defaultValue=""
+                                    className='rounded outline-none h-10 border border-dark/20 w-full px-3'
+                                    {...register("country_code")}
+                                    >
+                                         <option value="" disabled></option>
+                                    {
+                                        countryCodes.map((code, index) => <option
+                                            key={index} value={code}>{code}</option>)
+                                    }
+                                    </select>
+                                </div>
+                                <div className='w-full'>
+                                    <label className='text-dark block mb-1'>Phone number</label>
+                                    <input
+                                    className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
+                                    type="number"
+                                    {...register("phone", {maxLength: 10, minLength: 10})}
+                                    />
+                                </div>
+                            </div>
+                            {errors.phone?.type === 'maxLength' && <span className='text-red-500 duration-300'>Invalid Number</span>}
+                            {errors.phone?.type === 'minLength' && <span className='text-red-500 duration-300'>Invalid Number</span>}
+                            
+                            {/* Submit */}
+                            <div className='absolute -left-10 w-96 md:w-[600px] flex justify-end mx-auto mt-8'>
+
+                                {/* Next Button */}
+                                {curStep < 6 && (
+                                    <input className='bg-transparent text-dark hover:text-white px-5 py-2 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20 mt-8' type="submit"  value="Next" /> 
+                                )}
+                            </div>
+                        </form>
+                    </div>
+                )
+
             //Job_category
-            case 0:
+            case 1:
                 return (
-                    <div className='w-96 md:w-[720px] border border-green rounded mt-10 mb-20 p-6 md:p-10 mx-auto'>
+                    <div className='w-96 md:w-[600px] border border-green rounded mt-10 mb-20 p-6 md:p-10 mx-auto'>
                         <h1 className='font-semibold text-2xl text-green mb-2'>Choose a category that fits your company best</h1>
                         <p className='text-sm mb-8'>This information helps us for better recommendations across HireWave</p>
             
                         <form className='relative' onSubmit={handleSubmit(onSubmit)}>
                             {/* Job Category */}
-                            <div>
-                                <div className='grid md:flex flex-wrap gap-5'>
+                            <div className='grid md:flex flex-wrap gap-5'>
                                 {allCategoriesData.map((category) => (
                                     <div
                                     key={category.name}
                                     className={`w-fit ${
                                         selectedCategory === category.name
                                         ? 'bg-dark/80 text-white shadow-lg'
+                                        : errors.job_category ? 'border border-red-500' 
                                         : 'bg-green/40 hover:bg-dark/80 hover:text-white hover:shadow-lg'
                                     } px-3 rounded-full cursor-pointer`}
                                     onClick={() => setValue('job_category', category.name)}
                                     >
-                                    {category.name}
+                                    <Controller
+                                        name="job_category"
+                                        control={control}
+                                        rules={{ required: true }}
+                                        render={({ field }) => (
+                                    <>
+                                        {category.name}
+                                        <input type="radio" {...field} value={category.name} style={{ display: 'none' }} />
+                                    </>
+                                    )}
+                                    />
                                     </div>
+                                    
                                 ))}
                                 </div>
-                                {errors.Job_category?.type === 'required' && <span className='text-red-500'>This field is required</span>}
-                            </div>
+                            {errors.Job_category?.type === 'required' && <span className='text-red-500'>Category is required</span>}
+
+                            
                            
-                            {/* Sub category */}
+                            {/* Divider & Sub category */}
                             {
-                                selectedCategory &&  <p className=' text-dark mt-8 mb-5'>Choose sub category/ies for the selected category that your company works on:</p>
+                                selectedCategory &&  
+                                <>
+                                    <p className='border border-green mt-10 mb-6'></p>
+                                    <h1 className='font-semibold text-xl text-green mb-5'>Choose sub category on which your company works on</h1>
+                                </>
                             }
                             <div className='grid md:flex flex-wrap gap-5'>
                             {
                                 selectedCategory && 
-                                singleCategory.subcategories.map((category, index)=> (
+                                singleCategory.subcategories.map((sub_category)=> (
                                     <div
-                                    key={category.name}
+                                    key={sub_category.name}
                                     className={`w-fit ${
-                                        selectedSubCategory.includes(category.name)
-                                        ? 'bg-dark/80 text-white shadow-lg flex gap-2 items-center'
+                                        selectedSubCategory === sub_category.name
+                                        ? 'bg-dark/80 text-white shadow-lg'
+                                        : errors.sub_category ? 'border border-red-500' 
                                         : 'hover:bg-dark/80 hover:text-white hover:shadow-lg'
                                     } px-3 rounded-full border flex gap-2 items-center border-green cursor-pointer`}
-                                    onClick={() => setValue((`sub_category[${index}]`), category.name)}
+                                    onClick={() => setValue('sub_category', sub_category.name)}
                                     >
-                                    <AiOutlinePlus/>{category.name}
+                                    <Controller
+                                        name="sub_category"
+                                        control={control}
+                                        rules={{ required: true }}
+                                        render={({ field }) => (
+                                    <>
+                                        <AiOutlinePlus/>{sub_category.name}
+                                        <input type="radio" {...field} value={sub_category.name} style={{ display: 'none' }} />
+                                    </>
+                                    )}
+                                    />
+                                    
                                     </div>
-                                ))
-                            }
+                                ))}
                             </div>
-
+                            {errors.Job_category?.type === 'required' && <span className='text-red-500'>Sub-Category is required</span>}
 
                             {/* Submit */}
-                            <div className='absolute -left-10 w-96 md:w-[720px] flex justify-end mx-auto mt-8'>
+                            <div className='absolute -left-10 w-96 md:w-[600px] flex justify-between gap-10 mx-auto mt-16'>
+                                {/* Previous Button */}
+                                {curStep > 0 && (
+                                    <button className='bg-transparent text-dark hover:text-white px-5 py-2 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20' onClick={handlePreviousStep}>Previous</button>
+                                )}
 
                                 {/* Next Button */}
                                 {curStep < 6 && (
-                                    <input className='bg-transparent text-dark hover:text-white px-5 py-2 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20 mt-8' type="submit"  value="Next" /> 
+                                    <input className='bg-transparent text-dark hover:text-white px-5 py-2 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20' type="submit"  value="Next" /> 
                                 )}
                             </div>
                                    
@@ -874,36 +1059,73 @@ const EmployerOnboarding = () => {
                     </div>
                 );
 
-            //Jobs needed
-            case 1:
+            //Job Profile
+            case 2:
                 return (
-                    <div className='w-96 md:w-[720px] border border-green rounded mt-10 mb-20 p-6 md:p-10 mx-auto'>
+                    <div className='w-96 md:w-[600px] border border-green rounded mt-10 mb-20 p-6 md:p-10 mx-auto'>
                         <h1 className='font-semibold text-2xl text-green mb-2'>Let's Understand your Needs</h1>
                         <p className='text-sm mb-8'>What type of talent for job you looking for?</p>
                         <form className='relative' onSubmit={handleSubmit(onSubmit)}>
-                            {/* Jobs */}
-                            <div className='grid md:flex flex-wrap gap-5'>
-                            {
-                                offeredJobs && 
-                                offeredJobs.map((job, index)=> (
-                                    <div
-                                    key={job}
-                                    className={`w-fit ${
-                                        selectedJobs.includes(job)
-                                        ? 'bg-dark/80 text-white shadow-lg flex gap-2 items-center'
-                                        : 'hover:bg-dark/80 hover:text-white hover:shadow-lg'
-                                    } px-3 rounded-full border flex gap-2 items-center border-green cursor-pointer`}
-                                    onClick={() => setValue((`jobs[${index}]`), job)}
+                            {/* Job title */}
+                            <div>
+                                <label className='text-dark block mb-1 mt-5'>Job Title <sup className='text-red-500'>*</sup></label>
+                                <input
+                                className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
+                                type="text"
+                                placeholder='e. g. Front-End Developer'
+                                {...register("job_title", { required: true })}
+                                />
+                            </div>
+                            {errors.job_title?.type === 'required' && <span className='text-red-500 duration-300'>Job Title is required</span>}
+
+                            <div className='md:flex gap-5'>
+                                {/* Vacancy */}
+                                <div className='w-full'>
+                                    <label className='text-dark block mb-1 mt-5'>Vacancy <sup className='text-red-500'>*</sup></label>
+                                    <select 
+                                        defaultValue=""
+                                        className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
+                                        {...register("vacancy", { required: true })}
                                     >
-                                    <AiOutlinePlus/>{job}
-                                    </div>
-                                ))
-                            }
+                                        <option value="" disabled>Vacant seat for the job</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="5+">5+</option>
+                                    </select>
+                                    {errors.vacancy?.type === 'required' && <span className='text-red-500 duration-300'>Vacancy is required</span>}
+                                </div>                               
+
+                                {/* Job Location */}
+                                <div className='w-full'>
+                                    <label className='text-dark block mb-1 mt-5'>Job Location</label>
+                                    <input 
+                                    className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
+                                    type="text"
+                                    {...register("location")}
+                                    readOnly={watch("location") === 'Remote'}
+                                    />
+                                </div>                              
                             </div>
 
-                           
+                             {/* Checkbox for Remote */}
+                             <div className='flex justify-end items-center mt-1'>
+                                <label>Remote</label>
+                                <input 
+                                className='ml-2 cursor-pointer' 
+                                type="checkbox"
+                                onChange={e => {
+                                    setWorkFromHome(e.target.checked);
+                                    if (e.target.checked) setValue('location', 'Remote')
+                                    else setValue('location', '')
+                                }}
+                                />
+                            </div>
+
                             {/* Submit */}
-                            <div className='absolute -left-10 w-96 md:w-[720px] flex justify-between gap-10 mx-auto mt-16'>
+                            <div className='absolute -left-10 w-96 md:w-[600px] flex justify-between gap-10 mx-auto mt-16'>
                                 {/* Previous Button */}
                                 {curStep > 0 && (
                                     <button className='bg-transparent text-dark hover:text-white px-5 py-2 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20' onClick={handlePreviousStep}>Previous</button>
@@ -919,7 +1141,7 @@ const EmployerOnboarding = () => {
                 );
             
             //Skills
-            case 2:
+            case 3:
                 return (
                     <div className='w-96 md:w-[600px] border border-green rounded mt-10 mb-20 p-6 md:p-10 mx-auto '>
                         <h1 className='font-semibold text-2xl text-green mb-2'>What skill sets are you looking for?</h1>
@@ -928,32 +1150,40 @@ const EmployerOnboarding = () => {
                             {/* Skill field */}
                             <div>
                                 <label className='text-dark block mb-1'>Add a Skill</label>
-                                {skills.map((skill, index) => (
-                                    <div key={skill.id} className='flex items-center gap-5 mb-3'>
-                                    <input
-                                        type='text'
-                                        className='rounded outline-none h-10 border border-dark/20 w-full px-3 py-2 max-w-5xl'
-                                        {...register(`skill[${index}]`)}
-                                        value={skill.value}
-                                        onChange={(e) => {
-                                        const updatedSkills = [...skills];
-                                        updatedSkills[index].value = e.target.value;
-                                        setSkills(updatedSkills);
-                                        }}
-                                    />
-                                    {index === skills.length - 1 && (
-                                        <IoMdAddCircleOutline
-                                        onClick={handleIncreaseSkillField}
-                                        className='cursor-pointer hover:bg-green/10 rounded-full p-1'
-                                        fill='green'
-                                        size={32}
-                                        />
-                                    )}
+                                <div className="flex flex-wrap gap-3 mb-3 mt-3">
+                                    {selectedSkills?.map((selectedSkill, index) => (
+                                    <div className="border border-green pl-3 rounded-full" key={index}>
+                                        {selectedSkill}
+                                        <button className='text-sm hover:font-semibold hover:text-red-500 rounded-full px-1 border border-red-500 ml-2'
+                                        onClick={() => removeSelectedSkill(index)}
+                                        >
+                                        ✕
+                                        </button>
                                     </div>
-                                ))}
-                                {
-                                    maximumWarning && <p className='text-red-500'>Maximum skill field reached</p>
-                                }
+                                    ))}
+                                </div>
+                                <Controller
+                                    name="skills"
+                                    control={control}
+                                    defaultValue={[]}
+                                    render={({ field }) => (
+                                    <input
+                                        type="text"
+                                        {...field}
+                                        className='rounded outline-none h-10 border border-dark/20 w-full px-3 py-2 max-w-5xl'
+                                        {...field}
+                                        value={inputValue}
+                                        onChange={handleInputChange}
+                                        placeholder="Search for a skill"
+                                    />
+                                    )}
+                                />
+                                <ul className={`bg-slate-100 rounded-b-lg max-h-28 overflow-y-scroll px-5 py-2 ${hidden? 'hidden' : 'block'}`}>
+                                    {suggestions.map((suggestion, index) => (
+                                    <li key={index} className='cursor-pointer'
+                                    onClick={() => selectSkill(suggestion)} >{suggestion}</li>
+                                    ))}
+                                </ul>
                             </div>
                             
                             {/* Submit */}
@@ -972,22 +1202,102 @@ const EmployerOnboarding = () => {
                     </div>
                 );
             
-            //Education
-            case 3:
+            //Job Details
+            case 4:
                 return (
                     <div className='w-96 md:w-[600px] border border-green rounded mt-10 mb-20 px-10 py-10 mx-auto'>
-                        <h1 className='font-semibold text-2xl text-green mb-2'>Add an Education Detail </h1>
+                        <h1 className='font-semibold text-2xl text-green mb-2'>Add Few Details of the Job</h1>
+                        <p className='text-sm mb-8'>Make the requirements clear to the candidates</p>
 
                         <form className='relative' onSubmit={handleSubmit(onSubmit)}>
-                            {/* Institution Name */}
-                            <div>
-                                <label className='text-dark block mb-1 mt-5'>Institution Name</label>
-                                <input
-                                className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
-                                type="text" 
-                                placeholder='e.g. Notre Dame College'
-                                {...register("institution")}
+                            {/* Job Type */}
+                            <label className='text-dark text-xl block mb-2 mt-5'>Job Type <sup className='text-red-500'>*</sup></label>
+                            <div className='grid md:flex flex-wrap gap-3'>                               
+                                {['Full-time', 'Part-time', 'Temporary', 'Permanent', 'Internship', 'Contract'].map((type) => (
+                                <div
+                                    key={type}
+                                    className={`w-fit ${
+                                    selectedJobType === type
+                                    ? 'bg-dark/80 text-white shadow-lg'
+                                    : errors.job_type ? 'border border-red-500' 
+                                    : 'bg-green/40 hover:bg-dark/80 hover:text-white hover:shadow-lg'
+                                } px-3 rounded-full cursor-pointer`}
+                                onClick={() => setValue('job_type', type)}
+                                >
+                                <Controller
+                                    name="job_type"
+                                    control={control}
+                                    rules={{ required: true }}
+                                    render={({ field }) => (
+                                    <>
+                                        {type}
+                                        <input type="radio" {...field} value={type} style={{ display: 'none' }} />
+                                    </>
+                                    )}
                                 />
+                                </div>
+                            ))}
+                            </div>
+                            {errors.job_type && <p className="text-red-500 mt-2">Job type is required</p>}
+
+
+                            {/* Experience Level */}
+                            <label className='text-dark text-xl block mb-2 mt-8'>Experience Level <sup className='text-red-500'>*</sup></label>
+                            <div className='grid md:flex flex-wrap gap-3'>                               
+                                {['No-experience', 'Under 1 year', '1 year', '2-3 years', '3-5 years', '5-8 years', '8-10 years', '10+ years'].map((exp) => (
+                                <div
+                                    key={exp}
+                                    className={`w-fit ${
+                                    selectedExperience === exp
+                                    ? 'bg-dark/80 text-white shadow-lg'
+                                    : errors.experience ? 'border border-red-500' 
+                                    : 'bg-green/40 hover:bg-dark/80 hover:text-white hover:shadow-lg'
+                                } px-3 rounded-full cursor-pointer`}
+                                onClick={() => setValue('experience', exp)}
+                                >
+                                <Controller
+                                    name="experience"
+                                    control={control}
+                                    rules={{ required: true }}
+                                    render={({ field }) => (
+                                    <>
+                                        {exp}
+                                        <input type="radio" {...field} value={exp} style={{ display: 'none' }} />
+                                    </>
+                                    )}
+                                />
+                                </div>
+                            ))}
+                            </div>
+                            {errors.experience && <p className="text-red-500 mt-2">Experience is required</p>}
+
+
+                            {/* Compensation Package */}
+                            <label className='text-dark text-xl block mb-2 mt-8'>Compensation Package</label>
+                            <div className='grid md:flex flex-wrap gap-3'>                               
+                                {['Yearly Pay', 'Bonus Opportunities', 'Performance Bonus', 'Signing Bonus', 'RSU', 'Stock options'].map((compensation) => (
+                                <div
+                                    key={compensation}
+                                    className={`w-fit ${
+                                    selectedCompensationPackage === compensation
+                                    ? 'bg-dark/80 text-white shadow-lg' 
+                                    : 'bg-green/40 hover:bg-dark/80 hover:text-white hover:shadow-lg'
+                                } px-3 rounded-full cursor-pointer`}
+                                onClick={() => setValue('compensation_package', compensation)}
+                                >
+                                <Controller
+                                    name="compensation_package"
+                                    control={control}
+                                    rules={{ required: true }}
+                                    render={({ field }) => (
+                                    <>
+                                        {compensation}
+                                        <input type="radio" {...field} value={compensation} style={{ display: 'none' }} />
+                                    </>
+                                    )}
+                                />
+                                </div>
+                            ))}
                             </div>
                            
                             
@@ -999,9 +1309,7 @@ const EmployerOnboarding = () => {
                                 )}
 
                                 {/* Next Button */}
-                                {curStep < 6 && (
-                                    <input className='bg-transparent text-dark hover:text-white px-5 py-2 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20' type="submit"  value="Next" /> 
-                                )}
+                                <input className='bg-transparent text-dark hover:text-white px-5 py-2 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20' type="submit" onClick={() => setFinished(true)} /> 
                             </div>
                         </form>
                     </div>
@@ -1026,6 +1334,7 @@ const EmployerOnboarding = () => {
                     <Step />
                     <Step />
                     <Step />
+                    <Step />
                 </Stepper>
             :
                 <Stepper
@@ -1037,6 +1346,7 @@ const EmployerOnboarding = () => {
                     <Step />
                     <Step />
                     <Step />
+                    <Step /> 
                     <Step /> 
                 </Stepper> 
             }

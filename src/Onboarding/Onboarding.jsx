@@ -10,73 +10,77 @@ const Onboarding = () => {
     const isMobile = window.innerWidth > 768;
     const [curStep, setCurStep] = useState(0);
     const [finished, setFinished]= useState(false)
+
+    // States for skill checking
+    const [skills, setSkills] = useState([{ id: 1, value: "" }]); 
+    const [maximumWarning, setMaximumWarning]= useState(false)
     const navigate= useNavigate()
 
     //Form Submit function
     const onSubmit = data => {
         const newData=  
         finished? {
-            role: 'candidate',
-            userInfo: {
-              title: data.job_title,
-              phone: [data.country_code, data.phone],
-              category: data.job_category,
-            },
-            jobType: data.job_type,
-            location: data.country,
-            address: data.address,
-            skills: skills.map((skill) => skill.value),
-            education: [
-              {
-                institute: data.institution,
-                degree: data.degree,
-                subject: data.subject,
-                startYear: data.starting_year,
-                endYear: data.ending_year,
-              },
-            ],
-            experience: [
-              {
-                position: data.profile,
-                companyName: data.organization,
-                location: data.location,
-                startDate: data.starting_date,
-                endDate: data.ending_date,
-              },
-            ],
-            visibility: data.visible,
+                    role: 'candidate',
+                    userInfo: {
+                        title: data?.job_title,
+                        phone: [data?.country_code, data?.phone],
+                        category: data?.job_category,
+                        },
+                    jobType: data?.job_type,
+                    location: data?.country,
+                    address: data?.address,
+                    skills: skills.map((skill) => skill?.value),
+                    education: [
+                    {
+                        institute: data?.institution,
+                        degree: data?.degree,
+                        subject: data?.subject,
+                        startYear: data?.starting_year,
+                        endYear: data?.ending_year,
+                    },
+                    ],
+                    experience: [
+                    {
+                        position: data?.profile,
+                        companyName: data?.organization,
+                        location: data?.location,
+                        startDate: data?.starting_date,
+                        endDate: data?.ending_date,
+                    },
+                    ],
+                    visibility: data?.visible,
           }
         : {
-            userInfo: {
-              title: data.job_title,
-              phone: [data.country_code, data.phone],
-              category: data.job_category,
-            },
-            jobType: data.job_type,
-            location: data.country,
-            address: data.address,
-            skills: skills.map((skill) => skill.value),
-            education: [
-              {
-                institute: data.institution,
-                degree: data.degree,
-                subject: data.subject,
-                startYear: data.starting_year,
-                endYear: data.ending_year,
-              },
-            ],
-            experience: [
-              {
-                position: data.profile,
-                companyName: data.organization,
-                location: data.location,
-                startDate: data.starting_date,
-                endDate: data.ending_date,
-              },
-            ],
-            visibility: data.visible,
+                    userInfo: {
+                    title: data?.job_title,
+                    phone: [data?.country_code, data?.phone],
+                    category: data?.job_category,
+                    },
+                    jobType: data?.job_type,
+                    location: data?.country,
+                    address: data?.address,
+                    skills: skills.map((skill) => skill.value),
+                    education: [
+                    {
+                        institute: data?.institution,
+                        degree: data?.degree,
+                        subject: data?.subject,
+                        startYear: data?.starting_year,
+                        endYear: data?.ending_year,
+                    },
+                    ],
+                    experience: [
+                    {
+                        position: data?.profile,
+                        companyName: data?.organization,
+                        location: data?.location,
+                        startDate: data?.starting_date,
+                        endDate: data?.ending_date,
+                    },
+                    ],
+                    visibility: data?.visible,
           };
-          
+
         console.log(newData);
         setCurStep(curStep + 1)
 
@@ -98,10 +102,7 @@ const Onboarding = () => {
     const [present, setPresent] = useState(false);
     const [workFromHome, setWorkFromHome] = useState(false);
 
-     //States and Functions used for Skill checking
-     const [skills, setSkills] = useState([{ id: 1, value: "" }]); 
-     const [maximumWarning, setMaximumWarning]= useState(false)
-
+     // Functions used for Skill checking
      const handleIncreaseSkillField = () => {
          if (skills.length < 10) {
          const newId = skills.length + 1;
@@ -174,7 +175,7 @@ const Onboarding = () => {
                                 {...register("job_category", { required: true })}
                                 />
                             </div>
-                            {errors.Job_category?.type === 'required' && <span className='text-red-500'>This field is required</span>}
+                            {errors.Job_category?.type === 'required' && <span className='text-red-500'>Job Category is required</span>}
             
                             {/* Job title */}
                             <div>
@@ -186,7 +187,7 @@ const Onboarding = () => {
                                 {...register("job_title", { required: true })}
                                 />
                             </div>
-                            {errors.job_title?.type === 'required' && <span className='text-red-500'>This field is required</span>}
+                            {errors.job_title?.type === 'required' && <span className='text-red-500'>Job Title is required</span>}
             
                             {/* Job Type */}
                             <div>
@@ -236,7 +237,7 @@ const Onboarding = () => {
                                     <option value="Germany">Germany</option>
                                 </select>
                             </div>
-                            {errors.country?.type === 'required' && <span className='text-red-500 duration-300'>This field is required</span>}
+                            {errors.country?.type === 'required' && <span className='text-red-500 duration-300'>Country is required</span>}
 
                             {/* Full address */}
                             <div>
@@ -332,9 +333,9 @@ const Onboarding = () => {
             
                             {/* Checkbox for work from home */}
                             <div className='flex justify-end items-center mt-1'>
-                                <label className=''>Work from home</label>
+                                <label>Work from home</label>
                                 <input 
-                                className='ml-2' 
+                                className='ml-2 cursor-pointer' 
                                 type="checkbox"
                                 onChange={e => {
                                     setWorkFromHome(e.target.checked);
