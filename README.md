@@ -1,13 +1,12 @@
 <div align="center">
 
-  
   <img src="https://i.ibb.co/CnDdrMp/logo-01.png" />
 
   <h2 align="center">HireWave Agency </h2>
 
-  This website is a fully responsive hiring agency <br />Responsive for all devices, built using Redux,Mongoose,Socket.io and JWT.
+This website is a fully responsive hiring agency <br />Responsive for all devices, built using Redux,Mongoose,Socket.io and JWT.
 
-  <a href="https://hire-wave.web.app/"><strong>➥ Live Demo</strong></a>
+<a href="https://hire-wave.web.app/"><strong>➥ Live Demo</strong></a>
 
 </div>
 
@@ -15,7 +14,6 @@
 
 ### Demo Screenshots
 
-  
   <img src="https://i.ibb.co/rHyYMT8/website-img-com.jpg" />
 
 ## Website Features
@@ -23,55 +21,49 @@
 Certainly, here's the shortened text with strong tags added:
 
 - <strong>Technical Expertise:</strong> We have deep knowledge of programming languages, frameworks, and technologies, accurately assessing candidates.
-- <strong>Comprehensive Skills Assessment:</strong> Our system evaluates both technical and soft skills through customized tests, simulations, 
+- <strong>Comprehensive Skills Assessment:</strong> Our system evaluates both technical and soft skills through customized tests, simulations,
 - <strong>Ongoing Candidate Development:</strong> We provide continuous career development and coaching to foster long-term success.
 - <strong>Cultural Fit and Soft Skills:</strong> We assess candidates for teamwork, communication, and adaptability, crucial for project success.
 
-## Developer team of HireWave Agency 
+## Developer team of HireWave Agency
 
-- Forid Islam
-- Radif Hussain 
-- Mehedi Hasan Siam
-- Bokhtiyar Fahinm
-- Rayhan Uddin
+- Md. Shipon Bapari ( Full Stack Developer + Team Lead )
+- MD Forid Hossain ( Front-end/MERN Stack Developer )
+- Md Mahfuz Hossain ( Full Stack Developer )
+- Md Bakhtiar Fahim ( Front-Developer )
+- MD RAYHAN UDDIN REMON ( Front-Developer )
+- Mehedi Hasan Siam ( Front-Developer )
 
+## Base language
 
+- JavaScript
 
+## Technology Used
 
-## What we are going to learn
+- Vite
+- React.js
+-
 
-- React, Redux
-- MonogDB, Mongos 
-- Socket.io
+## Explore New Technology using in this Project
+
+- Redux
+- Mongoose
 - JWT
+- Zego Cloud
 - More . . .
-
-
 
 ### Contact
 
 If you want to contact me you can reach me at [Twitter](https://www.twitter.com/).
 
-
-
 <br>
 
 ## FAQ
-
-
 
 <details>
  <summary> How can I get started?</summary>
  You can get started by following the YouTube tutorial of this project. Here is the full tutorial video link: [coming soon].
 </details>
-
-
-
-<details>
- <summary> What do I need to start the project?</summary>
- Just open your favorite code editor and follow along with the [YouTube Tutorial](https://youtube.com/@ProgrammerSiam).
-</details>
-
 
 <details>
  <summary> Who is the project for?</summary>
@@ -81,8 +73,7 @@ If you want to contact me you can reach me at [Twitter](https://www.twitter.com/
 <br>
 
 ## Feedback
+
 If you have any feedback, please reach out to us at [ok]()
 
 <br>
-
-
