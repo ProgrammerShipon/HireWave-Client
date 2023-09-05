@@ -35,6 +35,13 @@ const DashNavItemsByRole = ({ role }) => {
                                 </DashLink>
                             </li>
 
+                            <li className="w-full">
+                                <DashLink to='/dashboard/room'>
+                                    <BiMessageRoundedDetail size={24} />
+                                    <p className="hidden md:inline">Interview</p>
+                                </DashLink>
+                            </li>
+
                             {/* Posted job */}
                             <li className="w-full">
                                 <DashLink to='/dashboard/postedJobs'>

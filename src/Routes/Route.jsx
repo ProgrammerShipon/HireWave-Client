@@ -34,6 +34,7 @@ import ApplyJob from "../Pages/ApplyJob";
 import Onboarding from "../Onboarding/Onboarding";
 import RoleChoice from "../Onboarding/RoleChoice";
 import EmployerOnboarding from "../Onboarding/EmployerOnboarding";
+import Conference from "../Pages/Conference";
 
 const Router = createBrowserRouter([
   {
@@ -156,6 +157,10 @@ const Router = createBrowserRouter([
       {
         path: "messages",
         element: <Messages />
+      },
+      {
+        path: "room",
+        element: <Conference />
       },
       {
         path: "postedJobs",
