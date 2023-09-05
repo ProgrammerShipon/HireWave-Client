@@ -20,21 +20,22 @@ const CandidateSignUpForm = () => {
 
     //Form Submit function
     const onSubmit = data => {
+        const todayDate = new Date();
         const newData = {
             role: 'candidate',
-            userInfo: {
-                name: user?.displayName,
-                email: user?.email,
-                image: user?.photoURL,
-                title: data.title,
-                phone: [data.country_code, data?.phone],
-                category: data.category,
-            },
+            name: user?.displayName,
+            email: user?.email,
+            image: user?.photoURL,
+            title: data.title,
+            phone: [data.country_code, data?.phone],
+            category: data.category,
             hourlyRate: data.hourlyRate,
             jobType: data.jobType,
             location: [data.country, data.state],
             address: data.address,
             skills: data?.skills?.map((skill) => skill),
+            about: [],
+            education: [],
             experience: [
                 {
                     position: data.position,
@@ -42,10 +43,16 @@ const CandidateSignUpForm = () => {
                     location: data.companyLocation,
                     startDate: data.startDate,
                     endDate: data.endDate,
-                },
+                }
             ],
+            socialLink: [],
+            languages: [],
+            recommendations: 0,
+            status: null,
             visibility: data.visibility,
+            joinDate: todayDate
         }
+        console.log(newData)
 
         setCurStep(curStep + 1)
 

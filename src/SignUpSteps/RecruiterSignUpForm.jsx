@@ -23,20 +23,24 @@ const RecruiterSignUpForm = () => {
 
     //Form Submit function
     const onSubmit = data => {
+        const todayDate = new Date();
         const newData = {
             role: "recruiter",
-            userInfo: {
-                name: data.name,
-                email: user?.email,
-                image: user?.photoURL,
-                phone: [data.country_code, data.phone],
-                industry: data.industry,
-                website: data.website,
-                category: data.category,
-                subCategory: data.subCategory
-            },
+            name: data.name,
+            email: user?.email,
+            image: user?.photoURL,
+            banner: null,
+            phone: [data.country_code, data.phone],
+            industry: data.industry,
+            website: data.website,
+            category: data.category,
+            subCategory: data.subCategory,
             location: [data.country, data.state],
-            address: data.address
+            address: data.address,
+            about: [],
+            specialties: [],
+            followers: 0,
+            joinDate: todayDate
         }
         setCurStep(curStep + 1)
 
