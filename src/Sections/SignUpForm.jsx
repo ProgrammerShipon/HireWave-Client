@@ -1,5 +1,6 @@
 import SocialLogin from "../Components/SocialLogin";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAxios from "../Hooks/useAxios";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from '../Hooks/useAuth';
 import { toast } from "react-toastify";
@@ -9,15 +10,14 @@ import Swal from 'sweetalert2'
 import { MdAlternateEmail, MdLockOutline } from 'react-icons/md';
 import { BiUserPin } from 'react-icons/bi';
 import { BsShieldCheck } from 'react-icons/bs';
-import useAxios from "../Hooks/useAxios";
+import { BsPersonWorkspace, BsBuildings } from 'react-icons/bs';
 
 const SignUpForm = () => {
     const { signUpUser, profileUpdate } = useAuth();
 
     // navigate
     const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
+    const from = '/select_role';
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -36,33 +36,12 @@ const SignUpForm = () => {
                 theme: "light",
             });
         }
-        if (data.role === null) {
-            return toast.warning("Select Candidate or Recruiter", {
-                position: "top-right",
-                autoClose: 4000,
-                theme: "light",
-            });
-        }
 
         signUpUser(data.email, data.password)
             .then((result) => {
                 profileUpdate(result.user, data.name)
                     .then(() => {
-                        const user = { name: data.name, email: data.email, role: data.role };
-                        useAxios.post('/users', user)
-                            .then(data => {
-                                if (data.status === 200) {
-                                    Swal.fire({
-                                        position: 'center',
-                                        icon: 'success',
-                                        title: 'Sign Up successfully',
-                                        showConfirmButton: false,
-                                        timer: 2500
-                                    });
-                                    navigate(from, { replace: true })
-                                }
-                            })
-
+                        navigate(from, { replace: true })
                     }).catch((error) => {
                         toast.error(error.message, {
                             position: "top-right",
@@ -84,6 +63,7 @@ const SignUpForm = () => {
         <section className="py-20 md:py-[120px] duration-300">
             <div className="container">
                 <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg mx-auto p-10 shadow-2xl rounded-xl">
+
                     <h1 className="text-dark text-5xl font-bold mb-10 drop-shadow-lg text-center">Sign Up</h1>
 
                     {/* name input field */}
@@ -113,18 +93,6 @@ const SignUpForm = () => {
                         <input type='password' className='w-full border-none outline-none' id='confirm' placeholder="Confirm password" {...register("confirm", { required: true })} />
                     </div>
                     {errors.password && <span className='text-sm text-red-400 ml-1'>Confirm password is required</span>}
-
-                    {/* select role */}
-                    <div className="flex items-center gap-5 mt-5 text-xl text-gray">
-                        <div className="flex items-center gap-2">
-                            <input type="radio" name="role" id="candidate" className="h-4 w-4" value='candidate' {...register('role')} />
-                            <label htmlFor="candidate">Candidate</label>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <input type="radio" name="role" id="recruiter" className="h-4 w-4" value='recruiter' {...register('role')} />
-                            <label htmlFor="recruiter">Recruiter</label>
-                        </div>
-                    </div>
 
                     {/* sign up button */}
                     <button className='bg-dark text-white w-full hover:text-white px-5 py-3 rounded-lg hover:bg-green duration-300 shadow-xl hover:shadow-green/20 mt-4' type='submit'>Sign Up</button>

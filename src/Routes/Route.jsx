@@ -31,9 +31,9 @@ import ManageJobs from "../Dashboard/ManageJobs";
 import CandidateList from "../Dashboard/CandidateList";
 import RecruiterList from "../Dashboard/RecruiterList";
 import ApplyJob from "../Pages/ApplyJob";
-import Onboarding from "../Onboarding/Onboarding";
-import RoleChoice from "../Onboarding/RoleChoice";
-import EmployerOnboarding from "../Onboarding/EmployerOnboarding";
+import SelectRole from "../SignUpSteps/SelectRole";
+import CandidateSignUpForm from "../SignUpSteps/CandidateSignUpForm";
+import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
 
 const Router = createBrowserRouter([
   {
@@ -183,18 +183,18 @@ const Router = createBrowserRouter([
     ]
   },
   {
-    path: "role_choice",
-    element: <RoleChoice />,
+    path: "select_role",
+    element: <SelectRole />,
     errorElement: <ErrorPage />
   },
   {
-    path: "onboarding",
-    element: <Onboarding />,
+    path: "candidate_sign_up",
+    element: <CandidateSignUpForm />,
     errorElement: <ErrorPage />
   },
   {
-    path: "employer_onboarding",
-    element: <EmployerOnboarding />,
+    path: "recruiter_sign_up",
+    element: <RecruiterSignUpForm />,
     errorElement: <ErrorPage />
   }
 ]);
