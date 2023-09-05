@@ -1,0 +1,959 @@
+[
+    {
+        "role": "candidate",
+        "profileView": 10,
+        "userInfo": {
+            "name": "John Smith",
+            "title": "Full Stack Developer",
+            "email": "john.smith@example.com",
+            "phone": [
+                "+1",
+                "1234567890"
+            ],
+            "image": "https://i.ibb.co/v3ygypq/brooke-cagle-JBwcen-Ou-RCg-unsplash.jpg",
+            "banner": null,
+            "category": "Full Stack Developer",
+            "industry": "Technology",
+            "website": "www.johnsmith.dev"
+        },
+        "about": [
+            "Hello, I'm John Smith, a passionate and experienced Full Stack Developer with over 7 years of hands-on experience in creating and implementing web applications. I thrive on turning innovative ideas into high-quality software solutions."
+        ],
+        "specialties": [
+            "JavaScript",
+            "React",
+            "Node.js",
+            "Python",
+            "Django",
+            "MongoDB"
+        ],
+        "location": "San Francisco, CA",
+        "address": "123 Main Street, Apt 4B, San Francisco, CA 94101",
+        "status": true,
+        "recentReview": [
+            {
+                "recruiter": "Michael Brown",
+                "logo": "https://i.ibb.co/c1Vf1XD/pexels-andrea-piacquadio-927451.jpg",
+                "location": "San Francisco, CA",
+                "rating": 4.8,
+                "review": "John is a highly skilled developer who consistently delivers top-notch work. His problem-solving abilities are exceptional.",
+                "date": "Sep 15, 2023"
+            }
+        ],
+        "socialLink": [
+            {
+                "linkedin": "https://www.linkedin.com/in/johnsmith/"
+            },
+            {
+                "github": "https://www.github.com/johnsmith/"
+            }
+        ],
+        "followers": 200,
+        "jobType": "Full-time",
+        "openToWork": true,
+        "skills": [
+            "JavaScript",
+            "React",
+            "Node.js",
+            "Python",
+            "Django",
+            "MongoDB"
+        ],
+        "languages": [
+            {
+                "name": "English",
+                "level": "fluent"
+            },
+            {
+                "name": "Spanish",
+                "level": "intermediate"
+            }
+        ],
+        "hourlyRate": 50,
+        "education": [
+            {
+                "institute": "Stanford University",
+                "subject": "Master of Computer Science",
+                "startDate": "Sep 01, 2010",
+                "endDate": "June 15, 2012"
+            },
+            {
+                "institute": "University of California, Berkeley",
+                "subject": "Bachelor of Computer Science",
+                "startDate": "Sep 01, 2006",
+                "endDate": "June 15, 2010"
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://i.ibb.co/4PW9s7L/im-2.png",
+                "companyName": "TechCo",
+                "position": "Senior Full Stack Developer",
+                "jobType": "Full-time",
+                "location": "San Francisco, CA",
+                "startDate": "July 01, 2012",
+                "endDate": "Present"
+            }
+        ],
+        "joinDate": "Sep 01, 2012"
+    },
+    {
+        "role": "candidate",
+        "profileView": 8,
+        "userInfo": {
+            "name": "Emma Williams",
+            "title": "UI/UX Designer",
+            "email": "emma.designs@example.com",
+            "phone": [
+                "+1",
+                "9876543210"
+            ],
+            "image": "https://i.ibb.co/41bpfKJ/req-2.jpg",
+            "banner": "",
+            "category": "UI/UX Design",
+            "industry": "Design",
+            "website": "www.emmawilliams.design"
+        },
+        "about": [
+            "Hi, I'm Emma Williams, a creative and detail-oriented UI/UX designer with a passion for creating beautiful and user-friendly digital experiences. I have over 6 years of experience in the field and a strong portfolio showcasing my work."
+        ],
+        "specialties": [
+            "UI Design",
+            "UX Design",
+            "Adobe Creative Suite",
+            "Wireframing",
+            "Prototyping"
+        ],
+        "location": "New York, NY",
+        "address": "456 Design Street, Apt 3C, New York, NY 10001",
+        "status": true,
+        "recentReview": [
+            {
+                "recruiter": "Sophia Miller",
+                "logo": "https://i.ibb.co/tQN0k6p/pexels-andrea-piacquadio-941572.jpg",
+                "location": "New York, NY",
+                "rating": 4.7,
+                "review": "Sophia Miller's design skills are exceptional. She has a keen eye for detail and always delivers on time. Highly recommended!",
+                "date": "Oct 10, 2023"
+            },
+            {
+                "recruiter": "Daniel Wilson",
+                "logo": "https://i.ibb.co/V21tBFm/pexels-andrea-piacquadio-3480329.jpg",
+                "location": "New York, NY",
+                "rating": 4.9,
+                "review": "Liam's contributions have been pivotal in shaping our data-driven strategy. His expertise is commendable.",
+                "date": "July 10, 2023"
+            }
+        ],
+        "socialLink": [
+            {
+                "linkedin": "https://www.linkedin.com/in/emmawilliams/"
+            },
+            {
+                "dribbble": "https://www.dribbble.com/emmawilliams/"
+            }
+        ],
+        "followers": 500,
+        "jobType": "Full-time",
+        "openToWork": true,
+        "skills": [
+            "UI Design",
+            "UX Design",
+            "Adobe Creative Suite",
+            "Wireframing",
+            "Prototyping"
+        ],
+        "languages": [
+            {
+                "name": "English",
+                "level": "fluent"
+            },
+            {
+                "name": "French",
+                "level": "intermediate"
+            }
+        ],
+        "hourlyRate": 60,
+        "education": [
+            {
+                "institute": "Parsons School of Design",
+                "subject": "Bachelor of Fine Arts in Design",
+                "startDate": "Sep 01, 2012",
+                "endDate": "June 15, 2016"
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://i.ibb.co/j4hs5DG/im-1.png",
+                "companyName": "DesignCo",
+                "position": "Senior UI/UX Designer",
+                "jobType": "Full-time",
+                "location": "New York, NY",
+                "startDate": "July 01, 2016",
+                "endDate": "Present"
+            }
+        ],
+        "joinDate": "Aug 01, 2016"
+    },
+    {
+        "role": "candidate",
+        "profileView": 5,
+        "userInfo": {
+            "name": "Olivia Johnson",
+            "title": "Mern Stack Developer | React Developer",
+            "email": "adroit@gmail.com",
+            "phone": [
+                "+880",
+                "187634525"
+            ],
+            "image": "https://i.ibb.co/jDPFM9F/req-1.jpg",
+            "banner": null,
+            "category": "Frontend Developer",
+            "industry": null,
+            "website": "www.adroit-resources.com"
+        },
+        "about": [
+            "Hello there! My name is Olivia Johnson. I am a frontend developer, and I’m very passionate and dedicated to my work. With 5 years of experience as a professional frontend developer, I have acquired the skills and knowledge necessary to make your project a success.",
+            "",
+            "a professional frontend developer, I have acquired the skills and knowledge necessary to make your project a success."
+        ],
+        "specialties": [],
+        "location": "Los Angeles, CA",
+        "address": "Uttara Model Town, 1230",
+        "status": true,
+        "recentReview": [
+            {
+                "recruiter": "Emily Adams",
+                "logo": "https://i.ibb.co/v3ygypq/brooke-cagle-JBwcen-Ou-RCg-unsplash.jpg",
+                "location": "Los Angeles, CA",
+                "rating": 5.0,
+                "review": "Olivia's creativity and attention to detail truly impressed us. She has a deep understanding of user experience.",
+                "date": "Jan 20, 2023"
+            },
+            {
+                "recruiter": "Michael Brown",
+                "logo": "https://i.ibb.co/c1Vf1XD/pexels-andrea-piacquadio-927451.jpg",
+                "location": "San Francisco, CA",
+                "rating": 4.9,
+                "review": "Olivia's creativity and attention to detail truly impressed us. She has a deep understanding of user experience.",
+                "date": "Aug 30, 2023"
+            }
+        ],
+        "socialLink": [
+            {
+                "linkedin": "https://www.linkedin.com/in/oliviajohnson/"
+            },
+            {
+                "github": "https://www.github.com/oliviajohnson/"
+            }
+        ],
+        "followers": 6,
+        "jobType": "As Needed - Open to work",
+        "openToWork": true,
+        "skills": [
+            "JavaScript",
+            "React",
+            "Node.js"
+        ],
+        "languages": [
+            {
+                "name": "English",
+                "level": "fluent"
+            },
+            {
+                "name": "Spanish",
+                "level": "comfortable"
+            }
+        ],
+        "hourlyRate": 20,
+        "education": [
+            {
+                "institute": "University of California, Los Angeles",
+                "subject": "Bachelor in Computer Science",
+                "startDate": "Sep 01, 2016",
+                "endDate": "June 15, 2020"
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://i.ibb.co/4PW9s7L/im-2.png",
+                "companyName": "Adroit",
+                "position": "Frontend Developer",
+                "jobType": "full time",
+                "location": "Los Angeles, CA",
+                "startDate": "July 01, 2020",
+                "endDate": "Sep 21, 2021"
+            }
+        ],
+        "joinDate": "Sep 10, 2019"
+    },
+    {
+        "role": "candidate",
+        "profileView": 3,
+        "userInfo": {
+            "name": "John Doe",
+            "title": "Backend Developer",
+            "email": "johndoe@example.com",
+            "phone": [
+                "+1",
+                "987654321"
+            ],
+            "image": "https://digity.netlify.app/assets/images/team/1.png",
+            "banner": null,
+            "category": "Backend Developer",
+            "industry": "Technology",
+            "website": "www.johndoe.dev"
+        },
+        "about": [
+            "Hello, I'm John Doe, a backend developer with a passion for creating efficient and scalable server-side solutions. I have 4 years of experience in developing robust APIs and backend systems."
+        ],
+        "specialties": [
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "API Development"
+        ],
+        "location": "San Francisco, CA",
+        "address": "123 Backend Avenue, San Francisco, CA 94101",
+        "status": true,
+        "recentReview": [
+            {
+                "recruiter": "Sarah Smith",
+                "logo": "https://i.ibb.co/NxcyBFg/pexels-andrea-piacquadio-3760514.jpg",
+                "location": "San Francisco, CA",
+                "rating": 4.5,
+                "review": "John is a reliable backend developer. He consistently delivers high-quality code and meets project deadlines.",
+                "date": "Oct 5, 2023"
+            }
+        ],
+        "socialLink": [
+            {
+                "linkedin": "https://www.linkedin.com/in/johndoe/"
+            },
+            {
+                "github": "https://www.github.com/johndoe/"
+            }
+        ],
+        "followers": 200,
+        "jobType": "Full-time",
+        "openToWork": true,
+        "skills": [
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "API Development"
+        ],
+        "languages": [
+            {
+                "name": "English",
+                "level": "fluent"
+            },
+            {
+                "name": "Spanish",
+                "level": "basic"
+            }
+        ],
+        "hourlyRate": 50,
+        "education": [
+            {
+                "institute": "Stanford University",
+                "subject": "Bachelor of Computer Science",
+                "startDate": "Sep 01, 2015",
+                "endDate": "June 15, 2019"
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://i.ibb.co/BswHmQD/im-3.png",
+                "companyName": "Tech Solutions",
+                "position": "Backend Developer",
+                "jobType": "Full-time",
+                "location": "San Francisco, CA",
+                "startDate": "July 01, 2019",
+                "endDate": "Present"
+            },
+            {
+                "logo": "https://i.ibb.co/51n29ft/120px-Alfacast-screen-mirror-logo.png",
+                "companyName": "Innovate IT",
+                "position": "Backend Developer",
+                "jobType": "part time",
+                "location": "San Francisco, CA",
+                "startDate": "April 01, 2019",
+                "endDate": "June 30, 2020"
+            }
+        ],
+        "joinDate": "Aug 01, 2019"
+    },
+    {
+        "role": "candidate",
+        "profileView": 6,
+        "userInfo": {
+            "name": "Alice Johnson",
+            "title": "UI/UX Designer",
+            "email": "alice.johnson@example.com",
+            "phone": [
+                "+1",
+                "1231231234"
+            ],
+            "image": "https://i.ibb.co/nbjYRxQ/req-5.jpg",
+            "banner": "",
+            "category": "Design",
+            "industry": "Creative",
+            "website": "https://www.alicejohnson.design"
+        },
+        "about": [
+            "Hi, I'm Alice Johnson, a passionate UI/UX designer with a love for creating beautiful and user-friendly interfaces.",
+            "I have 6 years of experience in crafting engaging user experiences that drive customer satisfaction."
+        ],
+        "specialties": [
+            "UI Design",
+            "UX Research",
+            "Wireframing"
+        ],
+        "location": "New York, NY",
+        "address": "456 Elm Street",
+        "status": true,
+        "recentReview": [],
+        "socialLink": [
+            {
+                "linkedin": "https://www.linkedin.com/in/alicejohnson/"
+            },
+            {
+                "dribbble": "https://dribbble.com/alicejohnson/"
+            }
+        ],
+        "followers": 10,
+        "jobType": "Freelance",
+        "openToWork": true,
+        "skills": [
+            "UI Design",
+            "UX Research",
+            "Sketch"
+        ],
+        "languages": [
+            {
+                "name": "English",
+                "level": "Fluent"
+            },
+            {
+                "name": "French",
+                "level": "Intermediate"
+            }
+        ],
+        "hourlyRate": 45,
+        "education": [
+            {
+                "institute": "Parsons School of Design",
+                "subject": "Graphic Design",
+                "startDate": "Sep 01, 2010",
+                "endDate": "June 15, 2014"
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://example.com/company-logo.jpg",
+                "companyName": "Creative Solutions",
+                "position": "UI/UX Designer",
+                "jobType": "Freelance",
+                "location": "New York, NY",
+                "startDate": "May 01, 2014",
+                "endDate": "Present"
+            }
+        ],
+        "joinDate": "Dec 10, 2013"
+    },
+    {
+        "role": "candidate",
+        "profileView": 8,
+        "userInfo": {
+            "name": "Sophia Rodriguez",
+            "title": "UX/UI Designer",
+            "email": "sophia.designs@example.com",
+            "phone": [
+                "+1",
+                "555-987-6543"
+            ],
+            "image": "https://i.ibb.co/nbjYRxQ/req-5.jpg",
+            "banner": "",
+            "category": "Designer",
+            "industry": "Design",
+            "website": "www.sophiadesigns.com"
+        },
+        "about": [
+            "Hello, I'm Sophia Rodriguez, a passionate UX/UI designer with a flair for creating user-centric and visually appealing designs.",
+            "I have a keen eye for detail and a deep understanding of design principles, which allows me to craft engaging user experiences."
+        ],
+        "specialties": [
+            "User Interface Design",
+            "User Experience Design",
+            "Wireframing",
+            "Prototyping"
+        ],
+        "location": "San Francisco, CA",
+        "address": "456 Design Street, Apt 7C",
+        "status": true,
+        "recentReview": [
+            {
+                "recruiter": "Alexandra Turner",
+                "logo": "https://i.ibb.co/fqZWv13/pexels-arina-krasnikova-5950081.jpg",
+                "location": "San Francisco, CA",
+                "rating": 4.7,
+                "review": "Sophia's design work is exceptional. She has a unique ability to turn ideas into stunning visual concepts.",
+                "date": "Oct 10, 2023"
+            },
+            {
+                "recruiter": "Michael Davis",
+                "logo": "https://i.ibb.co/smc4Bc5/pexels-barion-mcqueen-11372197.jpg",
+                "location": "New York, NY",
+                "rating": 4.9,
+                "review": "Sophia's designs are not only aesthetically pleasing but also user-friendly. She's a valuable asset to any design team.",
+                "date": "Sep 25, 2023"
+            }
+        ],
+        "socialLink": [
+            {
+                "linkedin": "https://www.linkedin.com/in/sophiarodriguez/"
+            },
+            {
+                "dribbble": "https://dribbble.com/sophiarodriguez/"
+            }
+        ],
+        "followers": 1200,
+        "jobType": "Full-time",
+        "openToWork": true,
+        "skills": [
+            "UI Design",
+            "UX Design",
+            "Wireframing",
+            "Prototyping"
+        ],
+        "languages": [
+            {
+                "name": "English",
+                "level": "Fluent"
+            },
+            {
+                "name": "Spanish",
+                "level": "Intermediate"
+            }
+        ],
+        "hourlyRate": 45,
+        "education": [
+            {
+                "institute": "California College of the Arts",
+                "subject": "Bachelor of Fine Arts in Design",
+                "startDate": "Sep 01, 2016",
+                "endDate": "June 15, 2020"
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://example.com/design-studio-logo.png",
+                "companyName": "Design Studio Inc.",
+                "position": "UX/UI Designer",
+                "jobType": "Full-time",
+                "location": "San Francisco, CA",
+                "startDate": "July 01, 2020",
+                "endDate": "Present"
+            }
+        ],
+        "joinDate": "May 15, 2019"
+    },
+    {
+        "role": "candidate",
+        "profileView": 10,
+        "userInfo": {
+            "name": "David Lee",
+            "title": "Data Scientist",
+            "email": "david.lee@example.com",
+            "phone": [
+                "+1",
+                "555-555-1234"
+            ],
+            "image": "https://digity.netlify.app/assets/images/team/7.png",
+            "banner": "",
+            "category": "Data Science",
+            "industry": "Technology",
+            "website": "www.davidleedata.com"
+        },
+        "about": [
+            "Greetings! I'm David Lee, a data scientist with a passion for extracting valuable insights from data.",
+            "I specialize in machine learning, data analysis, and statistical modeling, and I'm dedicated to solving complex problems through data-driven approaches."
+        ],
+        "specialties": [
+            "Machine Learning",
+            "Data Analysis",
+            "Statistical Modeling",
+            "Python"
+        ],
+        "location": "Chicago, IL",
+        "address": "789 Data Avenue, Suite 12",
+        "status": true,
+        "recentReview": [
+            {
+                "recruiter": "Jennifer Smith",
+                "logo": "https://i.ibb.co/rMKHF5W/pexels-cottonbro-studio-3206080.jpg",
+                "location": "Chicago, IL",
+                "rating": 4.8,
+                "review": "David's data science skills are impressive. He's a critical thinker who delivers actionable insights.",
+                "date": "Oct 5, 2023"
+            },
+            {
+                "recruiter": "Robert Johnson",
+                "logo": "https://i.ibb.co/BN0G0kw/pexels-cottonbro-studio-4064839.jpg",
+                "location": "San Francisco, CA",
+                "rating": 4.9,
+                "review": "David's ability to turn data into meaningful solutions is outstanding. He's a valuable asset to any data team.",
+                "date": "Sep 20, 2023"
+            }
+        ],
+        "socialLink": [
+            {
+                "linkedin": "https://www.linkedin.com/in/davidleedata/"
+            },
+            {
+                "github": "https://github.com/davidleedata/"
+            }
+        ],
+        "followers": 1500,
+        "jobType": "Full-time",
+        "openToWork": true,
+        "skills": [
+            "Machine Learning",
+            "Data Analysis",
+            "Python",
+            "Statistical Modeling"
+        ],
+        "languages": [
+            {
+                "name": "English",
+                "level": "Fluent"
+            },
+            {
+                "name": "Spanish",
+                "level": "Intermediate"
+            }
+        ],
+        "hourlyRate": 50,
+        "education": [
+            {
+                "institute": "University of Chicago",
+                "subject": "Master of Science in Data Science",
+                "startDate": "Sep 01, 2017",
+                "endDate": "June 15, 2019"
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://i.ibb.co/qRFFwdP/im-5.jpg",
+                "companyName": "Data Insights Corp.",
+                "position": "Data Scientist",
+                "jobType": "Full-time",
+                "location": "Chicago, IL",
+                "startDate": "July 01, 2019",
+                "endDate": "Present"
+            }
+        ],
+        "joinDate": "March 10, 2018"
+    },
+    {
+        "role": "candidate",
+        "profileView": 7,
+        "userInfo": {
+            "name": "Emily Williams",
+            "title": "Digital Marketing Specialist",
+            "email": "emily.marketing@example.com",
+            "phone": [
+                "+1",
+                "555-789-1234"
+            ],
+            "image": "https://digity.netlify.app/assets/images/team/8.png",
+            "banner": "",
+            "category": "Digital Marketing",
+            "industry": "Marketing",
+            "website": "www.emilydigitalmarketing.com"
+        },
+        "about": [
+            "Hello! I'm Emily Williams, a digital marketing specialist with a passion for driving online success.",
+            "I excel in SEO, social media marketing, and content strategy, and I'm dedicated to helping businesses grow their online presence."
+        ],
+        "specialties": [
+            "SEO",
+            "Social Media Marketing",
+            "Content Strategy",
+            "Google Analytics"
+        ],
+        "location": "Austin, TX",
+        "address": "567 Marketing Avenue, Suite 5",
+        "status": true,
+        "recentReview": [
+            {
+                "recruiter": "Mark Anderson",
+                "logo": "https://i.ibb.co/WD5LQvs/pexels-cottonbro-studio-4064840.jpg",
+                "location": "Austin, TX",
+                "rating": 4.7,
+                "review": "Emily's digital marketing skills are top-notch. She knows how to drive results and engage audiences effectively.",
+                "date": "Oct 8, 2023"
+            },
+            {
+                "recruiter": "Linda Parker",
+                "logo": "https://i.ibb.co/74Vhpmj/pexels-fernanda-latronico-709188.jpg",
+                "location": "New York, NY",
+                "rating": 4.9,
+                "review": "Emily's strategic approach to digital marketing sets her apart. She's an asset to any marketing team.",
+                "date": "Sep 18, 2023"
+            }
+        ],
+        "socialLink": [
+            {
+                "linkedin": "https://www.linkedin.com/in/emilydigitalmarketing/"
+            },
+            {
+                "twitter": "https://twitter.com/emily_marketing/"
+            }
+        ],
+        "followers": 2500,
+        "jobType": "Full-time",
+        "openToWork": true,
+        "skills": [
+            "SEO",
+            "Social Media Marketing",
+            "Content Strategy",
+            "Google Analytics"
+        ],
+        "languages": [
+            {
+                "name": "English",
+                "level": "Fluent"
+            },
+            {
+                "name": "French",
+                "level": "Intermediate"
+            }
+        ],
+        "hourlyRate": 55,
+        "education": [
+            {
+                "institute": "University of Texas at Austin",
+                "subject": "Bachelor of Business Administration in Marketing",
+                "startDate": "Sep 01, 2016",
+                "endDate": "June 15, 2020"
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://i.ibb.co/jkmcP33/121-systems-2011-logo-Black-Back-Large.jpg",
+                "companyName": "Digital Insights Agency",
+                "position": "Digital Marketing Specialist",
+                "jobType": "Full-time",
+                "location": "Austin, TX",
+                "startDate": "July 01, 2020",
+                "endDate": "Present"
+            }
+        ],
+        "joinDate": "May 25, 2019"
+    },
+    {
+        "role": "candidate",
+        "profileView": 7,
+        "userInfo": {
+            "name": "Emily Chang",
+            "title": "Marketing Manager",
+            "email": "emily.marketing@example.com",
+            "phone": [
+                "+1",
+                "555-123-7890"
+            ],
+            "image": "https://digity.netlify.app/assets/images/team/4.pngg",
+            "banner": "",
+            "category": "Marketing",
+            "industry": "Digital Marketing",
+            "website": "www.emilychangmarketing.com"
+        },
+        "about": [
+            "Hello, I'm Emily Chang, a dedicated marketing manager with a passion for creating and executing successful marketing campaigns.",
+            "I excel in digital marketing, social media strategy, and market research, and I'm committed to driving brand growth and engagement."
+        ],
+        "specialties": [
+            "Digital Marketing",
+            "Social Media Strategy",
+            "Market Research",
+            "Content Marketing"
+        ],
+        "location": "Los Angeles, CA",
+        "address": "567 Marketing Street, Suite 3D",
+        "status": true,
+        "recentReview": [
+            {
+                "recruiter": "Daniel Williams",
+                "logo": "https://i.ibb.co/LQr80cY/pexels-italo-melo-2379004.jpg",
+                "location": "Los Angeles, CA",
+                "rating": 4.7,
+                "review": "Emily's marketing strategies are top-notch. She's a creative thinker who knows how to connect with the audience.",
+                "date": "Oct 12, 2023"
+            },
+            {
+                "recruiter": "Michelle Davis",
+                "logo": "https://i.ibb.co/7nZg4Cb/pexels-italo-melo-2379005.jpg",
+                "location": "New York, NY",
+                "rating": 4.9,
+                "review": "Emily's ability to drive brand engagement is outstanding. She's an asset to any marketing team.",
+                "date": "Sep 28, 2023"
+            }
+        ],
+        "socialLink": [
+            {
+                "linkedin": "https://www.linkedin.com/in/emilychangmarketing/"
+            },
+            {
+                "twitter": "https://twitter.com/emilymarketing/"
+            }
+        ],
+        "followers": 2200,
+        "jobType": "Full-time",
+        "openToWork": true,
+        "skills": [
+            "Digital Marketing",
+            "Social Media Strategy",
+            "Content Marketing",
+            "Market Research"
+        ],
+        "languages": [
+            {
+                "name": "English",
+                "level": "Fluent"
+            },
+            {
+                "name": "Mandarin",
+                "level": "Intermediate"
+            }
+        ],
+        "hourlyRate": 55,
+        "education": [
+            {
+                "institute": "University of California, Los Angeles",
+                "subject": "Bachelor of Business Administration in Marketing",
+                "startDate": "Sep 01, 2015",
+                "endDate": "June 15, 2019"
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://i.ibb.co/82YLs7Z/Abracket-logo.png",
+                "companyName": "Digital Trends Agency",
+                "position": "Marketing Manager",
+                "jobType": "Full-time",
+                "location": "Los Angeles, CA",
+                "startDate": "July 01, 2019",
+                "endDate": "Present"
+            }
+        ],
+        "joinDate": "April 5, 2018"
+    },
+    {
+        "role": "candidate",
+        "profileView": 12,
+        "userInfo": {
+            "name": "Emma Davis",
+            "title": "Marketing Manager",
+            "email": "emma.marketing@example.com",
+            "phone": [
+                "+1",
+                "555-555-6789"
+            ],
+            "image": "https://digity.netlify.app/assets/images/team/6.png",
+            "banner": "",
+            "category": "Marketing",
+            "industry": "Marketing and Advertising",
+            "website": "www.emmadavismarketing.com"
+        },
+        "about": [
+            "Hello, I'm Emma Davis, an experienced marketing manager with a strong background in digital and content marketing.",
+            "I thrive on developing creative strategies that drive brand growth and engagement while staying up-to-date with the latest marketing trends."
+        ],
+        "specialties": [
+            "Digital Marketing",
+            "Content Marketing",
+            "Social Media Strategy",
+            "Marketing Analytics"
+        ],
+        "location": "Boston, MA",
+        "address": "567 Marketing Avenue, Suite 3D",
+        "status": true,
+        "recentReview": [
+            {
+                "recruiter": "Alex Turner",
+                "logo": "https://i.ibb.co/58H9cKx/pexels-justin-shaifer-1222271.jpg",
+                "location": "Boston, MA",
+                "rating": 4.7,
+                "review": "Emma's marketing strategies are innovative, and she has a knack for creating engaging content. Highly recommended!",
+                "date": "Oct 12, 2023"
+            },
+            {
+                "recruiter": "Sarah Miller",
+                "logo": "https://i.ibb.co/DtVgC7q/pexels-moose-photos-1036627.jpg",
+                "location": "New York, NY",
+                "rating": 4.9,
+                "review": "Emma's ability to connect with audiences and drive results is impressive. She's a valuable asset to any marketing team.",
+                "date": "Sep 28, 2023"
+            }
+        ],
+        "socialLink": [
+            {
+                "linkedin": "https://www.linkedin.com/in/emmadavismarketing/"
+            },
+            {
+                "twitter": "https://twitter.com/emmadavis"
+            }
+        ],
+        "followers": 2500,
+        "jobType": "Full-time",
+        "openToWork": true,
+        "skills": [
+            "Digital Marketing",
+            "Content Strategy",
+            "Social Media Marketing",
+            "Marketing Analytics"
+        ],
+        "languages": [
+            {
+                "name": "English",
+                "level": "Fluent"
+            },
+            {
+                "name": "French",
+                "level": "Intermediate"
+            }
+        ],
+        "hourlyRate": 60,
+        "education": [
+            {
+                "institute": "Harvard Business School",
+                "subject": "Master of Business Administration",
+                "startDate": "Sep 01, 2016",
+                "endDate": "June 15, 2018"
+            }
+        ],
+        "experience": [
+            {
+                "logo": "https://i.ibb.co/6NSLSMT/Developer-Logo.png",
+                "companyName": "MarketBoost Agency",
+                "position": "Marketing Manager",
+                "jobType": "Full-time",
+                "location": "Boston, MA",
+                "startDate": "July 01, 2018",
+                "endDate": "Present"
+            },
+            {
+                "logo": "https://i.ibb.co/DWQsWPp/Act-Logo.png",
+                "companyName": "New Asha",
+                "position": "Marketing",
+                "jobType": "full time",
+                "location": "Dhaka, Bangladesh",
+                "startDate": "June 23, 2010",
+                "endDate": "Apr 23, 2013"
+            }
+        ],
+        "joinDate": "April 20, 2017"
+    }
+]
