@@ -775,6 +775,9 @@ const EmployerOnboarding = () => {
 
     //Form Submit function
     const onSubmit = data => {
+        console.log(data)
+        console.log(selectedSkills)
+        // data[skills] = selectedSkills
         const recruiterData= {
             role: "recruiter",
             userInfo: {
@@ -798,7 +801,7 @@ const EmployerOnboarding = () => {
             experience : data?.experience,
             benefits : [data?.compensation_package]
         }
-        console.log(recruiterData, jobData);
+        // console.log(recruiterData, jobData);
 
         setCurStep(curStep + 1)
         //TODO: Backend integration

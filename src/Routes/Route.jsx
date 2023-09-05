@@ -34,6 +34,7 @@ import ApplyJob from "../Pages/ApplyJob";
 import Onboarding from "../Onboarding/Onboarding";
 import RoleChoice from "../Onboarding/RoleChoice";
 import EmployerOnboarding from "../Onboarding/EmployerOnboarding";
+import LearningDetails from "../Pages/LearningDetails";
 
 const Router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ const Router = createBrowserRouter([
       {
         path: "/learning",
         element: <Learning />,
+      },
+      {
+        path: "/learning/:id",
+        element: <LearningDetails />,
       },
       {
         path: "/saved_jobs",
