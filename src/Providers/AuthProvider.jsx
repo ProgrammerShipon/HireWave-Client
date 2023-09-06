@@ -87,19 +87,8 @@ const AuthProvider = ({ children }) => {
     }
   }, []);
 
-
-  useEffect(() => {
-    !loading && user && fetch(`https://hire-wave-server.vercel.app/api/users/byEmail/${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data._id);
-        setUserId(data);
-      });
-  }, [user, loading]);
-  
   const authInfo = {
     user,
-    userId,
     loading,
     signUpUser,
     signIn,

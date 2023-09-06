@@ -65,7 +65,7 @@ const Router = createBrowserRouter([
       {
         path: "/candidate_details/:id",
         element: <CandidateDetails />,
-        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/jobCandidates/${params.id}`)
+        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/candidates/${params.id}`)
       },
       {
         path: "/job_details/:id",

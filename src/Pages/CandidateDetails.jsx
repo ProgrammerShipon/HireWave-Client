@@ -13,13 +13,13 @@ const CandidateDetails = () => {
     return (
         <>
             <Helmet>
-                <title>{singleData[0].name} - Hire Wave</title>
+                <title>{singleData.name} - Hire Wave</title>
             </Helmet>
 
             <Breadcrumbs title="Candidates Details" />
 
             {/* sections */}
-            <CandidateDetailsContent candidateDetails={singleData[0]} />
+            <CandidateDetailsContent candidateDetails={singleData} />
 
             {/* border */}
             <Divider />

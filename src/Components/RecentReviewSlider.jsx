@@ -18,8 +18,6 @@ const RecentReviewSlider = ({ recentReview }) => {
         inactiveFillColor: '#a78f6d'
     }
 
-    console.log(recentReview)
-
     return (
         <Swiper
             autoplay={{
@@ -35,12 +33,12 @@ const RecentReviewSlider = ({ recentReview }) => {
 
                         {/* company logo */}
                         <div className="h-14 w-14 shadow-xl shadow-purple/30 overflow-hidden rounded-md">
-                            <img className="w-full h-full object-cover object-center" src={rvw.logo} alt={rvw.name} />
+                            <img className="w-full h-full object-cover object-center" src={rvw.authorImage} alt={rvw.authorName} />
                         </div>
 
                         {/* review content */}
                         <div>
-                            <h3 className="text-dark font-medium text-lg">{rvw.name}</h3>
+                            <h3 className="text-dark font-medium text-lg">{rvw.authorName}</h3>
                             <p className="text-lightGray -mt-1">{rvw.location}</p>
 
                             {/* rating */}
@@ -60,7 +58,7 @@ const RecentReviewSlider = ({ recentReview }) => {
                     </div>
 
                     {/* review */}
-                    <p className="text-lightGray line-clamp-2 mt-2">{rvw.review}</p>
+                    <p className="text-lightGray line-clamp-2 mt-2">{rvw.comment}</p>
                 </SwiperSlide>)
             }
         </Swiper>

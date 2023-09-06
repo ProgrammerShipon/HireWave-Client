@@ -9,12 +9,14 @@ import useAxios from '../Hooks/useAxios';
 import Swal from 'sweetalert2';
 
 const RecruiterSignUpForm = () => {
-    const { user } = useAuth();
-    const [allCategoriesData] = useAllCategories();
-
-    const { control, register, handleSubmit, setValue, watch, reset, formState: { errors } } = useForm();
     const [curStep, setCurStep] = useState(0);
     const [finish, setFinish] = useState(false);
+    const { user } = useAuth();
+    const { axiosSecure } = useAxios();
+    const [allCategoriesData] = useAllCategories();
+    const navigate = useNavigate();
+
+    const { control, register, handleSubmit, setValue, watch, reset, formState: { errors } } = useForm();
 
     //Watch
     const selectedCategory = watch('job_category', '');
@@ -42,25 +44,35 @@ const RecruiterSignUpForm = () => {
             followers: 0,
             joinDate: todayDate
         }
-        setCurStep(curStep + 1)
 
-        if (!finish) {
-            return
+        const newUser = {
+            role: 'recruiter',
+            name: data.name,
+            email: user?.email,
+            image: user?.photoURL
         }
 
-        useAxios.post('/users', newData)
-            .then(data => {
-                if (data.status === 200) {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Sign Up successfully',
-                        showConfirmButton: false,
-                        timer: 2500
-                    });
-                    navigate('/', { replace: true })
-                }
-            })
+        setCurStep(curStep + 1)
+        if (finish) {
+            return axiosSecure.post('/candidates', newData)
+                .then(data => {
+                    if (data.status === 200) {
+                        axiosSecure.post('/users', newUser)
+                            .then(data => {
+                                if (data.status === 200) {
+                                    Swal.fire({
+                                        position: 'center',
+                                        icon: 'success',
+                                        title: 'Sign Up successfully',
+                                        showConfirmButton: false,
+                                        timer: 2500
+                                    });
+                                    navigate('/', { replace: true })
+                                }
+                            })
+                    }
+                })
+        }
     }
 
     // Previous step function
