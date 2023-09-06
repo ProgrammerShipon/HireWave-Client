@@ -5,8 +5,8 @@ import useAuth from "./useAuth";
 // import { useNavigate } from "react-router-dom";
 
 // online link
-const serverLink = "https://hire-wave-server.vercel.app/api";
-// const serverLink = "http://localhost:3030/api";
+// const serverLink = "https://hire-wave-server.vercel.app/api";
+const serverLink = "http://localhost:3030/api";
 
 // use Axios Secure
 const axiosSecure = axios.create({
