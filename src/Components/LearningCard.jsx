@@ -36,9 +36,7 @@ const LearningCard = ({ learning }) => {
                     </div>
 
                     {/* Detail Button */}
-                    <div className="bg-purple text-white inline-block px-2 py-1 lg:px-3 lg:py-2 rounded-md duration-300 hover:bg-dark shadow-xl shadow-purple/20 hover:shadow-dark/20 mr-3 cursor-pointer">
-                        <Link to={`/learning/${_id}`}>Explore</Link>
-                    </div>
+                    <Link to={`/learning/${_id}`} className="bg-purple text-white inline-block px-2 py-1 lg:px-3 lg:py-2 rounded-md duration-300 hover:bg-dark shadow-xl shadow-purple/20 hover:shadow-dark/20 mr-3 cursor-pointer">Explore</Link>
                 </div>
             </div>
         </div>
