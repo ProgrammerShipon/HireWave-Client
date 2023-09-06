@@ -35,6 +35,7 @@ import Onboarding from "../Onboarding/Onboarding";
 import RoleChoice from "../Onboarding/RoleChoice";
 import EmployerOnboarding from "../Onboarding/EmployerOnboarding";
 import Conference from "../Pages/Conference";
+import Chat from "../Dashboard/Chat";
 
 const Router = createBrowserRouter([
   {
@@ -154,9 +155,13 @@ const Router = createBrowserRouter([
       },
 
       // Recruiter routes
+      // {
+      //   path: "messages",
+      //   element: <Messages />
+      // },
       {
         path: "messages",
-        element: <Messages />
+        element: <Chat />
       },
       {
         path: "room",
