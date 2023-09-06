@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import NavItems from "../Components/NavItems";
-import SideNav from "./SideNav";
 
 // react icons
 import { FaBars, FaSearch } from 'react-icons/fa';
 
 // logo
 import Logo from '../Assets/images/logo-01.png';
+import NavItems from "../Components/NavItems";
+import SideNav from "./SideNav";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -25,12 +25,14 @@ const Navbar = () => {
             setNavState(false);
         }
     };
+
+    // scroll top
     useEffect(() => {
         window.addEventListener("scroll", onNavScroll);
     }, []);
 
     return (
-        <header className={`fixed w-full shadow-xl duration-300 ease-in-out ${navState ? 'backdrop-blur-md bg-white/60 py-2 shadow-green/10' : 'bg-white py-3'} z-50`}>
+        <header className={`fixed w-full shadow-xl duration-300 ease-in-out ${navState ? 'backdrop-blur-md bg-white/60 py-2 shadow-green/10' : 'bg-white py-3 backdrop-blur-md'} z-50`}>
             <nav className="container flex items-center justify-between">
                 {/* logo */}
                 <Link to="/">

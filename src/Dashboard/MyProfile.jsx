@@ -1,15 +1,20 @@
-import MyAccount from '../Sections/MyAccount';
 import Button from '../Components/Button';
 import { AiOutlineFileAdd } from 'react-icons/ai';
-import DashTitle from './DashTitle';
+import useCandidatesData from '../Hooks/useCandidatesData';
+import DashTitle from '../Components/DashComponents/DashTitle';
+import CandidateProfile from '../Sections/DashSections/CandidateProfile';
 
 const MyProfile = () => {
+    const [candidatesData, loading] = useCandidatesData();
+
     return (
         <section className='m-5 rounded-md'>
             <DashTitle title='My Profile' />
 
             {/* My Account */}
-            <MyAccount />
+            {
+                !loading ? <CandidateProfile candidatesData={candidatesData[0]} /> : <h1 className='text-3xl'>Loading ...</h1>
+            }
 
             {/* Generate Resume Button */}
             <div className='mt-7'>

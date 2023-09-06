@@ -2,10 +2,11 @@ import DashLink from './DashLink';
 
 // react icons
 import { AiOutlineFileDone } from 'react-icons/ai';
-import { BsBriefcase, BsFileEarmarkPdf, BsFileArrowUp } from 'react-icons/bs';
+import { BsBriefcase, BsFileArrowUp } from 'react-icons/bs';
 import { MdOutlineManageAccounts, } from 'react-icons/md';
 import { CgUserList } from 'react-icons/cg';
 import { BiMessageRoundedDetail } from 'react-icons/bi';
+import { LiaIndustrySolid } from 'react-icons/lia';
 
 const DashNavItemsByRole = ({ role }) => {
     return (
@@ -14,19 +15,11 @@ const DashNavItemsByRole = ({ role }) => {
                 // candidate routes
                 role === 'candidate' ?
                     <>
-                        {/* Applied Jobs */}
+                        {/* applied Jobs */}
                         <li className="w-full">
                             <DashLink to='/dashboard/appliedJobs'>
                                 <BsFileArrowUp size={24} />
-                                <p className="hidden md:inline">Applied Jobs</p>
-                            </DashLink>
-                        </li>
-
-                        {/* Applied Jobs */}
-                        <li className="w-full">
-                            <DashLink to='/dashboard/myResume'>
-                                <BsFileEarmarkPdf size={24} />
-                                <p className="hidden md:inline">My Resume</p>
+                                <p className="hidden md:inline">My Applications</p>
                             </DashLink>
                         </li>
                     </> :
@@ -39,6 +32,13 @@ const DashNavItemsByRole = ({ role }) => {
                                 <DashLink to='/dashboard/messages'>
                                     <BiMessageRoundedDetail size={24} />
                                     <p className="hidden md:inline">Messages</p>
+                                </DashLink>
+                            </li>
+
+                            <li className="w-full">
+                                <DashLink to='/dashboard/room'>
+                                    <BiMessageRoundedDetail size={24} />
+                                    <p className="hidden md:inline">Interview</p>
                                 </DashLink>
                             </li>
 
@@ -80,7 +80,7 @@ const DashNavItemsByRole = ({ role }) => {
                             {/* Recruiter List */}
                             <li className="w-full">
                                 <DashLink to='/dashboard/recruiterList'>
-                                    <BsBriefcase size={24} />
+                                    <LiaIndustrySolid size={24} />
                                     <p className="hidden md:inline">Recruiter List</p>
                                 </DashLink>
                             </li>

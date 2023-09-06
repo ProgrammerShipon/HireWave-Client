@@ -1,16 +1,18 @@
 import CountUp from 'react-countup';
+import LineChart from '../../Components/Charts/LineChart';
+import BarChart from '../../Components/Charts/BarChart';
 
 // react icons
 import { BsBriefcase, BsBookmarkCheck } from 'react-icons/bs';
 import { IoDocumentTextOutline, IoAnalyticsOutline } from 'react-icons/io5';
 import { PiUsersThreeLight } from 'react-icons/pi';
-import LineChart from '../Components/LineChart';
-import BarChart from '../Components/BarChart';
+
 
 const AdminDashboard = () => {
 
     return (
         <div>
+            {/* top card */}
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10'>
                 {/* posted jobs */}
                 <div className='bg-white shadow-4xl shadow-gray/40 rounded-md px-3 group'>

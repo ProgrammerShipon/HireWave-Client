@@ -18,6 +18,8 @@ const RecentReviewSlider = ({ recentReview }) => {
         inactiveFillColor: '#a78f6d'
     }
 
+    console.log(recentReview)
+
     return (
         <Swiper
             autoplay={{
@@ -33,7 +35,7 @@ const RecentReviewSlider = ({ recentReview }) => {
 
                         {/* company logo */}
                         <div className="h-14 w-14 shadow-xl shadow-purple/30 overflow-hidden rounded-md">
-                            <img className="w-full object-cover object-center" src={rvw.image} alt={rvw.name} />
+                            <img className="w-full h-full object-cover object-center" src={rvw.logo} alt={rvw.name} />
                         </div>
 
                         {/* review content */}

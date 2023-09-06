@@ -9,10 +9,19 @@ import { LiaAngleDownSolid } from 'react-icons/lia';
 //Logo
 import Logo from '../Assets/images/logo-01.png';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 const DashNav = () => {
+    const [name, setName] = useState('');
     const { user } = useAuth();
     const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+        if (user?.displayName) {
+            const firstName = user.displayName.split(' ').slice(0, -1).join(' ');
+            setName(firstName);
+        }
+    }, [user?.displayName]);
 
     return (
         <header className='fixed w-full top-0 shadow-2xl shadow-purple/20 backdrop-blur-md py-2 bg-white/60 z-50'>
@@ -56,7 +65,7 @@ const DashNav = () => {
                                         className="h-12 w-12 rounded-full object-cover shadow-lg hover:shadow-green/20 duration-300"
                                         src={user?.photoURL} alt={user?.displayName} /> :
                                     <p
-                                        className="h-14 w-14 bg-blue text-dark text-xl flex items-center justify-center font-bold rounded-full shadow-lg group-hover:shadow-blue duration-300 drop-shadow-xl"
+                                        className="h-14 w-14 bg-blue text-dark text-xl flex items-center justify-center font-bold rounded-full shadow-lg group-hover:shadow-blue duration-300 drop-shadow-xl uppercase"
                                     >
                                         {user?.displayName?.slice(0, 2)}
                                     </p>
@@ -74,7 +83,7 @@ const DashNav = () => {
                             className={`md:hidden relative ${open ? 'rotate-180' : 'rotate-0'} duration-300`} />
 
                         <div className='hidden md:inline-block'>
-                            <p className='text-xl text-dark'>{user?.displayName}</p>
+                            <p className='text-xl text-dark'>{name}</p>
                             <p className='font-light text-purple -mt-1'>Candidate</p>
                         </div>
 

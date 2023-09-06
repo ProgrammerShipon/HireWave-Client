@@ -1,5 +1,6 @@
-import DoughnutChart from '../Components/DoughnutChart';
-import AreaChart from '../Components/AreaChart';
+import DoughnutChart from '../../Components/Charts/DoughnutChart';
+import AreaChart from '../../Components/Charts/AreaChart';
+
 import CountUp from 'react-countup';
 
 // react icons

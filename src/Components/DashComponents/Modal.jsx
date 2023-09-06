@@ -3,7 +3,7 @@ import { BsCamera, BsThreeDotsVertical } from 'react-icons/bs';
 import { Tooltip } from 'react-tooltip';
 import { useForm } from 'react-hook-form';
 
-const Modal = ({ children }) => {
+const Modal = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);

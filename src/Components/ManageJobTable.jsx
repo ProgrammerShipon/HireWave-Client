@@ -12,8 +12,8 @@ export default function ManageJobTable({ managejobs }) {
     setShowDropdown(false);
   };
   return (
-    <tr className="bg-white  text-slate-600  border-b-2 border-slate-50">
-      <td className="px-3 py-4 font-medium text-dark flex items-center ">
+    <tr className="bg-white border-b-2 text-slate-600 border-slate-50">
+      <td className="flex items-center px-3 py-4 font-medium text-dark ">
         <FaRegStar className="mr-2 text-green" />
         {title}
       </td>
@@ -30,7 +30,7 @@ export default function ManageJobTable({ managejobs }) {
             onClick={() => setShowDropdown(!showDropdown)}
           >
             <svg
-              className="h-5 w-5"
+              className="w-5 h-5"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
               fill="currentColor"
@@ -45,7 +45,7 @@ export default function ManageJobTable({ managejobs }) {
           </button>
         )}
         {showDropdown && (
-          <div className="absolute w-32 rounded-md shadow-lg bg-white  ring-black ring-opacity-5 z-10">
+          <div className="absolute z-10 w-32 bg-white rounded-md shadow-lg ring-black ring-opacity-5">
             <div className="py-1" role="none">
               <button
                 onClick={() => handleStatusChange("Active")}

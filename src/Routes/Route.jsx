@@ -24,7 +24,6 @@ import DashboardHome from "../Dashboard/DashboardHome"
 import ChangePassword from "../Dashboard/ChangePassword";
 import AppliedJobs from "../Dashboard/AppliedJobs";
 import MyProfile from "../Dashboard/MyProfile";
-import MyResume from "../Dashboard/MyResume";
 import Messages from "../Dashboard/Messages";
 import PostedJobs from "../Dashboard/PostedJobs";
 import ManageUsers from "../Dashboard/ManageUsers";
@@ -32,6 +31,10 @@ import ManageJobs from "../Dashboard/ManageJobs";
 import CandidateList from "../Dashboard/CandidateList";
 import RecruiterList from "../Dashboard/RecruiterList";
 import ApplyJob from "../Pages/ApplyJob";
+import Onboarding from "../Onboarding/Onboarding";
+import RoleChoice from "../Onboarding/RoleChoice";
+import EmployerOnboarding from "../Onboarding/EmployerOnboarding";
+import Conference from "../Pages/Conference";
 
 const Router = createBrowserRouter([
   {
@@ -62,10 +65,17 @@ const Router = createBrowserRouter([
       {
         path: "/candidate_details/:id",
         element: <CandidateDetails />,
+        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/jobCandidates/${params.id}`)
       },
       {
         path: "/job_details/:id",
         element: <JobDetails />,
+        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`)
+      },
+      {
+        path: "/apply_job/:id",
+        element: <ApplyJob />,
+        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`)
       },
       {
         path: "/learning",
@@ -142,15 +152,15 @@ const Router = createBrowserRouter([
         path: "appliedJobs",
         element: <AppliedJobs />
       },
-      {
-        path: "myResume",
-        element: <MyResume />
-      },
 
       // Recruiter routes
       {
         path: "messages",
         element: <Messages />
+      },
+      {
+        path: "room",
+        element: <Conference />
       },
       {
         path: "postedJobs",
@@ -176,6 +186,21 @@ const Router = createBrowserRouter([
       }
 
     ]
+  },
+  {
+    path: "role_choice",
+    element: <RoleChoice />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "onboarding",
+    element: <Onboarding />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "employer_onboarding",
+    element: <EmployerOnboarding />,
+    errorElement: <ErrorPage />
   }
 ]);
 

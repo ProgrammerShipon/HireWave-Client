@@ -1,77 +1,88 @@
-import DashTitle from "./DashTitle";
+import DashTitle from "../Components/DashComponents/DashTitle";
 import useAllJobs from "./../Hooks/useAllJobs";
-import ManageJobTable from "../Components/ManageJobTable";
+import ManageJobTable from "../Components/DashComponents/ManageJobTable";
 
 const ManageJobs = () => {
-  const [allJobsData] = useAllJobs();
+    const [allJobsData, loading] = useAllJobs();
 
-  return (
-    <section className="m-5">
-      <DashTitle title="Job Management" />
-      <div className="hover:shadow-md w-full lg:w-full overflow-x-scroll lg:overflow-hidden duration-300 mt-5 rounded-xl ">
-        {/* filtering option */}
-        <div className="flex justify-between w-[900px] lg:w-full bg-white text-dark px-5 py-3 font-medium">
-          <div className="">
-            <h2 className="text-3xl font-medium">
-              Engineer <span className="text-sm text-lightGray">5 jobs</span>
-            </h2>
-          </div>
+    return (
+        <section className="m-5">
+            <DashTitle title="Manage Jobs" />
 
-          <div className="flex items-center">
-            <h2>Filter By:</h2>
-            <select
-              name="filter"
-              id="filter"
-              className="py-1 bg-white border border-slate-200 ml-1 rounded-md px-3"
-            >
-              <option value="Engineer">Engineer</option>
-              <option value="designer">Designer</option>
-              <option value="front-end">Front-End</option>
-              <option value="back-end">Back-End</option>
-            </select>
+            {/* filtering option */}
+            <div className="flex flex-col lg:flex-row items-center gap-3 justify-between bg-white p-4 rounded-md shadow-xl mt-10">
+                {/* search by title */}
+                <div className="w-full sm:w-72">
+                    <input
+                        type="text"
+                        placeholder="Search job title"
+                        className="border border-gray/40 p-2 rounded-md bg-white focus:outline-none focus:border-green w-full"
+                    />
+                </div>
 
-            <h2 className="ml-2">Category:</h2>
-            <select
-              name="filter"
-              id="filter"
-              className="py-1 bg-white border border-slate-200 ml-1 rounded-md px-3"
-            >
-              <option value="Engineer">Engineer</option>
-              <option value="designer">Designer</option>
-              <option value="front-end">Front-End</option>
-              <option value="back-end">Back-End</option>
-            </select>
+                <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+                    <h2 className="text-lg text-dark">Filter By: </h2>
 
-            <select
-              name="filter"
-              id="filter"
-              className="py-1 bg-white border border-slate-200 ml-1 rounded-md px-3"
-            >
-              <option value="Engineer">Recent</option>
-              <option value="designer">Oldest</option>
-            </select>
-          </div>
-        </div>
-        {/* table */}
-        <table className="table bg-white w-[900px] lg:w-full text-left ">
-          <thead className=" text-dark text-lg">
-            <tr>
-              <th className="px-5 py-3 ">Job Title</th>
-              <th className="px-5 py-3 ">Category</th>
-              <th className="px-5 py-3">Post Date</th>
-              <th className="text-center px-5 py-3 ">Applied</th>
-              <th className="px-5 py-3 ">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allJobsData?.map((data) => (
-              <ManageJobTable key={data.id} managejobs={data} />
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
-  );
+                    {/* filter by status */}
+                    <select
+                        name="status"
+                        className="py-1 border border-gray/40 text-lightGray focus:outline-none focus:border-green rounded-md px-2 w-full sm:w-auto"
+                    >
+                        <option value="">Status</option>
+                        <option value="approve">Approve</option>
+                        <option value="pending">Pending</option>
+                        <option value="denied">Denied</option>
+                    </select>
+
+                    {/* filter by category */}
+                    <select
+                        name="category"
+                        className="py-1 border border-gray/40 text-lightGray focus:outline-none focus:border-green rounded-md px-2 w-full sm:w-auto"
+                    >
+                        <option value="">Category</option>
+                        {
+                            Array.from(new Set(allJobsData.map(item => item.category))).map((category, index) => (
+                                <option key={index} value={category}>
+                                    {category}
+                                </option>
+                            ))
+                        }
+                    </select>
+
+                    {/* filter by date */}
+                    <select
+                        name="date"
+                        className="py-1 border border-gray/40 text-lightGray focus:outline-none focus:border-green rounded-md px-2 w-full sm:w-auto"
+                    >
+                        <option value="recent">Recent</option>
+                        <option value="oldest">Oldest</option>
+                    </select>
+                </div>
+            </div>
+
+            {/* manage jobs table */}
+            <div className="w-full overflow-x-auto duration-300 rounded-md shadow-4xl shadow-gray/40 bg-white mt-6">
+                {
+                    !loading ? <table className="table lg:w-full w-[800px] text-left">
+                        <thead className="text-lg text-green border-b border-green/40">
+                            <tr>
+                                <th className="px-3 py-3 font-medium">Job Title</th>
+                                <th className="px-3 py-3 font-medium">Category</th>
+                                <th className="px-3 py-3 font-medium">Post Date</th>
+                                <th className="px-3 py-3 font-medium text-center">Applied</th>
+                                <th className="px-3 py-3 font-medium text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {allJobsData.map((job) => (
+                                <ManageJobTable key={job._id} job={job} />
+                            ))}
+                        </tbody>
+                    </table> : <h1>Loading ...</h1>
+                }
+            </div>
+        </section>
+    );
 };
 
 export default ManageJobs;

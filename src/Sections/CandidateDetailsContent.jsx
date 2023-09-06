@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RecentReviewSlider from "../Components/RecentReviewSlider";
 
 // react icons
@@ -17,9 +17,12 @@ import { LuGraduationCap } from "react-icons/lu";
 // react rating
 import { Rating, Star } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import useAuth from "../Hooks/useAuth";
+import useAxios from "../Hooks/useAxios";
 
 const CandidateDetailsContent = ({ candidateDetails }) => {
     const {
+        _id,
         name,
         images,
         location,
@@ -36,6 +39,9 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
         experience,
         skills,
     } = candidateDetails;
+    const { userId } = useAuth();
+    const navigate=useNavigate();
+    const formattedAbout = about.map(pa => pa === "" ? "\u00A0" : pa);
 
     // rating style
     const myStyles = {
@@ -43,6 +49,21 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
         activeFillColor: "#ffb33e",
         inactiveFillColor: "#a78f6d",
     };
+    // members: [req.body.senderId, req.body.receiverId],
+    // const senderEmail = user.email;
+    // console.log(_id)
+    const handleCreateChat = () => {
+        console.log('handleCreateChat')
+        const senderId = userId;
+        const receiverId = _id;
+       const members = {senderId, receiverId}
+       console.log(members)
+        useAxios.post('/chat', members)
+            .then(data => {
+                console.log(data)
+                navigate('/dashboard/messages')
+            })
+    }
 
     return (
         <section className="py-20 md:py-[120px] duration-300">
@@ -60,7 +81,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                                 />
 
                                 <span
-                                    className={`absolute top-1 right-1 text-white px-3 rounded-full text-sm capitalize ${status == "online" ? "bg-green" : "bg-red-400"
+                                    className={`absolute top-1 right-1 text-white px-3 rounded-full text-sm capitalize ${status ? "bg-green" : "bg-red-400"
                                         }`}
                                 >
                                     {status}
@@ -149,7 +170,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                                 />
                             </button>
 
-                            <button className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
+                            <button onClick={handleCreateChat} className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
                                 Contact With Me{" "}
                                 <AiOutlineMessage
                                     size="22"
@@ -210,7 +231,12 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                         {/* about */}
                         <div>
                             <h2 className="mb-1 text-3xl font-medium text-dark">About</h2>
-                            <p>{about}</p>
+                            {
+                                formattedAbout.map((para, index) => <p
+                                    key={index}
+                                    className="text-lg text-lightGray"
+                                >{para}</p>)
+                            }
                         </div>
 
                         {/* education */}

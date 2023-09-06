@@ -1,8 +1,8 @@
+import DashTitle from '../Components/DashComponents/DashTitle';
 import useAuth from '../Hooks/useAuth';
-import AdminDashboard from './AdminDashboard';
-import CandidateDashboard from './CandidateDashboard';
-import DashTitle from './DashTitle';
-import RecruiterDashboard from './RecruiterDashboard';
+import AdminDashboard from '../Sections/DashSections/AdminDashboard';
+import CandidateDashboard from '../Sections/DashSections/CandidateDashboard';
+import RecruiterDashboard from '../Sections/DashSections/RecruiterDashboard';
 
 const DashboardHome = () => {
     const { user } = useAuth();
