@@ -1125,11 +1125,14 @@
     "@babel/plugin-transform-react-jsx-source" "^7.22.5"
     react-refresh "^0.14.0"
 
+<<<<<<< HEAD
 "@zegocloud/zego-uikit-prebuilt@^1.8.10":
   version "1.8.10"
   resolved "https://registry.npmjs.org/@zegocloud/zego-uikit-prebuilt/-/zego-uikit-prebuilt-1.8.10.tgz"
   integrity sha512-dD/nCXAP9h/9M/dzCj1xyLXvH3Z0EJStuO4u9F0NywupB2xqdJ6Gp1nziFj2dti5ogAs9pDEaHI5GDjiBtzJHg==
 
+=======
+>>>>>>> 3fde6a4c8833791ae793fa80a2fa02d53866896b
 acorn-jsx@^5.3.2:
   version "5.3.2"
   resolved "https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-5.3.2.tgz"

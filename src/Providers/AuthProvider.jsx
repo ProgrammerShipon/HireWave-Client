@@ -60,7 +60,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     setLoading(true);
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {      
       setUser(currentUser);
       setLoading(false);
 
@@ -89,8 +89,6 @@ const AuthProvider = ({ children }) => {
 
 
   useEffect(() => {
-    console.log(loading)
-    console.log(user);
     !loading && user && fetch(`https://hire-wave-server.vercel.app/api/users/byEmail/${user.email}`)
       .then((res) => res.json())
       .then((data) => {

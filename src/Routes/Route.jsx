@@ -1,40 +1,40 @@
 import { createBrowserRouter } from "react-router-dom";
+import AppliedJobs from "../Dashboard/AppliedJobs";
+import CandidateList from "../Dashboard/CandidateList";
+import ChangePassword from "../Dashboard/ChangePassword";
+import DashboardHome from "../Dashboard/DashboardHome";
+import ManageJobs from "../Dashboard/ManageJobs";
+import ManageUsers from "../Dashboard/ManageUsers";
+import Messages from "../Dashboard/Messages";
+import MyProfile from "../Dashboard/MyProfile";
+import PostedJobs from "../Dashboard/PostedJobs";
+import RecruiterList from "../Dashboard/RecruiterList";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
+import AllCategories from "../Pages/AllCategories";
 import AppliedCandidates from "../Pages/AppliedCandidates";
+import ApplyJob from "../Pages/ApplyJob";
 import BrowseJobs from "../Pages/BrowseJobs";
+import CandidateDetails from "../Pages/CandidateDetails";
 import Candidates from "../Pages/Candidates";
+import Conference from "../Pages/Conference";
+import Contact from "../Pages/Contact";
+import EventDetails from "../Pages/EventDetails";
+import Events from "../Pages/Events";
 import FindTalents from "../Pages/FindTalents";
 import Home from "../Pages/Home";
 import JobDetails from "../Pages/JobDetails";
 import Learning from "../Pages/Learning";
 import Login from "../Pages/Login";
 import PostJob from "../Pages/PostJob";
+import Recruiters from "../Pages/Recruiters";
 import SavedJobs from "../Pages/SavedJobs";
 import SignUp from "../Pages/SignUp";
-import Contact from "../Pages/Contact";
-import Recruiters from "../Pages/Recruiters";
-import AllCategories from "../Pages/AllCategories";
-import CandidateDetails from "../Pages/CandidateDetails";
-import Events from "../Pages/Events";
-import EventDetails from "../Pages/EventDetails";
+import CandidateSignUpForm from "../SignUpSteps/CandidateSignUpForm";
+import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
+import SelectRole from "../SignUpSteps/SelectRole";
 import RecruitersDetails from "./../Pages/RecruitersDetails";
-import Dashboard from "../Layout/Dashboard"
-import DashboardHome from "../Dashboard/DashboardHome"
-import ChangePassword from "../Dashboard/ChangePassword";
-import AppliedJobs from "../Dashboard/AppliedJobs";
-import MyProfile from "../Dashboard/MyProfile";
-import Messages from "../Dashboard/Messages";
-import PostedJobs from "../Dashboard/PostedJobs";
-import ManageUsers from "../Dashboard/ManageUsers";
-import ManageJobs from "../Dashboard/ManageJobs";
-import CandidateList from "../Dashboard/CandidateList";
-import RecruiterList from "../Dashboard/RecruiterList";
-import ApplyJob from "../Pages/ApplyJob";
-import Onboarding from "../Onboarding/Onboarding";
-import RoleChoice from "../Onboarding/RoleChoice";
-import EmployerOnboarding from "../Onboarding/EmployerOnboarding";
-import Conference from "../Pages/Conference";
 
 const Router = createBrowserRouter([
   {
@@ -188,18 +188,18 @@ const Router = createBrowserRouter([
     ]
   },
   {
-    path: "role_choice",
-    element: <RoleChoice />,
+    path: "select_role",
+    element: <SelectRole />,
     errorElement: <ErrorPage />
   },
   {
-    path: "onboarding",
-    element: <Onboarding />,
+    path: "candidate_sign_up",
+    element: <CandidateSignUpForm />,
     errorElement: <ErrorPage />
   },
   {
-    path: "employer_onboarding",
-    element: <EmployerOnboarding />,
+    path: "recruiter_sign_up",
+    element: <RecruiterSignUpForm />,
     errorElement: <ErrorPage />
   }
 ]);
