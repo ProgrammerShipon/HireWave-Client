@@ -2,25 +2,36 @@ import { useEffect, useState } from 'react';
 import { Stepper, Step } from "@tkwant/react-steps";
 import { Controller, useForm } from 'react-hook-form';
 import useSkills from '../Hooks/useSkills';
-import useAxios from '../Hooks/useAxios';
 import useAuth from '../Hooks/useAuth';
 import Swal from 'sweetalert2';
 
 // react icons
 import { FaXmark } from 'react-icons/fa6';
 import { AiOutlinePlus, AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import useAxios from '../Hooks/useAxios';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const CandidateSignUpForm = () => {
-    const { user } = useAuth();
-    const [skillData, loading] = useSkills();
-    const { control, register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
-
     const [curStep, setCurStep] = useState(0);
     const [finish, setFinish] = useState(false);
+    const [skillData, loading] = useSkills();
+    const { user } = useAuth();
+    const { axiosSecure } = useAxios();
+    const navigate = useNavigate();
+
+    const { control, register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
 
     //Form Submit function
     const onSubmit = data => {
         const todayDate = new Date();
+
+        const newUser = {
+            role: 'candidate',
+            name: user?.displayName,
+            email: user?.email,
+            image: user?.photoURL
+        }
         const newData = {
             role: 'candidate',
             name: user?.displayName,
@@ -52,28 +63,27 @@ const CandidateSignUpForm = () => {
             visibility: data.visibility,
             joinDate: todayDate
         }
-        console.log(newData)
 
         setCurStep(curStep + 1)
-
-        if (!finish) {
-            return
+        if (finish) {
+            return axiosSecure.post('/candidates', newData)
+                .then(data => {
+                    if (data.status === 200) {
+                        axios.post('https://hire-wave-server.vercel.app/api/user', newUser)
+                            .then(data => {
+                                console.log(newUser, data)
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'Sign Up successfully',
+                                    showConfirmButton: false,
+                                    timer: 2500
+                                });
+                                navigate('/', { replace: true })
+                            })
+                    }
+                })
         }
-
-        useAxios.post('/users', newData)
-            .then(data => {
-                if (data.status === 200) {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Sign Up successfully',
-                        showConfirmButton: false,
-                        timer: 2500
-                    });
-                    navigate('/', { replace: true })
-                }
-            })
-
     }
 
     // Previous step function

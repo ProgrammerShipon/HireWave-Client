@@ -31,19 +31,19 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-    // change password
-    const changePassword = (newPassword) => {
-        setLoading(true)
-        const user = auth.currentUser;
-        return updatePassword(user, newPassword);
-    }
+  // change password
+  const changePassword = (newPassword) => {
+    setLoading(true)
+    const user = auth.currentUser;
+    return updatePassword(user, newPassword);
+  }
 
-    // google sign in
-    const googleSignIn = () => {
-        setLoading(true);
-        const googleProvider = new GoogleAuthProvider();
-        return signInWithPopup(auth, googleProvider)
-    }
+  // google sign in
+  const googleSignIn = () => {
+    setLoading(true);
+    const googleProvider = new GoogleAuthProvider();
+    return signInWithPopup(auth, googleProvider)
+  }
 
   // google sign in
   const gitHubSignIn = () => {
@@ -64,7 +64,7 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
 
       if (currentUser && currentUser?.email) {
-        fetch("http://localhost:3030/api/jwt", {
+        fetch("https://hire-wave-server.vercel.app/api/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -86,23 +86,23 @@ const AuthProvider = ({ children }) => {
     }
   }, []);
 
-    const authInfo = {
-        user,
-        loading,
-        signUpUser,
-        signIn,
-        profileUpdate,
-        googleSignIn,
-        gitHubSignIn,
-        logOut,
-        changePassword
-    }
+  const authInfo = {
+    user,
+    loading,
+    signUpUser,
+    signIn,
+    profileUpdate,
+    googleSignIn,
+    gitHubSignIn,
+    logOut,
+    changePassword
+  }
 
-    return (
-        <AuthContext.Provider value={authInfo}>
-            {children}
-        </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider value={authInfo}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;

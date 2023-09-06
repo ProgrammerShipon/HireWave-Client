@@ -3,9 +3,11 @@ import CandidateCard from "../Components/CandidateCard";
 import Button from "../Components/Button";
 import useCandidatesData from "../Hooks/useCandidatesData";
 import { Link } from "react-router-dom";
+import useReview from "../Hooks/useReview";
 
 const TopCandidates = () => {
     const [candidatesData] = useCandidatesData();
+    const [reviewData] = useReview();
 
     return (
         <section className="py-20 md:py-[120px] duration-300">
@@ -17,7 +19,7 @@ const TopCandidates = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6 mt-12 md:mt-16">
                     {
                         candidatesData?.map((candidate) => (
-                            <CandidateCard key={candidate._id} candidate={candidate} />
+                            <CandidateCard key={candidate._id} candidate={candidate} reviewData={reviewData} />
                         ))
                     }
                 </div>
