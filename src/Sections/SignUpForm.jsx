@@ -3,18 +3,16 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Swal from 'sweetalert2';
 import SocialLogin from "../Components/SocialLogin";
-import useAuth from '../Hooks/useAuth';
-
 // react icons
 import { BiUserPin } from 'react-icons/bi';
 import { BsShieldCheck } from 'react-icons/bs';
 import { MdAlternateEmail, MdLockOutline } from 'react-icons/md';
+import useAuth from "../Hooks/useAuth";
 import useAxios from "../Hooks/useAxios";
 
 const SignUpForm = () => {
     const { signUpUser, profileUpdate } = useAuth();
-    const [axiosSecure] = useAxios();
-    console.log(axiosSecure);
+    const { axiosSecure } = useAxios();
 
     // navigate
     const navigate = useNavigate();
