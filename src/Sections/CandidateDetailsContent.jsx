@@ -1,46 +1,42 @@
 import { Link, useNavigate } from "react-router-dom";
 import RecentReviewSlider from "../Components/RecentReviewSlider";
+import useReview from "../Hooks/useReview";
 
 // react icons
+import { AiOutlineMessage } from "react-icons/ai";
 import { BiMap } from "react-icons/bi";
 import { BsBookmarkPlus, BsCurrencyDollar } from "react-icons/bs";
-import { AiOutlineMessage } from "react-icons/ai";
 import {
     FaFacebookF,
     FaGithub,
     FaLinkedin,
-    FaTwitter,
     FaRegCalendarAlt,
+    FaTwitter,
 } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 
 // react rating
 import { Rating, Star } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import { useEffect, useState } from "react";
 import useAuth from "../Hooks/useAuth";
 import useAxios from "../Hooks/useAxios";
 
 const CandidateDetailsContent = ({ candidateDetails }) => {
+    const [reviewData, loading] = useReview();
     const {
-        _id,
-        name,
-        images,
-        location,
-        status,
-        hourlyRate,
-        joinDate,
-        category,
-        recommendations,
-        rating,
-        recentReview,
-        languages,
-        about,
-        education,
-        experience,
-        skills,
+        _id, name, email, image, location, status, hourlyRate, joinDate, category, recommendations, languages, about, education, experience, skills,
     } = candidateDetails;
     const { userId } = useAuth();
     const navigate=useNavigate();
+
+    const [review, setReview] = useState([]);
+
+    useEffect(() => {
+        const getReview = reviewData.filter(rvl => rvl.email.toLowerCase() === email.toLowerCase());
+        setReview(getReview)
+    }, [reviewData.length])
+
     const formattedAbout = about.map(pa => pa === "" ? "\u00A0" : pa);
 
     // rating style
@@ -75,8 +71,8 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                         <div className="relative -top-8">
                             <div className="relative w-64 h-64 p-3 mx-auto overflow-hidden duration-300 bg-white border border-green/50 shadow-4xl shadow-gray/40 group-hover:shadow-green/20">
                                 <img
-                                    src={images}
-                                    className="object-cover object-center w-full h-full animate-pulse"
+                                    src={image}
+                                    className="object-cover object-center w-full h-full"
                                     alt={name}
                                 />
 
@@ -84,22 +80,22 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                                     className={`absolute top-1 right-1 text-white px-3 rounded-full text-sm capitalize ${status ? "bg-green" : "bg-red-400"
                                         }`}
                                 >
-                                    {status}
+                                    {status ? "Online" : "Offline"}
                                 </span>
                             </div>
 
                             {/* rating */}
                             <div className="flex items-center justify-center gap-1 mt-5">
-                                <p className="px-2 text-purple bg-purple/30">{rating}</p>
+                                <p className="px-2 text-purple bg-purple/30">{review.length > 0 && review[0].rating}</p>
 
                                 <Rating
                                     className="max-w-[110px]"
                                     readOnly
-                                    value={rating}
+                                    value={review.length > 0 && review[0].rating}
                                     itemStyles={myStyles}
                                 />
 
-                                <span className="text-gray">(0{recentReview.length})</span>
+                                <span className="text-gray">(0{review.length})</span>
                             </div>
 
                             <p className="mt-1 text-sm text-center text-gray">
@@ -119,7 +115,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                             </p>
 
                             <p className="flex items-center gap-[2px] font-light text-dark ">
-                                <BiMap className="text-lightGray" /> {location}
+                                <BiMap className="text-lightGray" /> {location[0]}, {location[1]}
                             </p>
                             <p className="text-gray">Member since {joinDate}</p>
                         </div>
@@ -189,9 +185,11 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                         <div className="p-6 bg-white shadow-4xl shadow-gray/20">
                             <h2 className="mb-4 text-xl font-medium text-dark">
                                 Recent Review{" "}
-                                <span className="text-gray">(0{recentReview.length})</span>
+                                <span className="text-gray">(0{review.length})</span>
                             </h2>
-                            <RecentReviewSlider recentReview={recentReview} />
+                            {
+                                !loading ? <RecentReviewSlider recentReview={review} /> : ''
+                            }
                         </div>
 
                         {/* languages */}

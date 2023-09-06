@@ -5,8 +5,8 @@ import useAuth from "./useAuth";
 // import { useNavigate } from "react-router-dom";
 
 // online link
-// const serverLink = "https://hire-wave-server.vercel.app/api";
-const serverLink = "http://localhost:3030/api";
+const serverLink = "https://hire-wave-server.vercel.app/api";
+// const serverLink = "http://localhost:3030/api";
 
 // use Axios Secure
 const axiosSecure = axios.create({
@@ -20,10 +20,11 @@ const useAxios = () => {
   useEffect(() => {
     // Axios Request api & send data
     axiosSecure.interceptors.request.use((config) => {
+
       // get local storage date
       const token = localStorage.getItem("hire-wave-token");
 
-      // check access token
+      // access token
       token && (config.headers.Authorization = `Bearer ${token}`);
 
       // send server
