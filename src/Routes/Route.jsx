@@ -26,6 +26,7 @@ import FindTalents from "../Pages/FindTalents";
 import Home from "../Pages/Home";
 import JobDetails from "../Pages/JobDetails";
 import Learning from "../Pages/Learning";
+import LearningDetails from "../Pages/LearningDetails";
 import Login from "../Pages/Login";
 import PostJob from "../Pages/PostJob";
 import Recruiters from "../Pages/Recruiters";
@@ -35,7 +36,6 @@ import CandidateSignUpForm from "../SignUpSteps/CandidateSignUpForm";
 import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
 import SelectRole from "../SignUpSteps/SelectRole";
 import RecruitersDetails from "./../Pages/RecruitersDetails";
-import userPrivateRoute from "./userPrivateRoute";
 
 const Router = createBrowserRouter([
   {
@@ -86,6 +86,10 @@ const Router = createBrowserRouter([
       {
         path: "/learning",
         element: <Learning />,
+      },
+      {
+        path: "/learning/:id",
+        element: <LearningDetails />,
       },
       {
         path: "/saved_jobs",
