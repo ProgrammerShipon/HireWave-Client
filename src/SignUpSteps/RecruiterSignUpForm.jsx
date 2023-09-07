@@ -24,63 +24,41 @@ const RecruiterSignUpForm = () => {
 
     //Form Submit function
     const onSubmit = data => {
-        const todayDate = new Date();
-        const newData = {
-          role: "recruiter",
-          profileView: 0,
-          userInfo: {
-            name: data.name,
-            title,
-            email: user?.email,
-            phone: [data.country_code, data.phone],
-            image: user?.photoURL,
-            banner: null,
-            category: data.category,
-            industry: data.industry,
-            website: data.website,
-          },
-          about: [],
-          specialties: [],
-          location: [data.country, data.state],
-          address: data.address,
-          status: Boolean,
+    const todayDate = new Date();
+    const newData = {
+        role: "recruiter",
+        name: data.name,
+        title: data.title,
+        email: user?.email,
+        phone: [data.country_code, data.phone],
+        image: user?.photoURL,
+        banner: null,
+        industry: data.industry,
+        website: data.website,
+        category: data.category,
+        subCategory: data.subCategory,
+        location: [data.country, data.state],
+        address: data.address,
+        about: [],
+        specialties: [],
+        status: "pending",
+        active: false,
+        followers: 0,
+        joinDate: todayDate,
+    };
 
-          subCategory: data.subCategory,
-          followers: 0,
-          joinDate: todayDate,
-        };
-        console.log('candidates -> ', newData)
+      setCurStep(curStep + 1);
 
-        const newUser = {
-            role: 'recruiter',
-            name: data.name,
-            email: user?.email,
-            image: user?.photoURL
-        }
-        console.log('newUser -> ', newUser)
-
-        setCurStep(curStep + 1)
-
-        if (finish) {
-            return axiosSecure.post('/candidates', newData)
-                .then(data => {
-                    if (data.status === 200) {
-                        axiosSecure.post('/users', newUser)
-                            .then(data => {
-                                if (data.status === 200) {
-                                    Swal.fire({
-                                        position: 'center',
-                                        icon: 'success',
-                                        title: 'Sign Up successfully',
-                                        showConfirmButton: false,
-                                        timer: 2500
-                                    });
-                                    navigate('/', { replace: true })
-                                }
-                            })
-                    }
-                })
-        }
+      // Step Finish
+      if (finish) {
+        console.log("all data console -> ", newData);
+        return axiosSecure
+          .post("/recruiters", newData)
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((err) => console.log(err));
+      }
     }
 
     // Previous step function
