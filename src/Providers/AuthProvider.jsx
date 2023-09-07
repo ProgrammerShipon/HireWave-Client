@@ -64,21 +64,21 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       setLoading(false);
 
-      if (currentUser && currentUser?.email) {
-        fetch("https://hire-wave-server.vercel.app/api/jwt", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({ email: currentUser?.email }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data)
-            const token = data?.token
-            localStorage.setItem("hire-wave-token", token);
-          });
-      }
+      // if (currentUser && currentUser?.email) {
+      //   fetch("https://hire-wave-server.vercel.app/api/jwt", {
+      //     method: "POST",
+      //     headers: {
+      //       "content-type": "application/json",
+      //     },
+      //     body: JSON.stringify({ email: currentUser?.email }),
+      //   })
+      //     .then((res) => res.json())
+      //     .then((data) => {
+      //       console.log(data)
+      //       const token = data?.token
+      //       localStorage.setItem("hire-wave-token", token);
+      //     });
+      // }
 
     });
 
@@ -87,21 +87,8 @@ const AuthProvider = ({ children }) => {
     }
   }, []);
 
-
-  useEffect(() => {
-    console.log(loading)
-    console.log(user);
-    !loading && user && fetch(`https://hire-wave-server.vercel.app/api/users/byEmail/${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data._id);
-        setUserId(data);
-      });
-  }, [user, loading]);
-  
   const authInfo = {
     user,
-    userId,
     loading,
     signUpUser,
     signIn,

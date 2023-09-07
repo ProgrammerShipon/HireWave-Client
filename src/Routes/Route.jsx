@@ -31,11 +31,9 @@ import ManageJobs from "../Dashboard/ManageJobs";
 import CandidateList from "../Dashboard/CandidateList";
 import RecruiterList from "../Dashboard/RecruiterList";
 import ApplyJob from "../Pages/ApplyJob";
-import Onboarding from "../Onboarding/Onboarding";
-import RoleChoice from "../Onboarding/RoleChoice";
-import EmployerOnboarding from "../Onboarding/EmployerOnboarding";
-import Conference from "../Pages/Conference";
-import Chat from "../Dashboard/Chat";
+import SelectRole from "../SignUpSteps/SelectRole";
+import CandidateSignUpForm from "../SignUpSteps/CandidateSignUpForm";
+import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
 
 const Router = createBrowserRouter([
   {
@@ -66,7 +64,7 @@ const Router = createBrowserRouter([
       {
         path: "/candidate_details/:id",
         element: <CandidateDetails />,
-        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/jobCandidates/${params.id}`)
+        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/candidates/${params.id}`)
       },
       {
         path: "/job_details/:id",
@@ -159,14 +157,14 @@ const Router = createBrowserRouter([
       //   path: "messages",
       //   element: <Messages />
       // },
-      {
-        path: "messages",
-        element: <Chat />
-      },
-      {
-        path: "room",
-        element: <Conference />
-      },
+      // {
+      //   path: "messages",
+      //   element: <Chat />
+      // },
+      // {
+      //   path: "room",
+      //   element: <Conference />
+      // },
       {
         path: "postedJobs",
         element: <PostedJobs />
@@ -193,18 +191,18 @@ const Router = createBrowserRouter([
     ]
   },
   {
-    path: "role_choice",
-    element: <RoleChoice />,
+    path: "select_role",
+    element: <SelectRole />,
     errorElement: <ErrorPage />
   },
   {
-    path: "onboarding",
-    element: <Onboarding />,
+    path: "candidate_sign_up",
+    element: <CandidateSignUpForm />,
     errorElement: <ErrorPage />
   },
   {
-    path: "employer_onboarding",
-    element: <EmployerOnboarding />,
+    path: "recruiter_sign_up",
+    element: <RecruiterSignUpForm />,
     errorElement: <ErrorPage />
   }
 ]);
