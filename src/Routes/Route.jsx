@@ -66,22 +66,20 @@ const Router = createBrowserRouter([
       {
         path: "/candidate_details/:id",
         element: <CandidateDetails />,
-        loader: ({ params }) =>
-          fetch(
+        loader: async ({ params }) =>
+         await fetch(
             `https://hire-wave-server.vercel.app/api/candidates/${params.id}`
           ),
       },
       {
         path: "/job_details/:id",
         element: <JobDetails />,
-        loader: ({ params }) =>
-          fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`),
+        loader: async ({ params }) => await fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`),
       },
       {
         path: "/apply_job/:id",
         element: <ApplyJob />,
-        loader: ({ params }) =>
-          fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`),
+        loader: async ({ params }) => await fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`),
       },
       {
         path: "/learning",
@@ -90,6 +88,7 @@ const Router = createBrowserRouter([
       {
         path: "/learning/:id",
         element: <LearningDetails />,
+        loader: async ({ params }) => await fetch(`http://localhost:3030/api/learning/${params.id}`),
       },
       {
         path: "/saved_jobs",
@@ -122,8 +121,8 @@ const Router = createBrowserRouter([
       {
         path: "/recruiters_details/:id",
         element: <RecruitersDetails />,
-        loader: ({ params }) =>
-          fetch(
+        loader: async ({ params }) =>
+         await fetch(
             `https://hire-wave-server.vercel.app/api/recruiters/${params.id}`
           ),
       },
@@ -137,9 +136,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "/event_details/:name",
-        element: (
-            <EventDetails />
-        ),
+        element: <EventDetails />,
       },
     ],
   },
