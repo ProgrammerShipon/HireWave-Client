@@ -40,50 +40,19 @@ const SignUpForm = () => {
         }
 
         signUpUser(data.email, data.password)
-            .then((result) => {
-                profileUpdate(result.user, data.name)
-                    .then(() => {
-                        const user = {
-                            name: data.name,
-                            email: data.email,
-                            role: data.role,
-                        };
-                        console.log(user);
-
-                        signUpUser(data.email, data.password)
-                            .then((result) => {
-                                profileUpdate(result.user, data.name)
-                                    .then(() => {
-                                        navigate(from, { replace: true })
-                                    })
-                                    .catch((error) => {
-                                        toast.error(error.message, {
-                                            position: "top-right",
-                                            autoClose: 4000,
-                                            theme: "light",
-                                        });
-                                        navigate(from, { replace: true });
-                    
-                                    });
-
-                                navigate(from, { replace: true });
-                            })
-                            .catch((error) => {
-                                toast.error(error.message, {
-                                    position: "top-right",
-                                    autoClose: 4000,
-                                    theme: "light",
-                                });
-                            });
-                    })
-                    .catch((error) => {
-                        toast.error(error.message, {
-                            position: "top-right",
-                            autoClose: 4000,
-                            theme: "light",
-                        });
-                    });
-            })
+          .then((result) => {
+              profileUpdate(result.user, data.name)
+                .then(() => {
+                    navigate(from, { replace: true });
+                  })
+                  .catch((error) => {
+                      toast.error(error.message, {
+                          position: "top-right",
+                          autoClose: 4000,
+                          theme: "light",
+                      });
+                  });
+          })
     };
 
   return (
@@ -110,6 +79,7 @@ const SignUpForm = () => {
               {...register("name", { required: true })}
             />
           </div>
+
           {errors.name && (
             <span className="text-sm text-red ml-1">Name is required</span>
           )}
