@@ -3,23 +3,26 @@ import CandidateDetailsContent from "../Sections/CandidateDetailsContent";
 import Divider from "../Components/Divider";
 import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
-import useAuth from "../Hooks/useAuth";
+import PageLoader from "../Components/PageLoader";
 
 const CandidateDetails = () => {
     const singleData = useLoaderData();
-    const { userId } = useAuth();
-    console.log(userId)
 
     return (
         <>
-            <Helmet>
-                <title>{singleData.name} - Hire Wave</title>
-            </Helmet>
+            {
+                singleData.email &&
+                <Helmet>
+                    <title>{singleData.name} - Hire Wave</title>
+                </Helmet>
+            }
 
             <Breadcrumbs title="Candidates Details" />
 
             {/* sections */}
-            <CandidateDetailsContent candidateDetails={singleData} />
+            {
+                singleData.email ? <CandidateDetailsContent candidateDetails={singleData} /> : <PageLoader />
+            }
 
             {/* border */}
             <Divider />

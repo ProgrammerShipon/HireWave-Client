@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import ScrollToTop from "react-scroll-to-top";
 import Footer from '../Shared/Footer';
 import Navbar from '../Shared/Navbar';
@@ -8,8 +8,17 @@ import StayTop from '../Components/StayTop';
 // react toastify
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useCurrentUser from '../Hooks/useCurrentUser';
+import useAuth from '../Hooks/useAuth';
 
 const Main = () => {
+   const { user } = useAuth();
+   const [currentUser] = useCurrentUser();
+   const navigate = useNavigate();
+
+   if (user?.email && currentUser === undefined) {
+      return navigate('/select_role', { replace: true })
+   }
    return (
       <>
          <StayTop />

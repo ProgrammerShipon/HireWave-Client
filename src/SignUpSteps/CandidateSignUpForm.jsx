@@ -8,14 +8,15 @@ import useSkills from '../Hooks/useSkills';
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlinePlus } from 'react-icons/ai';
 import { FaXmark } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
-import useAxios from '../Hooks/useAxios';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import Swal from "sweetalert2";
 
 const CandidateSignUpForm = () => {
     const [curStep, setCurStep] = useState(0);
     const [finish, setFinish] = useState(false);
     const [skillData, loading] = useSkills();
     const { user } = useAuth();
-    const { axiosSecure } = useAxios();
+    const [axiosSecure] = useAxiosSecure();
     const navigate = useNavigate();
 
     const { control, register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
@@ -23,13 +24,6 @@ const CandidateSignUpForm = () => {
     //Form Submit function
     const onSubmit = data => {
         const todayDate = new Date();
-
-        // const newUser = {
-        //     role: 'candidate',
-        //     name: user?.displayName,
-        //     email: user?.email,
-        //     image: user?.photoURL
-        // }
 
         const newData = {
             role: 'candidate',
@@ -58,22 +52,59 @@ const CandidateSignUpForm = () => {
             socialLink: [],
             languages: [],
             recommendations: 0,
-            status: null,
+            status: "pending",
+            active: false,
             visibility: data.visibility,
             joinDate: todayDate
         }
-
+        const newUser = {
+            role: 'candidate',
+            name: user?.displayName,
+            email: user?.email,
+            image: user?.photoURL,
+        }
         setCurStep(curStep + 1)
 
         // Step Finish 
         if (finish) {
-          console.log("all data console -> ", newData);
-          return axiosSecure
-            .post("/candidate", newData)
-            .then((data) => {
-              console.log(data);
+            return fetch(' http://localhost:3030/api/candidate', {
+                method: "POST",
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(newData)
             })
-            .catch((err) => console.log(err));
+                .then(res => res.json())
+                .then((data) => {
+                    console.log(data)
+                    if (data._id) {
+                        fetch(' http://localhost:3030/api/users', {
+                            method: "POST",
+                            headers: { 'content-type': 'application/json' },
+                            body: JSON.stringify(newUser)
+                        })
+                            .then(res => res.json())
+                            .then((data) => {
+                                console.log(data)
+                            })
+                        Swal.fire('User Login Successful')
+                    }
+                })
+
+            // axiosSecure
+            //     .post("/candidate", newData)
+            //     .then((data) => {
+            //         console.log(data)
+            //         if (data.status === 200) {
+            //             Swal.fire({
+            //                 position: 'center',
+            //                 icon: 'success',
+            //                 title: 'Sign Up successfully',
+            //                 showConfirmButton: false,
+            //                 timer: 2500
+            //             });
+            //             navigate('/', { replace: true })
+            //         }
+            //     })
+            //     .catch((err) => console.log(err));
         }
     }
 

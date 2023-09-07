@@ -1,26 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxios from "./useAxios";
+import useAxiosSecure from "./useAxiosSecure";
 
 const useRecruiters = () => {
-  const { axiosSecure } = useAxios()
-  const {
-    data: recruiterData = [],
-    isLoading: loading,
-    refetch,
-  } = useQuery({
-    queryKey: ["recruiterData"],
-    queryFn: async () => {
-      const res = await fetch("https://hire-wave-server.vercel.app/api/recruiters");
-      const data = await res.json();
-      return data;
+    const [axiosSecure] = useAxiosSecure();
+    const { data: recruiterData = [], isLoading: loading, refetch, } = useQuery({
+        queryKey: ["recruiterData"],
+        queryFn: async () => {
+            const res = await axiosSecure('/recruiters');
+            return res.data;
+        },
+    });
 
-      // const res = await axiosSecure("/recruiters");
-      // const data = await res.json();
-      // return data?.data;
-    },
-  });
-
-  return [recruiterData, loading, refetch];
+    return [recruiterData, loading, refetch];
 };
 
 export default useRecruiters;

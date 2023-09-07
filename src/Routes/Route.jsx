@@ -34,8 +34,9 @@ import SavedJobs from "../Pages/SavedJobs";
 import SignUp from "../Pages/SignUp";
 import CandidateSignUpForm from "../SignUpSteps/CandidateSignUpForm";
 import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
+import PrivateRoute from "./PrivateRoute";
+import RecruitersDetails from "../Pages/RecruitersDetails";
 import SelectRole from "../SignUpSteps/SelectRole";
-import RecruitersDetails from "./../Pages/RecruitersDetails";
 
 const Router = createBrowserRouter([
   {
@@ -66,21 +67,18 @@ const Router = createBrowserRouter([
       },
       {
         path: "/candidate_details/:id",
-        element: <CandidateDetails />,
-        loader: async ({ params }) =>
-         await fetch(
-            `https://hire-wave-server.vercel.app/api/candidates/${params.id}`
-          ),
+        element: <PrivateRoute><CandidateDetails /></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/candidate/${params.id}`)
       },
       {
         path: "/job_details/:id",
-        element: <JobDetails />,
-        loader: async ({ params }) => await fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`),
+        element: <PrivateRoute><JobDetails /></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`)
       },
       {
         path: "/apply_job/:id",
-        element: <ApplyJob />,
-        loader: async ({ params }) => await fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`),
+        element: <PrivateRoute><ApplyJob /></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`)
       },
       {
         path: "/learning",
@@ -121,11 +119,8 @@ const Router = createBrowserRouter([
       },
       {
         path: "/recruiters_details/:id",
-        element: <RecruitersDetails />,
-        loader: async ({ params }) =>
-         await fetch(
-            `https://hire-wave-server.vercel.app/api/recruiters/${params.id}`
-          ),
+        element: <PrivateRoute><RecruitersDetails /></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/recruiters/${params.id}`)
       },
       {
         path: "/contact",
@@ -143,7 +138,7 @@ const Router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard />,
+    element: <PrivateRoute><Dashboard /></PrivateRoute>,
     errorElement: <ErrorPage />,
     children: [
       //Common Routes
@@ -201,19 +196,19 @@ const Router = createBrowserRouter([
   },
   {
     path: "select_role",
-    element: <SelectRole />,
-    errorElement: <ErrorPage />,
+    element: <PrivateRoute><SelectRole /></PrivateRoute>,
+    errorElement: <ErrorPage />
   },
   {
     path: "candidate_sign_up",
-    element: <CandidateSignUpForm />,
-    errorElement: <ErrorPage />,
+    element: <PrivateRoute><CandidateSignUpForm /></PrivateRoute>,
+    errorElement: <ErrorPage />
   },
   {
     path: "recruiter_sign_up",
-    element: <RecruiterSignUpForm />,
-    errorElement: <ErrorPage />,
-  },
+    element: <PrivateRoute><RecruiterSignUpForm /></PrivateRoute>,
+    errorElement: <ErrorPage />
+  }
 ]);
 
 export default Router;
