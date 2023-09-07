@@ -7,9 +7,10 @@ import { useForm } from 'react-hook-form';
 import { CgComment } from 'react-icons/cg'
 import useLearningData from '../Hooks/useLearningData';
 import { Link } from 'react-router-dom';
+import moment from 'moment/moment';
 
 const LearningDetailsBody = ({singleLearningData}) => {
-    const [learningData] = useLearningData();
+    const {learningData, loading} = useLearningData();
     const { _id, title, description, videoLink, authorName, authorEmail, authorImg, comments, createdAt, updatedAt } = singleLearningData
     
     //Sidebar content excluding the data in operation
@@ -21,6 +22,7 @@ const LearningDetailsBody = ({singleLearningData}) => {
 
     const onSubmit = data => {
         console.log(data);
+        // TODO: add comment using user info
         reset()
     }
     
@@ -34,7 +36,7 @@ const LearningDetailsBody = ({singleLearningData}) => {
                     <div className='lg:col-span-3'>
                         {/* Title & Created, updated date */}
                         <h2 className='text-2xl md:text-3xl lg:text-4xl text-green'>{title}</h2>
-                        <p className='text-sm mt-3'>Created: {createdAt} | Updated: {updatedAt}</p>
+                        <p className='text-sm mt-3'>Created: {moment(createdAt).format("MMM Do YYYY")} | Updated: {moment(updatedAt).format("MMM Do YYYY")}</p>
 
                         {/* Video */}
                         <div className='mt-10 mb-12 md:mb-16'>
@@ -64,6 +66,7 @@ const LearningDetailsBody = ({singleLearningData}) => {
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className='flex items-center gap-3 mb-5'>
                                 <img className="rounded-full w-10" src={authorImg} alt="" />
+                                {/* TODO: Add user image here */}
                                 <input
                                     className='rounded outline-none h-10 border-b border-dark/20 px-3 w-full'
                                     type="text"
@@ -89,40 +92,47 @@ const LearningDetailsBody = ({singleLearningData}) => {
                     
 
                     {/* Sidebar */}
-                    <div className='hidden lg:block col-span-1'>
                     {
-                        sidebarContent.map(sidebar => 
-                        <div className="p-2 rounded-lg hover:shadow-xl hover:shadow-green/20 border border-dark/40 hover:border-green duration-300 mb-3">
+                        !loading ?
+                        <div className='hidden lg:block col-span-1'>
+                        {
+                            sidebarContent.map(sidebar => 
+                            <div className="p-2 rounded-lg hover:shadow-xl hover:shadow-green/20 border border-dark/40 hover:border-green duration-300 mb-3">
+    
+                            {/* Thumbnail */}
+                            <img
+                                className="object-cover object-center w-full rounded-lg"
+                                src={sidebar.thumbnail}
+                                alt={sidebar.title}
+                            />
+                
+                            {/* Content */}
+                            <div className="flex flex-col justify-between px-2 mt-5 mb-2">
+                                {/* Title & Description */}
+                                <div>
+                                    <div className="text-purple duration-300 hover:underline"> {sidebar.category} </div>
+                                    <h3 className=" text-green font-semibold"> {sidebar.title} </h3>
+                                    <p className="line-clamp-3 mt-2 text-sm">{sidebar.description}</p>
+                                </div>
+                
+                                {/* Author Details */}
+                                <div className="flex items-center gap-3 my-3">
+                                    <img className="rounded-full w-6" src={sidebar.authorImg} alt="" />
+                                    <h3 className="text-dark">{sidebar.authorName}</h3>
+                                </div>
+            
+                                {/* Detail Button */}
+                                <Link to={`/learning/${sidebar._id}`} className="bg-purple text-white inline-block px-2 py-1 lg:px-3 lg:py-2 rounded-md duration-300 hover:bg-dark shadow-xl shadow-purple/20 hover:shadow-dark/20 mr-3 cursor-pointer text-center">Explore</Link>
+                            </div>
+                        </div>)
+                        }
+                        </div> :
 
-                        {/* Thumbnail */}
-                        <img
-                            className="object-cover object-center w-full rounded-lg"
-                            src={sidebar.thumbnail}
-                            alt={sidebar.title}
-                        />
-            
-                        {/* Content */}
-                        <div className="flex flex-col justify-between px-2 mt-5 mb-2">
-                            {/* Title & Description */}
-                            <div>
-                                <div className="text-purple duration-300 hover:underline"> {sidebar.category} </div>
-                                <h3 className=" text-green font-semibold"> {sidebar.title} </h3>
-                                <p className="line-clamp-3 mt-2 text-sm">{sidebar.description}</p>
-                            </div>
-            
-                            {/* Author Details */}
-                            <div className="flex items-center gap-3 my-3">
-                                <img className="rounded-full w-6" src={sidebar.authorImg} alt="" />
-                                <h3 className="text-dark">{sidebar.authorName}</h3>
-                            </div>
-        
-                            {/* Detail Button */}
-                            <Link to={`/learning/${sidebar._id}`} className="bg-purple text-white inline-block px-2 py-1 lg:px-3 lg:py-2 rounded-md duration-300 hover:bg-dark shadow-xl shadow-purple/20 hover:shadow-dark/20 mr-3 cursor-pointer text-center">Explore</Link>
-                        </div>
-                    </div>)
+                        // Loader
+                        <h2>Loading...</h2>
                     }
-                    </div>
-                </div>             
+                </div>
+                
             </div>
         </div>
     );

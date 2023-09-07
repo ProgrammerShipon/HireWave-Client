@@ -4,7 +4,7 @@ const useCandidatesData = () => {
     const { data: candidatesData = [], isLoading: loading, refetch } = useQuery({
         queryKey: ['candidatesData'],
         queryFn: async () => {
-            const res = await fetch('https://hire-wave-server.vercel.app/api/jobCandidates');
+            const res = await fetch('https://hire-wave-server.vercel.app/api/candidates');
             const data = await res.json();
             return data;
         },

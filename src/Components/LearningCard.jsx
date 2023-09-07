@@ -1,5 +1,5 @@
+import { BsBookmarkStar } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { BsBookmarkStar } from "react-icons/bs"
 const LearningCard = ({ learning }) => {
     const { _id, category, thumbnail, title, description, readTime, authorName, authorEmail, authorImg } = learning
 
@@ -40,7 +40,7 @@ const LearningCard = ({ learning }) => {
                 </div>
             </div>
         </div>
-    );
+      )
 };
 
 export default LearningCard;

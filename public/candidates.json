@@ -1,72 +1,31 @@
 [
   {
-    "_id": 1,
     "name": "Olivia Johnson",
-    "JobNeeded": "Open to work",
-    "address": "Uttara Model Town, 1230",
-    "jobTitle": "Front End Developer | React Developer",
-    "images": "https://i.ibb.co/jDPFM9F/req-1.jpg",
+    "email": "OliviaJohnson@gmail.com",
+    "image": "https://i.ibb.co/jDPFM9F/req-1.jpg",
     "title": "Mern Stack Developer | React Developer",
-    "jobType": "As Needed - Open to work",
-    "openToWork": false,
-    "location": "Los Angeles, CA",
+    "phone": [
+      "+12",
+      "1202-1281"
+    ],
     "category": "Frontend Developer",
+    "hourlyRate": 20,
+    "jobType": "As Needed - Open to work",
+    "location": [
+      "Los Angeles",
+      "CA"
+    ],
+    "address": "Uttara Model Town, 1230",
+    "skills": [
+      "JavaScript",
+      "React",
+      "Node.js"
+    ],
     "about": [
       "Hello there! My name is Olivia Johnson. I am a frontend developer, and I’m very passionate and dedicated to my work. With 5 years of experience as a professional frontend developer, I have acquired the skills and knowledge necessary to make your project a success.",
       "",
       "a professional frontend developer, I have acquired the skills and knowledge necessary to make your project a success."
     ],
-    "status": true,
-    "skills": ["JavaScript", "React", "Node.js"],
-    "socialLink": [
-      {
-        "linkedin": "https://www.linkedin.com/in/oliviajohnson/"
-      },
-      {
-        "github": "https://www.github.com/oliviajohnson/"
-      }
-    ],
-    "rating": 4.9,
-    "languages": [
-      {
-        "name": "English",
-        "level": "fluent"
-      },
-      {
-        "name": "Spanish",
-        "level": "comfortable"
-      }
-    ],
-    "recentReview": [
-      {
-        "recruiter": "Emily Adams",
-        "logo": "https://i.ibb.co/v3ygypq/brooke-cagle-JBwcen-Ou-RCg-unsplash.jpg",
-        "location": "Los Angeles, CA",
-        "skills": ["JavaScript", "React", "Node.js"],
-        "socialLink": [
-          {
-            "linkedin": "https://www.linkedin.com/in/oliviajohnson/"
-          },
-          {
-            "github": "https://www.github.com/oliviajohnson/"
-          }
-        ],
-        "rating": 4.9,
-        "review": "Working with Olivia was a great experience. She delivered outstanding results and showed excellent teamwork.",
-        "date": "Sep 15, 2023"
-      },
-      {
-        "recruiter": "Michael Brown",
-        "logo": "https://i.ibb.co/c1Vf1XD/pexels-andrea-piacquadio-927451.jpg",
-        "location": "San Francisco, CA",
-        "rating": 5.0,
-        "review": "Olivia's creativity and attention to detail truly impressed us. She has a deep understanding of user experience.",
-        "date": "Aug 30, 2023"
-      }
-    ],
-    "hourlyRate": 20,
-    "recommendations": 2,
-    "salaryRange": "80-120",
     "education": [
       {
         "institute": "University of California, Los Angeles",
@@ -77,38 +36,173 @@
     ],
     "experience": [
       {
-        "logo": "https://i.ibb.co/4PW9s7L/im-2.png",
-        "companyName": "Adroit",
         "position": "Frontend Developer",
-        "jobType": "full time",
+        "companyName": "Adroit",
         "location": "Los Angeles, CA",
         "startDate": "July 01, 2020",
-        "currentWorking": true
+        "endDate": "Present"
       }
     ],
+    "socialLink": [
+      {
+        "linkedin": "https://www.linkedin.com/in/oliviajohnson/"
+      },
+      {
+        "github": "https://www.github.com/oliviajohnson/"
+      }
+    ],
+    "languages": [
+      {
+        "name": "English",
+        "level": "fluent"
+      },
+      {
+        "name": "Spanish",
+        "level": "comfortable"
+      }
+    ],
+    "recommendations": 2,
+    "status": true,
+    "visibility": "visible",
     "joinDate": "Aug 19, 2020"
   },
   {
-    "_id": 2,
-    "name": "Liam Smith",
-    "images": "https://i.ibb.co/41bpfKJ/req-2.jpg",
-    "title": "Data Scientist",
-    "jobType": "As Needed - Open to work",
-    "openToWork": true,
-    "address": "Uttara Model Town, 1230",
-    "location": "San Francisco, CA",
-    "category": "Data Scientist",
-    "about": [
-      "Hello there! My name is Liam Smith. I am a data scientist, and I’m very passionate and dedicated to my work. With 3 years of experience as a professional data scientist, I have acquired the skills and knowledge necessary to make your project a success."
+    "name": "Emma Davis",
+    "email": "EmmaDavis@example.com",
+    "image": "https://i.ibb.co/41bpfKJ/req-2.jpg",
+    "title": "UX Designer",
+    "phone": [
+      "+34",
+      "9876-5432"
     ],
-    "status": true,
-    "skills": ["Python", "R", "Machine Learning", "Data Analysis"],
-    "socialLink": [
+    "category": "Web Designer",
+    "hourlyRate": 25,
+    "jobType": "Full-time",
+    "location": [
+      "San Francisco",
+      "CA"
+    ],
+    "address": "123 Main Street, Apt 45",
+    "skills": [
+      "UI/UX Design",
+      "Wireframing",
+      "Prototyping"
+    ],
+    "about": [
+      "Hello, I'm Emma Davis, a passionate UX designer with a strong focus on creating user-friendly and visually appealing interfaces.",
+      "I believe that good design can enhance user experiences and bring value to businesses."
+    ],
+    "education": [
       {
-        "linkedin": "https://www.linkedin.com/in/liamsmith/"
+        "institute": "California State University",
+        "subject": "Bachelor in Interaction Design",
+        "startDate": "Sep 01, 2015",
+        "endDate": "June 15, 2019"
       }
     ],
-    "rating": 4.8,
+    "experience": [
+      {
+        "position": "UX Designer",
+        "companyName": "DigitalCraft",
+        "location": "San Francisco, CA",
+        "startDate": "July 01, 2019",
+        "endDate": "Present"
+      },
+      {
+        "position": "UI Designer",
+        "companyName": "CreativeSolutions",
+        "location": "Los Angeles, CA",
+        "startDate": "Jan 15, 2017",
+        "endDate": "June 30, 2019"
+      }
+    ],
+    "socialLink": [
+      {
+        "linkedin": "https://www.linkedin.com/in/emmadavis/"
+      },
+      {
+        "github": "https://www.github.com/emmadavis/"
+      },
+      {
+        "twitter": "https://www.twitter.com/emmadavis/"
+      }
+    ],
+    "languages": [
+      {
+        "name": "English",
+        "level": "fluent"
+      },
+      {
+        "name": "Spanish",
+        "level": "basic"
+      }
+    ],
+    "recommendations": 5,
+    "status": true,
+    "visibility": "visible",
+    "joinDate": "Oct 10, 2019"
+  },
+  {
+    "name": "John Anderson",
+    "email": "John.Anderson@example.com",
+    "image": "https://digity.netlify.app/assets/images/team/1.png",
+    "title": "Software Engineer",
+    "phone": [
+      "+1",
+      "555-1234"
+    ],
+    "category": "Backend Developer",
+    "hourlyRate": 30,
+    "jobType": "Full-time",
+    "location": [
+      "New York",
+      "NY"
+    ],
+    "address": "456 Elm Street, Apt 22",
+    "skills": [
+      "Java",
+      "Python",
+      "Databases"
+    ],
+    "about": [
+      "Hello, I'm John Anderson, a software engineer with a passion for building robust and scalable applications.",
+      "I enjoy solving complex problems and collaborating with teams to deliver high-quality software."
+    ],
+    "education": [
+      {
+        "institute": "Columbia University",
+        "subject": "Bachelor in Computer Science",
+        "startDate": "Sep 01, 2013",
+        "endDate": "June 15, 2017"
+      }
+    ],
+    "experience": [
+      {
+        "position": "Software Engineer",
+        "companyName": "TechCorp",
+        "location": "New York, NY",
+        "startDate": "July 01, 2017",
+        "endDate": "Present"
+      },
+      {
+        "position": "Junior Developer",
+        "companyName": "CodeMasters",
+        "location": "San Francisco, CA",
+        "startDate": "Feb 15, 2016",
+        "endDate": "June 30, 2017"
+      }
+    ],
+    "socialLink": [
+      {
+        "linkedin": "https://www.linkedin.com/in/johnanderson/"
+      },
+      {
+        "github": "https://www.github.com/johnanderson/"
+      },
+      {
+        "twitter": "https://www.twitter.com/johnanderson/"
+      }
+    ],
     "languages": [
       {
         "name": "English",
@@ -119,433 +213,379 @@
         "level": "intermediate"
       }
     ],
-    "recentReview": [
-      {
-        "recruiter": "Sophia Miller",
-        "logo": "https://i.ibb.co/tQN0k6p/pexels-andrea-piacquadio-941572.jpg",
-        "location": "Chicago, IL",
-        "rating": 4.8,
-        "review": "Liam's analytical skills and dedication to research are remarkable. He consistently delivers high-quality insights.",
-        "date": "Aug 20, 2023"
-      },
-      {
-        "recruiter": "Daniel Wilson",
-        "logo": "https://i.ibb.co/V21tBFm/pexels-andrea-piacquadio-3480329.jpg",
-        "location": "New York, NY",
-        "rating": 4.9,
-        "review": "Liam's contributions have been pivotal in shaping our data-driven strategy. His expertise is commendable.",
-        "date": "July 10, 2023"
-      }
+    "recommendations": 7,
+    "status": false,
+    "visibility": "visible",
+    "joinDate": "May 5, 2017"
+  },
+  {
+    "name": "Sophia Martinez",
+    "email": "Sophia.Martinez@example.com",
+    "image": "https://i.ibb.co/nbjYRxQ/req-5.jpg",
+    "title": "Graphic Designer",
+    "phone": [
+      "+1",
+      "555-5678"
     ],
-    "hourlyRate": 40,
-    "recommendations": 4,
-    "salaryRange": "150-250",
+    "category": "Creative Designer",
+    "hourlyRate": 35,
+    "jobType": "Freelance",
+    "location": [
+      "Chicago",
+      "IL"
+    ],
+    "address": "789 Maple Avenue, Suite 10",
+    "skills": [
+      "Adobe Illustrator",
+      "Photoshop",
+      "Typography"
+    ],
+    "about": [
+      "Hi, I'm Sophia Martinez, a creative graphic designer with a love for visual storytelling.",
+      "I specialize in crafting engaging and memorable designs that leave a lasting impression."
+    ],
     "education": [
       {
-        "institute": "Stanford University",
+        "institute": "Art Institute of Chicago",
+        "subject": "Bachelor in Graphic Design",
+        "startDate": "Sep 01, 2014",
+        "endDate": "June 15, 2018"
+      }
+    ],
+    "experience": [
+      {
+        "position": "Graphic Designer",
+        "companyName": "Artistic Designs",
+        "location": "Chicago, IL",
+        "startDate": "July 01, 2018",
+        "endDate": "Present"
+      },
+      {
+        "position": "Junior Designer",
+        "companyName": "Creative Studios",
+        "location": "Los Angeles, CA",
+        "startDate": "Feb 15, 2017",
+        "endDate": "June 30, 2018"
+      }
+    ],
+    "socialLink": [
+      {
+        "linkedin": "https://www.linkedin.com/in/sophiamartinez/"
+      },
+      {
+        "behance": "https://www.behance.net/sophiamartinez/"
+      },
+      {
+        "instagram": "https://www.instagram.com/sophiam.designs/"
+      }
+    ],
+    "languages": [
+      {
+        "name": "English",
+        "level": "fluent"
+      },
+      {
+        "name": "Spanish",
+        "level": "intermediate"
+      }
+    ],
+    "recommendations": 4,
+    "status": true,
+    "visibility": "visible",
+    "joinDate": "June 20, 2018"
+  },
+  {
+    "name": "Daniel Williams",
+    "email": "Daniel.Williams@example.com",
+    "image": "https://digity.netlify.app/assets/images/team/7.png",
+    "title": "Full Stack Developer",
+    "phone": [
+      "+1",
+      "555-9876"
+    ],
+    "category": "Software Engineer",
+    "hourlyRate": 40,
+    "jobType": "Remote",
+    "location": [
+      "Austin",
+      "TX"
+    ],
+    "address": "321 Oak Street, Apt 8",
+    "skills": [
+      "JavaScript",
+      "Python",
+      "React",
+      "Node.js"
+    ],
+    "about": [
+      "Hello, I'm Daniel Williams, a full stack developer passionate about creating web applications.",
+      "I have a strong background in both frontend and backend development and love tackling challenging projects."
+    ],
+    "education": [
+      {
+        "institute": "University of Texas at Austin",
+        "subject": "Bachelor in Computer Science",
+        "startDate": "Sep 01, 2012",
+        "endDate": "June 15, 2016"
+      }
+    ],
+    "experience": [
+      {
+        "position": "Full Stack Developer",
+        "companyName": "Tech Innovations",
+        "location": "Austin, TX",
+        "startDate": "July 01, 2016",
+        "endDate": "Present"
+      },
+      {
+        "position": "Frontend Developer",
+        "companyName": "Web Wizards",
+        "location": "San Francisco, CA",
+        "startDate": "Feb 15, 2015",
+        "endDate": "June 30, 2016"
+      }
+    ],
+    "socialLink": [
+      {
+        "linkedin": "https://www.linkedin.com/in/danielwilliams/"
+      },
+      {
+        "github": "https://www.github.com/danielwilliams/"
+      },
+      {
+        "twitter": "https://www.twitter.com/danielwilliams/"
+      }
+    ],
+    "languages": [
+      {
+        "name": "English",
+        "level": "fluent"
+      },
+      {
+        "name": "German",
+        "level": "basic"
+      }
+    ],
+    "recommendations": 6,
+    "status": false,
+    "visibility": "visible",
+    "joinDate": "May 10, 2016"
+  },
+  {
+    "name": "Ava Johnson",
+    "email": "Ava.Johnson@example.com",
+    "image": "https://digity.netlify.app/assets/images/team/8.png",
+    "title": "Digital Marketer",
+    "phone": [
+      "+1",
+      "555-5432"
+    ],
+    "category": "Marketing Specialist",
+    "hourlyRate": 35,
+    "jobType": "Freelance",
+    "location": [
+      "Miami",
+      "FL"
+    ],
+    "address": "567 Beach Blvd, Suite 12",
+    "skills": [
+      "Social Media Marketing",
+      "SEO",
+      "Content Strategy"
+    ],
+    "about": [
+      "Hi, I'm Ava Johnson, a digital marketer with a passion for creating effective online marketing strategies.",
+      "I have a proven track record of driving brand awareness and engagement through various digital channels."
+    ],
+    "education": [
+      {
+        "institute": "University of Florida",
+        "subject": "Bachelor in Marketing",
+        "startDate": "Sep 01, 2013",
+        "endDate": "June 15, 2017"
+      }
+    ],
+    "experience": [
+      {
+        "position": "Digital Marketing Specialist",
+        "companyName": "Digital Marketing Pros",
+        "location": "Miami, FL",
+        "startDate": "July 01, 2017",
+        "endDate": "Present"
+      },
+      {
+        "position": "Social Media Manager",
+        "companyName": "Social Buzz",
+        "location": "Los Angeles, CA",
+        "startDate": "Feb 15, 2016",
+        "endDate": "June 30, 2017"
+      }
+    ],
+    "socialLink": [
+      {
+        "linkedin": "https://www.linkedin.com/in/avajohnson/"
+      },
+      {
+        "twitter": "https://www.twitter.com/avajohnson/"
+      },
+      {
+        "instagram": "https://www.instagram.com/avaj.digital/"
+      }
+    ],
+    "languages": [
+      {
+        "name": "English",
+        "level": "fluent"
+      },
+      {
+        "name": "Spanish",
+        "level": "intermediate"
+      }
+    ],
+    "recommendations": 4,
+    "status": true,
+    "visibility": "visible",
+    "joinDate": "June 20, 2017"
+  },
+  {
+    "name": "Oliver Wilson",
+    "email": "Oliver.Wilson@example.com",
+    "image": "https://digity.netlify.app/assets/images/team/4.png",
+    "title": "Data Analyst",
+    "phone": [
+      "+1",
+      "555-4321"
+    ],
+    "category": "Data Science",
+    "hourlyRate": 45,
+    "jobType": "Full-time",
+    "location": [
+      "Seattle",
+      "WA"
+    ],
+    "address": "789 Pine Street, Suite 5",
+    "skills": [
+      "Data Analysis",
+      "Python",
+      "SQL",
+      "Data Visualization"
+    ],
+    "about": [
+      "Hi, I'm Oliver Wilson, a data analyst with a passion for extracting insights from data.",
+      "I enjoy working with data to uncover meaningful trends and patterns that drive decision-making."
+    ],
+    "education": [
+      {
+        "institute": "University of Washington",
         "subject": "Bachelor in Data Science",
         "startDate": "Sep 01, 2015",
         "endDate": "June 15, 2019"
-      },
-      {
-        "institute": "Stanford University ",
-        "subject": "Masters in Computer Science",
-        "startDate": "Sep 02, 2016",
-        "endDate": "June 5, 2018"
       }
     ],
     "experience": [
       {
-        "logo": "https://i.ibb.co/j4hs5DG/im-1.png",
-        "companyName": "Charlie",
-        "position": "Data Scientist",
-        "jobType": "full time",
-        "location": "San Francisco, CA",
-        "startDate": "Sep 15, 2020",
-        "currentWorking": true
-      }
-    ],
-    "joinDate": "Aug 19, 2020"
-  },
-  {
-    "_id": 3,
-    "name": "Sophia Williams",
-    "images": "https://digity.netlify.app/assets/images/team/1.png",
-    "title": "Backend Developer",
-    "jobType": "Remote",
-    "openToWork": false,
-    "address": "Uttara Model Town, 1230",
-    "location": "America, US",
-    "category": "Backend Developer",
-    "about": [
-      "Hello there! My name is Sophia Williams. I am a backend developer, and I’m very passionate and dedicated to my work. With 5 years of experience as a professional developer, I have acquired the skills and knowledge necessary to make your project a success."
-    ],
-    "status": false,
-    "skills": ["Python", "Java", "Ruby", "Node.js (JavaScript)"],
-    "socialLink": [
-      {
-        "facebook": "https://www.facebook.com/sophia.williams"
-      },
-      {
-        "linkedin": "https://www.linkedin.com/in/sophiawilliams"
-      },
-      {
-        "github": "https://www.github.com/sophiadev"
-      },
-      {
-        "twitter": "https://www.twitter.com/sophiadeveloper"
-      }
-    ],
-    "rating": 4.3,
-    "languages": [
-      {
-        "name": "German",
-        "level": "comfortable"
-      },
-      {
-        "name": "Spanish",
-        "level": "fluent"
-      }
-    ],
-    "recentReview": [
-      {
-        "recruiter": "Elon Musk",
-        "logo": "https://i.ibb.co/NxcyBFg/pexels-andrea-piacquadio-3760514.jpg",
-        "location": "Palo Alto, CA",
-        "rating": 4.8,
-        "review": "Sophia's problem-solving skills have been instrumental in our projects. Her commitment to quality is truly remarkable.",
-        "date": "Sep 10, 2022"
-      },
-      {
-        "recruiter": "Satya Nadella",
-        "logo": "https://i.ibb.co/7RKmbyb/pexels-anna-shvets-5325105.jpg",
-        "location": "Redmond, WA",
-        "rating": 4.9,
-        "review": "Sophia's ability to adapt to new technologies quickly has been invaluable to our team. Her dedication to learning is impressive.",
-        "date": "July 22, 2021"
-      }
-    ],
-    "hourlyRate": 25,
-    "recommendations": 5,
-    "salaryRange": "300-600",
-    "education": [
-      {
-        "institute": "Stanford University",
-        "subject": "Master's in Computer Science",
-        "startDate": "Sep 01, 2018",
-        "endDate": "June 30, 2020",
-        "currentStudying": false
-      },
-      {
-        "institute": "University of California, Berkeley",
-        "subject": "Bachelor's in Computer Engineering",
-        "startDate": "Aug 01, 2014",
-        "endDate": "May 15, 2018",
-        "currentStudying": false
-      }
-    ],
-    "experience": [
-      {
-        "logo": "https://i.ibb.co/BswHmQD/im-3.png",
-        "companyName": "TechNexa",
-        "position": "Senior Backend Developer",
-        "jobType": "full time",
-        "location": "Los Angeles, CA",
-        "startDate": "July 15, 2020",
-        "currentWorking": true
-      },
-      {
-        "logo": "https://i.ibb.co/51n29ft/120px-Alfacast-screen-mirror-logo.png",
-        "companyName": "Innovate IT",
-        "position": "Backend Developer",
-        "jobType": "part time",
-        "location": "San Francisco, CA",
-        "startDate": "April 01, 2019",
-        "endDate": "June 30, 2020",
-        "currentWorking": false
-      }
-    ],
-    "joinDate": "Aug 19, 2021"
-  },
-  {
-    "_id": 4,
-    "name": "Noah Brown",
-    "images": "https://i.ibb.co/nbjYRxQ/req-5.jpg",
-    "title": "UX Designer",
-    "jobType": "Full Time",
-    "openToWork": true,
-    "address": "Uttara Model Town, 1230",
-    "location": "London, UK",
-    "category": "UX Designer",
-    "about": [
-      "Hello there! My name is Noah Brown. I am a UX designer, and I’m very passionate and dedicated to my work. With 8 years of experience as a professional designer, I have acquired the skills and knowledge necessary to make your project a success. Lorem ipsum dolor sit amet, consectetur adipisicing elit"
-    ],
-    "status": true,
-    "skills": ["Research", "Architecture", "Prototyping"],
-    "socialLink": [
-      {
-        "github": "https://www.github.com/sophiadev"
-      },
-      {
-        "twitter": "https://www.twitter.com/sophiadeveloper"
-      }
-    ],
-    "rating": 4.5,
-    "languages": [
-      {
-        "name": "English",
-        "level": "fluent"
-      },
-      {
-        "name": "French",
-        "level": "comfortable"
-      }
-    ],
-    "recentReview": [
-      {
-        "recruiter": "Mark Zuckerberg",
-        "logo": "https://i.ibb.co/fqZWv13/pexels-arina-krasnikova-5950081.jpg",
-        "location": "Palo Alto, CA",
-        "rating": 5.0,
-        "review": "Noah's innovative design concepts have truly impressed us. His ability to think outside the box is remarkable.",
-        "date": "Oct 05, 2022"
-      },
-      {
-        "recruiter": "Sheryl Sandberg",
-        "logo": "https://i.ibb.co/smc4Bc5/pexels-barion-mcqueen-11372197.jpg",
-        "location": "Menlo Park, CA",
-        "rating": 4.7,
-        "review": "Noah's attention to detail and user-centered approach have significantly enhanced our product's user experience.",
-        "date": "July 15, 2021"
-      }
-    ],
-    "hourlyRate": 18,
-    "recommendations": 2,
-    "salaryRange": "250-550",
-    "education": [
-      {
-        "institute": "Royal College of Art",
-        "subject": "Master's in Interaction Design",
-        "startDate": "Sep 01, 2014",
-        "endDate": "June 30, 2016",
-        "currentStudying": false
-      },
-      {
-        "institute": "University College London",
-        "subject": "Bachelor's in Graphic Design",
-        "startDate": "Aug 01, 2010",
-        "endDate": "May 15, 2014",
-        "currentStudying": false
-      }
-    ],
-    "experience": [
-      {
-        "logo": "https://i.ibb.co/Y06YYwV/120px-Alterida-S-L-Logo.png",
-        "companyName": "DesignHub",
-        "position": "Lead UX Designer",
-        "jobType": "full time",
-        "location": "London, UK",
-        "startDate": "May 01, 2019",
-        "currentWorking": true
-      },
-      {
-        "logo": "https://i.ibb.co/ZY6bCL8/im-4.png",
-        "companyName": "UX Innovators",
-        "position": "Senior UX Designer",
-        "jobType": "full time",
-        "location": "San Francisco, CA",
-        "startDate": "June 15, 2016",
-        "endDate": "April 30, 2019",
-        "currentWorking": false
-      }
-    ],
-    "joinDate": "Aug 19, 2020"
-  },
-  {
-    "_id": 5,
-    "name": "Alan Walker",
-    "images": "https://digity.netlify.app/assets/images/team/7.png",
-    "title": "Graphic Designer",
-    "jobType": "Remote",
-    "openToWork": true,
-    "address": "Uttara Model Town, 1230",
-    "location": "New York, NY",
-    "category": "Graphic Designer",
-    "about": [
-      "Hello Alan Walker, talented graphic designer! Let your creativity unfold and colors dance on your canvas, shaping visions into captivating realities. Your designs speak a language beyond words."
-    ],
-    "status": false,
-    "skills": ["Graphic Design", "Illustration", "UI/UX Design"],
-    "socialLink": [
-      {
-        "facebook": "https://www.facebook.com/alanwalker"
-      },
-      {
-        "twitter": "https://www.twitter.com/alanwalker"
-      },
-      {
-        "linkedin": "https://www.linkedin.com/in/alanwalker"
-      }
-    ],
-    "rating": 4.5,
-    "languages": [
-      {
-        "name": "English",
-        "level": "fluent"
-      },
-      {
-        "name": "Spanish",
-        "level": "intermediate"
-      }
-    ],
-    "recentReview": [
-      {
-        "client": "John Doe",
-        "logo": "https://i.ibb.co/rMKHF5W/pexels-cottonbro-studio-3206080.jpg",
-        "location": "Los Angeles, CA",
-        "rating": 5.0,
-        "review": "Alan's creativity and attention to detail are exceptional.",
-        "date": "Aug 15, 2023"
-      },
-      {
-        "client": "Jane Smith",
-        "logo": "https://i.ibb.co/BN0G0kw/pexels-cottonbro-studio-4064839.jpg",
-        "location": "Chicago, IL",
-        "rating": 4.8,
-        "review": "Alan's designs have brought our brand to life. Highly recommended.",
-        "date": "July 25, 2023"
-      }
-    ],
-    "hourlyRate": 25,
-    "recommendations": 3,
-    "salaryRange": "60-90",
-    "education": [
-      {
-        "institute": "School of Art and Design",
-        "subject": "Graphic Design",
-        "startDate": "Sep 2015",
-        "endDate": "May 2019"
-      }
-    ],
-    "experience": [
-      {
-        "logo": "https://i.ibb.co/qRFFwdP/im-5.jpg",
-        "companyName": "DesignHub",
-        "position": "Senior Designer",
-        "jobType": "full time",
-        "location": "New York, NY",
-        "startDate": "June 2019",
-        "endDate": "Present"
-      }
-    ],
-    "joinDate": "May 20, 2019"
-  },
-  {
-    "_id": 6,
-    "name": "Emma Watson",
-    "images": "https://digity.netlify.app/assets/images/team/8.png",
-    "title": "Software Engineer",
-    "jobType": "Contact",
-    "openToWork": false,
-    "address": "Uttara Model Town, 1230",
-    "location": "San Australia, CA",
-    "category": "Software Engineer",
-    "about": [
-      "Hello, I'm Emma Watson, a dedicated software engineer with a flair for innovation. Let's code the future together!Unlocking possibilities through code: Emma Watson, your trusted software engineer, here to bring your ideas to life."
-    ],
-    "status": true,
-    "skills": ["Java", "Python", "Web Development"],
-    "socialLink": [
-      {
-        "linkedin": "https://www.linkedin.com/in/emmawatson"
-      },
-      {
-        "github": "https://www.github.com/emmawatson"
-      }
-    ],
-    "rating": 4.2,
-    "languages": [
-      {
-        "name": "English",
-        "level": "fluent"
-      },
-      {
-        "name": "French",
-        "level": "intermediate"
-      }
-    ],
-    "recentReview": [
-      {
-        "client": "Alex Johnson",
-        "logo": "https://i.ibb.co/WD5LQvs/pexels-cottonbro-studio-4064840.jpg",
+        "position": "Data Analyst",
+        "companyName": "Data Insights",
         "location": "Seattle, WA",
-        "rating": 4.5,
-        "review": "Emma's problem-solving skills have been invaluable to our projects.",
-        "date": "Aug 10, 2023"
+        "startDate": "July 01, 2019",
+        "endDate": "Present"
       },
       {
-        "client": "Sarah Williams",
-        "logo": "https://i.ibb.co/74Vhpmj/pexels-fernanda-latronico-709188.jpg",
-        "location": "Austin, TX",
-        "rating": 4.7,
-        "review": "Emma's dedication to writing clean code is commendable.",
-        "date": "July 20, 2023"
+        "position": "Research Assistant",
+        "companyName": "Tech Research Institute",
+        "location": "San Francisco, CA",
+        "startDate": "Feb 15, 2018",
+        "endDate": "June 30, 2019"
       }
     ],
-    "hourlyRate": 35,
+    "socialLink": [
+      {
+        "linkedin": "https://www.linkedin.com/in/oliverwilson/"
+      },
+      {
+        "github": "https://www.github.com/oliverwilson/"
+      },
+      {
+        "twitter": "https://www.twitter.com/oliverwilson/"
+      }
+    ],
+    "languages": [
+      {
+        "name": "English",
+        "level": "fluent"
+      },
+      {
+        "name": "Spanish",
+        "level": "basic"
+      }
+    ],
     "recommendations": 5,
-    "salaryRange": "80-120",
+    "status": true,
+    "visibility": "visible",
+    "joinDate": "May 10, 2019"
+  },
+  {
+    "name": "Mia Anderson",
+    "email": "Mia.Anderson@example.com",
+    "image": "https://digity.netlify.app/assets/images/team/6.png",
+    "title": "UI/UX Designer",
+    "phone": [
+      "+1",
+      "555-8765"
+    ],
+    "category": "Design",
+    "hourlyRate": 40,
+    "jobType": "Freelance",
+    "location": [
+      "San Diego",
+      "CA"
+    ],
+    "address": "123 Beach Avenue, Apt 15",
+    "skills": [
+      "UI/UX Design",
+      "Wireframing",
+      "Prototyping",
+      "Adobe XD"
+    ],
+    "about": [
+      "Hello, I'm Mia Anderson, a UI/UX designer passionate about creating intuitive and visually appealing interfaces.",
+      "I believe that great design enhances user experiences and helps businesses succeed."
+    ],
     "education": [
       {
-        "institute": "University of Computer Science",
-        "subject": "Computer Science",
-        "startDate": "Sep 2016",
-        "endDate": "May 2020"
+        "institute": "San Diego State University",
+        "subject": "Bachelor in Interaction Design",
+        "startDate": "Sep 01, 2014",
+        "endDate": "June 15, 2018"
       }
     ],
     "experience": [
       {
-        "logo": "https://i.ibb.co/jkmcP33/121-systems-2011-logo-Black-Back-Large.jpg",
-        "companyName": "TechSolutions",
-        "position": "Software Engineer",
-        "jobType": "full time",
-        "location": "San Francisco, CA",
-        "startDate": "June 2020",
+        "position": "UI/UX Designer",
+        "companyName": "Design Innovators",
+        "location": "San Diego, CA",
+        "startDate": "July 01, 2018",
         "endDate": "Present"
+      },
+      {
+        "position": "Junior Designer",
+        "companyName": "Creative Studios",
+        "location": "Los Angeles, CA",
+        "startDate": "Feb 15, 2017",
+        "endDate": "June 30, 2018"
       }
     ],
-    "joinDate": "June 10, 2020"
-  },
-  {
-    "_id": 7,
-    "name": "Shaw Johnson",
-    "images": "https://digity.netlify.app/assets/images/team/4.png",
-    "title": "React Developer",
-    "jobType": "Full Time",
-    "openToWork": true,
-    "address": "Uttara Model Town, 1230",
-    "location": "United States, NY",
-    "category": "Frontend Developer",
-    "about": [
-      "Hello there! My name is Shaw Johnson. I am a passionate frontend developer dedicated to creating amazing user experiences. With 10 years of experience in web development, I can bring your ideas to life. Let's build something great together!"
-    ],
-    "status": false,
-    "skills": ["React", "JavaScript", "Node.js"],
     "socialLink": [
       {
-        "facebook": "https://www.facebook.com/shaw.johnson"
+        "linkedin": "https://www.linkedin.com/in/miaanderson/"
       },
       {
-        "twitter": "https://www.twitter.com/shawjohnson"
+        "behance": "https://www.behance.net/miaanderson/"
       },
       {
-        "linkedin": "https://www.linkedin.com/in/shaw-johnson"
-      },
-      {
-        "github": "https://www.github.com/shawjohnson"
+        "instagram": "https://www.instagram.com/mia.designs/"
       }
     ],
-    "rating": 4.4,
     "languages": [
       {
         "name": "English",
@@ -554,166 +594,11 @@
       {
         "name": "Spanish",
         "level": "intermediate"
-      },
-      {
-        "name": "French",
-        "level": "basic"
       }
     ],
-    "recentReview": [
-      {
-        "recruiter": "TechPros",
-        "logo": "https://i.ibb.co/LQr80cY/pexels-italo-melo-2379004.jpg",
-        "location": "San Francisco, CA",
-        "rating": 4.8,
-        "review": "Shaw Johnson's attention to detail and expertise in frontend development is outstanding. They consistently deliver high-quality work.",
-        "date": "Sep 10, 2022"
-      },
-      {
-        "recruiter": "WebMasters",
-        "logo": "https://i.ibb.co/7nZg4Cb/pexels-italo-melo-2379005.jpg",
-        "location": "Los Angeles, CA",
-        "rating": 4.7,
-        "review": "Shaw Johnson's proactive approach to problem-solving and staying up-to-date with industry trends is impressive.",
-        "date": "July 5, 2022"
-      }
-    ],
-    "hourlyRate": 20,
-    "recommendations": 2,
-    "salaryRange": "300-600",
-    "education": [
-      {
-        "institute": "New York University",
-        "subject": "Masters in Computer Science",
-        "startDate": "June 23, 2016",
-        "currentStudying": false
-      },
-      {
-        "institute": "New York University",
-        "subject": "Bachelor in Computer Science",
-        "startDate": "June 23, 2012",
-        "endDate": "May 30, 2016",
-        "currentStudying": false
-      }
-    ],
-    "experience": [
-      {
-        "logo": "https://i.ibb.co/82YLs7Z/Abracket-logo.png",
-        "companyName": "AppLab",
-        "position": "Frontend Developer",
-        "jobType": "full time",
-        "location": "Dhaka, Bangladesh",
-        "startDate": "June 23, 2010",
-        "currentWorking": true
-      },
-      {
-        "logo": "https://i.ibb.co/VSrKDdL/120px-Dvdvideosoft.png",
-        "companyName": "Yassir Limited",
-        "position": "Frontend Developer",
-        "jobType": "part time",
-        "location": "Dhaka, Bangladesh",
-        "startDate": "June 23, 2015",
-        "endDate": "Apr 23, 2017",
-        "currentWorking": false
-      }
-    ],
-    "joinDate": "Aug 19, 2010"
-  },
-  {
-    "_id": 8,
-    "name": "Thomas Zavala",
-    "images": "https://digity.netlify.app/assets/images/team/6.png",
-    "title": "Digital Marketing",
-    "jobType": "Part Time",
-    "openToWork": false,
-    "address": "Uttara Model Town, 1230",
-    "location": "Delhe, IND",
-    "category": "Marketing",
-    "about": [
-      "Hello there! I'm Thomas Zavala, a marketing expert with a passion for driving brand growth. With over 15 years of experience, I specialize in SEO, Google advertising, and Shopify. Let's take your brand to the next level!"
-    ],
-    "status": true,
-    "skills": ["SEO", "Google Ads", "Shopify"],
-    "socialLink": [
-      {
-        "facebook": "https://www.facebook.com/thomas.zavala"
-      },
-      {
-        "linkedin": "https://www.linkedin.com/in/thomas-zavala"
-      }
-    ],
-    "rating": 4.2,
-    "languages": [
-      {
-        "name": "English",
-        "level": "fluent"
-      },
-      {
-        "name": "Spanish",
-        "level": "native"
-      },
-      {
-        "name": "German",
-        "level": "basic"
-      }
-    ],
-    "recentReview": [
-      {
-        "recruiter": "DigitalBoost",
-        "logo": "https://i.ibb.co/58H9cKx/pexels-justin-shaifer-1222271.jpg",
-        "location": "San Francisco, CA",
-        "rating": 4.9,
-        "review": "Thomas Zavala is a true marketing visionary. His unique angles consistently set our brand apart in a crowded marketplace.",
-        "date": "Aug 20, 2022"
-      },
-      {
-        "recruiter": "MarketWise",
-        "logo": "https://i.ibb.co/DtVgC7q/pexels-moose-photos-1036627.jpg",
-        "location": "Los Angeles, CA",
-        "rating": 4.6,
-        "review": "Thomas Zavala's strategic thinking and understanding of consumer behavior have led to impactful marketing campaigns.",
-        "date": "July 10, 2022"
-      }
-    ],
-    "hourlyRate": 25,
-    "recommendations": 3,
-    "salaryRange": "150-200",
-    "education": [
-      {
-        "institute": "Harvard University",
-        "subject": "Marketing Strategies",
-        "startDate": "June 23, 2005",
-        "currentStudying": false
-      },
-      {
-        "institute": "University of California, Berkeley",
-        "subject": "Bachelor of Business Administration",
-        "startDate": "June 23, 2000",
-        "endDate": "May 30, 2004",
-        "currentStudying": false
-      }
-    ],
-    "experience": [
-      {
-        "logo": "https://i.ibb.co/6NSLSMT/Developer-Logo.png",
-        "companyName": "Amsek Group",
-        "position": "Marketing",
-        "jobType": "part time",
-        "location": "Dhaka, Bangladesh",
-        "startDate": "June 23, 2005",
-        "currentWorking": true
-      },
-      {
-        "logo": "https://i.ibb.co/DWQsWPp/Act-Logo.png",
-        "companyName": "New Asha",
-        "position": "Marketing",
-        "jobType": "full time",
-        "location": "Dhaka, Bangladesh",
-        "startDate": "June 23, 2010",
-        "endDate": "Apr 23, 2013",
-        "currentWorking": false
-      }
-    ],
-    "joinDate": "Aug 19, 2005"
+    "recommendations": 6,
+    "status": false,
+    "visibility": "visible",
+    "joinDate": "June 20, 2018"
   }
 ]

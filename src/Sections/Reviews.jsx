@@ -52,11 +52,13 @@ const Reviews = () => {
               reviewData.map(review => <SwiperSlide key={review._id} className='p-4 border border-green rounded-lg mb-14'>
                 {/* author */}
                 <div className='flex gap-4 items-center'>
-                  <img className='rounded-full w-14' src={review.authorImage} alt={review.authorName} />
+                  <div className='w-14 h-14 rounded-full overflow-hidden'>
+                    <img className='w-full h-full object-cover object-center' src={review.authorImage} alt={review.authorName} />
+                  </div>
 
                   <div>
                     <h3 className='text-dark text-xl drop-shadow-lg'>{review.authorName}</h3>
-                    <p className='text-gray'>{review.authorPosition}</p>
+                    <p className='text-gray'>{review.title}</p>
                   </div>
                 </div>
 
@@ -64,7 +66,7 @@ const Reviews = () => {
                   {/* rating */}
                   <Rating className='max-w-[90px]' readOnly value={review.rating} itemStyles={myStyles} />
 
-                  - <span className='text-lightGray text-sm italic'>02 july 2023</span>
+                  - <span className='text-lightGray text-sm italic'>{review.date}</span>
                 </div>
 
                 {/* review */}
@@ -72,11 +74,12 @@ const Reviews = () => {
 
                 {/* company */}
                 <div className='flex items-center gap-3 mt-3'>
-                  <img className='w-16 h-16' src={review.logo} alt={review.companyName} />
-
+                  <div className='w-16 h-16 overflow-hidden'>
+                    <img className='w-full h-full object-cover object-center' src={review.image} alt={review.name} />
+                  </div>
                   <div>
-                    <h1 className='text-dark font-medium text-2xl'>{review.companyName}</h1>
-                    <p className='text-gray'>{review.companyLocation}</p>
+                    <h1 className='text-dark font-medium text-2xl'>{review.name}</h1>
+                    <p className='text-gray'>{review.location}</p>
                   </div>
                 </div>
               </SwiperSlide>)

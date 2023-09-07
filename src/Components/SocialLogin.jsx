@@ -1,14 +1,16 @@
-import { toast } from 'react-toastify';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useAuth from '../Hooks/useAuth';
 
 // react icons
 import { FaGithub } from 'react-icons/fa';
-import useAxios from '../Hooks/useAxios';
 import Swal from 'sweetalert2';
+import useAxios from '../Hooks/useAxios';
 
 const SocialLogin = () => {
     const { googleSignIn, gitHubSignIn } = useAuth();
+const { axiosSecure } = useAxios();
+
 
     // navigate
     const navigate = useNavigate();
@@ -21,18 +23,17 @@ const SocialLogin = () => {
                 const user = res.user;
                 const newUser = { name: user.displayName, email: user.email, role: 'user' };
 
-                useAxios.post('/users', newUser)
-                    .then(data => {
-                        if (data.status === 200) {
-                            Swal.fire({
-                                position: 'center',
-                                icon: 'success',
-                                title: 'Sign Up successfully',
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                        }
-                    })
+                axiosSecure.post("/users", newUser).then((data) => {
+                  if (data.status === 200) {
+                    Swal.fire({
+                      position: "center",
+                      icon: "success",
+                      title: "Sign Up successfully",
+                      showConfirmButton: false,
+                      timer: 2500,
+                    });
+                  }
+                });
                 navigate(from, { replace: true })
             }).catch((error) => {
                 if (error.message) {
@@ -56,18 +57,17 @@ const SocialLogin = () => {
                 const user = res.user;
                 const newUser = { name: user.displayName, email: user.email, role: 'user' };
 
-                useAxios.post('/users', newUser)
-                    .then(data => {
-                        if (data.status === 200) {
-                            Swal.fire({
-                                position: 'center',
-                                icon: 'success',
-                                title: 'Sign Up successfully',
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                        }
-                    })
+                axiosSecure.post("/users", newUser).then((data) => {
+                  if (data.status === 200) {
+                    Swal.fire({
+                      position: "center",
+                      icon: "success",
+                      title: "Sign Up successfully",
+                      showConfirmButton: false,
+                      timer: 2500,
+                    });
+                  }
+                });
                 navigate(from, { replace: true });
             }).catch((error) => {
                 if (error.message) {
