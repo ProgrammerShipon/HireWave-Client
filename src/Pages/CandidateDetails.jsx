@@ -7,7 +7,6 @@ import PageLoader from "../Components/PageLoader";
 
 const CandidateDetails = () => {
     const singleData = useLoaderData();
-    console.log(singleData)
 
     return (
         <>

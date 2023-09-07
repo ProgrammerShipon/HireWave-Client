@@ -1,5 +1,5 @@
+import { Step, Stepper } from "@tkwant/react-steps";
 import { useState } from 'react';
-import { Stepper, Step } from "@tkwant/react-steps";
 import { Controller, useForm } from 'react-hook-form';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
@@ -28,10 +28,12 @@ const RecruiterSignUpForm = () => {
         const todayDate = new Date();
         const newData = {
             name: data.name,
+            title,
             email: user?.email,
+            phone: [data.country_code, data.phone],
             image: user?.photoURL,
             banner: null,
-            phone: [data.country_code, data.phone],
+            category: data.category,
             industry: data.industry,
             website: data.website,
             category: data.category,
@@ -61,6 +63,7 @@ const RecruiterSignUpForm = () => {
                         navigate('/', { replace: true })
                     }
                 })
+                .catch((err) => console.log(err));
         }
     }
 

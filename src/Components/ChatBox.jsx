@@ -71,7 +71,7 @@ const ChatBox = ({ chat, currentUserId, setSendMessage, receivedMessage }) => {
     <div>
       <div className="flex items-center">
         <img
-          src="https://i.ibb.co/mvCHJrH/p3.jpg"
+         src={receiverUser?.userProfile}
           className="w-14 h-14 rounded-full"
           alt={receiverUser?.name}
         />

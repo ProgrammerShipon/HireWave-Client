@@ -4,16 +4,11 @@ import { TECollapse } from 'tw-elements-react';
 
 // react icons
 import { IoIosArrowDown } from 'react-icons/io';
+import useFaqs from '../Hooks/useFaqs';
 
 const FAQ = () => {
-    const [questions, setQuestions] = useState([]);
     const [activeElement, setActiveElement] = useState('');
-
-    useEffect(() => {
-        fetch('faqs.json')
-            .then(res => res.json())
-            .then(data => setQuestions(data));
-    }, []);
+    const [ faqsData, loading, refetch ] = useFaqs;
 
     const handleClick = (index) => {
         if (index === activeElement) {
@@ -29,7 +24,7 @@ const FAQ = () => {
                 <SectionTitle title="F A Q S" para="Frequently Asked Questions" />
 
                 <div id="accordionExample" className="space-y-4 max-w-4xl mx-auto  mt-12 md:mt-16">
-                    {questions.map((faq, index) => (
+                    {faqsData.map((faq, index) => (
                         <div
                             key={index}
                             className={`rounded-lg border border-green drop-shadow-sm ease-in-out duration-300 hover:drop-shadow-lg ${index === activeElement

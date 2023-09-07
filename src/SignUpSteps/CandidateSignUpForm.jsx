@@ -1,15 +1,15 @@
+import { Step, Stepper } from "@tkwant/react-steps";
 import { useEffect, useState } from 'react';
-import { Stepper, Step } from "@tkwant/react-steps";
 import { Controller, useForm } from 'react-hook-form';
-import useSkills from '../Hooks/useSkills';
 import useAuth from '../Hooks/useAuth';
-import Swal from 'sweetalert2';
+import useSkills from '../Hooks/useSkills';
 
 // react icons
+import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlinePlus } from 'react-icons/ai';
 import { FaXmark } from 'react-icons/fa6';
-import { AiOutlinePlus, AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
+import Swal from "sweetalert2";
 
 const CandidateSignUpForm = () => {
     const [curStep, setCurStep] = useState(0);
@@ -58,9 +58,12 @@ const CandidateSignUpForm = () => {
         }
 
         setCurStep(curStep + 1)
+
+        // Step Finish 
         if (finish) {
-            return axiosSecure.post('/candidates', newData)
-                .then(data => {
+            return axiosSecure
+                .post("/candidate", newData)
+                .then((data) => {
                     if (data.status === 200) {
                         Swal.fire({
                             position: 'center',
@@ -72,6 +75,7 @@ const CandidateSignUpForm = () => {
                         navigate('/', { replace: true })
                     }
                 })
+                .catch((err) => console.log(err));
         }
     }
 
@@ -357,8 +361,12 @@ const CandidateSignUpForm = () => {
                                         type="checkbox"
                                         onChange={e => {
                                             setPresent(e.target.checked);
-                                            if (e.target.checked) setValue('ending_date', 'Present')
-                                            else setValue('ending_date', '')
+                                            console.log(e.target.checked);
+                                            if (e.target.checked) {
+                                                setValue('ending_date', 'Present')
+                                            } else {
+                                                setValue('ending_date', '')
+                                            }
                                         }}
                                     />
                                     Currently working here

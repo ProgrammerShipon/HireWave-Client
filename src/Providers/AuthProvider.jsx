@@ -1,5 +1,5 @@
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updatePassword, updateProfile } from "firebase/auth";
-import React, { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
 import axios from "axios";
 
@@ -7,6 +7,7 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState({});
+    const [userId, setUserId] = useState('');
     const [loading, setLoading] = useState(true);
 
     const auth = getAuth(app);
@@ -62,6 +63,7 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
+            setLoading(false);
 
             const api = axios.create({
                 baseURL: 'https://hire-wave-server.vercel.app/api',
@@ -72,7 +74,6 @@ const AuthProvider = ({ children }) => {
                         localStorage.setItem('access-token', data.data.token)
                         // setLoading(false);
                     })
-                setLoading(false);
             }
             else {
                 localStorage.removeItem('access-token')

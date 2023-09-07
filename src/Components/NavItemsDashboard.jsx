@@ -1,16 +1,14 @@
-import React from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { IoMdLogOut } from "react-icons/io";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { VscAccount } from "react-icons/vsc";
 import ActiveLink from "./ActiveLink";
-
 import NavItemsDashboardByRole from "./NavItemsDashboardByRole";
 
 const NavItemsDashboard = () => {
   // const role = "candidate";
-  const role = "recruiter";
-  // const role = "admin";
+  // const role = "recruiter";
+  const role = "admin";
 
   return (
     <>

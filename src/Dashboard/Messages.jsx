@@ -7,15 +7,19 @@ import { io } from "socket.io-client";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../Hooks/useAxios";
 import DashTitle from "../Components/DashComponents/DashTitle";
+import useAuth from "../Hooks/useAuth";
+import { useLoaderData } from "react-router-dom";
 const messages = () => {
   const [currentChat, setCurrentChat] = useState(null);
   const [sendMessage, setSendMessage] = useState(null);
   const [receivedMessage, setReceivedMessage] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
   const socket = useRef();
+  const { userId, user } = useAuth();
 
-  // const currentUserId = "64ea2151fb969b46f42b40e0";
-  const currentUserId = "64ea1e92f5c8ebb47d388cb7";
+  const currentUserId = userId._id;
+  const userProfile = userId.userProfile;
+  console.log(currentUserId, userProfile)
 
   // Fetch All Chat List
   const {
@@ -29,6 +33,7 @@ const messages = () => {
       return res.data;
     },
   });
+  console.log(chatHistory)
 
   // Connect to Socket.io
   useEffect(() => {
@@ -39,13 +44,15 @@ const messages = () => {
     });
   }, []);
 
-  console.log("sendMessage", sendMessage);
+  // console.log("sendMessage", sendMessage);
   // Send message socket.io
+
   useEffect(() => {
     if (sendMessage !== null) {
       socket.current.emit("send-message", sendMessage);
     }
   }, [sendMessage]);
+
 
   // Get the message from socket server
   useEffect(() => {
@@ -75,6 +82,7 @@ const messages = () => {
               activeStatus={userActiveStatus(chat)}
               setCurrentChat={setCurrentChat}
               currentUserId={currentUserId}
+              userProfile={userProfile}
             />
           ))}
         </div>

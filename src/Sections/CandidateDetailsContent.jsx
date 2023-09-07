@@ -1,25 +1,26 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import RecentReviewSlider from "../Components/RecentReviewSlider";
 import useReview from "../Hooks/useReview";
 
 // react icons
+import { AiOutlineMessage } from "react-icons/ai";
 import { BiMap } from "react-icons/bi";
 import { BsBookmarkPlus, BsCurrencyDollar } from "react-icons/bs";
-import { AiOutlineMessage } from "react-icons/ai";
 import {
     FaFacebookF,
     FaGithub,
     FaLinkedin,
-    FaTwitter,
     FaRegCalendarAlt,
+    FaTwitter,
 } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 
 // react rating
 import { Rating, Star } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useAuth from "../Hooks/useAuth";
+import useAxios from "../Hooks/useAxios";
 
 const CandidateDetailsContent = ({ candidateDetails }) => {
     const [reviewData, loading] = useReview();
@@ -40,6 +41,8 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
         experience,
         skills,
     } = candidateDetails;
+    const { userId } = useAuth();
+    const navigate = useNavigate();
 
     const [review, setReview] = useState([]);
 
@@ -56,6 +59,21 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
         activeFillColor: "#ffb33e",
         inactiveFillColor: "#a78f6d",
     };
+    // members: [req.body.senderId, req.body.receiverId],
+    // const senderEmail = user.email;
+    // console.log(_id)
+    const handleCreateChat = () => {
+        console.log('handleCreateChat')
+        const senderId = userId;
+        const receiverId = _id;
+        const members = { senderId, receiverId }
+        console.log(members)
+        useAxios.post('/chat', members)
+            .then(data => {
+                console.log(data)
+                navigate('/dashboard/messages')
+            })
+    }
 
     return (
         <section className="py-20 md:py-[120px] duration-300">
@@ -144,7 +162,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                                 />
                             </button>
 
-                            <button className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
+                            <button onClick={handleCreateChat} className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
                                 Contact With Me{" "}
                                 <AiOutlineMessage
                                     size="22"
