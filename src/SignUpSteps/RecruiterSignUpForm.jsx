@@ -46,30 +46,19 @@ const RecruiterSignUpForm = () => {
             joinDate: todayDate
         }
 
-        const newUser = {
-            role: 'recruiter',
-            name: data.name,
-            email: user?.email,
-            image: user?.photoURL
-        }
-
         setCurStep(curStep + 1)
         if (finish) {
             return axiosSecure.post('/recruiters', newData)
                 .then(data => {
                     if (data.status === 200) {
-                        axiosSecure.post('/user', newUser)
-                            .then(data => {
-                                console.log(newUser, data)
-                                Swal.fire({
-                                    position: 'center',
-                                    icon: 'success',
-                                    title: 'Sign Up successfully',
-                                    showConfirmButton: false,
-                                    timer: 2500
-                                });
-                                navigate('/', { replace: true })
-                            })
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Sign Up successfully',
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        navigate('/', { replace: true })
                     }
                 })
         }

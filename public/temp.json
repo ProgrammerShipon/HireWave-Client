@@ -1,6 +1,5 @@
 [
     {
-        "_id": 1,
         "name": "Adroit Resources",
         "image": "https://media.licdn.com/dms/image/C4D0BAQHrtYNljdjm9w/company-logo_100_100/0/1670441499328?e=1700092800&v=beta&t=0KzCPxcN0RYlHpKQkPgTEkoDLQWPpDXoUCBJc1V2Llk",
         "email": "adroit@gmail.com",
@@ -30,7 +29,6 @@
         "joinDate": "Sep 10, 2019"
     },
     {
-        "_id": 11,
         "name": "Extend",
         "image": "https://media.licdn.com/dms/image/C4E0BAQEON_wWCCtPmA/company-logo_100_100/0/1629838391794?e=1700092800&v=beta&t=FqvUWhOvsmmKhANQW69W6fT-KzWh-E_b4mtWUeDTZkM",
         "email": "extend@gmail.com",
@@ -61,7 +59,6 @@
         "joinDate": "May 22, 2017"
     },
     {
-        "_id": 12,
         "name": "Charlie",
         "image": "https://media.licdn.com/dms/image/D560BAQHurzRis9UPKQ/company-logo_100_100/0/1681965367146?e=1700092800&v=beta&t=fv93tJtrK5mfRoi8zbedUYxwyCta70YCaHdHn7Hfyvc",
         "email": "charlie@gmail.com",
@@ -92,7 +89,6 @@
         "joinDate": "Aug 14, 2019"
     },
     {
-        "_id": 13,
         "name": "Fletch",
         "image": "https://media.licdn.com/dms/image/D560BAQFdTqUuVnvvSQ/company-logo_100_100/0/1681952885576?e=1700092800&v=beta&t=o5dObE1iakR5ps7UcktDHWa5wDC8L-W2eapQuNpwiSM",
         "email": "fletch@gmail.com",
@@ -122,7 +118,6 @@
         "joinDate": "Apr 3, 2018"
     },
     {
-        "_id": 14,
         "name": "Patreon",
         "image": "https://media.licdn.com/dms/image/D560BAQH2h7L7udwh2g/company-logo_100_100/0/1689867433365?e=1700092800&v=beta&t=lFkjo-ecCKzCajkxlZjM1SOzMHKLnBrSeUXZD2gErhw",
         "email": "patreon@gmail.com",
@@ -152,7 +147,6 @@
         "joinDate": "Nov 9, 2016"
     },
     {
-        "_id": 15,
         "name": "Numeric",
         "image": "https://media.licdn.com/dms/image/C560BAQFHEC-DJzR0Gg/company-logo_100_100/0/1663442902561?e=1700092800&v=beta&t=VUNfHrYIXCLxwi3D15wymPsQfvBly73INvLAsOIPwlA",
         "email": "numeric@gmail.com",
@@ -182,7 +176,6 @@
         "joinDate": "Mar 5, 2017"
     },
     {
-        "_id": 16,
         "name": "Avispa",
         "image": "https://media.licdn.com/dms/image/C560BAQEY0aYzJXnsAQ/company-logo_100_100/0/1652112258427?e=1700092800&v=beta&t=X43Uw6Jp9qbGCkAGOGqxdIcsRZFMRz2fZXIgDSbx770",
         "email": "technova@gmail.com",
@@ -212,7 +205,6 @@
         "joinDate": "Jun 5, 2019"
     },
     {
-        "_id": 17,
         "name": "Eleos",
         "image": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
         "email": "eleos@gmail.com",
@@ -242,7 +234,6 @@
         "joinDate": "Jul 18, 2018"
     },
     {
-        "_id": 18,
         "name": "Prevail",
         "image": "https://media.licdn.com/dms/image/C560BAQFYYoXrfko87g/company-logo_100_100/0/1656702414708?e=1700092800&v=beta&t=vjjcsTGdjD_WONEaNC5_f1gcmU_pAtkB0kK2tgqRMuk",
         "email": "prevail@gmail.com",
@@ -272,7 +263,6 @@
         "joinDate": "Mar 2, 2017"
     },
     {
-        "_id": 19,
         "name": "A Society",
         "image": "https://media.licdn.com/dms/image/C4E0BAQHSdHOx66MCFw/company-logo_100_100/0/1669710167236?e=1700092800&v=beta&t=msqltyeBuQYmCGPky9bpzqqtxERz_tpZwXFcHwpuY2c",
         "email": "asociety@gmail.com",
@@ -302,7 +292,6 @@
         "joinDate": "Oct 14, 2015"
     },
     {
-        "_id": 20,
         "name": "Emonics",
         "image": "https://media.licdn.com/dms/image/D4D0BAQGXuMvXtEhsTg/company-logo_100_100/0/1689151685253?e=1700092800&v=beta&t=e7fwkQikGJ4liYdJmtp4GZgZlxkTd2J8bl5yV3MIpgI",
         "email": "emonics@gmail.com",
@@ -332,7 +321,6 @@
         "joinDate": "Sep 20, 2018"
     },
     {
-        "_id": 21,
         "name": "Mindpal",
         "image": "https://media.licdn.com/dms/image/C4D0BAQEXQfDNMAE2OA/company-logo_100_100/0/1670553576447?e=1700092800&v=beta&t=__HYtgX244p1k6tUSneolBcMR3OBJB-UuXRN8Y15X0U",
         "email": "mindpal@gmail.com",
@@ -362,7 +350,6 @@
         "joinDate": "Apr 15, 2016"
     },
     {
-        "_id": 22,
         "name": "CodeWave",
         "image": "https://i.ibb.co/L8Zhwpz/logo.jpg",
         "email": "codeWave@gmail.com",
@@ -392,7 +379,6 @@
         "joinDate": "Jul 28, 2017"
     },
     {
-        "_id": 23,
         "name": "AppLab",
         "image": "https://media.licdn.com/dms/image/C560BAQGkgVuykicFDg/company-logo_100_100/0/1630459002808?e=1700092800&v=beta&t=QgLMRxyzhxFOXI_IJuOfzoRUx7c4MIGnn8zSZk7iFHs",
         "email": "applab@gmail.com",
@@ -422,7 +408,6 @@
         "joinDate": "Mar 10, 2019"
     },
     {
-        "_id": 26,
         "name": "Yassir",
         "image": "https://media.licdn.com/dms/image/D4D0BAQEQn1pDkyWBxA/company-logo_100_100/0/1689455917226?e=1700092800&v=beta&t=YeBXa66KQDcSic2rDzfPPonoQXaW7ZjwpjqCB89iots",
         "email": "yassir@gmail.com",
@@ -452,7 +437,6 @@
         "joinDate": "May 7, 2017"
     },
     {
-        "_id": 27,
         "name": "HealthTech Innovations",
         "image": "https://example.com/image27.jpg",
         "email": "info@healthtech-innovations.com",

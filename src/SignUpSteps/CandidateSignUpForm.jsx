@@ -25,12 +25,6 @@ const CandidateSignUpForm = () => {
     const onSubmit = data => {
         const todayDate = new Date();
 
-        const newUser = {
-            role: 'candidate',
-            name: user?.displayName,
-            email: user?.email,
-            image: user?.photoURL
-        }
         const newData = {
             name: user?.displayName,
             email: user?.email,
@@ -68,18 +62,14 @@ const CandidateSignUpForm = () => {
             return axiosSecure.post('/candidates', newData)
                 .then(data => {
                     if (data.status === 200) {
-                        axiosSecure.post('/user', newUser)
-                            .then(data => {
-                                console.log(newUser, data)
-                                Swal.fire({
-                                    position: 'center',
-                                    icon: 'success',
-                                    title: 'Sign Up successfully',
-                                    showConfirmButton: false,
-                                    timer: 2500
-                                });
-                                navigate('/', { replace: true })
-                            })
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Sign Up successfully',
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        navigate('/', { replace: true })
                     }
                 })
         }
