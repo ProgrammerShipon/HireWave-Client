@@ -51,7 +51,9 @@ const RecruiterSignUpForm = () => {
 
       // Step Finish
       if (finish) {
-        console.log("all data console -> ", newData);
+          console.log("all data console -> ", newData);
+          
+          // axios fetch & post recruiter data
         return axiosSecure
           .post("/recruiters", newData)
           .then((data) => {
