@@ -1,9 +1,18 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import DashNav from '../Shared/DashNav';
 import DashNavItems from '../Components/DashComponents/DashNavItems';
 import StayTop from '../Components/StayTop';
+import useCurrentUser from '../Hooks/useCurrentUser';
+import useAuth from '../Hooks/useAuth';
 
 const Dashboard = () => {
+    const { user } = useAuth();
+    const [currentUser] = useCurrentUser();
+    const navigate = useNavigate();
+
+    if (user?.email && currentUser === undefined) {
+        return navigate('/select_role', { replace: true })
+    }
     return (
         <>
             <StayTop />

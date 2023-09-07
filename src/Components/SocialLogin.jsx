@@ -1,15 +1,14 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useAuth from '../Hooks/useAuth';
+import useCurrentUser from '../Hooks/useCurrentUser';
 
 // react icons
 import { FaGithub } from 'react-icons/fa';
-import Swal from 'sweetalert2';
-import useAxios from '../Hooks/useAxios';
 
 const SocialLogin = () => {
     const { googleSignIn, gitHubSignIn } = useAuth();
-    const { axiosSecure } = useAxios();
+    const [currentUser] = useCurrentUser();
 
 
     // navigate
@@ -19,9 +18,12 @@ const SocialLogin = () => {
 
     const handleGoogleLogin = () => {
         googleSignIn()
-            .then(res => {
-
-                navigate(from, { replace: true })
+            .then(() => {
+                if (currentUser === undefined) {
+                    navigate('/select_role', { replace: true })
+                } else {
+                    navigate(from, { replace: true })
+                }
             }).catch((error) => {
                 if (error.message) {
                     toast.error(error.message, {
@@ -40,22 +42,12 @@ const SocialLogin = () => {
 
     const handleGithubLogin = () => {
         gitHubSignIn()
-            .then(res => {
-                const user = res.user;
-                const newUser = { name: user.displayName, email: user.email, role: 'user' };
-
-                axiosSecure.post("/users", newUser).then((data) => {
-                    if (data.status === 200) {
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: "Sign Up successfully",
-                            showConfirmButton: false,
-                            timer: 2500,
-                        });
-                    }
-                });
-                navigate(from, { replace: true });
+            .then(() => {
+                if (currentUser === undefined) {
+                    navigate('/select_role', { replace: true })
+                } else {
+                    navigate(from, { replace: true })
+                }
             }).catch((error) => {
                 if (error.message) {
                     toast.error(error.message, {
