@@ -27,8 +27,9 @@ const RecruiterSignUpForm = () => {
     const onSubmit = data => {
         const todayDate = new Date();
         const newData = {
+            role: 'recruiter',
             name: data.name,
-            title,
+            title: data.title,
             email: user?.email,
             phone: [data.country_code, data.phone],
             image: user?.photoURL,

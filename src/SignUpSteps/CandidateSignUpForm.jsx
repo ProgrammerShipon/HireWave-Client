@@ -26,6 +26,7 @@ const CandidateSignUpForm = () => {
         const todayDate = new Date();
 
         const newData = {
+            role: 'candidate',
             name: user?.displayName,
             email: user?.email,
             image: user?.photoURL,
