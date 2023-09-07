@@ -51,6 +51,7 @@ const RecruiterSignUpForm = () => {
 
         setCurStep(curStep + 1)
         if (finish) {
+            console.log(newData)
             return axiosSecure.post('/recruiters', newData)
                 .then(data => {
                     if (data.status === 200) {
@@ -311,8 +312,9 @@ const RecruiterSignUpForm = () => {
                                 )}
 
                                 {/* Next Button */}
-                                <button className='bg-dark text-white hover:bg-green px-8 py-[6px] rounded-md duration-300 shadow-xl hover:shadow-green/20' type="submit"
+                                <button className='bg-dark text-white hover:bg-green px-8 py-[6px] rounded-md duration-300 shadow-xl hover:shadow-green/20'
                                     onClick={() => setFinish(true)}
+                                    type="submit"
                                 >
                                     Finish
                                 </button>

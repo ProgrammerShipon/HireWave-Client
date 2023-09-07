@@ -10,11 +10,17 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useCurrentUser from '../Hooks/useCurrentUser';
 import useAuth from '../Hooks/useAuth';
+import PageLoader from '../Components/PageLoader';
 
 const Main = () => {
    const { user } = useAuth();
-   const [currentUser] = useCurrentUser();
+   const [currentUser, loading] = useCurrentUser();
    const navigate = useNavigate();
+   console.log(loading)
+
+   if (user?.email && loading) {
+      return <PageLoader />
+   }
 
    if (user?.email && currentUser === undefined) {
       return navigate('/select_role', { replace: true })

@@ -4,11 +4,16 @@ import DashNavItems from '../Components/DashComponents/DashNavItems';
 import StayTop from '../Components/StayTop';
 import useCurrentUser from '../Hooks/useCurrentUser';
 import useAuth from '../Hooks/useAuth';
+import PageLoader from '../Components/PageLoader';
 
 const Dashboard = () => {
     const { user } = useAuth();
-    const [currentUser] = useCurrentUser();
+    const [currentUser, loading] = useCurrentUser();
     const navigate = useNavigate();
+
+    if (user?.email && loading) {
+        return <PageLoader />
+    }
 
     if (user?.email && currentUser === undefined) {
         return navigate('/select_role', { replace: true })

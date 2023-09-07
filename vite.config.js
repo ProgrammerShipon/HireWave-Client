@@ -6,5 +6,8 @@ export default defineConfig({
   optimizeDeps: {
     include: ["react", "react/jsx-dev-runtime"],
   },
+  esbuild: {
+    jsx: 'react',
+  },
   plugins: [react()],
 });

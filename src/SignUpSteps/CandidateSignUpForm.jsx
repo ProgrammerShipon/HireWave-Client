@@ -10,6 +10,7 @@ import { FaXmark } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const CandidateSignUpForm = () => {
     const [curStep, setCurStep] = useState(0);
@@ -52,8 +53,7 @@ const CandidateSignUpForm = () => {
             socialLink: [],
             languages: [],
             recommendations: 0,
-            status: "pending",
-            active: false,
+            status: 'pending',
             visibility: data.visibility,
             joinDate: todayDate
         }
@@ -62,8 +62,7 @@ const CandidateSignUpForm = () => {
 
         // Step Finish 
         if (finish) {
-            return axiosSecure
-                .post("/candidate", newData)
+            return axiosSecure.post("/candidates", newData)
                 .then((data) => {
                     if (data.status === 200) {
                         Swal.fire({
