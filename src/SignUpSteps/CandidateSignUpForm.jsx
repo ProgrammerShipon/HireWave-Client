@@ -52,59 +52,27 @@ const CandidateSignUpForm = () => {
             socialLink: [],
             languages: [],
             recommendations: 0,
-            status: "pending",
-            active: false,
+            status: 'pending',
             visibility: data.visibility,
             joinDate: todayDate
         }
-        const newUser = {
-            role: 'candidate',
-            name: user?.displayName,
-            email: user?.email,
-            image: user?.photoURL,
-        }
+
         setCurStep(curStep + 1)
 
         // Step Finish 
         if (finish) {
-            return fetch(' http://localhost:3030/api/candidate', {
+            return fetch('http://localhost:3030/api/candidates', {
                 method: "POST",
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(newData)
             })
                 .then(res => res.json())
                 .then((data) => {
-                    console.log(data)
+                    console.log('data', data)
                     if (data._id) {
-                        fetch(' http://localhost:3030/api/users', {
-                            method: "POST",
-                            headers: { 'content-type': 'application/json' },
-                            body: JSON.stringify(newUser)
-                        })
-                            .then(res => res.json())
-                            .then((data) => {
-                                console.log(data)
-                            })
                         Swal.fire('User Login Successful')
                     }
                 })
-
-            // axiosSecure
-            //     .post("/candidate", newData)
-            //     .then((data) => {
-            //         console.log(data)
-            //         if (data.status === 200) {
-            //             Swal.fire({
-            //                 position: 'center',
-            //                 icon: 'success',
-            //                 title: 'Sign Up successfully',
-            //                 showConfirmButton: false,
-            //                 timer: 2500
-            //             });
-            //             navigate('/', { replace: true })
-            //         }
-            //     })
-            //     .catch((err) => console.log(err));
         }
     }
 

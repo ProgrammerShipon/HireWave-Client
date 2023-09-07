@@ -25,46 +25,43 @@ const RecruiterSignUpForm = () => {
 
     //Form Submit function
     const onSubmit = data => {
-        const todayDate = new Date();
-        const newData = {
-            name: data.name,
-            title,
-            email: user?.email,
-            phone: [data.country_code, data.phone],
-            image: user?.photoURL,
-            banner: null,
-            category: data.category,
-            industry: data.industry,
-            website: data.website,
-            category: data.category,
-            subCategory: data.subCategory,
-            location: [data.country, data.state],
-            address: data.address,
-            about: [],
-            specialties: [],
-            status: "pending",
-            active: false,
-            followers: 0,
-            joinDate: todayDate
-        }
+    const todayDate = new Date();
+    const newData = {
+        role: "recruiter",
+        name: data.name,
+        title: data.title,
+        email: user?.email,
+        phone: [data.country_code, data.phone],
+        image: user?.photoURL,
+        banner: null,
+        industry: data.industry,
+        website: data.website,
+        category: data.category,
+        subCategory: data.subCategory,
+        location: [data.country, data.state],
+        address: data.address,
+        about: [],
+        specialties: [],
+        status: "pending",
+        active: false,
+        followers: 0,
+        joinDate: todayDate,
+    };
 
-        setCurStep(curStep + 1)
-        if (finish) {
-            return axiosSecure.post('/recruiters', newData)
-                .then(data => {
-                    if (data.status === 200) {
-                        Swal.fire({
-                            position: 'center',
-                            icon: 'success',
-                            title: 'Sign Up successfully',
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        navigate('/', { replace: true })
-                    }
-                })
-                .catch((err) => console.log(err));
-        }
+      setCurStep(curStep + 1);
+
+      // Step Finish
+      if (finish) {
+          console.log("all data console -> ", newData);
+          
+          // axios fetch & post recruiter data
+        return axiosSecure
+          .post("/recruiters", newData)
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((err) => console.log(err));
+      }
     }
 
     // Previous step function
