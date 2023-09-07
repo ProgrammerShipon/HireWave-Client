@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Stepper, Step } from "@tkwant/react-steps";
 import { Controller, useForm } from 'react-hook-form';
 import { AiOutlinePlus } from 'react-icons/ai';
+import { BsListUl } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 
 const EmployerOnboarding = () => {
@@ -756,6 +757,10 @@ const EmployerOnboarding = () => {
           ]
         }
       ]
+
+    const [text, setText] = useState('');
+    const [bold, setBold] = useState(false);
+    const [italic, setItalic] = useState(false);
       
     const { control, register, handleSubmit, setValue, watch, reset, formState: { errors } } = useForm();
     const isMobile = window.innerWidth > 768;
@@ -1317,6 +1322,29 @@ const EmployerOnboarding = () => {
                         </form>
                     </div>
                 );
+
+            case 5:
+              return(
+                <div className='w-96 md:w-[600px] border border-green rounded mt-10 mb-20 px-10 py-10 mx-auto'>
+                    <h1 className='font-semibold text-2xl text-green mb-2'>Job Description</h1>
+                    <p className='text-sm mb-8'>This is a ChatGPT generated response. It uses information from your job, including job title ({watch('job_title')}), Vacancy ({watch('vacancy')}), Location ({watch('location')}) etc. You can edit or replace it on your own.</p>
+
+                    <div className='flex gap-3 mb-2'>
+                      <button className='font-extrabold border border-dark rounded cursor-pointer px-3' onClick={()=> setBold(!bold)}>B</button>
+                      <button className='font-bold italic border border-dark rounded cursor-pointer px-3' onClick={()=> setItalic(!italic)}>I</button>
+                      <button className='border border-dark rounded cursor-pointer px-3' onClick={()=> setText(text + '\n• ')}><BsListUl className='font-extrabold' /></button>
+                    </div>
+                    <textarea
+                    className='rounded outline-none h-40 border border-dark/20 w-full px-3 py-2'
+                      value={text}
+                      onChange={(e)=> setText(e.target.value)}
+                      style={{
+                        fontWeight: bold ? 'bold' : 'normal',
+                        fontStyle: italic ? 'italic' : 'normal',
+                      }}
+                    />
+                  </div>
+              )    
             
             default:
                 return null;
@@ -1338,6 +1366,7 @@ const EmployerOnboarding = () => {
                     <Step />
                     <Step />
                     <Step />
+                    <Step />
                 </Stepper>
             :
                 <Stepper
@@ -1350,6 +1379,7 @@ const EmployerOnboarding = () => {
                     <Step />
                     <Step />
                     <Step /> 
+                    <Step />
                     <Step /> 
                 </Stepper> 
             }

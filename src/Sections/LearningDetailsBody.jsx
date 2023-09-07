@@ -122,8 +122,7 @@ const LearningDetailsBody = ({singleLearningData}) => {
                     </div>)
                     }
                     </div>
-                </div>
-                
+                </div>             
             </div>
         </div>
     );
