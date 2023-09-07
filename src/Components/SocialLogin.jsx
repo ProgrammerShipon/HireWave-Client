@@ -18,21 +18,7 @@ const SocialLogin = () => {
     const handleGoogleLogin = () => {
         googleSignIn()
             .then(res => {
-                const user = res.user;
-                const newUser = { name: user.displayName, email: user.email, role: 'user' };
 
-                useAxios.post('/users', newUser)
-                    .then(data => {
-                        if (data.status === 200) {
-                            Swal.fire({
-                                position: 'center',
-                                icon: 'success',
-                                title: 'Sign Up successfully',
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                        }
-                    })
                 navigate(from, { replace: true })
             }).catch((error) => {
                 if (error.message) {

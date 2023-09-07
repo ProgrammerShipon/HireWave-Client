@@ -34,6 +34,7 @@ import ApplyJob from "../Pages/ApplyJob";
 import SelectRole from "../SignUpSteps/SelectRole";
 import CandidateSignUpForm from "../SignUpSteps/CandidateSignUpForm";
 import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
+import PrivateRoute from "./PrivateRoute";
 
 const Router = createBrowserRouter([
   {
@@ -51,7 +52,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "/apply_job/:title",
-        element: <ApplyJob />
+        element: <PrivateRoute><ApplyJob /></PrivateRoute>
       },
       {
         path: "/all_categories",
@@ -63,17 +64,17 @@ const Router = createBrowserRouter([
       },
       {
         path: "/candidate_details/:id",
-        element: <CandidateDetails />,
+        element: <PrivateRoute><CandidateDetails /></PrivateRoute>,
         loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/candidate/${params.id}`)
       },
       {
         path: "/job_details/:id",
-        element: <JobDetails />,
+        element: <PrivateRoute><JobDetails /></PrivateRoute>,
         loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`)
       },
       {
         path: "/apply_job/:id",
-        element: <ApplyJob />,
+        element: <PrivateRoute><ApplyJob /></PrivateRoute>,
         loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`)
       },
       {
@@ -110,7 +111,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "/recruiters_details/:id",
-        element: <RecruitersDetails />,
+        element: <PrivateRoute><RecruitersDetails /></PrivateRoute>,
         loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/recruiters/${params.id}`)
       },
       {
@@ -129,7 +130,7 @@ const Router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard />,
+    element: <PrivateRoute><Dashboard /></PrivateRoute>,
     errorElement: <ErrorPage />,
     children: [
       //Common Routes
@@ -184,17 +185,17 @@ const Router = createBrowserRouter([
   },
   {
     path: "select_role",
-    element: <SelectRole />,
+    element: <PrivateRoute><SelectRole /></PrivateRoute>,
     errorElement: <ErrorPage />
   },
   {
     path: "candidate_sign_up",
-    element: <CandidateSignUpForm />,
+    element: <PrivateRoute><CandidateSignUpForm /></PrivateRoute>,
     errorElement: <ErrorPage />
   },
   {
     path: "recruiter_sign_up",
-    element: <RecruiterSignUpForm />,
+    element: <PrivateRoute><RecruiterSignUpForm /></PrivateRoute>,
     errorElement: <ErrorPage />
   }
 ]);

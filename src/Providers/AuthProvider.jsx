@@ -70,8 +70,9 @@ const AuthProvider = ({ children }) => {
                 api.post('/jwt', { email: currentUser.email })
                     .then(data => {
                         localStorage.setItem('access-token', data.data.token)
-                        setLoading(false);
+                        // setLoading(false);
                     })
+                setLoading(false);
             }
             else {
                 localStorage.removeItem('access-token')
