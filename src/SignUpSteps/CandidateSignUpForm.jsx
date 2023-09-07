@@ -69,7 +69,7 @@ const CandidateSignUpForm = () => {
         if (finish) {
           console.log("all data console -> ", newData);
           return axiosSecure
-            .post("/candidate", newData)
+            .post("/candidates", newData)
             .then((data) => {
               console.log(data);
             })

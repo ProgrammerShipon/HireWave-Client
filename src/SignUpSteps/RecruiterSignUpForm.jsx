@@ -61,26 +61,26 @@ const RecruiterSignUpForm = () => {
 
         setCurStep(curStep + 1)
 
-        // if (finish) {
-        //     return axiosSecure.post('/candidates', newData)
-        //         .then(data => {
-        //             if (data.status === 200) {
-        //                 axiosSecure.post('/users', newUser)
-        //                     .then(data => {
-        //                         if (data.status === 200) {
-        //                             Swal.fire({
-        //                                 position: 'center',
-        //                                 icon: 'success',
-        //                                 title: 'Sign Up successfully',
-        //                                 showConfirmButton: false,
-        //                                 timer: 2500
-        //                             });
-        //                             navigate('/', { replace: true })
-        //                         }
-        //                     })
-        //             }
-        //         })
-        // }
+        if (finish) {
+            return axiosSecure.post('/candidates', newData)
+                .then(data => {
+                    if (data.status === 200) {
+                        axiosSecure.post('/users', newUser)
+                            .then(data => {
+                                if (data.status === 200) {
+                                    Swal.fire({
+                                        position: 'center',
+                                        icon: 'success',
+                                        title: 'Sign Up successfully',
+                                        showConfirmButton: false,
+                                        timer: 2500
+                                    });
+                                    navigate('/', { replace: true })
+                                }
+                            })
+                    }
+                })
+        }
     }
 
     // Previous step function
