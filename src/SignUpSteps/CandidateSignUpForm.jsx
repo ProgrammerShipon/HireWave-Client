@@ -61,7 +61,7 @@ const CandidateSignUpForm = () => {
 
         // Step Finish 
         if (finish) {
-            return fetch('http://localhost:3030/api/candidates', {
+            return fetch('https://hire-wave-server.vercel.app/api/candidates', {
                 method: "POST",
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(newData)
@@ -69,8 +69,10 @@ const CandidateSignUpForm = () => {
                 .then(res => res.json())
                 .then((data) => {
                     console.log('data', data)
-                    if (data._id) {
+                    if (data.user || data.candidate) {
+
                         Swal.fire('User Login Successful')
+                        navigate('/login')
                     }
                 })
         }
