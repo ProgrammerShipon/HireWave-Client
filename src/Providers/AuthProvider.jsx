@@ -1,5 +1,5 @@
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updatePassword, updateProfile } from "firebase/auth";
-import React, { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
 
 export const AuthContext = createContext();
@@ -60,25 +60,27 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     setLoading(true);
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {      
       setUser(currentUser);
       setLoading(false);
 
-      // if (currentUser && currentUser?.email) {
-      //   fetch("https://hire-wave-server.vercel.app/api/jwt", {
-      //     method: "POST",
-      //     headers: {
-      //       "content-type": "application/json",
-      //     },
-      //     body: JSON.stringify({ email: currentUser?.email }),
-      //   })
-      //     .then((res) => res.json())
-      //     .then((data) => {
-      //       console.log(data)
-      //       const token = data?.token
-      //       localStorage.setItem("hire-wave-token", token);
-      //     });
-      // }
+      if (currentUser && currentUser?.email) {
+        const links = "http://localhost:3030/api/jwt";
+        // const links = "https://hire-wave-server.vercel.app/api/jwt";
+        fetch(links, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ email: currentUser?.email }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data)
+            const token = data?.token
+            localStorage.setItem("hire-wave-token", token);
+          });
+      }
 
     });
 
@@ -87,8 +89,20 @@ const AuthProvider = ({ children }) => {
     }
   }, []);
 
+  useEffect(() => {
+    // console.log(loading)
+    console.log(user);
+     fetch(`https://hire-wave-server.vercel.app/api/users/byEmail/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        setUserId(data);
+      });
+  }, [user]);
+  
   const authInfo = {
     user,
+    userId,
     loading,
     signUpUser,
     signIn,
@@ -96,8 +110,8 @@ const AuthProvider = ({ children }) => {
     googleSignIn,
     gitHubSignIn,
     logOut,
-    changePassword
-  }
+    changePassword,
+  };
 
   return (
     <AuthContext.Provider value={authInfo}>

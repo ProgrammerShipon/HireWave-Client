@@ -1,16 +1,14 @@
+import { Step, Stepper } from "@tkwant/react-steps";
 import { useEffect, useState } from 'react';
-import { Stepper, Step } from "@tkwant/react-steps";
 import { Controller, useForm } from 'react-hook-form';
-import useSkills from '../Hooks/useSkills';
 import useAuth from '../Hooks/useAuth';
-import Swal from 'sweetalert2';
+import useSkills from '../Hooks/useSkills';
 
 // react icons
+import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlinePlus } from 'react-icons/ai';
 import { FaXmark } from 'react-icons/fa6';
-import { AiOutlinePlus, AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import useAxios from '../Hooks/useAxios';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import useAxios from '../Hooks/useAxios';
 
 const CandidateSignUpForm = () => {
     const [curStep, setCurStep] = useState(0);
@@ -26,12 +24,13 @@ const CandidateSignUpForm = () => {
     const onSubmit = data => {
         const todayDate = new Date();
 
-        const newUser = {
-            role: 'candidate',
-            name: user?.displayName,
-            email: user?.email,
-            image: user?.photoURL
-        }
+        // const newUser = {
+        //     role: 'candidate',
+        //     name: user?.displayName,
+        //     email: user?.email,
+        //     image: user?.photoURL
+        // }
+
         const newData = {
             role: 'candidate',
             name: user?.displayName,
@@ -65,24 +64,16 @@ const CandidateSignUpForm = () => {
         }
 
         setCurStep(curStep + 1)
+
+        // Step Finish 
         if (finish) {
-            return axiosSecure.post('/candidates', newData)
-                .then(data => {
-                    if (data.status === 200) {
-                        axios.post('https://hire-wave-server.vercel.app/api/user', newUser)
-                            .then(data => {
-                                console.log(newUser, data)
-                                Swal.fire({
-                                    position: 'center',
-                                    icon: 'success',
-                                    title: 'Sign Up successfully',
-                                    showConfirmButton: false,
-                                    timer: 2500
-                                });
-                                navigate('/', { replace: true })
-                            })
-                    }
-                })
+          console.log("all data console -> ", newData);
+          return axiosSecure
+            .post("/candidate", newData)
+            .then((data) => {
+              console.log(data);
+            })
+            .catch((err) => console.log(err));
         }
     }
 
@@ -368,8 +359,12 @@ const CandidateSignUpForm = () => {
                                         type="checkbox"
                                         onChange={e => {
                                             setPresent(e.target.checked);
-                                            if (e.target.checked) setValue('ending_date', 'Present')
-                                            else setValue('ending_date', '')
+                                            console.log(e.target.checked);
+                                            if (e.target.checked) {
+                                                setValue('ending_date', 'Present')
+                                            } else {
+                                                setValue('ending_date', '')
+                                            }
                                         }}
                                     />
                                     Currently working here

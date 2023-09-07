@@ -5,8 +5,8 @@ import useAuth from "./useAuth";
 // import { useNavigate } from "react-router-dom";
 
 // online link
-const serverLink = "https://hire-wave-server.vercel.app/api";
-// const serverLink = "http://localhost:3030/api";
+// const serverLink = "https://hire-wave-server.vercel.app/api";
+const serverLink = "http://localhost:3030/api";
 
 // use Axios Secure
 const axiosSecure = axios.create({
@@ -15,7 +15,7 @@ const axiosSecure = axios.create({
 
 const useAxios = () => {
   const { logOut } = useAuth();
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
   useEffect(() => {
     // Axios Request api & send data

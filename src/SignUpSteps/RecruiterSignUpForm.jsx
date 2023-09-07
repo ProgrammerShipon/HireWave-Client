@@ -1,12 +1,11 @@
+import { Step, Stepper } from "@tkwant/react-steps";
 import { useState } from 'react';
-import { Stepper, Step } from "@tkwant/react-steps";
 import { Controller, useForm } from 'react-hook-form';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import useAllCategories from '../Hooks/useAllCategories';
 import useAuth from '../Hooks/useAuth';
 import useAxios from '../Hooks/useAxios';
-import Swal from 'sweetalert2';
 
 const RecruiterSignUpForm = () => {
     const [curStep, setCurStep] = useState(0);
@@ -27,23 +26,30 @@ const RecruiterSignUpForm = () => {
     const onSubmit = data => {
         const todayDate = new Date();
         const newData = {
-            role: "recruiter",
+          role: "recruiter",
+          profileView: 0,
+          userInfo: {
             name: data.name,
+            title,
             email: user?.email,
+            phone: [data.country_code, data.phone],
             image: user?.photoURL,
             banner: null,
-            phone: [data.country_code, data.phone],
+            category: data.category,
             industry: data.industry,
             website: data.website,
-            category: data.category,
-            subCategory: data.subCategory,
-            location: [data.country, data.state],
-            address: data.address,
-            about: [],
-            specialties: [],
-            followers: 0,
-            joinDate: todayDate
-        }
+          },
+          about: [],
+          specialties: [],
+          location: [data.country, data.state],
+          address: data.address,
+          status: Boolean,
+
+          subCategory: data.subCategory,
+          followers: 0,
+          joinDate: todayDate,
+        };
+        console.log('candidates -> ', newData)
 
         const newUser = {
             role: 'recruiter',
@@ -51,28 +57,30 @@ const RecruiterSignUpForm = () => {
             email: user?.email,
             image: user?.photoURL
         }
+        console.log('newUser -> ', newUser)
 
         setCurStep(curStep + 1)
-        if (finish) {
-            return axiosSecure.post('/candidates', newData)
-                .then(data => {
-                    if (data.status === 200) {
-                        axiosSecure.post('/users', newUser)
-                            .then(data => {
-                                if (data.status === 200) {
-                                    Swal.fire({
-                                        position: 'center',
-                                        icon: 'success',
-                                        title: 'Sign Up successfully',
-                                        showConfirmButton: false,
-                                        timer: 2500
-                                    });
-                                    navigate('/', { replace: true })
-                                }
-                            })
-                    }
-                })
-        }
+
+        // if (finish) {
+        //     return axiosSecure.post('/candidates', newData)
+        //         .then(data => {
+        //             if (data.status === 200) {
+        //                 axiosSecure.post('/users', newUser)
+        //                     .then(data => {
+        //                         if (data.status === 200) {
+        //                             Swal.fire({
+        //                                 position: 'center',
+        //                                 icon: 'success',
+        //                                 title: 'Sign Up successfully',
+        //                                 showConfirmButton: false,
+        //                                 timer: 2500
+        //                             });
+        //                             navigate('/', { replace: true })
+        //                         }
+        //                     })
+        //             }
+        //         })
+        // }
     }
 
     // Previous step function

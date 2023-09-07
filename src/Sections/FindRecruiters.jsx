@@ -3,7 +3,6 @@ import RecruiterCard from "../Components/RecruiterCard";
 import useRecruiters from "../Hooks/useRecruiters";
 
 // react icons
-import { FaLocationCrosshairs } from 'react-icons/fa6';
 import { BiCheck } from 'react-icons/bi';
 
 const FindRecruiters = () => {
@@ -33,7 +32,7 @@ const FindRecruiters = () => {
 
     useEffect(() => {
         setFilteredData(recruiterData);
-    }, [recruiterData]);
+    }, [location, checkBoxData, recruiterData]);
 
     // industry filter
     const toggleCheckBox = (item) => {
