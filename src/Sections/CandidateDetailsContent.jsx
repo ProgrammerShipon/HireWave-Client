@@ -28,12 +28,13 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
         email,
         image,
         location,
-        status,
+        active,
         hourlyRate,
         joinDate,
         category,
         recommendations,
         languages,
+        socialLink,
         about,
         education,
         experience,
@@ -72,10 +73,10 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                                 />
 
                                 <span
-                                    className={`absolute top-1 right-1 text-white px-3 rounded-full text-sm capitalize ${status ? "bg-green" : "bg-red-400"
+                                    className={`absolute top-1 right-1 text-white px-3 rounded-full text-sm capitalize ${active ? "bg-green" : "bg-red-400"
                                         }`}
                                 >
-                                    {status ? "Online" : "Offline"}
+                                    {active ? "Online" : "Offline"}
                                 </span>
                             </div>
 
@@ -120,35 +121,17 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                     <div className="flex flex-col items-center justify-between gap-4 py-6 duration-300 max-w-48 sm:flex-row lg:flex-col sm:items-end sm:gap-0 sm:-mt-16 lg:-mt-0">
                         {/* social links */}
                         <div className="flex items-center gap-2">
-                            <Link
-                                to="/"
-                                className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
-                            >
-                                <FaFacebookF size="20px" />
-                            </Link>
-
-                            <Link
-                                to="/"
-                                className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
-                            >
-                                <FaTwitter size="20px" />
-                            </Link>
-
-                            <Link
-                                to="/"
-                                className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
-                            >
-                                <FaLinkedin size="20px" />
-                            </Link>
-
-                            <Link
-                                to="/"
-                                className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
-                            >
-                                <FaGithub size="20px" />
-                            </Link>
-
-                            {/* button */}
+                            {
+                                socialLink.map((link, index) => <p
+                                    key={index}
+                                    className={`h-9 w-9 flex items-center justify-center rounded-lg border text-green border-green shadow-lg shadow-green/20`}
+                                >
+                                    {link.linkedin && <FaLinkedin size="20px" />}
+                                    {link.github && <FaGithub size="20px" />}
+                                    {link.twitter && <FaTwitter size="20px" />}
+                                    {link.facebook && <FaFacebookF size="20px" />}
+                                </p>)
+                            }
                         </div>
 
                         {/* button */}
@@ -238,13 +221,13 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                             {education.map((edu, index) => (
                                 <div
                                     key={index}
-                                    className={`border-s pl-6 py-2 ml-3 relative before:absolute before:h-6 before:w-6 before:rounded-full before:top-[10px] before:-left-3 after:absolute after:h-3 after:w-3 after:rounded-full after:top-4 after:-left-[6px] ${edu.currentStudying
+                                    className={`border-s pl-6 py-2 ml-3 relative before:absolute before:h-6 before:w-6 before:rounded-full before:top-[10px] before:-left-3 after:absolute after:h-3 after:w-3 after:rounded-full after:top-4 after:-left-[6px] ${edu.endDate === "Present"
                                         ? "before:bg-green/40 after:bg-green border-green/50"
                                         : "before:bg-purple/40 after:bg-purple border-purple/50"
                                         }`}
                                 >
                                     <h3
-                                        className={`text-lg ${edu.currentStudying ? "text-green" : "text-purple"
+                                        className={`text-lg ${edu.endDate === "Present" ? "text-green" : "text-purple"
                                             }`}
                                     >
                                         {edu.subject}
@@ -257,14 +240,10 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                                         </span>
                                     </p>
 
-                                    {edu.currentStudying ? (
-                                        <p className="text-sm text-gray">Currently Studying</p>
-                                    ) : (
-                                        <p className="flex items-center gap-1 text-sm text-gray">
-                                            <FaRegCalendarAlt />
-                                            {edu.startDate} - {edu.endDate}
-                                        </p>
-                                    )}
+                                    <p className="flex items-center gap-1 text-sm text-gray">
+                                        <FaRegCalendarAlt />
+                                        {edu.startDate} - {edu.endDate}
+                                    </p>
                                 </div>
                             ))}
                         </div>
@@ -277,23 +256,16 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                                     key={index}
                                     className="flex items-start gap-4 mb-7 last:mb-0"
                                 >
-                                    <div className="w-16 h-16 overflow-hidden rounded-md shadow-xl shadow-purple/30">
-                                        <img
-                                            className="object-cover object-center w-full"
-                                            src={exp.logo}
-                                            alt={exp.companyName}
-                                        />
+                                    <div className="w-16 h-16 overflow-hidden rounded-md shadow-xl shadow-purple/30 flex items-center justify-center">
+                                        <h1 className={`text-3xl uppercase font-semibold drop-shadow-lg ${exp.endDate === "Present" ? "text-green" : "text-purple"}`}>{exp.companyName.slice(0, 2)}</h1>
                                     </div>
 
                                     <div>
                                         <h3
-                                            className={`text-xl ${exp.currentWorking ? "text-green" : "text-purple"
+                                            className={`text-xl ${exp.endDate === "Present" ? "text-green" : "text-purple"
                                                 }`}
                                         >
-                                            {exp.position} -{" "}
-                                            <span className="text-sm capitalize text-lightGray">
-                                                {exp.jobType}
-                                            </span>
+                                            {exp.position}
                                         </h3>
 
                                         <p className="text-lightGray">{exp.companyName}</p>

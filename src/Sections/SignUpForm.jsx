@@ -1,16 +1,13 @@
 import SocialLogin from "../Components/SocialLogin";
-import useAxios from "../Hooks/useAxios";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from '../Hooks/useAuth';
 import { toast } from "react-toastify";
-import Swal from 'sweetalert2'
 
 // react icons
 import { MdAlternateEmail, MdLockOutline } from 'react-icons/md';
 import { BiUserPin } from 'react-icons/bi';
 import { BsShieldCheck } from 'react-icons/bs';
-import { BsPersonWorkspace, BsBuildings } from 'react-icons/bs';
 
 const SignUpForm = () => {
     const { signUpUser, profileUpdate } = useAuth();

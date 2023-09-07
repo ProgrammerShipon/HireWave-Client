@@ -8,16 +8,15 @@ import Swal from 'sweetalert2';
 // react icons
 import { FaXmark } from 'react-icons/fa6';
 import { AiOutlinePlus, AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import useAxios from '../Hooks/useAxios';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
 
 const CandidateSignUpForm = () => {
     const [curStep, setCurStep] = useState(0);
     const [finish, setFinish] = useState(false);
     const [skillData, loading] = useSkills();
     const { user } = useAuth();
-    const { axiosSecure } = useAxios();
+    const [axiosSecure] = useAxiosSecure();
     const navigate = useNavigate();
 
     const { control, register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
@@ -33,7 +32,6 @@ const CandidateSignUpForm = () => {
             image: user?.photoURL
         }
         const newData = {
-            role: 'candidate',
             name: user?.displayName,
             email: user?.email,
             image: user?.photoURL,
@@ -59,7 +57,8 @@ const CandidateSignUpForm = () => {
             socialLink: [],
             languages: [],
             recommendations: 0,
-            status: null,
+            status: "pending",
+            active: false,
             visibility: data.visibility,
             joinDate: todayDate
         }
@@ -69,7 +68,7 @@ const CandidateSignUpForm = () => {
             return axiosSecure.post('/candidates', newData)
                 .then(data => {
                     if (data.status === 200) {
-                        axios.post('https://hire-wave-server.vercel.app/api/user', newUser)
+                        axiosSecure.post('/user', newUser)
                             .then(data => {
                                 console.log(newUser, data)
                                 Swal.fire({

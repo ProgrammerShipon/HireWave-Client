@@ -5,14 +5,14 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import useAllCategories from '../Hooks/useAllCategories';
 import useAuth from '../Hooks/useAuth';
-import useAxios from '../Hooks/useAxios';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
 
 const RecruiterSignUpForm = () => {
     const [curStep, setCurStep] = useState(0);
     const [finish, setFinish] = useState(false);
     const { user } = useAuth();
-    const { axiosSecure } = useAxios();
+    const [axiosSecure] = useAxiosSecure();
     const [allCategoriesData] = useAllCategories();
     const navigate = useNavigate();
 
@@ -27,7 +27,6 @@ const RecruiterSignUpForm = () => {
     const onSubmit = data => {
         const todayDate = new Date();
         const newData = {
-            role: "recruiter",
             name: data.name,
             email: user?.email,
             image: user?.photoURL,
@@ -41,6 +40,8 @@ const RecruiterSignUpForm = () => {
             address: data.address,
             about: [],
             specialties: [],
+            status: "pending",
+            active: false,
             followers: 0,
             joinDate: todayDate
         }
@@ -54,21 +55,20 @@ const RecruiterSignUpForm = () => {
 
         setCurStep(curStep + 1)
         if (finish) {
-            return axiosSecure.post('/candidates', newData)
+            return axiosSecure.post('/recruiters', newData)
                 .then(data => {
                     if (data.status === 200) {
-                        axiosSecure.post('/users', newUser)
+                        axiosSecure.post('/user', newUser)
                             .then(data => {
-                                if (data.status === 200) {
-                                    Swal.fire({
-                                        position: 'center',
-                                        icon: 'success',
-                                        title: 'Sign Up successfully',
-                                        showConfirmButton: false,
-                                        timer: 2500
-                                    });
-                                    navigate('/', { replace: true })
-                                }
+                                console.log(newUser, data)
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'Sign Up successfully',
+                                    showConfirmButton: false,
+                                    timer: 2500
+                                });
+                                navigate('/', { replace: true })
                             })
                     }
                 })

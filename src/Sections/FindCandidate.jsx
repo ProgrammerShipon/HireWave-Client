@@ -8,9 +8,11 @@ import { BiSearchAlt, BiCategory } from "react-icons/bi";
 import { FaBriefcase } from "react-icons/fa";
 import { FaLocationCrosshairs } from "react-icons/fa6";
 import { AiOutlineClear } from "react-icons/ai";
+import useReview from "../Hooks/useReview";
 
 const FindCandidate = () => {
   const [candidatesData] = useCandidatesData();
+  const [reviewData] = useReview();
   const [filteredData, setFilteredData] = useState([]);
 
   const { register, watch, handleSubmit, reset } = useForm();
@@ -124,6 +126,7 @@ const FindCandidate = () => {
               <CandidateCard
                 key={candidate._id}
                 candidate={candidate}
+                reviewData={reviewData}
               ></CandidateCard>
             ))}
           </div>
