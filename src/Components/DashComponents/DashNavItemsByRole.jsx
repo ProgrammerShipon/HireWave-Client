@@ -49,6 +49,12 @@ const DashNavItemsByRole = ({ role }) => {
                                     <p className="hidden md:inline">Posted Jobs</p>
                                 </DashLink>
                             </li>
+                            <li className="w-full">
+                                <DashLink to='/dashboard/applicant'>
+                                    <AiOutlineFileDone size={24} />
+                                    <p className="hidden md:inline">Applicant</p>
+                                </DashLink>
+                            </li>
                         </> :
 
                         // Admin routes

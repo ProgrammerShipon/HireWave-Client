@@ -3,6 +3,10 @@ import { useForm } from "react-hook-form";
 import TextareaField from "../Components/TextareaField";
 import SkillsField from "../Components/SkillsField";
 import moment from "moment";
+import useCurrentUser from "../Hooks/useCurrentUser";
+import useRecruiterRole from "../Hooks/useRecruiterRole";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 export default function PostJobForm() {
     const [overview, setOverview] = useState([]);
@@ -13,13 +17,33 @@ export default function PostJobForm() {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
+    const [recruitersRole, userLoading, refetch] = useRecruiterRole();
+    const [axiosSecure] = useAxiosSecure();
+    // console.log(recruitersRole)
     const onSubmit = (data) => {
         const currentDate = moment().format('ddd MMM YYYY HH:mm:ss [GMT]ZZ');
         // TO DO just dynamic the companyName, companyLogo and location
-        const newJob = { ...data, postedDate: currentDate, companyName: '', companyLogo: '', location: '', overview, requirements, skillsExperience, benefits, skills, applied: 0 };
+        const newJob = {
+            ...data, postedDate: currentDate,
+            companyName: recruitersRole?.name, companyMail: recruitersRole?.email,
+            companyLogo: '', location: recruitersRole?.address, overview, requirements, skillsExperience, benefits, skills, applied: 0
+        };
 
         console.log(newJob);
-    };
+        axiosSecure.post(`/allJobs`, newJob)
+            .then((res) => {
+                console.log(res)
+                if (res.status === 200) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Job Post successfully',
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                }
+            });
+    }
 
     return (
         <section className="py-20 md:py-[120px] duration-300">

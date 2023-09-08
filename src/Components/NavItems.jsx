@@ -5,14 +5,17 @@ import ActiveLink from "./ActiveLink";
 import { PiUser } from "react-icons/pi";
 import useAuth from "../Hooks/useAuth";
 import Profile from "./Profile";
+import useCurrentUser from "../Hooks/useCurrentUser";
 
 const NavItems = () => {
     const { user } = useAuth();
+    // const []=useCurrentUser();
     // const role = 'user';
-    const role = 'candidate';
-    // const role = 'recruiter';
+    // const role = 'candidate';
+    const role = 'recruiter';
     return (
         <>
+        
             <li>
                 <ActiveLink to='/'>
                     Home
