@@ -137,7 +137,7 @@ const Router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <PrivateRoute><Dashboard /></PrivateRoute>,
+    element: <Dashboard />,
     errorElement: <ErrorPage />,
     children: [
       //Common Routes
