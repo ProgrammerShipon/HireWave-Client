@@ -4,6 +4,7 @@ import useRecruiters from "../Hooks/useRecruiters";
 
 // react icons
 import { BiCheck } from 'react-icons/bi';
+import { FaLocationCrosshairs } from 'react-icons/fa6';
 
 const FindRecruiters = () => {
     const [recruiterData] = useRecruiters();
@@ -125,7 +126,7 @@ const FindRecruiters = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 duration-300">
                             {
                                 filteredData.map((recruiter) => (
-                                    <RecruiterCard key={recruiter.id} recruiter={recruiter} />
+                                    <RecruiterCard key={recruiter._id} recruiter={recruiter} />
                                 ))
                             }
                         </div>

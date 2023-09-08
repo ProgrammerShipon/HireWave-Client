@@ -3,7 +3,7 @@ import { BsCamera, BsThreeDotsVertical } from 'react-icons/bs';
 import { Tooltip } from 'react-tooltip';
 import { useForm } from 'react-hook-form';
 
-const Modal = () => {
+const Modal = ({ candidatesData }) => {
     const [isOpen, setIsOpen] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
@@ -17,17 +17,6 @@ const Modal = () => {
     const handleImageUpload = async () => {
         const formData = new FormData();
         formData.append('image', selectedImage);
-
-        // try {
-        //   await axios.post('/api/upload', formData, {
-        //     headers: {
-        //       'Content-Type': 'multipart/form-data',
-        //     },
-        //   });
-        //   // Handle success or show a notification
-        // } catch (error) {
-        //   // Handle error
-        // }
     };
 
     return (
@@ -41,7 +30,7 @@ const Modal = () => {
                             <div className='w-48 h-48 rounded-full overflow-hidden shadow-xl shadow-gray/40'>
                                 <img
                                     className='w-full h-full object-cover object-center'
-                                    src="https://fiverr-res.cloudinary.com/image/upload/t_profile_original,q_auto,f_auto/v1/attachments/profile/photo/2ad1f54716df5d59667877d07d039551-1664788852632/c28dea6e-85a7-45b9-8b41-79d11b6c2cb2.jpg" alt="" />
+                                    src={candidatesData.image} alt="" />
 
                             </div>
                             <div className='flex flex-col items-center justify-center mt-4'>
@@ -55,23 +44,23 @@ const Modal = () => {
                         </div>
 
                         {/* content */}
-                        <form
-                            onSubmit={handleSubmit(onSubmit)}
+                        <div
+
                             className='flex flex-col gap-2 w-80' >
                             <input
                                 {...register("name")}
-                                defaultValue="MD Forid Hossain"
+                                defaultValue={candidatesData.name}
                                 className='w-full border border-gray/40 p-2 rounded-md focus:outline-none focus:border-green'
                             />
                             <input
                                 {...register("title")}
-                                defaultValue="Front End Developer | React Developer"
+                                defaultValue={candidatesData.title}
                                 className='w-full border border-gray/40 p-2 rounded-md focus:outline-none focus:border-green'
                             />
 
                             <input
                                 {...register("location")}
-                                defaultValue="Dhaka, Bangladesh"
+                                defaultValue={`${candidatesData.location[0]}, ${candidatesData.location[1]}`}
                                 className='w-full border border-gray/40 p-2 rounded-md focus:outline-none focus:border-green'
                             />
 
@@ -96,7 +85,7 @@ const Modal = () => {
                                     Save
                                 </button>
                             </div>
-                        </form>
+                        </div>
                     </div>
 
                 </div>
