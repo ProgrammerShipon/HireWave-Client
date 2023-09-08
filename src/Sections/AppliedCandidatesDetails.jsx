@@ -18,13 +18,13 @@ const AppliedCandidatesDetails = () => {
         if (checkBoxData.length > 0) {
             const filteredCandidatesData = candidatesData.filter(
                 (candidate) =>
-                    candidate.location.toLowerCase().includes(location.toLowerCase()) &&
+                    candidate.location[0].toLowerCase().includes(location.toLowerCase()) &&
                     checkBoxData.includes(candidate.category)
             );
             setFilteredData(filteredCandidatesData);
         } else if (location.length > 0) {
             const filterByLocation = candidatesData.filter((rql) =>
-                rql.location.toLowerCase().includes(location.toLowerCase())
+                rql.location[0].toLowerCase().includes(location.toLowerCase())
             );
             setFilteredData(filterByLocation);
         } else {
