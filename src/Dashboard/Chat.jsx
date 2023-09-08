@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { ZIMKitManager, Common } from '@zegocloud/zimkit-react';
+import { Common, ZIMKitManager } from '@zegocloud/zimkit-react';
 import '@zegocloud/zimkit-react/index.css';
+import React, { useEffect, useState } from 'react';
 
 const id = Math.floor(Math.random() * 1000);
 

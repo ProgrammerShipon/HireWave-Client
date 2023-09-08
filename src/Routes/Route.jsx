@@ -37,6 +37,7 @@ import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
 import PrivateRoute from "./PrivateRoute";
 import RecruitersDetails from "../Pages/RecruitersDetails";
 import SelectRole from "../SignUpSteps/SelectRole";
+import Chat from "../Dashboard/Chat";
 
 const Router = createBrowserRouter([
   {
@@ -159,7 +160,7 @@ const Router = createBrowserRouter([
       // Recruiter routes
       {
         path: "messages",
-        element: <Messages />,
+        element: < Chat/>,
       },
       {
         path: "room",
