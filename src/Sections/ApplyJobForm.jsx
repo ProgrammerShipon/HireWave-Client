@@ -10,24 +10,16 @@ import { MdOutlineWorkOutline } from 'react-icons/md';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import GetAgoTime from '../Components/GetAgoTime';
 import useAuth from '../Hooks/useAuth';
-import useAxios from '../Hooks/useAxios';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const ApplyJobForm = ({ jobData }) => {
-    const { userId } = useAuth();
-    const { axiosSecure } = useAxios()
-    const { _id, title, companyName, category, location, jobType, postedDate, overview, skills, } = jobData;
+    const { user } = useAuth();
+    const [axiosSecure] = useAxiosSecure();
+    const { _id, title,companyLogo, companyName, category, location, jobType, postedDate, overview, skills, } = jobData;
 
     const { register, handleSubmit, reset } = useForm();
-    // console.log(jobData)
-    // const [singleJob, setSingleJob]= useState()
-    // const [allJobsData, loading] = useAllJobs();
-    // const { title: id }= useParams()
 
-
-    // useEffect(() => {
-    //     const appliedJob = allJobsData.find(job => job._id === id)
-    //     setSingleJob(appliedJob)
-    // }, [loading, id])
     const [attachments, setAttachments] = useState([{ id: 1, value: "" }]);
     const [maximumWarning, setMaximumWarning] = useState(false)
     const handleIncreaseInputField = () => {
@@ -38,8 +30,6 @@ const ApplyJobForm = ({ jobData }) => {
         else setMaximumWarning(true)
     };
     const onApplyJobSubmit = (data) => {
-        // console.log(data)
-        //    console.log('handleApplyJob', data)
         const cover_letter = data.cover_letter;
         const expected_salary = data.expected_salary;
         const attachment = data.attachment;
@@ -47,18 +37,38 @@ const ApplyJobForm = ({ jobData }) => {
         const appliedInfo = {
             appliedJobId: _id,
             companyName,
+            companyLogo,
             title,
             jobType,
             cover_letter,
             expected_salary,
             attachment,
-            applicantId: userId?._id
+            applicantEmail: user?.email
         }
 
         console.log(appliedInfo)
         axiosSecure.post(`/appliedCandidate`, appliedInfo)
             .then((res) => {
-                console.log('Res:', res.data);
+                console.log(res)
+                if (res.status === 200) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Applied successfully',
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                }
+                else{
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Already Applied',
+                        showConfirmButton: false,
+                        timer: 2500
+                    })
+                }
+
             })
             .catch((error) => {
                 console.error('Error:', error);
