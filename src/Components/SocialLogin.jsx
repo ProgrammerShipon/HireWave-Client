@@ -19,11 +19,11 @@ const SocialLogin = () => {
     const handleGoogleLogin = () => {
         googleSignIn()
             .then(() => {
-                if (currentUser === undefined) {
-                    navigate('/select_role', { replace: true })
-                } else {
-                    navigate(from, { replace: true })
-                }
+                // if (currentUser === undefined) {
+                //     navigate('/select_role', { replace: true })
+                // } else {
+                //     navigate(from, { replace: true })
+                // }
             }).catch((error) => {
                 if (error.message) {
                     toast.error(error.message, {

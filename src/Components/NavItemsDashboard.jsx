@@ -7,8 +7,8 @@ import NavItemsDashboardByRole from "./NavItemsDashboardByRole";
 
 const NavItemsDashboard = () => {
   // const role = "candidate";
-  // const role = "recruiter";
-  const role = "admin";
+  const role = "recruiter";
+  // const role = "admin";
 
   return (
     <>

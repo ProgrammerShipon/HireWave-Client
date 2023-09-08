@@ -10,9 +10,9 @@ const Dashboard = () => {
     const [currentUser] = useCurrentUser();
     const navigate = useNavigate();
 
-    if (user?.email && currentUser === undefined) {
-        return navigate('/select_role', { replace: true })
-    }
+    // if (user?.email && currentUser === undefined) {
+    //     return navigate('/select_role', { replace: true })
+    // }
     return (
         <>
             <StayTop />
