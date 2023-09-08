@@ -1,7 +1,7 @@
 import useAuth from "../../Hooks/useAuth";
+import useCurrentUser from "../../Hooks/useCurrentUser";
 import DashLink from "./DashLink";
 import DashNavItemsByRole from "./DashNavItemsByRole";
-import useCurrentUser from "../../Hooks/useCurrentUser";
 
 // react icons
 import { LiaHomeSolid } from "react-icons/lia";
@@ -9,7 +9,6 @@ import { LuLayoutDashboard } from "react-icons/lu";
 import { MdLogout } from "react-icons/md";
 import { TbLockCog } from "react-icons/tb";
 import { VscAccount } from "react-icons/vsc";
-import useCurrentUser from "../../Hooks/useCurrentUser";
 
 const DashNavItems = () => {
   const { logOut, user } = useAuth();
