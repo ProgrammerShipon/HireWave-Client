@@ -35,9 +35,9 @@ export default function PostJobForm() {
                             <textarea
                                 id="title"
                                 rows={2}
-                                placeholder="Enter your job title..."
+                                placeholder="Enter your job title"
                                 {...register("title", { required: true })}
-                                className="w-full text-2xl border border-gray/40 focus:border-green py-2 focus:shadow-lg focus:shadow-gray/20 duration-300 px-3 rounded-md outline-none"
+                                className="w-full border border-gray/40 focus:border-green py-2 focus:shadow-lg focus:shadow-gray/20 duration-300 px-3 rounded-md outline-none"
                             />
                             {errors.title && (
                                 <span className="text-red-700">This field is required</span>
@@ -96,7 +96,7 @@ export default function PostJobForm() {
                                 </label>
                                 <input
                                     id="salary"
-                                    placeholder="200-300 example..."
+                                    placeholder="Write a range (200-300)"
                                     {...register("salary", { required: true })}
                                     className="w-full border border-gray/40 focus:border-green py-2 focus:shadow-lg focus:shadow-gray/20 duration-300 px-3 rounded-md outline-none"
                                 />
@@ -133,7 +133,7 @@ export default function PostJobForm() {
                                 <input
                                     id="quantity"
                                     type="number"
-                                    placeholder="Number of Candidates..."
+                                    placeholder="Vacant seat for the post"
                                     {...register("quantity", { required: true })}
                                     className="w-full border border-gray/40 focus:border-green py-2 focus:shadow-lg focus:shadow-gray/20 duration-300 px-3 rounded-md outline-none"
                                 />
@@ -159,7 +159,7 @@ export default function PostJobForm() {
                                 <input
                                     id="closingDate"
                                     type="date"
-                                    placeholder="Enter closing date..."
+                                    placeholder="Enter closing date"
                                     {...register("closingDate", { required: true })}
                                     className="w-full border border-gray/40 focus:border-green py-[11px] focus:shadow-lg focus:shadow-gray/20 duration-300 px-3 rounded-md outline-none"
                                 />
@@ -172,28 +172,28 @@ export default function PostJobForm() {
                         {/* Overview */}
                         <TextareaField
                             label="Overview"
-                            placeholder="Enter job Overview here..."
+                            placeholder="Enter job Overview here"
                             setUpdate={setOverview}
                         />
 
                         {/* requirements */}
                         <TextareaField
                             label="Requirements"
-                            placeholder="Enter job requirements here..."
+                            placeholder="Enter job requirements here"
                             setUpdate={setRequirements}
                         />
 
                         {/* requirements */}
                         <TextareaField
                             label="Skill & Experience"
-                            placeholder="Enter job skill & experience here..."
+                            placeholder="Enter job skill & experience here"
                             setUpdate={setSkillsExperience}
                         />
 
                         {/* benefits */}
                         <TextareaField
                             label="Benefits"
-                            placeholder="Enter job benefits here..."
+                            placeholder="Enter job benefits here"
                             setUpdate={setBenefits}
                         />
 
