@@ -7,10 +7,11 @@ const useCurrentUser = () => {
     const [axiosSecure] = useAxiosSecure();
     const { user } = useAuth();
     const [currentUser, setCurrentUser] = useState({});
-    const { data: userData = [], isLoading: loading, refetch } = useQuery({
+    const [userLoading, setUserLoading] = useState(true);
+    const { data: userData = [], isLoading: isLoading, refetch } = useQuery({
         queryKey: ['userData'],
         queryFn: async () => {
-            const res = await axiosSecure('https://hire-wave-server.vercel.app/api/users');
+            const res = await axiosSecure('/users');
             return res.data;
         },
     });
@@ -18,9 +19,10 @@ const useCurrentUser = () => {
     useEffect(() => {
         const getUser = userData.find(usr => usr.email === user?.email)
         setCurrentUser(getUser)
-    }, [user?.email, !loading, refetch])
+        setUserLoading(false)
+    }, [user?.email, isLoading])
 
-    return [currentUser, loading];
+    return [currentUser, userLoading];
 };
 
 export default useCurrentUser;

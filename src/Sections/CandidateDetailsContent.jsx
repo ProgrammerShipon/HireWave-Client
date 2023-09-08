@@ -20,6 +20,7 @@ import { Rating, Star } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { useEffect } from "react";
 import { useState } from "react";
+import useAuth from "../Hooks/useAuth";
 
 const CandidateDetailsContent = ({ candidateDetails }) => {
     const [reviewData, loading] = useReview();

@@ -68,7 +68,7 @@ const Router = createBrowserRouter([
       {
         path: "/candidate_details/:id",
         element: <PrivateRoute><CandidateDetails /></PrivateRoute>,
-        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/candidate/${params.id}`)
+        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/candidates/${params.id}`)
       },
       {
         path: "/job_details/:id",
@@ -87,7 +87,7 @@ const Router = createBrowserRouter([
       {
         path: "/learning/:id",
         element: <LearningDetails />,
-        loader: async ({ params }) => await fetch(`http://localhost:3030/api/learning/${params.id}`),
+        loader: async ({ params }) => await fetch(`https://hire-wave-server.vercel.app/api/learning/${params.id}`),
       },
       {
         path: "/saved_jobs",
@@ -196,17 +196,17 @@ const Router = createBrowserRouter([
   },
   {
     path: "select_role",
-    element: <PrivateRoute><SelectRole /></PrivateRoute>,
+    element: <SelectRole />,
     errorElement: <ErrorPage />
   },
   {
     path: "candidate_sign_up",
-    element: <PrivateRoute><CandidateSignUpForm /></PrivateRoute>,
+    element: <CandidateSignUpForm />,
     errorElement: <ErrorPage />
   },
   {
     path: "recruiter_sign_up",
-    element: <PrivateRoute><RecruiterSignUpForm /></PrivateRoute>,
+    element: <RecruiterSignUpForm />,
     errorElement: <ErrorPage />
   }
 ]);

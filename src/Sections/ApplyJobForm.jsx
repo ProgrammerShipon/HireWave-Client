@@ -18,7 +18,7 @@ const ApplyJobForm = ({ jobData }) => {
     const { _id, title, companyName, category, location, jobType, postedDate, overview, skills, } = jobData;
 
     const { register, handleSubmit, reset } = useForm();
-    console.log(jobData)
+    // console.log(jobData)
     // const [singleJob, setSingleJob]= useState()
     // const [allJobsData, loading] = useAllJobs();
     // const { title: id }= useParams()

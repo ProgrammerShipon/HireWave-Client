@@ -6,7 +6,7 @@ import { useLoaderData } from 'react-router-dom';
 
 const ApplyJob = () => {
     const jobData = useLoaderData();
-    // console.log(jobData)
+    console.log(jobData)
     return (
         <>
             {/* page title */}

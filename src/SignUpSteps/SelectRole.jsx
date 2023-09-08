@@ -1,15 +1,24 @@
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 
 // react icons
 import { BsBuildings, BsPersonWorkspace } from 'react-icons/bs';
+import PageLoader from '../Components/PageLoader';
+import useCurrentUser from '../Hooks/useCurrentUser';
 
 const SelectRole = () => {
-  const { logOut } = useAuth();
-  const handleLogOut = () => {
-    logOut()
-      .then()
-      .catch()
+  const { logOut, user, loading } = useAuth();
+  const [currentUser, userLoading] = useCurrentUser();
+  const location = useLocation();
+
+  if (loading || userLoading) {
+    return <PageLoader />
+  }
+  if (!user) {
+    return <Navigate to='/login' state={{ from: location }} replace />;
+  }
+  if (currentUser) {
+    return <Navigate to='/' replace />;
   }
 
   return (
@@ -59,7 +68,7 @@ const SelectRole = () => {
           <div className="flex items-center gap-2">
             <Link
               to="/"
-              onClick={handleLogOut}
+              onClick={() => logOut()}
               className="bg-dark text-white border border-dark hover:bg-transparent hover:text-red-400 hover:border-red-400 px-5 py-1 rounded-md shadow-xl hover:shadow-red-400/20 duration-300"
             >
               Log Out
