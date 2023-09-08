@@ -86,7 +86,7 @@ const Router = createBrowserRouter([
       {
         path: "/learning/:id",
         element: <LearningDetails />,
-        loader: async ({ params }) => await fetch(`http://localhost:3030/api/learning/${params.id}`),
+        // loader: async ({ params }) => await fetch(`http://localhost:3030/api/learning/${params.id}`),
       },
       {
         path: "/saved_jobs",

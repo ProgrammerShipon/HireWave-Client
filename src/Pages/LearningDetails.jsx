@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
+import React from 'react';
+import useLearningData from '../Hooks/useLearningData';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../Components/Breadcrumbs';
-import useAxios from '../Hooks/useAxios';
 import LearningDetailsBody from '../Sections/LearningDetailsBody';
 
 const LearningDetails = () => {
-  
+
+    const {id} = useParams()
+    const { learningData, loading } = useLearningData()
+
+    const singleLearningData = learningData.find(data=> data._id === id)
+    console.log(singleLearningData);
     return (
         <>
             {/* page title */}
@@ -17,7 +22,9 @@ const LearningDetails = () => {
             <Breadcrumbs title="Learning Details" />
 
             {/* Page content */}
-            <LearningDetailsBody />
+            {
+                !loading ? <LearningDetailsBody singleLearningData={singleLearningData} /> : <h2>Loading...</h2>
+            }
         </>
     );
 };
