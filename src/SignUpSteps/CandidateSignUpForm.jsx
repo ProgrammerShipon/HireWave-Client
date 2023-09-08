@@ -3,19 +3,22 @@ import { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import useAuth from '../Hooks/useAuth';
 import useSkills from '../Hooks/useSkills';
+import { useNavigate } from 'react-router-dom';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import Swal from "sweetalert2";
 
 // react icons
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlinePlus } from 'react-icons/ai';
 import { FaXmark } from 'react-icons/fa6';
-import { useNavigate } from 'react-router-dom';
-import useAxios from '../Hooks/useAxios';
+import PageLoader from "../Components/PageLoader";
 
 const CandidateSignUpForm = () => {
     const [curStep, setCurStep] = useState(0);
     const [finish, setFinish] = useState(false);
     const [skillData, loading] = useSkills();
+    const [finishLoading, setFinishLoading] = useState(false);
     const { user } = useAuth();
-    const { axiosSecure } = useAxios();
+    const [axiosSecure] = useAxiosSecure();
     const navigate = useNavigate();
 
     const { control, register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
@@ -23,13 +26,6 @@ const CandidateSignUpForm = () => {
     //Form Submit function
     const onSubmit = data => {
         const todayDate = new Date();
-
-        // const newUser = {
-        //     role: 'candidate',
-        //     name: user?.displayName,
-        //     email: user?.email,
-        //     image: user?.photoURL
-        // }
 
         const newData = {
             role: 'candidate',
@@ -58,7 +54,7 @@ const CandidateSignUpForm = () => {
             socialLink: [],
             languages: [],
             recommendations: 0,
-            status: null,
+            status: 'pending',
             visibility: data.visibility,
             joinDate: todayDate
         }
@@ -67,13 +63,22 @@ const CandidateSignUpForm = () => {
 
         // Step Finish 
         if (finish) {
-          console.log("all data console -> ", newData);
-          return axiosSecure
-            .post("/candidates", newData)
-            .then((data) => {
-              console.log(data);
-            })
-            .catch((err) => console.log(err));
+            setFinishLoading(true)
+            return axiosSecure.post("/candidates", newData)
+                .then((data) => {
+                    if (data.status === 200) {
+                        setFinishLoading(false)
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Sign Up successfully',
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        navigate('/', { replace: true })
+                    }
+                })
+                .catch((err) => console.log(err));
         }
     }
 
@@ -139,7 +144,7 @@ const CandidateSignUpForm = () => {
 
                         <form className='flex flex-col gap-4 mt-5' onSubmit={handleSubmit(onSubmit)}>
                             {/* title */}
-                            <label className='text-gray'>Title*
+                            <label className='text-gray text-base'>Title*
                                 <input
                                     className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.title && 'border-red-400'}`}
                                     placeholder='e.g. Digital Marketing Specialist | SEO Expert'
@@ -150,7 +155,7 @@ const CandidateSignUpForm = () => {
                             {/* Job Type & hourly rate */}
                             <div className='flex flex-col sm:flex-row items-center gap-3'>
                                 {/* Job Type */}
-                                <label className='text-gray w-full'>Job type*
+                                <label className='text-gray text-base w-full'>Job type*
                                     <select name="jobType" id="jobType"
                                         className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.jobType && 'border-red-400'}`}
                                         {...register("jobType", { required: true })}
@@ -164,7 +169,7 @@ const CandidateSignUpForm = () => {
                                 </label>
 
                                 {/* hourly rate */}
-                                <label className='text-gray w-full'>Hourly rate*
+                                <label className='text-gray w-full text-base'>Hourly rate*
                                     <input
                                         className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.hourlyRate && 'border-red-400'}`}
                                         placeholder='e.g. 10'
@@ -174,7 +179,7 @@ const CandidateSignUpForm = () => {
                             </div>
 
                             {/* category */}
-                            <label className='text-gray'>Category*
+                            <label className='text-gray text-base'>Category*
                                 <input
                                     className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.category && 'border-red-400'}`}
                                     placeholder='e.g. Sales and Marketing'
@@ -205,7 +210,7 @@ const CandidateSignUpForm = () => {
                         <form className='flex flex-col gap-4 mt-5' onSubmit={handleSubmit(onSubmit)}>
                             <div className='flex flex-col sm:flex-row items-center gap-3'>
                                 {/* country */}
-                                <label className='text-gray w-full'>Country*
+                                <label className='text-gray w-full text-base'>Country*
                                     <select name="jobType" id="jobType"
                                         className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.country && 'border-red-400'}`}
                                         {...register("country", { required: true })}
@@ -219,7 +224,7 @@ const CandidateSignUpForm = () => {
                                 </label>
 
                                 {/* state */}
-                                <label className='text-gray w-full'>State*
+                                <label className='text-gray w-full text-base'>State*
                                     <input
                                         className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.state && 'border-red-400'}`}
                                         placeholder='e.g. Dhaka | New work'
@@ -229,7 +234,7 @@ const CandidateSignUpForm = () => {
                             </div>
 
                             {/* address */}
-                            <label className='text-gray'>Address*
+                            <label className='text-gray text-base'>Address*
                                 <input
                                     className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.address && 'border-red-400'}`}
                                     placeholder='e.g. Uttara Model Town, 1230'
@@ -240,7 +245,7 @@ const CandidateSignUpForm = () => {
                             {/* country code & phone number */}
                             <div className='flex flex-col sm:flex-row items-center gap-3'>
                                 {/* country code */}
-                                <label className='text-gray w-40'>Country code*
+                                <label className='text-gray w-40 text-base'>Country code*
                                     <select name="jobType" id="jobType"
                                         className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.country_code && 'border-red-400'}`}
                                         {...register("country_code", { required: true })}
@@ -254,7 +259,7 @@ const CandidateSignUpForm = () => {
                                 </label>
 
                                 {/* Phone number */}
-                                <label className='text-gray w-full'>Phone number*
+                                <label className='text-gray w-full text-base'>Phone number*
                                     <input
                                         className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.phone && 'border-red-400'}`}
                                         placeholder='e.g. 12910211'
@@ -290,7 +295,7 @@ const CandidateSignUpForm = () => {
 
                         <form className='flex flex-col gap-4 mt-5' onSubmit={handleSubmit(onSubmit)}>
                             {/* title position */}
-                            <label className='text-gray'>Title*
+                            <label className='text-gray text-base'>Title*
                                 <input
                                     className='text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2'
                                     placeholder='e.g: Front-End Developer'
@@ -301,7 +306,7 @@ const CandidateSignUpForm = () => {
                             {/* organization & Location */}
                             <div className='flex flex-col sm:flex-row items-center gap-3'>
                                 {/* organization */}
-                                <label className='text-gray w-full'>Organization*
+                                <label className='text-gray w-full text-base'>Organization*
                                     <input
                                         className='text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2'
                                         placeholder='e.g. Mahitech Ltd'
@@ -310,7 +315,7 @@ const CandidateSignUpForm = () => {
                                 </label>
 
                                 {/* location */}
-                                <label className='text-gray w-full'>Location*
+                                <label className='text-gray w-full text-base'>Location*
                                     <input
                                         className='text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2'
                                         placeholder='e.g. New work, USA'
@@ -323,7 +328,7 @@ const CandidateSignUpForm = () => {
                             <div>
                                 <div className='flex flex-col sm:flex-row items-center gap-3'>
                                     {/* Start date */}
-                                    <label className='text-gray w-full'>Start date*
+                                    <label className='text-gray w-full text-base'>Start date*
                                         <input
                                             type="date"
                                             className='text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2'
@@ -332,7 +337,7 @@ const CandidateSignUpForm = () => {
                                     </label>
 
                                     {/* end date */}
-                                    <label className='text-gray w-full'>
+                                    <label className='text-gray w-full text-base'>
                                         End date*
                                         {present ? (
                                             <input
@@ -354,7 +359,7 @@ const CandidateSignUpForm = () => {
                                 </div>
 
                                 {/* Checkbox for presently working */}
-                                <label className='flex gap-2 justify-end'>
+                                <label className='flex gap-2 justify-end text-base'>
                                     <input
                                         type="checkbox"
                                         onChange={e => {
@@ -399,7 +404,7 @@ const CandidateSignUpForm = () => {
                         <form className='flex flex-col gap-4 mt-5' onSubmit={handleSubmit(onSubmit)}>
 
                             {/* Skill field */}
-                            <label htmlFor="skills">Add a Skill</label>
+                            <label htmlFor="skills" className="text-xl text-purple -mb-3">Add a Skill</label>
                             <div className='relative border border-purple/40 rounded-md p-3'>
                                 <div className='flex flex-wrap gap-x-2 gap-y-3'>
                                     {selectedSkills?.map((selectedSkill, index) => (
@@ -486,7 +491,7 @@ const CandidateSignUpForm = () => {
 
                         <form className='flex flex-col gap-4 mt-10' onSubmit={handleSubmit(onSubmit)}>
                             {/* Visible */}
-                            <label htmlFor='visible' className='border border-gray/40 hover:border-green px-5 py-3 rounded-lg shadow-lg cursor-pointer duration-300'>
+                            <label htmlFor='visible' className='text-base border border-gray/40 hover:border-green px-5 py-3 rounded-lg shadow-lg cursor-pointer duration-300'>
                                 <p className='bg-dark/5 px-3 rounded w-fit text-sm'>Recommended</p>
                                 <div className=''>
                                     <div
@@ -510,7 +515,7 @@ const CandidateSignUpForm = () => {
                             </label>
 
                             {/* Invisible */}
-                            <label htmlFor='invisible' className='border border-gray/40 hover:border-green px-5 py-3 rounded-lg shadow-lg cursor-pointer duration-300'>
+                            <label htmlFor='invisible' className='text-base border border-gray/40 hover:border-green px-5 py-3 rounded-lg shadow-lg cursor-pointer duration-300'>
                                 <div className=''>
                                     <div
                                         className='flex items-start justify-between'
@@ -555,6 +560,10 @@ const CandidateSignUpForm = () => {
                 return null;
         }
     };
+
+    if (finishLoading) {
+        return <div className="mt-32"><PageLoader /></div>
+    }
 
     return (
         <>
