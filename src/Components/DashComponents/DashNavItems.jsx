@@ -1,6 +1,7 @@
 import useAuth from "../../Hooks/useAuth";
 import DashLink from "./DashLink";
 import DashNavItemsByRole from "./DashNavItemsByRole";
+import useCurrentUser from "../../Hooks/useCurrentUser";
 
 // react icons
 import { LiaHomeSolid } from "react-icons/lia";
@@ -11,9 +12,11 @@ import { VscAccount } from "react-icons/vsc";
 
 const DashNavItems = () => {
   const { logOut } = useAuth();
-  const role = 'candidate';
+  const [currentUser] = useCurrentUser();
+  // const role = 'candidate';
   // const role = 'recruiter';
-  // const role = "admin";
+  const role = "admin";
+  // const role = currentUser.role;
 
   return (
     <aside className="fixed top-0 shadow-4xl shadow-gray/40 w-auto md:w-[300px] bg-white duration-300 h-screen pt-[71px] overflow-y-auto z-20">

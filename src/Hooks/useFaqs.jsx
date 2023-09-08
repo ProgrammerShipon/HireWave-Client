@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxios from "./useAxios";
+import useAxiosSecure from "./useAxiosSecure";
 
 const useFaqs = () => {
-  const { axiosSecure } = useAxios();
+  const [axiosSecure] = useAxiosSecure();
 
   const {
     data: faqsData = [],
@@ -11,9 +11,8 @@ const useFaqs = () => {
   } = useQuery({
     queryKey: ["faqsData"],
     queryFn: async () => {
-      const res = await axiosSecure("/faqs");
-      const data = await res.json();
-      return data;
+      const res = await axiosSecure('/faqs');
+      return res.data;
     },
   });
 

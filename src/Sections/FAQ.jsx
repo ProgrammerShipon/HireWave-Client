@@ -8,7 +8,7 @@ import useFaqs from '../Hooks/useFaqs';
 
 const FAQ = () => {
     const [activeElement, setActiveElement] = useState('');
-    const [ faqsData, loading, refetch ] = useFaqs;
+    const [faqsData, loading, refetch] = useFaqs();
 
     const handleClick = (index) => {
         if (index === activeElement) {

@@ -1,7 +1,7 @@
 import Button from '../Components/Button';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // react icons
 import { BiCurrentLocation } from 'react-icons/bi';
@@ -17,17 +17,7 @@ const ApplyJobForm = ({ jobData }) => {
     const { axiosSecure } = useAxios()
     const { _id, title, companyName, category, location, jobType, postedDate, overview, skills, } = jobData;
 
-    const { register, handleSubmit, reset } = useForm();
-    // console.log(jobData)
-    // const [singleJob, setSingleJob]= useState()
-    // const [allJobsData, loading] = useAllJobs();
-    // const { title: id }= useParams()
-
-
-    // useEffect(() => {
-    //     const appliedJob = allJobsData.find(job => job._id === id)
-    //     setSingleJob(appliedJob)
-    // }, [loading, id])
+    const { register, handleSubmit } = useForm();
     const [attachments, setAttachments] = useState([{ id: 1, value: "" }]);
     const [maximumWarning, setMaximumWarning] = useState(false)
     const handleIncreaseInputField = () => {
@@ -38,8 +28,6 @@ const ApplyJobForm = ({ jobData }) => {
         else setMaximumWarning(true)
     };
     const onApplyJobSubmit = (data) => {
-        // console.log(data)
-        //    console.log('handleApplyJob', data)
         const cover_letter = data.cover_letter;
         const expected_salary = data.expected_salary;
         const attachment = data.attachment;
@@ -55,7 +43,6 @@ const ApplyJobForm = ({ jobData }) => {
             applicantId: userId?._id
         }
 
-        console.log(appliedInfo)
         axiosSecure.post(`/appliedCandidate`, appliedInfo)
             .then((res) => {
                 console.log('Res:', res.data);
