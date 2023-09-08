@@ -7,7 +7,7 @@ import JobDetailsBody from '../Sections/JobDetailsBody';
 const Job_Details = () => {
     const jobDetails = useLoaderData();
 
-    const { title } = jobDetails[0];
+    const { title } = jobDetails;
 
     return (
         <>
@@ -19,7 +19,7 @@ const Job_Details = () => {
             <Breadcrumbs title="Job Details" />
 
             {/* sections */}
-            <JobDetailsBody jobDetails={jobDetails[0]} />
+            <JobDetailsBody jobDetails={jobDetails} />
 
             {/* border */}
             <Divider />

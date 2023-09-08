@@ -38,7 +38,7 @@ const Conference = () => {
     return (
         <div>
             <div
-            className='h-fit'
+            className='h-fit bg-green'
                 ref={interviewConference}>
             </div>
         </div>

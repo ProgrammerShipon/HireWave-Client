@@ -7,7 +7,8 @@ import useAuth from './useAuth';
 // serverLink = "http://localhost:3030/api";
 
 const axiosSecure = axios.create({
-    baseURL: 'https://hire-wave-server.vercel.app/api',
+    // baseURL: 'http://localhost:3030/api',
+    baseURL: 'https://hire-wave-server.vercel.app/api/',
 });
 
 const useAxiosSecure = () => {

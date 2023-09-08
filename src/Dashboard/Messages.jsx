@@ -5,11 +5,11 @@ import ChatBox from "../Components/ChatBox";
 import { io } from "socket.io-client";
 // import useChat from "../Hooks/useChat";
 import { useQuery } from "@tanstack/react-query";
-import useAxios from "../Hooks/useAxios";
 import DashTitle from "../Components/DashComponents/DashTitle";
 import useAuth from "../Hooks/useAuth";
-import { useLoaderData } from "react-router-dom";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 const messages = () => {
+  const [axiosSecure] = useAxiosSecure()
   const [currentChat, setCurrentChat] = useState(null);
   const [sendMessage, setSendMessage] = useState(null);
   const [receivedMessage, setReceivedMessage] = useState(null);
@@ -29,7 +29,7 @@ const messages = () => {
   } = useQuery({
     queryKey: ["chatHistory"],
     queryFn: async () => {
-      const res = await useAxios.get(`/chat/${currentUserId}`);
+      const res = await axiosSecure.get(`/chat/${currentUserId}`);
       return res.data;
     },
   });
