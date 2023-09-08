@@ -28,7 +28,6 @@ const AppliedCandidatesTable = ({ index, candidate }) => {
                 </div>
             </td>
             <td className='px-5 py-3'>{name}</td>
-            <td className='px-5 py-3'>{category}</td>
             <td className='px-10 py-3'>{hourlyRate}$</td>
             <td className='px-5 py-3'>
                 <p className='text-[#FDCC0D] font-medium flex items-center'>

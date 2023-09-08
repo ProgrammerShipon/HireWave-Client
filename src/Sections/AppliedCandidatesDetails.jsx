@@ -130,7 +130,6 @@ const AppliedCandidatesDetails = () => {
                                     <th className='px-2 py-3 font-medium'>#</th>
                                     <th className='px-2 py-3 font-medium'>Image</th>
                                     <th className='px-2 py-3 font-medium'>Applicant</th>
-                                    <th className='px-2 py-3 font-medium'>Job Applied</th>
                                     <th className='px-2 py-3 font-medium'>Hourly Rate</th>
                                     <th className='px-2 py-3 font-medium'>Rating</th>
                                     <th className='px-10 py-3 font-medium'>Location</th>
