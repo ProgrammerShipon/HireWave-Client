@@ -38,6 +38,7 @@ import PrivateRoute from "./PrivateRoute";
 import RecruitersDetails from "../Pages/RecruitersDetails";
 import SelectRole from "../SignUpSteps/SelectRole";
 import Chat from "../Dashboard/Chat";
+import AppliedApplicant from "../Dashboard/AppliedApplicant";
 
 const Router = createBrowserRouter([
   {
@@ -169,6 +170,10 @@ const Router = createBrowserRouter([
       {
         path: "postedJobs",
         element: <PostedJobs />,
+      },
+      {
+        path: "applicant",
+        element: <AppliedApplicant />,
       },
 
       //Admin Routes

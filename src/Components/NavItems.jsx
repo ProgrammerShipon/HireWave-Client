@@ -4,8 +4,8 @@ import ActiveLink from "./ActiveLink";
 // react icons
 import { PiUser } from "react-icons/pi";
 import useAuth from "../Hooks/useAuth";
-import Profile from "./Profile";
 import useCurrentUser from "../Hooks/useCurrentUser";
+import Profile from "./Profile";
 
 const NavItems = () => {
     const { user } = useAuth();
@@ -17,6 +17,7 @@ const NavItems = () => {
 
     return (
         <>
+        
             <li>
                 <ActiveLink to='/'>
                     Home

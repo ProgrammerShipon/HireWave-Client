@@ -6,7 +6,7 @@ const useRecruiters = () => {
     const { data: recruiterData = [], isLoading: loading, refetch, } = useQuery({
         queryKey: ["recruiterData"],
         queryFn: async () => {
-            const res = await axiosSecure('/recruiters');
+            const res = await axiosSecure.get('/recruiters');
             return res.data;
         },
     });
