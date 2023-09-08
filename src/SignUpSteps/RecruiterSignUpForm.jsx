@@ -5,14 +5,17 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import useAllCategories from '../Hooks/useAllCategories';
 import useAuth from '../Hooks/useAuth';
-import useAxios from '../Hooks/useAxios';
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import PageLoader from "../Components/PageLoader";
 
 const RecruiterSignUpForm = () => {
     const [curStep, setCurStep] = useState(0);
     const [finish, setFinish] = useState(false);
     const { user } = useAuth();
-    const { axiosSecure } = useAxios();
+    const [axiosSecure] = useAxiosSecure();
     const [allCategoriesData] = useAllCategories();
+    const [finishLoading, setFinishLoading] = useState(false);
     const navigate = useNavigate();
 
     const { control, register, handleSubmit, setValue, watch, reset, formState: { errors } } = useForm();
@@ -26,11 +29,9 @@ const RecruiterSignUpForm = () => {
     const onSubmit = data => {
         const todayDate = new Date();
         const newData = {
-          role: "recruiter",
-          profileView: 0,
-          userInfo: {
+            role: 'recruiter',
             name: data.name,
-            title,
+            title: data.title,
             email: user?.email,
             phone: [data.country_code, data.phone],
             image: user?.photoURL,
@@ -38,49 +39,37 @@ const RecruiterSignUpForm = () => {
             category: data.category,
             industry: data.industry,
             website: data.website,
-          },
-          about: [],
-          specialties: [],
-          location: [data.country, data.state],
-          address: data.address,
-          status: Boolean,
-
-          subCategory: data.subCategory,
-          followers: 0,
-          joinDate: todayDate,
-        };
-        console.log('candidates -> ', newData)
-
-        const newUser = {
-            role: 'recruiter',
-            name: data.name,
-            email: user?.email,
-            image: user?.photoURL
+            category: data.category,
+            subCategory: data.subCategory,
+            location: [data.country, data.state],
+            address: data.address,
+            about: [],
+            specialties: [],
+            status: "pending",
+            active: false,
+            followers: 0,
+            joinDate: todayDate
         }
-        console.log('newUser -> ', newUser)
 
         setCurStep(curStep + 1)
-
-        // if (finish) {
-        //     return axiosSecure.post('/candidates', newData)
-        //         .then(data => {
-        //             if (data.status === 200) {
-        //                 axiosSecure.post('/users', newUser)
-        //                     .then(data => {
-        //                         if (data.status === 200) {
-        //                             Swal.fire({
-        //                                 position: 'center',
-        //                                 icon: 'success',
-        //                                 title: 'Sign Up successfully',
-        //                                 showConfirmButton: false,
-        //                                 timer: 2500
-        //                             });
-        //                             navigate('/', { replace: true })
-        //                         }
-        //                     })
-        //             }
-        //         })
-        // }
+        if (finish) {
+            setFinishLoading(true)
+            return axiosSecure.post('/recruiters', newData)
+                .then(data => {
+                    if (data.status === 200) {
+                        setFinishLoading(false)
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Sign Up successfully',
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        navigate('/', { replace: true })
+                    }
+                })
+                .catch((err) => console.log(err));
+        }
     }
 
     // Previous step function
@@ -103,7 +92,7 @@ const RecruiterSignUpForm = () => {
 
                         <form className='flex flex-col gap-4 mt-5' onSubmit={handleSubmit(onSubmit)}>
                             {/* Company name */}
-                            <label className='text-gray'>Company Name*
+                            <label className='text-gray text-base'>Company Name*
                                 <input
                                     className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.name && 'border-red-400'}`}
                                     placeholder='e.g. SHOMEKA IT'
@@ -112,7 +101,7 @@ const RecruiterSignUpForm = () => {
                             </label>
 
                             {/* industry */}
-                            <label className='text-gray'>Industry*
+                            <label className='text-gray text-base'>Industry*
                                 <input
                                     className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.industry && 'border-red-400'}`}
                                     placeholder='e.g. Digital Marketing Agency'
@@ -121,7 +110,7 @@ const RecruiterSignUpForm = () => {
                             </label>
 
                             {/* website */}
-                            <label className='text-gray'>Website URL
+                            <label className='text-gray text-base'>Website URL
                                 <input
                                     className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2`}
                                     placeholder='e.g. Digital Marketing Agency'
@@ -151,7 +140,7 @@ const RecruiterSignUpForm = () => {
                         <form className='flex flex-col gap-4 mt-5' onSubmit={handleSubmit(onSubmit)}>
                             <div className='flex flex-col sm:flex-row items-center gap-3'>
                                 {/* country */}
-                                <label className='text-gray w-full'>Country*
+                                <label className='text-gray w-full text-base'>Country*
                                     <select name="jobType" id="jobType"
                                         className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.country && 'border-red-400'}`}
                                         {...register("country", { required: true })}
@@ -165,7 +154,7 @@ const RecruiterSignUpForm = () => {
                                 </label>
 
                                 {/* state */}
-                                <label className='text-gray w-full'>Province / State*
+                                <label className='text-gray w-full text-base'>Province / State*
                                     <input
                                         className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.state && 'border-red-400'}`}
                                         placeholder='e.g. Dhaka | New work'
@@ -175,7 +164,7 @@ const RecruiterSignUpForm = () => {
                             </div>
 
                             {/* address */}
-                            <label className='text-gray'>Address*
+                            <label className='text-gray text-base'>Address*
                                 <input
                                     className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.address && 'border-red-400'}`}
                                     placeholder='e.g. Uttara Model Town, 1230'
@@ -186,7 +175,7 @@ const RecruiterSignUpForm = () => {
                             {/* country code & phone number */}
                             <div className='flex flex-col sm:flex-row items-center gap-3'>
                                 {/* country code */}
-                                <label className='text-gray w-40'>Country code*
+                                <label className='text-gray w-40 text-base'>Country code*
                                     <select name="jobType" id="jobType"
                                         className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.country_code && 'border-red-400'}`}
                                         {...register("country_code", { required: true })}
@@ -200,7 +189,7 @@ const RecruiterSignUpForm = () => {
                                 </label>
 
                                 {/* Phone number */}
-                                <label className='text-gray w-full'>Phone number*
+                                <label className='text-gray w-full text-base'>Phone number*
                                     <input
                                         className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.phone && 'border-red-400'}`}
                                         placeholder='e.g. 12910211'
@@ -253,7 +242,7 @@ const RecruiterSignUpForm = () => {
                                             control={control}
                                             rules={{ required: true }}
                                             render={({ field }) => (
-                                                <label htmlFor={category.name}>
+                                                <label className="text-base" htmlFor={category.name}>
                                                     {category.name}
                                                     <input
                                                         id={category.name}
@@ -298,7 +287,7 @@ const RecruiterSignUpForm = () => {
                                                 rules={{ required: true }}
                                                 render={({ field }) => (
                                                     <>
-                                                        <label htmlFor={sub_category.name} className='flex items-center gap-2 font-medium'>
+                                                        <label htmlFor={sub_category.name} className='flex items-center gap-2 font-medium text-base mb-[2px]'>
                                                             <AiOutlinePlus />{sub_category.name}
                                                         </label>
                                                         <input
@@ -326,8 +315,9 @@ const RecruiterSignUpForm = () => {
                                 )}
 
                                 {/* Next Button */}
-                                <button className='bg-dark text-white hover:bg-green px-8 py-[6px] rounded-md duration-300 shadow-xl hover:shadow-green/20' type="submit"
+                                <button className='bg-dark text-white hover:bg-green px-8 py-[6px] rounded-md duration-300 shadow-xl hover:shadow-green/20'
                                     onClick={() => setFinish(true)}
+                                    type="submit"
                                 >
                                     Finish
                                 </button>
@@ -340,6 +330,10 @@ const RecruiterSignUpForm = () => {
                 return null;
         }
     };
+
+    if (finishLoading) {
+        return <div className="mt-32"><PageLoader /></div>
+    }
 
     return (
         <>

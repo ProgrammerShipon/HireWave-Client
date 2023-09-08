@@ -1,161 +1,468 @@
 [
     {
-        "role": "recruiter",
-        "profileView": 5,
-        "userInfo": {
-            "name": "Adroit Resources",
-            "title": "React Developer",
-            "email": "adroit@gmail.com",
-            "phone": [
-                "+880",
-                "187634525"
-            ],
-            "image": "https://media.licdn.com/dms/image/C4D0BAQHrtYNljdjm9w/company-logo_100_100/0/1670441499328?e=1700092800&v=beta&t=0KzCPxcN0RYlHpKQkPgTEkoDLQWPpDXoUCBJc1V2Llk",
-            "banner": "https://media.licdn.com/dms/image/D4D3DAQH8IiionfK2nA/image-scale_191_1128/0/1669924583491?e=1693461600&v=beta&t=PDheOW-ym2SdeWViSYjOMIJz-NZBjYhMzk2ZpJccq6U",
-            "category": null,
-            "subcategory" : null,
-            "industry": "Staffing and Recruiting",
-            "website": "www.adroit-resources.com"
-        },
+        "name": "Adroit Resources",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQHrtYNljdjm9w/company-logo_100_100/0/1670441499328?e=1700092800&v=beta&t=0KzCPxcN0RYlHpKQkPgTEkoDLQWPpDXoUCBJc1V2Llk",
+        "email": "adroit@gmail.com",
+        "banner": "https://media.licdn.com/dms/image/D4D3DAQH8IiionfK2nA/image-scale_191_1128/0/1669924583491?e=1693461600&v=beta&t=PDheOW-ym2SdeWViSYjOMIJz-NZBjYhMzk2ZpJccq6U",
+        "phone": [
+            "+23",
+            "987438434"
+        ],
+        "industry": "Staffing and Recruiting",
+        "website": "www.adroit-resources.com",
+        "category": "Web & App Design",
+        "subCategory": "User Experience (UX) Design",
+        "location": [
+            "New York",
+            "USA"
+        ],
+        "address": "Park in New York City, New York",
         "about": [
-            "Adroit Resources is a wholly-owned subsidiary of Nisum, a global technology consulting firm headquartered in Southern California. A preferred partner to leading Fortune 500 brands, Adroit Resources, Inc. is a certified, minority-owned, dynamic Information Technology services company.  Our offerings range from staff augmentation to technology consulting. Adroit Resources works on IT and Non-IT positions for emerging start-ups, mid-size, and Fortune 100 companies, nationwide. We staff in the Internet, Retail/eCommerce, Semiconductor, Healthcare, Media/Television/Streaming, Manufacturing, Storage, and Security space."
+            "Adroit Resources is a wholly-owned subsidiary of Nisum, a global technology consulting firm headquartered in Southern California. A preferred partner to leading Fortune 500 brands, Adroit Resources, Inc. is a certified, minority-owned, dynamic Information Technology services company. Our offerings range from staff augmentation to technology consulting. Adroit Resources works on IT and Non-IT positions for emerging start-ups, mid-size, and Fortune 100 companies, nationwide. We staff in the Internet, Retail/eCommerce, Semiconductor, Healthcare, Media/Television/Streaming, Manufacturing, Storage, and Security space."
         ],
         "specialties": [
             "IT Solutions and Services, Permanent Recruitment, Temporary Recruitment, Contract Recruitment, VMS/MSP Programs, Contract to Hire Placements, Contingent Workforce Supplier, SOW, and Cloud, UI, Java, DevOps, Release, QE"
         ],
-        "location": "New York, USA",
-        "address": "Uttara Model Town, 1230",
-        "status": true,
-        "recentReview": [
-            {
-                "name": "John Doe",
-                "image": "https://randomuser.me/api/portraits/men/88.jpg",
-                "location": "Chicago, IL",
-                "rating": 4.7,
-                "review": "Great experience with Adroit Resources. Highly recommended!",
-                "date": "Oct 10, 2022"
-            },
-            {
-                "name": "Jane Smith",
-                "image": "https://randomuser.me/api/portraits/men/44.jpg",
-                "location": "Miami, FL",
-                "rating": 4.8,
-                "review": "Adroit Resources delivered exceptional service. Will work with them again!",
-                "date": "Sep 5, 2022"
-            }
-        ],
-        "socialLink": [
-            {
-                "linkedin": "https://www.linkedin.com/in/oliviajohnson/"
-            },
-            {
-                "github": "https://www.github.com/oliviajohnson/"
-            }
-        ],
+        "status": "approved",
+        "active": true,
         "followers": 998,
-        "jobType": null,
-        "openToWork": null,
-        "skills": [],
-        "languages": null,
-        "hourlyRate": null,
-        "recommendations": null,
-        "education": [],
-        "experience": [],
-        "no_of_employees" : 344,
         "joinDate": "Sep 10, 2019"
     },
     {
-        "role": "candidate",
-        "profileView": 5,
-        "userInfo": {
-            "name": "Olivia Johnson",
-            "title": "Mern Stack Developer | React Developer",
-            "email": "adroit@gmail.com",
-            "phone": [
-                "+880",
-                "187634525"
-            ],
-            "image": "https://i.ibb.co/jDPFM9F/req-1.jpg",
-            "banner": null,
-            "category": "Frontend Developer",
-            "industry": null,
-            "website": "www.adroit-resources.com"
-        },
+        "name": "Extend",
+        "image": "https://media.licdn.com/dms/image/C4E0BAQEON_wWCCtPmA/company-logo_100_100/0/1629838391794?e=1700092800&v=beta&t=FqvUWhOvsmmKhANQW69W6fT-KzWh-E_b4mtWUeDTZkM",
+        "email": "extend@gmail.com",
+        "banner": "https://i.ibb.co/jMtyFTB/img-2.jpg",
+        "phone": [
+            "+1",
+            "7778889999"
+        ],
+        "industry": "Information Technology",
+        "website": "www.techgenius-solutions.com",
+        "category": "Software Development",
+        "subCategory": "Blockchain Development",
+        "location": [
+            "San Francisco",
+            "USA"
+        ],
+        "address": "456 Tech Street, San Francisco, CA",
         "about": [
-            "Hello there! My name is Olivia Johnson. I am a frontend developer, and I’m very passionate and dedicated to my work. With 5 years of experience as a professional frontend developer, I have acquired the skills and knowledge necessary to make your project a success.",
-            "",
-            "a professional frontend developer, I have acquired the skills and knowledge necessary to make your project a success."
+            "Extend is a technology company that extends its expertise beyond the digital realm into the property sector. We harness cutting-edge software and services to empower businesses to flourish in today's dynamic real estate landscape. Our comprehensive suite of solutions combines technology with industry insights, enabling property professionals to streamline operations, make informed decisions, and maximize returns. We are committed to shaping the future of property management through innovation and digital transformation. From property listings to tenant management, we provide the tools and resources to thrive in this ever-evolving market."
         ],
-        "specialties": [],
-        "location": "Los Angeles, CA",
-        "address": "Uttara Model Town, 1230",
-        "status": true,
-        "recentReview": [
-            {
-                "recruiter": "Emily Adams",
-                "logo": "https://i.ibb.co/v3ygypq/brooke-cagle-JBwcen-Ou-RCg-unsplash.jpg",
-                "location": "Los Angeles, CA",
-                "rating": 5.0,
-                "review": "Olivia's creativity and attention to detail truly impressed us. She has a deep understanding of user experience.",
-                "date": "Jan 20, 2023"
-            },
-            {
-                "recruiter": "Michael Brown",
-                "logo": "https://i.ibb.co/c1Vf1XD/pexels-andrea-piacquadio-927451.jpg",
-                "location": "San Francisco, CA",
-                "rating": 4.9,
-                "review": "Olivia's creativity and attention to detail truly impressed us. She has a deep understanding of user experience.",
-                "date": "Aug 30, 2023"
-            }
+        "specialties": [
+            "Blockchain Development, Smart Contracts, Decentralized Applications, Cryptocurrency",
+            "Our property-focused specialties encompass property listings, tenant management, real estate analytics, and asset optimization. We leverage technology to elevate property management efficiency and performance."
         ],
-        "socialLink": [
-            {
-                "linkedin": "https://www.linkedin.com/in/oliviajohnson/"
-            },
-            {
-                "github": "https://www.github.com/oliviajohnson/"
-            }
+        "status": "approved",
+        "active": true,
+        "followers": 950,
+        "joinDate": "May 22, 2017"
+    },
+    {
+        "name": "Charlie",
+        "image": "https://media.licdn.com/dms/image/D560BAQHurzRis9UPKQ/company-logo_100_100/0/1681965367146?e=1700092800&v=beta&t=fv93tJtrK5mfRoi8zbedUYxwyCta70YCaHdHn7Hfyvc",
+        "email": "charlie@gmail.com",
+        "banner": "https://i.ibb.co/XtVv7ZS/img-3.jpg",
+        "phone": [
+            "+1",
+            "8887776666"
         ],
-        "followers": 6,
-        "jobType": "As Needed - Open to work",
-        "openToWork": true,
-        "skills": [
-            "JavaScript",
-            "React",
-            "Node.js"
+        "industry": "Environmental",
+        "website": "www.greenscape-environmental.com",
+        "category": "Environmental Consulting",
+        "subCategory": "Sustainability Solutions",
+        "location": [
+            "Seattle",
+            "USA"
         ],
-        "languages": [
-            {
-                "name": "English",
-                "level": "fluent"
-            },
-            {
-                "name": "Spanish",
-                "level": "comfortable"
-            }
+        "address": "789 Greenway Drive, Seattle, WA",
+        "about": [
+            "Charlie stands as a software company at the forefront of driving innovation in business solutions. Our core dedication revolves around harnessing technology to craft ingenious answers for modern challenges. With a profound passion for all things tech, we aspire to not only create cutting-edge solutions but also to shape their profound societal impacts. Our journey is a testament to our commitment to ushering progress hand in hand with technology."
         ],
-        "hourlyRate": 20,
-        "education": [
-            {
-                "institute": "University of California, Los Angeles",
-                "degree": "B.Sc",
-                "subject": "Computer Science",
-                "startYear": "2016",
-                "endYear": "2020"
-            }
+        "specialties": [
+            "Our specialties span diverse technological domains—software development, artificial intelligence, machine learning, and web development.",
+            "Environmental Consulting, Sustainability Strategy, Eco-Friendly Initiatives, Green Business Certification"
         ],
-        "experience": [
-            {
-                "logo": "https://i.ibb.co/4PW9s7L/im-2.png",
-                "companyName": "Adroit",
-                "position": "Frontend Developer",
-                "jobType": "full time",
-                "location": "Los Angeles, CA",
-                "startDate": "July 01, 2020",
-                "endDate": "Sep 21, 2021"
-            }
+        "status": "approved",
+        "active": true,
+        "followers": 700,
+        "joinDate": "Aug 14, 2019"
+    },
+    {
+        "name": "Fletch",
+        "image": "https://media.licdn.com/dms/image/D560BAQFdTqUuVnvvSQ/company-logo_100_100/0/1681952885576?e=1700092800&v=beta&t=o5dObE1iakR5ps7UcktDHWa5wDC8L-W2eapQuNpwiSM",
+        "email": "fletch@gmail.com",
+        "banner": "https://i.ibb.co/j8JvKgp/img-4.jpg",
+        "phone": [
+            "+1",
+            "1234567890"
         ],
-        "joinDate": "Sep 10, 2019",
-        "visibility" : true
+        "industry": "Finance",
+        "website": "www.financialfreedom-advisors.com",
+        "category": "Financial Planning",
+        "subCategory": "Retirement Planning",
+        "location": [
+            "Chicago",
+            "USA"
+        ],
+        "address": "567 Finance Plaza, Chicago, IL",
+        "about": [
+            "Fletch stands as a distinguished software development company, driven by the pursuit of creating user-friendly applications. Our paramount focus resides in fashioning solutions that seamlessly merge elegance with functionality. Committed to excellence, our team meticulously crafts each application to resonate with user needs and desires. With a profound dedication to innovation, we take pride in transforming complex challenges into intuitive and efficient digital experiences."
+        ],
+        "specialties": [
+            "At Fletch, our specialties encompass the realms of user-centric design, encompassing UI/UX design, web development, and mobile apps. These proficiencies converge to construct solutions that redefine digital interactions and empower businesses."
+        ],
+        "status": "approved",
+        "active": true,
+        "followers": 600,
+        "joinDate": "Apr 3, 2018"
+    },
+    {
+        "name": "Patreon",
+        "image": "https://media.licdn.com/dms/image/D560BAQH2h7L7udwh2g/company-logo_100_100/0/1689867433365?e=1700092800&v=beta&t=lFkjo-ecCKzCajkxlZjM1SOzMHKLnBrSeUXZD2gErhw",
+        "email": "patreon@gmail.com",
+        "banner": "https://i.ibb.co/pjWPP9F/img-5.jpg",
+        "phone": [
+            "+1",
+            "9995554444"
+        ],
+        "industry": "Arts and Culture",
+        "website": "www.artistic-creations-studio.com",
+        "category": "Artistic Services",
+        "subCategory": "Custom Artwork",
+        "location": [
+            "New York",
+            "USA"
+        ],
+        "address": "123 Art Street, New York, NY",
+        "about": [
+            "Patreon stands as a unique platform empowering content creators to realize the full potential of their work by fostering monetization and fan connectivity. Our unwavering dedication resides in bolstering creative communities, offering them the means to thrive. By providing innovative monetization avenues, we enable creators to focus on producing remarkable content while maintaining a strong bond with their audience."
+        ],
+        "specialties": [
+            "Patreon's specialties encompass crowdfunding, creative content across diverse domains, community engagement strategies, and subscription services that sustain the vibrant relationship between creators and their patrons."
+        ],
+        "status": "approved",
+        "active": true,
+        "followers": 800,
+        "joinDate": "Nov 9, 2016"
+    },
+    {
+        "name": "Numeric",
+        "image": "https://media.licdn.com/dms/image/C560BAQFHEC-DJzR0Gg/company-logo_100_100/0/1663442902561?e=1700092800&v=beta&t=VUNfHrYIXCLxwi3D15wymPsQfvBly73INvLAsOIPwlA",
+        "email": "numeric@gmail.com",
+        "banner": "https://i.ibb.co/23c5nMZ/img-6.jpg",
+        "phone": [
+            "+1",
+            "1239876543"
+        ],
+        "industry": "Travel and Tourism",
+        "website": "www.travel-adventures.com",
+        "category": "Travel Planning",
+        "subCategory": "Adventure Tours",
+        "location": [
+            "Denver",
+            "USA"
+        ],
+        "address": "789 Adventure Road, Denver, CO",
+        "about": [
+            "Numeric is an avant-garde technology company relentlessly compelled to redefine the limits of what's Numeric. Boasting a cadre of ingenious minds, we forge revolutionary solutions that redefine sectors and propel advancement. Our core mission orbits around spearheading technological evolution to craft a more promising tomorrow."
+        ],
+        "specialties": [
+            "Numeric specializes in Artificial Intelligence, which simulates human intelligence in machines, Blockchain, a tamper-resistant digital ledger, and other emerging technologies that foster innovation across domains."
+        ],
+        "status": "approved",
+        "active": true,
+        "followers": 950,
+        "joinDate": "Mar 5, 2017"
+    },
+    {
+        "name": "Avispa",
+        "image": "https://media.licdn.com/dms/image/C560BAQEY0aYzJXnsAQ/company-logo_100_100/0/1652112258427?e=1700092800&v=beta&t=X43Uw6Jp9qbGCkAGOGqxdIcsRZFMRz2fZXIgDSbx770",
+        "email": "technova@gmail.com",
+        "banner": "https://i.ibb.co/pfJ2qkR/img-7.jpg",
+        "phone": [
+            "+1",
+            "7778889999"
+        ],
+        "industry": "Technology",
+        "website": "www.techsavvy-innovations.com",
+        "category": "Software Development",
+        "subCategory": "AI and Machine Learning",
+        "location": [
+            "Austin",
+            "USA"
+        ],
+        "address": "123 Innovation Road, Austin, TX",
+        "about": [
+            "Avispa is a forward-thinking technology firm committed to shaping the future through digital advancement. Our diverse team of experts leverages emerging technologies to drive growth and innovation for businesses worldwide. We believe in creating tech solutions that make a real impact."
+        ],
+        "specialties": [
+            "AI and Machine Learning, Data Analytics, Predictive Modeling, Natural Language Processing"
+        ],
+        "status": "approved",
+        "active": true,
+        "followers": 1200,
+        "joinDate": "Jun 5, 2019"
+    },
+    {
+        "name": "Eleos",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQEVDfAgrqozsQ/company-logo_100_100/0/1621358425465?e=1700092800&v=beta&t=lrS0ULpeJyKsozq8zXVF8sRxK4S2U4ldwWghUxqPN0w",
+        "email": "eleos@gmail.com",
+        "banner": "https://i.ibb.co/Fz57v0y/img-8.jpg",
+        "phone": [
+            "+1",
+            "8887776666"
+        ],
+        "industry": "Environmental",
+        "website": "www.greentech-solutions.com",
+        "category": "Green Technology",
+        "subCategory": "Renewable Energy",
+        "location": [
+            "Portland",
+            "USA"
+        ],
+        "address": "456 Eco Avenue, Portland, OR",
+        "about": [
+            "Eleos stands as a premier technology consultancy committed to aiding businesses in adopting digital metamorphosis. Through a cadre of adept professionals, we furnish personalized solutions fostering efficiency and amplifying performance. Our emphasis resides in furnishing palpable outcomes through technological prowess."
+        ],
+        "specialties": [
+            "Eleos excels in Custom Software Development, crafting tailored software; Cloud Solutions, delivering remote computing power; and Data Analytics, extracting insights from information to empower decisions."
+        ],
+        "status": "approved",
+        "active": true,
+        "followers": 900,
+        "joinDate": "Jul 18, 2018"
+    },
+    {
+        "name": "Prevail",
+        "image": "https://media.licdn.com/dms/image/C560BAQFYYoXrfko87g/company-logo_100_100/0/1656702414708?e=1700092800&v=beta&t=vjjcsTGdjD_WONEaNC5_f1gcmU_pAtkB0kK2tgqRMuk",
+        "email": "prevail@gmail.com",
+        "banner": "https://i.ibb.co/TKmm0Dp/img-9.jpg",
+        "phone": [
+            "+1",
+            "1234567890"
+        ],
+        "industry": "Legal",
+        "website": "www.legalexperts-llp.com",
+        "category": "Law Firm",
+        "subCategory": "Corporate Law",
+        "location": [
+            "Chicago",
+            "USA"
+        ],
+        "address": "567 Legal Street, Chicago, IL",
+        "about": [
+            "Prevail pioneers as an avant-garde IT solutions provider, enabling businesses to prosper in the digital epoch. Backed by a resolute team, we dispense innovative solutions fostering efficiency and fostering expansion. Our objective orbits around molding the technological future through transformative solutions."
+        ],
+        "specialties": [
+            "Prevail specializes in IT Consulting, offering expert advisory; Cloud Migration, seamlessly transitioning to cloud environments; and Data Science, extracting insights from data for informed decisions."
+        ],
+        "status": "approved",
+        "active": true,
+        "followers": 750,
+        "joinDate": "Mar 2, 2017"
+    },
+    {
+        "name": "A Society",
+        "image": "https://media.licdn.com/dms/image/C4E0BAQHSdHOx66MCFw/company-logo_100_100/0/1669710167236?e=1700092800&v=beta&t=msqltyeBuQYmCGPky9bpzqqtxERz_tpZwXFcHwpuY2c",
+        "email": "asociety@gmail.com",
+        "banner": "https://i.ibb.co/HFHWjHp/img-10.jpg",
+        "phone": [
+            "+1",
+            "9995554444"
+        ],
+        "industry": "Design",
+        "website": "www.designmasters-studio.com",
+        "category": "Graphic Design",
+        "subCategory": "Brand Identity",
+        "location": [
+            "Los Angeles",
+            "USA"
+        ],
+        "address": "123 Design Avenue, Los Angeles, CA",
+        "about": [
+            "A Society is a dynamic software development company at the forefront of pioneering groundbreaking solutions for businesses. Our dedicated and innovative team focuses on creating software products that not only enhance performance but also drive tangible results. We firmly believe in the power of technology that seamlessly harmonizes with and advances business goals, fostering a synergy that fuels success."
+        ],
+        "specialties": [
+            "A Society specializes in Software Development, crafting reliable and efficient solutions; UI/UX Design, ensuring exceptional user experiences; and Mobile Apps, developing on-the-go solutions for modern needs."
+        ],
+        "status": "approved",
+        "active": true,
+        "followers": 950,
+        "joinDate": "Oct 14, 2015"
+    },
+    {
+        "name": "Emonics",
+        "image": "https://media.licdn.com/dms/image/D4D0BAQGXuMvXtEhsTg/company-logo_100_100/0/1689151685253?e=1700092800&v=beta&t=e7fwkQikGJ4liYdJmtp4GZgZlxkTd2J8bl5yV3MIpgI",
+        "email": "emonics@gmail.com",
+        "banner": "https://i.ibb.co/Y3YnRMj/img-11.jpg",
+        "phone": [
+            "+1",
+            "1239876543"
+        ],
+        "industry": "Travel and Tourism",
+        "website": "www.traveldream-adventures.com",
+        "category": "Adventure Travel",
+        "subCategory": "Experiential Journeys",
+        "location": [
+            "Miami",
+            "USA"
+        ],
+        "address": "789 Dream Road, Miami, FL",
+        "about": [
+            "Emonics, headquartered in New Jersey, US, is a prominent technology consulting firm. Our specialization lies in comprehensive IT solutions and services, encompassing a spectrum from Permanent and Temporary Recruitment, Contract Recruitment to VMS/MSP Programs, and beyond. Driven by a team of dedicated experts, we extend our services across diverse industries including Internet, Retail/eCommerce, Semiconductor, and Healthcare. With a strategic approach, we empower businesses to navigate the realm of technology and human resources seamlessly."
+        ],
+        "specialties": [
+            "Emonics excels in Cloud Computing, UI/UX Design, Java Development, DevOps, and Quality Engineering, ensuring cutting-edge solutions that align technology with business objectives."
+        ],
+        "status": "approved",
+        "active": true,
+        "followers": 1100,
+        "joinDate": "Sep 20, 2018"
+    },
+    {
+        "name": "Mindpal",
+        "image": "https://media.licdn.com/dms/image/C4D0BAQEXQfDNMAE2OA/company-logo_100_100/0/1670553576447?e=1700092800&v=beta&t=__HYtgX244p1k6tUSneolBcMR3OBJB-UuXRN8Y15X0U",
+        "email": "mindpal@gmail.com",
+        "banner": "https://i.ibb.co/bbZcPLd/img-12.jpg",
+        "phone": [
+            "+1",
+            "7778889999"
+        ],
+        "industry": "Cybersecurity",
+        "website": "www.cyberguard-security.com",
+        "category": "IT Security",
+        "subCategory": "Network Security",
+        "location": [
+            "San Francisco",
+            "USA"
+        ],
+        "address": "123 Secure Street, San Francisco, CA",
+        "about": [
+            "Mindpal, located in California, US, is a dynamic and innovative company. Our core strength lies in providing diverse services like IT Solutions, Permanent and Temporary Recruitment, Contract Placements, and beyond. Fueled by a passion for creativity and advancement, we embrace innovation at every step. Our expertise spans various domains, including Cloud Computing, UI/UX Design, Java Development, and Quality Engineering, enabling us to deliver holistic solutions that drive growth and transformation."
+        ],
+        "specialties": [
+            "Mindpal specializes in fostering innovation, offering IT Solutions, Creative Design, and Recruitment services. Our strengths encompass Cloud Computing, UI/UX Design, Java Development, and Quality Engineering."
+        ],
+        "status": "approved",
+        "active": true,
+        "followers": 1200,
+        "joinDate": "Apr 15, 2016"
+    },
+    {
+        "name": "CodeWave",
+        "image": "https://i.ibb.co/L8Zhwpz/logo.jpg",
+        "email": "codeWave@gmail.com",
+        "banner": "https://i.ibb.co/ZB8kZcF/lo.jpg",
+        "phone": [
+            "+1",
+            "8887776666"
+        ],
+        "industry": "Environmental",
+        "website": "www.cleanearth-solutions.com",
+        "category": "Sustainable Practices",
+        "subCategory": "Waste Management",
+        "location": [
+            "Denver",
+            "USA"
+        ],
+        "address": "456 Eco-Friendly Avenue, Denver, CO",
+        "about": [
+            "Headquartered in San Francisco, USA, CodeWave is a dynamic software development company. Our unwavering commitment to excellence drives us to deliver premium IT Solutions and Services. From Custom Software Development to Mobile App Development and beyond, our skilled professionals excel in diverse domains. With a focus on innovation, we stand out through our expertise in UI/UX Design, Java Development, and DevOps, ensuring that our solutions are not only functional but also aesthetically superior."
+        ],
+        "specialties": [
+            "CodeWave specializes in Custom Software Development, Mobile App Development, UI/UX Design, Java Development, and DevOps. Our solutions merge functionality with aesthetics to meet modern business demands effectively."
+        ],
+        "status": "approved",
+        "active": true,
+        "followers": 900,
+        "joinDate": "Jul 28, 2017"
+    },
+    {
+        "name": "AppLab",
+        "image": "https://media.licdn.com/dms/image/C560BAQGkgVuykicFDg/company-logo_100_100/0/1630459002808?e=1700092800&v=beta&t=QgLMRxyzhxFOXI_IJuOfzoRUx7c4MIGnn8zSZk7iFHs",
+        "email": "applab@gmail.com",
+        "banner": "https://i.ibb.co/19hy473/img-14.jpg",
+        "phone": [
+            "+1",
+            "1234567890"
+        ],
+        "industry": "Legal",
+        "website": "www.legalease-consultancy.com",
+        "category": "Legal Services",
+        "subCategory": "Immigration Law",
+        "location": [
+            "New York",
+            "USA"
+        ],
+        "address": "567 Immigration Street, New York, NY",
+        "about": [
+            "Headquartered in Princeton, NJ, AppLab stands at the forefront of technology solutions. Our comprehensive portfolio covers a wide spectrum of IT Solutions and Services, ranging from impactful Software Development to robust Cloud Solutions. Our skilled team excels in various domains, notably UI/UX Design, Java Development, DevOps, and Quality Engineering. With a commitment to innovation, we deliver solutions that drive business growth and technological advancement."
+        ],
+        "specialties": [
+            "AppLab specializes in Software Development, Cloud Solutions, UI/UX Design, Java Development, and DevOps. We combine expertise and creativity to provide transformative solutions that meet evolving industry demands."
+        ],
+        "status": "approved",
+        "active": true,
+        "followers": 750,
+        "joinDate": "Mar 10, 2019"
+    },
+    {
+        "name": "Yassir",
+        "image": "https://media.licdn.com/dms/image/D4D0BAQEQn1pDkyWBxA/company-logo_100_100/0/1689455917226?e=1700092800&v=beta&t=YeBXa66KQDcSic2rDzfPPonoQXaW7ZjwpjqCB89iots",
+        "email": "yassir@gmail.com",
+        "banner": "https://i.ibb.co/0nKR3c1/img-15.jpg",
+        "phone": [
+            "+1",
+            "7778889999"
+        ],
+        "industry": "Education",
+        "website": "www.edutech-solutions.com",
+        "category": "EdTech",
+        "subCategory": "Online Learning",
+        "location": [
+            "San Francisco",
+            "USA"
+        ],
+        "address": "123 Education Street, San Francisco, CA",
+        "about": [
+            "Based in Palo Alto, CA, Yassir is a trailblazing IT services and consulting company. Our offerings span a broad spectrum of IT Solutions and Services, encompassing dynamic Software Development, strategic IT Consulting, and more. Our accomplished team thrives in diverse domains, notably Cloud Computing, UI/UX Design, Java Development, and DevOps. With innovation as our guiding principle, we empower businesses to embrace the digital future."
+        ],
+        "specialties": [
+            "Yassir specializes in IT Services, IT Consulting, Software Development, UI/UX Design, Java Development, and DevOps. Our holistic approach delivers transformative solutions that align with industry trends and client objectives."
+        ],
+        "status": "approved",
+        "active": true,
+        "followers": 1200,
+        "joinDate": "May 7, 2017"
+    },
+    {
+        "name": "HealthTech Innovations",
+        "image": "https://example.com/image27.jpg",
+        "email": "info@healthtech-innovations.com",
+        "banner": "https://example.com/banner27.jpg",
+        "phone": [
+            "+1",
+            "8887776666"
+        ],
+        "industry": "Healthcare",
+        "website": "www.healthtech-innovations.com",
+        "category": "HealthTech",
+        "subCategory": "Medical Devices",
+        "location": [
+            "Los Angeles",
+            "USA"
+        ],
+        "address": "456 Health Drive, Los Angeles, CA",
+        "about": [
+            "HealthTech Innovations is a leading healthcare technology company specializing in the development of cutting-edge medical devices. We are committed to improving patient outcomes through innovative solutions."
+        ],
+        "specialties": [
+            "Medical Device Development, Healthcare Technology, Patient Monitoring, Telemedicine"
+        ],
+        "status": "approved",
+        "active": true,
+        "followers": 950,
+        "joinDate": "Sep 15, 2018"
     }
 ]

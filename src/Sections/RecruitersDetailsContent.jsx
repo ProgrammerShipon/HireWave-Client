@@ -4,6 +4,8 @@ import RecentReviewSlider from "../Components/RecentReviewSlider";
 import GetAgoTime from "../Components/GetAgoTime";
 import useAllJobs from "../Hooks/useAllJobs";
 import JobCard from "../Components/JobCard";
+import useReview from "../Hooks/useReview";
+import moment from 'moment';
 
 // react rating
 import { Rating, Star } from "@smastrom/react-rating";
@@ -16,26 +18,34 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { LuExternalLink } from "react-icons/lu";
 
 export default function RecruitersDetailsContent({ recruiterData }) {
+    const [reviewData,] = useReview();
     const [allJobsData, loading] = useAllJobs();
     const [postedJob, setPostedJob] = useState([]);
 
     const {
-        company,
-        logo,
-        companyBanner,
+        name,
+        email,
+        image,
+        banner,
         location,
+        address,
         industry,
         about,
         joinDate,
         specialties,
         followers,
-        rating,
-        recentReview,
-        companyEmail
+        website
     } = recruiterData[0];
 
+    const [review, setReview] = useState([]);
+
     useEffect(() => {
-        const filter = allJobsData.filter(job => job.companyEmail === companyEmail)
+        const getReview = reviewData.filter(rvw => rvw.email.toLowerCase() === email.toLowerCase());
+        setReview(getReview)
+    }, [reviewData.length])
+
+    useEffect(() => {
+        const filter = allJobsData.filter(job => job.companyEmail === email)
         setPostedJob(filter)
     }, [loading])
 
@@ -55,9 +65,9 @@ export default function RecruitersDetailsContent({ recruiterData }) {
                         {/* banner */}
                         <div className="w-full h-40 overflow-hidden">
                             <img
-                                src={companyBanner}
+                                src={banner}
                                 className="object-cover object-center w-full h-full"
-                                alt={company}
+                                alt={name}
                             />
                         </div>
 
@@ -65,27 +75,27 @@ export default function RecruitersDetailsContent({ recruiterData }) {
                         <div className="flex flex-row gap-4">
                             <div className="-mt-16 ml-5 md:ml-10 w-40 h-40 rounded-md p-2 border border-purple overflow-hidden duration-300 shadow-4xl shadow-gray/40">
                                 <img
-                                    src={logo}
+                                    src={image}
                                     className="object-cover object-center w-full h-full shadow-3xl shadow-white rounded-md"
-                                    alt={company}
+                                    alt={name}
                                 />
                             </div>
 
                             {/* rating */}
                             <div>
                                 <div className="flex items-center gap-1 mt-5">
-                                    <p className="px-2 text-purple bg-purple/30">{rating}</p>
+                                    <p className="px-2 text-purple bg-purple/30">                    {review.length > 0 && review[0].rating} </p>
 
                                     <Rating
                                         className="max-w-[110px] hidden sm:flex"
                                         readOnly
-                                        value={rating}
+                                        value={review.length > 0 && review[0].rating}
                                         itemStyles={myStyles}
                                     />
 
                                     <FaStar size='21' className="text-[#ffb33e] sm:hidden" />
 
-                                    <span className="text-gray">(06)</span>
+                                    <span className="text-gray">({review.length})</span>
                                 </div>
 
                                 {/* followers */}
@@ -99,24 +109,24 @@ export default function RecruitersDetailsContent({ recruiterData }) {
                         {/* content */}
                         <div className="mx-5 md:mx-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-0 mb-6 mt-4">
                             <div className="duration-300">
-                                <h1 className="text-4xl font-medium text-dark drop-shadow-xl">{company}</h1>
+                                <h1 className="text-4xl font-medium text-dark drop-shadow-xl">{name}</h1>
 
                                 <div className="flex items-center gap-2">
                                     <h3 className="text-xl font-light text-lightGray">{industry}</h3>
 
                                     <p className="hidden md:flex items-center gap-[2px] font-light text-dark">
-                                        <BiMap className="text-lightGray" /> {location}
+                                        <BiMap className="text-lightGray" /> {location[0]}, {location[1]}
                                     </p>
                                 </div>
                             </div>
 
                             {/* button */}
                             <div className="flex sm:inline-block sm:flex-col items-center justify-between">
-                                <Link to='/'
+                                <a target="_blank" href={website} rel="noopener noreferrer"
                                     className="flex items-center gap-1 px-5 py-1 text-xl bg-green text-white rounded-md sm:mb-3 hover:bg-dark shadow-lg shadow-green/40 hover:shadow-dark/50 duration-300"
                                 >
                                     Website <LuExternalLink size='20' />
-                                </Link>
+                                </a>
                                 <Link to='/'
                                     className="flex items-center gap-1 px-5 py-1 text-xl bg-green text-white rounded-md hover:bg-dark shadow-lg shadow-green/40 hover:shadow-dark/50 duration-300"
                                 >
@@ -130,7 +140,7 @@ export default function RecruitersDetailsContent({ recruiterData }) {
                     <div className="lg:col-span-3 p-3 shadow-4xl shadow-gray/40 rounded-lg overflow-hidden">
                         <h3 className="text-2xl font-medium text-dark drop-shadow-lg">Locations</h3>
                         <h6 className="text-dark font-medium bg-gray/30 w-fit px-3 rounded-full mt-4">Primary</h6>
-                        <p className="text-sm text-lightGray mt-1">{location}</p>
+                        <p className="text-sm text-lightGray mt-2">{address}</p>
                         <iframe
                             className="mt-5"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58313.32936238924!2d89.208406036506!3d24.010495144173714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fe84d98fa5bf3d%3A0xb038902617eb9884!2sPabna!5e0!3m2!1sen!2sbd!4v1692681736855!5m2!1sen!2sbd"
@@ -149,14 +159,14 @@ export default function RecruitersDetailsContent({ recruiterData }) {
 
                         {/* Recent Review */}
                         <div>
-                            <h3 className="text-xl mb-2">Recent Review (0{recentReview?.length})</h3>
-                            <RecentReviewSlider recentReview={recentReview} />
+                            <h3 className="text-xl mb-2">Recent Review (0{review?.length})</h3>
+                            <RecentReviewSlider recentReview={review} />
                         </div>
 
                         {/* Member since */}
                         <div className="mt-3">
                             <h3 className="text-lg">Member since</h3>
-                            <p className="text-lightGray tracking-wider">{joinDate}</p>
+                            <p className="text-lightGray tracking-wider">{moment(joinDate).format("MMM DD, YYYY")} </p>
                         </div>
 
                         {/* Open Jobs */}

@@ -1,17 +1,15 @@
-import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import SocialLogin from "../Components/SocialLogin";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import useAuth from "../Hooks/useAuth";
-import useAxios from "../Hooks/useAxios";
 
 // react icons
-import { BiUserPin } from "react-icons/bi";
-import { BsShieldCheck } from "react-icons/bs";
-import { MdAlternateEmail, MdLockOutline } from "react-icons/md";
+import { MdAlternateEmail, MdLockOutline } from 'react-icons/md';
+import { BiUserPin } from 'react-icons/bi';
+import { BsShieldCheck } from 'react-icons/bs';
 
 const SignUpForm = () => {
-  const { axiosSecure } = useAxios();
   const { signUpUser, profileUpdate } = useAuth();
 
   // navigate
@@ -23,68 +21,37 @@ const SignUpForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-    const onSubmit = (data) => {
-        if (data.password.length < 6) {
-            return toast.warning("password should be 6 characters", {
-                position: "top-right",
-                autoClose: 4000,
-                theme: "light",
+  const onSubmit = (data) => {
+    if (data.password.length < 6) {
+      return toast.warning("password should be 6 characters", {
+        position: "top-right",
+        autoClose: 4000,
+        theme: "light",
+      });
+    }
+    if (data.password !== data.confirm) {
+      return toast.warning("password didn't match", {
+        position: "top-right",
+        autoClose: 4000,
+        theme: "light",
+      });
+    }
+
+    signUpUser(data.email, data.password)
+      .then((result) => {
+        profileUpdate(result.user, data.name)
+          .then(() => {
+            navigate(from, { replace: true });
+          })
+          .catch((error) => {
+            toast.error(error.message, {
+              position: "top-right",
+              autoClose: 4000,
+              theme: "light",
             });
-        }
-        if (data.password !== data.confirm) {
-            return toast.warning("password didn't match", {
-                position: "top-right",
-                autoClose: 4000,
-                theme: "light",
-            });
-        }
-
-        signUpUser(data.email, data.password)
-            .then((result) => {
-                profileUpdate(result.user, data.name)
-                    .then(() => {
-                        const user = {
-                            name: data.name,
-                            email: data.email,
-                            role: data.role,
-                        };
-                        console.log(user);
-
-                        signUpUser(data.email, data.password)
-                            .then((result) => {
-                                profileUpdate(result.user, data.name)
-                                    .then(() => {
-                                        navigate(from, { replace: true })
-                                    })
-                                    .catch((error) => {
-                                        toast.error(error.message, {
-                                            position: "top-right",
-                                            autoClose: 4000,
-                                            theme: "light",
-                                        });
-                                        navigate(from, { replace: true });
-                    
-                                    });
-
-                                navigate(from, { replace: true });
-                            })
-                            .catch((error) => {
-                                toast.error(error.message, {
-                                    position: "top-right",
-                                    autoClose: 4000,
-                                    theme: "light",
-                                });
-                            });
-                    })
-                    .catch((error) => {
-                        toast.error(error.message, {
-                            position: "top-right",
-                            autoClose: 4000,
-                            theme: "light",
-                        });
-                    });
-            })
-    };
+          });
+      })
+  };
 
   return (
     <section className="py-20 md:py-[120px] duration-300">
@@ -110,6 +77,7 @@ const SignUpForm = () => {
               {...register("name", { required: true })}
             />
           </div>
+
           {errors.name && (
             <span className="text-sm text-red ml-1">Name is required</span>
           )}
