@@ -1,14 +1,13 @@
 import DashTitle from "../Components/DashComponents/DashTitle";
 import ManageUserTableRow from "../Components/DashComponents/ManageUserTableRow";
-import useCandidatesData from "../Hooks/useCandidatesData";
 import CountUp from 'react-countup';
+import useUsers from "../Hooks/useUsers";
+import PageLoader from "../Components/PageLoader";
 
 // react icons
 import { LiaIndustrySolid, LiaUserClockSolid } from 'react-icons/lia';
 import { PiUsersThreeLight } from 'react-icons/pi';
 import { CgUserList } from 'react-icons/cg';
-import useUsers from "../Hooks/useUsers";
-import PageLoader from "../Components/PageLoader";
 
 const ManageUsers = () => {
     const [userData, loading] = useUsers();
@@ -88,7 +87,6 @@ const ManageUsers = () => {
                         <thead className="text-lg text-green border-b border-green/40">
                             <tr>
                                 <th className="px-3 py-3 font-medium">User Info</th>
-                                {/* <th className="px-3 py-3 font-medium">Category</th> */}
                                 <th className="px-3 py-3 font-medium text-center">Role</th>
                                 <th className="px-3 py-3 font-medium text-center">Status</th>
                                 <th className="py-3 text-center font-medium">Actions</th>

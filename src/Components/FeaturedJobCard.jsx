@@ -1,41 +1,33 @@
-import { Link, useLocation } from "react-router-dom";
-
-// react icons
-import { FaRegHeart } from 'react-icons/fa';
+import { Link } from "react-router-dom";
 import GetAgoTime from "./GetAgoTime";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAuth from "../Hooks/useAuth";
-import Swal from "sweetalert2";
+import { toast } from "react-toastify";
+
+// react icons
+import { FaRegHeart } from 'react-icons/fa';
 
 const FeaturedJobCard = ({ job }) => {
-    console.log(job)
-    const { pathname } = useLocation();
     const [axiosSecure] = useAxiosSecure();
     const { user } = useAuth();
-    console.log(user)
     const { _id, companyLogo, title, companyName, postedDate, location, jobType, industry, salary, skills } = job;
     const jobInfo = { selectJob: _id, companyLogo, title, companyName, postedDate, location, jobType, salary, skills, candidateMail: user?.email }
 
     const handleSaveJob = () => {
-        console.log(jobInfo)
         axiosSecure.post("/savedjob", jobInfo)
             .then((data) => {
                 if (data.status === 200) {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Bookmark Successful',
-                        showConfirmButton: false,
-                        timer: 2500
+                    toast.success("Saved Successfully", {
+                        position: "top-right",
+                        autoClose: 2500,
+                        theme: "light",
                     });
                 }
-                else{
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'error',
-                        title: 'Already Bookmark',
-                        showConfirmButton: false,
-                        timer: 2500
+                else {
+                    toast.warning("Already Saved", {
+                        position: "top-right",
+                        autoClose: 2500,
+                        theme: "light",
                     });
                 }
             })
@@ -80,11 +72,13 @@ const FeaturedJobCard = ({ job }) => {
 
             {/* button */}
             {
-                pathname === "/saved_jobs" ? <button className="absolute lg:relative bg-green text-white p-3 lg:pl-3 lg:pr-5 lg:py-2 rounded-e-md lg:rounded-e-none rounded-s-md top-2 right-2 lg:top-auto md:right-0 shadow-lg shadow-green/30 md:group-hover:right-2 lg:group-hover:right-0 duration-300 delay-200">
-                    Saved
-                </button> : <button onClick={handleSaveJob} className="absolute lg:relative bg-green text-white p-3 lg:pl-3 lg:pr-5 lg:py-2 rounded-e-md lg:rounded-e-none rounded-s-md top-2 right-2 lg:top-auto md:-right-14 shadow-lg shadow-green/30 md:group-hover:right-2 lg:group-hover:right-0 duration-300 delay-200">
-                    <FaRegHeart size='20px' />
-                </button>
+                user?.email ?
+                    <button onClick={handleSaveJob} className="absolute lg:relative bg-green text-white p-3 lg:pl-3 lg:pr-5 lg:py-2 rounded-e-md lg:rounded-e-none rounded-s-md top-2 right-2 lg:top-auto md:-right-14 shadow-lg shadow-green/30 md:group-hover:right-2 lg:group-hover:right-0 duration-300 delay-200">
+                        <FaRegHeart size='20px' />
+                    </button> :
+                    <Link to='/login' className="absolute lg:relative bg-green text-white p-3 lg:pl-3 lg:pr-5 lg:py-2 rounded-e-md lg:rounded-e-none rounded-s-md top-2 right-2 lg:top-auto md:-right-14 shadow-lg shadow-green/30 md:group-hover:right-2 lg:group-hover:right-0 duration-300 delay-200">
+                        <FaRegHeart size='20px' />
+                    </Link>
             }
         </div>
     );

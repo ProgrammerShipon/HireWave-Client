@@ -7,9 +7,9 @@ import RecruiterDashboard from '../Sections/DashSections/RecruiterDashboard';
 const DashboardHome = () => {
     const { user } = useAuth();
 
-    // const role = 'admin';
+    const role = 'admin';
     // const role = 'recruiter';
-    const role = 'candidate';
+    // const role = 'candidate';
     return (
         <section className='m-5 rounded-md'>
             <DashTitle title='Dashboard' />

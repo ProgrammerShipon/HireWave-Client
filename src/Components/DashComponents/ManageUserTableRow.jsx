@@ -13,9 +13,6 @@ const ManageUserTableRow = ({ user }) => {
                     <p className="text-lightGray">{email}</p>
                 </div>
             </td>
-            {/* <td className="px-3 py-4">
-                category
-            </td> */}
 
             <td className="px-3 py-4 text-center capitalize">{role}</td>
 

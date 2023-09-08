@@ -86,7 +86,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "/saved_jobs",
-        element: <SavedJobs />,
+        element: <PrivateRoute><SavedJobs /></PrivateRoute>,
       },
       {
         path: "/find_talents",

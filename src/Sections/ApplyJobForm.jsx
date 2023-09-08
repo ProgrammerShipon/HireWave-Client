@@ -1,7 +1,7 @@
 import Button from '../Components/Button';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // react icons
 import { BiCurrentLocation } from 'react-icons/bi';
@@ -18,8 +18,7 @@ const ApplyJobForm = ({ jobData }) => {
     const [axiosSecure] = useAxiosSecure();
     const { _id, title,companyLogo, companyName, category, location, jobType, postedDate, overview, skills, } = jobData;
 
-    const { register, handleSubmit, reset } = useForm();
-
+    const { register, handleSubmit } = useForm();
     const [attachments, setAttachments] = useState([{ id: 1, value: "" }]);
     const [maximumWarning, setMaximumWarning] = useState(false)
     const handleIncreaseInputField = () => {
@@ -46,7 +45,6 @@ const ApplyJobForm = ({ jobData }) => {
             applicantEmail: user?.email
         }
 
-        console.log(appliedInfo)
         axiosSecure.post(`/appliedCandidate`, appliedInfo)
             .then((res) => {
                 console.log(res)

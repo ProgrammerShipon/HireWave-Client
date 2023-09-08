@@ -12,15 +12,15 @@ const PrivateRoute = ({ children }) => {
     if (loading) {
         return <div className='pt-28'><PageLoader /></div>
     }
-    if (userLoading) {
-        return <div className='pt-28'><PageLoader /></div>
-    }
-    if (user && currentUser) {
+    // if (userLoading) {
+    //     return <div className='pt-28'><PageLoader /></div>
+    // }
+    if (user) {
         return children;
     }
-    if (user && !currentUser) {
-        return <Navigate to='/select_role' state={{ from: location }} replace />;
-    }
+    // if (user && !currentUser) {
+    //     return <Navigate to='/select_role' state={{ from: location }} replace />;
+    // }
 
     return <Navigate to='/login' state={{ from: location }} replace />;
 };

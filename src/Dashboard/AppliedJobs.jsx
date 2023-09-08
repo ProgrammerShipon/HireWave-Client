@@ -1,7 +1,7 @@
 import DashTitle from "../Components/DashComponents/DashTitle";
-import useAllJobs from "../Hooks/useAllJobs";
 import AppliedJobTableRow from "../Components/DashComponents/AppliedJobTableRow";
 import useAppliedCandidates from "../Hooks/useAppliedCandidates";
+import PageLoader from "../Components/PageLoader";
 
 const AppliedJobs = () => {
     const [appliedCandidatesData, loading, refetch] = useAppliedCandidates()
@@ -30,7 +30,7 @@ const AppliedJobs = () => {
                                 <AppliedJobTableRow key={job._id} job={job} />))
                             }
                         </tbody>
-                    </table> : <h1>Loading ...</h1>
+                    </table> : <PageLoader />
                 }
             </div>
         </section>
