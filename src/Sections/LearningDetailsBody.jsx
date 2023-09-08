@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import LearningDetailsComment from './LearningDetailsComment';
+import { useLoaderData } from 'react-router-dom';
+
+// react icons
+import { CgComment } from 'react-icons/cg'
 
 const LearningDetailsBody = () => {
   const [commentClick, setCommentClick] = useState('')
   const loadData = useLoaderData();
-  const { title, createdAt, updatedAt, videoLink, description, authorImg, authorName, authorEmail, comments, sidebar } = loadData;
-  console.log(loadData);
+  const { title, createdAt, updatedAt, videoLink, description, authorImg, authorName, authorEmail, comments } = loadData;
+
   const { control, register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
   const onSubmit = () => {
     console.log('okay')
@@ -110,9 +114,6 @@ const LearningDetailsBody = () => {
               />
             ))}
           </div>
-
-          {/* Sidebar */}
-        
         </div>
       </div>
     </div>
