@@ -3,24 +3,24 @@ import RecentReviewSlider from "../Components/RecentReviewSlider";
 import useReview from "../Hooks/useReview";
 
 // react icons
-import { AiOutlineMessage } from "react-icons/ai";
 import { BiMap } from "react-icons/bi";
 import { BsBookmarkPlus, BsCurrencyDollar } from "react-icons/bs";
+import { AiOutlineMessage } from "react-icons/ai";
 import {
     FaFacebookF,
     FaGithub,
     FaLinkedin,
-    FaRegCalendarAlt,
     FaTwitter,
+    FaRegCalendarAlt,
 } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 
 // react rating
 import { Rating, Star } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
-import useAxios from "../Hooks/useAxios";
 
 const CandidateDetailsContent = ({ candidateDetails }) => {
     const [reviewData, loading] = useReview();

@@ -3,12 +3,26 @@ import { Link, useLocation } from "react-router-dom";
 // react icons
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import Button from "./Button";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 
-const SaveJobsCard = ({ job }) => {
+const SaveJobsCard = ({ job, refetch }) => {
     const { pathname } = useLocation();
-    console.log(pathname)
-    const { companyLogo, title, companyName, postedDate, location, jobType, industry, salary, skills } = job;
+    const [axiosSecure] = useAxiosSecure();
+    const { _id, selectJob, companyLogo, title, companyName, postedDate, location, jobType, industry, salary, skills } = job;
+    console.log(job)
+    const handleRemoveSavedJob = () => {
+        axiosSecure.delete(`/savedjob/${_id}`)
+            .then(res => {
+                if (res.status === 200) {
+                    refetch()
+                }
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
+
     return (
         <div className=" bg-white  border lg:border-0 lg:border-b border-green/50 lg:last:border-transparent hover:shadow-3xl lg:hover:border-white rounded-lg lg:rounded-none hover:rounded-lg overflow-hidden scale-100  clear-both hover:z-20 px-5 py-8 lg:py-6 lg:pr-0 duration-300 group ">
 
@@ -39,11 +53,19 @@ const SaveJobsCard = ({ job }) => {
             <div className=''>
                 <div className="flex justify-between items-center">
                     <div>
-                        <RiDeleteBin6Line />
+                        <button onClick={handleRemoveSavedJob}>
+                            <Button ><RiDeleteBin6Line className="text-xl" /></Button>
+                        </button>
+
                     </div>
                     <div className="flex gap-10 mx-5 ">
-                        <p>view details</p>
-                        <Button> Apply Now </Button>
+                        <Link to={`/job_details/${selectJob}`}>
+                            <Button> view details </Button>
+                        </Link>
+                        <Link to={`/apply_job/${selectJob}`}>
+                            <Button> Apply Now </Button>
+                        </Link>
+
                     </div>
                 </div>
             </div>

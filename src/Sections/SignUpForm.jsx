@@ -40,7 +40,8 @@ const SignUpForm = () => {
     signUpUser(data.email, data.password)
       .then((result) => {
         profileUpdate(result.user, data.name)
-          .then(() => {
+          .then((result) => {
+            console.log(result.user)
             navigate(from, { replace: true });
           })
           .catch((error) => {

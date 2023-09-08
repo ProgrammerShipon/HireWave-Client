@@ -21,7 +21,7 @@ const LearningCard = ({ learning }) => {
                         <div className="text-purple duration-300 hover:underline"> {category} </div>
                         <div className="flex items-center gap-2 text-dark"><BsBookmarkStar /><span>{readTime} min read</span></div>
                     </div>
-                    <h3 className="text-xl lg:text-2xl text-green font-semibold"> {title} </h3>
+                    <h3 className="text-xl lg:text-2xl h-14 lg:h-24 text-green font-semibold"> {title} </h3>
                     <p className="line-clamp-3 mt-2">{description}</p>
                 </div>
 
