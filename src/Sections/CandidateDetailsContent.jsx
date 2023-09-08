@@ -21,9 +21,11 @@ import "@smastrom/react-rating/style.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const CandidateDetailsContent = ({ candidateDetails }) => {
     const [reviewData, loading] = useReview();
+    const [axiosSecure] = useAxiosSecure();
     const {
         name,
         email,
@@ -59,18 +61,14 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
         activeFillColor: "#ffb33e",
         inactiveFillColor: "#a78f6d",
     };
-    // members: [req.body.senderId, req.body.receiverId],
-    // const senderEmail = user.email;
-    // console.log(_id)
+
+    // chat
     const handleCreateChat = () => {
-        console.log('handleCreateChat')
         const senderId = userId;
         const receiverId = _id;
         const members = { senderId, receiverId }
-        console.log(members)
-        useAxios.post('/chat', members)
+        axiosSecure.post('/chat', members)
             .then(data => {
-                console.log(data)
                 navigate('/dashboard/messages')
             })
     }
