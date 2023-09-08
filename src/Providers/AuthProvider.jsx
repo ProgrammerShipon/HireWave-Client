@@ -1,11 +1,12 @@
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updatePassword, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
-import axios from "axios";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
+    const [axiosSecure] = useAxiosSecure();
     const [user, setUser] = useState({});
     const [userId, setUserId] = useState('');
     const [loading, setLoading] = useState(true);
@@ -65,19 +66,21 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             setLoading(false);
 
-            const api = axios.create({
-                baseURL: 'https://hire-wave-server.vercel.app/api',
-            });
             if (currentUser) {
-                setLoading(false);
-                api.post('/jwt', { email: currentUser.email })
-                    .then(data => {
-                        localStorage.setItem('access-token', data.data.token)
+                // console.log('res');
+                axiosSecure.post('/jwt', { email: currentUser.email })
+                    .then(response => {
+                        // console.log('res', response.data.token);
+                        localStorage.setItem('access-token', response.data.token);
+
                     })
+                    .catch(error => {
+                        console.log(error)
+                    })
+
             }
-            else {
-                localStorage.removeItem('access-token')
-            }
+            localStorage.removeItem('access-token')
+
         });
 
         return () => {
