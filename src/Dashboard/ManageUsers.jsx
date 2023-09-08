@@ -7,9 +7,11 @@ import CountUp from 'react-countup';
 import { LiaIndustrySolid, LiaUserClockSolid } from 'react-icons/lia';
 import { PiUsersThreeLight } from 'react-icons/pi';
 import { CgUserList } from 'react-icons/cg';
+import useUsers from "../Hooks/useUsers";
+import PageLoader from "../Components/PageLoader";
 
 const ManageUsers = () => {
-    const [candidatesData, loading] = useCandidatesData();
+    const [userData, loading] = useUsers();
 
     return (
         <section className='m-5 rounded-md'>
@@ -86,7 +88,7 @@ const ManageUsers = () => {
                         <thead className="text-lg text-green border-b border-green/40">
                             <tr>
                                 <th className="px-3 py-3 font-medium">User Info</th>
-                                <th className="px-3 py-3 font-medium">Category</th>
+                                {/* <th className="px-3 py-3 font-medium">Category</th> */}
                                 <th className="px-3 py-3 font-medium text-center">Role</th>
                                 <th className="px-3 py-3 font-medium text-center">Status</th>
                                 <th className="py-3 text-center font-medium">Actions</th>
@@ -94,11 +96,11 @@ const ManageUsers = () => {
                         </thead>
                         <tbody>
                             {
-                                candidatesData.map((user) => (
+                                userData.map((user) => (
                                     <ManageUserTableRow key={user._id} user={user} />))
                             }
                         </tbody>
-                    </table> : <h1>Loading ...</h1>
+                    </table> : <PageLoader />
                 }
             </div>
         </section>
