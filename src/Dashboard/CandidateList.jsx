@@ -1,5 +1,6 @@
 import CandidateListTableRow from "../Components/DashComponents/CandidateListTableRow";
 import DashTitle from "../Components/DashComponents/DashTitle";
+import PageLoader from "../Components/PageLoader";
 import useCandidatesData from "../Hooks/useCandidatesData";
 
 const CandidateList = () => {
@@ -70,7 +71,7 @@ const CandidateList = () => {
                                     <CandidateListTableRow key={candidate._id} candidate={candidate} />))
                             }
                         </tbody>
-                    </table> : <h1>Loading ...</h1>
+                    </table> : <PageLoader />
                 }
             </div>
         </section>

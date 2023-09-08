@@ -22,7 +22,7 @@ import { FaFacebookF, FaGithub, FaLinkedin, FaTwitter, FaPencilAlt, FaTrashAlt, 
 const CandidateProfile = ({ candidatesData }) => {
     const [languagesData] = useLanguagesData();
 
-    const { name, title, images, location, status, hourlyRate, jobType, address, languages, about, education, experience, skills, openToWork } = candidatesData;
+    const { _id, name, title, image, location, status, hourlyRate, jobType, address, languages, about, education, experience, skills, openToWork, socialLink } = candidatesData;
 
     const formattedAbout = about.map(pa => pa === "" ? "\u00A0" : pa);
 
@@ -69,7 +69,7 @@ const CandidateProfile = ({ candidatesData }) => {
                     <div className='w-48 h-48 rounded-full overflow-hidden shadow-xl shadow-gray/40'>
                         <img
                             className='w-full h-full object-cover object-center'
-                            src={images} alt={name} />
+                            src={image} alt={name} />
                     </div>
 
                     {/* content */}
@@ -77,7 +77,7 @@ const CandidateProfile = ({ candidatesData }) => {
                         <h1 className='text-2xl md:text-3xl text-dark font-medium drop-shadow-xl'>{name}</h1>
                         <h3 className='text-base md:text-xl text-lightGray mt-2 line-clamp-1'>{title}</h3>
                         <p className='text-gray flex items-center gap-1'>
-                            <SlLocationPin className='text-lightGray' /> {location}
+                            <SlLocationPin className='text-lightGray' /> {location[0]}, {location[1]}
                         </p>
                         {
                             status ? <p className='bg-purple/10 text-purple font-medium w-fit px-4 rounded-full flex items-center gap-1 mt-2'><IoIosFlash />Available Now</p> : <p className='bg-red-400/10 text-red-500 font-medium w-fit px-4 rounded-full flex items-center gap-1 mt-2'><IoIosFlash />Unavailable</p>
@@ -87,10 +87,10 @@ const CandidateProfile = ({ candidatesData }) => {
 
                 {/* public view button */}
                 <div className='hidden md:block ml-auto'>
-                    <Button>See Public View</Button>
+                    <Link to={`/candidate_details/${_id}`}><Button>See Public View</Button></Link>
                 </div>
 
-                <Modal />
+                <Modal candidatesData={candidatesData} />
             </div>
 
             {/* availability & locations */}
@@ -119,7 +119,7 @@ const CandidateProfile = ({ candidatesData }) => {
 
                     {/* edit field */}
                     <div className={`flex flex-col gap-2 p-3 ${availability ? 'hidden' : 'block'}`}>
-                        <label htmlFor="hourlyRate" className='text-lightGray'>
+                        <label htmlFor="hourlyRate" className='text-lightGray text-base'>
                             Hourly Rate: $
                             <input
                                 id='hourlyRate'
@@ -136,7 +136,7 @@ const CandidateProfile = ({ candidatesData }) => {
                                 type="checkbox"
                                 {...register("openToWork")}
                             />
-                            <label htmlFor="openToWork" className='text-black'>
+                            <label htmlFor="openToWork" className='text-black text-base'>
                                 Open to contract to hire
                             </label>
                         </div>
@@ -184,22 +184,22 @@ const CandidateProfile = ({ candidatesData }) => {
 
                     <div className={`py-4 ${editLocation ? 'block' : 'hidden'} space-y-1`}>
                         <p className='text-black'>{address}</p>
-                        <p className='text-lightGray'>{location}</p>
+                        <p className='text-lightGray'>{location[0]}, {location[1]}</p>
                     </div>
 
                     {/* edit field */}
                     <div className={`flex flex-col gap-2 p-3 ${editLocation ? 'hidden' : 'block'}`}>
-                        <label htmlFor="hourlyRate" className='text-lightGray'>
+                        <label htmlFor="hourlyRate" className='text-lightGray text-base'>
                             Address
                             <input
                                 id='address'
-                                {...register("address", { required: true, min: 0 })}
+                                {...register("address", { required: true })}
                                 defaultValue={address}
                                 className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
                             />
                         </label>
 
-                        <label htmlFor="editLocation" className='text-lightGray'>
+                        <label htmlFor="editLocation" className='text-lightGray text-base'>
                             Region & Country
                             <input
                                 id='editLocation'
@@ -243,14 +243,16 @@ const CandidateProfile = ({ candidatesData }) => {
                 </div>
 
                 <div className={`py-4 ${editAbout ? 'block' : 'hidden'}`}>
-                    {formattedAbout.map((ab, index) => <p key={index} className='text-lightGray text-lg leading-relaxed'>
-                        {ab}
-                    </p>)}
+                    {
+                        formattedAbout.length > 0 ? formattedAbout.map((ab, index) => <p key={index} className='text-lightGray text-lg leading-relaxed'>
+                            {ab}
+                        </p>) : <p className='text-lg text-lightGray'>N/A</p>
+                    }
 
                 </div>
 
                 <div className={`flex flex-col gap-2 p-3 ${editAbout ? 'hidden' : 'block'}`}>
-                    <label htmlFor="newSkill" className='text-lightGray'>
+                    <label htmlFor="newSkill" className='text-lightGray text-base'>
                         Edit About
                         <DescriptionTextarea about={about} setAboutData={setAboutData} />
                     </label>
@@ -292,36 +294,26 @@ const CandidateProfile = ({ candidatesData }) => {
 
                     {/* skills body */}
                     <div className={`py-4 flex items-center flex-wrap gap-2 ${isSkills ? 'block' : 'hidden'}`}>
-                        <div className='relative text-purple bg-purple/10 px-3 rounded-md capitalize group cursor-pointer'>
-                            <span>React</span>
 
-                            <div className='absolute top-0 -right-14 flex gap-2 bg-white text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
-                                <button>
-                                    <FaPencilAlt size='14' />
-                                </button>
-                                <button>
-                                    <FaTrashAlt size='14' />
-                                </button>
-                            </div>
-                        </div>
+                        {
+                            skills.map((skl, index) => <div key={index} className='relative text-purple bg-purple/10 px-3 rounded-md capitalize group cursor-pointer'>
+                                <span>{skl}</span>
 
-                        <div className='relative text-purple bg-purple/10 px-3 rounded-md capitalize group cursor-pointer'>
-                            <span>Javascript</span>
-
-                            <div className='absolute top-0 -right-14 flex gap-2 bg-white text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
-                                <button>
-                                    <FaPencilAlt size='14' />
-                                </button>
-                                <button>
-                                    <FaTrashAlt size='14' />
-                                </button>
-                            </div>
-                        </div>
+                                <div className='absolute top-0 -right-14 flex gap-2 bg-white text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
+                                    <button>
+                                        <FaPencilAlt size='14' />
+                                    </button>
+                                    <button>
+                                        <FaTrashAlt size='14' />
+                                    </button>
+                                </div>
+                            </div>)
+                        }
                     </div>
 
                     {/* skills edit field */}
                     <div className={`flex flex-col gap-2 p-3 ${isSkills ? 'hidden' : 'block'}`}>
-                        <label htmlFor="newSkill" className='text-lightGray'>
+                        <label htmlFor="newSkill" className='text-lightGray text-base'>
                             New Skill
                             <input
                                 id='newSkill'
@@ -365,7 +357,7 @@ const CandidateProfile = ({ candidatesData }) => {
                     {/* languages body */}
                     <div className={`py-4 space-y-1 ${openLanguage ? 'block' : 'hidden'}`}>
                         {
-                            languages.map((lan, index) => <div
+                            languages.length > 0 ? languages.map((lan, index) => <div
                                 key={index}
                                 className='relative capitalize group cursor-pointer w-fit'>
                                 <p className='text-black flex items-center gap-1'>{lan.name} <span className='inline-block w-2 border-t border-gray'></span>
@@ -380,7 +372,7 @@ const CandidateProfile = ({ candidatesData }) => {
                                         <FaTrashAlt size='14' />
                                     </button>
                                 </div>
-                            </div>)
+                            </div>) : <p className='text-lg text-lightGray'>N/A</p>
                         }
                     </div>
 
@@ -455,38 +447,24 @@ const CandidateProfile = ({ candidatesData }) => {
 
                     {/* educations body */}
                     <div className={`py-4 space-y-4 ${openEducation ? 'block' : 'hidden'}`}>
-                        <div className='relative group cursor-pointer w-fit'>
-                            <h3 className='text-dark font-medium text-xl'>Master's in Computer Science</h3>
-                            <p className='text-lightGray'>Stanford University, Bangladesh</p>
-                            <p className='flex items-center gap-1 text-gray -mt-1 font-light'>
-                                <BiCalendar /> 2018 - Current
-                            </p>
+                        {
+                            education.length > 0 ? <div className='relative group cursor-pointer w-fit'>
+                                <h3 className='text-dark font-medium text-xl'>Master's in Computer Science</h3>
+                                <p className='text-lightGray'>Stanford University, Bangladesh</p>
+                                <p className='flex items-center gap-1 text-gray -mt-1 font-light'>
+                                    <BiCalendar /> 2018 - Current
+                                </p>
 
-                            <div className='absolute top-0 -right-14 flex gap-2 text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
-                                <button>
-                                    <FaPencilAlt size='14' />
-                                </button>
-                                <button>
-                                    <FaTrashAlt size='14' />
-                                </button>
-                            </div>
-                        </div>
-                        <div className='relative group cursor-pointer w-fit'>
-                            <h3 className='text-dark font-medium text-xl'>Master's in Computer Science</h3>
-                            <p className='text-lightGray'>Stanford University, Bangladesh</p>
-                            <p className='flex items-center gap-1 text-gray -mt-1 font-light'>
-                                <BiCalendar /> 2018 - 2023
-                            </p>
-
-                            <div className='absolute top-0 -right-14 flex gap-2 text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
-                                <button>
-                                    <FaPencilAlt size='14' />
-                                </button>
-                                <button>
-                                    <FaTrashAlt size='14' />
-                                </button>
-                            </div>
-                        </div>
+                                <div className='absolute top-0 -right-14 flex gap-2 text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
+                                    <button>
+                                        <FaPencilAlt size='14' />
+                                    </button>
+                                    <button>
+                                        <FaTrashAlt size='14' />
+                                    </button>
+                                </div>
+                            </div> : <p className='text-lg text-lightGray'>N/A</p>
+                        }
                     </div>
 
                     {/* education edit field */}
@@ -502,7 +480,7 @@ const CandidateProfile = ({ candidatesData }) => {
                             className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
                         />
                         <label htmlFor="currently_studying"
-                            className='flex items-center gap-2'
+                            className='flex items-center gap-2 text-base'
                         >
                             <input
                                 id='currently_studying'
@@ -571,7 +549,7 @@ const CandidateProfile = ({ candidatesData }) => {
                     {/* experiences body */}
                     <div className={`py-4 space-y-4 ${openExperience ? 'block' : 'hidden'}`}>
                         {
-                            experience.map((exp, index) => (
+                            experience.length > 0 ? experience.map((exp, index) => (
                                 <div key={index} className='relative group cursor-pointer w-fit flex gap-2'>
                                     <div className='h-14 w-14 overflow-hidden'>
                                         <img
@@ -595,7 +573,7 @@ const CandidateProfile = ({ candidatesData }) => {
                                         </button>
                                     </div>
                                 </div>
-                            ))
+                            )) : <p className='text-lg text-lightGray'>N/A</p>
                         }
                     </div>
 
@@ -624,7 +602,7 @@ const CandidateProfile = ({ candidatesData }) => {
                             />
                         </div>
                         <label htmlFor="currentWorking"
-                            className='flex items-center gap-2'
+                            className='flex items-center gap-2 text-base'
                         >
                             <input
                                 id='currentWorking'
@@ -690,36 +668,38 @@ const CandidateProfile = ({ candidatesData }) => {
                         <IoMdAdd size='20' />
                     </button>
                 </div>
+                {
+                    socialLink.length > 0 ?
+                        <div className="flex items-center gap-2 py-4">
+                            <Link
+                                to="/"
+                                className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
+                            >
+                                <FaFacebookF size="20px" />
+                            </Link>
 
-                <div className="flex items-center gap-2 py-4">
-                    <Link
-                        to="/"
-                        className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
-                    >
-                        <FaFacebookF size="20px" />
-                    </Link>
+                            <Link
+                                to="/"
+                                className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
+                            >
+                                <FaTwitter size="20px" />
+                            </Link>
 
-                    <Link
-                        to="/"
-                        className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
-                    >
-                        <FaTwitter size="20px" />
-                    </Link>
+                            <Link
+                                to="/"
+                                className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
+                            >
+                                <FaLinkedin size="20px" />
+                            </Link>
 
-                    <Link
-                        to="/"
-                        className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
-                    >
-                        <FaLinkedin size="20px" />
-                    </Link>
-
-                    <Link
-                        to="/"
-                        className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
-                    >
-                        <FaGithub size="20px" />
-                    </Link>
-                </div>
+                            <Link
+                                to="/"
+                                className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
+                            >
+                                <FaGithub size="20px" />
+                            </Link>
+                        </div> : <p className='text-lg text-lightGray'>N/A</p>
+                }
             </div>
         </form >
     );

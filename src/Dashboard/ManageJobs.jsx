@@ -1,6 +1,7 @@
 import DashTitle from "../Components/DashComponents/DashTitle";
 import useAllJobs from "./../Hooks/useAllJobs";
 import ManageJobTable from "../Components/DashComponents/ManageJobTable";
+import PageLoader from "../Components/PageLoader";
 
 const ManageJobs = () => {
     const [allJobsData, loading] = useAllJobs();
@@ -78,7 +79,7 @@ const ManageJobs = () => {
                                 <ManageJobTable key={job._id} job={job} />
                             ))}
                         </tbody>
-                    </table> : <h1>Loading ...</h1>
+                    </table> : <PageLoader />
                 }
             </div>
         </section>

@@ -1,5 +1,6 @@
 import DashTitle from "../Components/DashComponents/DashTitle";
 import RecruiterListTableRow from "../Components/DashComponents/RecruiterListTableRow";
+import PageLoader from "../Components/PageLoader";
 import useRecruiters from "../Hooks/useRecruiters";
 
 const RecruiterList = () => {
@@ -70,7 +71,7 @@ const RecruiterList = () => {
                                     <RecruiterListTableRow key={recruiter._id} recruiter={recruiter} />))
                             }
                         </tbody>
-                    </table> : <h1>Loading ...</h1>
+                    </table> : <PageLoader />
                 }
             </div>
         </section>
