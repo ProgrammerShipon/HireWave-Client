@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import moment from "moment";
 
-const AppliedJobTableRow = ({ job }) => {
-    const { _id, companyName, companyLogo, postedDate, title, applied, name, status, } = job;
 
+const AppliedJobTableRow = ({ job }) => {
+    const { _id, appliedJobId, companyLogo, companyName, applicantEmail, postedDate, title, applied, name, status, cover_letter, expected_salary, appliedDate } = job;
+    console.log(job)
     return (
         <tr className="border-b border-green/20 hover:bg-green/10 duration-300 group">
             <td className="flex items-center gap-2 px-3 py-3 font-medium text-dark">
@@ -11,7 +12,7 @@ const AppliedJobTableRow = ({ job }) => {
                     <img
                         className="object-cover object-center w-full"
                         src={companyLogo}
-                        alt={name}
+                        alt={companyName}
                     />
                 </div>
                 {companyName}
@@ -21,8 +22,8 @@ const AppliedJobTableRow = ({ job }) => {
                     {title}
                 </Link>
             </td>
-            <td className="px-3 py-3 text-center">{moment(postedDate).format("MMM Do YYYY")}</td>
-            <td className="px-3 py-3 text-center text-lg text-dark font-medium">{applied}</td>
+            <td className="px-3 py-3 text-center">{moment(appliedDate).format("MMM Do YYYY")}</td>
+            <td className="px-3 py-3 text-center text-lg text-dark font-medium">20</td>
 
             <td className="px-3 py-3">
                 {
@@ -30,7 +31,7 @@ const AppliedJobTableRow = ({ job }) => {
                 }
             </td>
             <td className="px-3 py-3 text-center">
-                <Link to={`/jobDetails/${_id}`} className="border border-green px-4 rounded-md hover:bg-green hover:text-white duration-300">View</Link>
+                <Link to={`/job_details/${appliedJobId}`} className="border border-green px-4 rounded-md hover:bg-green hover:text-white duration-300">View</Link>
             </td>
         </tr>
     );

@@ -53,11 +53,6 @@ const Router = createBrowserRouter([
         element: <BrowseJobs />,
       },
       {
-        path: "/apply_job/:id",
-        element: <ApplyJob />,
-        loader: async ({ params }) => await fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`),
-      },
-      {
         path: "/all_categories",
         element: <AllCategories />,
       },
