@@ -8,11 +8,9 @@ import useAuth from '../Hooks/useAuth';
 // react icons
 import { MdAlternateEmail, MdLockOutline } from 'react-icons/md';
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
-import useAxios from '../Hooks/useAxios';
-import Swal from 'sweetalert2';
 
 const LoginForm = () => {
-    const { signIn, user } = useAuth();
+    const { signIn } = useAuth();
     // navigate
     const navigate = useNavigate();
     const location = useLocation();
@@ -23,32 +21,8 @@ const LoginForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         signIn(data.email, data.password)
-            .then((result) => {
-                const user = result.user;
-                const userinfo = { name: user.displayName, email: user.email, userProfile: user.photoURL ?user.photoURL : "https://i.ibb.co/qYwCnZZ/logo.png", role: "user" };
-                // useAxios.post('/users', userinfo)
-                fetch('http://localhost:3030/api/users', {
-                    method: "POST",
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(userinfo)
-                })
-                    .then(res => res.json())
-                    .then((data) => {
-                        console.log(data)
-                        if (data._id) {
-                            console.log(data._id)
-                            Swal.fire({
-                                position: 'center',
-                                icon: 'success',
-                                title: 'Login successfully',
-                                showConfirmButton: false,
-                                timer: 2500
-                            })
-                        }
-                        // navigate(from, { replace: true })
-
-                    })
-
+            .then(() => {
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 toast.error(error.message, {
@@ -57,8 +31,6 @@ const LoginForm = () => {
                     theme: "light",
                 });
             })
-
-
     };
     return (
         <section className='py-20 md:py-[120px] duration-300'>

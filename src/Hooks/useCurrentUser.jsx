@@ -7,8 +7,8 @@ const useCurrentUser = () => {
     const [axiosSecure] = useAxiosSecure();
     const { user } = useAuth();
     const [currentUser, setCurrentUser] = useState({});
-    const [loading, setLoading] = useState(true);
-    const { data: userData = [], isLoading: userLoading, refetch } = useQuery({
+    const [userLoading, setUserLoading] = useState(true);
+    const { data: userData = [], isLoading: isLoading, refetch } = useQuery({
         queryKey: ['userData'],
         queryFn: async () => {
             const res = await axiosSecure('/users');
@@ -19,12 +19,10 @@ const useCurrentUser = () => {
     useEffect(() => {
         const getUser = userData.find(usr => usr.email === user?.email)
         setCurrentUser(getUser)
-        if (getUser?.email) {
-            setLoading(false)
-        }
-    }, [user?.email, userLoading])
+        setUserLoading(false)
+    }, [user?.email, isLoading])
 
-    return [currentUser, loading];
+    return [currentUser, userLoading];
 };
 
 export default useCurrentUser;

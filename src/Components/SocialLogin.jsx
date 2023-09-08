@@ -1,14 +1,12 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useAuth from '../Hooks/useAuth';
-import useCurrentUser from '../Hooks/useCurrentUser';
 
 // react icons
 import { FaGithub } from 'react-icons/fa';
 
 const SocialLogin = () => {
     const { googleSignIn, gitHubSignIn } = useAuth();
-    const [currentUser] = useCurrentUser();
 
 
     // navigate
@@ -19,11 +17,7 @@ const SocialLogin = () => {
     const handleGoogleLogin = () => {
         googleSignIn()
             .then(() => {
-                if (currentUser === undefined) {
-                    navigate('/select_role', { replace: true })
-                } else {
-                    navigate(from, { replace: true })
-                }
+                return navigate('/', { replace: true })
             }).catch((error) => {
                 if (error.message) {
                     toast.error(error.message, {
@@ -43,11 +37,7 @@ const SocialLogin = () => {
     const handleGithubLogin = () => {
         gitHubSignIn()
             .then(() => {
-                if (currentUser === undefined) {
-                    navigate('/select_role', { replace: true })
-                } else {
-                    navigate(from, { replace: true })
-                }
+                return navigate(from, { replace: true })
             }).catch((error) => {
                 if (error.message) {
                     toast.error(error.message, {
