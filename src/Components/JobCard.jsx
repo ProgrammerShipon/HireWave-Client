@@ -4,9 +4,35 @@ import GetAgoTime from "./GetAgoTime";
 // react icons
 import { BiHeart, BiSolidCrown, BiMap } from "react-icons/bi";
 import { IoIosFlash } from "react-icons/io";
+import { toast } from "react-toastify";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useAuth from "../Hooks/useAuth";
 
 const JobCard = ({ job, setJobDetails }) => {
-    const { _id, title, companyName, companyLogo, category, location, jobType, applied, salary, postedDate } = job;
+    const { _id, title, companyName, skills, companyLogo, category, location, jobType, applied, salary, postedDate } = job;
+    const [axiosSecure] = useAxiosSecure();;
+    const { user } = useAuth();
+    const jobInfo = { selectJob: _id, companyLogo, title, companyName, postedDate, location, jobType, salary, skills, candidateMail: user?.email }
+    const handleSaveJob = () => {
+        axiosSecure.post("/savedjob", jobInfo)
+            .then((data) => {
+                if (data.status === 200) {
+                    toast.success("Saved Successfully", {
+                        position: "top-right",
+                        autoClose: 2500,
+                        theme: "light",
+                    });
+                }
+                else {
+                    toast.warning("Already Saved", {
+                        position: "top-right",
+                        autoClose: 2500,
+                        theme: "light",
+                    });
+                }
+            })
+            .catch((err) => console.log(err));
+    }
     return (
         <div className="sticky top-28 bg-white border border-purple p-4 rounded-lg hover:shadow-4xl hover:shadow-green/20 duration-300 cursor-pointer"
             onClick={() => setJobDetails(job)}
@@ -36,7 +62,10 @@ const JobCard = ({ job, setJobDetails }) => {
                 <div className="flex items-center gap-1">
                     <BiSolidCrown title="Featured" size='22px' className="text-yellow-500" />
                     <IoIosFlash title="Urgent" size='22px' className="text-red-500" />
-                    <BiHeart size='22px' className="text-green" />
+                    <button onClick={handleSaveJob}>
+                        <BiHeart size='22px' className="text-green" />
+                    </button>
+
                 </div>
             </div>
 
