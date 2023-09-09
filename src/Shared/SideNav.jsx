@@ -7,7 +7,7 @@ import Logo from '../Assets/images/logo-01.png';
 import { Link } from 'react-router-dom';
 import NavItems from '../Components/NavItems';
 
-const SideNav = ({ isOpen, toggle }) => {
+const SideNav = ({ isOpen, toggle, searchTerm, setSearchTerm, handleSearch }) => {
     return (
         <>
             <aside className={`lg:hidden fixed top-0 bg-white w-[280px] md:w-[350px] h-screen p-5 z-50 duration-300 ease-in ${isOpen ? 'right-0' : '-right-full'}`}>
@@ -34,8 +34,10 @@ const SideNav = ({ isOpen, toggle }) => {
                         type="text"
                         placeholder="Job Title / Keywords or Company"
                         className="w-full py-2 pl-3 rounded-s-md bg-transparent focus:outline-none"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
                     />
-                    <button className="bg-dark text-white px-4 py-3">
+                    <button onClick={handleSearch} className="bg-dark text-white px-4 py-3">
                         <FaSearch />
                     </button>
                 </div>
