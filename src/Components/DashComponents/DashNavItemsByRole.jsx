@@ -18,7 +18,7 @@ const DashNavItemsByRole = ({ role }) => {
                     <>
                         {/* applied Jobs */}
                         <li className="w-full">
-                            <DashLink to='/dashboard/appliedJobs'>
+                            <DashLink to='/dashboard/myApplications'>
                                 <BsFileArrowUp size={24} />
                                 <p className="hidden md:inline">My Applications</p>
                             </DashLink>
