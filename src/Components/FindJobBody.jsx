@@ -14,10 +14,14 @@ import {
   HiOutlineFilter,
   HiOutlineUserGroup,
 } from "react-icons/hi";
+import { toast } from "react-toastify";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useAuth from "../Hooks/useAuth";
 
 const FindJobBody = ({ allJobsData }) => {
   const [jobDetails, setJobDetails] = useState(allJobsData[0]);
-
+  const [axiosSecure] = useAxiosSecure();;
+  const { user } = useAuth();
   const {
     _id,
     title,
@@ -37,15 +41,29 @@ const FindJobBody = ({ allJobsData }) => {
     benefits,
     skills,
   } = jobDetails;
-  console.log("jobDetails" , jobDetails);
-  // const handleApplyJob = () => {
-  //   const appliedInfo = {
-  //     companyName: companyName,
-  //     companyMail: category,
-  //     JobId: "64e78e7663f90b252c6891d0"
-  //   }
-  //   console.log(appliedInfo)
-  // }
+  console.log("jobDetails", jobDetails);
+
+  const jobInfo = { selectJob: _id, companyLogo, title, companyName, postedDate, location, jobType, salary, skills, candidateMail: user?.email }
+  const handleSaveJob = () => {
+    axiosSecure.post("/savedjob", jobInfo)
+      .then((data) => {
+        if (data.status === 200) {
+          toast.success("Saved Successfully", {
+            position: "top-right",
+            autoClose: 2500,
+            theme: "light",
+          });
+        }
+        else {
+          toast.warning("Already Saved", {
+            position: "top-right",
+            autoClose: 2500,
+            theme: "light",
+          });
+        }
+      })
+      .catch((err) => console.log(err));
+  }
   return (
     <div className="grid grid-cols-1 gap-5 mt-16 lg:grid-cols-10">
       {/* left content  */}
@@ -94,7 +112,10 @@ const FindJobBody = ({ allJobsData }) => {
 
             <div className="flex items-center gap-2">
               <AiOutlineShareAlt size="24px" className="text-green" />
-              <BiHeart size="24px" className="text-green" />
+              <button onClick={handleSaveJob}>
+                <BiHeart size="24px" className="text-green" />
+              </button>
+
             </div>
           </div>
 

@@ -11,10 +11,10 @@ import { TbLockCog } from "react-icons/tb";
 import { VscAccount } from "react-icons/vsc";
 
 const DashNavItems = () => {
-  const { logOut, user } = useAuth();
-  const [currentUser, userLoading, refetch] = useCurrentUser();
-  console.log(currentUser)
-  const role = currentUser?.role
+  const { logOut } = useAuth();
+  const [currentUser] = useCurrentUser();
+  // const role = currentUser?.role
+  const role = "admin"
   return (
     <aside className="fixed top-0 shadow-4xl shadow-gray/40 w-auto md:w-[300px] bg-white duration-300 h-screen pt-[71px] overflow-y-auto z-20">
       <ul className="flex flex-col items-center gap-3 ml-4 md:ml-10 pt-6">
