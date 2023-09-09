@@ -242,7 +242,7 @@ export default function PostJobForm() {
 
                         {/* skills & closing date */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                            {/* skills */}
+                            {/* Skills */}
                             <div className="w-full col-span-2">
                                 <label className="text-dark font-medium" htmlFor="skills">
                                     Add a Skill
