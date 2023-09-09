@@ -37,6 +37,8 @@ import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
 import PrivateRoute from "./PrivateRoute";
 import RecruitersDetails from "../Pages/RecruitersDetails";
 import SelectRole from "../SignUpSteps/SelectRole";
+import Chat from "../Dashboard/Chat";
+import AppliedApplicant from "../Dashboard/AppliedApplicant";
 
 const Router = createBrowserRouter([
   {
@@ -51,10 +53,6 @@ const Router = createBrowserRouter([
       {
         path: "/browse_jobs",
         element: <BrowseJobs />,
-      },
-      {
-        path: "/apply_job/:title",
-        element: <PrivateRoute><ApplyJob /></PrivateRoute>
       },
       {
         path: "/all_categories",
@@ -86,11 +84,11 @@ const Router = createBrowserRouter([
       {
         path: "/learning/:id",
         element: <LearningDetails />,
-        // loader: async ({ params }) => await fetch(`http://localhost:3030/api/learning/${params.id}`),
+        loader: async ({ params }) => await fetch(`https://hire-wave-server.vercel.app/api/learning/${params.id}`),
       },
       {
         path: "/saved_jobs",
-        element: <SavedJobs />,
+        element: <PrivateRoute><SavedJobs /></PrivateRoute>,
       },
       {
         path: "/find_talents",
@@ -137,7 +135,7 @@ const Router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <PrivateRoute><Dashboard /></PrivateRoute>,
+    element: <Dashboard />,
     errorElement: <ErrorPage />,
     children: [
       //Common Routes
@@ -163,7 +161,7 @@ const Router = createBrowserRouter([
       // Recruiter routes
       {
         path: "messages",
-        element: <Messages />,
+        element: < Chat/>,
       },
       {
         path: "room",
@@ -172,6 +170,10 @@ const Router = createBrowserRouter([
       {
         path: "postedJobs",
         element: <PostedJobs />,
+      },
+      {
+        path: "applicant",
+        element: <AppliedApplicant />,
       },
 
       //Admin Routes

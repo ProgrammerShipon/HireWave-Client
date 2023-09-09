@@ -35,9 +35,11 @@ const CandidateCard = ({ candidate, reviewData }) => {
                 </div>
 
                 {/* rating */}
-                <span className="absolute bottom-1 right-1 bg-white text-[#FDCC0D] text-sm w-7 group-hover:w-12 flex items-center justify-center gap-[2px] px-1 rounded-md shadow-xl duration-300">
-                    {rating.length > 0 && rating[0].rating}  <BiSolidStar className="hidden group-hover:inline" />
-                </span>
+                {
+                    rating.length > 0 && <span className="absolute bottom-1 right-1 bg-white text-[#FDCC0D] text-sm w-7 group-hover:w-12 flex items-center justify-center gap-[2px] px-1 rounded-md shadow-xl duration-300">
+                        {rating[0].rating}  <BiSolidStar className="hidden group-hover:inline" />
+                    </span>
+                }
             </div>
 
             {/* content */}

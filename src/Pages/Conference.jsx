@@ -22,6 +22,8 @@ const Conference = () => {
             showRequestToCohostButton: true,
             showScreenSharingButton: true,
             showRoomDetailsButton : true,
+            // turnOnCameraWhenJoining:false,
+            
             sharedLinks: [
                 {
                     name: 'Invitation link',
@@ -38,7 +40,7 @@ const Conference = () => {
     return (
         <div>
             <div
-            className='h-fit'
+            className='h-screen '
                 ref={interviewConference}>
             </div>
         </div>

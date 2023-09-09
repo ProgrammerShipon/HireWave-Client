@@ -1,7 +1,7 @@
 import Button from '../Components/Button';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // react icons
 import { BiCurrentLocation } from 'react-icons/bi';
@@ -9,37 +9,18 @@ import { BsPersonWorkspace } from 'react-icons/bs';
 import { MdOutlineWorkOutline } from 'react-icons/md';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import GetAgoTime from '../Components/GetAgoTime';
+import useAuth from '../Hooks/useAuth';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
-const ApplyJobForm = () => {
-    const jobData = useLoaderData();
-    const { _id, title, category, location, jobType, postedDate, overview, skills, } = jobData[0];
+const ApplyJobForm = ({ jobData }) => {
+    const { user } = useAuth();
+    const [axiosSecure] = useAxiosSecure();
+    const { _id, title,companyLogo, companyName, category, location, jobType, postedDate, overview, skills, } = jobData;
 
-    const { register, handleSubmit, reset } = useForm();
-
-    const onApplyJobSubmit = data => {
-        const applyJobData = {
-            cover_letter: data.cover_letter,
-            expected_salary: data.expected_salary,
-            attachments: attachments.map(attachment => attachment.value),
-        }
-        //TODO: Update in the back end
-        reset();
-    }
-
-    // const [singleJob, setSingleJob]= useState()
-    // const [allJobsData, loading] = useAllJobs();
-    // const { title: id }= useParams()
-
-
-    // useEffect(() => {
-    //     const appliedJob = allJobsData.find(job => job._id === id)
-    //     setSingleJob(appliedJob)
-    // }, [loading, id])
-
-
+    const { register, handleSubmit } = useForm();
     const [attachments, setAttachments] = useState([{ id: 1, value: "" }]);
     const [maximumWarning, setMaximumWarning] = useState(false)
-
     const handleIncreaseInputField = () => {
         if (attachments.length < 5) {
             const newId = attachments.length + 1;
@@ -47,6 +28,51 @@ const ApplyJobForm = () => {
         }
         else setMaximumWarning(true)
     };
+    const onApplyJobSubmit = (data) => {
+        const cover_letter = data.cover_letter;
+        const expected_salary = data.expected_salary;
+        const attachment = data.attachment;
+
+        const appliedInfo = {
+            appliedJobId: _id,
+            companyName,
+            companyLogo,
+            title,
+            jobType,
+            cover_letter,
+            expected_salary,
+            attachment,
+            applicantEmail: user?.email
+        }
+
+        axiosSecure.post(`/appliedCandidate`, appliedInfo)
+            .then((res) => {
+                console.log(res)
+                if (res.status === 200) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Applied successfully',
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                }
+                else{
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Already Applied',
+                        showConfirmButton: false,
+                        timer: 2500
+                    })
+                }
+
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    };
+
 
     return (
         <section className='py-20 md:py-[120px]'>
@@ -152,7 +178,7 @@ const ApplyJobForm = () => {
                     </div>
 
                     <div className='flex justify-end mt-5'>
-                        <Button>Submit</Button>
+                        <Button >Submit</Button>
                     </div>
                 </form>
             </div>

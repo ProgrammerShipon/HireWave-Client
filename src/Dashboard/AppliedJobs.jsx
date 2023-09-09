@@ -1,10 +1,11 @@
 import DashTitle from "../Components/DashComponents/DashTitle";
-import useAllJobs from "../Hooks/useAllJobs";
 import AppliedJobTableRow from "../Components/DashComponents/AppliedJobTableRow";
+import useAppliedCandidates from "../Hooks/useAppliedCandidates";
+import PageLoader from "../Components/PageLoader";
 
 const AppliedJobs = () => {
-    const [allJobsData, loading] = useAllJobs();
-
+    const [appliedCandidatesData, loading, refetch] = useAppliedCandidates()
+    // console.log(appliedCandidatesData)
     return (
         <section className='m-5 rounded-md'>
             <DashTitle title='Applied Jobs' />
@@ -25,11 +26,11 @@ const AppliedJobs = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {allJobsData.map((job) => (
+                            {appliedCandidatesData.map((job) => (
                                 <AppliedJobTableRow key={job._id} job={job} />))
                             }
                         </tbody>
-                    </table> : <h1>Loading ...</h1>
+                    </table> : <PageLoader />
                 }
             </div>
         </section>

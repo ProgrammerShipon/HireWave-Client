@@ -3,27 +3,29 @@ import RecentReviewSlider from "../Components/RecentReviewSlider";
 import useReview from "../Hooks/useReview";
 
 // react icons
-import { AiOutlineMessage } from "react-icons/ai";
 import { BiMap } from "react-icons/bi";
 import { BsBookmarkPlus, BsCurrencyDollar } from "react-icons/bs";
+import { AiOutlineMessage } from "react-icons/ai";
 import {
     FaFacebookF,
     FaGithub,
     FaLinkedin,
-    FaRegCalendarAlt,
     FaTwitter,
+    FaRegCalendarAlt,
 } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 
 // react rating
 import { Rating, Star } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
-import useAxios from "../Hooks/useAxios";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const CandidateDetailsContent = ({ candidateDetails }) => {
     const [reviewData, loading] = useReview();
+    const [axiosSecure] = useAxiosSecure();
     const {
         name,
         email,
@@ -59,18 +61,14 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
         activeFillColor: "#ffb33e",
         inactiveFillColor: "#a78f6d",
     };
-    // members: [req.body.senderId, req.body.receiverId],
-    // const senderEmail = user.email;
-    // console.log(_id)
+
+    // chat
     const handleCreateChat = () => {
-        console.log('handleCreateChat')
         const senderId = userId;
         const receiverId = _id;
         const members = { senderId, receiverId }
-        console.log(members)
-        useAxios.post('/chat', members)
+        axiosSecure.post('/chat', members)
             .then(data => {
-                console.log(data)
                 navigate('/dashboard/messages')
             })
     }

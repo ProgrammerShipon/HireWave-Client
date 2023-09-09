@@ -1,14 +1,38 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import GetAgoTime from "./GetAgoTime";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useAuth from "../Hooks/useAuth";
+import { toast } from "react-toastify";
 
 // react icons
 import { FaRegHeart } from 'react-icons/fa';
-import GetAgoTime from "./GetAgoTime";
 
 const FeaturedJobCard = ({ job }) => {
-    const { pathname } = useLocation();
-
+    const [axiosSecure] = useAxiosSecure();
+    const { user } = useAuth();
     const { _id, companyLogo, title, companyName, postedDate, location, jobType, industry, salary, skills } = job;
+    const jobInfo = { selectJob: _id, companyLogo, title, companyName, postedDate, location, jobType, salary, skills, candidateMail: user?.email }
 
+    const handleSaveJob = () => {
+        axiosSecure.post("/savedjob", jobInfo)
+            .then((data) => {
+                if (data.status === 200) {
+                    toast.success("Saved Successfully", {
+                        position: "top-right",
+                        autoClose: 2500,
+                        theme: "light",
+                    });
+                }
+                else {
+                    toast.warning("Already Saved", {
+                        position: "top-right",
+                        autoClose: 2500,
+                        theme: "light",
+                    });
+                }
+            })
+            .catch((err) => console.log(err));
+    }
     return (
         <div className="relative w-full bg-white flex items-center justify-between border lg:border-0 lg:border-b border-green/50 lg:last:border-transparent hover:shadow-3xl lg:hover:border-white rounded-lg lg:rounded-none hover:rounded-lg overflow-hidden scale-100 lg:hover:scale-105 clear-both hover:z-20 px-5 py-8 lg:py-6 lg:pr-0 duration-300 group">
             <div className="flex flex-col sm:flex-row items-center gap-10">
@@ -48,11 +72,13 @@ const FeaturedJobCard = ({ job }) => {
 
             {/* button */}
             {
-                pathname === "/saved_jobs" ? <button className="absolute lg:relative bg-green text-white p-3 lg:pl-3 lg:pr-5 lg:py-2 rounded-e-md lg:rounded-e-none rounded-s-md top-2 right-2 lg:top-auto md:right-0 shadow-lg shadow-green/30 md:group-hover:right-2 lg:group-hover:right-0 duration-300 delay-200">
-                    Saved
-                </button> : <button className="absolute lg:relative bg-green text-white p-3 lg:pl-3 lg:pr-5 lg:py-2 rounded-e-md lg:rounded-e-none rounded-s-md top-2 right-2 lg:top-auto md:-right-14 shadow-lg shadow-green/30 md:group-hover:right-2 lg:group-hover:right-0 duration-300 delay-200">
-                    <FaRegHeart size='20px' />
-                </button>
+                user?.email ?
+                    <button onClick={handleSaveJob} className="absolute lg:relative bg-green text-white p-3 lg:pl-3 lg:pr-5 lg:py-2 rounded-e-md lg:rounded-e-none rounded-s-md top-2 right-2 lg:top-auto md:-right-14 shadow-lg shadow-green/30 md:group-hover:right-2 lg:group-hover:right-0 duration-300 delay-200">
+                        <FaRegHeart size='20px' />
+                    </button> :
+                    <Link to='/login' className="absolute lg:relative bg-green text-white p-3 lg:pl-3 lg:pr-5 lg:py-2 rounded-e-md lg:rounded-e-none rounded-s-md top-2 right-2 lg:top-auto md:-right-14 shadow-lg shadow-green/30 md:group-hover:right-2 lg:group-hover:right-0 duration-300 delay-200">
+                        <FaRegHeart size='20px' />
+                    </Link>
             }
         </div>
     );
