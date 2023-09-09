@@ -17,8 +17,6 @@ const MyProfile = () => {
         setCurrentCandidate(getCandidate)
     }, [!loading, user?.email])
 
-    console.log(currentCandidate)
-
     return (
         <section className='m-5 rounded-md'>
             <DashTitle title='My Profile' />
