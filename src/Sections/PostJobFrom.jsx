@@ -30,7 +30,7 @@ export default function PostJobForm() {
         };
 
         console.log(newJob);
-        axiosSecure.post(`/allJobs`, newJob)
+       const res= axiosSecure.post(`/allJobs`, newJob)
             .then((res) => {
                 console.log(res)
                 if (res.status === 200) {
