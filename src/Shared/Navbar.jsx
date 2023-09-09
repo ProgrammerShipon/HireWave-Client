@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // react icons
 import { FaBars, FaSearch } from 'react-icons/fa';
@@ -8,15 +8,46 @@ import { FaBars, FaSearch } from 'react-icons/fa';
 import Logo from '../Assets/images/logo-01.png';
 import NavItems from "../Components/NavItems";
 import SideNav from "./SideNav";
+import { toast } from "react-toastify";
+import useAllJobs from "../Hooks/useAllJobs";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [navState, setNavState] = useState(false);
+    const [allJobsData] = useAllJobs();
+    const [filteredData, setFilteredData] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const searchTitle = searchTerm ? searchTerm.toLowerCase() : "";
+        const filter = allJobsData.filter((job) =>
+            (!searchTitle || job.title.toLowerCase().includes(searchTitle) || job.companyName.toLowerCase().includes(searchTitle))
+        );
+
+        setFilteredData(filter);
+    }, [searchTerm, allJobsData.length]);
+
+    const handleSearch = () => {
+        if (searchTerm === '') {
+            toast.warn('Write search term!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                theme: "light",
+            });
+        } else {
+            navigate('/search_results', { state: { filteredData } });
+            setSearchTerm('')
+        }
+    };
 
     const toggle = () => {
         setIsOpen(!isOpen);
     };
-
-    const [navState, setNavState] = useState(false);
 
     const onNavScroll = () => {
         if (window.scrollY > 300) {
@@ -46,8 +77,10 @@ const Navbar = () => {
                             type="text"
                             placeholder="Job Title / Keywords or Company"
                             className="w-full py-2 pl-3 rounded-s-md bg-transparent focus:outline-none"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
                         />
-                        <button className="bg-dark text-white px-4 py-3 hover:text-green duration-300">
+                        <button onClick={handleSearch} className="bg-dark text-white px-4 py-3 hover:text-green duration-300">
                             <FaSearch />
                         </button>
                     </div>
@@ -66,7 +99,7 @@ const Navbar = () => {
                 </button>
 
                 {/* side navbar */}
-                <SideNav isOpen={isOpen} toggle={toggle} />
+                <SideNav isOpen={isOpen} toggle={toggle} searchTerm={searchTerm} setSearchTerm={setSearchTerm} handleSearch={handleSearch} />
             </nav>
         </header>
     );

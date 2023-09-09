@@ -14,8 +14,8 @@ const SavedJobs = () => {
             <Breadcrumbs title="Saved Jobs" />
 
             {/* section here */}
-            {/* border */}
             <SavedJob />
+            {/* border */}
             <Divider />
         </>
     );
