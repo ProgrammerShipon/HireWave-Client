@@ -4,6 +4,7 @@ import Divider from "../Components/Divider";
 import AppliedCandidatesDetails from "../Sections/AppliedCandidatesDetails";
 
 const AppliedCandidates = () => {
+
     return (
         <>
             {/* page title */}
