@@ -80,17 +80,17 @@ const AuthProvider = ({ children }) => {
           setUser(authUser);
           setLoading(false);
 
-        //   If the user role does not exist then this route will be taken
-        //   if (!currentUser?.email && currentUser.email) {
-        //     from = "/select_role";
-        //   }
-        //   navigate(from, { replace: true });
+          //   If the user role does not exist then this route will be taken
+          //   if (!currentUser?.email && authUser.email) {
+          //     from = "/select_role";
+          //   }
+          //   navigate(from, { replace: true });
 
-            if (authUser) {
-                axiosSecure(`/users/email/${user?.email}`)
-                    .then(hireWaveUser => console.log(hireWaveUser))
-                .catch(err => console.log(err))
-                
+          if (authUser) {
+            axiosSecure(`/users/email/${user?.email}`)
+              .then((hireWaveUser) => console.log(hireWaveUser))
+              .catch((err) => console.log(err));
+
             // console.log('res');
             axiosSecure
               .post("/jwt", { email: authUser.email })
