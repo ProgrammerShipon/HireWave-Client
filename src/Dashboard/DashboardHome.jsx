@@ -1,12 +1,14 @@
 import { Helmet } from 'react-helmet';
 import DashTitle from '../Components/DashComponents/DashTitle';
-import useAuth from '../Hooks/useAuth';
 import AdminDashboard from '../Sections/DashSections/AdminDashboard';
 import CandidateDashboard from '../Sections/DashSections/CandidateDashboard';
 import RecruiterDashboard from '../Sections/DashSections/RecruiterDashboard';
+import useCurrentUser from '../Hooks/useCurrentUser';
 
 const DashboardHome = () => {
-    const role = 'admin';
+    const [currentUser] = useCurrentUser();
+    const role = currentUser?.role
+    // const role = 'admin';
     // const role = 'recruiter';
     // const role = 'candidate';
     return (
