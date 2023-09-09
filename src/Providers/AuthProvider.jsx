@@ -1,16 +1,30 @@
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updatePassword, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from 'react';
-import app from '../firebase/firebase.config';
+// import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+// import useCurrentUser from "../Hooks/useCurrentUser";
+import app from '../firebase/firebase.config';
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
     const [axiosSecure] = useAxiosSecure();
     const [user, setUser] = useState({});
-    const [userId, setUserId] = useState('');
     const [loading, setLoading] = useState(true);
+    // const [currentUser, userLoading, refetch] = useCurrentUser();
+    //   console.log("current User -> ", currentUser, userLoading);
 
+      // Loading
+    //   if (userLoading) {
+    //     return <PageLoader />;
+    //   }
+
+      // navigate
+    //   const navigate = useNavigate();
+    //   const location = useLocation();
+    //   let from = location.state?.from?.pathname || "/";
+
+    // auth initialize
     const auth = getAuth(app);
 
     // sign up user
@@ -62,25 +76,33 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         setLoading(true);
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-            setLoading(false);
+        const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+          setUser(authUser);
+          setLoading(false);
 
-            if (currentUser) {
-                // console.log('res');
-                axiosSecure.post('/jwt', { email: currentUser.email })
-                    .then(response => {
-                        // console.log('res', response.data.token);
-                        localStorage.setItem('access-token', response.data.token);
+        //   If the user role does not exist then this route will be taken
+        //   if (!currentUser?.email && currentUser.email) {
+        //     from = "/select_role";
+        //   }
+        //   navigate(from, { replace: true });
 
-                    })
-                    .catch(error => {
-                        console.log(error)
-                    })
-
-            }
-            localStorage.removeItem('access-token')
-
+            if (authUser) {
+                axiosSecure(`/users/email/${user?.email}`)
+                    .then(hireWaveUser => console.log(hireWaveUser))
+                .catch(err => console.log(err))
+                
+            // console.log('res');
+            axiosSecure
+              .post("/jwt", { email: authUser.email })
+              .then((response) => {
+                // console.log('res', response.data.token);
+                localStorage.setItem("access-token", response.data.token);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          }
+          localStorage.removeItem("access-token");
         });
 
         return () => {
