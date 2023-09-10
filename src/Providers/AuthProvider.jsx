@@ -78,7 +78,8 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         const unsubscribe = onAuthStateChanged(auth, (authUser) => {
           setUser(authUser);
-          setLoading(false);
+            setLoading(false);
+            console.log('authUser ', authUser);
 
           //   If the user role does not exist then this route will be taken
           //   if (!currentUser?.email && authUser.email) {

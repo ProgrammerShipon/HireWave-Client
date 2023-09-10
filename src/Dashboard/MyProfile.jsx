@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import Button from '../Components/Button';
 import { AiOutlineFileAdd } from 'react-icons/ai';
-import useCandidatesData from '../Hooks/useCandidatesData';
+import Button from '../Components/Button';
 import DashTitle from '../Components/DashComponents/DashTitle';
-import CandidateProfile from '../Sections/DashSections/CandidateProfile';
-import useAuth from '../Hooks/useAuth';
 import PageLoader from '../Components/PageLoader';
+import useAuth from '../Hooks/useAuth';
+import useCandidatesData from '../Hooks/useCandidatesData';
+import CandidateProfile from '../Sections/DashSections/CandidateProfile';
 
 const MyProfile = () => {
     const { user } = useAuth();
