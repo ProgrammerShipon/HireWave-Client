@@ -29,7 +29,7 @@ const modules ={
 export default function PostJobForm() {
 
     //States
-    const [requirements, setRequirements] = useState('');
+    const [responsibilities, setResponsibilities] = useState('');
     const [skillsExperience, setSkillsExperience] = useState('');
     const [benefits, setBenefits] = useState('');
     const editor = useRef(null);
@@ -57,7 +57,7 @@ export default function PostJobForm() {
             skills: data?.skills?.map((skill) => skill),
             closingDate : data?.closingDate,
             overview : data?.overview,
-            requirements,
+            responsibilities,
             skillsExperience,
             benefits,
             applied: 0,
@@ -326,11 +326,12 @@ export default function PostJobForm() {
                                 Job Responsibilities:
                             </label>
                             <ReactQuill
+                            className="border border-gray/40 focus:border-green py-2 focus:shadow-lg focus:shadow-gray/20 duration-300 px-3 rounded-md"
                                 theme="snow" 
-                                value={requirements}
+                                value={responsibilities}
                                 modules={modules}
                                 placeholder="Enter the list of your job responsibilities"
-                                onChange={setRequirements} 
+                                onChange={setResponsibilities} 
                             />
                         </div>
 
@@ -403,9 +404,9 @@ export default function PostJobForm() {
                             <p className="text-lightGray">Describe Your Job Overview best ways. To create an impactful job overview, succinctly introduce the role, provide essential details about responsibilities and qualifications, and highlight what makes your company an appealing place to work.</p>
                         </div>
 
-                        {/* requirements */}
+                        {/* Responsibilities */}
                         <div>
-                            <h2 className="text-dark text-lg underline underline-offset-2">Requirements:</h2>
+                            <h2 className="text-dark text-lg underline underline-offset-2">Responsibilities:</h2>
                             <p className="text-lightGray">Specify the qualifications, skills, and experience necessary for the role, ensuring candidates understand the expectations clearly.</p>
                         </div>
 
