@@ -42,7 +42,7 @@ const ManageJobs = () => {
       }
 
       setFilteredData(filter);
-    }, [title, status, category, date, !loading, refetch]);
+    }, [title, status, category, date, !loading]);
 
     return (
       <>
@@ -126,6 +126,7 @@ const ManageJobs = () => {
                     <th className="px-3 py-3 font-medium text-center">
                       Status
                     </th>
+                    <th className="py-3 text-center font-medium">Actions</th>
                   </tr>
                 </thead>
                 <tbody>

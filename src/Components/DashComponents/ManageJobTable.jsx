@@ -2,31 +2,44 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 
 // react icons
+import { useState } from "react";
 import { FaRegStar } from "react-icons/fa";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const ManageJobTable = ({ job, refetch }) => {
+  const [isChange, setIsChange] = useState(false);
+  const [statusUpdate, setStatusUpdate] = useState();
   const [axiosSecure] = useAxiosSecure();
   const { _id, title, postedDate, applied, category, status } = job;
 
-  const statusChanges = (data) => {
+  const statusChanges = () => {
     const statusData = {
-      status: data,
+      status: statusUpdate,
     };
 
-    if (data != status) {
+    if (statusData != "undefined") {
       axiosSecure
         .patch(`/allJobs/${_id}`, statusData)
-        .then((res) => {
-          if (res.status == 200) {
-            toast.success(`Update Success`);
+        .then((data) => {
+          if (data.status == 200) {
             refetch();
+            toast.success(`Update Success`);
           }
         })
         .catch((err) => console.log(err));
     }
   };
+
+  // useEffect(() => {
+  //     if (statusUpdate == status || statusUpdate == 'undefined') {
+  //       console.log(`statusUpdate == status || statusUpdate == 'undefined'`);
+  //     setIsChange(true);
+  //   } else if ( statusUpdate != 'undefined') {
+  //       console.log(`statusUpdate !== status && statusUpdate != 'undefined'`);
+  //     setIsChange(false);
+  //   }
+  // }, [statusUpdate]);
 
   return (
     <tr className="border-b border-green/20 hover:bg-green/10 duration-300 group">
@@ -61,7 +74,7 @@ const ManageJobTable = ({ job, refetch }) => {
             defaultValue={status}
             className="focus:outline-none bg-transparent"
             onChange={(e) => {
-              statusChanges(e.target.value);
+              setStatusUpdate(e.target.value);
             }}
           >
             <option value="approved">Approve</option>
@@ -69,6 +82,17 @@ const ManageJobTable = ({ job, refetch }) => {
             <option value="rejected">Denied</option>
           </select>
         </div>
+      </td>
+      <td className="px-3 py-4 text-center">
+        <button
+          disabled={isChange}
+          onClick={() => statusChanges()}
+          className={`border border-green text-dark px-4 rounded-md duration-300 ${
+            isChange ? "bg-gray-300" : "hover:bg-green hover:text-white"
+          }`}
+        >
+          Apply
+        </button>
       </td>
     </tr>
   );
