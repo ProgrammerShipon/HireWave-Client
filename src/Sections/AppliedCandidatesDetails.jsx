@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import useAppliedCandidates from '../Hooks/useAppliedCandidates';
 import AppliedCandidatesTable from '../Components/AppliedCandidatesTable';
 
 // react icons

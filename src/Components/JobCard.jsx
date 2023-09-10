@@ -1,22 +1,42 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import GetAgoTime from "./GetAgoTime";
-
-// react icons
-import { BiHeart, BiSolidCrown, BiMap } from "react-icons/bi";
-import { IoIosFlash } from "react-icons/io";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAuth from "../Hooks/useAuth";
 
-const JobCard = ({ job, setJobDetails }) => {
-    const { _id, title, companyName, skills, companyLogo, category, location, jobType, applied, salary, postedDate } = job;
-    const [axiosSecure] = useAxiosSecure();;
+// react icons
+import { BiHeart, BiSolidCrown, BiMap } from "react-icons/bi";
+import { IoIosFlash } from "react-icons/io";
+import { FaHeart } from "react-icons/fa";
+
+const JobCard = ({ job, setJobDetails, mySavedJobs, refetch }) => {
     const { user } = useAuth();
+    const [alreadySaved, setAlreadySaved] = useState(false);
+    const [axiosSecure] = useAxiosSecure();
+
+    const { _id, title, companyName, skills, companyLogo, category, location, jobType, applied, salary, postedDate } = job;
+
     const jobInfo = { selectJob: _id, companyLogo, title, companyName, postedDate, location, jobType, salary, skills, candidateMail: user?.email }
+
+    // check saved job
+    useEffect(() => {
+        const checkExists = mySavedJobs.filter((job) =>
+            job.selectJob.includes(_id)
+        );
+
+        if (checkExists.length) {
+            setAlreadySaved(true)
+        } else {
+            setAlreadySaved(false)
+        }
+    }, [job, mySavedJobs.length])
+
     const handleSaveJob = () => {
         axiosSecure.post("/savedjob", jobInfo)
             .then((data) => {
                 if (data.status === 200) {
+                    refetch();
                     toast.success("Saved Successfully", {
                         position: "top-right",
                         autoClose: 2500,
@@ -62,10 +82,13 @@ const JobCard = ({ job, setJobDetails }) => {
                 <div className="flex items-center gap-1">
                     <BiSolidCrown title="Featured" size='22px' className="text-yellow-500" />
                     <IoIosFlash title="Urgent" size='22px' className="text-red-500" />
-                    <button onClick={handleSaveJob}>
-                        <BiHeart size='22px' className="text-green" />
-                    </button>
-
+                    {
+                        !alreadySaved ? <button onClick={handleSaveJob}>
+                            <BiHeart size="22px" className="text-green" />
+                        </button> : <button disabled>
+                            <FaHeart size="18px" className="text-red-400" />
+                        </button>
+                    }
                 </div>
             </div>
 

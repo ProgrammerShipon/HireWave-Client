@@ -3,14 +3,13 @@ import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import DashTitle from "../Components/DashComponents/DashTitle";
 import AppliedJobTableRow from "../Components/DashComponents/AppliedJobTableRow";
-import useAppliedCandidates from "../Hooks/useAppliedCandidates";
 import PageLoader from "../Components/PageLoader";
+import useMyAppliedJobs from "../Hooks/useMyAppliedJobs";
 
 const MyApplications = () => {
-    const [appliedCandidatesData, loading] = useAppliedCandidates();
-    console.log(appliedCandidatesData);
+    const [myAppliedJobs, loading] = useMyAppliedJobs();
 
-    const [filteredData, setFilteredData] = useState(appliedCandidatesData);
+    const [filteredData, setFilteredData] = useState(myAppliedJobs);
 
     const { register, watch, handleSubmit, reset } = useForm();
     const onSubmit = () => {
@@ -23,7 +22,7 @@ const MyApplications = () => {
     const date = watch('date');
 
     useEffect(() => {
-        let filter = appliedCandidatesData.filter((user) =>
+        let filter = myAppliedJobs.filter((user) =>
             (!title || user.title.toLowerCase().includes(title.toLowerCase())) &&
             (!jobType || user.jobType.toLowerCase().includes(jobType.toLowerCase())) &&
             (!status || user.status.toLowerCase().includes(status.toLowerCase()))
@@ -74,7 +73,7 @@ const MyApplications = () => {
                         >
                             <option value="">Job Type</option>
                             {
-                                appliedCandidatesData.map((cnd, index) => <option key={index} className="capitalize" value={cnd.jobType}>{cnd.jobType}</option>)
+                                myAppliedJobs.map((cnd, index) => <option key={index} className="capitalize" value={cnd.jobType}>{cnd.jobType}</option>)
                             }
                         </select>
 

@@ -1,9 +1,9 @@
 import PageLoader from '../Components/PageLoader';
 import SavedJobsCard from '../Components/SavedJobsCard';
-import useSavedJobs from '../Hooks/useSavedJobs';
+import useMySavedJobs from '../Hooks/useMySavedJobs';
 
 const SavedJob = () => {
-    const [savedJobs, loading, refetch] = useSavedJobs();
+    const [mySavedJobs, loading, refetch] = useMySavedJobs();
     if (loading) {
         return <PageLoader />
     }
@@ -14,7 +14,7 @@ const SavedJob = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 duration-300">
 
                     {
-                        savedJobs.map((job, index) => <SavedJobsCard key={index} job={job} refetch={refetch} />)
+                        mySavedJobs.map((job, index) => <SavedJobsCard key={index} job={job} refetch={refetch} />)
                     }
 
                 </div>
