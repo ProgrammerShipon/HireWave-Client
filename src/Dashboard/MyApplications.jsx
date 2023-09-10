@@ -18,14 +18,12 @@ const MyApplications = () => {
 
     const title = watch('title');
     const jobType = watch('jobType');
-    const status = watch('status');
     const date = watch('date');
 
     useEffect(() => {
         let filter = myAppliedJobs.filter((user) =>
             (!title || user.title.toLowerCase().includes(title.toLowerCase())) &&
-            (!jobType || user.jobType.toLowerCase().includes(jobType.toLowerCase())) &&
-            (!status || user.status.toLowerCase().includes(status.toLowerCase()))
+            (!jobType || user.jobType.toLowerCase().includes(jobType.toLowerCase()))
         );
 
         if (date === 'recent') {
@@ -39,7 +37,7 @@ const MyApplications = () => {
         }
 
         setFilteredData(filter);
-    }, [title, jobType, status, date, !loading]);
+    }, [title, jobType, date, !loading]);
     return (
         <>
             {/* page title */}
@@ -65,27 +63,16 @@ const MyApplications = () => {
                     <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
                         <h2 className="text-lg text-dark">Filter By: </h2>
 
-                        {/* filter by status */}
+                        {/* filter by job type */}
                         <select
-                            name="status"
-                            className="py-1 border border-gray/40 text-lightGray focus:outline-none focus:border-green rounded-md px-2 w-full sm:w-auto"
+                            name="jobType"
+                            className="py-1 border border-gray/40 text-lightGray focus:outline-none focus:border-green rounded-md px-2 w-full sm:w-auto capitalize"
                             {...register("jobType")}
                         >
-                            <option value="">Job Type</option>
+                            <option className="capitalize" value="">Job Type</option>
                             {
                                 myAppliedJobs.map((cnd, index) => <option key={index} className="capitalize" value={cnd.jobType}>{cnd.jobType}</option>)
                             }
-                        </select>
-
-                        {/* filter by category */}
-                        <select
-                            name="category"
-                            className="py-1 border border-gray/40 text-lightGray focus:outline-none focus:border-green rounded-md px-2 w-full sm:w-auto"
-                            {...register("status")}
-                        >
-                            <option value="">Status</option>
-                            <option value="open">Open</option>
-                            <option value="close">Close</option>
                         </select>
 
                         {/* filter by date */}
