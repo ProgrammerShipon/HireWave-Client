@@ -62,7 +62,7 @@ const FindJobBody = ({ allJobsData }) => {
     } else {
       setAlreadyApplied(false)
     }
-  }, [jobDetails, myAppliedJobs.length, user?.email])
+  }, [jobDetails, myAppliedJobs.length])
 
   // check saved job
   useEffect(() => {
