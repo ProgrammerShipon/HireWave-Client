@@ -1,9 +1,5 @@
-import { useEffect, useRef } from "react";
-import { useState } from "react";
-import Conversation from "../Components/Conversation";
-import ChatBox from "../Components/ChatBox";
+import { useState, useEffect, useRef } from "react";
 import { io } from "socket.io-client";
-// import useChat from "../Hooks/useChat";
 import { useQuery } from "@tanstack/react-query";
 import DashTitle from "../Components/DashComponents/DashTitle";
 import useAuth from "../Hooks/useAuth";
@@ -21,7 +17,7 @@ const messages = () => {
 
   const currentUserId = currentUser._id;
   // const userProfile = currentUser.userProfile;
-  console.log(currentUser, )
+  console.log(currentUser,)
 
   // Fetch All Chat List
   // const {
