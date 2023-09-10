@@ -87,7 +87,7 @@ const AuthProvider = ({ children }) => {
         //   navigate(from, { replace: true });
 
             if (authUser) {
-                axiosSecure(`/users/email/${user?.email}`)
+                axiosSecure.get(`/users/email/${user?.email}`)
                     .then(hireWaveUser => console.log(hireWaveUser))
                 .catch(err => console.log(err))
                 

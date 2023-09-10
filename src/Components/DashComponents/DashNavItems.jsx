@@ -13,8 +13,8 @@ import { VscAccount } from "react-icons/vsc";
 const DashNavItems = () => {
   const { logOut } = useAuth();
   const [currentUser] = useCurrentUser();
-  // const role = currentUser?.role
-  const role = "admin"
+  const role = currentUser?.role
+  // const role = "admin"
   return (
     <aside className="fixed top-0 shadow-4xl shadow-gray/40 w-auto md:w-[300px] bg-white duration-300 h-screen pt-[71px] overflow-y-auto z-20">
       <ul className="flex flex-col items-center gap-3 ml-4 md:ml-10 pt-6">
