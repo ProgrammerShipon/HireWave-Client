@@ -41,6 +41,7 @@ import AppliedApplicant from "../Dashboard/AppliedApplicant";
 import SearchResults from "../Pages/SearchResults";
 import MyApplications from "../Dashboard/MyApplications";
 import ViewApplication from "../Pages/ViewApplication";
+import Pricing from "../Pages/Pricing";
 
 const Router = createBrowserRouter([
   {
@@ -112,6 +113,10 @@ const Router = createBrowserRouter([
       {
         path: "/post_job",
         element: <PostJob />,
+      },
+      {
+        path: "/pricing",
+        element: <Pricing />,
       },
       {
         path: "/login",

@@ -24,11 +24,9 @@ const SavedJob = () => {
                     </div>
                 }
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 duration-300">
-
                     {
                         mySavedJobs.map((job, index) => <SavedJobsCard key={index} job={job} refetch={refetch} />)
                     }
-
                 </div>
             </div>
         </section>
