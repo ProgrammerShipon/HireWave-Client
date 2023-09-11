@@ -16,7 +16,6 @@ const LoginForm = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
-
     const [type, setType] = useState('password');
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {

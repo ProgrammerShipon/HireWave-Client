@@ -147,9 +147,15 @@ const FindJobBody = ({ allJobsData }) => {
             <div className="flex items-center gap-2">
               <AiOutlineShareAlt size="24px" className="text-green" />
               {
-                !alreadySaved ? <button onClick={handleSaveJob}>
-                  <BiHeart size="24px" className="text-green" />
-                </button> : <button disabled>
+                !alreadySaved ? <>
+                  {
+                    user?.email ? <button onClick={handleSaveJob}>
+                      <BiHeart size="24px" className="text-green" />
+                    </button> : <Link to='/login'>
+                      <BiHeart size="24px" className="text-green" />
+                    </Link>
+                  }
+                </> : <button disabled>
                   <FaHeart size="24px" className="text-red-400" />
                 </button>
               }
