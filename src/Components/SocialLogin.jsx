@@ -4,28 +4,15 @@ import useAuth from '../Hooks/useAuth';
 
 // react icons
 import { FaGithub } from 'react-icons/fa';
-import useCurrentUser from '../Hooks/useCurrentUser';
-import PageLoader from './PageLoader';
 
 const SocialLogin = () => {
   const { googleSignIn, gitHubSignIn } = useAuth();
-  const [currentUser, userLoading, refetch] = useCurrentUser();
-  console.log("current User -> ", currentUser, userLoading);
-
-  // Loading
-  if (userLoading) {
-    return <PageLoader />;
-  }
 
   // navigate
   const navigate = useNavigate();
   const location = useLocation();
-  let from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/";
 
-  // If the user role does not exist then this route will be taken
-  if (!currentUser?.email) {
-    from = "/select_role";
-  }
 
   // Google Login Handle
   const handleGoogleLogin = () => {

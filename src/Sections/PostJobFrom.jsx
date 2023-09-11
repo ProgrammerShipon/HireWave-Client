@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import moment from "moment";
-import useCurrentUser from "../Hooks/useCurrentUser";
 import useRecruiterRole from "../Hooks/useRecruiterRole";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
@@ -11,18 +10,18 @@ import { FaXmark } from "react-icons/fa6";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-const modules ={
+const modules = {
     toolbar: [
-        [ { header: [ 1, 2, 3, 4, 5, 6, false ] } ],
-        [ { size: [] } ],
-        [ "bold", "italic", "underline", "strike"],
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        [{ size: [] }],
+        ["bold", "italic", "underline", "strike"],
         [
-            { list : "ordered" },
-            { list : "bullet" },
-            { indent : "-1" },
-            { indent : "+1" }
+            { list: "ordered" },
+            { list: "bullet" },
+            { indent: "-1" },
+            { indent: "+1" }
         ],
-        [ "link", "image", "video" ]
+        ["link", "image", "video"]
     ]
 }
 
@@ -48,22 +47,22 @@ export default function PostJobForm() {
         const currentDate = moment().format('ddd MMM YYYY HH:mm:ss [GMT]ZZ');
         // TO DO just dynamic the companyName, companyLogo and location
         const newJob = {
-            title : data?.title,
-            category : data?.category,
-            jobType : data?.jobType,
-            salary : data?.salary,
+            title: data?.title,
+            category: data?.category,
+            jobType: data?.jobType,
+            salary: data?.salary,
             experience: data?.experience,
-            quantity : data?.quantity,
+            quantity: data?.quantity,
             skills: data?.skills?.map((skill) => skill),
-            closingDate : data?.closingDate,
-            overview : data?.overview,
+            closingDate: data?.closingDate,
+            overview: data?.overview,
             requirements,
             skillsExperience,
             benefits,
             applied: 0,
             postedDate: currentDate,
-            open : true,
-            status : "pending"
+            open: true,
+            status: "pending"
             // companyName: recruitersRole?.name, 
             // email: recruitersRole?.email,
             // location: recruitersRole?.address, 
@@ -72,7 +71,7 @@ export default function PostJobForm() {
         };
 
         console.log(newJob);
-       const res= axiosSecure.post(`/allJobs`, newJob)
+        const res = axiosSecure.post(`/allJobs`, newJob)
             .then((res) => {
                 console.log(res)
                 if (res.status === 200) {
@@ -115,7 +114,7 @@ export default function PostJobForm() {
         const updatedSkills = selectedSkills.filter((skill) => skill !== skillToRemove);
         setSelectedSkills(updatedSkills);
     };
-    
+
     return (
         <section className="py-20 md:py-[120px] duration-300">
             <div className="container">
@@ -151,10 +150,10 @@ export default function PostJobForm() {
                                     className="w-full border border-gray/40 focus:border-green py-2 focus:shadow-lg focus:shadow-gray/20 duration-300 px-3 rounded-md outline-none cursor-pointer"
                                 >
                                     <option value=''>Select Category</option>
-                                   {
-                                    allCategoriesData.map( category => 
-                                    <option value={category.name}>{category.name}</option>)
-                                   }
+                                    {
+                                        allCategoriesData.map(category =>
+                                            <option value={category.name}>{category.name}</option>)
+                                    }
                                 </select>
                                 {errors.category && (
                                     <span className="text-red-700">Job Category is required</span>
@@ -326,11 +325,11 @@ export default function PostJobForm() {
                                 Job Responsibilities:
                             </label>
                             <ReactQuill
-                                theme="snow" 
+                                theme="snow"
                                 value={requirements}
                                 modules={modules}
                                 placeholder="Enter the list of your job responsibilities"
-                                onChange={setRequirements} 
+                                onChange={setRequirements}
                             />
                         </div>
 
@@ -340,11 +339,11 @@ export default function PostJobForm() {
                                 Skills & Experiences Required:
                             </label>
                             <ReactQuill
-                                theme="snow" 
+                                theme="snow"
                                 value={skillsExperience}
                                 modules={modules}
                                 placeholder="Enter the list of skills and experiences required for the job"
-                                onChange={setSkillsExperience} 
+                                onChange={setSkillsExperience}
                             />
                         </div>
 
@@ -354,11 +353,11 @@ export default function PostJobForm() {
                                 Benefits:
                             </label>
                             <ReactQuill
-                                theme="snow" 
+                                theme="snow"
                                 value={benefits}
                                 modules={modules}
                                 placeholder="Enter the list of benefits candidate will receive"
-                                onChange={setBenefits} 
+                                onChange={setBenefits}
                             />
                         </div>
 

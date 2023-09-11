@@ -1,8 +1,6 @@
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updatePassword, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from 'react';
-// import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-// import useCurrentUser from "../Hooks/useCurrentUser";
 import app from '../firebase/firebase.config';
 
 export const AuthContext = createContext();
@@ -10,19 +8,8 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
     const [axiosSecure] = useAxiosSecure();
     const [user, setUser] = useState({});
+    const [currentUser, setCurrentUser] = useState({});
     const [loading, setLoading] = useState(true);
-    // const [currentUser, userLoading, refetch] = useCurrentUser();
-    //   console.log("current User -> ", currentUser, userLoading);
-
-    // Loading
-    //   if (userLoading) {
-    //     return <PageLoader />;
-    //   }
-
-    // navigate
-    //   const navigate = useNavigate();
-    //   const location = useLocation();
-    //   let from = location.state?.from?.pathname || "/";
 
     // auth initialize
     const auth = getAuth(app);
@@ -62,7 +49,7 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, googleProvider)
     }
 
-    // google sign in
+    // github sign in
     const gitHubSignIn = () => {
         setLoading(true);
         const gitHubProvider = new GithubAuthProvider();
@@ -77,26 +64,28 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         setLoading(true);
         const unsubscribe = onAuthStateChanged(auth, (authUser) => {
-            setUser(authUser);
-            setLoading(false);
-
-            //   If the user role does not exist then this route will be taken
-            //   if (!currentUser?.email && authUser.email) {
-            //     from = "/select_role";
-            //   }
-            //   navigate(from, { replace: true });
+            setUser(authUser)
+            if (authUser?.email) {
+                axiosSecure(`/users/email/${authUser?.email}`)
+                    .then((data) => {
+                        setCurrentUser(data.data);
+                        setLoading(false);
+                    })
+                    .catch((err) => {
+                        console.log(err)
+                        setLoading(false);
+                    });
+            }
+            if (authUser === null) {
+                setLoading(false);
+            }
 
             if (authUser) {
-                axiosSecure(`/users/email/${user?.email}`)
-                    .then((hireWaveUser) => console.log(hireWaveUser))
-                    .catch((err) => console.log(err));
-
-                // console.log('res');
                 axiosSecure
                     .post("/jwt", { email: authUser.email })
                     .then((response) => {
-                        // console.log('res', response.data.token);
                         localStorage.setItem("access-token", response.data.token);
+                        setLoading(false);
                     })
                     .catch((error) => {
                         console.log(error);
@@ -108,11 +97,13 @@ const AuthProvider = ({ children }) => {
         return () => {
             return unsubscribe();
         }
-    }, [user]);
+    }, []);
+
 
     const authInfo = {
         user,
         loading,
+        currentUser,
         signUpUser,
         signIn,
         profileUpdate,

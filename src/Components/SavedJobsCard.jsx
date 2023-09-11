@@ -64,7 +64,7 @@ const SavedJobsCard = ({ job, refetch }) => {
 
                     {
                         !alreadyApplied ?
-                            <Link to={`/apply_job/${_id}`} className="border border-green rounded-md px-3 py-1 bg-green hover:bg-transparent text-white hover:text-dark shadow-lg duration-300">
+                            <Link to={`/apply_job/${selectJob}`} className="border border-green rounded-md px-3 py-1 bg-green hover:bg-transparent text-white hover:text-dark shadow-lg duration-300">
                                 Apply Now
                             </Link> : <Link to={`/view_application/${selectJob}`} className="bg-green text-white px-5 py-1 rounded-lg border border-green shadow-xl shadow-green/20">View Application</Link>
                     }

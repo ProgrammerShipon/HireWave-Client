@@ -1,24 +1,15 @@
-import { Link, Navigate, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 
 // react icons
 import { BsBuildings, BsPersonWorkspace } from 'react-icons/bs';
 import PageLoader from '../Components/PageLoader';
-import useCurrentUser from '../Hooks/useCurrentUser';
 
 const SelectRole = () => {
-  const { logOut, user, loading } = useAuth();
-  const [currentUser, userLoading] = useCurrentUser();
-  const location = useLocation();
+  const { logOut, loading } = useAuth();
 
-  if (loading || userLoading) {
+  if (loading) {
     return <PageLoader />
-  }
-  if (!user) {
-    return <Navigate to='/login' state={{ from: location }} replace />;
-  }
-  if (currentUser) {
-    return <Navigate to='/' replace />;
   }
 
   return (

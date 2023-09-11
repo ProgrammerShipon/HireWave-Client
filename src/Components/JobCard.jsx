@@ -83,9 +83,15 @@ const JobCard = ({ job, setJobDetails, mySavedJobs, refetch }) => {
                     <BiSolidCrown title="Featured" size='22px' className="text-yellow-500" />
                     <IoIosFlash title="Urgent" size='22px' className="text-red-500" />
                     {
-                        !alreadySaved ? <button onClick={handleSaveJob}>
-                            <BiHeart size="22px" className="text-green" />
-                        </button> : <button disabled>
+                        !alreadySaved ? <>
+                            {
+                                user?.email ? <button onClick={handleSaveJob}>
+                                    <BiHeart size="20px" className="text-green" />
+                                </button> : <Link to='/login'>
+                                    <BiHeart size="24px" className="text-green" />
+                                </Link>
+                            }
+                        </> : <button disabled>
                             <FaHeart size="18px" className="text-red-400" />
                         </button>
                     }
