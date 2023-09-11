@@ -1,29 +1,26 @@
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import ScrollToTop from "react-scroll-to-top";
 import Footer from '../Shared/Footer';
 import Navbar from '../Shared/Navbar';
 import StayTop from '../Components/StayTop';
+import useAuth from '../Hooks/useAuth';
+import PageLoader from '../Components/PageLoader';
 
 
 // react toastify
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import useCurrentUser from '../Hooks/useCurrentUser';
-import useAuth from '../Hooks/useAuth';
-import PageLoader from '../Components/PageLoader';
 
 const Main = () => {
-   const { user } = useAuth();
-   const [currentUser, loading] = useCurrentUser();
-   const navigate = useNavigate();
+   const { user, loading, currentUser } = useAuth();
+   if (loading) {
+      return <div className='flex h-screen items-center justify-center'><PageLoader /></div>
+   }
 
-   // if (user?.email && loading) {
-   //    return <PageLoader />
-   // }
+   if (user?.email && currentUser.email === undefined) {
+      return <Navigate to="/select_role" replace={true} />;
+   }
 
-   // if (user?.email && currentUser === undefined) {
-   //    return navigate('/select_role', { replace: true })
-   // }
    return (
       <>
          <StayTop />

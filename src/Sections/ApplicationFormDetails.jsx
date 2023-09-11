@@ -12,7 +12,7 @@ const ApplicationFormDetails = ({candidateDetails}) => {
     const { _id, name, image } = candidateDetails;
     const [isInterviewModalOpen, setIsInterviewModalOpen] = useState(false);
     const [isHireModalOpen, setIsHireModalOpen] = useState(false);
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const handleInterviewModal =(e) => {
         if(e == "edit") setIsInterviewModalOpen(true)
@@ -135,7 +135,7 @@ const ApplicationFormDetails = ({candidateDetails}) => {
                         <p className='text-dark text-xl'>Set Interview</p>
                     </h2>
 
-                     {/* Modal content */}
+                     {/* Modal content */}d
                      <form onSubmit={handleSubmit(onInterviewSubmit)}>
                         <div className='flex items-center gap-5'>
                             {/* Interview Date */}
@@ -144,8 +144,11 @@ const ApplicationFormDetails = ({candidateDetails}) => {
                                 <input
                                 className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
                                 type="date" 
-                                {...register("date")}
+                                {...register("date", { required: true })}
                                 />
+                                {errors.date && (
+                                    <span className="text-red-700">Date is required</span>
+                                )}
                             </div>
 
                             {/* Interview Time */}
@@ -154,8 +157,11 @@ const ApplicationFormDetails = ({candidateDetails}) => {
                                 <input
                                 className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
                                 type='time'
-                                {...register("time")}
+                                {...register("time", { required: true })}
                                 />
+                                {errors.time && (
+                                    <span className="text-red-700">Time is required</span>
+                                )}
                             </div>
                         </div>
 
