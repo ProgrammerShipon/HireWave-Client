@@ -1,15 +1,14 @@
 import { Step, Stepper } from "@tkwant/react-steps";
+import { Country, State } from "country-state-city";
 import { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import useAuth from '../Hooks/useAuth';
-import useSkills from '../Hooks/useSkills';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 import { useNavigate } from 'react-router-dom';
-import useAxiosSecure from '../Hooks/useAxiosSecure';
 import Swal from "sweetalert2";
-import { Country, State } from "country-state-city"
-import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
-import './PhoneInput.css'
+import useAuth from '../Hooks/useAuth';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import useSkills from '../Hooks/useSkills';
 
 // react icons
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlinePlus } from 'react-icons/ai';
