@@ -6,13 +6,16 @@ import useSkills from '../Hooks/useSkills';
 import { useNavigate } from 'react-router-dom';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import Swal from "sweetalert2";
+import { Country } from "country-state-city"
 
 // react icons
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlinePlus } from 'react-icons/ai';
 import { FaXmark } from 'react-icons/fa6';
 import PageLoader from "../Components/PageLoader";
+import useAllCategories from "../Hooks/useAllCategories";
 
 const CandidateSignUpForm = () => {
+    const [allCategoriesData] = useAllCategories();
     const [curStep, setCurStep] = useState(0);
     const [finish, setFinish] = useState(false);
     const [skillData, loading] = useSkills();
@@ -22,6 +25,7 @@ const CandidateSignUpForm = () => {
     const navigate = useNavigate();
 
     const { control, register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
+    const selectedCategory = watch('job_category', '');
 
     //Form Submit function
     const onSubmit = data => {
@@ -58,6 +62,7 @@ const CandidateSignUpForm = () => {
             visibility: data.visibility,
             joinDate: todayDate
         }
+        console.log(newData);
 
         setCurStep(curStep + 1)
 
@@ -92,6 +97,17 @@ const CandidateSignUpForm = () => {
 
     const countryCodes = ["+1", "+44", "+49", "+33", "+81", "+86", "+91", "+61", "+7", "+55", "+54", "+51", "+52", "+53", "+20", "+27", "+82", "+62", "+92", "+94", "+62", "+63", "+66", "+84", "+95", "+670", "+975", "+380", "+375", "+373", "+377", "+423", "+41", "+46", "+47", "+48", "+351", "+34", "+39", "+31", "+420", "+880", "+421", "+386", "+385", "+385", "+352", "+352", "+43", "+353", "+354"]
 
+    //Country, State, Province
+    let countryData= Country.getAllCountries()
+    const [stateData, setStateData] = useState()
+
+    console.log(countryData);
+    const [country, setCountry] = useState(countryData[0])
+    const [state, setState] = useState()
+
+    useEffect(() => {
+        stateData && setState(stateData)
+    }, [stateData])
 
     //States for Experience div
     const [present, setPresent] = useState(false);
@@ -169,8 +185,9 @@ const CandidateSignUpForm = () => {
                                 </label>
 
                                 {/* hourly rate */}
-                                <label className='text-gray w-full text-base'>Hourly rate*
+                                <label className='text-gray w-full text-base'>Hourly rate ($)*
                                     <input
+                                        type="number"
                                         className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.hourlyRate && 'border-red-400'}`}
                                         placeholder='e.g. 10'
                                         {...register("hourlyRate", { required: true })}
@@ -179,13 +196,41 @@ const CandidateSignUpForm = () => {
                             </div>
 
                             {/* category */}
-                            <label className='text-gray text-base'>Category*
-                                <input
-                                    className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.category && 'border-red-400'}`}
-                                    placeholder='e.g. Sales and Marketing'
-                                    {...register("category", { required: true })}
-                                />
-                            </label>
+                            <p className='border-b-2 border-purple my-5'></p>
+                            <h1 className='font-medium text-xl text-lightGray drop-shadow-lg'>Choose category that fits best with your job title</h1>
+
+                            <div className='flex flex-wrap gap-4'>
+                                {allCategoriesData.map((category) => (
+                                    <div
+                                        key={category.name}
+                                        className={`w-fit ${selectedCategory === category.name
+                                            ? 'bg-purple/20 text-purple font-medium drop-shadow-lg shadow-lg cursor-pointer'
+                                            : errors.job_category ? 'border border-red-500'
+                                                : 'bg-gray/30 text-lightGray font-medium hover:bg-purple/20 hover:text-purple duration-300'
+                                            } px-4 rounded-full cursor-pointer`}
+                                        onClick={() => setValue('job_category', category.name)}
+                                    >
+                                        <Controller
+                                            name="job_category"
+                                            control={control}
+                                            rules={{ required: true }}
+                                            render={({ field }) => (
+                                                <label className="text-base" htmlFor={category.name}>
+                                                    {category.name}
+                                                    <input
+                                                        id={category.name}
+                                                        type="radio"
+                                                        value={category.name}
+                                                        className='hidden'
+                                                        {...register("category", { required: true })}
+                                                    />
+                                                </label>
+                                            )}
+                                        />
+                                    </div>
+
+                                ))}
+                            </div>
 
                             {/* Submit */}
                             <div className='text-right'>
@@ -215,11 +260,10 @@ const CandidateSignUpForm = () => {
                                         className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.country && 'border-red-400'}`}
                                         {...register("country", { required: true })}
                                     >
-                                        <option value="">Select</option>
-                                        <option value="Bangladesh">Bangladesh</option>
-                                        <option value="United States">United States</option>
-                                        <option value="Pakistan">Pakistan</option>
-                                        <option value="India">India</option>
+                                        <option value="" disable>Select</option>
+                                        {
+                                            countryData?.map(c => <option value={c.name}>{c.name}</option>)
+                                        }
                                     </select>
                                 </label>
 
@@ -261,9 +305,9 @@ const CandidateSignUpForm = () => {
                                 {/* Phone number */}
                                 <label className='text-gray w-full text-base'>Phone number*
                                     <input
+                                        type="number"
                                         className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.phone && 'border-red-400'}`}
-                                        placeholder='e.g. 12910211'
-                                        {...register("phone", { required: true })}
+                                        {...register("phone", { required: true, minLength: 6, maxLength: 12 })}
                                     />
                                 </label>
                             </div>

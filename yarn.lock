@@ -3060,6 +3060,11 @@
     "js-yaml" "^3.13.1"
     "parse-json" "^4.0.0"
 
+"country-state-city@^3.2.0":
+  "integrity" "sha512-dKbqChbddhaFx4WzjKRBG+U7yoTSR4MI6pyDyxBGqLG4X2SMmvJy+ZRpO3UgKFOSsPxcHgs/KG5iGrtaDOOAEw=="
+  "resolved" "https://registry.npmjs.org/country-state-city/-/country-state-city-3.2.0.tgz"
+  "version" "3.2.0"
+
 "countup.js@^2.5.0":
   "integrity" "sha512-f7xEhX0awl4NOElHulrl4XRfKoNH3rB+qfNSZZyjSZhaAoUk6elvhH+MNxMmlmuUJ2/QNTWPSA7U4mNtIAKljQ=="
   "resolved" "https://registry.npmjs.org/countup.js/-/countup.js-2.8.0.tgz"
