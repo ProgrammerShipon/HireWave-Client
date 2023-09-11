@@ -16,6 +16,7 @@ const LearningDetailsBody = () => {
   const loadData = useLoaderData();
   const [axiosSecure] = useAxiosSecure();
   const { title, createdAt, updatedAt, videoLink, description, authorImg, authorName, authorEmail, comments, disLike, like, views, _id } = loadData;
+  console.log(loadData)
   const [commentClick, setCommentClick] = useState('')
   const [seeAll, setSeeAll] = useState(false);
   const [allLike, setAllLike] = useState(like);
@@ -24,8 +25,8 @@ const LearningDetailsBody = () => {
 
 
   const { control, register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
-  const onSubmit = () => {
-    console.log('okay')
+  const onSubmit = (data) => {
+    console.log(data)
   }
 
   const increaseLike = (_id) => {
@@ -144,7 +145,7 @@ const LearningDetailsBody = () => {
                   <> <p
                     className="text-lightGray mt-4"
                     onClick={() => { setSeeAll(!seeAll) }}
-                    dangerouslySetInnerHTML={{ __html: description.slice(0, 300) }}
+                    dangerouslySetInnerHTML={{ __html: description.slice(0, 300)}}
                   ></p></>
 
               }
