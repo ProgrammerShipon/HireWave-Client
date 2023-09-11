@@ -8,14 +8,14 @@ import useAuth from '../Hooks/useAuth';
 import PageLoader from '../Components/PageLoader';
 
 const MyProfile = () => {
-    const { user } = useAuth();
+    const { currentUser } = useAuth();
     const [candidatesData, loading] = useCandidatesData();
-    const [currentCandidate, setCurrentCandidate] = useState();
+    const [currentCandidate, setCurrentCandidate] = useState({});
 
     useEffect(() => {
-        const getCandidate = candidatesData.find(candidate => candidate.email === user?.email);
+        const getCandidate = candidatesData.find(candidate => candidate.email === currentUser.email);
         setCurrentCandidate(getCandidate)
-    }, [!loading, user?.email])
+    }, [!loading, currentUser?.email])
 
     return (
         <section className='m-5 rounded-md'>
