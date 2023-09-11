@@ -6,7 +6,10 @@ import useSkills from '../Hooks/useSkills';
 import { useNavigate } from 'react-router-dom';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import Swal from "sweetalert2";
-import { Country } from "country-state-city"
+import { Country, State } from "country-state-city"
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
+import './PhoneInput.css'
 
 // react icons
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlinePlus } from 'react-icons/ai';
@@ -18,6 +21,7 @@ const CandidateSignUpForm = () => {
     const [allCategoriesData] = useAllCategories();
     const [curStep, setCurStep] = useState(0);
     const [finish, setFinish] = useState(false);
+    const [phoneNumber, setPhoneNumber] = useState()
     const [skillData, loading] = useSkills();
     const [finishLoading, setFinishLoading] = useState(false);
     const { user } = useAuth();
@@ -37,7 +41,7 @@ const CandidateSignUpForm = () => {
             email: user?.email,
             image: user?.photoURL,
             title: data.title,
-            phone: [data.country_code, data?.phone],
+            phone: phoneNumber,
             category: data.category,
             hourlyRate: data.hourlyRate,
             jobType: data.jobType,
@@ -46,14 +50,17 @@ const CandidateSignUpForm = () => {
             skills: data?.skills?.map((skill) => skill),
             about: [],
             education: [],
-            experience: [
+            experience: 
+            data.position == "" && data.organization == "" && data.companyLocation == "" && data.startDate == "" && data.endDate == "" ?
+            [] :
+            [
                 {
                     position: data.position,
                     companyName: data.organization,
                     location: data.companyLocation,
                     startDate: data.startDate,
                     endDate: data.endDate,
-                }
+                } 
             ],
             socialLink: [],
             languages: [],
@@ -71,7 +78,6 @@ const CandidateSignUpForm = () => {
             setFinishLoading(true)
             return axiosSecure.post("/candidates", newData)
                 .then((data) => {
-                    console.log(data)
                     if (data.status === 200) {
                         setFinishLoading(false)
                         Swal.fire({
@@ -93,22 +99,17 @@ const CandidateSignUpForm = () => {
         setCurStep(curStep - 1);
     };
 
+    
     // Necessary json
     const years = [1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]
 
     const countryCodes = ["+1", "+44", "+49", "+33", "+81", "+86", "+91", "+61", "+7", "+55", "+54", "+51", "+52", "+53", "+20", "+27", "+82", "+62", "+92", "+94", "+62", "+63", "+66", "+84", "+95", "+670", "+975", "+380", "+375", "+373", "+377", "+423", "+41", "+46", "+47", "+48", "+351", "+34", "+39", "+31", "+420", "+880", "+421", "+386", "+385", "+385", "+352", "+352", "+43", "+353", "+354"]
 
     //Country, State, Province
-    let countryData= Country.getAllCountries()
-    const [stateData, setStateData] = useState()
-
-    console.log(countryData);
-    const [country, setCountry] = useState(countryData[0])
-    const [state, setState] = useState()
-
-    useEffect(() => {
-        stateData && setState(stateData)
-    }, [stateData])
+    const selectedCountry=  watch('country', '');
+    const countryData= Country.getAllCountries()
+    const filteredCountry = countryData.find(country=> country.name == selectedCountry)
+    const stateData= State.getStatesOfCountry(filteredCountry?.isoCode)
 
     //States for Experience div
     const [present, setPresent] = useState(false);
@@ -150,6 +151,11 @@ const CandidateSignUpForm = () => {
         }
         return true;
     };
+
+    const validatePhoneNumber = (value) => {
+        if (!value || value.length < 10 || value.length > 15) return false
+        return true;
+      };
 
     const renderContent = () => {
         switch (curStep) {
@@ -255,7 +261,7 @@ const CandidateSignUpForm = () => {
 
                         <form className='flex flex-col gap-4 mt-5' onSubmit={handleSubmit(onSubmit)}>
                             <div className='flex flex-col sm:flex-row items-center gap-3'>
-                                {/* Country */}
+                                {/* country */}
                                 <label className='text-gray w-full text-base'>Country*
                                     <select name="jobType" id="jobType"
                                         className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.country && 'border-red-400'}`}
@@ -263,18 +269,22 @@ const CandidateSignUpForm = () => {
                                     >
                                         <option value="" disable>Select</option>
                                         {
-                                            countryData?.map(c => <option value={c.name}>{c.name}</option>)
+                                            countryData?.map(country => <option value={country.name}>{country.name}</option>)
                                         }
                                     </select>
                                 </label>
 
                                 {/* state */}
                                 <label className='text-gray w-full text-base'>State*
-                                    <input
-                                        className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.state && 'border-red-400'}`}
-                                        placeholder='e.g. Dhaka | New work'
+                                    <select name="jobType" id="jobType"
+                                        className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.country && 'border-red-400'}`}
                                         {...register("state", { required: true })}
-                                    />
+                                    >
+                                        <option value="" disable>Select</option>
+                                        {
+                                            stateData?.map(state => <option value={state.name}>{state.name}</option>)
+                                        }
+                                    </select>
                                 </label>
                             </div>
 
@@ -287,31 +297,33 @@ const CandidateSignUpForm = () => {
                                 />
                             </label>
 
-                            {/* country code & phone number */}
-                            <div className='flex flex-col sm:flex-row items-center gap-3'>
-                                {/* country code */}
-                                <label className='text-gray w-40 text-base'>Country code*
-                                    <select name="jobType" id="jobType"
-                                        className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.country_code && 'border-red-400'}`}
-                                        {...register("country_code", { required: true })}
-                                    >
-                                        <option value="">Select</option>
-                                        {
-                                            countryCodes.map((code, index) => <option
-                                                key={index} value={code}>{code}</option>)
-                                        }
-                                    </select>
-                                </label>
-
-                                {/* Phone number */}
-                                <label className='text-gray w-full text-base'>Phone number*
-                                    <input
-                                        type="number"
-                                        className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.phone && 'border-red-400'}`}
-                                        {...register("phone", { required: true, minLength: 6, maxLength: 12 })}
+                            {/* Phone number */}
+                            <label className="text-gray w-40 text-base outline-none">
+                                Phone Number*
+                                <Controller
+                                name="phone"
+                                control={control}
+                                rules={{
+                                    validate: validatePhoneNumber
+                                  }}
+                                render={({ field }) => (
+                                    <PhoneInput
+                                    className="PhoneInputInput text-dark rounded-md border border-gray/40 focus:border-purple px-3 py-2"
+                                    placeholder="Enter phone number"
+                                    value={field.value}
+                                    
+                                    onChange={(value) => {
+                                        field.onChange(value)
+                                        setPhoneNumber(value)
+                                    }}
                                     />
-                                </label>
-                            </div>
+                                )}
+                                />
+                            </label>
+                            {errors.phone && (<p className="text-red-400">Invalid Phone Number</p>)}
+
+                            
+
 
                             {/* Submit */}
                             <div className='flex items-center justify-between'>
@@ -363,7 +375,7 @@ const CandidateSignUpForm = () => {
                                 <label className='text-gray w-full text-base'>Location*
                                     <input
                                         className='text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2'
-                                        placeholder='e.g. New work, USA'
+                                        placeholder="Write 'Remote' if it was Remote job"
                                         {...register("companyLocation")}
                                     />
                                 </label>
@@ -497,7 +509,7 @@ const CandidateSignUpForm = () => {
                                 <div className='flex flex-wrap items-center gap-4'>
 
                                     {/* Suggested skills array map */}
-                                    {['Customer Service', 'Communication skills', 'Leadership', 'Maintenance', 'react'].map((suggestedSkill) => (
+                                    {['Customer Service', 'Communication skills', 'Leadership', 'Maintenance', 'Problem Solving', 'Stress Management', 'Customer Service', 'Presentation Skill', 'Adaptability'].map((suggestedSkill) => (
                                         <div
                                             key={suggestedSkill}
                                             className='flex items-center gap-2 px-3 py-2 border border-gray/40 hover:border-purple hover:shadow-lg rounded-md cursor-pointer group duration-300'

@@ -21,13 +21,10 @@ import "@smastrom/react-rating/style.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
-import useCurrentUser from "../Hooks/useCurrentUser";
 
 const CandidateDetailsContent = ({ candidateDetails }) => {
-    console.log(candidateDetails)
+    const { currentUser } = useAuth();
     const [reviewData, loading] = useReview();
-    const [currentUser] = useCurrentUser();
     const {
         name,
         email,

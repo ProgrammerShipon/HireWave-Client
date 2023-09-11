@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import useCurrentUser from '../Hooks/useCurrentUser';
-import PageLoader from '../Components/PageLoader';
+import useAuth from '../Hooks/useAuth';
 
 //react icons
 import { FaSearch } from 'react-icons/fa';
@@ -12,20 +11,20 @@ import { LiaAngleDownSolid } from 'react-icons/lia';
 import Logo from '../Assets/images/logo-01.png';
 
 const DashNav = () => {
-    const [currentUser, userLoading] = useCurrentUser();
+    const { currentUser, loading } = useAuth();
     const [name, setName] = useState('');
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
-        if (currentUser?.name) {
+        if (!loading) {
             const firstName = currentUser?.name.split(' ').slice(0, -1).join(' ');
-            setName(firstName);
+            if (firstName.length > 0) {
+                setName(firstName);
+            } else {
+                setName(currentUser.name);
+            }
         }
-    }, [currentUser]);
-
-    if (userLoading) {
-        return <PageLoader />
-    }
+    }, [!loading]);
 
     return (
         <header className='fixed w-full top-0 shadow-2xl shadow-purple/20 backdrop-blur-md py-2 bg-white/60 z-50'>
@@ -87,7 +86,7 @@ const DashNav = () => {
                             className={`md:hidden relative ${open ? 'rotate-180' : 'rotate-0'} duration-300`} />
 
                         <div className='hidden md:inline-block'>
-                            <p className='text-xl text-dark'>{name}</p>
+                            <p className='text-xl text-dark capitalize'>{name}</p>
                             <p className='font-light text-purple -mt-1'>{currentUser.role}</p>
                         </div>
 
