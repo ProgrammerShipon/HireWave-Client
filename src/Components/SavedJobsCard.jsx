@@ -1,14 +1,31 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useMyAppliedJobs from "../Hooks/useMyAppliedJobs";
 
 // react icons
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
-import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 
 const SavedJobsCard = ({ job, refetch }) => {
     const [axiosSecure] = useAxiosSecure();
+    const [myAppliedJobs, loading] = useMyAppliedJobs();
+    let [alreadyApplied, setAlreadyApplied] = useState(false);
     const { _id, selectJob, companyLogo, title, companyName, location, salary } = job;
+
+    // check already applied
+    useEffect(() => {
+        const checkExists = myAppliedJobs.filter((job) =>
+            job.appliedJobId.includes(selectJob)
+        );
+
+        if (checkExists.length) {
+            setAlreadyApplied(true)
+        } else {
+            setAlreadyApplied(false)
+        }
+    }, [job.selectJob, !loading])
 
     const handleRemoveSavedJob = () => {
         axiosSecure.delete(`/savedjob/${_id}`)
@@ -44,11 +61,13 @@ const SavedJobsCard = ({ job, refetch }) => {
                     >
                         View details
                     </Link>
-                    <Link to={`/apply_job/${selectJob}`}
-                        className="border border-green rounded-md px-3 py-1 bg-green hover:bg-transparent text-white hover:text-dark shadow-lg duration-300"
-                    >
-                        Apply Now
-                    </Link>
+
+                    {
+                        !alreadyApplied ?
+                            <Link to={`/apply_job/${_id}`} className="border border-green rounded-md px-3 py-1 bg-green hover:bg-transparent text-white hover:text-dark shadow-lg duration-300">
+                                Apply Now
+                            </Link> : <Link to={`/view_application/${selectJob}`} className="bg-green text-white px-5 py-1 rounded-lg border border-green shadow-xl shadow-green/20">View Application</Link>
+                    }
                 </div>
 
                 <button onClick={handleRemoveSavedJob} className="absolute top-1 right-1 border border-red-400 rounded-md px-2 py-1 hover:bg-red-400 text-red-400 hover:text-white shadow-lg duration-300">

@@ -40,6 +40,8 @@ import Chat from "../Dashboard/Chat";
 import AppliedApplicant from "../Dashboard/AppliedApplicant";
 import SearchResults from "../Pages/SearchResults";
 import MyApplications from "../Dashboard/MyApplications";
+import ViewApplication from "../Pages/ViewApplication";
+import Pricing from "../Pages/Pricing";
 import ApplicationForm from "../Pages/ApplicationForm";
 
 const Router = createBrowserRouter([
@@ -89,6 +91,11 @@ const Router = createBrowserRouter([
         loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`)
       },
       {
+        path: "/view_application/:id",
+        element: <PrivateRoute><ViewApplication /></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`)
+      },
+      {
         path: "/learning",
         element: <Learning />,
       },
@@ -112,6 +119,10 @@ const Router = createBrowserRouter([
       {
         path: "/post_job",
         element: <PostJob />,
+      },
+      {
+        path: "/pricing",
+        element: <Pricing />,
       },
       {
         path: "/login",

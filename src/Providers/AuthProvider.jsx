@@ -14,12 +14,12 @@ const AuthProvider = ({ children }) => {
     // const [currentUser, userLoading, refetch] = useCurrentUser();
     //   console.log("current User -> ", currentUser, userLoading);
 
-      // Loading
+    // Loading
     //   if (userLoading) {
     //     return <PageLoader />;
     //   }
 
-      // navigate
+    // navigate
     //   const navigate = useNavigate();
     //   const location = useLocation();
     //   let from = location.state?.from?.pathname || "/";
@@ -77,32 +77,32 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         setLoading(true);
         const unsubscribe = onAuthStateChanged(auth, (authUser) => {
-          setUser(authUser);
-          setLoading(false);
+            setUser(authUser);
+            setLoading(false);
 
-          //   If the user role does not exist then this route will be taken
-          //   if (!currentUser?.email && authUser.email) {
-          //     from = "/select_role";
-          //   }
-          //   navigate(from, { replace: true });
+            //   If the user role does not exist then this route will be taken
+            //   if (!currentUser?.email && authUser.email) {
+            //     from = "/select_role";
+            //   }
+            //   navigate(from, { replace: true });
 
-          if (authUser) {
-            axiosSecure(`/users/email/${user?.email}`)
-              .then((hireWaveUser) => console.log(hireWaveUser))
-              .catch((err) => console.log(err));
+            if (authUser) {
+                axiosSecure(`/users/email/${user?.email}`)
+                    .then((hireWaveUser) => console.log(hireWaveUser))
+                    .catch((err) => console.log(err));
 
-            // console.log('res');
-            axiosSecure
-              .post("/jwt", { email: authUser.email })
-              .then((response) => {
-                // console.log('res', response.data.token);
-                localStorage.setItem("access-token", response.data.token);
-              })
-              .catch((error) => {
-                console.log(error);
-              });
-          }
-          localStorage.removeItem("access-token");
+                // console.log('res');
+                axiosSecure
+                    .post("/jwt", { email: authUser.email })
+                    .then((response) => {
+                        // console.log('res', response.data.token);
+                        localStorage.setItem("access-token", response.data.token);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            }
+            localStorage.removeItem("access-token");
         });
 
         return () => {

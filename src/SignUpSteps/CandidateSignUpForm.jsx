@@ -71,6 +71,7 @@ const CandidateSignUpForm = () => {
             setFinishLoading(true)
             return axiosSecure.post("/candidates", newData)
                 .then((data) => {
+                    console.log(data)
                     if (data.status === 200) {
                         setFinishLoading(false)
                         Swal.fire({
@@ -254,7 +255,7 @@ const CandidateSignUpForm = () => {
 
                         <form className='flex flex-col gap-4 mt-5' onSubmit={handleSubmit(onSubmit)}>
                             <div className='flex flex-col sm:flex-row items-center gap-3'>
-                                {/* country */}
+                                {/* Country */}
                                 <label className='text-gray w-full text-base'>Country*
                                     <select name="jobType" id="jobType"
                                         className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.country && 'border-red-400'}`}
