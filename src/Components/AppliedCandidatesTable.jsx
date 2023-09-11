@@ -27,7 +27,7 @@ const AppliedCandidatesTable = ({ index, candidate }) => {
                     <img className='w-full object-cover object-center' src={image} alt={name} />
                 </div>
             </td>
-            <td className='px-5 py-3'>{name}</td>
+            <td className='px-5 py-3'><Link className='cursor-pointer underline hover:text-green' to={`/application_form/${_id}`}>{name}</Link></td>
             <td className='px-10 py-3'>{hourlyRate}$</td>
             <td className='px-5 py-3'>
                 <p className='text-[#FDCC0D] font-medium flex items-center'>

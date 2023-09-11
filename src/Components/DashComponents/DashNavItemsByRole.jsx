@@ -23,6 +23,12 @@ const DashNavItemsByRole = ({ role }) => {
                                 <p className="hidden md:inline">My Applications</p>
                             </DashLink>
                         </li>
+                        <li className="w-full">
+                            <DashLink to='/dashboard/messages'>
+                                <BiMessageRoundedDetail size={24} />
+                                <p className="hidden md:inline">Messages</p>
+                            </DashLink>
+                        </li>
                     </> :
 
                     // recruiter routes

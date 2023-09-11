@@ -1,20 +1,24 @@
 import { Common, ZIMKitManager } from '@zegocloud/zimkit-react';
 import '@zegocloud/zimkit-react/index.css';
 import React, { useEffect, useState } from 'react';
+import useAuth from '../Hooks/useAuth';
 
 const id = Math.floor(Math.random() * 1000);
 
 const Chat = () => {
+    const { currentUser } = useAuth();
     const [state, setState] = useState({
         appConfig: {
-            appID: 401711700, 
-            serverSecret: '3d2cb1607fd6f1f40d561320fbc895d7' 
+            appID: 401711700,
+            serverSecret: '3d2cb1607fd6f1f40d561320fbc895d7'
         },
         userInfo: {
-            userID: `mahfuz${id}`,
-            userName: `meheraf${id}`,
-            userAvatarUrl: ''
+            userID: currentUser?._id?.slice(10, 20),
+            userName: currentUser?.name,
+            userAvatarUrl: currentUser?.image
         },
+
+
     });
 
     useEffect(() => {
@@ -30,7 +34,9 @@ const Chat = () => {
     return (
         <div>
             <h1>Welcome {state.userInfo.userID}</h1>
-            <Common />
+            <div className='h-[87vh] border-2 overflow-scroll'>
+                <Common />
+            </div>
         </div>
     );
 };

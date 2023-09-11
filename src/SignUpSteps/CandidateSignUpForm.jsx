@@ -69,6 +69,7 @@ const CandidateSignUpForm = () => {
             setFinishLoading(true)
             return axiosSecure.post("/candidates", newData)
                 .then((data) => {
+                    console.log(data)
                     if (data.status === 200) {
                         setFinishLoading(false)
                         Swal.fire({
