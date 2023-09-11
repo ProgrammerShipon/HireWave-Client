@@ -135,7 +135,7 @@ const ApplicationFormDetails = ({candidateDetails}) => {
                         <p className='text-dark text-xl'>Set Interview</p>
                     </h2>
 
-                     {/* Modal content */}
+                     {/* Modal content */}d
                      <form onSubmit={handleSubmit(onInterviewSubmit)}>
                         <div className='flex items-center gap-5'>
                             {/* Interview Date */}
