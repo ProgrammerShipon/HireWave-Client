@@ -2,26 +2,82 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import LearningDetailsComment from './LearningDetailsComment';
 import { useLoaderData } from 'react-router-dom';
-import Button from "../Components/Button";
+import ClipboardJS from 'clipboard';
 import { FaEye } from "react-icons/fa";
 import { BiDislike, BiLike } from "react-icons/bi";
 import { RiShareForwardLine } from "react-icons/ri";
 // react icons
 import { CgComment } from 'react-icons/cg'
 import moment from 'moment';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import { toast } from 'react-toastify';
 
 const LearningDetailsBody = () => {
+  const loadData = useLoaderData();
+  const [axiosSecure] = useAxiosSecure();
+  const { title, createdAt, updatedAt, videoLink, description, authorImg, authorName, authorEmail, comments, disLike, like, views, _id } = loadData;
   const [commentClick, setCommentClick] = useState('')
   const [seeAll, setSeeAll] = useState(false);
-  const loadData = useLoaderData();
-  const { title, createdAt, updatedAt, videoLink, description, authorImg, authorName, authorEmail, comments, like, disLike, views , _id } = loadData;
+  const [allLike, setAllLike] = useState(like);
+  const [allDisLike, setAllDisLike] = useState(disLike);
+  // const [seeAll, setSeeAll] = useState(false);
+
+
   const { control, register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
   const onSubmit = () => {
     console.log('okay')
   }
 
-  const increaseLike = () => {
+  const increaseLike = (_id) => {
     console.log(_id)
+    console.log(like)
+    axiosSecure.patch(`/learning/like/${_id}`)
+      .then(res => {
+        setAllLike(res.data.like)
+        console.log(res.data.like)
+      })
+      .catch((err) => console.log(err));
+  }
+  const reduceLike = (_id) => {
+    console.log(_id)
+    console.log(like)
+    axiosSecure.patch(`/learning/dislike/${_id}`)
+      .then(res => {
+        setAllDisLike(res.data.disLike)
+        console.log(res.data)
+      })
+      .catch((err) => console.log(err));
+  }
+  const shareLearningTutorial = () => {
+    const url =
+      window.location.protocol + '//' +
+      window.location.host + window.location.pathname
+    console.log(url)
+    // Create a clipboard instance
+    const clipboard = new ClipboardJS('.copy-button', {
+      text: function () {
+        return url;
+      }
+    });
+
+    clipboard.on('success', function (e) {
+      // Provide user feedback (optional)
+      // alert('URL copied to clipboard: ' + );
+      toast.success(e.text, {
+        position: "top-right",
+        autoClose: 2500,
+        theme: "light",
+    });
+    });
+
+    clipboard.on('error', function (e) {
+      // Handle error (optional)
+      console.error('Error copying to clipboard:', e);
+    });
+
+    clipboard.onClick({
+      action: 'copy'
+    });
   }
 
 
@@ -60,14 +116,14 @@ const LearningDetailsBody = () => {
               </div>
 
               <div className="flex items-center gap-5 px-5">
-                <div className=' rounded-lg px-5 shadow-sm hover:border-none flex items-center gap-2'>
+                <div className=' rounded-lg px-5 shadow-sm hover:border-none flex items-center gap-4'>
                   <p className=' my-2 flex items-center gap-2'>
-                    <BiLike onClick={increaseLike} className='text-xl cursor-pointer' /> {like} </p>
+                    <BiLike onClick={() => increaseLike(_id)} className='text-xl cursor-pointer' /> {allLike} </p>
 
-                  <p className=' my-2 flex items-center gap-2'><BiDislike className='text-xl' /> {disLike} </p>
+                  <p className=' my-2 flex items-center gap-2'><BiDislike onClick={() => reduceLike(_id)} className='text-xl cursor-pointer' /> {allDisLike} </p>
                 </div>
-                <p className="flex items-center gap-2"><FaEye className='text-lg' /> {views} </p>
-                <p className='flex items-center gap-1 rounded-xl shadow-sm py-3 px-3'>
+                <p className="flex items-center gap-2 "><FaEye className='text-lg' /> {views} </p>
+                <p onClick={shareLearningTutorial} className='cursor-pointer flex items-center gap-1 rounded-xl shadow-sm py-3 px-3 copy-button'>
                   <RiShareForwardLine className='text-xl' /> Share
                 </p>
               </div>

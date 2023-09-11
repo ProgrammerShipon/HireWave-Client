@@ -15,9 +15,9 @@ const useAppliedCompany = () => {
             },
 
         });
-    // console.log(appliedCompany)
+    console.log(appliedCompany)
 
-    return  [appliedCompany, loading, refetch] ;
+    return [appliedCompany, loading, refetch];
 };
 
 export default useAppliedCompany;
