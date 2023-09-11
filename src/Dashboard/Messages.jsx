@@ -19,18 +19,6 @@ const messages = () => {
   // const userProfile = currentUser.userProfile;
   console.log(currentUser,)
 
-  // Fetch All Chat List
-  // const {
-  //   data: chatHistory = [],isLoading: loading,refetch,} = useQuery({
-  //   queryKey: ["chatHistory"],
-  //   queryFn: async () => {
-  //     const res = await axiosSecure.get(`/chat/${currentUserId}`);
-  //     return res.data;
-  //   },
-  // });
-  // console.log(chatHistory)
-
-  // Connect to Socket.io
   useEffect(() => {
     socket.current = io("ws://localhost:8800");
     socket.current.emit("new-user-add", currentUserId);

@@ -12,7 +12,7 @@ const useLearningData = () => {
             },
 
         });
-    console.log(learningData)
+    // console.log(learningData)
 
     return { learningData, loading, refetch };
 };

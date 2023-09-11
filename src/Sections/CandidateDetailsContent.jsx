@@ -22,10 +22,12 @@ import { useEffect } from "react";
 import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useCurrentUser from "../Hooks/useCurrentUser";
 
 const CandidateDetailsContent = ({ candidateDetails }) => {
+    console.log(candidateDetails)
     const [reviewData, loading] = useReview();
-    const [axiosSecure] = useAxiosSecure();
+    const [currentUser] = useCurrentUser();
     const {
         name,
         email,
@@ -43,7 +45,6 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
         experience,
         skills,
     } = candidateDetails;
-    const { userId } = useAuth();
     const navigate = useNavigate();
 
     const [review, setReview] = useState([]);
@@ -64,13 +65,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
 
     // chat
     const handleCreateChat = () => {
-        const senderId = userId;
-        const receiverId = _id;
-        const members = { senderId, receiverId }
-        axiosSecure.post('/chat', members)
-            .then(data => {
-                navigate('/dashboard/messages')
-            })
+        navigate('/dashboard/messages')
     }
 
     return (
