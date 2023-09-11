@@ -3,7 +3,7 @@ import moment from "moment";
 
 
 const AppliedJobTableRow = ({ job }) => {
-    const { _id, appliedJobId, companyLogo, companyName, applicantEmail, postedDate, title, applied, name, status, cover_letter, expected_salary, appliedDate } = job;
+    const { _id, appliedJobId, companyLogo, companyName, title, status, appliedDate } = job;
     console.log(job)
     return (
         <tr className="border-b border-green/20 hover:bg-green/10 duration-300 group">
@@ -27,7 +27,7 @@ const AppliedJobTableRow = ({ job }) => {
 
             <td className="px-3 py-3">
                 {
-                    status ? <span className="bg-green/10 text-green font-medium px-3 rounded-full text-sm shadow-lg shadow-green/20">Active</span> : <span className="bg-red-400/10 text-red-400 px-3 rounded-full text-sm">Close</span>
+                    status ? <span className="bg-green/10 text-green font-medium px-3 rounded-full text-sm shadow-lg shadow-green/20">Open</span> : <span className="bg-red-400/10 text-red-400 px-3 rounded-full text-sm">Close</span>
                 }
             </td>
             <td className="px-3 py-3 text-center">

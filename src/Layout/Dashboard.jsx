@@ -10,7 +10,7 @@ const Dashboard = () => {
             <DashNav />
 
             <div className='flex'>
-                {/* sidebar */}
+                {/* Sidebar */}
                 <DashNavItems />
 
                 {/* Outlet */}

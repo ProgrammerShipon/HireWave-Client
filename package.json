@@ -39,6 +39,7 @@
     "react-input-emoji": "^5.3.1",
     "react-leaflet": "^4.2.1",
     "react-paginate": "^8.2.0",
+    "react-quill": "^2.0.0",
     "react-router-dom": "^6.14.2",
     "react-scroll-to-top": "^3.0.0",
     "react-step-progress": "^1.0.3",

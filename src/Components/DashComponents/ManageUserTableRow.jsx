@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 
 const ManageUserTableRow = ({ user }) => {
     const { _id, name, email, image, role, status } = user;
+    
+    const handleChangeStatus=()=>{
+        console.log()
+    }
     return (
         <tr className="border-b border-green/20 hover:bg-green/10 duration-300 group">
             <td className="px-3 py-3 flex gap-2">
@@ -29,7 +33,7 @@ const ManageUserTableRow = ({ user }) => {
                 </div>
             </td>
             <td className="px-3 py-4 text-center">
-                <button className="border border-green text-dark px-4 rounded-md hover:bg-green hover:text-white duration-300">Apply</button>
+                <button onClick={handleChangeStatus} className="border border-green text-dark px-4 rounded-md hover:bg-green hover:text-white duration-300">Apply</button>
             </td>
         </tr>
     );

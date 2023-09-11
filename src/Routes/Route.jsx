@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import AppliedJobs from "../Dashboard/AppliedJobs";
 import CandidateList from "../Dashboard/CandidateList";
 import ChangePassword from "../Dashboard/ChangePassword";
 import DashboardHome from "../Dashboard/DashboardHome";
@@ -39,6 +38,8 @@ import RecruitersDetails from "../Pages/RecruitersDetails";
 import SelectRole from "../SignUpSteps/SelectRole";
 import Chat from "../Dashboard/Chat";
 import AppliedApplicant from "../Dashboard/AppliedApplicant";
+import SearchResults from "../Pages/SearchResults";
+import MyApplications from "../Dashboard/MyApplications";
 
 const Router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ const Router = createBrowserRouter([
         path: "/job_details/:id",
         element: <PrivateRoute><JobDetails /></PrivateRoute>,
         loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`)
+      },
+      {
+        path: "/search_results",
+        element: <SearchResults />,
       },
       {
         path: "/apply_job/:id",
@@ -154,14 +159,14 @@ const Router = createBrowserRouter([
 
       // Candidate routes
       {
-        path: "appliedJobs",
-        element: <AppliedJobs />,
+        path: "myApplications",
+        element: <MyApplications />,
       },
 
       // Recruiter routes
       {
         path: "messages",
-        element: < Chat/>,
+        element: < Chat />,
       },
       {
         path: "room",

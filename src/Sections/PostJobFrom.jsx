@@ -1,32 +1,74 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import TextareaField from "../Components/TextareaField";
-import SkillsField from "../Components/SkillsField";
+import { useEffect, useRef, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 import moment from "moment";
 import useCurrentUser from "../Hooks/useCurrentUser";
 import useRecruiterRole from "../Hooks/useRecruiterRole";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useAllCategories from "../Hooks/useAllCategories";
+import useSkills from "../Hooks/useSkills";
+import { FaXmark } from "react-icons/fa6";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
+const modules ={
+    toolbar: [
+        [ { header: [ 1, 2, 3, 4, 5, 6, false ] } ],
+        [ { size: [] } ],
+        [ "bold", "italic", "underline", "strike"],
+        [
+            { list : "ordered" },
+            { list : "bullet" },
+            { indent : "-1" },
+            { indent : "+1" }
+        ],
+        [ "link", "image", "video" ]
+    ]
+}
 
 export default function PostJobForm() {
-    const [overview, setOverview] = useState([]);
-    const [requirements, setRequirements] = useState([]);
-    const [skillsExperience, setSkillsExperience] = useState([]);
-    const [benefits, setBenefits] = useState([]);
-    const [skills, setSkills] = useState([]);
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    //States
+    const [requirements, setRequirements] = useState('');
+    const [skillsExperience, setSkillsExperience] = useState('');
+    const [benefits, setBenefits] = useState('');
+    const editor = useRef(null);
 
+    const { control, register, handleSubmit, formState: { errors } } = useForm();
+
+    //Imported hooks
     const [recruitersRole, userLoading, refetch] = useRecruiterRole();
+    const [allCategoriesData] = useAllCategories()
+    const [skillData, loading] = useSkills();
+    console.log(allCategoriesData);
     const [axiosSecure] = useAxiosSecure();
-    // console.log(recruitersRole)
+
+    //onSubmit function
     const onSubmit = (data) => {
         const currentDate = moment().format('ddd MMM YYYY HH:mm:ss [GMT]ZZ');
         // TO DO just dynamic the companyName, companyLogo and location
         const newJob = {
-            ...data, postedDate: currentDate,
-            companyName: recruitersRole?.name, companyMail: recruitersRole?.email,
-            companyLogo: '', location: recruitersRole?.address, overview, requirements, skillsExperience, benefits, skills, applied: 0
+            title : data?.title,
+            category : data?.category,
+            jobType : data?.jobType,
+            salary : data?.salary,
+            experience: data?.experience,
+            quantity : data?.quantity,
+            skills: data?.skills?.map((skill) => skill),
+            closingDate : data?.closingDate,
+            overview : data?.overview,
+            requirements,
+            skillsExperience,
+            benefits,
+            applied: 0,
+            postedDate: currentDate,
+            open : true,
+            status : "pending"
+            // companyName: recruitersRole?.name, 
+            // email: recruitersRole?.email,
+            // location: recruitersRole?.address, 
+            // companyLogo: recruitersRole?.image, 
+            // location : recruitersRole?.location,
         };
 
         console.log(newJob);
@@ -45,6 +87,35 @@ export default function PostJobForm() {
             });
     }
 
+    // Skills states
+    const [inputValue, setInputValue] = useState('');
+    const [suggestions, setSuggestions] = useState([]);
+    const [selectedSkills, setSelectedSkills] = useState([]);
+
+    useEffect(() => {
+        if (inputValue.trim() === '') {
+            setSuggestions([]);
+        } else {
+            const matchingSkills = skillData.filter((skill) =>
+                skill.toLowerCase().includes(inputValue.toLowerCase())
+            );
+            setSuggestions(matchingSkills);
+        }
+    }, [inputValue, !loading])
+
+    const selectSkill = (skill) => {
+        if (!selectedSkills.includes(skill)) {
+            register(`skills[${selectedSkills.length}]`, { value: skill });
+            setSelectedSkills([...selectedSkills, skill]);
+            setInputValue('');
+        }
+    };
+
+    const removeSelectedSkill = (skillToRemove) => {
+        const updatedSkills = selectedSkills.filter((skill) => skill !== skillToRemove);
+        setSelectedSkills(updatedSkills);
+    };
+    
     return (
         <section className="py-20 md:py-[120px] duration-300">
             <div className="container">
@@ -58,13 +129,12 @@ export default function PostJobForm() {
                             </label>
                             <textarea
                                 id="title"
-                                rows={2}
-                                placeholder="Enter your job title..."
+                                placeholder="Enter your job title"
                                 {...register("title", { required: true })}
-                                className="w-full text-2xl border border-gray/40 focus:border-green py-2 focus:shadow-lg focus:shadow-gray/20 duration-300 px-3 rounded-md outline-none"
+                                className="w-full border border-gray/40 focus:border-green py-2 focus:shadow-lg focus:shadow-gray/20 duration-300 px-3 rounded-md outline-none"
                             />
                             {errors.title && (
-                                <span className="text-red-700">This field is required</span>
+                                <span className="text-red-700">Job Title is required</span>
                             )}
                         </div>
 
@@ -81,11 +151,13 @@ export default function PostJobForm() {
                                     className="w-full border border-gray/40 focus:border-green py-2 focus:shadow-lg focus:shadow-gray/20 duration-300 px-3 rounded-md outline-none cursor-pointer"
                                 >
                                     <option value=''>Select Category</option>
-                                    <option value='Design & Creative'>Design & Creative</option>
-                                    <option value='UI/UX Designer'>UI/UX Designer</option>
+                                   {
+                                    allCategoriesData.map( category => 
+                                    <option value={category.name}>{category.name}</option>)
+                                   }
                                 </select>
                                 {errors.category && (
-                                    <span className="text-red-700">This field is required</span>
+                                    <span className="text-red-700">Job Category is required</span>
                                 )}
                             </div>
 
@@ -101,11 +173,11 @@ export default function PostJobForm() {
                                 >
                                     <option value=''>Select Type</option>
                                     <option value='Remote'>Remote</option>
-                                    <option value='Full Time'>Full Time</option>
-                                    <option value='Part Time'>Part Time</option>
+                                    <option value='Full-Time'>Full-Time</option>
+                                    <option value='Part-Time'>Part-Time</option>
                                 </select>
                                 {errors.jobType && (
-                                    <span className="text-red-700">This field is required</span>
+                                    <span className="text-red-700">Job Type is required</span>
                                 )}
                             </div>
                         </div>
@@ -120,12 +192,13 @@ export default function PostJobForm() {
                                 </label>
                                 <input
                                     id="salary"
-                                    placeholder="200-300 example..."
+                                    type="number"
+                                    placeholder="Write a range (200-300)"
                                     {...register("salary", { required: true })}
                                     className="w-full border border-gray/40 focus:border-green py-2 focus:shadow-lg focus:shadow-gray/20 duration-300 px-3 rounded-md outline-none"
                                 />
                                 {errors.salary && (
-                                    <span className="text-red-700">This field is required</span>
+                                    <span className="text-red-700">Salary is required</span>
                                 )}
                             </div>
 
@@ -145,7 +218,7 @@ export default function PostJobForm() {
                                     <option value='Expert'>Expert</option>
                                 </select>
                                 {errors.experience && (
-                                    <span className="text-red-700">This field is required</span>
+                                    <span className="text-red-700">Experience is required</span>
                                 )}
                             </div>
 
@@ -157,23 +230,61 @@ export default function PostJobForm() {
                                 <input
                                     id="quantity"
                                     type="number"
-                                    placeholder="Number of Candidates..."
+                                    placeholder="Vacant seat for the post"
                                     {...register("quantity", { required: true })}
                                     className="w-full border border-gray/40 focus:border-green py-2 focus:shadow-lg focus:shadow-gray/20 duration-300 px-3 rounded-md outline-none"
                                 />
                                 {errors.quantity && (
-                                    <span className="text-red-700">This field is required</span>
+                                    <span className="text-red-700">Number of candidates is required</span>
                                 )}
                             </div>
                         </div>
 
                         {/* skills & closing date */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                            {/* skills */}
-                            <SkillsField
-                                skills={skills}
-                                setSkills={setSkills}
-                            />
+                            {/* Skills */}
+                            <div className="w-full col-span-2">
+                                <label className="text-dark font-medium" htmlFor="skills">
+                                    Add a Skill
+                                </label>
+                                <div className='w-full border border-gray/40 focus:border-green py-2 focus:shadow-lg focus:shadow-gray/20 duration-300 px-3 rounded-md outline-none'>
+                                    <div className='flex flex-wrap gap-x-2 gap-y-3'>
+                                        {selectedSkills?.map((selectedSkill, index) => (
+                                            <p key={index}
+                                                className="flex items-center gap-1 px-3 rounded-md bg-purple/20 text-purple shadow-lg"
+                                            >
+                                                {selectedSkill}
+                                                <button className=''
+                                                    onClick={() => removeSelectedSkill(selectedSkill)}
+                                                >
+                                                    <FaXmark size='14' className='text-gray' />
+                                                </button>
+                                            </p>
+                                        ))}
+                                        <Controller
+                                            name="skills"
+                                            control={control}
+                                            defaultValue={[]}
+                                            render={({ field }) => (
+                                                <input
+                                                    id='skills'
+                                                    type="text"
+                                                    className='text-dark focus:outline-none border-none focus:border-none group'
+                                                    value={inputValue}
+                                                    onChange={(e) => setInputValue(e.target.value)}
+                                                    placeholder="Search skills"
+                                                />
+                                            )}
+                                        />
+                                    </div>
+                                    <ul className={`absolute top-full mt-2 bg-white text-dark shadow-4xl shadow-gray/30 rounded-lg max-h-40 overflow-y-auto px-5 py-2 border-b-4 border-purple ${suggestions.length ? 'block' : 'hidden'}`}>
+                                        {suggestions.map((suggestion, index) => (
+                                            <li key={index} className='cursor-pointer hover:text-purple duration-300'
+                                                onClick={() => selectSkill(suggestion)} >{suggestion}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
 
                             {/* closing date */}
                             <div className="w-full">
@@ -183,48 +294,78 @@ export default function PostJobForm() {
                                 <input
                                     id="closingDate"
                                     type="date"
-                                    placeholder="Enter closing date..."
+                                    placeholder="Enter closing date"
                                     {...register("closingDate", { required: true })}
                                     className="w-full border border-gray/40 focus:border-green py-[11px] focus:shadow-lg focus:shadow-gray/20 duration-300 px-3 rounded-md outline-none"
                                 />
                                 {errors.closingDate && (
-                                    <span className="text-red-700">This field is required</span>
+                                    <span className="text-red-700">Closing Date is required</span>
                                 )}
                             </div>
                         </div>
 
                         {/* Overview */}
-                        <TextareaField
-                            label="Overview"
-                            placeholder="Enter job Overview here..."
-                            setUpdate={setOverview}
-                        />
+                        <div>
+                            <label className="text-dark font-medium" htmlFor="overview">
+                                Overview:
+                            </label>
+                            <textarea
+                                id="overview"
+                                placeholder="Enter your company overview"
+                                {...register("overview", { required: true })}
+                                className="w-full border border-gray/40 focus:border-green py-2 focus:shadow-lg focus:shadow-gray/20 duration-300 px-3 h-32 rounded-md outline-none"
+                            />
+                            {errors.overview && (
+                                <span className="text-red-700">Overview is required</span>
+                            )}
+                        </div>
 
-                        {/* requirements */}
-                        <TextareaField
-                            label="Requirements"
-                            placeholder="Enter job requirements here..."
-                            setUpdate={setRequirements}
-                        />
+                        {/* Job Responsibilities */}
+                        <div>
+                            <label className="text-dark font-medium" htmlFor="name">
+                                Job Responsibilities:
+                            </label>
+                            <ReactQuill
+                                theme="snow" 
+                                value={requirements}
+                                modules={modules}
+                                placeholder="Enter the list of your job responsibilities"
+                                onChange={setRequirements} 
+                            />
+                        </div>
 
-                        {/* requirements */}
-                        <TextareaField
-                            label="Skill & Experience"
-                            placeholder="Enter job skill & experience here..."
-                            setUpdate={setSkillsExperience}
-                        />
+                        {/* Skills and Experiences */}
+                        <div>
+                            <label className="text-dark font-medium" htmlFor="name">
+                                Skills & Experiences Required:
+                            </label>
+                            <ReactQuill
+                                theme="snow" 
+                                value={skillsExperience}
+                                modules={modules}
+                                placeholder="Enter the list of skills and experiences required for the job"
+                                onChange={setSkillsExperience} 
+                            />
+                        </div>
 
                         {/* benefits */}
-                        <TextareaField
-                            label="Benefits"
-                            placeholder="Enter job benefits here..."
-                            setUpdate={setBenefits}
-                        />
+                        <div>
+                            <label className="text-dark font-medium" htmlFor="name">
+                                Benefits:
+                            </label>
+                            <ReactQuill
+                                theme="snow" 
+                                value={benefits}
+                                modules={modules}
+                                placeholder="Enter the list of benefits candidate will receive"
+                                onChange={setBenefits} 
+                            />
+                        </div>
 
                         {/* submit button */}
                         <button
                             type="submit"
-                            className="w-full hover:bg-green hover:text-white border border-green py-2 px-3 rounded-md outline-none duration-300"
+                            className="w-full hover:bg-green hover:text-white border border-green py-2 px-3 rounded-md outline-none duration-300 mt-5"
                         >
                             Post Job
                         </button>
