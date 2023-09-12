@@ -55,8 +55,59 @@
   font-weight: 600;
 }
 
-/* react phone number input */
+/* react-phone-number-input */
 .PhoneInputInput {
   width: max-content;
   outline: none;
+}
+
+#postJob ul{
+  list-style: disc !important;
+  padding-left: 24px;
+  color: #868894;
+}
+
+#postJob ol{
+  list-style: decimal !important;
+  padding-left: 24px;
+  color: #868894;
+}
+
+#postJob h1 {
+  font-size: xx-large;
+}
+
+#postJob h2 {
+  font-size: x-large;
+}
+
+#postJob h3 {
+  font-size: larger;
+}
+
+#postJob h4 {
+  font-size: large;
+}
+
+#postJob h5 {
+  font-size: medium;
+}
+
+#postJob h6 {
+  font-size: small;
+}
+
+.ql-editor{
+  font-style: normal !important; /* Not working in the ui */
+}
+
+.ql-toolbar{
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.ql-container{
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  min-height: 150px;
 }

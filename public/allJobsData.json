@@ -249,7 +249,6 @@
   {
     "_id": "12",
     "title": "Blockchain Developer",
-    "postedDate": "2023-09-28 10:00 AM",
     "companyName": "Enosis solutions",
     "companyLogo": "https://media.licdn.com/dms/image/C510BAQH1ZDJ1Ko1K4A/company-logo_100_100/0/1526298763300?e=1702512000&v=beta&t=d8ZhviTH80mBhgTQLRWeHGrwHkbsbWt9B8dnvuEUINc",
     "category": "Blockchain Development",
@@ -257,21 +256,26 @@
     "jobType": "Remote",
     "salary": "900-1400",
     "closingDate": "2023-10-31",
-    "experience": "Expert",
-    "quantity": 2,
-    "applied": 20,
-    "status": true,
+    "experience": [
+      "Expert"
+    ],
+    "quantity": "2",
+    "applied": "20",
     "overview": "Join Enosis Solutions as a Blockchain Developer and work on cutting-edge blockchain projects. Contribute to the development of decentralized applications and smart contracts.",
     "responsibilities": "<ul><li>Conduct research on AI ethics and its impact on society.</li><li>Analyze and address ethical dilemmas in AI development.</li><li>Contribute to publications in AI ethics or related topics.</li></ul>",
     "skillsExperience": "<ul><li>Proficiency in blockchain programming languages (e.g., Solidity).</li><li>Experience with Ethereum and other blockchain platforms.</li><li>Strong problem-solving and debugging skills.</li></ul>",
     "benefits": "<ul><li>Competitive salary and performance-based bonuses.</li><li>Opportunity to work on groundbreaking blockchain solutions.</li><li>Collaborative and innovative work environment.</li></ul>",
     "skills": ["Blockchain Development", "Solidity", "Smart Contracts", "Ethereum"],
-    "email": "blockchaindeveloper@enosissolutions.com"
+    "status": "approved",
+    "open": true,
+    "postedDate": "2023-09-10T06:16:42.717Z",
+    "__v": 0
   },
 
-  ===================================================================================================
+
+
+//  Back end data
   {
-    // Back end data
     "_id": "64fd5f4a9a9a6a87984b155f",
     "title": "UI/UX Designer",
     "companyName": "Adroit",
