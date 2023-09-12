@@ -7,7 +7,7 @@ import PageLoader from '../Components/PageLoader';
 import SelectRole from '../SignUpSteps/SelectRole';
 
 const Dashboard = () => {
-    const { loading } = useAuth();
+    const { user, currentUser, loading } = useAuth();
 
     if (loading) {
         return <div className='flex h-screen items-center justify-center'><PageLoader /></div>
