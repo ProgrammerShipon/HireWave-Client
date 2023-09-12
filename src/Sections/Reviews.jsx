@@ -10,16 +10,20 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import PageLoader from '../Components/PageLoader';
 
 const Reviews = () => {
-  // Review Date load
-  const [reviewData] = useReview();
+  const [reviewData, loading] = useReview();
 
   // rating style
   const myStyles = {
     itemShapes: Star,
     activeFillColor: '#33e2a0',
     inactiveFillColor: '#33e29f61'
+  }
+
+  if (loading) {
+    return <PageLoader />
   }
   return (
     <section className='py-20 md:py-[120px] duration-300'>
@@ -49,7 +53,7 @@ const Reviews = () => {
             modules={[Autoplay, Pagination]}
           >
             {
-              reviewData.map(review => <SwiperSlide key={review._id} className='p-4 border border-green rounded-lg mb-14'>
+              reviewData.slice(0, 4).map(review => <SwiperSlide key={review._id} className='p-4 border border-green rounded-lg mb-14'>
                 {/* author */}
                 <div className='flex gap-4 items-center'>
                   <div className='w-14 h-14 rounded-full overflow-hidden'>

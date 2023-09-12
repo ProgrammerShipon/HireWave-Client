@@ -10,9 +10,9 @@ import { TbLockCog } from "react-icons/tb";
 import { VscAccount } from "react-icons/vsc";
 
 const DashNavItems = () => {
-  const { logOut } = useAuth();
-  // const role = 'candidate';
-  // const role = 'recruiter';
+  const { logOut, currentUser } = useAuth();
+  // const role = currentUser?.role
+  // const role = "recruiter"
   const role = "admin";
 
   return (

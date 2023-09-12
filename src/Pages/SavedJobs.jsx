@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet";
 import Breadcrumbs from "../Components/Breadcrumbs";
 import Divider from "../Components/Divider";
 import SavedJob from "../Sections/SavedJob";
+import GetStart from "../Sections/GetStart";
 
 const SavedJobs = () => {
     return (
@@ -14,9 +15,11 @@ const SavedJobs = () => {
             <Breadcrumbs title="Saved Jobs" />
 
             {/* section here */}
-            {/* border */}
             <SavedJob />
+            {/* border */}
             <Divider />
+
+            <GetStart />
         </>
     );
 };

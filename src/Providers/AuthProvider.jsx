@@ -1,15 +1,17 @@
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updatePassword, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from 'react';
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 import app from '../firebase/firebase.config';
-import axios from "axios";
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
+    const [axiosSecure] = useAxiosSecure();
     const [user, setUser] = useState({});
-    const [userId, setUserId] = useState('');
+    const [currentUser, setCurrentUser] = useState({});
     const [loading, setLoading] = useState(true);
 
+    // auth initialize
     const auth = getAuth(app);
 
     // sign up user
@@ -47,7 +49,7 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, googleProvider)
     }
 
-    // google sign in
+    // github sign in
     const gitHubSignIn = () => {
         setLoading(true);
         const gitHubProvider = new GithubAuthProvider();
@@ -61,33 +63,53 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         setLoading(true);
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-            setLoading(false);
-
-            const api = axios.create({
-                baseURL: 'https://hire-wave-server.vercel.app/api',
-            });
-            if (currentUser) {
-                setLoading(false);
-                api.post('/jwt', { email: currentUser.email })
-                    .then(data => {
-                        localStorage.setItem('access-token', data.data.token)
+        const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+            setUser(authUser)
+            if (authUser?.email) {
+                axiosSecure(`/users/email/${authUser?.email}`)
+                    .then((data) => {
+                        setCurrentUser(data.data);
+                        setLoading(false);
                     })
+                    .catch((err) => {
+                        console.log(err)
+                        setLoading(false);
+                    });
             }
-            else {
-                localStorage.removeItem('access-token')
+            if (authUser === null) {
+                setLoading(false);
+            }
+
+            if (authUser) {
+                axiosSecure
+                    .post("/jwt", { email: authUser.email })
+                    .then((response) => {
+                        // Check if localStorage is available before using it
+                        if (typeof localStorage !== 'undefined') {
+                            localStorage.setItem("access-token", response.data.token);
+                        }
+                        setLoading(false);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            }
+            // Check if localStorage is available before using it
+            if (typeof localStorage !== 'undefined') {
+                localStorage.removeItem("access-token");
             }
         });
 
         return () => {
             return unsubscribe();
         }
-    }, [user]);
+    }, []);
+
 
     const authInfo = {
         user,
         loading,
+        currentUser,
         signUpUser,
         signIn,
         profileUpdate,

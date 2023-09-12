@@ -3,10 +3,10 @@ import useAxiosSecure from "./useAxiosSecure";
 
 const useRecruiters = () => {
     const [axiosSecure] = useAxiosSecure();
-    const { data: recruiterData = [], isLoading: loading, refetch, } = useQuery({
+    const { data: recruiterData = [], isLoading: loading, refetch } = useQuery({
         queryKey: ["recruiterData"],
         queryFn: async () => {
-            const res = await axiosSecure('/recruiters');
+            const res = await axiosSecure.get("/recruiters");
             return res.data;
         },
     });

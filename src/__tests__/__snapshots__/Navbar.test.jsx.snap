@@ -1,0 +1,316 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Navbar.jsx > renders correctly 1`] = `
+<header
+  className="fixed w-full shadow-xl duration-300 ease-in-out bg-white py-3 backdrop-blur-md z-50"
+>
+  <nav
+    className="container flex items-center justify-between"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      <img
+        alt="hire wave logo"
+        className="w-52"
+        data-testid="logo"
+        src="/src/Assets/images/logo-01.png"
+      />
+    </a>
+    <div
+      className="flex items-center gap-8"
+    >
+      <div
+        className="hidden w-full md:w-52 lg:w-72 lg:flex items-center bg-white rounded-md border overflow-hidden duration-300 scale-x-0 opacity-0"
+      >
+        <input
+          className="w-full py-2 pl-3 rounded-s-md bg-transparent focus:outline-none"
+          data-testid="search-input"
+          onChange={[Function]}
+          placeholder="Job Title / Keywords or Company"
+          type="text"
+          value=""
+        />
+        <button
+          className="bg-dark text-white px-4 py-3 hover:text-green duration-300"
+          onClick={[Function]}
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+            />
+          </svg>
+        </button>
+      </div>
+      <ul
+        className="hidden lg:flex items-center gap-8"
+      >
+        <li>
+          <a
+            aria-current="page"
+            className="text-green text-lg py-2 inline-block"
+            href="/"
+            onClick={[Function]}
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            className="text-dark text-lg hover:text-green duration-300 py-2 inline-block"
+            href="/browse_jobs"
+            onClick={[Function]}
+          >
+            Browse Jobs
+          </a>
+        </li>
+        <li>
+          <a
+            className="text-dark text-lg hover:text-green duration-300 py-2 inline-block"
+            href="/candidates"
+            onClick={[Function]}
+          >
+            Candidates
+          </a>
+        </li>
+        <li>
+          <a
+            className="text-dark text-lg hover:text-green duration-300 py-2 inline-block"
+            href="/recruiters"
+            onClick={[Function]}
+          >
+            Recruiters
+          </a>
+        </li>
+        <li>
+          <a
+            className="text-dark text-lg hover:text-green duration-300 py-2 inline-block"
+            href="/contact"
+            onClick={[Function]}
+          >
+            Contact
+          </a>
+        </li>
+        <a
+          className="flex items-center gap-2 py-2 text-green font-medium"
+          href="/login"
+          onClick={[Function]}
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"
+            />
+          </svg>
+          Login
+        </a>
+      </ul>
+    </div>
+    <button
+      className="lg:hidden text-dark"
+      data-testid="toggle__button"
+      onClick={[Function]}
+    >
+      <svg
+        className="text-3xl"
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 448 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+        />
+      </svg>
+    </button>
+    <aside
+      className="lg:hidden fixed top-0 bg-white w-[280px] md:w-[350px] h-screen p-5 z-50 duration-300 ease-in -right-full"
+    >
+      <div
+        className="flex items-center justify-between border-b border-green/20 pb-2"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          <img
+            alt="hire wave logo"
+            className="w-40 md:w-52"
+            src="/src/Assets/images/logo-01.png"
+          />
+        </a>
+        <button
+          className="p-3 bg-dark text-white rounded-full"
+          onClick={[Function]}
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 384 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+            />
+          </svg>
+        </button>
+      </div>
+      <ul
+        className="flex flex-col px-4 divide-y divide-green/20 mt-4"
+      >
+        <li>
+          <a
+            aria-current="page"
+            className="text-green text-lg py-2 inline-block"
+            href="/"
+            onClick={[Function]}
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            className="text-dark text-lg hover:text-green duration-300 py-2 inline-block"
+            href="/browse_jobs"
+            onClick={[Function]}
+          >
+            Browse Jobs
+          </a>
+        </li>
+        <li>
+          <a
+            className="text-dark text-lg hover:text-green duration-300 py-2 inline-block"
+            href="/candidates"
+            onClick={[Function]}
+          >
+            Candidates
+          </a>
+        </li>
+        <li>
+          <a
+            className="text-dark text-lg hover:text-green duration-300 py-2 inline-block"
+            href="/recruiters"
+            onClick={[Function]}
+          >
+            Recruiters
+          </a>
+        </li>
+        <li>
+          <a
+            className="text-dark text-lg hover:text-green duration-300 py-2 inline-block"
+            href="/contact"
+            onClick={[Function]}
+          >
+            Contact
+          </a>
+        </li>
+        <a
+          className="flex items-center gap-2 py-2 text-green font-medium"
+          href="/login"
+          onClick={[Function]}
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"
+            />
+          </svg>
+          Login
+        </a>
+      </ul>
+      <div
+        className="w-full flex items-center bg-white rounded-md border overflow-hidden mt-6"
+      >
+        <input
+          className="w-full py-2 pl-3 rounded-s-md bg-transparent focus:outline-none"
+          onChange={[Function]}
+          placeholder="Job Title / Keywords or Company"
+          type="text"
+          value=""
+        />
+        <button
+          className="bg-dark text-white px-4 py-3"
+          onClick={[Function]}
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+            />
+          </svg>
+        </button>
+      </div>
+    </aside>
+    <div
+      className="fixed lg:hidden w-full h-screen top-0 left-0 z-30 bg-dark bg-opacity-30 duration-300 ease-in opacity-0 invisible"
+      onClick={[Function]}
+    />
+  </nav>
+</header>
+`;

@@ -1,45 +1,27 @@
 import Button from '../Components/Button';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import GetAgoTime from '../Components/GetAgoTime';
+import useAuth from '../Hooks/useAuth';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 // react icons
-import { BiCurrentLocation } from 'react-icons/bi';
-import { BsPersonWorkspace } from 'react-icons/bs';
-import { MdOutlineWorkOutline } from 'react-icons/md';
+import { GiLevelEndFlag } from 'react-icons/gi';
+import { BsCurrencyDollar } from 'react-icons/bs';
+import { LiaIndustrySolid } from 'react-icons/lia';
+import { SlLocationPin } from 'react-icons/sl';
 import { IoMdAddCircleOutline } from 'react-icons/io';
-import GetAgoTime from '../Components/GetAgoTime';
 
-const ApplyJobForm = () => {
-    const jobData = useLoaderData();
-    const { _id, title, category, location, jobType, postedDate, overview, skills, } = jobData[0];
+const ApplyJobForm = ({ jobData }) => {
+    const { user } = useAuth();
+    const [axiosSecure] = useAxiosSecure();
+    const { _id, title, companyName, category, location, postedDate, overview, skills, experience, salary, open } = jobData;
 
-    const { register, handleSubmit, reset } = useForm();
-
-    const onApplyJobSubmit = data => {
-        const applyJobData = {
-            cover_letter: data.cover_letter,
-            expected_salary: data.expected_salary,
-            attachments: attachments.map(attachment => attachment.value),
-        }
-        //TODO: Update in the back end
-        reset();
-    }
-
-    // const [singleJob, setSingleJob]= useState()
-    // const [allJobsData, loading] = useAllJobs();
-    // const { title: id }= useParams()
-
-
-    // useEffect(() => {
-    //     const appliedJob = allJobsData.find(job => job._id === id)
-    //     setSingleJob(appliedJob)
-    // }, [loading, id])
-
-
+    const { register, handleSubmit } = useForm();
     const [attachments, setAttachments] = useState([{ id: 1, value: "" }]);
     const [maximumWarning, setMaximumWarning] = useState(false)
-
     const handleIncreaseInputField = () => {
         if (attachments.length < 5) {
             const newId = attachments.length + 1;
@@ -48,6 +30,52 @@ const ApplyJobForm = () => {
         else setMaximumWarning(true)
     };
 
+    const onApplyJobSubmit = (data) => {
+        const cover_letter = data.cover_letter;
+        const expected_salary = data.expected_salary;
+        const attachment = data.attachment;
+
+        const appliedInfo = {
+            appliedJobId: _id,
+            companyName,
+            companyLogo,
+            title,
+            jobType,
+            cover_letter,
+            expected_salary,
+            attachment,
+            applicantEmail: user?.email
+        }
+
+        axiosSecure.post(`/appliedCandidate`, appliedInfo)
+            .then((res) => {
+                console.log(res)
+                if (res.status === 200) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Applied successfully',
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                }
+                else {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Already Applied',
+                        showConfirmButton: false,
+                        timer: 2500
+                    })
+                }
+
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    };
+
+
     return (
         <section className='py-20 md:py-[120px]'>
             <div className="container">
@@ -55,7 +83,11 @@ const ApplyJobForm = () => {
 
                     {/* Job Details */}
                     <div className='border border-gray/40 hover:border-green rounded-md px-5 md:px-10 py-3 md:py-5 mt-8 shadow-lg hover:shadow-4xl hover:shadow-green/20 duration-300 group'>
-                        <h1 className='text-green text-2xl font-medium mt-2 mb-5 drop-shadow-xl'>Job Details</h1>
+                        <div className='flex items-start justify-between'>
+                            <h1 className='text-green text-2xl font-medium mt-2 mb-5 drop-shadow-xl'>Job Details</h1>
+
+                            <p className={`font-medium px-3 rounded-md ${open ? "bg-green/20 text-green" : "bg-red-400/20 text-red-400"}`}>{open ? " Open to Apply" : "Closed"}</p>
+                        </div>
 
                         <div className='md:flex justify-between items-center gap-2 md:gap-5 lg:gap-8 mb-2'>
                             <div>
@@ -70,19 +102,42 @@ const ApplyJobForm = () => {
                                 <Link to={`/job_details/${_id}`} className='text-blue-500 hover:underline'>View Job Posting</Link>
                             </div>
 
-                            {/* Location, job type and Category */}
-                            <div className='md:border-s border-gray/40 group-hover:border-green/40 md:pl-5 md:pr-2 py-4 md:my-0 duration-300'>
-                                <div className='flex items-center gap-2 mb-3 text-green'>
-                                    <BiCurrentLocation size={20} />
-                                    <p className='flex items-center gap-2 text-lightGray'><span>Location: </span>{location}</p>
+                            {/* experience, salary, company name, location */}
+                            <div className='w-72 md:border-s border-gray/40 group-hover:border-green/40 md:pl-3 md:pr-2 py-2 md:my-0 duration-300'>
+                                {/* experience */}
+                                <div className='flex items-start gap-2 mb-2'>
+                                    <GiLevelEndFlag size={20} className="text-purple mt-[2px]" />
+                                    <div>
+                                        <p>Experience,</p>
+                                        <p className="text-sm text-lightGray ml-2">{experience}</p>
+                                    </div>
                                 </div>
-                                <div className='flex items-center gap-2 mb-3 text-green'>
-                                    <BsPersonWorkspace size={20} />
-                                    <p className='flex items-center gap-2 text-lightGray'><span>Job Type: </span>{jobType}</p>
+
+                                {/* salary */}
+                                <div className='flex items-start gap-2 mb-2'>
+                                    <BsCurrencyDollar size={20} className="text-purple mt-[2px]" />
+                                    <div>
+                                        <p>Salary,</p>
+                                        <p className="text-sm text-lightGray ml-2">${salary}</p>
+                                    </div>
                                 </div>
-                                <div className='flex items-center gap-2 text-green'>
-                                    <MdOutlineWorkOutline size={20} />
-                                    <p className='flex items-center gap-2 text-lightGray'><span>Category: </span>{category}</p>
+
+                                {/* company name */}
+                                <div className='flex items-start gap-2 mb-2'>
+                                    <LiaIndustrySolid size={20} className="text-purple mt-[2px]" />
+                                    <div>
+                                        <p>Company,</p>
+                                        <p className="text-sm text-lightGray ml-2">{companyName}</p>
+                                    </div>
+                                </div>
+
+                                {/* location */}
+                                <div className='flex items-start gap-2'>
+                                    <SlLocationPin size={18} className="text-purple mt-[2px]" />
+                                    <div>
+                                        <p>Location,</p>
+                                        <p className="text-sm text-lightGray ml-2">{location}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -101,7 +156,7 @@ const ApplyJobForm = () => {
                         <h1 className='text-green text-2xl font-medium mt-2 mb-5 drop-shadow-xl'>Additional Details</h1>
 
                         <div className='mb-2 mt-5'>
-                            <label className='text-dark block mb-1'>Cover letter</label>
+                            <label className='text-dark block mb-1 text-base'>Cover letter</label>
                             <textarea
                                 rows={5}
                                 className='w-full px-3 py-2 border border-gray/40 focus:outline-none focus:border-green rounded-md'
@@ -112,7 +167,7 @@ const ApplyJobForm = () => {
 
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                             <div className='col-span-1'>
-                                <label htmlFor='salary' className='text-dark block mb-1'>Expected Salary</label>
+                                <label htmlFor='salary' className='text-dark block mb-1 text-base'>Expected Salary</label>
                                 <input
                                     id='salary'
                                     className='w-full px-3 py-2 border border-gray/40 focus:outline-none focus:border-green rounded-md'
@@ -122,13 +177,13 @@ const ApplyJobForm = () => {
                                 />
                             </div>
                             <div className='lg:col-span-2'>
-                                <label className='text-dark block mb-1'>Important Links</label>
+                                <label className='text-dark block mb-1 text-base'>Important Links</label>
                                 {attachments.map((attachment, index) => (
                                     <div key={attachment.id} className='flex items-center gap-5 mb-3'>
                                         <input
                                             type='text'
                                             className='w-full px-3 py-2 border border-gray/40 focus:outline-none focus:border-green rounded-md max-w-5xl'
-                                            placeholder='e.g. Portfolio'
+                                            placeholder='e.g. https://www.portfolio.com/forid32832'
                                             {...register(`attachment[${index}]`)}
                                         />
                                         {index === attachments.length - 1 && (
@@ -152,7 +207,7 @@ const ApplyJobForm = () => {
                     </div>
 
                     <div className='flex justify-end mt-5'>
-                        <Button>Submit</Button>
+                        <Button >Submit</Button>
                     </div>
                 </form>
             </div>

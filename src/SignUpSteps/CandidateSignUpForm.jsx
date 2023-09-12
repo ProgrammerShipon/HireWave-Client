@@ -6,11 +6,11 @@ import useSkills from '../Hooks/useSkills';
 import { useNavigate } from 'react-router-dom';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import Swal from "sweetalert2";
+import PageLoader from "../Components/PageLoader";
 
 // react icons
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlinePlus } from 'react-icons/ai';
 import { FaXmark } from 'react-icons/fa6';
-import PageLoader from "../Components/PageLoader";
 
 const CandidateSignUpForm = () => {
     const [curStep, setCurStep] = useState(0);
@@ -55,6 +55,9 @@ const CandidateSignUpForm = () => {
             languages: [],
             recommendations: 0,
             status: 'pending',
+            active: true,
+            viewsCount: 0,
+            earnings: 0,
             visibility: data.visibility,
             joinDate: todayDate
         }
@@ -66,6 +69,7 @@ const CandidateSignUpForm = () => {
             setFinishLoading(true)
             return axiosSecure.post("/candidates", newData)
                 .then((data) => {
+                    console.log(data)
                     if (data.status === 200) {
                         setFinishLoading(false)
                         Swal.fire({

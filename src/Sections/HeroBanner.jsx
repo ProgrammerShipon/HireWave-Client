@@ -1,16 +1,60 @@
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useAllJobs from '../Hooks/useAllJobs';
 
 // react icons
 import { BiSearchAlt } from 'react-icons/bi';
 import { FaBriefcase } from 'react-icons/fa';
 import { FaLocationCrosshairs } from 'react-icons/fa6';
+import { BsArrowUpRight } from 'react-icons/bs';
+import { toast } from 'react-toastify';
 
 const HeroBanner = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => {
-        console.log(data)
+    const [allJobsData, loading] = useAllJobs();
+    const [filteredData, setFilteredData] = useState([]);
+    const navigate = useNavigate();
+
+    const { register, watch, handleSubmit, reset } = useForm();
+    const onSubmit = () => {
+        reset();
+    }
+
+    const searchTerm = watch('searchTerm');
+    const location = watch('location');
+
+    useEffect(() => {
+        if (!loading) {
+            if (searchTerm === '' && location === '') {
+                setFilteredData([]);
+            } else {
+                const searchTitle = searchTerm ? searchTerm.toLowerCase() : "";
+                const searchLocation = location ? location.toLowerCase() : "";
+
+                const filter = allJobsData.filter((job) =>
+                    (!searchTitle || job.title?.toLowerCase().includes(searchTitle) || job.companyName?.toLowerCase().includes(searchTitle)) &&
+                    (!searchLocation || job.location.toLowerCase().includes(searchLocation))
+                );
+
+                setFilteredData(filter);
+            }
+        }
+    }, [searchTerm, location, allJobsData.length]);
+
+    const handleSearch = () => {
+        if (searchTerm === '' && location === '') {
+            toast.warn('Write search term!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                theme: "light",
+            });
+        } else {
+            navigate('/search_results', { state: { filteredData } });
+        }
     };
 
     // bg change function
@@ -76,14 +120,14 @@ const HeroBanner = () => {
 
                             <p className='text-white/70 md:text-lg mb-5'>Welcome to the job find website! We're here to help you find the right job with ease. Explore a variety of opportunities that match your interests and skills, making your job search simple and effective. Start your journey towards a great career today!</p>
 
-                            <Link to='candidates' className='bg-dark text-white px-6 py-4 text-lg rounded-xl hover:bg-green duration-300 shadow-xl hover:shadow-green/30 inline-block'>
+                            <Link to='/browse_jobs' className='bg-dark text-white px-6 py-4 text-lg rounded-xl hover:bg-green duration-300 shadow-xl hover:shadow-green/30 inline-block'>
                                 Know More
                             </Link>
                         </div>
 
                         {/* search bar */}
                         <form onSubmit={handleSubmit(onSubmit)}
-                            className='bg-white border border-green shadow-2xl shadow-green/20 grid grid-cols-1 md:grid-cols-5 items-center mt-16 p-2 rounded-xl duration-300'
+                            className='relative bg-white border border-green shadow-2xl shadow-green/20 grid grid-cols-1 md:grid-cols-5 items-center mt-16 p-2 rounded-xl duration-300'
                         >
                             {/* Search */}
                             <div className='col-span-2 flex items-center border-b md:border-none border-green'>
@@ -92,9 +136,9 @@ const HeroBanner = () => {
                                 </label>
                                 <input
                                     id='search'
-                                    className='w-full border text-lg pl-2 py-4 md:py-2 border-none focus:outline-none bg-transparent text-dark placeholder:text-gray placeholder:bg-transparent'
+                                    className='w-full bg-transparent border text-lg pl-2 py-4 md:py-2 border-none focus:outline-none text-dark placeholder:text-gray placeholder:bg-transparent'
                                     placeholder="Job Title / Keywords or Company"
-                                    {...register("search")}
+                                    {...register("searchTerm")}
                                 />
                             </div>
 
@@ -111,7 +155,30 @@ const HeroBanner = () => {
                             </div>
 
                             {/* search button */}
-                            <button type="submit" className='bg-dark text-white px-6 py-4 text-lg rounded-xl flex items-center justify-center gap-2 hover:shadow-xl hover:bg-green duration-300'><BiSearchAlt /> Find Job</button>
+                            <button onClick={handleSearch} className='bg-dark text-white px-6 py-4 text-lg rounded-xl flex items-center justify-center gap-2 hover:shadow-xl hover:bg-green duration-300'><BiSearchAlt /> Find Job</button>
+
+                            {/* suggest result */}
+                            <div className={`absolute max-h-48 w-full md:w-4/5 top-48 md:top-20 mt-2 bg-white text-dark shadow-4xl shadow-gray/30 rounded-lg overflow-y-auto space-y-2 px-3 py-2 border-b-[6px] border-green ${filteredData.length ? 'block' : 'hidden'}`}>
+                                {filteredData.map(job => (
+                                    <Link to={`/job_details/${job._id}`} key={job._id} className='flex items-center gap-2 hover:bg-green/20 p-2 rounded-lg group duration-300'>
+                                        <div className='h-12 w-12 rounded-full overflow-hidden shadow-xl'>
+                                            <img className='w-full object-cover object-center' src={job.companyLogo} alt="" />
+                                        </div>
+                                        <div>
+                                            <h2 className='text-dark text-xl font-medium group-hover:text-green duration-300'
+                                            >{job.title}</h2>
+                                            <p className='text-dark italic'>
+                                                <span className='text-lightGray'>by</span>  {job.companyName} <span className='text-lightGray'>in</span> {job.category}
+                                            </p>
+                                        </div>
+
+                                        <div className='flex-1 flex justify-end mr-2 text-dark group-hover:text-green duration-300'>
+                                            <BsArrowUpRight size='20' />
+                                        </div>
+                                    </Link>
+                                ))
+                                }
+                            </div>
                         </form>
                     </div>
                 </div>

@@ -1,10 +1,16 @@
-import { defineConfig } from 'vite'
+/// <reference types="vitest" />
+/// <reference types="vite/client" />
+
 import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  optimizeDeps: {
-    include: ["react", "react/jsx-dev-runtime"],
-  },
   plugins: [react()],
-});
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/test/setup.js',
+    css: true,
+  },
+})

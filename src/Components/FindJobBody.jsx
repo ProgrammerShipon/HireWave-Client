@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import Divider from "./Divider";
@@ -9,15 +9,26 @@ import JobCard from "./JobCard";
 import { AiOutlineCalendar, AiOutlineShareAlt } from "react-icons/ai";
 import { BiHeart, BiMap } from "react-icons/bi";
 import { BsBuildingGear } from "react-icons/bs";
+import { FaHeart } from "react-icons/fa";
 import {
   HiOutlineCurrencyDollar,
   HiOutlineFilter,
   HiOutlineUserGroup,
 } from "react-icons/hi";
+import { toast } from "react-toastify";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useAuth from "../Hooks/useAuth";
+import useMySavedJobs from "../Hooks/useMySavedJobs";
+import useMyAppliedJobs from "../Hooks/useMyAppliedJobs";
 
 const FindJobBody = ({ allJobsData }) => {
   const [jobDetails, setJobDetails] = useState(allJobsData[0]);
-
+  const [axiosSecure] = useAxiosSecure();
+  const [myAppliedJobs] = useMyAppliedJobs();
+  const [mySavedJobs, , refetch] = useMySavedJobs();
+  let [alreadyApplied, setAlreadyApplied] = useState(false);
+  let [alreadySaved, setAlreadySaved] = useState(false);
+  const { user } = useAuth();
   const {
     _id,
     title,
@@ -37,14 +48,55 @@ const FindJobBody = ({ allJobsData }) => {
     benefits,
     skills,
   } = jobDetails;
-  // console.log(jobDetails);
-  const handleApplyJob = () => {
-    const appliedInfo = {
-      companyName: companyName,
-      companyMail: category,
-      JobId: "64e78e7663f90b252c6891d0"
+
+  const jobInfo = { selectJob: _id, companyLogo, title, companyName, postedDate, location, jobType, salary, skills, candidateMail: user?.email }
+
+  // check already applied
+  useEffect(() => {
+    const checkExists = myAppliedJobs.filter((job) =>
+      job.appliedJobId.includes(_id)
+    );
+
+    if (checkExists.length) {
+      setAlreadyApplied(true)
+    } else {
+      setAlreadyApplied(false)
     }
-    console.log(appliedInfo)
+  }, [jobDetails, myAppliedJobs.length])
+
+  // check saved job
+  useEffect(() => {
+    const checkExists = mySavedJobs.filter((job) =>
+      job.selectJob.includes(_id)
+    );
+
+    if (checkExists.length) {
+      setAlreadySaved(true)
+    } else {
+      setAlreadySaved(false)
+    }
+  }, [jobDetails, mySavedJobs.length])
+
+  const handleSaveJob = () => {
+    axiosSecure.post("/savedjob", jobInfo)
+      .then((data) => {
+        if (data.status === 200) {
+          refetch()
+          toast.success("Saved Successfully", {
+            position: "top-right",
+            autoClose: 2500,
+            theme: "light",
+          });
+        }
+        else {
+          toast.warning("Already Saved", {
+            position: "top-right",
+            autoClose: 2500,
+            theme: "light",
+          });
+        }
+      })
+      .catch((err) => console.log(err));
   }
   return (
     <div className="grid grid-cols-1 gap-5 mt-16 lg:grid-cols-10">
@@ -76,7 +128,7 @@ const FindJobBody = ({ allJobsData }) => {
         {/* job card */}
         <div className="grid grid-cols-1 gap-5">
           {allJobsData.map((job, index) => (
-            <JobCard key={index} job={job} setJobDetails={setJobDetails} />
+            <JobCard key={index} job={job} setJobDetails={setJobDetails} mySavedJobs={mySavedJobs} refetch={refetch} />
           ))}
         </div>
       </div>
@@ -94,7 +146,19 @@ const FindJobBody = ({ allJobsData }) => {
 
             <div className="flex items-center gap-2">
               <AiOutlineShareAlt size="24px" className="text-green" />
-              <BiHeart size="24px" className="text-green" />
+              {
+                !alreadySaved ? <>
+                  {
+                    user?.email ? <button onClick={handleSaveJob}>
+                      <BiHeart size="24px" className="text-green" />
+                    </button> : <Link to='/login'>
+                      <BiHeart size="24px" className="text-green" />
+                    </Link>
+                  }
+                </> : <button disabled>
+                  <FaHeart size="24px" className="text-red-400" />
+                </button>
+              }
             </div>
           </div>
 
@@ -129,9 +193,12 @@ const FindJobBody = ({ allJobsData }) => {
                 <BiMap /> {location}
               </p>
             </div>
-            <Link to={`/apply_job/${_id}`} >
-              <Button>Apply Now</Button>
-            </Link>
+            {
+              !alreadyApplied ?
+                <Link to={`/apply_job/${_id}`} >
+                  <Button>Apply Now</Button>
+                </Link> : <Link to={`/view_application/${_id}`} className="bg-green text-white px-5 py-2 rounded-lg border border-green shadow-xl shadow-green/20">View Application</Link>
+            }
           </div>
 
           <div className="flex flex-col items-start mb-6 md:flex-row md:gap-8">

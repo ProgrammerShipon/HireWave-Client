@@ -2,14 +2,14 @@ import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 import useAuth from '../Hooks/useAuth';
 
 const Conference = () => {
-    const { userId } = useAuth();
-
+    const { user } = useAuth();
+    console.log(user)
     const interviewConference = async (element) => {
         const roomID = '123456'
         // generate Kit Token
         const appID = 1281063325;
         const serverSecret = "012c5ab5c910ebebd7b55310b534709f"
-        const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, Date.now().toString(), "mahfuzRoom");
+        const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, Date.now().toString(), user?.displayName);
 
         // Create instance object from Kit Token.
         const zp = ZegoUIKitPrebuilt.create(kitToken);
@@ -21,7 +21,11 @@ const Conference = () => {
             },
             showRequestToCohostButton: true,
             showScreenSharingButton: true,
-            showRoomDetailsButton : true,
+            showRoomDetailsButton: true,
+            onLiveEnd: true,
+
+            // turnOnCameraWhenJoining:false,
+
             sharedLinks: [
                 {
                     name: 'Invitation link',
@@ -38,7 +42,7 @@ const Conference = () => {
     return (
         <div>
             <div
-            className='h-fit'
+                className='h-screen '
                 ref={interviewConference}>
             </div>
         </div>

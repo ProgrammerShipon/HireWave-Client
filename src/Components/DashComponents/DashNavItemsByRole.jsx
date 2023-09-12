@@ -7,6 +7,7 @@ import { MdOutlineManageAccounts, } from 'react-icons/md';
 import { CgUserList } from 'react-icons/cg';
 import { BiMessageRoundedDetail } from 'react-icons/bi';
 import { LiaIndustrySolid } from 'react-icons/lia';
+import { FaChalkboardUser } from 'react-icons/fa6';
 
 const DashNavItemsByRole = ({ role }) => {
     return (
@@ -17,9 +18,15 @@ const DashNavItemsByRole = ({ role }) => {
                     <>
                         {/* applied Jobs */}
                         <li className="w-full">
-                            <DashLink to='/dashboard/appliedJobs'>
+                            <DashLink to='/dashboard/myApplications'>
                                 <BsFileArrowUp size={24} />
                                 <p className="hidden md:inline">My Applications</p>
+                            </DashLink>
+                        </li>
+                        <li className="w-full">
+                            <DashLink to='/dashboard/messages'>
+                                <BiMessageRoundedDetail size={24} />
+                                <p className="hidden md:inline">Messages</p>
                             </DashLink>
                         </li>
                     </> :
@@ -37,7 +44,7 @@ const DashNavItemsByRole = ({ role }) => {
 
                             <li className="w-full">
                                 <DashLink to='/dashboard/room'>
-                                    <BiMessageRoundedDetail size={24} />
+                                    <FaChalkboardUser size={24} />
                                     <p className="hidden md:inline">Interview</p>
                                 </DashLink>
                             </li>
@@ -47,6 +54,12 @@ const DashNavItemsByRole = ({ role }) => {
                                 <DashLink to='/dashboard/postedJobs'>
                                     <AiOutlineFileDone size={24} />
                                     <p className="hidden md:inline">Posted Jobs</p>
+                                </DashLink>
+                            </li>
+                            <li className="w-full">
+                                <DashLink to='/dashboard/applicant'>
+                                    <AiOutlineFileDone size={24} />
+                                    <p className="hidden md:inline">Applicant</p>
                                 </DashLink>
                             </li>
                         </> :

@@ -6,9 +6,17 @@ import BarChart from '../../Components/Charts/BarChart';
 import { BsBriefcase, BsBookmarkCheck } from 'react-icons/bs';
 import { IoDocumentTextOutline, IoAnalyticsOutline } from 'react-icons/io5';
 import { PiUsersThreeLight } from 'react-icons/pi';
+import useSavedJobs from '../../Hooks/useSavedJobs';
+import useAllJobs from '../../Hooks/useAllJobs';
+import useAppliedData from '../../Hooks/useAppliedData';
+import useUsers from '../../Hooks/useUsers';
 
 
 const AdminDashboard = () => {
+    const [savedJobs] = useSavedJobs();
+    const [allJobsData] = useAllJobs();
+    const [appliedData] = useAppliedData();
+    const [userData] = useUsers();
 
     return (
         <div>
@@ -22,7 +30,7 @@ const AdminDashboard = () => {
                         </div>
                         <div className='text-right pt-1 pb-2'>
                             <span className='text-purple text-4xl drop-shadow-xl count__up'>
-                                <CountUp duration={3} end={234} />
+                                <CountUp duration={3} end={allJobsData.length} />
                             </span>
                             <h3 className='text-dark tracking-wider drop-shadow-xl'>Posted Jobs</h3>
                         </div>
@@ -42,7 +50,7 @@ const AdminDashboard = () => {
                         </div>
                         <div className='text-right pt-1 pb-2'>
                             <span className='text-green text-4xl drop-shadow-xl count__up'>
-                                <CountUp duration={3} end={135} />
+                                <CountUp duration={3} end={appliedData.length} />
                             </span>
                             <h3 className='text-dark tracking-wider drop-shadow-xl'>Application</h3>
                         </div>
@@ -62,7 +70,7 @@ const AdminDashboard = () => {
                         </div>
                         <div className='text-right pt-1 pb-2'>
                             <span className='text-[#FF9671] text-4xl drop-shadow-xl count__up'>
-                                <CountUp duration={3} end={456} />
+                                <CountUp duration={3} end={savedJobs.length} />
                             </span>
                             <h3 className='text-dark tracking-wider drop-shadow-xl'>Shortlist</h3>
                         </div>
@@ -82,7 +90,7 @@ const AdminDashboard = () => {
                         </div>
                         <div className='text-right pt-1 pb-2'>
                             <span className='text-[#18025B] text-4xl drop-shadow-xl count__up'>
-                                <CountUp duration={3} end={112} />
+                                <CountUp duration={3} end={userData.length} />
                             </span>
                             <h3 className='text-dark tracking-wider drop-shadow-xl'>Total Users</h3>
                         </div>

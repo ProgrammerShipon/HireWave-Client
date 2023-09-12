@@ -1,5 +1,6 @@
-import useAuth from '../Hooks/useAuth';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../Hooks/useAuth';
 
 //react icons
 import { FaSearch } from 'react-icons/fa';
@@ -8,20 +9,22 @@ import { LiaAngleDownSolid } from 'react-icons/lia';
 
 //Logo
 import Logo from '../Assets/images/logo-01.png';
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 const DashNav = () => {
+    const { currentUser, loading } = useAuth();
     const [name, setName] = useState('');
-    const { user } = useAuth();
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
-        if (user?.displayName) {
-            const firstName = user.displayName.split(' ').slice(0, -1).join(' ');
-            setName(firstName);
+        if (!loading) {
+            const firstName = currentUser?.name.split(' ').slice(0, -1).join(' ');
+            if (firstName.length > 0) {
+                setName(firstName);
+            } else {
+                setName(currentUser.name);
+            }
         }
-    }, [user?.displayName]);
+    }, [!loading]);
 
     return (
         <header className='fixed w-full top-0 shadow-2xl shadow-purple/20 backdrop-blur-md py-2 bg-white/60 z-50'>
@@ -60,14 +63,14 @@ const DashNav = () => {
                             onClick={() => setOpen(!open)}
                         >
                             {
-                                user?.photoURL ?
+                                currentUser.image !== null ?
                                     <img
                                         className="h-12 w-12 rounded-full object-cover shadow-lg hover:shadow-green/20 duration-300"
-                                        src={user?.photoURL} alt={user?.displayName} /> :
+                                        src={currentUser.image} alt={currentUser.name} /> :
                                     <p
                                         className="h-14 w-14 bg-blue text-dark text-xl flex items-center justify-center font-bold rounded-full shadow-lg group-hover:shadow-blue duration-300 drop-shadow-xl uppercase"
                                     >
-                                        {user?.displayName?.slice(0, 2)}
+                                        {currentUser.name.slice(0, 2)}
                                     </p>
                             }
                             <div className='absolute top-0 -right-0'>
@@ -83,15 +86,15 @@ const DashNav = () => {
                             className={`md:hidden relative ${open ? 'rotate-180' : 'rotate-0'} duration-300`} />
 
                         <div className='hidden md:inline-block'>
-                            <p className='text-xl text-dark'>{name}</p>
-                            <p className='font-light text-purple -mt-1'>Candidate</p>
+                            <p className='text-xl text-dark capitalize'>{name}</p>
+                            <p className='font-light text-purple -mt-1'>{currentUser.role}</p>
                         </div>
 
                         {/* responsive */}
                         <div className={`md:hidden absolute bg-white right-0 p-5 shadow-4xl shadow-gray/40 rounded-md ${open ? 'visible opacity-100 top-14' : 'invisible opacity-0 top-24'} duration-300`}>
-                            <p className='text-xl text-dark drop-shadow-xl'>{user?.displayName}</p>
-                            <p className='font-light text-purple -mt-1'>Candidate</p>
-                            <p className='text-dark mt-1'>{user?.email}</p>
+                            <p className='text-xl text-dark drop-shadow-xl'>{currentUser.name}</p>
+                            <p className='font-light text-purple -mt-1'>{currentUser.role}</p>
+                            <p className='text-dark mt-1'>{currentUser.email}</p>
 
                             {/* Search Bar */}
                             <div className='w-56 flex items-center bg-white rounded-md border overflow-hidden duration-300 mt-4'>

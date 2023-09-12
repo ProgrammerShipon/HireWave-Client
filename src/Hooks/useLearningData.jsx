@@ -1,21 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxios from "./useAxios";
+import useAxiosSecure from "./useAxiosSecure";
 
 const useLearningData = () => {
-    const { axiosSecure } = useAxios()
-    const { data: learningData = [], isLoading: loading, refetch } = useQuery({
-        queryKey: ['learningData'],
-        queryFn: async () => {
-            // todos: Offline Running
-            // const res = await fetch('/learning.json');
-            // const data = await res.json();
-            // return data;
+    const [axiosSecure] = useAxiosSecure();
+    const {
+        data: learningData = [], isLoading: loading, refetch, } = useQuery({
+            queryKey: ["learningData"],
+            queryFn: async () => {
+                const res = await axiosSecure.get('/learning');
+                return res.data;
+            },
 
-            // Server Get Data
-            const res = await axiosSecure("/learning");
-            return res?.data;
-        },
-    });
+        });
 
     return { learningData, loading, refetch };
 };

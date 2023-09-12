@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import useAllJobs from "../Hooks/useAllJobs";
 import FindJobBody from "../Components/FindJobBody";
 
 // react icons
@@ -9,8 +8,7 @@ import { FaBriefcase } from "react-icons/fa";
 import { FaLocationCrosshairs } from "react-icons/fa6";
 import { AiOutlineClear } from "react-icons/ai";
 
-const FindJobs = () => {
-    const [allJobsData] = useAllJobs();
+const FindJobs = ({ allJobsData }) => {
     const [filteredData, setFilteredData] = useState(allJobsData);
 
     const { register, watch, handleSubmit, reset } = useForm();

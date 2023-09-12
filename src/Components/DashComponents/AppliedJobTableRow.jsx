@@ -1,9 +1,28 @@
 import { Link } from "react-router-dom";
 import moment from "moment";
+import { useState } from "react";
+import { useEffect } from "react";
+import useAllJobs from "../../Hooks/useAllJobs";
+import PageLoader from "../PageLoader";
+
 
 const AppliedJobTableRow = ({ job }) => {
-    const { _id, companyName, companyLogo, postedDate, title, applied, name, status, } = job;
+    const { _id, appliedJobId, companyLogo, companyName, title, appliedDate } = job;
+    const [allJobsData, loading] = useAllJobs();
+    const [appliedJob, setAppliedJob] = useState([]);
 
+    useEffect(() => {
+        const findAppliedJob = allJobsData.filter((job) =>
+            job._id.includes(appliedJobId)
+        );
+        setAppliedJob(findAppliedJob)
+    }, [appliedJobId, !loading])
+
+    if (!appliedJob.length) {
+        return <PageLoader />
+    }
+
+    const { applied, open } = appliedJob[0];
     return (
         <tr className="border-b border-green/20 hover:bg-green/10 duration-300 group">
             <td className="flex items-center gap-2 px-3 py-3 font-medium text-dark">
@@ -11,7 +30,7 @@ const AppliedJobTableRow = ({ job }) => {
                     <img
                         className="object-cover object-center w-full"
                         src={companyLogo}
-                        alt={name}
+                        alt={companyName}
                     />
                 </div>
                 {companyName}
@@ -21,16 +40,16 @@ const AppliedJobTableRow = ({ job }) => {
                     {title}
                 </Link>
             </td>
-            <td className="px-3 py-3 text-center">{moment(postedDate).format("MMM Do YYYY")}</td>
+            <td className="px-3 py-3 text-center">{moment(appliedDate).format("MMM Do YYYY")}</td>
             <td className="px-3 py-3 text-center text-lg text-dark font-medium">{applied}</td>
 
             <td className="px-3 py-3">
                 {
-                    status ? <span className="bg-green/10 text-green font-medium px-3 rounded-full text-sm shadow-lg shadow-green/20">Active</span> : <span className="bg-red-400/10 text-red-400 px-3 rounded-full text-sm">Close</span>
+                    open ? <span className="bg-green/10 text-green font-medium px-3 rounded-full text-sm shadow-lg shadow-green/20">Open</span> : <span className="bg-red-400/10 text-red-400 px-3 rounded-full text-sm">Close</span>
                 }
             </td>
             <td className="px-3 py-3 text-center">
-                <Link to={`/jobDetails/${_id}`} className="border border-green px-4 rounded-md hover:bg-green hover:text-white duration-300">View</Link>
+                <Link to={`/view_application/${appliedJobId}`} className="border border-green px-4 rounded-md hover:bg-green hover:text-white duration-300">View</Link>
             </td>
         </tr>
     );

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import useAppliedCandidates from '../Hooks/useAppliedCandidates';
 import AppliedCandidatesTable from '../Components/AppliedCandidatesTable';
 
 // react icons
@@ -18,13 +17,13 @@ const AppliedCandidatesDetails = () => {
         if (checkBoxData.length > 0) {
             const filteredCandidatesData = candidatesData.filter(
                 (candidate) =>
-                    candidate.location.toLowerCase().includes(location.toLowerCase()) &&
+                    candidate.location[0].toLowerCase().includes(location.toLowerCase()) &&
                     checkBoxData.includes(candidate.category)
             );
             setFilteredData(filteredCandidatesData);
         } else if (location.length > 0) {
             const filterByLocation = candidatesData.filter((rql) =>
-                rql.location.toLowerCase().includes(location.toLowerCase())
+                rql.location[0].toLowerCase().includes(location.toLowerCase())
             );
             setFilteredData(filterByLocation);
         } else {
@@ -130,7 +129,6 @@ const AppliedCandidatesDetails = () => {
                                     <th className='px-2 py-3 font-medium'>#</th>
                                     <th className='px-2 py-3 font-medium'>Image</th>
                                     <th className='px-2 py-3 font-medium'>Applicant</th>
-                                    <th className='px-2 py-3 font-medium'>Job Applied</th>
                                     <th className='px-2 py-3 font-medium'>Hourly Rate</th>
                                     <th className='px-2 py-3 font-medium'>Rating</th>
                                     <th className='px-10 py-3 font-medium'>Location</th>
