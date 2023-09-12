@@ -64,7 +64,7 @@ export default function PostJobForm() {
     const onSubmit = (data) => {
         const newJob = {
             title: data?.title,
-            category: data?.category,
+            category: recruitersRole?.category,
             jobType: data?.jobType,
             salary: data?.salary,
             experience: data?.experience,
