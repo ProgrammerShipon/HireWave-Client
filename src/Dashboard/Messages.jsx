@@ -1,14 +1,8 @@
-import { useEffect, useRef } from "react";
-import { useState } from "react";
-import Conversation from "../Components/Conversation";
-import ChatBox from "../Components/ChatBox";
+import { useState, useEffect, useRef } from "react";
 import { io } from "socket.io-client";
-// import useChat from "../Hooks/useChat";
-import { useQuery } from "@tanstack/react-query";
 import DashTitle from "../Components/DashComponents/DashTitle";
 import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-import useCurrentUser from "../Hooks/useCurrentUser";
 const messages = () => {
   const [axiosSecure] = useAxiosSecure()
   const [currentChat, setCurrentChat] = useState(null);
@@ -16,25 +10,11 @@ const messages = () => {
   const [receivedMessage, setReceivedMessage] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
   const socket = useRef();
-  const { userId, user } = useAuth();
-  const [currentUser, userLoading, refetch] = useCurrentUser();
+  const { userId, user, currentUser } = useAuth();
 
   const currentUserId = currentUser._id;
   // const userProfile = currentUser.userProfile;
-  console.log(currentUser, )
 
-  // Fetch All Chat List
-  // const {
-  //   data: chatHistory = [],isLoading: loading,refetch,} = useQuery({
-  //   queryKey: ["chatHistory"],
-  //   queryFn: async () => {
-  //     const res = await axiosSecure.get(`/chat/${currentUserId}`);
-  //     return res.data;
-  //   },
-  // });
-  // console.log(chatHistory)
-
-  // Connect to Socket.io
   useEffect(() => {
     socket.current = io("ws://localhost:8800");
     socket.current.emit("new-user-add", currentUserId);

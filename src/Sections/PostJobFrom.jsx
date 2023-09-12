@@ -1,46 +1,44 @@
+import moment from "moment";
 import { useEffect, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import moment from "moment";
-import useCurrentUser from "../Hooks/useCurrentUser";
-import useRecruiterRole from "../Hooks/useRecruiterRole";
-import Swal from "sweetalert2";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
-import useAllCategories from "../Hooks/useAllCategories";
-import useSkills from "../Hooks/useSkills";
 import { FaXmark } from "react-icons/fa6";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import Swal from "sweetalert2";
+import useAllCategories from "../Hooks/useAllCategories";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useRecruiterRole from "../Hooks/useRecruiterRole";
+import useSkills from "../Hooks/useSkills";
 
-const modules ={
+const modules = {
     toolbar: [
-        [ { header: [ 1, 2, 3, 4, 5, 6, false ] } ],
-        [ { size: [] } ],
-        [ "bold", "italic", "underline", "strike"],
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        [{ size: [] }],
+        ["bold", "italic", "underline", "strike"],
         [
-            { list : "ordered" },
-            { list : "bullet" },
-            { indent : "-1" },
-            { indent : "+1" }
+            { list: "ordered" },
+            { list: "bullet" },
+            { indent: "-1" },
+            { indent: "+1" }
         ],
-        [ "link", "image", "video" ]
+        ["link", "image", "video"]
     ]
 }
 
 export default function PostJobForm() {
 
     //States
-    const [requirements, setRequirements] = useState('');
+    const [responsibilities, setResponsibilities] = useState('');
     const [skillsExperience, setSkillsExperience] = useState('');
     const [benefits, setBenefits] = useState('');
     const editor = useRef(null);
 
-    const { control, register, handleSubmit, formState: { errors } } = useForm();
+    const { control, register, handleSubmit, formState: { errors }, reset } = useForm();
 
     //Imported hooks
     const [recruitersRole, userLoading, refetch] = useRecruiterRole();
     const [allCategoriesData] = useAllCategories()
     const [skillData, loading] = useSkills();
-    console.log(allCategoriesData);
     const [axiosSecure] = useAxiosSecure();
 
     //onSubmit function
@@ -48,34 +46,34 @@ export default function PostJobForm() {
         const currentDate = moment().format('ddd MMM YYYY HH:mm:ss [GMT]ZZ');
         // TO DO just dynamic the companyName, companyLogo and location
         const newJob = {
-            title : data?.title,
-            category : data?.category,
-            jobType : data?.jobType,
-            salary : data?.salary,
+            title: data?.title,
+            category: data?.category,
+            jobType: data?.jobType,
+            salary: data?.salary,
             experience: data?.experience,
-            quantity : data?.quantity,
+            quantity: data?.quantity,
             skills: data?.skills?.map((skill) => skill),
-            closingDate : data?.closingDate,
-            overview : data?.overview,
-            requirements,
+            closingDate: data?.closingDate,
+            overview: data?.overview,
+            responsibilities,
             skillsExperience,
             benefits,
             applied: 0,
             postedDate: currentDate,
-            open : true,
-            status : "pending"
-            // companyName: recruitersRole?.name, 
-            // email: recruitersRole?.email,
-            // location: recruitersRole?.address, 
-            // companyLogo: recruitersRole?.image, 
-            // location : recruitersRole?.location,
+            open: true,
+            status: "pending",
+            companyName: recruitersRole?.name, 
+            email: recruitersRole?.email,
+            location: recruitersRole?.address, 
+            companyLogo: recruitersRole?.image, 
         };
 
-        console.log(newJob);
-       const res= axiosSecure.post(`/allJobs`, newJob)
+        console.log(newJob)
+
+        axiosSecure.post(`/allJobs`, newJob)
             .then((res) => {
-                console.log(res)
                 if (res.status === 200) {
+                    reset();
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
@@ -115,7 +113,7 @@ export default function PostJobForm() {
         const updatedSkills = selectedSkills.filter((skill) => skill !== skillToRemove);
         setSelectedSkills(updatedSkills);
     };
-    
+
     return (
         <section className="py-20 md:py-[120px] duration-300">
             <div className="container">
@@ -151,10 +149,10 @@ export default function PostJobForm() {
                                     className="w-full border border-gray/40 focus:border-green py-2 focus:shadow-lg focus:shadow-gray/20 duration-300 px-3 rounded-md outline-none cursor-pointer"
                                 >
                                     <option value=''>Select Category</option>
-                                   {
-                                    allCategoriesData.map( category => 
-                                    <option value={category.name}>{category.name}</option>)
-                                   }
+                                    {
+                                        allCategoriesData.map(category =>
+                                            <option value={category.name}>{category.name}</option>)
+                                    }
                                 </select>
                                 {errors.category && (
                                     <span className="text-red-700">Job Category is required</span>
@@ -326,11 +324,12 @@ export default function PostJobForm() {
                                 Job Responsibilities:
                             </label>
                             <ReactQuill
-                                theme="snow" 
-                                value={requirements}
+                                className="border border-gray/40 focus:border-green py-2 focus:shadow-lg focus:shadow-gray/20 duration-300 px-3 rounded-md"
+                                theme="snow"
+                                value={responsibilities}
                                 modules={modules}
                                 placeholder="Enter the list of your job responsibilities"
-                                onChange={setRequirements} 
+                                onChange={setResponsibilities}
                             />
                         </div>
 
@@ -340,11 +339,11 @@ export default function PostJobForm() {
                                 Skills & Experiences Required:
                             </label>
                             <ReactQuill
-                                theme="snow" 
+                                theme="snow"
                                 value={skillsExperience}
                                 modules={modules}
                                 placeholder="Enter the list of skills and experiences required for the job"
-                                onChange={setSkillsExperience} 
+                                onChange={setSkillsExperience}
                             />
                         </div>
 
@@ -354,11 +353,11 @@ export default function PostJobForm() {
                                 Benefits:
                             </label>
                             <ReactQuill
-                                theme="snow" 
+                                theme="snow"
                                 value={benefits}
                                 modules={modules}
                                 placeholder="Enter the list of benefits candidate will receive"
-                                onChange={setBenefits} 
+                                onChange={setBenefits}
                             />
                         </div>
 
@@ -403,9 +402,9 @@ export default function PostJobForm() {
                             <p className="text-lightGray">Describe Your Job Overview best ways. To create an impactful job overview, succinctly introduce the role, provide essential details about responsibilities and qualifications, and highlight what makes your company an appealing place to work.</p>
                         </div>
 
-                        {/* requirements */}
+                        {/* Responsibilities */}
                         <div>
-                            <h2 className="text-dark text-lg underline underline-offset-2">Requirements:</h2>
+                            <h2 className="text-dark text-lg underline underline-offset-2">Responsibilities:</h2>
                             <p className="text-lightGray">Specify the qualifications, skills, and experience necessary for the role, ensuring candidates understand the expectations clearly.</p>
                         </div>
 

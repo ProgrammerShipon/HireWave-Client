@@ -54,3 +54,9 @@
 .count__up span {
   font-weight: 600;
 }
+
+/* react phone number input */
+.PhoneInputInput {
+  width: max-content;
+  outline: none;
+}

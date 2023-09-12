@@ -1,20 +1,26 @@
 import { Step, Stepper } from "@tkwant/react-steps";
+import { Country, State } from "country-state-city";
 import { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import useAuth from '../Hooks/useAuth';
-import useSkills from '../Hooks/useSkills';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 import { useNavigate } from 'react-router-dom';
-import useAxiosSecure from '../Hooks/useAxiosSecure';
 import Swal from "sweetalert2";
+import useAuth from '../Hooks/useAuth';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import useSkills from '../Hooks/useSkills';
 
 // react icons
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlinePlus } from 'react-icons/ai';
 import { FaXmark } from 'react-icons/fa6';
 import PageLoader from "../Components/PageLoader";
+import useAllCategories from "../Hooks/useAllCategories";
 
 const CandidateSignUpForm = () => {
+    const [allCategoriesData] = useAllCategories();
     const [curStep, setCurStep] = useState(0);
     const [finish, setFinish] = useState(false);
+    const [phoneNumber, setPhoneNumber] = useState()
     const [skillData, loading] = useSkills();
     const [finishLoading, setFinishLoading] = useState(false);
     const { user } = useAuth();
@@ -22,6 +28,7 @@ const CandidateSignUpForm = () => {
     const navigate = useNavigate();
 
     const { control, register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
+    const selectedCategory = watch('job_category', '');
 
     //Form Submit function
     const onSubmit = data => {
@@ -33,7 +40,7 @@ const CandidateSignUpForm = () => {
             email: user?.email,
             image: user?.photoURL,
             title: data.title,
-            phone: [data.country_code, data?.phone],
+            phone: phoneNumber,
             category: data.category,
             hourlyRate: data.hourlyRate,
             jobType: data.jobType,
@@ -42,14 +49,17 @@ const CandidateSignUpForm = () => {
             skills: data?.skills?.map((skill) => skill),
             about: [],
             education: [],
-            experience: [
+            experience: 
+            data.position == "" && data.organization == "" && data.companyLocation == "" && data.startDate == "" && data.endDate == "" ?
+            [] :
+            [
                 {
                     position: data.position,
                     companyName: data.organization,
                     location: data.companyLocation,
                     startDate: data.startDate,
                     endDate: data.endDate,
-                }
+                } 
             ],
             socialLink: [],
             languages: [],
@@ -58,6 +68,7 @@ const CandidateSignUpForm = () => {
             visibility: data.visibility,
             joinDate: todayDate
         }
+        console.log(newData);
 
         setCurStep(curStep + 1)
 
@@ -87,16 +98,16 @@ const CandidateSignUpForm = () => {
         setCurStep(curStep - 1);
     };
 
-    // Necessary json
-    const years = [1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]
+    //Country, State, Province
+    const selectedCountry=  watch('country', '');
+    const countryData= Country.getAllCountries()
+    const filteredCountry = countryData.find(country=> country.name == selectedCountry)
+    const stateData= State.getStatesOfCountry(filteredCountry?.isoCode)
 
-    const countryCodes = ["+1", "+44", "+49", "+33", "+81", "+86", "+91", "+61", "+7", "+55", "+54", "+51", "+52", "+53", "+20", "+27", "+82", "+62", "+92", "+94", "+62", "+63", "+66", "+84", "+95", "+670", "+975", "+380", "+375", "+373", "+377", "+423", "+41", "+46", "+47", "+48", "+351", "+34", "+39", "+31", "+420", "+880", "+421", "+386", "+385", "+385", "+352", "+352", "+43", "+353", "+354"]
-
-
-    //States for Experience div
+    // Experience div State
     const [present, setPresent] = useState(false);
 
-    // Skills states
+    // Skills States and Functions
     const [inputValue, setInputValue] = useState('');
     const [suggestions, setSuggestions] = useState([]);
     const [selectedSkills, setSelectedSkills] = useState([]);
@@ -134,6 +145,11 @@ const CandidateSignUpForm = () => {
         return true;
     };
 
+    const validatePhoneNumber = (value) => {
+        if (!value || value.length < 10 || value.length > 15) return false
+        return true;
+      };
+
     const renderContent = () => {
         switch (curStep) {
             case 0:
@@ -169,8 +185,9 @@ const CandidateSignUpForm = () => {
                                 </label>
 
                                 {/* hourly rate */}
-                                <label className='text-gray w-full text-base'>Hourly rate*
+                                <label className='text-gray w-full text-base'>Hourly rate ($)*
                                     <input
+                                        type="number"
                                         className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.hourlyRate && 'border-red-400'}`}
                                         placeholder='e.g. 10'
                                         {...register("hourlyRate", { required: true })}
@@ -179,13 +196,41 @@ const CandidateSignUpForm = () => {
                             </div>
 
                             {/* category */}
-                            <label className='text-gray text-base'>Category*
-                                <input
-                                    className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.category && 'border-red-400'}`}
-                                    placeholder='e.g. Sales and Marketing'
-                                    {...register("category", { required: true })}
-                                />
-                            </label>
+                            <p className='border-b-2 border-purple my-5'></p>
+                            <h1 className='font-medium text-xl text-lightGray drop-shadow-lg'>Choose category that fits best with your job title</h1>
+
+                            <div className='flex flex-wrap gap-4'>
+                                {allCategoriesData.map((category) => (
+                                    <div
+                                        key={category.name}
+                                        className={`w-fit ${selectedCategory === category.name
+                                            ? 'bg-purple/20 text-purple font-medium drop-shadow-lg shadow-lg cursor-pointer'
+                                            : errors.job_category ? 'border border-red-500'
+                                                : 'bg-gray/30 text-lightGray font-medium hover:bg-purple/20 hover:text-purple duration-300'
+                                            } px-4 rounded-full cursor-pointer`}
+                                        onClick={() => setValue('job_category', category.name)}
+                                    >
+                                        <Controller
+                                            name="job_category"
+                                            control={control}
+                                            rules={{ required: true }}
+                                            render={({ field }) => (
+                                                <label className="text-base" htmlFor={category.name}>
+                                                    {category.name}
+                                                    <input
+                                                        id={category.name}
+                                                        type="radio"
+                                                        value={category.name}
+                                                        className='hidden'
+                                                        {...register("category", { required: true })}
+                                                    />
+                                                </label>
+                                            )}
+                                        />
+                                    </div>
+
+                                ))}
+                            </div>
 
                             {/* Submit */}
                             <div className='text-right'>
@@ -215,21 +260,24 @@ const CandidateSignUpForm = () => {
                                         className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.country && 'border-red-400'}`}
                                         {...register("country", { required: true })}
                                     >
-                                        <option value="">Select</option>
-                                        <option value="Bangladesh">Bangladesh</option>
-                                        <option value="United States">United States</option>
-                                        <option value="Pakistan">Pakistan</option>
-                                        <option value="India">India</option>
+                                        <option value="" disable>Select</option>
+                                        {
+                                            countryData?.map(country => <option value={country.name}>{country.name}</option>)
+                                        }
                                     </select>
                                 </label>
 
                                 {/* state */}
                                 <label className='text-gray w-full text-base'>State*
-                                    <input
-                                        className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.state && 'border-red-400'}`}
-                                        placeholder='e.g. Dhaka | New work'
+                                    <select name="jobType" id="jobType"
+                                        className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.country && 'border-red-400'}`}
                                         {...register("state", { required: true })}
-                                    />
+                                    >
+                                        <option value="" disable>Select</option>
+                                        {
+                                            stateData?.map(state => <option value={state.name}>{state.name}</option>)
+                                        }
+                                    </select>
                                 </label>
                             </div>
 
@@ -242,31 +290,33 @@ const CandidateSignUpForm = () => {
                                 />
                             </label>
 
-                            {/* country code & phone number */}
-                            <div className='flex flex-col sm:flex-row items-center gap-3'>
-                                {/* country code */}
-                                <label className='text-gray w-40 text-base'>Country code*
-                                    <select name="jobType" id="jobType"
-                                        className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.country_code && 'border-red-400'}`}
-                                        {...register("country_code", { required: true })}
-                                    >
-                                        <option value="">Select</option>
-                                        {
-                                            countryCodes.map((code, index) => <option
-                                                key={index} value={code}>{code}</option>)
-                                        }
-                                    </select>
-                                </label>
-
-                                {/* Phone number */}
-                                <label className='text-gray w-full text-base'>Phone number*
-                                    <input
-                                        className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.phone && 'border-red-400'}`}
-                                        placeholder='e.g. 12910211'
-                                        {...register("phone", { required: true })}
+                            {/* Phone number */}
+                            <label className="text-gray w-40 text-base outline-none">
+                                Phone Number*
+                                <Controller
+                                name="phone"
+                                control={control}
+                                rules={{
+                                    validate: validatePhoneNumber
+                                  }}
+                                render={({ field }) => (
+                                    <PhoneInput
+                                    className={`PhoneInputInput text-dark rounded-md border border-gray/20 focus:border-purple px-3 py-2 ${errors.phone && 'border-red-400'}`}
+                                    placeholder="Enter phone number"
+                                    value={field.value}
+                                    
+                                    onChange={(value) => {
+                                        field.onChange(value)
+                                        setPhoneNumber(value)
+                                    }}
                                     />
-                                </label>
-                            </div>
+                                )}
+                                />
+                            </label>
+                            {errors.phone && (<p className="text-red-400 -mt-5">Invalid Phone Number</p>)}
+
+                            
+
 
                             {/* Submit */}
                             <div className='flex items-center justify-between'>
@@ -318,7 +368,7 @@ const CandidateSignUpForm = () => {
                                 <label className='text-gray w-full text-base'>Location*
                                     <input
                                         className='text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2'
-                                        placeholder='e.g. New work, USA'
+                                        placeholder="Write 'Remote' if it was Remote job"
                                         {...register("companyLocation")}
                                     />
                                 </label>
@@ -452,7 +502,7 @@ const CandidateSignUpForm = () => {
                                 <div className='flex flex-wrap items-center gap-4'>
 
                                     {/* Suggested skills array map */}
-                                    {['Customer Service', 'Communication skills', 'Leadership', 'Maintenance', 'react'].map((suggestedSkill) => (
+                                    {['Customer Service', 'Communication skills', 'Leadership', 'Maintenance', 'Problem Solving', 'Stress Management', 'Customer Service', 'Presentation Skill', 'Adaptability'].map((suggestedSkill) => (
                                         <div
                                             key={suggestedSkill}
                                             className='flex items-center gap-2 px-3 py-2 border border-gray/40 hover:border-purple hover:shadow-lg rounded-md cursor-pointer group duration-300'

@@ -2,19 +2,86 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import LearningDetailsComment from './LearningDetailsComment';
 import { useLoaderData } from 'react-router-dom';
-
+import ClipboardJS from 'clipboard';
+import { FaEye } from "react-icons/fa";
+import { BiDislike, BiLike } from "react-icons/bi";
+import { RiShareForwardLine } from "react-icons/ri";
 // react icons
 import { CgComment } from 'react-icons/cg'
+import moment from 'moment';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import { toast } from 'react-toastify';
 
 const LearningDetailsBody = () => {
-  const [commentClick, setCommentClick] = useState('')
   const loadData = useLoaderData();
-  const { title, createdAt, updatedAt, videoLink, description, authorImg, authorName, authorEmail, comments } = loadData;
+  const [axiosSecure] = useAxiosSecure();
+  const { title, createdAt, updatedAt, videoLink, description, authorImg, authorName, authorEmail, comments, disLike, like, views, _id } = loadData;
+  console.log(loadData)
+  const [commentClick, setCommentClick] = useState('')
+  const [seeAll, setSeeAll] = useState(false);
+  const [allLike, setAllLike] = useState(like);
+  const [allDisLike, setAllDisLike] = useState(disLike);
+  // const [seeAll, setSeeAll] = useState(false);
+
 
   const { control, register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
-  const onSubmit = () => {
-    console.log('okay')
+  const onSubmit = (data) => {
+    console.log(data)
   }
+
+  const increaseLike = (_id) => {
+    console.log(_id)
+    console.log(like)
+    axiosSecure.patch(`/learning/like/${_id}`)
+      .then(res => {
+        setAllLike(res.data.like)
+        console.log(res.data.like)
+      })
+      .catch((err) => console.log(err));
+  }
+  const reduceLike = (_id) => {
+    console.log(_id)
+    console.log(like)
+    axiosSecure.patch(`/learning/dislike/${_id}`)
+      .then(res => {
+        setAllDisLike(res.data.disLike)
+        console.log(res.data)
+      })
+      .catch((err) => console.log(err));
+  }
+  const shareLearningTutorial = () => {
+    const url =
+      window.location.protocol + '//' +
+      window.location.host + window.location.pathname
+    console.log(url)
+    // Create a clipboard instance
+    const clipboard = new ClipboardJS('.copy-button', {
+      text: function () {
+        return url;
+      }
+    });
+
+    clipboard.on('success', function (e) {
+      // Provide user feedback (optional)
+      // alert('URL copied to clipboard: ' + );
+      toast.success(e.text, {
+        position: "top-right",
+        autoClose: 2500,
+        theme: "light",
+    });
+    });
+
+    clipboard.on('error', function (e) {
+      // Handle error (optional)
+      console.error('Error copying to clipboard:', e);
+    });
+
+    clipboard.onClick({
+      action: 'copy'
+    });
+  }
+
+
   return (
     <div className="pt-20 md:pt-[120px] duration-300">
       <div className="container">
@@ -22,45 +89,68 @@ const LearningDetailsBody = () => {
           {/* Learning content */}
           <div className="lg:col-span-3">
             {/* Title & Created, updated date */}
-            <h2 className="text-2xl md:text-3xl lg:text-4xl text-green">
+            <h2 className="text-2xl text-green">
               {title}
             </h2>
-            <p className="text-sm mt-3">
-              Created: {createdAt} | Updated: {updatedAt}
-            </p>
-
+            <div>
+              <p>{views} Views  {moment((createdAt), "YYYYMMDD").fromNow()}</p>
+            </div>
             {/* Video */}
-            <div className="mt-10 mb-12 md:mb-16">
+            <div className="my-8  md:mb-16">
               <iframe
-                className="w-96 md:w-[560px] lg:w-[800px] h-[216px] md:h-[315px] lg:h-[450px]"
+                className="w-96 md:w-[560px] lg:w-full h-[216px] md:h-[315px] lg:h-[450px]"
                 src={videoLink}
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
               ></iframe>
             </div>
+            {/* Author Details */}
+            <div className="flex items-center justify-between mb-5">
+              <div className="flex items-center gap-3">
+                <img className="rounded-full w-10" src={authorImg} alt="" />
+                <div>
+                  <h3 className="lg:text-xl text-dark">{authorName}</h3>
+                  <p className="text-sm">{authorEmail}</p>
+                </div>
+
+              </div>
+
+              <div className="flex items-center gap-5 px-5">
+                <div className=' rounded-lg px-5 shadow-sm hover:border-none flex items-center gap-4'>
+                  <p className=' my-2 flex items-center gap-2'>
+                    <BiLike onClick={() => increaseLike(_id)} className='text-xl cursor-pointer' /> {allLike} </p>
+
+                  <p className=' my-2 flex items-center gap-2'><BiDislike onClick={() => reduceLike(_id)} className='text-xl cursor-pointer' /> {allDisLike} </p>
+                </div>
+                <p className="flex items-center gap-2 "><FaEye className='text-lg' /> {views} </p>
+                <p onClick={shareLearningTutorial} className='cursor-pointer flex items-center gap-1 rounded-xl shadow-sm py-3 px-3 copy-button'>
+                  <RiShareForwardLine className='text-xl' /> Share
+                </p>
+              </div>
+
+            </div>
 
             {/* Description */}
-            <h1 className="text-xl md:text-2xl font-medium text-green bg-green/10 w-fit px-4 rounded-full tracking-widest drop-shadow-lg capitalize">
-              Short Description
-            </h1>
-            <p
-              className="text-lightGray mt-4"
-              dangerouslySetInnerHTML={{ __html: description }}
-            ></p>
 
-            {/* Author details */}
-            <div className="flex items-center gap-5 my-10">
-              <img
-                className="rounded-full w-14"
-                src={authorImg}
-                alt=""
-              />
-              <div>
-                <h3 className="text-xl text-dark">{authorName}</h3>
-                <p className="">{authorEmail}</p>
-              </div>
+            <div className='flex items-center'>
+              {
+                seeAll ?
+                  <p
+                    className="text-lightGray mt-4"
+                    dangerouslySetInnerHTML={{ __html: description }}
+                    onClick={() => { setSeeAll(!seeAll) }}
+                  ></p> :
+
+                  <> <p
+                    className="text-lightGray mt-4"
+                    onClick={() => { setSeeAll(!seeAll) }}
+                    dangerouslySetInnerHTML={{ __html: description.slice(0, 300)}}
+                  ></p></>
+
+              }
             </div>
+
 
             {/* Divider */}
             <p className="border border-green"></p>
