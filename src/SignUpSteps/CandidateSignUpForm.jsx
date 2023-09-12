@@ -69,7 +69,6 @@ const CandidateSignUpForm = () => {
             setFinishLoading(true)
             return axiosSecure.post("/candidates", newData)
                 .then((data) => {
-                    console.log(data)
                     if (data.status === 200) {
                         setFinishLoading(false)
                         Swal.fire({
@@ -80,6 +79,7 @@ const CandidateSignUpForm = () => {
                             timer: 2500
                         });
                         navigate('/', { replace: true })
+                        window.location.reload(true)
                     }
                 })
                 .catch((err) => console.log(err));
@@ -566,7 +566,7 @@ const CandidateSignUpForm = () => {
     };
 
     if (finishLoading) {
-        return <div className="mt-32"><PageLoader /></div>
+        return <div className='flex h-screen items-center justify-center'><PageLoader /></div>
     }
 
     return (
