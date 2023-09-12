@@ -98,22 +98,16 @@ const CandidateSignUpForm = () => {
         setCurStep(curStep - 1);
     };
 
-    
-    // Necessary json
-    const years = [1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]
-
-    const countryCodes = ["+1", "+44", "+49", "+33", "+81", "+86", "+91", "+61", "+7", "+55", "+54", "+51", "+52", "+53", "+20", "+27", "+82", "+62", "+92", "+94", "+62", "+63", "+66", "+84", "+95", "+670", "+975", "+380", "+375", "+373", "+377", "+423", "+41", "+46", "+47", "+48", "+351", "+34", "+39", "+31", "+420", "+880", "+421", "+386", "+385", "+385", "+352", "+352", "+43", "+353", "+354"]
-
     //Country, State, Province
     const selectedCountry=  watch('country', '');
     const countryData= Country.getAllCountries()
     const filteredCountry = countryData.find(country=> country.name == selectedCountry)
     const stateData= State.getStatesOfCountry(filteredCountry?.isoCode)
 
-    //States for Experience div
+    // Experience div State
     const [present, setPresent] = useState(false);
 
-    // Skills states
+    // Skills States and Functions
     const [inputValue, setInputValue] = useState('');
     const [suggestions, setSuggestions] = useState([]);
     const [selectedSkills, setSelectedSkills] = useState([]);
@@ -307,7 +301,7 @@ const CandidateSignUpForm = () => {
                                   }}
                                 render={({ field }) => (
                                     <PhoneInput
-                                    className="PhoneInputInput text-dark rounded-md border border-gray/40 focus:border-purple px-3 py-2"
+                                    className={`PhoneInputInput text-dark rounded-md border border-gray/20 focus:border-purple px-3 py-2 ${errors.phone && 'border-red-400'}`}
                                     placeholder="Enter phone number"
                                     value={field.value}
                                     
@@ -319,7 +313,7 @@ const CandidateSignUpForm = () => {
                                 )}
                                 />
                             </label>
-                            {errors.phone && (<p className="text-red-400">Invalid Phone Number</p>)}
+                            {errors.phone && (<p className="text-red-400 -mt-5">Invalid Phone Number</p>)}
 
                             
 
