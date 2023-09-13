@@ -10,9 +10,9 @@ import { RiShareForwardLine } from "react-icons/ri";
 import { CgComment } from 'react-icons/cg'
 import moment from 'moment';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
+import { toast } from 'react-toastify';
 import useLearningData from '../Hooks/useLearningData';
 import useCandidatesRole from '../Hooks/useCandidatesRole';
-import Swal from 'sweetalert2';
 
 const LearningDetailsBody = () => {
   const {learningData} = useLearningData();
@@ -68,11 +68,12 @@ const LearningDetailsBody = () => {
     });
 
     clipboard.on('success', function (e) {
-      Swal.fire(
-        'Here is the shareable Link',
-        e.text,
-        'success'
-      )
+
+      toast.success("Link copied to the Clipboard", {
+        position: "top-right",
+        autoClose: 2500,
+        theme: "light",
+    });
     });
 
     clipboard.on('error', function (e) {
