@@ -1,23 +1,23 @@
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
-import Button from '../Components/Button';
-import CustomModal from '../Components/CustomModal';
-import useAuth from '../Hooks/useAuth';
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import Button from "../Components/Button";
+import CustomModal from "../Components/CustomModal";
+import useAuth from "../Hooks/useAuth";
 
 // react icons
 import { AiOutlineMessage } from "react-icons/ai";
-import { BiTimeFive } from 'react-icons/bi';
-import { BsCameraVideo, BsCaretDownFill, BsSendCheck } from 'react-icons/bs';
-import { HiOutlineLocationMarker } from 'react-icons/hi';
-import { MdOutlineAssignment } from 'react-icons/md';
-import { toast } from 'react-toastify';
-import ArrayTextarea from '../Components/ArrayTextarea';
-import GetAgoTime from '../Components/GetAgoTime';
-import useAxiosSecure from '../Hooks/useAxiosSecure';
+import { BiTimeFive } from "react-icons/bi";
+import { BsCameraVideo, BsCaretDownFill, BsSendCheck } from "react-icons/bs";
+import { HiOutlineLocationMarker } from "react-icons/hi";
+import { MdOutlineAssignment } from "react-icons/md";
+import { toast } from "react-toastify";
+import ArrayTextarea from "../Components/ArrayTextarea";
+import GetAgoTime from "../Components/GetAgoTime";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const ApplicationFormDetails = ({ candidateDetails }) => {
-  const { currentUser } = useAuth()
+  const { currentUser } = useAuth();
   const {
     applicantId,
     applicantName,
@@ -34,43 +34,48 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
   const [isInterviewModalOpen, setIsInterviewModalOpen] = useState(false);
   const [isSentTaskModalOpen, setIsSentTaskModalOpen] = useState(false);
   const [isOfferModalOpen, setIsOfferModalOpen] = useState(false);
-  const [offerLetter, setOfferLetter] = useState('false');
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const [offerLetter, setOfferLetter] = useState("false");
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   const [axiosSecure] = useAxiosSecure();
 
   const handleOfferModal = (e) => {
-    if (e == "edit") setIsOfferModalOpen(true)
-    else if (e == "cancel") setIsOfferModalOpen(false)
-  }
+    if (e == "edit") setIsOfferModalOpen(true);
+    else if (e == "cancel") setIsOfferModalOpen(false);
+  };
   const handleAssignTest = (e) => {
-    if (e == "edit") setIsSentTaskModalOpen(true)
-    else if (e == "cancel") setIsSentTaskModalOpen(false)
-  }
+    if (e == "edit") setIsSentTaskModalOpen(true);
+    else if (e == "cancel") setIsSentTaskModalOpen(false);
+  };
   const handleInterviewModal = (e) => {
-    if (e == "edit") setIsInterviewModalOpen(true)
-    else if (e == "cancel") setIsInterviewModalOpen(false)
-  }
+    if (e == "edit") setIsInterviewModalOpen(true);
+    else if (e == "cancel") setIsInterviewModalOpen(false);
+  };
 
   // Job Offer Send
-  const onOfferSend = data => {
+  const onOfferSend = (data) => {
     const offerData = {
       offerLetter,
       candidateEmail: email,
       recruiterEmail: currentUser,
-    }
-    console.log('Offer', offerData);
+    };
+    console.log("Offer", offerData);
 
     //TODO: Update education data
-    setIsOfferModalOpen(false)
+    setIsOfferModalOpen(false);
     reset();
-  }
+  };
 
-  console.log('candidates data ', candidateDetails)
-  // Assign Test 
-  const onAssignTest = data => {
+  console.log("candidates data ", candidateDetails);
+  // Assign Test
+  const onAssignTest = (data) => {
     const taskData = {
       ...candidateDetails,
-      appliedId: _id, 
+      appliedId: _id,
       companyId: currentUser?._id,
       tasks: [
         {
@@ -81,49 +86,52 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
       ],
     };
 
-    console.log('Assign test', taskData);
-    
+    console.log("Assign test", taskData);
+
     // send data client or store database
-    axiosSecure.post("/task", taskData)
-      .then(res => {
+    axiosSecure
+      .post("/task", taskData)
+      .then((res) => {
         if (res.status == 200) {
-          toast.success('Task Assign Send Success');
+          toast.success("Task Assign Send Success");
         }
-    })
-    .catch(err => console.log(err))
+      })
+      .catch((err) => console.log(err));
 
     //TODO: Update education data
-    setIsInterviewModalOpen(false)
+    setIsInterviewModalOpen(false);
     reset();
-  }
+  };
 
-  const onInterviewSubmit = data => {
-    console.log(data)
+  const onInterviewSubmit = (data) => {
+    console.log(data);
     const interviewData = {
       interviewDate: data.date,
       interviewTime: data.time,
-      interviewDetails: data.details
-    }
-    console.log(interviewData)
+      interviewDetails: data.details,
+    };
+    console.log(interviewData);
 
     //TODO: Update education data
-    setIsInterviewModalOpen(false)
+    setIsInterviewModalOpen(false);
     reset();
-  }
+  };
 
-  const onHireSubmit = data => {
-    console.log(data)
+  const onHireSubmit = (data) => {
+    console.log(data);
     const hireData = {
-      message: data.message
-    }
-    console.log(hireData)
+      message: data.message,
+    };
+    console.log(hireData);
 
     //TODO: Update education data
-    setIsOfferModalOpen(false)
+    setIsOfferModalOpen(false);
     reset();
-  }
+  };
 
-  const formattedCoverLetter = cover_letter.map(pa => pa === "" ? "\u00A0" : pa);
+  const formattedCoverLetter = cover_letter.map((pa) =>
+    pa === "" ? "\u00A0" : pa
+  );
 
   return (
     <section className="py-20 md:py-[120px] max-w-5xl mx-auto">
@@ -308,7 +316,7 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
                     <span className="text-red-700">Date is required</span>
                   )}
                 </div>
-                
+
                 {/* Additional File Links or data */}
                 <label className="text-dark text-base block mb-1 mt-5">
                   Additional file links / Tests details

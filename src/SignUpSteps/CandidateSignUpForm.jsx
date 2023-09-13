@@ -271,7 +271,7 @@ const CandidateSignUpForm = () => {
                                 {/* state */}
                                 <label className='text-gray w-full text-base'>State*
                                     <select name="jobType" id="jobType"
-                                        className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.country && 'border-red-400'}`}
+                                        className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.state && 'border-red-400'}`}
                                         {...register("state", { required: true })}
                                     >
                                         <option value="" disable>Select</option>
@@ -315,9 +315,6 @@ const CandidateSignUpForm = () => {
                                 />
                             </label>
                             {errors.phone && (<p className="text-red-400 -mt-5">Invalid Phone Number Length</p>)}
-
-                            
-
 
                             {/* Submit */}
                             <div className='flex items-center justify-between'>

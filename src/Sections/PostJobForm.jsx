@@ -53,6 +53,7 @@ export default function PostJobForm() {
     const [skillData, loading] = useSkills();
     const subCategories = allCategoriesData?.find(category => category?.name == currentRecruiter?.category)
     const [axiosSecure] = useAxiosSecure();
+    console.log(recruitersRole);
 
     //Modal functions
     const handlePreviewModal = (e) => {
@@ -510,7 +511,7 @@ export default function PostJobForm() {
                         {/* Job Title */}
                         <div>
                             <h2 className="text-dark text-lg underline underline-offset-2">Job Title:</h2>
-                            <p className="text-lightGray">Title is the most important place to Include relevant keywords in the job title for better search visibility among potential candidates.</p>
+                            <p className="text-lightGray">Use relevant keywords in the job title for better search visibility among potential candidates.</p>
                         </div>
 
                         {/* category */}
@@ -528,19 +529,19 @@ export default function PostJobForm() {
                         {/* skills */}
                         <div>
                             <h2 className="text-dark text-lg underline underline-offset-2">Skills:</h2>
-                            <p className="text-lightGray">Skills your job with buzz words that are relevant to the jobs you offer.</p>
+                            <p className="text-lightGray">Include all the skills that are relevant to the jobs you offer. The job post will be suggested to Candidates with similar skills.</p>
                         </div>
 
                         {/* Overview */}
                         <div>
                             <h2 className="text-dark text-lg underline underline-offset-2">Overview:</h2>
-                            <p className="text-lightGray">Describe Your Job Overview best ways. To create an impactful job overview, succinctly introduce the role, provide essential details about responsibilities and qualifications, and highlight what makes your company an appealing place to work.</p>
+                            <p className="text-lightGray">Describe Your Company Overview in a detailed way. To create an impactful job overview, provide essential details about your company, and highlight what makes your company an appealing place to work.</p>
                         </div>
 
                         {/* Responsibilities */}
                         <div>
                             <h2 className="text-dark text-lg underline underline-offset-2">Responsibilities:</h2>
-                            <p className="text-lightGray">Specify the qualifications, skills, and experience necessary for the role, ensuring candidates understand the expectations clearly.</p>
+                            <p className="text-lightGray">Specify the responsibilities for the role, ensuring candidates understand the expectations clearly.</p>
                         </div>
 
                         {/* skill & experience */}

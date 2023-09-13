@@ -6,10 +6,10 @@ const LearningCard = ({ learning }) => {
     const { _id, category, thumbnail, title, description, readTime, authorName, authorEmail, authorImg } = learning;
 
     const increaseView = () => {
-      console.log(_id);
-        axiosSecure.patch(`/interactions/${_id}`)
+        console.log(_id)
+        axiosSecure.patch(`/learning/view/${_id}`)
             .then(res => {
-              console.log(res.data);
+                console.log(res.data)
             })
             .catch((err) => console.log(err));
     }
@@ -51,9 +51,7 @@ const LearningCard = ({ learning }) => {
                     </div>
 
                     {/* Detail Button */}
-                <Link
-                  // to={`/learning/${_id}`}
-                  onClick={() => increaseView(_id)} className="bg-purple text-white inline-block px-2 py-1 lg:px-3 lg:py-2 rounded-md duration-300 hover:bg-dark shadow-xl shadow-purple/20 hover:shadow-dark/20 mr-3 cursor-pointer">Explore</Link>
+                    <Link to={`/learning/${_id}`} onClick={() => increaseView(_id)} className="bg-purple text-white inline-block px-2 py-1 lg:px-3 lg:py-2 rounded-md duration-300 hover:bg-dark shadow-xl shadow-purple/20 hover:shadow-dark/20 mr-3 cursor-pointer">Explore</Link>
                 </div>
             </div>
           </div>

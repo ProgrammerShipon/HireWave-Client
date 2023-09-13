@@ -80,8 +80,6 @@ const JobCard = ({ job, setJobDetails, mySavedJobs, refetch }) => {
                 </div>
 
                 <div className="flex items-center gap-1">
-                    <BiSolidCrown title="Featured" size='22px' className="text-yellow-500" />
-                    <IoIosFlash title="Urgent" size='22px' className="text-red-500" />
                     {
                         !alreadySaved ? <>
                             {
@@ -122,7 +120,7 @@ const JobCard = ({ job, setJobDetails, mySavedJobs, refetch }) => {
                     </p>
                 </div>
 
-                <Link to='/' className="lg:hidden bg-green text-white px-5 py-2 rounded-lg border border-green shadow-xl shadow-green/20 text-center">
+                <Link to={`/job_details/${_id}`} className="lg:hidden bg-green text-white px-5 py-2 rounded-lg border border-green shadow-xl shadow-green/20 text-center">
                     View Details
                 </Link>
             </div>
