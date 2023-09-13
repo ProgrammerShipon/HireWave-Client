@@ -43,6 +43,8 @@ import MyApplications from "../Dashboard/MyApplications";
 import ViewApplication from "../Pages/ViewApplication";
 import Pricing from "../Pages/Pricing";
 import ApplicationForm from "../Pages/ApplicationForm";
+import PaymentSuccess from "../Pages/PaymentSuccess";
+import PaymentFail from "../Pages/PaymentFail";
 
 const Router = createBrowserRouter([
   {
@@ -153,6 +155,7 @@ const Router = createBrowserRouter([
         path: "/event_details/:name",
         element: <EventDetails />,
       },
+
     ],
   },
   {
@@ -201,6 +204,14 @@ const Router = createBrowserRouter([
       {
         path: "applicant",
         element: <AppliedApplicant />,
+      },
+      {
+        path: "payment/successful/:tran_id",
+        element: <PaymentSuccess />,
+      },
+      {
+        path: "payment/fail",
+        element: <PaymentFail />,
       },
 
       //Admin Routes
