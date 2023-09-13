@@ -54,6 +54,7 @@ export default function PostJobForm() {
     const [skillData, loading] = useSkills();
     const subCategories = allCategoriesData?.find(category => category?.name == recruitersRole?.category)
     const [axiosSecure] = useAxiosSecure();
+    console.log(recruitersRole);
 
     //Modal functions
     const handlePreviewModal =(e) => {
@@ -87,7 +88,7 @@ export default function PostJobForm() {
             status: "pending",
             companyName: recruitersRole?.name, 
             email: recruitersRole?.email,
-            location: recruitersRole?.address, 
+            location: [recruitersRole?.location[0], recruitersRole?.location[1]], 
             companyLogo: recruitersRole?.image, 
             location : recruitersRole?.location,
         };
@@ -410,12 +411,7 @@ export default function PostJobForm() {
                                     />
                                 </div>
                                 <div className="mt-1">
-                                    <Link
-                                        to="/"
-                                        className="text-xl font-medium duration-300 text-dark drop-shadow-lg hover:text-green line-clamp-2"
-                                    >
-                                        {recruitersRole?.companyName}
-                                    </Link>
+                                    <p className="text-xl font-medium duration-300 text-dark drop-shadow-lg hover:text-green line-clamp-2">{recruitersRole?.companyName}</p>
                                     <p className="text-gray">{recruitersRole?.category}</p>
                                 </div>
                             </div>
@@ -428,7 +424,7 @@ export default function PostJobForm() {
                                     </p>
 
                                     <p className="text-purple bg-purple/10 px-4 py-[2px] rounded-full shadow-lg shadow-purple/20 flex items-center gap-1">
-                                        <BiMap /> {recruitersRole?.address}
+                                        <BiMap /> {recruitersRole?.location[0]}, {recruitersRole?.location[1]}
                                     </p>
                                 </div>
                             </div>

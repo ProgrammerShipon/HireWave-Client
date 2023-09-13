@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import Breadcrumbs from "../Components/Breadcrumbs";
-import PostJobFrom from "../Sections/PostJobFrom";
 import Divider from "../Components/Divider";
+import PostJobForm from "../Sections/PostJobForm";
 
 const PostJob = () => {
   return (
@@ -12,7 +12,7 @@ const PostJob = () => {
       </Helmet>
       <Breadcrumbs title="Post Job" />
 
-      <PostJobFrom />
+      <PostJobForm />
       {/* border */}
       <Divider />
     </>

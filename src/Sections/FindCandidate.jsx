@@ -33,7 +33,7 @@ const FindCandidate = () => {
       (cds) =>
         (!searchTitle || cds.name.toLowerCase().includes(searchTitle)) &&
         (!searchLocation ||
-          cds.location.toLowerCase().includes(searchLocation)) &&
+          cds.location[0].toLowerCase().includes(searchLocation)) &&
         (!searchCategory || cds.category.toLowerCase().includes(searchCategory))
     );
 

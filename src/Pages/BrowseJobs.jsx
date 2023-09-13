@@ -21,7 +21,6 @@ const BrowseJobs = () => {
       {
         !loading ? <FindJobs allJobsData={allJobsData} /> : <PageLoader />
       }
-      <GetStart />
     </>
   );
 };
