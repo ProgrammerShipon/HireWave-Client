@@ -22,7 +22,7 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const CandidateProfile = ({ candidatesData }) => {
     const [languagesData] = useLanguagesData();
-    const [axiosSecure]=useAxiosSecure()
+    const [axiosSecure] = useAxiosSecure()
     const { _id, name, title, image, location, status, hourlyRate, jobType, address, languages, about, education, experience, skills, openToWork, socialLink } = candidatesData;
 
     const formattedAbout = about.map(pa => pa === "" ? "\u00A0" : pa);
@@ -61,12 +61,20 @@ const CandidateProfile = ({ candidatesData }) => {
             experience: newExperiences
         }
         console.log(updateData)
+        // const res = fetch((`https://hire-wave-server.vercel.app/api/candidates/${_id}`), {
+        //     method: 'PATCH',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(updateData),
+        // });
+        // then(res => console.log(response))
         axiosSecure.patch(`/candidates/${_id}`, updateData)
             .then(res => {
                 console.log(res)
             })
-            .catch(error=>{
-                console.log(error.message);
+            .catch(error => {
+                console.log(error);
             })
 
     };
@@ -479,8 +487,8 @@ const CandidateProfile = ({ candidatesData }) => {
                     {/* educations body */}
                     <div className={`py-4 space-y-4 ${openEducation ? 'block' : 'hidden'}`}>
                         {
-                            newEducations.length > 0 ? newEducations.map(edu =>
-                                <div className='relative group cursor-pointer w-fit'>
+                            newEducations.length > 0 ? newEducations.map((edu, index) =>
+                                <div key={index} className='relative group cursor-pointer w-fit'>
                                     <h3 className='text-dark font-medium text-xl'>{edu.subject}</h3>
                                     <p className='text-lightGray'>{edu.institute}</p>
                                     <p className='flex items-center gap-1 text-gray mt-1 font-light'>
