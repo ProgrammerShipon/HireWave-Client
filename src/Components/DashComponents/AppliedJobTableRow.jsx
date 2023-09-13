@@ -7,16 +7,16 @@ import PageLoader from "../PageLoader";
 
 
 const AppliedJobTableRow = ({ job }) => {
-    const { _id, appliedJobId, companyLogo, companyName, title, appliedDate } = job;
+    const { _id, jobId, companyLogo, companyName, title, appliedDate } = job;
     const [allJobsData, loading] = useAllJobs();
     const [appliedJob, setAppliedJob] = useState([]);
 
     useEffect(() => {
         const findAppliedJob = allJobsData.filter((job) =>
-            job._id.includes(appliedJobId)
+            job._id.includes(jobId)
         );
         setAppliedJob(findAppliedJob)
-    }, [appliedJobId, !loading])
+    }, [jobId, !loading])
 
     if (!appliedJob.length) {
         return <PageLoader />
@@ -49,7 +49,7 @@ const AppliedJobTableRow = ({ job }) => {
                 }
             </td>
             <td className="px-3 py-3 text-center">
-                <Link to={`/view_application/${appliedJobId}`} className="border border-green px-4 rounded-md hover:bg-green hover:text-white duration-300">View</Link>
+                <Link to={`/view_application/${jobId}`} className="border border-green px-4 rounded-md hover:bg-green hover:text-white duration-300">View</Link>
             </td>
         </tr>
     );

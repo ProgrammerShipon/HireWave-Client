@@ -14,7 +14,7 @@ const ViewApplication = () => {
 
     useEffect(() => {
         const findAppliedJob = myAppliedJobs.filter((job) =>
-            job.appliedJobId.includes(jobData._id)
+            job.jobId.includes(jobData._id)
         );
         setAppliedJob(findAppliedJob)
     }, [jobData._id, !loading])

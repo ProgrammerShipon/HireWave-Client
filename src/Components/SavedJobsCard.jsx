@@ -17,7 +17,7 @@ const SavedJobsCard = ({ job, refetch }) => {
     // check already applied
     useEffect(() => {
         const checkExists = myAppliedJobs.filter((job) =>
-            job.appliedJobId.includes(selectJob)
+            job.jobId.includes(selectJob)
         );
 
         if (checkExists.length) {

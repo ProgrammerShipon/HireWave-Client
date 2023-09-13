@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '../Components/Button';
 import GetAgoTime from '../Components/GetAgoTime';
 import useAuth from '../Hooks/useAuth';
@@ -13,12 +13,16 @@ import { IoMdAddCircleOutline } from 'react-icons/io';
 import { LiaIndustrySolid } from 'react-icons/lia';
 import { SlLocationPin } from 'react-icons/sl';
 import Swal from 'sweetalert2';
+import useCandidatesData from '../Hooks/useCandidatesData';
+import { useEffect } from 'react';
 
 const ApplyJobForm = ({ jobData }) => {
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
+    const [candidatesData] = useCandidatesData()
+    const [candidate, setCandidate] = useState();
+    const navigate = useNavigate();
     const { _id, title, companyName, companyLogo, category, location, postedDate, overview, skills, experience, salary, open, jobType } = jobData;
-    console.log(jobData)
 
     const { register, handleSubmit, reset } = useForm();
     const [attachments, setAttachments] = useState([{ id: 1, value: "" }]);
@@ -31,13 +35,25 @@ const ApplyJobForm = ({ jobData }) => {
         else setMaximumWarning(true)
     };
 
+    useEffect(() => {
+        const getCandidate = candidatesData.find(can => can.email === user?.email);
+        setCandidate(getCandidate)
+    }, [candidatesData.length, user?.email])
+
     const onApplyJobSubmit = (data) => {
-        const cover_letter = data.cover_letter;
+        const appliedDate = new Date();
+        const cover_letter = [data.cover_letter];
         const expected_salary = data.expected_salary;
         const attachment = data.attachment;
+        const location = `${candidate.location[0]}, ${candidate.location[1]}`
 
         const appliedInfo = {
-            appliedJobId: _id,
+            jobId: _id,
+            applicantId: candidate._id,
+            applicantName: candidate.name,
+            applicantEmail: user?.email,
+            location: location,
+            category: candidate.category,
             companyName,
             companyLogo,
             title,
@@ -45,14 +61,11 @@ const ApplyJobForm = ({ jobData }) => {
             cover_letter,
             expected_salary,
             attachment,
-            applicantEmail: user?.email
+            appliedDate: appliedDate
         }
-
         console.log(appliedInfo)
-
-        axiosSecure.post(`/appliedCandidate`, appliedInfo)
+        axiosSecure.post('/appliedCandidate', appliedInfo)
             .then((res) => {
-                console.log(res)
                 if (res.status === 200) {
                     reset();
                     Swal.fire({
@@ -62,6 +75,7 @@ const ApplyJobForm = ({ jobData }) => {
                         showConfirmButton: false,
                         timer: 2500
                     });
+                    navigate('/dashboard/myApplications', { replace: true })
                 }
                 else {
                     Swal.fire({

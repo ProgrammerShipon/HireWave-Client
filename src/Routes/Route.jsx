@@ -76,7 +76,7 @@ const Router = createBrowserRouter([
       {
         path: "/application_form/:id",
         element: <PrivateRoute><ApplicationForm /></PrivateRoute>,
-        loader: ({ params }) => fetch(`${baseURL}/candidates/${params.id}`)
+        loader: ({ params }) => fetch(`${baseURL}/appliedCandidate/${params.id}`)
       },
       {
         path: "/job_details/:id",

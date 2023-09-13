@@ -6,7 +6,7 @@ import { FaLocationCrosshairs } from 'react-icons/fa6';
 import { BiCheck } from 'react-icons/bi';
 import useCandidatesData from '../Hooks/useCandidatesData';
 
-const AppliedCandidatesDetails = () => {
+const AppliedCandidatesDetails = ({ appliedData }) => {
     const [candidatesData] = useCandidatesData();
     console.log(candidatesData)
     const [filteredData, setFilteredData] = useState(candidatesData);
@@ -142,6 +142,7 @@ const AppliedCandidatesDetails = () => {
                                         key={index}
                                         index={index}
                                         candidate={candidate}
+                                        appliedData={appliedData}
                                     />)
                                 }
                             </tbody>
