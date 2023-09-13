@@ -22,7 +22,7 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const CandidateProfile = ({ candidatesData }) => {
     const [languagesData] = useLanguagesData();
-    const [useAxiosSecure] = useAxiosSecure();
+    const [axiosSecure]=useAxiosSecure()
     const { _id, name, title, image, location, status, hourlyRate, jobType, address, languages, about, education, experience, skills, openToWork, socialLink } = candidatesData;
 
     const formattedAbout = about.map(pa => pa === "" ? "\u00A0" : pa);
@@ -61,9 +61,12 @@ const CandidateProfile = ({ candidatesData }) => {
             experience: newExperiences
         }
         console.log(updateData)
-        useAxiosSecure.patch(`/candidates/${_id}`, updateData)
+        axiosSecure.patch(`/candidates/${_id}`, updateData)
             .then(res => {
                 console.log(res)
+            })
+            .catch(error=>{
+                console.log(error.message);
             })
 
     };

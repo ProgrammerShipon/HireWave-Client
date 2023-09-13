@@ -12,7 +12,7 @@ const MyProfile = () => {
     const [candidatesData, loading] = useCandidatesData();
     const [currentCandidate, setCurrentCandidate] = useState({});
     useEffect(() => {
-        const getCandidate = candidatesData.find(candidate => candidate.email === "EmmaDavis@example.com");
+        const getCandidate = candidatesData.find(candidate => candidate.email === currentUser?.email);
         setCurrentCandidate(getCandidate)
     }, [!loading, currentUser?.email])
 
