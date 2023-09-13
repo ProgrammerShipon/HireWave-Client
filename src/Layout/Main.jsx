@@ -17,7 +17,7 @@ const Main = () => {
       return <div className='flex h-screen items-center justify-center'><PageLoader /></div>
    }
 
-   if (user?.email && currentUser.email === undefined) {
+   if (user?.email && currentUser?.email == undefined) {
       return <Navigate to="/select_role" replace={true} />;
    }
 

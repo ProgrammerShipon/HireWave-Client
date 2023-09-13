@@ -1,10 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
+import AppliedApplicant from "../Dashboard/AppliedApplicant";
 import CandidateList from "../Dashboard/CandidateList";
 import ChangePassword from "../Dashboard/ChangePassword";
+import Chat from "../Dashboard/Chat";
 import DashboardHome from "../Dashboard/DashboardHome";
 import ManageJobs from "../Dashboard/ManageJobs";
 import ManageUsers from "../Dashboard/ManageUsers";
-import Messages from "../Dashboard/Messages";
+import MyApplications from "../Dashboard/MyApplications";
 import MyProfile from "../Dashboard/MyProfile";
 import PostedJobs from "../Dashboard/PostedJobs";
 import RecruiterList from "../Dashboard/RecruiterList";
@@ -12,6 +14,7 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
 import AllCategories from "../Pages/AllCategories";
+import ApplicationForm from "../Pages/ApplicationForm";
 import AppliedCandidates from "../Pages/AppliedCandidates";
 import ApplyJob from "../Pages/ApplyJob";
 import BrowseJobs from "../Pages/BrowseJobs";
@@ -28,21 +31,20 @@ import Learning from "../Pages/Learning";
 import LearningDetails from "../Pages/LearningDetails";
 import Login from "../Pages/Login";
 import PostJob from "../Pages/PostJob";
+import Pricing from "../Pages/Pricing";
 import Recruiters from "../Pages/Recruiters";
+import RecruitersDetails from "../Pages/RecruitersDetails";
 import SavedJobs from "../Pages/SavedJobs";
+import SearchResults from "../Pages/SearchResults";
 import SignUp from "../Pages/SignUp";
+import ViewApplication from "../Pages/ViewApplication";
 import CandidateSignUpForm from "../SignUpSteps/CandidateSignUpForm";
 import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
-import PrivateRoute from "./PrivateRoute";
-import RecruitersDetails from "../Pages/RecruitersDetails";
 import SelectRole from "../SignUpSteps/SelectRole";
-import Chat from "../Dashboard/Chat";
-import AppliedApplicant from "../Dashboard/AppliedApplicant";
-import SearchResults from "../Pages/SearchResults";
-import MyApplications from "../Dashboard/MyApplications";
-import ViewApplication from "../Pages/ViewApplication";
-import Pricing from "../Pages/Pricing";
-import ApplicationForm from "../Pages/ApplicationForm";
+import PrivateRoute from "./PrivateRoute";
+
+const baseURL = 'https://hire-wave-server.vercel.app/api';
+// const baseURL = 'http://localhost:3030/api';
 
 const Router = createBrowserRouter([
   {
@@ -69,17 +71,17 @@ const Router = createBrowserRouter([
       {
         path: "/candidate_details/:id",
         element: <PrivateRoute><CandidateDetails /></PrivateRoute>,
-        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/candidates/${params.id}`)
+        loader: ({ params }) => fetch(`${baseURL}/candidates/${params.id}`)
       },
       {
         path: "/application_form/:id",
         element: <PrivateRoute><ApplicationForm /></PrivateRoute>,
-        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/candidates/${params.id}`)
+        loader: ({ params }) => fetch(`${baseURL}/candidates/${params.id}`)
       },
       {
         path: "/job_details/:id",
         element: <PrivateRoute><JobDetails /></PrivateRoute>,
-        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`)
+        loader: ({ params }) => fetch(`${baseURL}/allJobs/${params.id}`)
       },
       {
         path: "/search_results",
@@ -88,12 +90,12 @@ const Router = createBrowserRouter([
       {
         path: "/apply_job/:id",
         element: <PrivateRoute><ApplyJob /></PrivateRoute>,
-        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`)
+        loader: ({ params }) => fetch(`${baseURL}/allJobs/${params.id}`)
       },
       {
         path: "/view_application/:id",
         element: <PrivateRoute><ViewApplication /></PrivateRoute>,
-        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/allJobs/${params.id}`)
+        loader: ({ params }) => fetch(`${baseURL}/allJobs/${params.id}`)
       },
       {
         path: "/learning",
@@ -102,7 +104,7 @@ const Router = createBrowserRouter([
       {
         path: "/learning/:id",
         element: <LearningDetails />,
-        loader: async ({ params }) => await fetch(`https://hire-wave-server.vercel.app/api/learning/${params.id}`),
+        loader: async ({ params }) => await fetch(`${baseURL}/learning/${params.id}`),
       },
       {
         path: "/saved_jobs",
@@ -139,7 +141,7 @@ const Router = createBrowserRouter([
       {
         path: "/recruiters_details/:id",
         element: <PrivateRoute><RecruitersDetails /></PrivateRoute>,
-        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/recruiters/${params.id}`)
+        loader: ({ params }) => fetch(`${baseURL}/recruiters/${params.id}`)
       },
       {
         path: "/contact",

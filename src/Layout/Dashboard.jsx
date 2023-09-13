@@ -4,6 +4,7 @@ import DashNavItems from '../Components/DashComponents/DashNavItems';
 import StayTop from '../Components/StayTop';
 import useAuth from '../Hooks/useAuth';
 import PageLoader from '../Components/PageLoader';
+import { ToastContainer } from 'react-toastify';
 
 const Dashboard = () => {
     const { user, loading, currentUser } = useAuth();
@@ -28,6 +29,8 @@ const Dashboard = () => {
                 <main className='flex-1 w-full pt-[71px] pl-[84px] md:pl-[300px] bg-[#f5fcf8] duration-300 z-10'>
                     <Outlet />
                 </main>
+                
+         <ToastContainer />
             </div>
         </>
     );

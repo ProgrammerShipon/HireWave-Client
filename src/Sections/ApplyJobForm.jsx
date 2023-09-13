@@ -1,25 +1,26 @@
-import Button from '../Components/Button';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import Button from '../Components/Button';
 import GetAgoTime from '../Components/GetAgoTime';
 import useAuth from '../Hooks/useAuth';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
-import Swal from 'sweetalert2';
 
 // react icons
-import { GiLevelEndFlag } from 'react-icons/gi';
 import { BsCurrencyDollar } from 'react-icons/bs';
+import { GiLevelEndFlag } from 'react-icons/gi';
+import { IoMdAddCircleOutline } from 'react-icons/io';
 import { LiaIndustrySolid } from 'react-icons/lia';
 import { SlLocationPin } from 'react-icons/sl';
-import { IoMdAddCircleOutline } from 'react-icons/io';
+import Swal from 'sweetalert2';
 
 const ApplyJobForm = ({ jobData }) => {
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
-    const { _id, title, companyName, category, location, postedDate, overview, skills, experience, salary, open } = jobData;
+    const { _id, title, companyName, companyLogo, category, location, postedDate, overview, skills, experience, salary, open, jobType } = jobData;
+    console.log(jobData)
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const [attachments, setAttachments] = useState([{ id: 1, value: "" }]);
     const [maximumWarning, setMaximumWarning] = useState(false)
     const handleIncreaseInputField = () => {
@@ -47,10 +48,13 @@ const ApplyJobForm = ({ jobData }) => {
             applicantEmail: user?.email
         }
 
+        console.log(appliedInfo)
+
         axiosSecure.post(`/appliedCandidate`, appliedInfo)
             .then((res) => {
                 console.log(res)
                 if (res.status === 200) {
+                    reset();
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
@@ -68,7 +72,6 @@ const ApplyJobForm = ({ jobData }) => {
                         timer: 2500
                     })
                 }
-
             })
             .catch((error) => {
                 console.error('Error:', error);

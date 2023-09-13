@@ -1,24 +1,24 @@
+import moment from "moment";
 import { useEffect, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import moment from "moment";
-import useRecruiterRole from "../Hooks/useRecruiterRole";
-import Swal from "sweetalert2";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
-import useAllCategories from "../Hooks/useAllCategories";
-import useSkills from "../Hooks/useSkills";
-import { FaXmark } from "react-icons/fa6";
-import ReactQuill from 'react-quill';
+import { AiOutlineCalendar, AiOutlinePlus } from "react-icons/ai";
+import { BiMap } from "react-icons/bi";
+import { BsBuildingGear } from "react-icons/bs";
 import { FaEye } from "react-icons/fa";
+import { FaXmark } from "react-icons/fa6";
+import { HiOutlineCurrencyDollar, HiOutlineUserGroup } from "react-icons/hi";
+import { LuLayoutTemplate } from "react-icons/lu";
+import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import CustomModal from "../Components/CustomModal";
 import Divider from "../Components/Divider";
-import { HiOutlineCurrencyDollar, HiOutlineTemplate, HiOutlineUserGroup } from "react-icons/hi";
-import { AiOutlineCalendar, AiOutlinePlus } from "react-icons/ai";
-import { BsBuildingGear } from "react-icons/bs";
-import { LuLayoutTemplate } from "react-icons/lu";
-import { Link } from "react-router-dom";
-import { BiMap } from "react-icons/bi";
 import GetAgoTime from "../Components/GetAgoTime";
+import useAllCategories from "../Hooks/useAllCategories";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useRecruiterRole from "../Hooks/useRecruiterRole";
+import useSkills from "../Hooks/useSkills";
 
 const modules = {
     toolbar: [
@@ -38,7 +38,15 @@ export default function PostJobForm() {
     const [description, setDescription] = useState("");
     const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
     const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
-    const { control, watch, register,setValue, handleSubmit, formState: { errors } } = useForm();
+    const {
+      control,
+      watch,
+      register,
+      setValue,
+      handleSubmit,
+      formState: { errors },
+      reset,
+    } = useForm();
 
     //Imported hooks
     const [recruitersRole, userLoading, refetch] = useRecruiterRole();
@@ -88,6 +96,7 @@ export default function PostJobForm() {
         axiosSecure.post(`/allJobs`, newJob)
             .then((res) => {
                 if (res.status === 200) {
+                    reset();
                     Swal.fire({
                         position: 'center',
                         icon: 'success',

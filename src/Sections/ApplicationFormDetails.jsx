@@ -6,17 +6,25 @@ import { FaRegHandshake } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import Button from '../Components/Button';
 import CustomModal from '../Components/CustomModal';
+import useAuth from '../Hooks/useAuth';
 
 const ApplicationFormDetails = ({candidateDetails}) => {
-    const { _id, name, image } = candidateDetails;
+  const {currentUser} = useAuth()
+  const { _id, name, image, email } = candidateDetails;
     const [isInterviewModalOpen, setIsInterviewModalOpen] = useState(false);
+    const [isSentTaskModalOpen, setIsSentTaskModalOpen] = useState(false);
     const [isHireModalOpen, setIsHireModalOpen] = useState(false);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
+  const handleSendTask = (e) => {
+        if(e == "edit") setIsSentTaskModalOpen(true)
+        else if (e == "cancel") setIsSentTaskModalOpen(false)
+  }
 
     const handleInterviewModal =(e) => {
         if(e == "edit") setIsInterviewModalOpen(true)
         else if (e == "cancel") setIsInterviewModalOpen(false)
-    }
+  }
 
     const handleHireModal =(e) => {
         if(e == "edit") setIsHireModalOpen(true)
@@ -31,6 +39,21 @@ const ApplicationFormDetails = ({candidateDetails}) => {
             interviewDetails : data.details
         }
         console.log(interviewData)
+
+        //TODO: Update education data
+        setIsInterviewModalOpen(false)
+        reset();
+  }
+  
+    const onSendTask = data => {
+        console.log(data)
+    const taskData = {
+      candidateEmail: email,
+      docs: data.filesLinks,
+      recruiterEmail: currentUser,
+      jobId: ''
+    }
+    console.log('send task', taskData);
 
         //TODO: Update education data
         setIsInterviewModalOpen(false)
@@ -120,6 +143,14 @@ const ApplicationFormDetails = ({candidateDetails}) => {
             {/* Buttons */}
             <div className="md:flex gap-5 items-center mt-8 justify-end">
               <button
+                onClick={() => handleSendTask('edit')}
+                className="bg-purple text-white py-3 px-5 rounded-md duration-300 hover:bg-green shadow-xl shadow-purple/20 hover:shadow-dark/20 cursor-pointer flex items-center gap-3 w-fit mb-5 md:mb-0"
+              >
+                <FaRegHandshake />
+                Send Task
+              </button>
+
+              <button
                 onClick={() => handleHireModal("edit")}
                 className="bg-purple text-white py-3 px-5 rounded-md duration-300 hover:bg-green shadow-xl shadow-purple/20 hover:shadow-dark/20 cursor-pointer flex items-center gap-3 w-fit mb-5 md:mb-0"
               >
@@ -160,6 +191,39 @@ const ApplicationFormDetails = ({candidateDetails}) => {
             ))}
           </div>
 
+          
+          {isSentTaskModalOpen && (
+            <CustomModal
+              isModalOpen={isSentTaskModalOpen}
+              setIsModalOpen={setIsSentTaskModalOpen}
+              handleModal={handleSendTask}
+            >
+              {/* Modal Heading */}
+              <h2 className="px-2 pt-4 pb-2 flex items-center gap-2 border-b border-dark/20 mb-5 -mt-3">
+                <BsCameraVideo fill="green" size={20} />
+                <p className="text-dark text-xl">Send task</p>
+              </h2>
+              {/* Modal content */}
+              <form onSubmit={handleSubmit(onSendTask)}>
+                {/* Details */}
+                <div>
+                  <label className="text-dark block mb-1 mt-5">
+                    Additional Files
+                  </label>
+                  <textarea
+                    className="rounded outline-none h-32 border border-dark/20 w-full px-3"
+                    {...register("filesLinks")}
+                  />
+                </div>
+
+                {/* Save changes */}
+                <div className="flex justify-end mt-5">
+                  <Button type="submit">Send Task</Button>
+                </div>
+              </form>
+            </CustomModal>
+          )}
+
           {isInterviewModalOpen && (
             <CustomModal
               isModalOpen={isInterviewModalOpen}
@@ -171,7 +235,7 @@ const ApplicationFormDetails = ({candidateDetails}) => {
                 <BsCameraVideo fill="green" size={20} />
                 <p className="text-dark text-xl">Set Interview</p>
               </h2>
-              {/* Modal content */}d
+              {/* Modal content */}
               <form onSubmit={handleSubmit(onInterviewSubmit)}>
                 <div className="flex items-center gap-5">
                   {/* Interview Date */}

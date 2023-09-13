@@ -63,11 +63,13 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         setLoading(true);
-        const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+        const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
             setUser(authUser)
-            if (authUser?.email) {
-                axiosSecure(`/users/email/${authUser?.email}`)
+            setLoading(true);
+            console.log(authUser)
+               authUser?.email && await axiosSecure.get(`/users/email/${authUser?.email}`)
                     .then((data) => {
+                        console.log(data)
                         setCurrentUser(data.data);
                         setLoading(false);
                     })
@@ -75,23 +77,22 @@ const AuthProvider = ({ children }) => {
                         console.log(err)
                         setLoading(false);
                     });
-            }
             if (authUser === null) {
                 setLoading(false);
             }
 
-            // if (authUser) {
-            //     axiosSecure
-            //         .post("/jwt", { email: authUser.email })
-            //         .then((response) => {
-            //             localStorage.setItem("access-token", response.data.token);
-            //             setLoading(false);
-            //         })
-            //         .catch((error) => {
-            //             console.log(error);
-            //         });
-            // }
-            // localStorage.removeItem("access-token");
+            if (authUser) {
+                axiosSecure
+                    .post("/jwt", { email: authUser?.email })
+                    .then((response) => {
+                        localStorage.setItem("access-token", response.data.token);
+                        setLoading(false);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            }
+            localStorage.removeItem("access-token");
         });
 
         return () => {
