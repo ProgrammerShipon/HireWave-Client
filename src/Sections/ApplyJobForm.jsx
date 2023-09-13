@@ -162,9 +162,9 @@ const ApplyJobForm = ({ jobData }) => {
                             <label className='text-dark block mb-1 text-base'>Cover letter</label>
                             <textarea
                                 rows={5}
-                                className='w-full px-3 py-2 border border-gray/40 focus:outline-none focus:border-green rounded-md'
+                                className={`w-full px-3 py-2 border border-gray/40 focus:outline-none focus:border-green rounded-md ${errors.cover_letter && 'border-red-400'}`}
                                 placeholder='Write within 300 words'
-                                {...register("cover_letter")}
+                                {...register("cover_letter", { required: true })}
                             />
                         </div>
 
@@ -173,10 +173,10 @@ const ApplyJobForm = ({ jobData }) => {
                                 <label htmlFor='salary' className='text-dark block mb-1 text-base'>Expected Salary</label>
                                 <input
                                     id='salary'
-                                    className='w-full px-3 py-2 border border-gray/40 focus:outline-none focus:border-green rounded-md'
+                                    className={`w-full px-3 py-2 border border-gray/40 focus:outline-none focus:border-green rounded-md ${errors.experience && 'border-red-400'} `}
                                     type="number"
                                     placeholder='Enter a range (in USD)'
-                                    {...register("expected_salary")}
+                                    {...register("expected_salary", { required: true })}
                                 />
                             </div>
                             <div className='lg:col-span-2'>

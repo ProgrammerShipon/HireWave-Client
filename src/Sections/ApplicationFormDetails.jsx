@@ -206,15 +206,13 @@ const ApplicationFormDetails = ({candidateDetails}) => {
               {/* Modal content */}
               <form onSubmit={handleSubmit(onSendTask)}>
                 {/* Details */}
-                <div>
                   <label className="text-dark block mb-1 mt-5">
-                    Additional Files
-                  </label>
+                    Additional Files                 
                   <textarea
-                    className="rounded outline-none h-32 border border-dark/20 w-full px-3"
-                    {...register("filesLinks")}
+                    className={`rounded outline-none h-32 border border-dark/20 w-full px-3 ${errors.filesLink && 'border-red-400'}`}
+                    {...register("filesLinks", {required : true})}
                   />
-                </div>
+                  </label>
 
                 {/* Save changes */}
                 <div className="flex justify-end mt-5">
@@ -244,7 +242,7 @@ const ApplicationFormDetails = ({candidateDetails}) => {
                       Interview Date
                     </label>
                     <input
-                      className="rounded outline-none h-10 border border-dark/20 w-full px-3"
+                      className={`rounded outline-none h-10 border border-dark/20 w-full px-3 ${errors.date && 'border-red-400'}`}
                       type="date"
                       {...register("date", { required: true })}
                     />
@@ -315,7 +313,7 @@ const ApplicationFormDetails = ({candidateDetails}) => {
 
                 {/* Save changes */}
                 <div className="flex justify-end mt-5">
-                  <Button type="submit">Send Mail</Button>
+                  <Button type="submit">Send Message</Button>
                 </div>
               </form>
             </CustomModal>
