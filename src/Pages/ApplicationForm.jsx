@@ -3,7 +3,8 @@ import { Helmet } from "react-helmet";
 import Breadcrumbs from "../Components/Breadcrumbs";
 import Divider from "../Components/Divider";
 import ApplicationFormDetails from '../Sections/ApplicationFormDetails';
-import { useLoaderData, useParams } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
+import PageLoader from '../Components/PageLoader';
 
 const ApplicationForm = () => {
     const singleData = useLoaderData();
@@ -23,9 +24,9 @@ const ApplicationForm = () => {
 
             {/* section */}
             {
-                singleData.email ?  <ApplicationFormDetails candidateDetails={singleData} /> : <PageLoader />
+                singleData.email ? <ApplicationFormDetails candidateDetails={singleData} /> : <PageLoader />
             }
-           
+
             {/* border */}
             <Divider />
         </>

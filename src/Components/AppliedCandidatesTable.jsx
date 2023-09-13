@@ -7,16 +7,19 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import useReview from '../Hooks/useReview';
 
-const AppliedCandidatesTable = ({ index, candidate }) => {
+const AppliedCandidatesTable = ({ index, candidate, appliedData }) => {
     const [reviewData, loading] = useReview();
-    const { _id, name, email, category, image, hourlyRate, location } = candidate;
+    const [applicant, setApplicant] = useState({});
+    const { _id, name, email, image, hourlyRate, location } = candidate;
 
     const [review, setReview] = useState([]);
     useEffect(() => {
         const getReview = reviewData.filter(rvl => rvl.email === email);
         setReview(getReview)
-    }, [!loading])
-    console.log(review)
+
+        // const getApplicant = appliedData.find(aData => aData.applicantEmail === email);
+        // setApplicant(getApplicant)
+    }, [!loading, appliedData.length])
     return (
         <tr
             key={candidate.id}
