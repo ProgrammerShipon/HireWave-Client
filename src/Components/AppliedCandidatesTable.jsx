@@ -16,6 +16,7 @@ const AppliedCandidatesTable = ({ index, candidate }) => {
         const getReview = reviewData.filter(rvl => rvl.email === email);
         setReview(getReview)
     }, [!loading])
+    console.log(review)
     return (
         <tr
             key={candidate.id}

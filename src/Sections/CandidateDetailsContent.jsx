@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RecentReviewSlider from "../Components/RecentReviewSlider";
 import useReview from "../Hooks/useReview";
 
@@ -26,6 +26,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
     const { currentUser } = useAuth();
     const [reviewData, loading] = useReview();
     const {
+        _id,
         name,
         email,
         image,
@@ -151,14 +152,16 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                                     className="text-green group-hover:text-white"
                                 />
                             </button>
+                            <Link to={`/dashboard/messages/${_id}`}>
+                                <button className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
+                                    Contact With Me{" "}
+                                    <AiOutlineMessage
+                                        size="22"
+                                        className="text-green group-hover:text-white"
+                                    />
+                                </button>
+                            </Link>
 
-                            <button onClick={handleCreateChat} className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
-                                Contact With Me{" "}
-                                <AiOutlineMessage
-                                    size="22"
-                                    className="text-green group-hover:text-white"
-                                />
-                            </button>
                         </div>
                     </div>
                 </div>

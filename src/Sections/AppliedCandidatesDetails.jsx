@@ -8,6 +8,7 @@ import useCandidatesData from '../Hooks/useCandidatesData';
 
 const AppliedCandidatesDetails = () => {
     const [candidatesData] = useCandidatesData();
+    console.log(candidatesData)
     const [filteredData, setFilteredData] = useState(candidatesData);
     const [location, setLocation] = useState('');
     const [checkBoxData, setCheckBoxData] = useState('');
