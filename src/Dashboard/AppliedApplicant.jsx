@@ -9,24 +9,8 @@ import useAppliedCompany from '../Hooks/useAppliedCompany';
 
 const AppliedApplicant = () => {
 
-
     const [appliedCompany] = useAppliedCompany();
     console.log(appliedCompany)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     const [allJobsData, loading] = useAllJobs();
     const [filteredData, setFilteredData] = useState(allJobsData);
     const { register, watch, handleSubmit, reset } = useForm();

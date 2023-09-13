@@ -2,7 +2,7 @@ import React from 'react';
 import { ImCancelCircle } from 'react-icons/im';
 import { useEffect } from 'react';
 
-const CustomModal = ({ isModalOpen, setIsModalOpen, handleModal, children }) => {
+const CustomModal = ({ isModalOpen, larger, setIsModalOpen, handleModal, children }) => {
 
     useEffect(() => {
         const handleOutsideClick = (event) => {
@@ -21,10 +21,10 @@ const CustomModal = ({ isModalOpen, setIsModalOpen, handleModal, children }) => 
     return (
         <div 
             id="modal-overlay" 
-            className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 transition-opacity duration-300 ${
+            className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 overflow-scroll transition-opacity duration-300 ${
             isModalOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
             >
-            <div className={`relative p-8 bg-white w-[480px] rounded-lg`}>
+            <div className={`relative p-8 bg-white ${larger ? `w-[750px]` : "w-[480px]"} rounded-lg`}>
                 <button
                 className="absolute top-0 right-0 m-3 text-gray-600 hover:text-gray-800"
                 onClick={()=> handleModal("cancel")}
