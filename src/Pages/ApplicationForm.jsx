@@ -8,7 +8,6 @@ import PageLoader from '../Components/PageLoader';
 
 const ApplicationForm = () => {
     const singleData = useLoaderData();
-    console.log(singleData);
 
     return (
         <>
@@ -24,7 +23,7 @@ const ApplicationForm = () => {
 
             {/* section */}
             {
-                singleData.email ? <ApplicationFormDetails candidateDetails={singleData} /> : <PageLoader />
+                singleData.applicantEmail ? <ApplicationFormDetails candidateDetails={singleData} /> : <PageLoader />
             }
 
             {/* border */}

@@ -12,7 +12,7 @@ const ViewApplicationDetails = ({ jobData, appliedJob }) => {
 
     const { jobId, cover_letter, attachment, expected_salary, appliedDate } = appliedJob;
 
-    // const formattedCoverLetter = cover_letter.map(pa => pa === "" ? "\u00A0" : pa);
+    const formattedCoverLetter = cover_letter.map(pa => pa === "" ? "\u00A0" : pa);
 
     return (
         <section className='py-20 md:py-[120px]'>
@@ -28,7 +28,11 @@ const ViewApplicationDetails = ({ jobData, appliedJob }) => {
                         </div>
 
                         <div>
-                            <p className="text-lightGray tracking-wide">{cover_letter}</p>
+                            {
+                                formattedCoverLetter.length > 0 && formattedCoverLetter.map((ab, index) => <p key={index} className="text-lightGray tracking-wide">
+                                    {ab}
+                                </p>)
+                            }
 
 
 

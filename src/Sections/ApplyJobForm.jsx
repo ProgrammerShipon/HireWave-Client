@@ -12,17 +12,19 @@ import { GiLevelEndFlag } from 'react-icons/gi';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { LiaIndustrySolid } from 'react-icons/lia';
 import { SlLocationPin } from 'react-icons/sl';
+import CoverLetterTextarea from '../Components/CoverLetterTextarea';
+import useCurrentCandidate from '../Hooks/useCurrentCandidate';
 import Swal from 'sweetalert2';
-import useCandidatesData from '../Hooks/useCandidatesData';
-import { useEffect } from 'react';
 
 const ApplyJobForm = ({ jobData }) => {
     const { currentUser } = useAuth();
     const [axiosSecure] = useAxiosSecure();
-    const [candidatesData] = useCandidatesData()
-    const [candidate, setCandidate] = useState();
+    const [currentCandidate] = useCurrentCandidate();
+    const [coverLetter, setCoverLetter] = useState();
+
     const navigate = useNavigate();
-    const { _id, title, companyName, companyLogo, category, location, postedDate, overview, skills, experience, salary, open, jobType } = jobData;
+
+    const { _id, title, companyName, companyLogo, companyEmail, category, location, postedDate, overview, skills, experience, salary, open, jobType } = jobData;
 
     const { register, handleSubmit, reset } = useForm();
     const [attachments, setAttachments] = useState([{ id: 1, value: "" }]);
@@ -35,27 +37,24 @@ const ApplyJobForm = ({ jobData }) => {
         else setMaximumWarning(true)
     };
 
-    useEffect(() => {
-        const getCandidate = candidatesData.find(can => can.email === user?.email);
-        setCandidate(getCandidate)
-    }, [candidatesData.length, user?.email])
-
     const onApplyJobSubmit = (data) => {
         const appliedDate = new Date();
-        const cover_letter = [data.cover_letter];
+        const cover_letter = coverLetter;
         const expected_salary = data.expected_salary;
         const attachment = data.attachment;
-        const location = `${candidate.location[0]}, ${candidate.location[1]}`
+        const location = `${currentCandidate.location[0]}, ${currentCandidate.location[1]}`
 
         const appliedInfo = {
           jobId: _id,
-          applicantId: candidate._id,
-          applicantName: candidate.name,
+          applicantId: currentCandidate._id,
+          applicantName: currentCandidate.name,
           applicantEmail: currentUser?.email,
+          applicantImage: currentCandidate.image,
           location: location,
-          category: candidate.category,
+          category: currentCandidate.category,
           companyName,
           companyLogo,
+          companyEmail,
           title,
           jobType,
           cover_letter,
@@ -165,7 +164,7 @@ const ApplyJobForm = ({ jobData }) => {
                         <h2 className='border-t border-gray/40 group-hover:border-green/40 mb-2 pt-3 duration-300'>Skills and Expertise</h2>
                         <div className='flex gap-2 items-center'>
                             {
-                                skills.map(skill => <p key={skill} className='bg-green/10 text-green px-4 rounded-full'>{skill}</p>)
+                                skills?.map(skill => <p key={skill} className='bg-green/10 text-green px-4 rounded-full'>{skill}</p>)
                             }
                         </div>
                     </div>
@@ -176,12 +175,7 @@ const ApplyJobForm = ({ jobData }) => {
 
                         <div className='mb-2 mt-5'>
                             <label className='text-dark block mb-1 text-base'>Cover letter</label>
-                            <textarea
-                                rows={5}
-                                className='w-full px-3 py-2 border border-gray/40 focus:outline-none focus:border-green rounded-md'
-                                placeholder='Write within 300 words'
-                                {...register("cover_letter")}
-                            />
+                            <CoverLetterTextarea coverLetter={coverLetter} setCoverLetter={setCoverLetter} />
                         </div>
 
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>

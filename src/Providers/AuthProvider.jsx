@@ -66,17 +66,16 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
             setUser(authUser)
             setLoading(true);
-            console.log(authUser)
-               authUser?.email && await axiosSecure.get(`/users/email/${authUser?.email}`)
-                    .then((data) => {
-                        console.log(data)
-                        setCurrentUser(data.data);
-                        setLoading(false);
-                    })
-                    .catch((err) => {
-                        console.log(err)
-                        setLoading(false);
-                    });
+            authUser?.email && await axiosSecure.get(`/users/email/${authUser?.email}`)
+                .then((data) => {
+                    console.log(data)
+                    setCurrentUser(data.data);
+                    setLoading(false);
+                })
+                .catch((err) => {
+                    console.log(err)
+                    setLoading(false);
+                });
             if (authUser === null) {
                 setCurrentUser({})
                 setLoading(false);
