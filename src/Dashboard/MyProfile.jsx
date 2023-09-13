@@ -11,9 +11,8 @@ const MyProfile = () => {
     const { currentUser } = useAuth();
     const [candidatesData, loading] = useCandidatesData();
     const [currentCandidate, setCurrentCandidate] = useState({});
-
     useEffect(() => {
-        const getCandidate = candidatesData.find(candidate => candidate.email === currentUser.email);
+        const getCandidate = candidatesData.find(candidate => candidate.email === "EmmaDavis@example.com");
         setCurrentCandidate(getCandidate)
     }, [!loading, currentUser?.email])
 
