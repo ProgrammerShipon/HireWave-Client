@@ -87,6 +87,7 @@ const CandidateSignUpForm = () => {
                             timer: 2500
                         });
                         navigate('/', { replace: true })
+                        window.location.reload(true)
                     }
                 })
                 .catch((err) => console.log(err));
@@ -612,7 +613,7 @@ const CandidateSignUpForm = () => {
     };
 
     if (finishLoading) {
-        return <div className="mt-32"><PageLoader /></div>
+        return <div className='flex h-screen items-center justify-center'><PageLoader /></div>
     }
 
     return (

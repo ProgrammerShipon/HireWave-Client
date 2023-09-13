@@ -5,7 +5,7 @@ import Navbar from '../Shared/Navbar';
 import StayTop from '../Components/StayTop';
 import useAuth from '../Hooks/useAuth';
 import PageLoader from '../Components/PageLoader';
-
+import SelectRole from '../SignUpSteps/SelectRole';
 
 // react toastify
 import { ToastContainer } from 'react-toastify';
@@ -17,8 +17,8 @@ const Main = () => {
       return <div className='flex h-screen items-center justify-center'><PageLoader /></div>
    }
 
-   if (user?.email && currentUser?.email == undefined) {
-      return <Navigate to="/select_role" replace={true} />;
+   if (user?.email && currentUser?.email === undefined) {
+      return <SelectRole />;
    }
 
    return (

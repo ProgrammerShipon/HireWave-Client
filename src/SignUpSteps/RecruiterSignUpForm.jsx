@@ -66,6 +66,7 @@ const RecruiterSignUpForm = () => {
                             timer: 2500
                         });
                         navigate('/', { replace: true })
+                        window.location.reload(true)
                     }
                 })
                 .catch((err) => console.log(err));
