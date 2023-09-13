@@ -56,6 +56,7 @@ const DashNavItemsByRole = ({ role }) => {
                                     <p className="hidden md:inline">Posted Jobs</p>
                                 </DashLink>
                             </li>
+                            {/* Applied candidates */}
                             <li className="w-full">
                                 <DashLink to='/applied_candidates'>
                                     <AiOutlineFileDone size={24} />

@@ -15,7 +15,7 @@ import { SlLocationPin } from 'react-icons/sl';
 import Swal from 'sweetalert2';
 
 const ApplyJobForm = ({ jobData }) => {
-    const { user } = useAuth();
+    const { currentUser } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const { _id, title, companyName, companyLogo, category, location, postedDate, overview, skills, experience, salary, open, jobType } = jobData;
     console.log(jobData)
@@ -37,7 +37,7 @@ const ApplyJobForm = ({ jobData }) => {
         const attachment = data.attachment;
 
         const appliedInfo = {
-            appliedJobId: _id,
+            jobId: _id,
             companyName,
             companyLogo,
             title,
@@ -45,7 +45,7 @@ const ApplyJobForm = ({ jobData }) => {
             cover_letter,
             expected_salary,
             attachment,
-            applicantEmail: user?.email
+            applicantEmail: currentUser?.email
         }
 
         console.log(appliedInfo)

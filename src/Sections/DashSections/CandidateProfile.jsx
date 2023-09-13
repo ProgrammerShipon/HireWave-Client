@@ -18,13 +18,22 @@ import { GiSkills } from 'react-icons/gi';
 import { HiLanguage } from 'react-icons/hi2';
 import { LiaIndustrySolid } from 'react-icons/lia';
 import { FaFacebookF, FaGithub, FaLinkedin, FaTwitter, FaPencilAlt, FaTrashAlt, FaGraduationCap } from 'react-icons/fa';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const CandidateProfile = ({ candidatesData }) => {
     const [languagesData] = useLanguagesData();
-
+    const [axiosSecure]=useAxiosSecure()
     const { _id, name, title, image, location, status, hourlyRate, jobType, address, languages, about, education, experience, skills, openToWork, socialLink } = candidatesData;
 
     const formattedAbout = about.map(pa => pa === "" ? "\u00A0" : pa);
+
+    const [hourlyRates, setHourlyRates] = useState(hourlyRate)
+    const [jobTypes, setJobTypes] = useState(jobType)
+    const [userAbout, setUserAbout] = useState(formattedAbout)
+    const [userLocation, setUserLocation] = useState([location])
+    const [userAddress, setUserAddress] = useState(address)
+
+
 
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
     const [availability, setAvailability] = useState(true);
@@ -35,19 +44,33 @@ const CandidateProfile = ({ candidatesData }) => {
     const [openEducation, setOpenEducation] = useState(true);
     const [openExperience, setOpenExperience] = useState(true);
 
-    const [aboutData, setAboutData] = useState([]);
     const newSkills = [...skills, watch('newSkill')]
     const newLanguages = [...languages, { name: watch('name'), level: watch('level') }];
     const newEducations = [...education, { subject: watch('subject'), currentStudying: watch('currentStudying'), institute: watch('institute'), startDate: watch('startDate'), endDate: watch('endDate') }];
     const newExperiences = [...experience, { logo: watch('logo'), currentWorking: watch('currentWorking'), companyName: watch('companyName'), position: watch('position'), location: watch('workLocation'), startDate: watch('workStartDate'), endDate: watch('workEndDate') }];
 
-    const onSubmit = data => {
-        console.log(newExperiences)
+    const onSubmit = (data) => {
+        const updateData = {
+            jobType: jobTypes,
+            hourlyRate: hourlyRates,
+            about: userAbout, location,
+            address: userAddress,
+            location: userLocation,
+            languages: newLanguages,
+            education: newEducations,
+            experience: newExperiences
+        }
+        console.log(updateData)
+        axiosSecure.patch(`/candidates/${_id}`, updateData)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(error=>{
+                console.log(error.message);
+            })
+
     };
 
-    const handleAbout = () => {
-        console.log(aboutData)
-    }
 
     const years = [
         1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969,
@@ -110,11 +133,11 @@ const CandidateProfile = ({ candidatesData }) => {
                         </button>
                     </div>
                     <div className={`py-4 ${availability ? 'block' : 'hidden'}`}>
-                        <p className='text-dark font-medium mb-3'>Hourly Rate: ${hourlyRate}</p>
+                        <p className='text-dark font-medium mb-3'>Hourly Rate: ${hourlyRates}</p>
                         {
                             openToWork ? <p className='text-gray'>Open to contract to hire</p> : <p className='text-gray'>Contract to work</p>
                         }
-                        <p className='text-lightGray text-lg -mt-1'>{jobType}</p>
+                        <p className='text-lightGray text-lg -mt-1'>{jobTypes}</p>
                     </div>
 
                     {/* edit field */}
@@ -125,7 +148,8 @@ const CandidateProfile = ({ candidatesData }) => {
                                 id='hourlyRate'
                                 type="number"
                                 {...register("hourlyRate", { required: true, min: 0 })}
-                                defaultValue={hourlyRate}
+                                defaultValue={hourlyRates}
+                                onChange={(e) => setHourlyRates(e.target.value)}
                                 className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
                             />
                         </label>
@@ -143,6 +167,7 @@ const CandidateProfile = ({ candidatesData }) => {
 
                         <select
                             {...register("jobType")}
+                            onChange={(e) => setJobTypes(e.target.value)}
                             className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
                         >
                             <option value="As Needed - Open to work">As Needed - Open to work</option>
@@ -158,7 +183,8 @@ const CandidateProfile = ({ candidatesData }) => {
                             >
                                 Cancel
                             </button>
-                            <button type='submit'
+                            <button
+                                onClick={() => setAvailability(true)}
                                 className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
                             >
                                 Save
@@ -183,8 +209,8 @@ const CandidateProfile = ({ candidatesData }) => {
                     </div>
 
                     <div className={`py-4 ${editLocation ? 'block' : 'hidden'} space-y-1`}>
-                        <p className='text-black'>{address}</p>
-                        <p className='text-lightGray'>{location[0]}, {location[1]}</p>
+                        <p className='text-black'>{userAddress}</p>
+                        <p className='text-lightGray'>{userLocation[0]}, {userLocation[1]}</p>
                     </div>
 
                     {/* edit field */}
@@ -195,6 +221,7 @@ const CandidateProfile = ({ candidatesData }) => {
                                 id='address'
                                 {...register("address", { required: true })}
                                 defaultValue={address}
+                                onChange={(e) => setUserAddress(e.target.value)}
                                 className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
                             />
                         </label>
@@ -205,6 +232,7 @@ const CandidateProfile = ({ candidatesData }) => {
                                 id='editLocation'
                                 {...register("location", { required: true, min: 0 })}
                                 defaultValue={location}
+                                onChange={(e) => setUserLocation(e.target.value)}
                                 className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
                             />
                         </label>
@@ -217,7 +245,8 @@ const CandidateProfile = ({ candidatesData }) => {
                             >
                                 Cancel
                             </button>
-                            <button type='submit'
+                            <button
+                                onClick={() => setEditLocation(true)}
                                 className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
                             >
                                 Save
@@ -244,7 +273,7 @@ const CandidateProfile = ({ candidatesData }) => {
 
                 <div className={`py-4 ${editAbout ? 'block' : 'hidden'}`}>
                     {
-                        formattedAbout.length > 0 ? formattedAbout.map((ab, index) => <p key={index} className='text-lightGray text-lg leading-relaxed'>
+                        userAbout.length > 0 ? userAbout.map((ab, index) => <p key={index} className='text-lightGray text-lg leading-relaxed'>
                             {ab}
                         </p>) : <p className='text-lg text-lightGray'>N/A</p>
                     }
@@ -254,7 +283,7 @@ const CandidateProfile = ({ candidatesData }) => {
                 <div className={`flex flex-col gap-2 p-3 ${editAbout ? 'hidden' : 'block'}`}>
                     <label htmlFor="newSkill" className='text-lightGray text-base'>
                         Edit About
-                        <DescriptionTextarea about={about} setAboutData={setAboutData} />
+                        <DescriptionTextarea userAbout={userAbout} setUserAbout={setUserAbout} />
                     </label>
 
                     <div className='flex items-center justify-end gap-3'>
@@ -265,7 +294,7 @@ const CandidateProfile = ({ candidatesData }) => {
                             Cancel
                         </button>
                         <button
-                            onClick={handleAbout}
+                            onClick={() => setEditAbout(true)}
                             className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
                         >
                             Save
@@ -296,7 +325,7 @@ const CandidateProfile = ({ candidatesData }) => {
                     <div className={`py-4 flex items-center flex-wrap gap-2 ${isSkills ? 'block' : 'hidden'}`}>
 
                         {
-                            skills.map((skl, index) => <div key={index} className='relative text-purple bg-purple/10 px-3 rounded-md capitalize group cursor-pointer'>
+                            newSkills.map((skl, index) => <div key={index} className='relative text-purple bg-purple/10 px-3 rounded-md capitalize group cursor-pointer'>
                                 <span>{skl}</span>
 
                                 <div className='absolute top-0 -right-14 flex gap-2 bg-white text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
@@ -330,7 +359,8 @@ const CandidateProfile = ({ candidatesData }) => {
                             >
                                 Cancel
                             </button>
-                            <button type='submit'
+                            <button
+                                onClick={() => setIsSkills(true)}
                                 className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
                             >
                                 Add
@@ -357,7 +387,7 @@ const CandidateProfile = ({ candidatesData }) => {
                     {/* languages body */}
                     <div className={`py-4 space-y-1 ${openLanguage ? 'block' : 'hidden'}`}>
                         {
-                            languages.length > 0 ? languages.map((lan, index) => <div
+                            newLanguages.length > 0 ? newLanguages.map((lan, index) => <div
                                 key={index}
                                 className='relative capitalize group cursor-pointer w-fit'>
                                 <p className='text-black flex items-center gap-1'>{lan.name} <span className='inline-block w-2 border-t border-gray'></span>
@@ -417,7 +447,8 @@ const CandidateProfile = ({ candidatesData }) => {
                             >
                                 Cancel
                             </button>
-                            <button type='submit'
+                            <button
+                                onClick={() => setOpenLanguage(true)}
                                 className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
                             >
                                 Add
@@ -448,22 +479,25 @@ const CandidateProfile = ({ candidatesData }) => {
                     {/* educations body */}
                     <div className={`py-4 space-y-4 ${openEducation ? 'block' : 'hidden'}`}>
                         {
-                            education.length > 0 ? <div className='relative group cursor-pointer w-fit'>
-                                <h3 className='text-dark font-medium text-xl'>Master's in Computer Science</h3>
-                                <p className='text-lightGray'>Stanford University, Bangladesh</p>
-                                <p className='flex items-center gap-1 text-gray -mt-1 font-light'>
-                                    <BiCalendar /> 2018 - Current
-                                </p>
+                            newEducations.length > 0 ? newEducations.map(edu =>
+                                <div className='relative group cursor-pointer w-fit'>
+                                    <h3 className='text-dark font-medium text-xl'>{edu.subject}</h3>
+                                    <p className='text-lightGray'>{edu.institute}</p>
+                                    <p className='flex items-center gap-1 text-gray mt-1 font-light'>
+                                        <BiCalendar /> {edu.startDate} to {edu.endDate}
+                                    </p>
 
-                                <div className='absolute top-0 -right-14 flex gap-2 text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
-                                    <button>
-                                        <FaPencilAlt size='14' />
-                                    </button>
-                                    <button>
-                                        <FaTrashAlt size='14' />
-                                    </button>
+                                    <div className='absolute top-0 -right-14 flex gap-2 text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
+                                        <button>
+                                            <FaPencilAlt size='14' />
+                                        </button>
+                                        <button>
+                                            <FaTrashAlt size='14' />
+                                        </button>
+                                    </div>
                                 </div>
-                            </div> : <p className='text-lg text-lightGray'>N/A</p>
+                            )
+                                : <p className='text-lg text-lightGray'>N/A</p>
                         }
                     </div>
 
@@ -522,7 +556,8 @@ const CandidateProfile = ({ candidatesData }) => {
                             >
                                 Cancel
                             </button>
-                            <button type='submit'
+                            <button
+                                onClick={() => setOpenEducation(!openEducation)}
                                 className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
                             >
                                 Add
@@ -549,7 +584,7 @@ const CandidateProfile = ({ candidatesData }) => {
                     {/* experiences body */}
                     <div className={`py-4 space-y-4 ${openExperience ? 'block' : 'hidden'}`}>
                         {
-                            experience.length > 0 ? experience.map((exp, index) => (
+                            newExperiences.length > 0 ? newExperiences.map((exp, index) => (
                                 <div key={index} className='relative group cursor-pointer w-fit flex gap-2'>
                                     <div className='h-14 w-14 overflow-hidden'>
                                         <img
@@ -644,7 +679,8 @@ const CandidateProfile = ({ candidatesData }) => {
                             >
                                 Cancel
                             </button>
-                            <button type='submit'
+                            <button
+                                onClick={() => setOpenExperience(true)}
                                 className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
                             >
                                 Add
@@ -701,6 +737,13 @@ const CandidateProfile = ({ candidatesData }) => {
                         </div> : <p className='text-lg text-lightGray'>N/A</p>
                 }
             </div>
+            <Button>
+                <button className='text-center w-full' type='submit'>
+                    Update
+                </button>
+            </Button>
+
+
         </form >
     );
 };
