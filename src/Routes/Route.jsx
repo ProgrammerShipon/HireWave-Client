@@ -183,7 +183,12 @@ const Router = createBrowserRouter([
       // Recruiter routes
       {
         path: "messages",
+        element: < Chat />
+      },
+      {
+        path: "messages/:id",
         element: < Chat />,
+        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/candidates/${params.id}`)
       },
       {
         path: "room",
