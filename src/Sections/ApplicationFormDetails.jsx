@@ -1,12 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { BsCameraVideo } from 'react-icons/bs';
-import { AiOutlineMail, AiOutlineMessage } from "react-icons/ai";
-import { FaRegHandshake } from "react-icons/fa";
-import CustomModal from '../Components/CustomModal';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { AiOutlineMail, AiOutlineMessage } from "react-icons/ai";
+import { BsCameraVideo } from 'react-icons/bs';
+import { FaRegHandshake } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 import Button from '../Components/Button';
+import CustomModal from '../Components/CustomModal';
 
 const ApplicationFormDetails = ({candidateDetails}) => {
     const { _id, name, image } = candidateDetails;
@@ -90,129 +89,175 @@ const ApplicationFormDetails = ({candidateDetails}) => {
     ]
 
     return (
-        <section className='py-20 md:py-[120px] max-w-5xl mx-auto'>
-            <div className="container">
-                <div className='md:flex justify-between gap-5 items-center'>
-                    {/* Image & Name */}
-                    <div className='flex items-center gap-8 mb-5 md:mb-0'>
-                        <img className='w-20 h-20 rounded-full border border-green shadow-lg overflow-hidden object-cover object-center' src={image} alt="" />
-                        <div>
-                            <h3 className='text-green text-2xl font-semibold my-auto'>{name}</h3>
-                            <p>Expected Salary: 30k - 50k $</p>
-                        </div>
-                    </div>
-
-                    {/* Details Button */}
-                    <Link  to={`/candidate_details/${_id}`} className='bg-purple text-white py-1 px-3 rounded-md duration-300 hover:bg-green shadow-xl shadow-purple/20 hover:shadow-dark/20 cursor-pointer'>See Details</Link>
-                </div>
-
-                {/* Cover Letter */}
-                <div className='rounded-lg border border-green p-5 md:p-10 mt-8 shadow-lg'>
-                    <p dangerouslySetInnerHTML={{ __html: letter }}></p>
-                </div>
-
-                {/* Important Links */}
-                <div className='rounded-lg border border-green p-5 md:p-10 mt-8 shadow-lg'>
-                    <h2 className='text-green text-xl mb-3'>Provided Links</h2>
-                    {
-                        links.map(link => <div className='text-dark'>{link}</div>)
-                    }
-                </div>
-
-                {/* Buttons */}
-                <div className='md:flex gap-5 items-center mt-8'>
-                    <div onClick={() => handleHireModal("edit")} className='bg-purple text-white py-3 px-5 rounded-md duration-300 hover:bg-green shadow-xl shadow-purple/20 hover:shadow-dark/20 cursor-pointer flex items-center gap-3 w-fit mb-5 md:mb-0'><FaRegHandshake />Hire Now</div>
-                    <div onClick={() => handleInterviewModal("edit")} className='bg-purple text-white py-3 px-5 rounded-md duration-300 hover:bg-green shadow-xl shadow-purple/20 hover:shadow-dark/20 cursor-pointer flex items-center gap-3 w-fit mb-5 md:mb-0'><BsCameraVideo />Set Interview</div>
-                    <div className='bg-purple text-white py-3 px-5 rounded-md duration-300 hover:bg-green shadow-xl shadow-purple/20 hover:shadow-dark/20 cursor-pointer flex items-center gap-3 w-fit mb-5 md:mb-0'><AiOutlineMessage />Contact Now</div>
-                </div>
-
-                {
-                isInterviewModalOpen &&
-                <CustomModal isModalOpen={isInterviewModalOpen} setIsModalOpen={setIsInterviewModalOpen} handleModal={handleInterviewModal}>
-                    {/* Modal Heading */}
-                    <h2 className='px-2 pt-4 pb-2 flex items-center gap-2 border-b border-dark/20 mb-5 -mt-3'>
-                        <BsCameraVideo fill='green' size={20} />
-                        <p className='text-dark text-xl'>Set Interview</p>
-                    </h2>
-
-                     {/* Modal content */}d
-                     <form onSubmit={handleSubmit(onInterviewSubmit)}>
-                        <div className='flex items-center gap-5'>
-                            {/* Interview Date */}
-                            <div className='w-full'>
-                                <label className='text-dark block mb-1 mt-5'>Interview Date</label>
-                                <input
-                                className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
-                                type="date" 
-                                {...register("date", { required: true })}
-                                />
-                                {errors.date && (
-                                    <span className="text-red-700">Date is required</span>
-                                )}
-                            </div>
-
-                            {/* Interview Time */}
-                            <div className='w-full'>
-                                <label className='text-dark block mb-1 mt-5'>Interview Time</label>
-                                <input
-                                className='rounded outline-none h-10 border border-dark/20 w-full px-3' 
-                                type='time'
-                                {...register("time", { required: true })}
-                                />
-                                {errors.time && (
-                                    <span className="text-red-700">Time is required</span>
-                                )}
-                            </div>
-                        </div>
-
-                        {/* Details */}
-                        <div>
-                            <label className='text-dark block mb-1 mt-5'>Additional Details</label>
-                            <textarea
-                            className='rounded outline-none h-32 border border-dark/20 w-full px-3' 
-                            {...register("details")}
-                            />
-                        </div>
-
-                        {/* Save changes */}
-                        <div className='flex justify-end mt-5'>
-                            <Button type='submit'>Send Request</Button>
-                        </div>
-                    </form>
-                </CustomModal>
-                }
-
-                {
-                isHireModalOpen &&
-                <CustomModal isModalOpen={isHireModalOpen} setIsModalOpen={isHireModalOpen} handleModal={handleHireModal}>
-                    {/* Modal Heading */}
-                    <h2 className='px-2 pt-4 pb-2 flex items-center gap-2 border-b border-dark/20 mb-5 -mt-3'>
-                        <AiOutlineMail fill='green' size={20} />
-                        <p className='text-dark text-xl'>Send Message</p>
-                    </h2>
-
-                     {/* Modal content */}
-                     <form onSubmit={handleSubmit(onHireSubmit)}>
-
-                        {/* Message body */}
-                        <div>
-                            <label className='text-dark block mb-1 mt-5'>Message Body</label>
-                            <textarea
-                            className='rounded outline-none h-32 border border-dark/20 w-full px-3' 
-                            {...register("message")}
-                            />
-                        </div>
-
-                        {/* Save changes */}
-                        <div className='flex justify-end mt-5'>
-                            <Button type='submit'>Send Mail</Button>
-                        </div>
-                    </form>
-                </CustomModal>
-                }
-
+      <section className="py-20 md:py-[120px] max-w-5xl mx-auto">
+        <div className="container">
+          <div className="md:flex justify-between gap-5 items-center">
+            {/* Image & Name */}
+            <div className="flex items-center gap-8 mb-5 md:mb-0">
+              <img
+                className="w-20 h-20 rounded-full border border-green shadow-lg overflow-hidden object-cover object-center"
+                src={image}
+                alt=""
+              />
+              <div>
+                <h3 className="text-green text-2xl font-semibold my-auto">
+                  {name}
+                </h3>
+                <p>Expected Salary: 30k - 50k $</p>
+              </div>
             </div>
-        </section>
+
+            {/* Details Button */}
+            <Link
+              to={`/candidate_details/${_id}`}
+              className="bg-purple text-white py-1 px-3 rounded-md duration-300 hover:bg-green shadow-xl shadow-purple/20 hover:shadow-dark/20 cursor-pointer"
+            >
+              See Details
+            </Link>
+          </div>
+
+          <div>
+            {/* Buttons */}
+            <div className="md:flex gap-5 items-center mt-8 justify-end">
+              <button
+                onClick={() => handleHireModal("edit")}
+                className="bg-purple text-white py-3 px-5 rounded-md duration-300 hover:bg-green shadow-xl shadow-purple/20 hover:shadow-dark/20 cursor-pointer flex items-center gap-3 w-fit mb-5 md:mb-0"
+              >
+                <FaRegHandshake />
+                Hire Now
+              </button>
+
+              <button
+                onClick={() => handleInterviewModal("edit")}
+                className="bg-purple text-white py-3 px-5 rounded-md duration-300 hover:bg-green shadow-xl shadow-purple/20 hover:shadow-dark/20 cursor-pointer flex items-center gap-3 w-fit mb-5 md:mb-0"
+              >
+                <BsCameraVideo />
+                Set Interview
+              </button>
+
+              <button className="bg-purple text-white py-3 px-5 rounded-md duration-300 hover:bg-green shadow-xl shadow-purple/20 hover:shadow-dark/20 cursor-pointer flex items-center gap-3 w-fit mb-5 md:mb-0">
+                <AiOutlineMessage />
+                Contact Now
+              </button>
+
+              <button className="bg-purple text-white py-3 px-5 rounded-md duration-300 hover:bg-green shadow-xl shadow-purple/20 hover:shadow-dark/20 cursor-pointer flex items-center gap-3 w-fit mb-5 md:mb-0">
+                <AiOutlineMessage />
+                Send Offer
+              </button>
+            </div>
+          </div>
+
+          {/* Cover Letter */}
+          <div className="rounded-lg border border-green p-5 md:p-10 mt-8 shadow-lg">
+            <p dangerouslySetInnerHTML={{ __html: letter }}></p>
+          </div>
+
+          {/* Important Links */}
+          <div className="rounded-lg border border-green p-5 md:p-10 mt-8 shadow-lg">
+            <h2 className="text-green text-xl mb-3">Provided Links</h2>
+            {links.map((link) => (
+              <div className="text-dark">{link}</div>
+            ))}
+          </div>
+
+          {isInterviewModalOpen && (
+            <CustomModal
+              isModalOpen={isInterviewModalOpen}
+              setIsModalOpen={setIsInterviewModalOpen}
+              handleModal={handleInterviewModal}
+            >
+              {/* Modal Heading */}
+              <h2 className="px-2 pt-4 pb-2 flex items-center gap-2 border-b border-dark/20 mb-5 -mt-3">
+                <BsCameraVideo fill="green" size={20} />
+                <p className="text-dark text-xl">Set Interview</p>
+              </h2>
+              {/* Modal content */}d
+              <form onSubmit={handleSubmit(onInterviewSubmit)}>
+                <div className="flex items-center gap-5">
+                  {/* Interview Date */}
+                  <div className="w-full">
+                    <label className="text-dark block mb-1 mt-5">
+                      Interview Date
+                    </label>
+                    <input
+                      className="rounded outline-none h-10 border border-dark/20 w-full px-3"
+                      type="date"
+                      {...register("date", { required: true })}
+                    />
+                    {errors.date && (
+                      <span className="text-red-700">Date is required</span>
+                    )}
+                  </div>
+
+                  {/* Interview Time */}
+                  <div className="w-full">
+                    <label className="text-dark block mb-1 mt-5">
+                      Interview Time
+                    </label>
+                    <input
+                      className="rounded outline-none h-10 border border-dark/20 w-full px-3"
+                      type="time"
+                      {...register("time", { required: true })}
+                    />
+                    {errors.time && (
+                      <span className="text-red-700">Time is required</span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Details */}
+                <div>
+                  <label className="text-dark block mb-1 mt-5">
+                    Additional Details
+                  </label>
+                  <textarea
+                    className="rounded outline-none h-32 border border-dark/20 w-full px-3"
+                    {...register("details")}
+                  />
+                </div>
+
+                {/* Save changes */}
+                <div className="flex justify-end mt-5">
+                  <Button type="submit">Send Request</Button>
+                </div>
+              </form>
+            </CustomModal>
+          )}
+
+          {isHireModalOpen && (
+            <CustomModal
+              isModalOpen={isHireModalOpen}
+              setIsModalOpen={isHireModalOpen}
+              handleModal={handleHireModal}
+            >
+              {/* Modal Heading */}
+              <h2 className="px-2 pt-4 pb-2 flex items-center gap-2 border-b border-dark/20 mb-5 -mt-3">
+                <AiOutlineMail fill="green" size={20} />
+                <p className="text-dark text-xl">Send Message</p>
+              </h2>
+
+              {/* Modal content */}
+              <form onSubmit={handleSubmit(onHireSubmit)}>
+                {/* Message body */}
+                <div>
+                  <label className="text-dark block mb-1 mt-5">
+                    Message Body
+                  </label>
+                  <textarea
+                    className="rounded outline-none h-32 border border-dark/20 w-full px-3"
+                    {...register("message")}
+                  />
+                </div>
+
+                {/* Save changes */}
+                <div className="flex justify-end mt-5">
+                  <Button type="submit">Send Mail</Button>
+                </div>
+              </form>
+            </CustomModal>
+          )}
+        </div>
+      </section>
     );
 };
 
