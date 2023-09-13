@@ -49,7 +49,7 @@ const PricingBody = () => {
                             </li>
                         </ul>
 
-                        <button className='bg-green py-4 border border-green text-white uppercase rounded-md hover:bg-white hover:text-dark shadow-lg duration-300 w-full mt-8'>Buy Now</button>
+                        <button className='bg-green py-4 border border-green text-white uppercase rounded-md hover:bg-white hover:text-dark shadow-lg duration-300 w-full mt-8'>Free</button>
                     </div>
 
                     {/* single card */}
