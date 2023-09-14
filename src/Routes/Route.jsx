@@ -42,6 +42,8 @@ import CandidateSignUpForm from "../SignUpSteps/CandidateSignUpForm";
 import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
 import SelectRole from "../SignUpSteps/SelectRole";
 import PrivateRoute from "./PrivateRoute";
+import PaymentSuccess from "../Pages/PaymentSuccess";
+import PaymentFail from "../Pages/PaymentFail";
 
 const baseURL = 'https://hire-wave-server.vercel.app/api';
 // const baseURL = 'http://localhost:3030/api';
@@ -155,6 +157,7 @@ const Router = createBrowserRouter([
         path: "/event_details/:name",
         element: <EventDetails />,
       },
+
     ],
   },
   {
@@ -203,6 +206,14 @@ const Router = createBrowserRouter([
       {
         path: "applicant",
         element: <AppliedApplicant />,
+      },
+      {
+        path: "payment/successful/:tran_id",
+        element: <PaymentSuccess />,
+      },
+      {
+        path: "payment/fail",
+        element: <PaymentFail />,
       },
 
       //Admin Routes

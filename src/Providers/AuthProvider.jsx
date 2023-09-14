@@ -80,18 +80,18 @@ const AuthProvider = ({ children }) => {
                 setLoading(false);
             }
 
-            if (authUser) {
-                axiosSecure
-                    .post("/jwt", { email: authUser?.email })
-                    .then((response) => {
-                        localStorage.setItem("access-token", response.data.token);
-                        setLoading(false);
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });
-            }
-            localStorage.removeItem("access-token");
+            // if (authUser) {
+            //     axiosSecure
+            //         .post("/jwt", { email: authUser?.email })
+            //         .then((response) => {
+            //             localStorage.setItem("access-token", response.data.token);
+            //             setLoading(false);
+            //         })
+            //         .catch((error) => {
+            //             console.log(error);
+            //         });
+            // }
+            // localStorage.removeItem("access-token");
         });
 
         return () => {

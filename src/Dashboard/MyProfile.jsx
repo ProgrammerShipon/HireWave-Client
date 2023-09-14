@@ -10,7 +10,7 @@ import AdminProfile from '../Sections/DashSections/AdminProfile';
 
 const MyProfile = () => {
     const { currentUser } = useAuth();
-    const [candidatesData, loading] = useCandidatesData();
+    const [candidatesData, loading, refetch] = useCandidatesData();
     const [currentCandidate, setCurrentCandidate] = useState({});
     useEffect(() => {
         const getCandidate = candidatesData.find(candidate => candidate.email === currentUser?.email);

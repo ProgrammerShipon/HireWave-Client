@@ -246,7 +246,7 @@ const FindJobBody = ({ allJobsData, date, setDate }) => {
           <div className="mt-6">
             <h2 className="text-3xl font-medium text-dark">Skills</h2>
             <div className="flex flex-wrap items-center gap-2 mt-4 duration-300">
-              {skills.map((skill, index) => (
+              {skills?.map((skill, index) => (
                 <p
                   key={index}
                   className="bg-purple/20 hover:bg-white text-purple px-4 py-[2px] shadow-lg shadow-purple/10 hover:shadow-dark/20 rounded-md cursor-pointer duration-300 capitalize"

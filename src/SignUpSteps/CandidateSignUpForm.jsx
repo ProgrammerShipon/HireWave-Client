@@ -44,23 +44,23 @@ const CandidateSignUpForm = () => {
             category: data.category,
             hourlyRate: data.hourlyRate,
             jobType: data.jobType,
-            location: [data.country, data.state],
+            location: `${data.country}, ${data.state}`,
             address: data.address,
             skills: data?.skills?.map((skill) => skill),
             about: [],
             education: [],
-            experience: 
-            data.position == "" && data.organization == "" && data.companyLocation == "" && data.startDate == "" && data.endDate == "" ?
-            [] :
-            [
-                {
-                    position: data.position,
-                    companyName: data.organization,
-                    location: data.companyLocation,
-                    startDate: data.startDate,
-                    endDate: data.endDate,
-                } 
-            ],
+            experience:
+                data.position == "" && data.organization == "" && data.companyLocation == "" && data.startDate == "" && data.endDate == "" ?
+                    [] :
+                    [
+                        {
+                            position: data.position,
+                            companyName: data.organization,
+                            location: data.companyLocation,
+                            startDate: data.startDate,
+                            endDate: data.endDate,
+                        }
+                    ],
             socialLink: [],
             languages: [],
             recommendations: 0,
@@ -68,7 +68,6 @@ const CandidateSignUpForm = () => {
             visibility: data.visibility,
             joinDate: todayDate
         }
-        console.log(newData);
 
         setCurStep(curStep + 1)
 
@@ -100,10 +99,10 @@ const CandidateSignUpForm = () => {
     };
 
     //Country, State, Province
-    const selectedCountry=  watch('country', '');
-    const countryData= Country.getAllCountries()
-    const filteredCountry = countryData.find(country=> country.name == selectedCountry)
-    const stateData= State.getStatesOfCountry(filteredCountry?.isoCode)
+    const selectedCountry = watch('country', '');
+    const countryData = Country.getAllCountries()
+    const filteredCountry = countryData.find(country => country.name == selectedCountry)
+    const stateData = State.getStatesOfCountry(filteredCountry?.isoCode)
 
     // Experience div State
     const [present, setPresent] = useState(false);
@@ -149,7 +148,7 @@ const CandidateSignUpForm = () => {
     const validatePhoneNumber = (value) => {
         if (!value || value.length < 10 || value.length > 15) return false
         return true;
-      };
+    };
 
     const renderContent = () => {
         switch (curStep) {
@@ -295,23 +294,23 @@ const CandidateSignUpForm = () => {
                             <label className="text-gray w-40 text-base outline-none">
                                 Phone Number*
                                 <Controller
-                                name="phone"
-                                control={control}
-                                rules={{
-                                    validate: validatePhoneNumber
-                                  }}
-                                render={({ field }) => (
-                                    <PhoneInput
-                                    className={`PhoneInputInput text-dark rounded-md border border-gray/20 hover:border-purple px-3 py-2 ${errors.phone && 'border-red-400 hover:border-red-400 '}`}
-                                    placeholder="Enter phone number"
-                                    value={field.value}
-                                    
-                                    onChange={(value) => {
-                                        field.onChange(value)
-                                        setPhoneNumber(value)
+                                    name="phone"
+                                    control={control}
+                                    rules={{
+                                        validate: validatePhoneNumber
                                     }}
-                                    />
-                                )}
+                                    render={({ field }) => (
+                                        <PhoneInput
+                                            className={`PhoneInputInput text-dark rounded-md border border-gray/20 hover:border-purple px-3 py-2 ${errors.phone && 'border-red-400 hover:border-red-400 '}`}
+                                            placeholder="Enter phone number"
+                                            value={field.value}
+
+                                            onChange={(value) => {
+                                                field.onChange(value)
+                                                setPhoneNumber(value)
+                                            }}
+                                        />
+                                    )}
                                 />
                             </label>
                             {errors.phone && (<p className="text-red-400 -mt-5">Invalid Phone Number Length</p>)}

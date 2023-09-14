@@ -1,8 +1,32 @@
 import { useState } from 'react';
 import CheckIcon from '../assets/images/check.png';
+import useAuth from '../Hooks/useAuth';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
 
 const PricingBody = () => {
     const [onOff, setOnOff] = useState(true);
+    const { currentUser } = useAuth();
+    const [axiosSecure] = useAxiosSecure();
+    // console.log(currentUser)
+    const handlePayment = () => {
+        const paymentInfo = {
+            recruiterId: currentUser?._id,
+            receiver: "HireWave",
+            amount: 700,
+            paymentTimeline: "monthly",
+            recruiterName: currentUser.name,
+            companyLogo: currentUser?.image
+        }
+        // console.log(paymentInfo)
+        axiosSecure.post('/payment', paymentInfo)
+            .then(res => {
+                // console.log(res.data)
+                window.location.replace(res.data.url)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
     return (
         <section className='pt-20 md:pt-[120px]'>
             <div className='container'>
@@ -81,7 +105,7 @@ const PricingBody = () => {
                             </li>
                         </ul>
 
-                        <button className='bg-green py-4 border border-green text-white uppercase rounded-md hover:bg-white hover:text-dark shadow-lg duration-300 w-full mt-8'>Buy Now</button>
+                        <button onClick={handlePayment} className='bg-green py-4 border border-green text-white uppercase rounded-md hover:bg-white hover:text-dark shadow-lg duration-300 w-full mt-8'>Buy Now</button>
                     </div>
 
                     {/* single card */}
