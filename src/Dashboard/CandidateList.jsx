@@ -124,7 +124,7 @@ const CandidateList = () => {
                                     <th className="px-3 py-3 font-medium">Category</th>
                                     <th className="px-3 py-3 font-medium text-center">Location</th>
                                     <th className="px-3 py-3 font-medium text-center">Status</th>
-                                    <th className="py-3 text-center font-medium">Actions</th>
+                                    <th className="py-3 text-center font-medium">Action</th>
                                 </tr>
                             </thead>
                             <tbody>

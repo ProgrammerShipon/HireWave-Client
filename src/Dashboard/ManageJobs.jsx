@@ -42,7 +42,7 @@ const ManageJobs = () => {
     }
 
     setFilteredData(filter);
-  }, [title, status, category, date, !loading]);
+  }, [title, status, category, date, allJobsData.length]);
 
   return (
     <>

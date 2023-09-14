@@ -122,7 +122,7 @@ const RecruiterList = () => {
                                 <tr>
                                     <th className="px-3 py-3 font-medium">Recruiters Info</th>
                                     <th className="px-3 py-3 font-medium">Industry</th>
-                                    <th className="px-3 py-3 font-medium text-center">Open Jobs</th>
+                                    <th className="px-3 py-3 font-medium text-center">Posted Jobs</th>
                                     <th className="px-3 py-3 font-medium text-center">Status</th>
                                     <th className="py-3 text-center font-medium">Actions</th>
                                 </tr>
