@@ -10,8 +10,6 @@ const TopCandidates = () => {
   const [candidatesData, loading] = useCandidatesData();
   const [reviewData] = useReview();
 
-  const filledCandidate = candidatesData.filter(candidate => candidate.status == 'approved')
-
   if (loading) {
     return <PageLoader />
   }
@@ -24,8 +22,8 @@ const TopCandidates = () => {
 
         {/* top employee content */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-6 mt-12 md:mt-16">
-          {candidatesData &&
-            filledCandidate
+          {
+            candidatesData
               .slice(0, 8)
               .map((candidate) => (
                 <CandidateCard

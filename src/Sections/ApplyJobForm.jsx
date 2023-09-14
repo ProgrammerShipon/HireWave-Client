@@ -24,9 +24,9 @@ const ApplyJobForm = ({ jobData }) => {
 
     const navigate = useNavigate();
 
-    const { _id, title, companyName, companyLogo, companyEmail, category, location, postedDate, overview, skills, experience, salary, open, jobType } = jobData;
+    const { _id, title, companyName, companyLogo, companyEmail, category, location, postedDate, description, skills, experience, salary, open, jobType } = jobData;
 
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const [attachments, setAttachments] = useState([{ id: 1, value: "" }]);
     const [maximumWarning, setMaximumWarning] = useState(false)
     const handleIncreaseInputField = () => {
@@ -45,25 +45,23 @@ const ApplyJobForm = ({ jobData }) => {
         const location = `${currentCandidate.location[0]}, ${currentCandidate.location[1]}`
 
         const appliedInfo = {
-          jobId: _id,
-          applicantId: currentCandidate._id,
-          applicantName: currentCandidate.name,
-          applicantEmail: currentUser?.email,
-          applicantImage: currentCandidate.image,
-          location: location,
-          category: currentCandidate.category,
-          companyName,
-          companyLogo,
-          companyEmail,
-          title,
-          jobType,
-          cover_letter,
-          expected_salary,
-          attachment,
-          appliedDate: appliedDate,
+            jobId: _id,
+            applicantId: currentCandidate._id,
+            applicantName: currentCandidate.name,
+            applicantEmail: currentUser?.email,
+            applicantImage: currentCandidate.image,
+            location: location,
+            category: currentCandidate.category,
+            companyName,
+            companyLogo,
+            companyEmail,
+            title,
+            jobType,
+            cover_letter,
+            expected_salary,
+            attachment,
+            appliedDate: appliedDate,
         };
-
-        console.log(appliedInfo);
 
         axiosSecure.post('/appliedCandidate', appliedInfo)
             .then((res) => {
@@ -107,7 +105,7 @@ const ApplyJobForm = ({ jobData }) => {
                             <p className={`font-medium px-3 rounded-md ${open ? "bg-green/20 text-green" : "bg-red-400/20 text-red-400"}`}>{open ? " Open to Apply" : "Closed"}</p>
                         </div>
 
-                        <div className='md:flex justify-between items-center gap-2 md:gap-5 lg:gap-8 mb-2'>
+                        <div className='md:flex justify-between items-start gap-2 md:gap-5 lg:gap-8 mb-2'>
                             <div>
                                 <h2 className='text-2xl mb-2 text-dark drop-shadow-xl'>{title}</h2>
                                 <div className='flex gap-3 mb-5'>
@@ -115,44 +113,44 @@ const ApplyJobForm = ({ jobData }) => {
                                     <GetAgoTime datetime={postedDate} />
                                 </div>
 
-                                <p className='mb-4 text-lightGray text-lg'>{overview}</p>
+                                <div className="postJob" dangerouslySetInnerHTML={{ __html: description }}></div>
 
                                 <Link to={`/job_details/${_id}`} className='text-blue-500 hover:underline'>View Job Posting</Link>
                             </div>
 
                             {/* experience, salary, company name, location */}
-                            <div className='w-72 md:border-s border-gray/40 group-hover:border-green/40 md:pl-3 md:pr-2 py-2 md:my-0 duration-300'>
+                            <div className='w-80 lg:w-96 relative md:top-16 md:border-s border-gray/40 group-hover:border-green/40 md:pl-3 md:pr-2 py-2 md:my-0 duration-300'>
                                 {/* experience */}
-                                <div className='flex items-start gap-2 mb-2'>
+                                <div className='flex items-start gap-2 mb-3'>
                                     <GiLevelEndFlag size={20} className="text-purple mt-[2px]" />
-                                    <div>
+                                    <div className='flex flex-wrap'>
                                         <p>Experience,</p>
                                         <p className="text-sm text-lightGray ml-2">{experience}</p>
                                     </div>
                                 </div>
 
                                 {/* salary */}
-                                <div className='flex items-start gap-2 mb-2'>
+                                <div className='flex items-start gap-2 mb-3'>
                                     <BsCurrencyDollar size={20} className="text-purple mt-[2px]" />
-                                    <div>
+                                    <div className='flex flex-wrap'>
                                         <p>Salary,</p>
                                         <p className="text-sm text-lightGray ml-2">${salary}</p>
                                     </div>
                                 </div>
 
                                 {/* company name */}
-                                <div className='flex items-start gap-2 mb-2'>
+                                <div className='flex items-start gap-2 mb-3'>
                                     <LiaIndustrySolid size={20} className="text-purple mt-[2px]" />
-                                    <div>
+                                    <div className='flex flex-wrap'>
                                         <p>Company,</p>
                                         <p className="text-sm text-lightGray ml-2">{companyName}</p>
                                     </div>
                                 </div>
 
                                 {/* location */}
-                                <div className='flex items-start gap-2'>
+                                <div className='flex items-start gap-3'>
                                     <SlLocationPin size={18} className="text-purple mt-[2px]" />
-                                    <div>
+                                    <div className='flex flex-wrap'>
                                         <p>Location,</p>
                                         <p className="text-sm text-lightGray ml-2">{location}</p>
                                     </div>

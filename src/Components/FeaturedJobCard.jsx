@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import GetAgoTime from "./GetAgoTime";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAuth from "../Hooks/useAuth";
@@ -9,17 +9,17 @@ import { FaRegHeart } from 'react-icons/fa';
 
 const FeaturedJobCard = ({ job }) => {
     const [axiosSecure] = useAxiosSecure();
-    const { user } = useAuth();
+    const { user, currentUser } = useAuth();
     const { _id, companyLogo, title, companyName, postedDate, location, jobType, industry, salary, skills } = job;
     const jobInfo = { selectJob: _id, companyLogo, title, companyName, postedDate, location, jobType, salary, skills, candidateMail: user?.email }
-
+    const navigate = useNavigate();
     const handleSaveJob = () => {
         axiosSecure.post("/savedjob", jobInfo)
             .then((data) => {
                 if (data.status === 200) {
                     toast.success("Saved Successfully", {
                         position: "top-right",
-                        autoClose: 2500,
+                        autoClose: 2000,
                         theme: "light",
                     });
                 }
@@ -29,6 +29,7 @@ const FeaturedJobCard = ({ job }) => {
                         autoClose: 2500,
                         theme: "light",
                     });
+                    navigate('/saved_jobs', { replace: true })
                 }
             })
             .catch((err) => console.log(err));
@@ -73,7 +74,7 @@ const FeaturedJobCard = ({ job }) => {
             {/* button */}
             {
                 user?.email ?
-                    <button onClick={handleSaveJob} className="absolute lg:relative bg-green text-white p-3 lg:pl-3 lg:pr-5 lg:py-2 rounded-e-md lg:rounded-e-none rounded-s-md top-2 right-2 lg:top-auto md:-right-14 shadow-lg shadow-green/30 md:group-hover:right-2 lg:group-hover:right-0 duration-300 delay-200">
+                    <button onClick={currentUser.role === 'candidate' ? handleSaveJob : null} className="absolute lg:relative bg-green text-white p-3 lg:pl-3 lg:pr-5 lg:py-2 rounded-e-md lg:rounded-e-none rounded-s-md top-2 right-2 lg:top-auto md:-right-14 shadow-lg shadow-green/30 md:group-hover:right-2 lg:group-hover:right-0 duration-300 delay-200">
                         <FaRegHeart size='20px' />
                     </button> :
                     <Link to='/login' className="absolute lg:relative bg-green text-white p-3 lg:pl-3 lg:pr-5 lg:py-2 rounded-e-md lg:rounded-e-none rounded-s-md top-2 right-2 lg:top-auto md:-right-14 shadow-lg shadow-green/30 md:group-hover:right-2 lg:group-hover:right-0 duration-300 delay-200">

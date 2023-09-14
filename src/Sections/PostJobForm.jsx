@@ -92,8 +92,6 @@ export default function PostJobForm() {
             sub_category: data?.sub_category,
         };
 
-        console.log(newJob);
-
         axiosSecure.post(`/allJobs`, newJob)
             .then((res) => {
                 if (res.status === 200) {
@@ -144,7 +142,7 @@ export default function PostJobForm() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* form */}
                     <form className="md:col-span-2 flex flex-col gap-4 p-6 md:p-12 shadow-4xl shadow-gray/40" onSubmit={handleSubmit(onSubmit)}>
-                        <h2 className="text-3xl md:text-4xl text-green  drop-shadow-lg">Post a Job</h2>
+                        <h2 className="text-3xl md:text-4xl text-dark font-medium drop-shadow-lg">Post a Job</h2>
                         <p className="text-gray -mt-2 mb-5">All the fields below are required to post a job on HireWave</p>
 
                         {/* job-title */}
@@ -162,7 +160,7 @@ export default function PostJobForm() {
                         </div>
 
                         {/* Sub category */}
-                        <h2 className="text-green text-base md:text-lg">Choose the most suitable sub-category for the job</h2>
+                        <h2 className="text-purple text-base md:text-lg">Choose the most suitable sub-category for the job</h2>
                         <div className='flex flex-wrap gap-3'>
                             {
                                 subCategories?.subcategories.map((sub_category) => (
@@ -203,7 +201,7 @@ export default function PostJobForm() {
                         {/* Divider */}
                         <p className="border border-gray my-5"></p>
 
-                        <h2 className="text-green text-lg md:text-xl">✅ Provide the following data to facilitate improved candidate selection</h2>
+                        <h2 className="text-purple text-lg md:text-xl">✅ Provide the following data to facilitate improved candidate selection</h2>
                         {/* Job Type and Experience */}
                         <div className="md:flex items-center gap-5">
                             {/* job type */}
@@ -341,7 +339,7 @@ export default function PostJobForm() {
 
                         <p className="border border-gray my-5"></p>
 
-                        <h2 className="text-green text-lg md:text-xl">📜 Enlist Job Overview, Responsibilities, Requirements, Benefits and other necessary details <button onClick={() => handleDemoModal("edit")} className="text-sm text-purple bg-purple/20 rounded-full cursor-pointer px-2">View example</button></h2>
+                        <h2 className="text-purple text-lg md:text-xl">📜 Enlist Job Overview, Responsibilities, Requirements, Benefits and other necessary details <button onClick={() => handleDemoModal("edit")} className="text-sm text-purple bg-purple/20 rounded-full cursor-pointer px-2">View example</button></h2>
 
                         {/* Job Description */}
                         <div>

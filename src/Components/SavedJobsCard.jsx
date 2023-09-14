@@ -72,9 +72,9 @@ const SavedJobsCard = ({ job, refetch }) => {
                     </div>
                 </div>
 
-                <Tooltip id="saved" />
+                <Tooltip id={_id} />
                 <button onClick={handleRemoveSavedJob}
-                    data-tooltip-id="saved" data-tooltip-content="Click to remove!"
+                    data-tooltip-id={_id} data-tooltip-content="Click to remove!"
                     className="absolute top-2 right-2 border border-red-400 rounded-md px-3 py-1 bg-red-400 hover:bg-transparent text-red-400 hover:text-white shadow-lg duration-300 group">
                     <FaHeart size="22" className="text-white group-hover:text-red-400 duration-300" />
                 </button>
