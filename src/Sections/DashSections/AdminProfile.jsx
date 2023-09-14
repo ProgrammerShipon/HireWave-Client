@@ -10,7 +10,7 @@ const AdminProfile = ({ currentUser }) => {
         <div className='py-10 md:py-16 duration-300'>
             <div className="relative w-full bg-white flex flex-col md:flex-row items-center justify-center md:gap-12 py-8 shadow-xl rounded-md border border-gray/40 hover:border-green duration-300 group">
                 <div className="relative h-40 w-40 rounded-full">
-                    <img className="w-full h-full rounded-full object-cover object-center" src={"https://fiverr-res.cloudinary.com/image/upload/t_profile_original,q_auto,f_auto/v1/attachments/profile/photo/2ad1f54716df5d59667877d07d039551-1664788852632/c28dea6e-85a7-45b9-8b41-79d11b6c2cb2.jpg"} alt={name} />
+                    <img className="w-full h-full rounded-full object-cover object-center" src={image} alt={name} />
 
                     <Tooltip id="admin" />
                     <div

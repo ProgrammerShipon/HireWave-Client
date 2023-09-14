@@ -3,7 +3,7 @@ import { AiOutlineShareAlt } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { Tooltip } from "react-tooltip";
 
-const CopyToClipboardLink = ({ textToCopy }) => {
+const CopyToClipboardLink = ({ url }) => {
     const textAreaRef = useRef(null);
 
     const handleCopyClick = () => {
@@ -24,13 +24,13 @@ const CopyToClipboardLink = ({ textToCopy }) => {
         <>
             <textarea
                 ref={textAreaRef}
-                value={textToCopy}
+                value={url}
                 className="absolute left-[-999px]"
                 readOnly
             />
-            <Tooltip id={textToCopy} />
+            <Tooltip id={url} />
             <button onClick={handleCopyClick}
-                data-tooltip-id={textToCopy} data-tooltip-content="Click to Copy Link!"
+                data-tooltip-id={url} data-tooltip-content="Click to Copy Link!"
             >
                 <AiOutlineShareAlt size="24px" className="text-green" />
             </button>

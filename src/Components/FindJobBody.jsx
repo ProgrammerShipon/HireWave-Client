@@ -48,6 +48,9 @@ const FindJobBody = ({ allJobsData, date, setDate }) => {
     skills,
   } = jobDetails;
 
+  const newUrl = window.location.protocol + '//' + window.location.host;
+  const url = `${newUrl}/job_details/${_id}`;
+
   const jobInfo = { selectJob: _id, companyLogo, title, companyName, postedDate, location, jobType, salary, skills, candidateMail: user?.email }
 
   // check already applied
@@ -146,7 +149,7 @@ const FindJobBody = ({ allJobsData, date, setDate }) => {
             </div>
 
             <div className="flex items-center gap-2">
-              <CopyToClipboardLink textToCopy={`https://hire-wave.web.app/job_details/${_id}`} />
+              <CopyToClipboardLink url={url} />
               {
                 currentUser.role === 'candidate' && <>
                   {

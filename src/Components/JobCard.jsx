@@ -16,7 +16,11 @@ const JobCard = ({ job, setJobDetails, mySavedJobs, refetch }) => {
     const [alreadySaved, setAlreadySaved] = useState(false);
     const [axiosSecure] = useAxiosSecure();
 
+
     const { _id, title, companyName, skills, companyLogo, category, location, jobType, applied, salary, postedDate } = job;
+
+    const newUrl = window.location.protocol + '//' + window.location.host;
+    const url = `${newUrl}/job_details/${_id}`;
 
     const jobInfo = { selectJob: _id, companyLogo, title, companyName, postedDate, location, jobType, salary, skills, candidateMail: user?.email }
 
@@ -81,7 +85,7 @@ const JobCard = ({ job, setJobDetails, mySavedJobs, refetch }) => {
                 </div>
 
                 <div className="flex items-center gap-1">
-                    <CopyToClipboardLink textToCopy={`https://hire-wave.web.app/job_details/${_id}`} />
+                    <CopyToClipboardLink url={url} />
                     {
                         currentUser.role === 'candidate' && <>
                             {

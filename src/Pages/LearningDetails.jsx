@@ -5,13 +5,14 @@ import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../Components/Breadcrumbs';
 import LearningDetailsBody from '../Sections/LearningDetailsBody';
 import PageLoader from '../Components/PageLoader';
+import GetStart from '../Sections/GetStart';
 
 const LearningDetails = () => {
 
-    const {id} = useParams()
+    const { id } = useParams()
     const { learningData, loading } = useLearningData()
 
-    const singleLearningData = learningData?.find(data=> data._id === id)
+    const singleLearningData = learningData?.find(data => data._id === id)
     console.log(singleLearningData);
     return (
         <>
@@ -26,6 +27,7 @@ const LearningDetails = () => {
             {
                 !loading ? <LearningDetailsBody singleLearningData={singleLearningData} /> : <PageLoader />
             }
+            <GetStart />
         </>
     );
 };

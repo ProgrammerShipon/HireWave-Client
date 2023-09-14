@@ -14,220 +14,166 @@ import { BiDislike, BiLike } from "react-icons/bi";
 import { FaEye } from "react-icons/fa";
 import { RiShareForwardLine } from "react-icons/ri";
 import { CgComment } from 'react-icons/cg';
+import CopyToClipboardLink from '../Components/CopyToClipboardLink';
+import LearningCard from '../Components/LearningCard';
+import { AiOutlineEye } from 'react-icons/ai';
 
 const LearningDetailsBody = () => {
-  const { learningData } = useLearningData();
-  const [currentCandidate] = useCurrentCandidate()
-  const loadData = useLoaderData();
-  const [axiosSecure] = useAxiosSecure();
-  const { title, createdAt, updatedAt, videoLink, description, authorImg, authorName, authorEmail, comments, disLike, like, views, _id } = loadData;
-  const sidebarContent = learningData.filter(data => data._id !== _id).slice(0, 4)
+    const { learningData } = useLearningData();
+    const [currentCandidate] = useCurrentCandidate()
+    const loadData = useLoaderData();
+    const [axiosSecure] = useAxiosSecure();
+    const { title, createdAt, updatedAt, videoLink, description, authorImg, authorName, authorEmail, comments, disLike, like, views, _id } = loadData;
+    const sidebarContent = learningData.filter(data => data._id !== _id).slice(0, 4)
+
+    const [commentClick, setCommentClick] = useState('')
+    const [allLike, setAllLike] = useState(like);
+    const [allDisLike, setAllDisLike] = useState(disLike);
+
+    const { control, register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = (data) => {
+        console.log(data)
+    }
+
+    const increaseLike = (_id) => {
+        axiosSecure.patch(`/learning/like/${_id}`)
+            .then(res => {
+                setAllLike(res.data.like)
+                console.log(res.data.like)
+            })
+            .catch((err) => console.log(err));
+    }
+    const reduceLike = (_id) => {
+        axiosSecure.patch(`/learning/dislike/${_id}`)
+            .then(res => {
+                setAllDisLike(res.data.disLike)
+                console.log(res.data)
+            })
+            .catch((err) => console.log(err));
+    }
+    const url = window.location.protocol + '//' + window.location.host + window.location.pathname;
+    console.log(url)
+
+    return (
+        <div className="py-20 md:py-[120px] duration-300">
+            <div className="container">
+                <div className="lg:grid grid-cols-3 gap-10 lg:gap-14">
+                    {/* left content */}
+                    <div className="lg:col-span-2">
+                        {/* Video */}
+                        <div className=" rounded-lg overflow-hidden">
+                            <iframe
+                                className="w-full h-52 sm:h-[300px] md:h-[400px] lg:h-[450px] duration-300"
+                                src={videoLink}
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
 
 
-  const [commentClick, setCommentClick] = useState('')
-  const [allLike, setAllLike] = useState(like);
-  const [allDisLike, setAllDisLike] = useState(disLike);
+                        {/* Title */}
+                        <div className='mt-3 mb-6 px-4 md:px-0'>
+                            <h1 className="text-2xl md:text-3xl text-dark drop-shadow-lg">
+                                {title}
+                            </h1>
+                            <p>{views} Views  {moment((createdAt), "YYYYMMDD").fromNow()}</p>
+                        </div>
+
+                        <div className="flex flex-col-reverse md:flex-row items-start justify-between gap-4 mb-5 px-4 md:px-0">
+                            {/* Author Details */}
+                            <div className="flex items-center gap-3">
+                                <div className="h-14 w-14 rounded-full overflow-hidden shadow-xl shadow-gray/40">
+                                    <img className="w-full h-full object-cover object-center" src={authorImg} alt={authorName} />
+                                </div>
+                                <div className="w-[150px] lg:w-auto">
+                                    <h3 className="lg:text-xl text-dark drop-shadow-lg line-clamp-1">{authorName}</h3>
+                                    <p className="text-sm text-lightGray line-clamp-1">{authorEmail}</p>
+                                </div>
+                            </div>
+
+                            {/* Like, Unlike, View, Share */}
+                            <div className='rounded-lg px-5 shadow-lg flex items-center mx-auto md:mx-0 gap-4 text-purple duration-300'>
+                                <p className=' my-2 flex items-center gap-2'>
+                                    <BiLike onClick={() => increaseLike(_id)} size='24' className='cursor-pointer' /> {allLike} </p>
+
+                                <p className=' my-2 flex items-center gap-2'><BiDislike onClick={() => reduceLike(_id)} size='24' className='cursor-pointer' /> {allDisLike} </p>
+                                <p className="flex items-center gap-2">
+                                    <AiOutlineEye size='24' /> {views}
+                                </p>
+                                <CopyToClipboardLink url={url} />
+                            </div>
+                        </div>
+
+                        {/* Description */}
+
+                        <div className='text-lightGray mt-8 mb-5 h-40 overflow-hidden px-4 md:px-0' dangerouslySetInnerHTML={{ __html: description }}></div>
 
 
-  const { control, register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = (data) => {
-    console.log(data)
-  }
+                        {/* Divider */}
+                        <p className="border border-green"></p>
 
-  const increaseLike = (_id) => {
-    axiosSecure.patch(`/learning/like/${_id}`)
-      .then(res => {
-        setAllLike(res.data.like)
-        console.log(res.data.like)
-      })
-      .catch((err) => console.log(err));
-  }
-  const reduceLike = (_id) => {
-    axiosSecure.patch(`/learning/dislike/${_id}`)
-      .then(res => {
-        setAllDisLike(res.data.disLike)
-        console.log(res.data)
-      })
-      .catch((err) => console.log(err));
-  }
-  const shareLearningTutorial = () => {
-    const url =
-      window.location.protocol + '//' +
-      window.location.host + window.location.pathname
-    // console.log(url)
-    // Create a clipboard instance
-    const clipboard = new ClipboardJS('.copy-button', {
-      text: function () {
-        return url;
-      }
-    });
+                        <p className="flex items-center gap-3 mt-10 mb-3 px-4 md:px-0">
+                            <CgComment />
+                            <span>
+                                {comments.length}{" "}
+                                {comments.length === 1 ? "Comment" : "Comments"}
+                            </span>
+                        </p>
 
-    clipboard.on('success', function (e) {
+                        {/* Comment Box */}
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <div className="flex items-center gap-3 mb-5 px-4 md:px-0">
+                                <img
+                                    className="rounded-full w-10"
+                                    src={currentCandidate?.image}
+                                    alt={currentCandidate?.name}
+                                />
+                                <input
+                                    className="rounded outline-none h-10 border-b border-dark/20 px-3 w-full"
+                                    type="text"
+                                    onClick={() => setCommentClick(true)}
+                                    placeholder="Add a Comment..."
+                                    {...register("added_comment")}
+                                />
+                                {commentClick && (
+                                    <div className="flex justify-end gap-3">
+                                        <p
+                                            className="bg-transparent text-dark hover:text-white px-1 md:px-3 py-1 md:py-3 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20 mt-8"
+                                            onClick={() => setCommentClick(false)}
+                                        >
+                                            Cancel
+                                        </p>
+                                        <input
+                                            className="bg-transparent text-dark hover:text-white px-1 md:px-3 py-1 md:py-3 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20 mt-8"
+                                            type="submit"
+                                            value="Submit"
+                                        />
+                                    </div>
+                                )}
+                            </div>
+                        </form>
 
-      toast.success("Link copied to the Clipboard", {
-        position: "top-right",
-        autoClose: 2500,
-        theme: "light",
-      });
-    });
-
-    clipboard.on('error', function (e) {
-      // Handle error (optional)
-      console.error('Error copying to clipboard:', e);
-    });
-
-    clipboard.onClick({
-      action: 'copy'
-    });
-  }
-
-
-  return (
-    <div className="pt-20 md:pt-[120px] duration-300">
-      <div className="container">
-        <div className="lg:grid grid-cols-4 gap-10">
-          {/* Learning content */}
-          <div className="lg:col-span-3">
-            {/* Title & Created, updated date */}
-            <h2 className="text-2xl md:text-3xl text-green">
-              {title}
-            </h2>
-            <div>
-              <p>{views} Views  {moment((createdAt), "YYYYMMDD").fromNow()}</p>
-            </div>
-            {/* Video */}
-            <div className="my-8  md:mb-16">
-              <iframe
-                className="w-96 md:w-[560px] lg:w-[800px] h-[216px] md:h-[315px] lg:h-[450px]"
-                src={videoLink}
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-            </div>
-
-            <div className="md:flex items-center justify-between mb-5">
-              {/* Author Details */}
-              <div className="flex items-center gap-3">
-                <img className="rounded-full w-10" src={authorImg} alt="" />
-                <div>
-                  <h3 className="lg:text-xl text-dark">{authorName}</h3>
-                  <p className="text-sm">{authorEmail}</p>
-                </div>
-
-              </div>
-
-              {/* Like, Unlike, View, Share */}
-              <div className="flex items-center gap-5 pr-0 md:pr-5 mt-5 md:mt-0">
-                <div className=' rounded-lg px-5 shadow-sm hover:border-none flex items-center gap-4'>
-                  <p className=' my-2 flex items-center gap-2'>
-                    <BiLike onClick={() => increaseLike(_id)} className='text-xl cursor-pointer' /> {allLike} </p>
-
-                  <p className=' my-2 flex items-center gap-2'><BiDislike onClick={() => reduceLike(_id)} className='text-xl cursor-pointer' /> {allDisLike} </p>
-                </div>
-                <p className="flex items-center gap-2 "><FaEye className='text-lg' /> {views} </p>
-                <p onClick={shareLearningTutorial} className='cursor-pointer flex items-center gap-1 rounded-xl shadow-sm py-3 px-3 copy-button'>
-                  <RiShareForwardLine className='text-xl' /> Share
-                </p>
-              </div>
-            </div>
-
-            {/* Description */}
-
-            <p className='text-lightGray mt-8 mb-5' dangerouslySetInnerHTML={{ __html: description }}></p>
-
-
-            {/* Divider */}
-            <p className="border border-green"></p>
-
-            <p className="flex items-center gap-3 mt-10 mb-3">
-              <CgComment />
-              <span>
-                {comments.length}{" "}
-                {comments.length === 1 ? "Comment" : "Comments"}
-              </span>
-            </p>
-
-            {/* Comment Box */}
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="flex items-center gap-3 mb-5">
-                <img
-                  className="rounded-full w-10"
-                  src={currentCandidate?.image}
-                  alt={currentCandidate?.name}
-                />
-                <input
-                  className="rounded outline-none h-10 border-b border-dark/20 px-3 w-full"
-                  type="text"
-                  onClick={() => setCommentClick(true)}
-                  placeholder="Add a Comment..."
-                  {...register("added_comment")}
-                />
-                {commentClick && (
-                  <div className="flex justify-end gap-3">
-                    <p
-                      className="bg-transparent text-dark hover:text-white px-1 md:px-3 py-1 md:py-3 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20 mt-8"
-                      onClick={() => setCommentClick(false)}
-                    >
-                      Cancel
-                    </p>
-                    <input
-                      className="bg-transparent text-dark hover:text-white px-1 md:px-3 py-1 md:py-3 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20 mt-8"
-                      type="submit"
-                      value="Submit"
-                    />
-                  </div>
-                )}
-              </div>
-            </form>
-
-            {/* Comment */}
-            {comments.map((comment) => (
-              <LearningDetailsComment
-                key={comment.commentId}
-                comment={comment}
-              />
-            ))}
-          </div>
-
-          {/* Sidebar */}
-          <div className='hidden lg:block col-span-1'>
-            {
-              sidebarContent.map(sidebar =>
-                <div className="p-2 rounded-lg hover:shadow-xl hover:shadow-green/20 border border-dark/40 hover:border-green duration-300 mb-3">
-
-                  {/* Thumbnail */}
-                  <img
-                    className="object-cover object-center w-full rounded-lg"
-                    src={sidebar.thumbnail}
-                    alt={sidebar.title}
-                  />
-
-                  {/* Content */}
-                  <div className="flex flex-col justify-between px-2 mt-5 mb-2">
-                    {/* Title & Description */}
-                    <div>
-                      <div className="text-purple duration-300 hover:underline"> {sidebar.category} </div>
-                      <h3 className=" text-green font-semibold"> {sidebar.title} </h3>
-                      <p className="line-clamp-3 mt-2 text-sm">{sidebar.description}</p>
+                        {/* Comment */}
+                        {comments.map((comment) => (
+                            <LearningDetailsComment
+                                key={comment.commentId}
+                                comment={comment}
+                            />
+                        ))}
                     </div>
 
-                    {/* Author Details */}
-                    <div className="flex items-center gap-3 my-3">
-                      <img className="rounded-full w-6" src={sidebar.authorImg} alt="" />
-                      <h3 className="text-dark">{sidebar.authorName}</h3>
+                    {/* right part */}
+                    <div className='hidden lg:block col-span-1 space-y-4'>
+                        {
+                            sidebarContent.map((data) => (
+                                <LearningCard key={data._id} learning={data} />
+                            ))}
                     </div>
-
-                    {/* Detail Button */}
-                    <Link to={`/learning/${sidebar._id}`} className="bg-purple text-white inline-block px-2 py-1 lg:px-3 lg:py-2 rounded-md duration-300 hover:bg-dark shadow-xl shadow-purple/20 hover:shadow-dark/20 mr-3 cursor-pointer text-center">Explore</Link>
-                  </div>
                 </div>
-              )}
-          </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default LearningDetailsBody;
