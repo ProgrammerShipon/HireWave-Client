@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import Button from "../Components/Button";
-import CustomModal from "../Components/CustomModal";
 import useAuth from "../Hooks/useAuth";
 
 // react icons
@@ -11,13 +9,11 @@ import { BiTimeFive } from "react-icons/bi";
 import { BsCameraVideo, BsCaretDownFill, BsSendCheck } from "react-icons/bs";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { MdOutlineAssignment } from "react-icons/md";
-import { toast } from "react-toastify";
-import ArrayTextarea from "../Components/ArrayTextarea";
 import GetAgoTime from "../Components/GetAgoTime";
+import SendJobOffer from "../Components/RecruiterSend/SendJobOffer";
+import SendJobTask from "../Components/RecruiterSend/SendJobTask";
+import SetJobInterView from "../Components/RecruiterSend/SetJobInterView";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-import SendJobOffer from "../Components/SendJobOffer";
-import SetJobInterView from "../Components/SetJobInterView";
-import SendJobTask from "../Components/SendJobTask";
 
 const ApplicationFormDetails = ({ candidateDetails }) => {
   const { currentUser } = useAuth();

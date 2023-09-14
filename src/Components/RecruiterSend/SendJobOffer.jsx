@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsSendCheck } from "react-icons/bs";
-import ArrayTextarea from "./ArrayTextarea";
-import Button from "./Button";
-import CustomModal from "./CustomModal";
+import ArrayTextarea from "../ArrayTextarea";
+import Button from "../Button";
+import CustomModal from "../CustomModal";
 
 const SendJobOffer = ({ handleSendOffer }) => {
   const {
@@ -15,33 +15,33 @@ const SendJobOffer = ({ handleSendOffer }) => {
   const [offerLetter, setOfferLetter] = useState(false);
   const [isOfferModalOpen, setIsOfferModalOpen] = useState(true);
 
-  const offerData = {
-    candidate: {
-      name: "John Doe",
-      email: "johndoe@email.com",
-      phone: "+1234567890",
-    },
-    job_offer: {
-      position: "Software Developer",
-      company: "TechCo, Inc.",
-      location: "San Francisco, CA",
-      salary: "$90,000 per year",
-      start_date: "2023-10-01",
-      benefits: ["Health insurance", "401(k) matching", "Paid time off"],
-      responsibilities: [
-        "Develop software applications",
-        "Collaborate with cross-functional teams",
-        "Troubleshoot and resolve software issues",
-      ],
-    },
-  };
+ const offerData = {
+   jobId,
+   category,
+   title,
+   position: 'junior Developer',
+   salary: '$ 400',
+   status: ['open', 'accept', 'reject', 'expired'],
+   offerDetails: [],
+   applicant: {
+     name: "shipon",
+     email: "shipon@gmail.com",
+     image: "s.jpg",
+   },
+   company: {
+     name: "shipon",
+     email: "shipon@gmail.com",
+     image: "s.jpg",
+   },
+ };
 
   // Job Offer Send
   const onJobOffer = (data) => {
     const offerData = {
+      data,
       offerLetter
     }
-    console.log("onJobOffer", data);
+    console.log("onJobOffer", offerData);
 
     // setIsOfferModalOpen(false);
     // reset();

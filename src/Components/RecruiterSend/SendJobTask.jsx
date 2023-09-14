@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdOutlineAssignment } from "react-icons/md";
-import useAuth from "../Hooks/useAuth";
-import ArrayTextarea from "./ArrayTextarea";
-import Button from "./Button";
-import CustomModal from "./CustomModal";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { toast } from "react-toastify";
+import useAuth from "../../Hooks/useAuth";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import ArrayTextarea from "../ArrayTextarea";
+import Button from "../Button";
+import CustomModal from "../CustomModal";
 
 const SendJobTask = ({ handleAssignTest, candidateDetails }) => {
-   const { currentUser } = useAuth();
+  const { currentUser } = useAuth();
   const [ axiosSecure ] = useAxiosSecure();
   const [isSentTaskModalOpen, setIsSentTaskModalOpen] = useState(true);
   const [testDetails, setTestDetails] = useState([]);
-   const {
+  const {
       register,
       handleSubmit,
       reset,

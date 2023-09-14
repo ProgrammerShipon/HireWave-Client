@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsCameraVideo } from "react-icons/bs";
-import Button from "./Button";
-import CustomModal from "./CustomModal";
+import CustomModal from "../CustomModal";
 
 const SetJobInterView = ({ handleInterviewModal }) => {
-
      const {
        register,
        handleSubmit,
@@ -14,7 +12,6 @@ const SetJobInterView = ({ handleInterviewModal }) => {
      } = useForm();
      const [isInterviewModalOpen, setIsInterviewModalOpen] = useState(true);
 
-   
   const onInterviewSubmit = (data) => {
     console.log(data);
     const interviewData = {
