@@ -15,6 +15,9 @@ import { toast } from "react-toastify";
 import ArrayTextarea from "../Components/ArrayTextarea";
 import GetAgoTime from "../Components/GetAgoTime";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import SendJobOffer from "../Components/SendJobOffer";
+import SetJobInterView from "../Components/SetJobInterView";
+import SendJobTask from "../Components/SendJobTask";
 
 const ApplicationFormDetails = ({ candidateDetails }) => {
   const { currentUser } = useAuth();
@@ -33,8 +36,6 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
   } = candidateDetails;
   const [isInterviewModalOpen, setIsInterviewModalOpen] = useState(false);
   const [isSentTaskModalOpen, setIsSentTaskModalOpen] = useState(false);
-  const [isOfferModalOpen, setIsOfferModalOpen] = useState(false);
-  const [offerLetter, setOfferLetter] = useState("false");
   const {
     register,
     handleSubmit,
@@ -42,11 +43,13 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
     formState: { errors },
   } = useForm();
   const [axiosSecure] = useAxiosSecure();
-  const [testDetails, setTestDetails] =useState([])
+  
+  // Modal On or Close state
+  const [isOfferModalOpen, setIsOfferModalOpen] = useState(false);
 
-  const handleOfferModal = (e) => {
-    if (e == "edit") setIsOfferModalOpen(true);
-    else if (e == "cancel") setIsOfferModalOpen(false);
+    const handleSendOffer = (e) => {
+       if (e == "edit") setIsOfferModalOpen(true);
+       else if (e == "cancel") setIsOfferModalOpen(false);
   };
   const handleAssignTest = (e) => {
     if (e == "edit") setIsSentTaskModalOpen(true);
@@ -55,64 +58,6 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
   const handleInterviewModal = (e) => {
     if (e == "edit") setIsInterviewModalOpen(true);
     else if (e == "cancel") setIsInterviewModalOpen(false);
-  };
-
-  // Job Offer Send
-  const onOfferSend = (data) => {
-    const offerData = {
-      offerLetter,
-      candidateEmail: email,
-      recruiterEmail: currentUser,
-    };
-    console.log("Offer", offerData);
-
-    //TODO: Update education data
-    setIsOfferModalOpen(false);
-    reset();
-  };
-
-  // Assign Test
-  const onAssignTest = (data) => {
-    const taskData = {
-      ...candidateDetails,
-      appliedId: _id,
-      companyId: currentUser?._id,
-      tasks: [
-        {
-          given: testDetails,
-          startTime: new Date(),
-          submissionTime: data?.submissionData,
-        },
-      ],
-    };
-
-    // send data client or store database
-    axiosSecure
-      .post("/task", taskData)
-      .then((res) => {
-        if (res.status == 200) {
-          toast.success("Task Assign Send Success");
-        }
-      })
-      .catch((err) => console.log(err));
-
-    //TODO: Update education data
-    setIsInterviewModalOpen(false);
-    reset();
-  };
-
-  const onInterviewSubmit = (data) => {
-    console.log(data);
-    const interviewData = {
-      interviewDate: data.date,
-      interviewTime: data.time,
-      interviewDetails: data.details,
-    };
-    console.log(interviewData);
-
-    //TODO: Update education data
-    setIsInterviewModalOpen(false);
-    reset();
   };
 
   const onHireSubmit = (data) => {
@@ -182,18 +127,20 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
             <BsCaretDownFill className="ml-4 group-hover:rotate-180 duration-300" />
             {/* Buttons */}
             <div className="absolute overflow-hidden w-full mt-3 shadow-xl shadow-gray/40 top-20 right-0 bg-white border-b-4 border-purple rounded-md flex flex-col items-center  opacity-0 invisible group-hover:top-10 group-hover:opacity-100 group-hover:visible duration-300">
-              <button
-                onClick={() => handleOfferModal("edit")}
-                className="flex items-center gap-4 text-purple hover:underline hover:bg-purple/20 w-full px-3 py-2 duration-300"
-              >
-                <BsSendCheck /> Send Offer
-              </button>
-
+              {/* Assign Test buttons */}
               <button
                 onClick={() => handleAssignTest("edit")}
                 className="flex items-center gap-4 text-purple hover:underline hover:bg-purple/20 w-full px-3 py-2 duration-300"
               >
                 <MdOutlineAssignment /> Assign Test
+              </button>
+
+              {/* Send Offer buttons */}
+              <button
+                onClick={() => handleSendOffer("edit")}
+                className="flex items-center gap-4 text-purple hover:underline hover:bg-purple/20 w-full px-3 py-2 duration-300"
+              >
+                <BsSendCheck /> Send Offer
               </button>
 
               <button
@@ -219,7 +166,6 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
               </p>
             ))}
         </div>
-
         {/* Important Links */}
         <div className="rounded-lg border border-gray/40 hover:border-green p-5 md:p-8 mt-8 shadow-lg">
           <h2 className="text-lightGray text-xl mb-3">Provided Links</h2>
@@ -240,164 +186,20 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
           ))}
         </div>
 
-        {isOfferModalOpen && (
-          <CustomModal
-            isModalOpen={isOfferModalOpen}
-            setIsModalOpen={isOfferModalOpen}
-            handleModal={handleOfferModal}
-          >
-            {/* Modal Heading */}
-            <h2 className="text-purple text-2xl pb-2 drop-shadow-lg flex items-center gap-2 border-b border-purple/60">
-              <BsSendCheck size={24} />
-              Send Offer
-            </h2>
-
-            {/* Modal content */}
-            <form onSubmit={handleSubmit(onOfferSend)} className="mt-4">
-              {/* Details */}
-              <div>
-                <label className="text-dark text-base block mb-1 mt-5">
-                  Additional file links(doc, pdf, etc..)
-                </label>
-                <input
-                  className="rounded outline-none border border-dark/20 w-full px-3 py-2 focus:border-purple"
-                  placeholder="Write Assessment Tests details / files link"
-                  {...register("fileLinks")}
-                />
-              </div>
-
-              <div>
-                <label className="text-dark text-base block mb-1 mt-5">
-                  Offer letter
-                  <ArrayTextarea
-                    setOfferLetter={setOfferLetter}
-                    placeholder="Write a offer letter"
-                  />
-                </label>
-              </div>
-
-              {/* Save changes */}
-              <div className="flex justify-end mt-4">
-                <Button type="submit">Send Offer</Button>
-              </div>
-            </form>
-          </CustomModal>
+        {/* Send Job Task */}
+        {isSentTaskModalOpen && (
+          <SendJobTask
+            handleAssignTest={handleAssignTest}
+            candidateDetails={candidateDetails}
+          />
         )}
 
-        {handleAssignTest && (
-          <CustomModal
-            isModalOpen={isSentTaskModalOpen}
-            setIsModalOpen={setIsSentTaskModalOpen}
-            handleModal={handleAssignTest}
-          >
-            {/* Modal Heading */}
-            <h2 className="text-purple text-2xl pb-2 drop-shadow-lg flex items-center gap-2 border-b border-purple/60">
-              <MdOutlineAssignment size={24} />
-              Assessment Tests
-            </h2>
+        {/* Send Job Offer to Candidate */}
+        {isOfferModalOpen && <SendJobOffer handleSendOffer={handleSendOffer} />}
 
-            {/* Modal content */}
-            <form onSubmit={handleSubmit(onAssignTest)} className="mt-4">
-              {/* Details */}
-              <div>
-                {/* Interview Date */}
-                <div className="w-full">
-                  <label className="text-dark text-base block mb-1 mt-5">
-                    Submission Data
-                    <input
-                      className="rounded outline-none border border-dark/20 w-full px-3 py-2 focus:border-purple"
-                      type="date"
-                      {...register("submissionData", { required: true })}
-                    />
-                  </label>
-                  {errors.date && (
-                    <span className="text-red-700">Date is required</span>
-                  )}
-                </div>
-
-                {/* Additional File Links or data */}
-                <label className="text-dark text-base block mb-1 mt-5">
-                  Additional file links / Tests details
-                </label>
-                <ArrayTextarea
-                  setCoverLetter={setTestDetails}
-                  placeholder="Write test details / Additional file links"
-                />
-              </div>
-
-              {/* Save changes */}
-              <div className="flex justify-end mt-4">
-                <Button type="submit">Send Task</Button>
-              </div>
-            </form>
-          </CustomModal>
-        )}
-
+        {/* Set Interviews */}
         {isInterviewModalOpen && (
-          <CustomModal
-            isModalOpen={isInterviewModalOpen}
-            setIsModalOpen={setIsInterviewModalOpen}
-            handleModal={handleInterviewModal}
-          >
-            {/* Modal Heading */}
-            <h2 className="text-purple text-2xl pb-2 drop-shadow-lg flex items-center gap-2 border-b border-purple/60">
-              <BsCameraVideo size={24} />
-              Take Interview
-            </h2>
-
-            {/* Modal content */}
-            <form onSubmit={handleSubmit(onInterviewSubmit)}>
-              <div className="flex items-center gap-5">
-                {/* Interview Date */}
-                <div className="w-full">
-                  <label className="text-dark text-base block mb-1 mt-5">
-                    Interview Date
-                    <input
-                      className="rounded outline-none border border-dark/20 w-full px-3 py-2 focus:border-purple"
-                      type="date"
-                      {...register("date", { required: true })}
-                    />
-                  </label>
-                  {errors.date && (
-                    <span className="text-red-700">Date is required</span>
-                  )}
-                </div>
-
-                {/* Interview Time */}
-                <div className="w-full">
-                  <label className="text-dark text-base block mb-1 mt-5">
-                    Interview Time
-                    <input
-                      className="rounded outline-none border border-dark/20 w-full px-3 py-2 focus:border-purple"
-                      type="time"
-                      {...register("time", { required: true })}
-                    />
-                  </label>
-                  {errors.time && (
-                    <span className="text-red-700">Time is required</span>
-                  )}
-                </div>
-              </div>
-
-              {/* Details */}
-              <div>
-                <label className="text-dark text-base block mb-1 mt-5">
-                  Additional Details
-                  <textarea
-                    rows={4}
-                    className="rounded outline-none border border-dark/20 w-full px-3 py-2 focus:border-purple"
-                    placeholder="Write Additional details"
-                    {...register("details")}
-                  />
-                </label>
-              </div>
-
-              {/* Save changes */}
-              <div className="flex justify-end mt-4">
-                <Button type="submit">Send Interview Invitation</Button>
-              </div>
-            </form>
-          </CustomModal>
+          <SetJobInterView handleInterviewModal={handleInterviewModal} />
         )}
       </div>
     </section>
