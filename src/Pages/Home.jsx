@@ -54,9 +54,13 @@ const Home = () => {
                 </>
             }
 
-            <JobByLocation />
-            {/* border */}
-            <Divider />
+            {
+                currentUser.role !== 'recruiter' &&
+                <><JobByLocation />
+                    {/* border */}
+                    <Divider />
+                </>
+            }
 
             <Partners />
             {/* border */}

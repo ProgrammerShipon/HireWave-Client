@@ -216,13 +216,15 @@ const ManageUsers = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredData.map((user) => (
-                  <ManageUserTableRow
-                    key={user._id}
-                    user={user}
-                    refetch={refetch}
-                  />
-                ))}
+                {
+                  filteredData.length > 0 ? filteredData.map((user) => (
+                    <ManageUserTableRow
+                      key={user._id}
+                      user={user}
+                      refetch={refetch}
+                    />
+                  )) : <h2 className="py-4 text-lg text-center">No data available!</h2>
+                }
               </tbody>
             </table>
           ) : (

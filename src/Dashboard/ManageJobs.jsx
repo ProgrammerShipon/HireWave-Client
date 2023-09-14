@@ -139,9 +139,11 @@ const ManageJobs = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredData.map((job) => (
-                  <ManageJobTable key={job._id} job={job} refetch={refetch} />
-                ))}
+                {
+                  filteredData.length > 0 ? filteredData.map((job) => (
+                    <ManageJobTable key={job._id} job={job} refetch={refetch} />
+                  )) : <h2 className="py-4 text-lg text-center">No data available!</h2>
+                }
               </tbody>
             </table>
           ) : (

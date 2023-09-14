@@ -128,7 +128,7 @@ const FindJobBody = ({ allJobsData, date, setDate }) => {
 
         {/* job card */}
         <div className="grid grid-cols-1 gap-5">
-          {allJobsData.map((job, index) => (
+          {allJobsData.slice(0, 4).map((job, index) => (
             <JobCard key={index} job={job} setJobDetails={setJobDetails} mySavedJobs={mySavedJobs} refetch={refetch} />
           ))}
         </div>

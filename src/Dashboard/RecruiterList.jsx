@@ -129,8 +129,8 @@ const RecruiterList = () => {
                             </thead>
                             <tbody>
                                 {
-                                    filteredData.map((recruiter) => (
-                                        <RecruiterListTableRow key={recruiter._id} recruiter={recruiter} />))
+                                    filteredData.length > 0 ? filteredData.map((recruiter) => (
+                                        <RecruiterListTableRow key={recruiter._id} recruiter={recruiter} />)) : <h2 className="py-4 text-lg text-center">No data available!</h2>
                                 }
                             </tbody>
                         </table> : <PageLoader />
