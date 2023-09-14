@@ -173,7 +173,7 @@ const FindJobBody = ({ allJobsData }) => {
             </div>
             <div className="mt-1">
               <Link
-                to="/"
+                to={`/recruiters_details/${_id}`}
                 className="text-xl font-medium duration-300 text-dark drop-shadow-lg hover:text-green line-clamp-2"
               >
                 {companyName}
@@ -240,7 +240,7 @@ const FindJobBody = ({ allJobsData }) => {
             <div className="mt-5">
               <h4 className="text-xl">Requirements:</h4>
               <ul className="flex flex-col gap-2 list-disc text-lightGray pl-7">
-                {requirements.map((item, index) => (
+                {requirements?.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
               </ul>
@@ -250,7 +250,7 @@ const FindJobBody = ({ allJobsData }) => {
             <div className="mt-5">
               <h4 className="text-xl">Skill & Experience:</h4>
               <ul className="flex flex-col gap-2 list-disc text-lightGray pl-7">
-                {skillsExperience.map((item, index) => (
+                {skillsExperience?.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
               </ul>
@@ -260,7 +260,7 @@ const FindJobBody = ({ allJobsData }) => {
             <div className="mt-5">
               <h4 className="text-xl">Benefits:</h4>
               <ul className="flex flex-col gap-2 list-disc text-lightGray pl-7">
-                {benefits.map((item, index) => (
+                {benefits?.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
               </ul>

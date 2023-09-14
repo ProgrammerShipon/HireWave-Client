@@ -5,6 +5,7 @@ import PageLoader from "../Components/PageLoader";
 import useRecruiters from "../Hooks/useRecruiters";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
+import { Tooltip } from "react-tooltip";
 
 const RecruiterList = () => {
     const [recruiterData, loading] = useRecruiters();
@@ -53,8 +54,10 @@ const RecruiterList = () => {
                 {/* filtering option */}
                 <form onSubmit={handleSubmit(onSubmit)}
                     className="flex flex-col lg:flex-row items-center gap-3 justify-between bg-white p-4 rounded-md shadow-xl mt-10">
-                    {/* search by title */}
-                    <div className="w-full sm:w-72">
+                    {/* search by name */}
+                    <Tooltip id="name" />
+                    <div
+                        data-tooltip-id="name" data-tooltip-content="Search recruiter name!" className="w-full sm:w-72">
                         <input
                             placeholder="Search recruiter name"
                             className="border border-gray/40 p-2 rounded-md bg-white focus:outline-none focus:border-green w-full"
@@ -66,7 +69,8 @@ const RecruiterList = () => {
                         <h2 className="text-lg text-dark">Filter By: </h2>
 
                         {/* filter by status */}
-                        <select
+                        <Tooltip id="status" />
+                        <select data-tooltip-id="status" data-tooltip-content="Select recruiter status!"
                             name="status"
                             className="py-1 border border-gray/40 text-lightGray focus:outline-none focus:border-green rounded-md px-2 w-full sm:w-auto"
                             {...register("status")}
@@ -78,7 +82,9 @@ const RecruiterList = () => {
                         </select>
 
                         {/* filter by Industry */}
+                        <Tooltip id="Industry" />
                         <select
+                            data-tooltip-id="Industry" data-tooltip-content="Select recruiter industry!"
                             name="Industry"
                             className="py-1 border border-gray/40 text-lightGray focus:outline-none focus:border-green rounded-md px-2 w-full sm:w-auto"
                             {...register("industry")}
@@ -94,7 +100,9 @@ const RecruiterList = () => {
                         </select>
 
                         {/* filter by date */}
+                        <Tooltip id="date" />
                         <select
+                            data-tooltip-id="date" data-tooltip-content="Select date!"
                             name="date"
                             className="py-1 border border-gray/40 text-lightGray focus:outline-none focus:border-green rounded-md px-2 w-full sm:w-auto"
                             {...register("date")}

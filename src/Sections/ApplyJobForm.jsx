@@ -12,12 +12,12 @@ import { GiLevelEndFlag } from 'react-icons/gi';
 import { IoMdAddCircleOutline } from 'react-icons/io';
 import { LiaIndustrySolid } from 'react-icons/lia';
 import { SlLocationPin } from 'react-icons/sl';
-import Swal from 'sweetalert2';
-import useCurrentCandidate from '../Hooks/useCurrentCandidate';
 import CoverLetterTextarea from '../Components/CoverLetterTextarea';
+import useCurrentCandidate from '../Hooks/useCurrentCandidate';
+import Swal from 'sweetalert2';
 
 const ApplyJobForm = ({ jobData }) => {
-    const { user } = useAuth();
+    const { currentUser } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const [currentCandidate] = useCurrentCandidate();
     const [coverLetter, setCoverLetter] = useState();
@@ -45,23 +45,25 @@ const ApplyJobForm = ({ jobData }) => {
         const location = `${currentCandidate.location[0]}, ${currentCandidate.location[1]}`
 
         const appliedInfo = {
-            jobId: _id,
-            applicantId: currentCandidate._id,
-            applicantName: currentCandidate.name,
-            applicantEmail: user?.email,
-            applicantImage: currentCandidate.image,
-            location: location,
-            category: currentCandidate.category,
-            companyName,
-            companyLogo,
-            companyEmail,
-            title,
-            jobType,
-            cover_letter,
-            expected_salary,
-            attachment,
-            appliedDate: appliedDate
-        }
+          jobId: _id,
+          applicantId: currentCandidate._id,
+          applicantName: currentCandidate.name,
+          applicantEmail: currentUser?.email,
+          applicantImage: currentCandidate.image,
+          location: location,
+          category: currentCandidate.category,
+          companyName,
+          companyLogo,
+          companyEmail,
+          title,
+          jobType,
+          cover_letter,
+          expected_salary,
+          attachment,
+          appliedDate: appliedDate,
+        };
+
+        console.log(appliedInfo);
 
         axiosSecure.post('/appliedCandidate', appliedInfo)
             .then((res) => {
@@ -173,7 +175,12 @@ const ApplyJobForm = ({ jobData }) => {
 
                         <div className='mb-2 mt-5'>
                             <label className='text-dark block mb-1 text-base'>Cover letter</label>
-                            <CoverLetterTextarea coverLetter={coverLetter} setCoverLetter={setCoverLetter} />
+                            <textarea
+                                rows={5}
+                                className={`w-full px-3 py-2 border border-gray/40 focus:outline-none focus:border-green rounded-md ${errors.cover_letter && 'border-red-400'}`}
+                                placeholder='Write within 300 words'
+                                {...register("cover_letter", { required: true })}
+                            />
                         </div>
 
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
@@ -181,10 +188,10 @@ const ApplyJobForm = ({ jobData }) => {
                                 <label htmlFor='salary' className='text-dark block mb-1 text-base'>Expected Salary</label>
                                 <input
                                     id='salary'
-                                    className='w-full px-3 py-2 border border-gray/40 focus:outline-none focus:border-green rounded-md'
+                                    className={`w-full px-3 py-2 border border-gray/40 focus:outline-none focus:border-green rounded-md ${errors.experience && 'border-red-400'} `}
                                     type="number"
                                     placeholder='Enter a range (in USD)'
-                                    {...register("expected_salary")}
+                                    {...register("expected_salary", { required: true })}
                                 />
                             </div>
                             <div className='lg:col-span-2'>

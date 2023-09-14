@@ -1,5 +1,5 @@
 import moment from "moment";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { AiOutlineCalendar, AiOutlinePlus } from "react-icons/ai";
 import { BiMap } from "react-icons/bi";
@@ -11,15 +11,13 @@ import { LuLayoutTemplate } from "react-icons/lu";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
 import CustomModal from "../Components/CustomModal";
 import Divider from "../Components/Divider";
-import GetAgoTime from "../Components/GetAgoTime";
 import useAllCategories from "../Hooks/useAllCategories";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-import useRecruiterRole from "../Hooks/useRecruiterRole";
-import useSkills from "../Hooks/useSkills";
 import useCurrentRecruiter from "../Hooks/useCurrentRecruiter";
+import useSkills from "../Hooks/useSkills";
+import Swal from "sweetalert2";
 
 const modules = {
     toolbar: [
@@ -55,6 +53,7 @@ export default function PostJobForm() {
     const [skillData, loading] = useSkills();
     const subCategories = allCategoriesData?.find(category => category?.name == currentRecruiter?.category)
     const [axiosSecure] = useAxiosSecure();
+    console.log(recruitersRole);
 
     //Modal functions
     const handlePreviewModal = (e) => {
@@ -73,24 +72,27 @@ export default function PostJobForm() {
     const onSubmit = (data) => {
         const location = `${currentRecruiter?.location[0]}, ${currentRecruiter?.location[1]}`
         const newJob = {
-            title: data?.title,
-            category: currentRecruiter?.category,
-            jobType: data?.jobType,
-            salary: data?.salary,
-            experience: data?.experience,
-            quantity: data?.quantity,
-            skills: data?.skills?.map((skill) => skill),
-            closingDate: data?.closingDate,
-            description: description,
-            applied: 0,
-            postedDate: currentDate,
-            open: true,
-            status: "pending",
-            companyName: currentRecruiter?.name,
-            companyEmail: currentRecruiter?.email,
-            companyLogo: currentRecruiter?.image,
-            location: location
+          title: data?.title,
+          category: currentRecruiter?.category,
+          jobType: data?.jobType,
+          salary: data?.salary,
+          experience: data?.experience,
+          quantity: data?.quantity,
+          skills: data?.skills?.map((skill) => skill),
+          closingDate: data?.closingDate,
+          description: description,
+          applied: 0,
+          postedDate: currentDate,
+          open: true,
+          status: "pending",
+          companyName: currentRecruiter?.name,
+          companyEmail: currentRecruiter?.email,
+          companyLogo: currentRecruiter?.image,
+          location: location,
+          sub_category: data?.sub_category,
         };
+
+        console.log(newJob);
 
         axiosSecure.post(`/allJobs`, newJob)
             .then((res) => {
@@ -355,11 +357,11 @@ export default function PostJobForm() {
                         {/* Button */}
                         <div className='flex items-center justify-end gap-3 mt-3'>
                             {/* Preview Button */}
-                            <button className='text-green border px-6 py-2 hover:text-green/40 duration-300 flex items-center gap-4 rounded-md hover:bg-green hover:text-white group' onClick={() => handlePreviewModal("edit")}
+                            <div className='text-green border px-6 py-2 hover:text-green/40 duration-300 flex items-center gap-4 rounded-md hover:bg-green hover:text-white group' onClick={() => handlePreviewModal("edit")}
                             >
                                 <span className="text-dark group-hover:text-white duration-300">Preview</span>
                                 <FaEye size={22} />
-                            </button>
+                            </div>
 
                             {/* Submit Button */}
                             <button className='bg-dark border border-dark hover:border-green py-2 text-white hover:bg-green px-12 rounded-md duration-300 shadow-xl hover:shadow-green/20' type="submit">
@@ -509,7 +511,7 @@ export default function PostJobForm() {
                         {/* Job Title */}
                         <div>
                             <h2 className="text-dark text-lg underline underline-offset-2">Job Title:</h2>
-                            <p className="text-lightGray">Title is the most important place to Include relevant keywords in the job title for better search visibility among potential candidates.</p>
+                            <p className="text-lightGray">Use relevant keywords in the job title for better search visibility among potential candidates.</p>
                         </div>
 
                         {/* category */}
@@ -527,19 +529,19 @@ export default function PostJobForm() {
                         {/* skills */}
                         <div>
                             <h2 className="text-dark text-lg underline underline-offset-2">Skills:</h2>
-                            <p className="text-lightGray">Skills your job with buzz words that are relevant to the jobs you offer.</p>
+                            <p className="text-lightGray">Include all the skills that are relevant to the jobs you offer. The job post will be suggested to Candidates with similar skills.</p>
                         </div>
 
                         {/* Overview */}
                         <div>
                             <h2 className="text-dark text-lg underline underline-offset-2">Overview:</h2>
-                            <p className="text-lightGray">Describe Your Job Overview best ways. To create an impactful job overview, succinctly introduce the role, provide essential details about responsibilities and qualifications, and highlight what makes your company an appealing place to work.</p>
+                            <p className="text-lightGray">Describe Your Company Overview in a detailed way. To create an impactful job overview, provide essential details about your company, and highlight what makes your company an appealing place to work.</p>
                         </div>
 
                         {/* Responsibilities */}
                         <div>
                             <h2 className="text-dark text-lg underline underline-offset-2">Responsibilities:</h2>
-                            <p className="text-lightGray">Specify the qualifications, skills, and experience necessary for the role, ensuring candidates understand the expectations clearly.</p>
+                            <p className="text-lightGray">Specify the responsibilities for the role, ensuring candidates understand the expectations clearly.</p>
                         </div>
 
                         {/* skill & experience */}

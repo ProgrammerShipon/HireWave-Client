@@ -7,7 +7,7 @@ const useLearningData = () => {
         data: learningData = [], isLoading: loading, refetch, } = useQuery({
             queryKey: ["learningData"],
             queryFn: async () => {
-                const res = await axiosSecure.get('/learning');
+                const res = await axiosSecure('/learning');
                 return res.data;
             },
 

@@ -25,7 +25,7 @@ const NavItems = () => {
                 </ActiveLink>
             </li>
             {
-                role !== 'candidate' && role !== 'recruiter' && role !== 'admin' && <>
+                role !== 'candidate' && role !== 'recruiter' && <>
                     <li>
                         <ActiveLink to='/browse_jobs'>
                             Browse Jobs

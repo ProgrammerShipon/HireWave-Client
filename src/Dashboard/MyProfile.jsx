@@ -6,14 +6,14 @@ import PageLoader from '../Components/PageLoader';
 import useAuth from '../Hooks/useAuth';
 import useCandidatesData from '../Hooks/useCandidatesData';
 import CandidateProfile from '../Sections/DashSections/CandidateProfile';
+import AdminProfile from '../Sections/DashSections/AdminProfile';
 
 const MyProfile = () => {
     const { currentUser } = useAuth();
     const [candidatesData, loading] = useCandidatesData();
     const [currentCandidate, setCurrentCandidate] = useState({});
-
     useEffect(() => {
-        const getCandidate = candidatesData.find(candidate => candidate.email === currentUser.email);
+        const getCandidate = candidatesData.find(candidate => candidate.email === currentUser?.email);
         setCurrentCandidate(getCandidate)
     }, [!loading, currentUser?.email])
 
@@ -23,18 +23,26 @@ const MyProfile = () => {
 
             {/* My Account */}
             {
-                currentCandidate?.email ? <CandidateProfile candidatesData={currentCandidate} /> : <PageLoader />
+                currentUser.role === 'candidate' && <>
+                    {
+                        currentCandidate?.email ? <CandidateProfile candidatesData={currentCandidate} /> : <PageLoader />
+                    }
+                </>
+            }
+
+            {
+                currentUser.role === 'admin' && <AdminProfile currentUser={currentUser} />
             }
 
             {/* Generate Resume Button */}
-            <div className='mt-7'>
+            {/* <div className='mt-7'>
                 <Button>
                     <div className='flex items-center gap-2'>
                         <AiOutlineFileAdd />
                         <p>Generate Resume</p>
                     </div>
                 </Button>
-            </div>
+            </div> */}
         </section>
     );
 };

@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../Components/Breadcrumbs';
 import LearningDetailsBody from '../Sections/LearningDetailsBody';
+import PageLoader from '../Components/PageLoader';
 
 const LearningDetails = () => {
 
@@ -23,7 +24,7 @@ const LearningDetails = () => {
 
             {/* Page content */}
             {
-                !loading ? <LearningDetailsBody singleLearningData={singleLearningData} /> : <h2>Loading...</h2>
+                !loading ? <LearningDetailsBody singleLearningData={singleLearningData} /> : <PageLoader />
             }
         </>
     );

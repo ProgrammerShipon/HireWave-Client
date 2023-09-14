@@ -14,6 +14,9 @@ const SavedJob = () => {
         <section className="py-20 md:py-[120px] duration-300">
             <div className="container">
                 {
+                    mySavedJobs.length > 0 && <h1 className='text-lightGray text-3xl font-medium drop-shadow-lg mb-7'>Saved jobs 0{mySavedJobs.length}</h1>
+                }
+                {
                     !mySavedJobs.length > 0 && <div className='-mt-36 text-center'>
                         <div className='h-96 mx-auto w-fit -z-10 relative'>
                             <img src={heartImg} alt="heart" />
