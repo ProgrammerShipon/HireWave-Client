@@ -20,15 +20,17 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAuth from "../Hooks/useAuth";
 import useMySavedJobs from "../Hooks/useMySavedJobs";
 import useMyAppliedJobs from "../Hooks/useMyAppliedJobs";
+import CopyToClipboardLink from "./CopyToClipboardLink";
 
-const FindJobBody = ({ allJobsData }) => {
+const FindJobBody = ({ allJobsData, date, setDate }) => {
   const [jobDetails, setJobDetails] = useState(allJobsData[0]);
   const [axiosSecure] = useAxiosSecure();
   const [myAppliedJobs] = useMyAppliedJobs();
   const [mySavedJobs, , refetch] = useMySavedJobs();
   let [alreadyApplied, setAlreadyApplied] = useState(false);
   let [alreadySaved, setAlreadySaved] = useState(false);
-  const { user } = useAuth();
+  const { user, currentUser } = useAuth();
+
   const {
     _id,
     title,
@@ -42,10 +44,7 @@ const FindJobBody = ({ allJobsData }) => {
     closingDate,
     experience,
     quantity,
-    overview,
-    requirements,
-    skillsExperience,
-    benefits,
+    description,
     skills,
   } = jobDetails;
 
@@ -117,10 +116,12 @@ const FindJobBody = ({ allJobsData }) => {
             <select
               id="select"
               className="px-2 py-1 border rounded-md cursor-pointer border-purple focus:outline-none"
+              defaultValue={date}
+              onChange={(e) => setDate(e.target.value)}
             >
-              <option>Newest</option>
-              <option>Oldest</option>
-              <option>Features</option>
+              <option value=''>Select</option>
+              <option value='newest'>Newest</option>
+              <option value='oldest'>Oldest</option>
             </select>
           </div>
         </div>
@@ -145,19 +146,23 @@ const FindJobBody = ({ allJobsData }) => {
             </div>
 
             <div className="flex items-center gap-2">
-              <AiOutlineShareAlt size="24px" className="text-green" />
+              <CopyToClipboardLink textToCopy={`https://hire-wave.web.app/job_details/${_id}`} />
               {
-                !alreadySaved ? <>
+                currentUser.role === 'candidate' && <>
                   {
-                    user?.email ? <button onClick={handleSaveJob}>
-                      <BiHeart size="24px" className="text-green" />
-                    </button> : <Link to='/login'>
-                      <BiHeart size="24px" className="text-green" />
-                    </Link>
+                    !alreadySaved ? <>
+                      {
+                        user?.email ? <button onClick={handleSaveJob}>
+                          <BiHeart size="24px" className="text-green" />
+                        </button> : <Link to='/login'>
+                          <BiHeart size="24px" className="text-green" />
+                        </Link>
+                      }
+                    </> : <button disabled>
+                      <FaHeart size="24px" className="text-red-400" />
+                    </button>
                   }
-                </> : <button disabled>
-                  <FaHeart size="24px" className="text-red-400" />
-                </button>
+                </>
               }
             </div>
           </div>
@@ -228,43 +233,8 @@ const FindJobBody = ({ allJobsData }) => {
 
           {/* job description */}
           <div className="my-6">
-            <h2 className="text-3xl font-medium text-dark">Description</h2>
-
-            {/* Overview */}
-            <div className="mt-5">
-              <h4 className="text-xl">Overview:</h4>
-              <p className="text-gray">{overview}</p>
-            </div>
-
-            {/* Requirements */}
-            <div className="mt-5">
-              <h4 className="text-xl">Requirements:</h4>
-              <ul className="flex flex-col gap-2 list-disc text-lightGray pl-7">
-                {requirements.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Skill & Experience */}
-            <div className="mt-5">
-              <h4 className="text-xl">Skill & Experience:</h4>
-              <ul className="flex flex-col gap-2 list-disc text-lightGray pl-7">
-                {skillsExperience.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Benefits */}
-            <div className="mt-5">
-              <h4 className="text-xl">Benefits:</h4>
-              <ul className="flex flex-col gap-2 list-disc text-lightGray pl-7">
-                {benefits.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            </div>
+            <h2 className="text-3xl font-medium text-dark mb-5">Description</h2>
+            <div className="postJob" dangerouslySetInnerHTML={{ __html: description }}></div>
           </div>
 
           <Divider />

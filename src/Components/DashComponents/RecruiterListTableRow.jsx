@@ -1,8 +1,16 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import useAllJobs from '../../Hooks/useAllJobs';
 
 const RecruiterListTableRow = ({ recruiter }) => {
     const { _id, name, status, image, industry, email } = recruiter;
+    const [allJobsData, loading] = useAllJobs();
+    const [postedJob, setPostedJob] = useState([]);
+
+    useEffect(() => {
+        const getPostedJob = allJobsData.filter(job => job.companyEmail === email)
+        setPostedJob(getPostedJob)
+    }, [email, !loading])
     return (
         <tr className="border-b border-green/20 hover:bg-green/10 duration-300 group">
             <td className="px-3 py-3 flex gap-2">
@@ -19,7 +27,7 @@ const RecruiterListTableRow = ({ recruiter }) => {
             </td>
 
             <td className="px-3 py-4 text-center text-lg font-medium text-dark">
-                12
+                0{postedJob.length}
             </td>
 
             <td className="px-3 py-4 text-center">
@@ -35,7 +43,7 @@ const RecruiterListTableRow = ({ recruiter }) => {
                 </div>
             </td>
             <td className="px-3 py-4 text-center">
-                <Link to={`/recruiters_details/${_id}`} className="border border-green px-4 rounded-md hover:bg-green hover:text-white duration-300">View</Link>
+                <button className="border border-green px-4 rounded-md hover:bg-green hover:text-white duration-300">Action</button>
             </td>
         </tr>
     );

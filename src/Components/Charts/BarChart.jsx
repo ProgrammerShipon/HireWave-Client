@@ -43,13 +43,11 @@ const BarChart = () => {
                     title: () => null,
                 },
             },
-        },
-        maintainAspectRatio: false,
-        plugins: {
             legend: {
                 display: false,
             },
         },
+        maintainAspectRatio: false,
     };
 
     const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];

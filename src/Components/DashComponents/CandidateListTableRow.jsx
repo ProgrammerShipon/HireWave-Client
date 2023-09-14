@@ -32,7 +32,7 @@ const CandidateListTableRow = ({ candidate }) => {
                 </div>
             </td>
             <td className="px-3 py-4 text-center">
-                <Link to={`/candidate_details/${_id}`} className="border border-green px-4 rounded-md hover:bg-green hover:text-white duration-300">View</Link>
+                <button className="border border-green px-4 rounded-md hover:bg-green hover:text-white duration-300">Action</button>
             </td>
         </tr>
     );

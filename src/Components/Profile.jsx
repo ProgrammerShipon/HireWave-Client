@@ -4,8 +4,15 @@ import useAuth from '../Hooks/useAuth';
 import Message from './Message';
 import Notification from './Notification';
 
+// react icons
+import { MdOutlineContactMail } from "react-icons/md";
+import { LuLayoutDashboard } from "react-icons/lu";
+import { BiLogOutCircle, BiBookReader } from "react-icons/bi";
+import { BsCalendar2Event } from "react-icons/bs";
+import { VscAccount } from "react-icons/vsc";
+
 const Profile = () => {
-    const { user, logOut } = useAuth();
+    const { user, currentUser, logOut } = useAuth();
     return (
         <div className='flex items-center gap-3'>
             <div className='flex items-center'>
@@ -39,33 +46,44 @@ const Profile = () => {
 
                 {/* Dropdown */}
                 <div
-                    className="absolute right-0 top-28 max-w-xs min-w-[200px] bg-white shadow-4xl shadow-gray/40 origin-top-right transition-all duration-300 ease-in-out group-hover:top-[60px] p-4 invisible group-hover:visible opacity-0 group-hover:opacity-100">
+                    className="absolute right-0 top-28 max-w-xs min-w-[200px] bg-white shadow-4xl rounded-lg border-b-4 border-purple shadow-gray/40 origin-top-right transition-all duration-300 ease-in-out group-hover:top-[60px] overflow-hidden invisible group-hover:visible opacity-0 group-hover:opacity-100">
 
                     <ul
-                        className="flex flex-col gap-1 text-dark"
+                        className="flex flex-col text-dark"
                     >
                         <li>
-                            <Link to='/dashboard/myProfile' className='hover:text-green duration-300'>My Profile</Link>
+                            <Link to='/dashboard/myProfile' className='text-purple flex items-center gap-4 hover:gap-5 hover:bg-purple/20 py-2 pl-4 hover:underline duration-300'><VscAccount /> My Profile</Link>
                         </li>
                         <li>
-                            <Link to='/events' className='hover:text-green duration-300'>Events</Link>
+                            <Link to='/events' className='text-purple flex items-center gap-4 hover:gap-5 hover:bg-purple/20 py-2 pl-4 hover:underline duration-300'>
+                                <BsCalendar2Event />
+                                Events</Link>
                         </li>
                         <li>
-                            <Link to='/contact' className='hover:text-green duration-300'>Contact</Link>
+                            <Link to='/contact' className='text-purple flex items-center gap-4 hover:gap-5 hover:bg-purple/20 py-2 pl-4 hover:underline duration-300'>
+                                <MdOutlineContactMail />
+                                Contact</Link>
                         </li>
+                        {
+                            currentUser.role !== 'recruiter' && <li>
+                                <Link to='/learning' className='text-purple flex items-center gap-4 hover:gap-5 hover:bg-purple/20 py-2 pl-4 hover:underline duration-300'>
+                                    <BiBookReader />
+                                    Learning</Link>
+                            </li>
+                        }
                         <li>
-                            <Link to='/learning' className='hover:text-green duration-300'>Learning</Link>
-                        </li>
-                        <li>
-                            <Link to='/dashboard/dashboardHome' className='hover:text-green duration-300'>Dashboard</Link>
+                            <Link to='/dashboard/dashboardHome' className='text-purple flex items-center gap-4 hover:gap-5 hover:bg-purple/20 py-2 pl-4 hover:underline duration-300'>
+                                <LuLayoutDashboard />
+                                Dashboard
+                            </Link>
                         </li>
                     </ul>
 
                     <button
-                        className="w-full bg-red-400 text-white font-medium py-1 mt-2"
+                        className="w-full text-purple hover:text-white flex items-center justify-center gap-3 hover:gap-4 hover:bg-red-400/80 py-2 hover:underline duration-300"
                         onClick={() => logOut()}
                     >
-                        LogOut
+                        <BiLogOutCircle />   LogOut
                     </button>
                 </div>
             </div>

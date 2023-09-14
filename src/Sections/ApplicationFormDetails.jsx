@@ -191,7 +191,12 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
         )}
 
         {/* Send Job Offer to Candidate */}
-        {isOfferModalOpen && <SendJobOffer handleSendOffer={handleSendOffer} />}
+        {isOfferModalOpen && (
+          <SendJobOffer
+            handleSendOffer={handleSendOffer}
+            candidateDetails={candidateDetails}
+          />
+        )}
 
         {/* Set Interviews */}
         {isInterviewModalOpen && (

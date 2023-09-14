@@ -5,6 +5,7 @@ import PageLoader from "../Components/PageLoader";
 import useCandidatesData from "../Hooks/useCandidatesData";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
+import { Tooltip } from "react-tooltip";
 
 const CandidateList = () => {
     const [candidatesData, loading] = useCandidatesData();
@@ -51,8 +52,11 @@ const CandidateList = () => {
                 {/* filtering option */}
                 <form onSubmit={handleSubmit(onSubmit)}
                     className="flex flex-col lg:flex-row items-center gap-3 justify-between bg-white p-4 rounded-md shadow-xl mt-10">
-                    {/* search by title */}
-                    <div className="w-full sm:w-72">
+                    {/* search by candidate name */}
+                    <Tooltip id="title" />
+                    <div
+                        data-tooltip-id="title" data-tooltip-content="Search candidate name!"
+                        className="w-full sm:w-72">
                         <input
                             placeholder="Search candidate name"
                             className="border border-gray/40 p-2 rounded-md bg-white focus:outline-none focus:border-green w-full"
@@ -64,7 +68,9 @@ const CandidateList = () => {
                         <h2 className="text-lg text-dark">Filter By: </h2>
 
                         {/* filter by status */}
+                        <Tooltip id="status" />
                         <select
+                            data-tooltip-id="status" data-tooltip-content="Select candidate status!"
                             name="status"
                             className="py-1 border border-gray/40 text-lightGray focus:outline-none focus:border-green rounded-md px-2 w-full sm:w-auto"
                             {...register("status")}
@@ -76,7 +82,9 @@ const CandidateList = () => {
                         </select>
 
                         {/* filter by category */}
+                        <Tooltip id="category" />
                         <select
+                            data-tooltip-id="category" data-tooltip-content="Select candidate category!"
                             name="category"
                             className="py-1 border border-gray/40 text-lightGray focus:outline-none focus:border-green rounded-md px-2 w-full sm:w-auto"
                             {...register("category")}
@@ -92,7 +100,9 @@ const CandidateList = () => {
                         </select>
 
                         {/* filter by date */}
+                        <Tooltip id="date" />
                         <select
+                            data-tooltip-id="date" data-tooltip-content="Select date!"
                             name="date"
                             className="py-1 border border-gray/40 text-lightGray focus:outline-none focus:border-green rounded-md px-2 w-full sm:w-auto"
                             {...register("date")}
@@ -114,7 +124,7 @@ const CandidateList = () => {
                                     <th className="px-3 py-3 font-medium">Category</th>
                                     <th className="px-3 py-3 font-medium text-center">Location</th>
                                     <th className="px-3 py-3 font-medium text-center">Status</th>
-                                    <th className="py-3 text-center font-medium">Actions</th>
+                                    <th className="py-3 text-center font-medium">Action</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsSendCheck } from "react-icons/bs";
+import { toast } from "react-toastify";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import ArrayTextarea from "../ArrayTextarea";
 import Button from "../Button";
 import CustomModal from "../CustomModal";
 
-const SendJobOffer = ({ handleSendOffer }) => {
+const SendJobOffer = ({ handleSendOffer, candidateDetails }) => {
+  const [ axiosSecure ] = useAxiosSecure()
   const {
     register,
     handleSubmit,
@@ -15,36 +18,59 @@ const SendJobOffer = ({ handleSendOffer }) => {
   const [offerLetter, setOfferLetter] = useState(false);
   const [isOfferModalOpen, setIsOfferModalOpen] = useState(true);
 
- const offerData = {
-   jobId,
-   category,
-   title,
-   position: 'junior Developer',
-   salary: '$ 400',
-   status: ['open', 'accept', 'reject', 'expired'],
-   offerDetails: [],
-   applicant: {
-     name: "shipon",
-     email: "shipon@gmail.com",
-     image: "s.jpg",
-   },
-   company: {
-     name: "shipon",
-     email: "shipon@gmail.com",
-     image: "s.jpg",
-   },
- };
-
   // Job Offer Send
   const onJobOffer = (data) => {
+  const {
+    applicantName,
+    applicantImage,
+    category,
+    applicantEmail,
+    jobId,
+    jobType,
+    companyLogo,
+    companyEmail,
+    title,
+  } = candidateDetails;
+    
+    console.log("candidateDetails", candidateDetails);
+    console.log("from data -> ", data);
+
+    // offer data object
     const offerData = {
-      data,
-      offerLetter
-    }
+      jobId,
+      jobType,
+      category,
+      title,
+      position: data?.position,
+      salary: data?.salary,
+      status: "open", // ['open', 'accept', 'reject', 'expired'],
+      offerDetails: offerLetter || [],
+      applicant: {
+        name: applicantName,
+        email: applicantEmail,
+        image: applicantImage,
+      },
+      company: {
+        name: companyEmail,
+        email: companyEmail,
+        image: companyLogo,
+      },
+      read: true,
+      sendedDate: new Date(),
+    };
+    
     console.log("onJobOffer", offerData);
 
-    // setIsOfferModalOpen(false);
-    // reset();
+    axiosSecure.post("job_offer", offerData)
+      .then(res => {
+        if (res.status == 200) {
+          toast.success("Sending Offer...");
+          reset();
+          setIsOfferModalOpen(false);
+        }
+      }).catch(err => {
+      console.log(err)
+    })
   };
 
   return (
@@ -64,35 +90,52 @@ const SendJobOffer = ({ handleSendOffer }) => {
 
           {/* Modal content */}
           <form onSubmit={handleSubmit(onJobOffer)} className="mt-4">
-            {/* Details */}
+            {/* Salary */}
             <div>
               <label
                 htmlFor="additionalFile"
                 className="text-dark text-base block mb-1 mt-5"
               >
-                Additional file links(doc, pdf, etc..)
+                Your Salary :
               </label>
               <input
                 id="additionalFile"
                 className="rounded outline-none border border-dark/20 w-full px-3 py-2 focus:border-purple"
-                placeholder="Write Assessment Tests details / files link"
-                {...register("fileLinks")}
+                placeholder="Salary Amount"
+                {...register("salary", { required: true })}
               />
             </div>
 
+            {/* Position */}
+            <div>
+              <label
+                htmlFor="additionalFile"
+                className="text-dark text-base block mb-1 mt-5"
+              >
+                Job Position :
+              </label>
+              <input
+                id="additionalFile"
+                className="rounded outline-none border border-dark/20 w-full px-3 py-2 focus:border-purple"
+                placeholder="e.g. Senior Full Stack Developer"
+                {...register("position", { required: true })}
+              />
+            </div>
+
+            {/* Additional attachment or files links */}
             <div>
               <label className="text-dark text-base block mb-1 mt-5">
-                Offer letter
+                Offer letter :
                 <ArrayTextarea
                   setCoverLetter={setOfferLetter}
-                  placeholder="Write a offer letter"
+                  placeholder="Write Assessment Tests details / files link"
                 />
               </label>
             </div>
 
             {/* Send Offer Letter */}
             <div className="flex justify-end mt-4">
-              <Button type='submit'>
+              <Button type="submit">
                 {/* <button type="submit" onClick={() => onJobOffer()}> */}
                 Send Offer
                 {/* </button> */}
