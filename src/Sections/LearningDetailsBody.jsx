@@ -1,18 +1,14 @@
 import { useState } from 'react';
-import ClipboardJS from 'clipboard';
 import { useForm } from 'react-hook-form';
-import { Link, useLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import LearningDetailsComment from './LearningDetailsComment';
 import moment from 'moment';
-import { toast } from 'react-toastify';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import useLearningData from '../Hooks/useLearningData';
 import useCurrentCandidate from '../Hooks/useCurrentCandidate';
 
 // react icons
 import { BiDislike, BiLike } from "react-icons/bi";
-import { FaEye } from "react-icons/fa";
-import { RiShareForwardLine } from "react-icons/ri";
 import { CgComment } from 'react-icons/cg';
 import CopyToClipboardLink from '../Components/CopyToClipboardLink';
 import LearningCard from '../Components/LearningCard';
@@ -39,7 +35,6 @@ const LearningDetailsBody = () => {
         axiosSecure.patch(`/learning/like/${_id}`)
             .then(res => {
                 setAllLike(res.data.like)
-                console.log(res.data.like)
             })
             .catch((err) => console.log(err));
     }
@@ -47,12 +42,10 @@ const LearningDetailsBody = () => {
         axiosSecure.patch(`/learning/dislike/${_id}`)
             .then(res => {
                 setAllDisLike(res.data.disLike)
-                console.log(res.data)
             })
             .catch((err) => console.log(err));
     }
     const url = window.location.protocol + '//' + window.location.host + window.location.pathname;
-    console.log(url)
 
     return (
         <div className="py-20 md:py-[120px] duration-300">
