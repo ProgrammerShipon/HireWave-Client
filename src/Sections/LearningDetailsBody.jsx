@@ -11,20 +11,15 @@ import moment from 'moment';
 import { CgComment } from 'react-icons/cg';
 import { toast } from 'react-toastify';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
-import useCandidatesRole from '../Hooks/useCandidatesRole';
 import useLearningData from '../Hooks/useLearningData';
 
 const LearningDetailsBody = () => {
   const {learningData} = useLearningData();
-  const [candidatesRole] = useCandidatesRole()
-  console.log(candidatesRole);
   const loadData = useLoaderData();
   const [axiosSecure] = useAxiosSecure();
   const { title, createdAt, updatedAt, videoLink, description, authorImg, authorName, authorEmail, comments, disLike, like, views, _id } = loadData;
-  const sidebarContent = learningData.filter(data => data._id !== _id).slice(0,4)
-  console.log(loadData)
-  const [commentClick, setCommentClick] = useState('')
-  const [seeAll, setSeeAll] = useState(false);
+  const sidebarContent = learningData.filter(data => data._id !== _id).slice(0, 4);
+  const [commentClick, setCommentClick] = useState('');
   const [allLike, setAllLike] = useState(like);
   const [allDisLike, setAllDisLike] = useState(disLike);
   const [seeAll, setSeeAll] = useState(false);

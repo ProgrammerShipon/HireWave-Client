@@ -42,6 +42,7 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
     formState: { errors },
   } = useForm();
   const [axiosSecure] = useAxiosSecure();
+  const [testDetails, setTestDetails] =useState([])
 
   const handleOfferModal = (e) => {
     if (e == "edit") setIsOfferModalOpen(true);
@@ -70,7 +71,6 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
     reset();
   };
 
-  console.log("candidates data ", candidateDetails);
   // Assign Test
   const onAssignTest = (data) => {
     const taskData = {
@@ -79,14 +79,12 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
       companyId: currentUser?._id,
       tasks: [
         {
-          given: data?.testsDetails,
+          given: testDetails,
           startTime: new Date(),
           submissionTime: data?.submissionData,
         },
       ],
     };
-
-    console.log("Assign test", taskData);
 
     // send data client or store database
     axiosSecure
@@ -321,11 +319,9 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
                 <label className="text-dark text-base block mb-1 mt-5">
                   Additional file links / Tests details
                 </label>
-                <textarea
-                  rows={5}
-                  className="rounded outline-none border border-dark/20 w-full px-3 py-2 focus:border-purple"
-                  placeholder="Write Assessment Tests details / files link"
-                  {...register("testsDetails")}
+                <ArrayTextarea
+                  setCoverLetter={setTestDetails}
+                  placeholder="Write test details / Additional file links"
                 />
               </div>
 
