@@ -91,7 +91,6 @@ const ApplyJobForm = ({ jobData }) => {
             });
     };
 
-
     return (
         <section className='py-20 md:py-[120px]'>
             <div className="container">
@@ -173,12 +172,7 @@ const ApplyJobForm = ({ jobData }) => {
 
                         <div className='mb-2 mt-5'>
                             <label className='text-dark block mb-1 text-base'>Cover letter</label>
-                            <textarea
-                                rows={5}
-                                className={`w-full px-3 py-2 border border-gray/40 focus:outline-none focus:border-green rounded-md ${errors.cover_letter && 'border-red-400'}`}
-                                placeholder='Write within 300 words'
-                                {...register("cover_letter", { required: true })}
-                            />
+                            <CoverLetterTextarea coverLetter={coverLetter} setCoverLetter={setCoverLetter} />
                         </div>
 
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
