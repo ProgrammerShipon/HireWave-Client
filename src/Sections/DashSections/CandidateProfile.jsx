@@ -6,7 +6,7 @@ import DescriptionTextarea from '../../Components/DashComponents/DescriptionText
 
 import { Link } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
-import { useForm } from 'react-hook-form';
+import { Form, useForm } from 'react-hook-form';
 
 // react icons
 import { SlLocationPin } from 'react-icons/sl';
@@ -20,21 +20,16 @@ import { LiaIndustrySolid } from 'react-icons/lia';
 import { FaFacebookF, FaGithub, FaLinkedin, FaTwitter, FaPencilAlt, FaTrashAlt, FaGraduationCap } from 'react-icons/fa';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
-const CandidateProfile = ({ candidatesData }) => {
+const CandidateProfile = ({ candidatesData, refetch }) => {
     const [languagesData] = useLanguagesData();
     const [axiosSecure] = useAxiosSecure()
     const { _id, name, title, image, location, status, hourlyRate, jobType, address, languages, about, education, experience, skills, openToWork, socialLink } = candidatesData;
-
+    // console.log(candidatesData)
     const formattedAbout = about.map(pa => pa === "" ? "\u00A0" : pa);
 
-    const [hourlyRates, setHourlyRates] = useState(hourlyRate)
-    const [jobTypes, setJobTypes] = useState(jobType)
-    const [userAbout, setUserAbout] = useState(formattedAbout)
-    const [userLocation, setUserLocation] = useState([location])
-    const [userAddress, setUserAddress] = useState(address)
+    const [userAbout, setUserAbout] = useState(about)
 
-
-
+    // console.log(userAbout)
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
     const [availability, setAvailability] = useState(true);
     const [editAbout, setEditAbout] = useState(true);
@@ -44,26 +39,133 @@ const CandidateProfile = ({ candidatesData }) => {
     const [openEducation, setOpenEducation] = useState(true);
     const [openExperience, setOpenExperience] = useState(true);
 
+
+
     const newSkills = [...skills, watch('newSkill')]
+    // const newAbout = [...about, watch('newSkill')]
+    const newLanguage = [...languages, { name: watch('name'), level: 'Native' }]
     const newLanguages = [...languages, { name: watch('name'), level: watch('level') }];
-    const newEducations = [...education, { subject: watch('subject'), currentStudying: watch('currentStudying'), institute: watch('institute'), startDate: watch('startDate'), endDate: watch('endDate') }];
-    const newExperiences = [...experience, { logo: watch('logo'), currentWorking: watch('currentWorking'), companyName: watch('companyName'), position: watch('position'), location: watch('workLocation'), startDate: watch('workStartDate'), endDate: watch('workEndDate') }];
-    // console.log()
-    const onSubmit = (data) => {
+    const newEducations = [...education, { subject: watch('subject'), institute: watch('institute'), startDate: watch('startDate'), endDate: watch('endDate') }];
+    const newExperiences = [...experience, { logo: watch('logo'), companyName: watch('companyName'), position: watch('position'), location: watch('workLocation'), startDate: watch('workStartDate'), endDate: watch('workEndDate') }];
+
+    // Update Candidate Availability 
+    const handleAvailability = (data) => {
         const updateData = {
-            jobType: jobTypes,
-            hourlyRate: hourlyRates,
-            about: userAbout, location,
-            address: userAddress,
-            location: userLocation,
-            languages: newLanguages,
-            education: newEducations,
-            experience: newExperiences
+            jobType: data.jobType,
+            hourlyRate: data.hourlyRate
         }
         console.log(updateData)
-        axiosSecure.patch(`/candidates/6502df8ab35ede7e57357874`, updateData)
+        axiosSecure.patch(`/candidates/availability/64fde9b326697aabef2730c7`, updateData)
+            .then(res => {
+                console.log(res.data)
+                if (res.status === 200) {
+                    setAvailability(!availability)
+                    refetch()
+                }
+
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    };
+    // Update Candidate Availability 
+    const handleModifyAbout = (data) => {
+        console.log(userAbout)
+        axiosSecure.patch(`/candidates/about/64fde9b326697aabef2730c7`, userAbout)
+            .then(res => {
+                console.log(res.data)
+                if (res.status === 200) {
+                    setEditAbout(!editAbout)
+                    refetch()
+                }
+
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    };
+
+    // Update Candidate Location 
+    const handleLocations = (data) => {
+        const updateData = {
+            location: data.location,
+            address: data.address
+        }
+        console.log(updateData)
+        axiosSecure.patch(`/candidates/location/64fde9b326697aabef2730c7`, updateData)
+            .then(res => {
+                if (res.status === 200) {
+                    setEditLocation(!editLocation)
+                    refetch()
+                }
+                (true)
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    };
+    // Update Candidate Location 
+    const handleAddSkills = (data) => {
+        axiosSecure.patch(`/candidates/skill/64fde9b326697aabef2730c7`, newSkills)
             .then(res => {
                 console.log(res)
+                if (res.status === 200) {
+                    setIsSkills(!isSkills)
+                    refetch()
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    };
+    // Update Candidate Location 
+    const handleAddLanguage = (data) => {
+        console.log(newLanguage)
+        axiosSecure.patch(`/candidates/language/64fde9b326697aabef2730c7`, newLanguage)
+            .then(res => {
+                console.log(res)
+                if (res.status === 200) {
+                    setOpenLanguage(!openLanguage)
+                    refetch()
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    };
+
+    // Update Candidate Location 
+    const handleAddEducation = (data) => {
+        console.log(newEducations)
+        axiosSecure.patch(`/candidates/education/64fde9b326697aabef2730c7`, newEducations)
+            .then(res => {
+                console.log(res.data)
+                if (res.status === 200) {
+                    setOpenEducation(!openEducation)
+                    refetch()
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    };
+
+    // Update Candidate Location 
+    const handleAddExperience = (data) => {
+        console.log(newExperiences)
+        axiosSecure.patch(`/candidates/experience/64fde9b326697aabef2730c7`, newExperiences)
+            .then(res => {
+                console.log(res.data)
+                if (res.status === 200) {
+                    setOpenExperience(!openExperience)
+                    refetch()
+                }
             })
             .catch(error => {
                 console.log(error);
@@ -82,9 +184,7 @@ const CandidateProfile = ({ candidatesData }) => {
         2020, 2021, 2022, 2023
     ]
     return (
-        <form
-            onSubmit={handleSubmit(onSubmit)} className='mt-10 space-y-7'>
-
+        <div className='mt-10 space-y-7'>
             {/* profile top */}
             <div className='relative bg-white shadow-xl shadow-gray/40 p-6 rounded-md flex flex-col lg:flex-row items-start lg:items-end justify-between'>
                 <div className='flex flex-col lg:flex-row items-center gap-8 mb-6 lg:mb-0 w-full lg:w-auto'>
@@ -100,7 +200,7 @@ const CandidateProfile = ({ candidatesData }) => {
                         <h1 className='text-2xl md:text-3xl text-dark font-medium drop-shadow-xl'>{name}</h1>
                         <h3 className='text-base md:text-xl text-lightGray mt-2 line-clamp-1'>{title}</h3>
                         <p className='text-gray flex items-center gap-1'>
-                            <SlLocationPin className='text-lightGray' /> {location[0]}, {location[1]}
+                            <SlLocationPin className='text-lightGray' /> {location}
                         </p>
                         {
                             status ? <p className='bg-purple/10 text-purple font-medium w-fit px-4 rounded-full flex items-center gap-1 mt-2'><IoIosFlash />Available Now</p> : <p className='bg-red-400/10 text-red-500 font-medium w-fit px-4 rounded-full flex items-center gap-1 mt-2'><IoIosFlash />Unavailable</p>
@@ -133,64 +233,65 @@ const CandidateProfile = ({ candidatesData }) => {
                         </button>
                     </div>
                     <div className={`py-4 ${availability ? 'block' : 'hidden'}`}>
-                        <p className='text-dark font-medium mb-3'>Hourly Rate: ${hourlyRates}</p>
+                        <p className='text-dark font-medium mb-3'>Hourly Rate: ${hourlyRate}</p>
                         {
                             openToWork ? <p className='text-gray'>Open to contract to hire</p> : <p className='text-gray'>Contract to work</p>
                         }
-                        <p className='text-lightGray text-lg -mt-1'>{jobTypes}</p>
+                        <p className='text-lightGray text-lg -mt-1'>{jobType}</p>
                     </div>
 
                     {/* edit field */}
-                    <div className={`flex flex-col gap-2 p-3 ${availability ? 'hidden' : 'block'}`}>
-                        <label htmlFor="hourlyRate" className='text-lightGray text-base'>
-                            Hourly Rate: $
-                            <input
-                                id='hourlyRate'
-                                type="number"
-                                {...register("hourlyRate", { required: true, min: 0 })}
-                                defaultValue={hourlyRates}
-                                onChange={(e) => setHourlyRates(e.target.value)}
-                                className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
-                            />
-                        </label>
-
-                        <div className='flex gap-2'>
-                            <input
-                                id='openToWork'
-                                type="checkbox"
-                                {...register("openToWork")}
-                            />
-                            <label htmlFor="openToWork" className='text-black text-base'>
-                                Open to contract to hire
+                    <form onSubmit={handleSubmit(handleAvailability)} >
+                        <div className={`flex flex-col gap-2 p-3 ${availability ? 'hidden' : 'block'}`}>
+                            <label htmlFor="hourlyRate" className='text-lightGray text-base'>
+                                Hourly Rate: $
+                                <input
+                                    id='hourlyRate'
+                                    type="number"
+                                    {...register("hourlyRate", { required: true, min: 0 })}
+                                    defaultValue={hourlyRate}
+                                    className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                                />
                             </label>
-                        </div>
 
-                        <select
-                            {...register("jobType")}
-                            onChange={(e) => setJobTypes(e.target.value)}
-                            className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
-                        >
-                            <option value="As Needed - Open to work">As Needed - Open to work</option>
-                            <option value="Part Time - Only">Part Time - Only</option>
-                            <option value="Full Time - Only">Full Time - Only</option>
-                            <option value="Remote - Only">Remote</option>
-                        </select>
+                            <div className='flex gap-2'>
+                                <input
+                                    id='openToWork'
+                                    type="checkbox"
+                                    {...register("openToWork")}
+                                />
+                                <label htmlFor="openToWork" className='text-black text-base'>
+                                    Open to contract to hire
+                                </label>
+                            </div>
 
-                        <div className='flex items-end justify-end gap-3'>
-                            <button
-                                onClick={() => setAvailability(true)}
-                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                            <select
+                                {...register("jobType")}
+                                className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
                             >
-                                Cancel
-                            </button>
-                            <button
-                                onClick={() => setAvailability(true)}
-                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
-                            >
-                                Save
-                            </button>
+                                <option value="As Needed - Open to work">As Needed - Open to work</option>
+                                <option value="Part Time - Only">Part Time - Only</option>
+                                <option value="Full Time - Only">Full Time - Only</option>
+                                <option value="Remote - Only">Remote</option>
+                            </select>
+
+                            <div className='flex items-end justify-end gap-3'>
+                                <div
+                                    onClick={() => setAvailability(true)}
+                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                >
+                                    Cancel
+                                </div>
+                                <button
+                                    type='submit'
+                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                >
+                                    Save
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
+
                 </div>
 
                 {/* locations */}
@@ -209,59 +310,60 @@ const CandidateProfile = ({ candidatesData }) => {
                     </div>
 
                     <div className={`py-4 ${editLocation ? 'block' : 'hidden'} space-y-1`}>
-                        <p className='text-black'>{userAddress}</p>
-                        <p className='text-lightGray'>{userLocation[0]}, {userLocation[1]}</p>
+                        <p className='text-black'>{address}</p>
+                        <p className='text-lightGray'>{location}</p>
                     </div>
 
                     {/* edit field */}
-                    <div className={`flex flex-col gap-2 p-3 ${editLocation ? 'hidden' : 'block'}`}>
-                        <label htmlFor="hourlyRate" className='text-lightGray text-base'>
-                            Address
-                            <input
-                                id='address'
-                                {...register("address", { required: true })}
-                                defaultValue={address}
-                                onChange={(e) => setUserAddress(e.target.value)}
-                                className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
-                            />
-                        </label>
+                    <form onSubmit={handleSubmit(handleLocations)} >
+                        <div className={`flex flex-col gap-2 p-3 ${editLocation ? 'hidden' : 'block'}`}>
+                            <label htmlFor="hourlyRate" className='text-lightGray text-base'>
+                                Address
+                                <input
+                                    id='address'
+                                    {...register("address", { required: true })}
+                                    defaultValue={address}
+                                    className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                                />
+                            </label>
 
-                        <label htmlFor="editLocation" className='text-lightGray text-base'>
-                            Region & Country
-                            <input
-                                id='editLocation'
-                                {...register("location", { required: true, min: 0 })}
-                                defaultValue={location}
-                                onChange={(e) => setUserLocation(e.target.value)}
-                                className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
-                            />
-                        </label>
+                            <label htmlFor="editLocation" className='text-lightGray text-base'>
+                                Region & Country
+                                <input
+                                    id='editLocation'
+                                    {...register("location", { required: true, min: 0 })}
+                                    defaultValue={location}
+                                    className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                                />
+                            </label>
 
 
-                        <div className='flex items-end justify-end gap-3'>
-                            <button
-                                onClick={() => setEditLocation(true)}
-                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
-                            >
-                                Cancel
-                            </button>
-                            <button
-                                onClick={() => setEditLocation(true)}
-                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
-                            >
-                                Save
-                            </button>
+                            <div className='flex items-end justify-end gap-3'>
+                                <div
+                                    onClick={() => setEditLocation(true)}
+                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                >
+                                    Cancel
+                                </div>
+                                <button
+                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                >
+                                    Save
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
+
                 </div>
             </div>
 
             {/* about */}
+
             <div className='border border-transparent hover:border-green px-4 rounded-md bg-white shadow-xl shadow-gray/40 duration-300'>
-                {/* about top */}
+                about top
                 <div className='flex items-center justify-between border-b border-green/40 py-2'>
                     <h2 className='flex items-center gap-1 text-xl text-green'><BiSolidUserDetail /> About</h2>
-                    {/* edit button */}
+                    edit button
                     <Tooltip id="about" />
                     <button
                         onClick={() => setEditAbout(!editAbout)}
@@ -273,7 +375,7 @@ const CandidateProfile = ({ candidatesData }) => {
 
                 <div className={`py-4 ${editAbout ? 'block' : 'hidden'}`}>
                     {
-                        userAbout.length > 0 ? userAbout.map((ab, index) => <p key={index} className='text-lightGray text-lg leading-relaxed'>
+                        about.length > 0 ? about.map((ab, index) => <p key={index} className='text-lightGray text-lg leading-relaxed'>
                             {ab}
                         </p>) : <p className='text-lg text-lightGray'>N/A</p>
                     }
@@ -281,25 +383,27 @@ const CandidateProfile = ({ candidatesData }) => {
                 </div>
 
                 <div className={`flex flex-col gap-2 p-3 ${editAbout ? 'hidden' : 'block'}`}>
-                    <label htmlFor="newSkill" className='text-lightGray text-base'>
-                        Edit About
-                        <DescriptionTextarea userAbout={userAbout} setUserAbout={setUserAbout} />
-                    </label>
+                    <form onSubmit={handleSubmit(handleModifyAbout)}>
+                        <label htmlFor="newAbout" className='text-lightGray text-base'>
+                            Edit About
+                            <DescriptionTextarea about={about} setUserAbout={setUserAbout} />
+                        </label>
 
-                    <div className='flex items-center justify-end gap-3'>
-                        <button
-                            onClick={() => setEditAbout(true)}
-                            className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            onClick={() => setEditAbout(true)}
-                            className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
-                        >
-                            Save
-                        </button>
-                    </div>
+                        <div className='flex items-center justify-end gap-3'>
+                            <div
+                                onClick={() => setEditAbout(true)}
+                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                            >
+                                Cancel
+                            </div>
+                            <button
+                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                            >
+                                Save
+                            </button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
 
@@ -313,15 +417,16 @@ const CandidateProfile = ({ candidatesData }) => {
 
                         {/* edit button */}
                         <Tooltip id="add_skill" />
-                        <button
+                        <div
                             onClick={() => setIsSkills(!isSkills)}
                             data-tooltip-id="add_skill" data-tooltip-content="Add Skill!"
                             className='h-8 w-8 text-green border border-green rounded-full flex items-center justify-center'>
                             <IoMdAdd size='20' />
-                        </button>
+                        </div>
                     </div>
 
                     {/* skills body */}
+
                     <div className={`py-4 flex items-center flex-wrap gap-2 ${isSkills ? 'block' : 'hidden'}`}>
 
                         {
@@ -341,32 +446,34 @@ const CandidateProfile = ({ candidatesData }) => {
                     </div>
 
                     {/* skills edit field */}
-                    <div className={`flex flex-col gap-2 p-3 ${isSkills ? 'hidden' : 'block'}`}>
-                        <label htmlFor="newSkill" className='text-lightGray text-base'>
-                            New Skill
-                            <input
-                                id='newSkill'
-                                {...register("newSkill")}
-                                placeholder='Add new skill'
-                                className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
-                            />
-                        </label>
+                    <form onSubmit={handleSubmit(handleAddSkills)} >
+                        <div className={`flex flex-col gap-2 p-3 ${isSkills ? 'hidden' : 'block'}`}>
+                            <label htmlFor="newSkill" className='text-lightGray text-base'>
+                                New Skill
+                                <input
+                                    id='newSkill'
+                                    {...register("newSkill")}
+                                    placeholder='Add new skill'
+                                    className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                                />
+                            </label>
 
-                        <div className='flex items-center justify-end gap-3'>
-                            <button
-                                onClick={() => setIsSkills(true)}
-                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
-                            >
-                                Cancel
-                            </button>
-                            <button
-                                onClick={() => setIsSkills(true)}
-                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
-                            >
-                                Add
-                            </button>
+                            <div className='flex items-center justify-end gap-3'>
+                                <div
+                                    onClick={() => setIsSkills(true)}
+                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                >
+                                    Cancel
+                                </div>
+                                <button
+                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                >
+                                    Add
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
+
                 </div>
 
                 {/* languages */}
@@ -407,57 +514,58 @@ const CandidateProfile = ({ candidatesData }) => {
                     </div>
 
                     {/* add languages  */}
-                    <div className={`flex flex-col gap-2 p-3 ${openLanguage ? 'hidden' : 'block'}`}>
-                        <div className='flex flex-col gap-2'>
-                            <select
-                                id='language'
-                                {...register("name")}
-                                className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
-                            >
-                                <option value="">Select Language</option>
-                                {
-                                    languagesData.map((lan, index) => (
-                                        <option
-                                            key={index}
-                                            value={lan.name}>
-                                            {lan.name}
-                                        </option>
-                                    ))
-                                }
-                                <option value="Spanish">Spanish</option>
-                            </select>
 
-                            <select
-                                id='language_level'
-                                {...register("level")}
-                                className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
-                            >
-                                <option value="">Level</option>
-                                <option value="Basic">Basic</option>
-                                <option value="Comfortable">Comfortable</option>
-                                <option value="Fluent">Fluent</option>
-                                <option value="Native">Native</option>
-                            </select>
-                        </div>
+                    <form onSubmit={handleSubmit(handleAddLanguage)}>
+                        <div className={`flex flex-col gap-2 p-3 ${openLanguage ? 'hidden' : 'block'}`}>
+                            <div className='flex flex-col gap-2'>
+                                <select
+                                    id='language'
+                                    {...register("name")}
+                                    className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                                >
+                                    <option value="">Select Language</option>
+                                    {
+                                        languagesData.map((lan, index) => (
+                                            <option
+                                                key={index}
+                                                value={lan.name}>
+                                                {lan.name}
+                                            </option>
+                                        ))
+                                    }
+                                </select>
 
-                        <div className='flex items-center justify-end gap-3'>
-                            <button
-                                onClick={() => setOpenLanguage(true)}
-                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
-                            >
-                                Cancel
-                            </button>
-                            <button
-                                onClick={() => setOpenLanguage(true)}
-                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
-                            >
-                                Add
-                            </button>
+                                <select
+                                    id='language_level'
+                                    {...register("level")}
+                                    className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                                >
+                                    <option value="">Level</option>
+                                    <option value="Basic">Basic</option>
+                                    <option value="Comfortable">Comfortable</option>
+                                    <option value="Fluent">Fluent</option>
+                                    <option value="Native">Native</option>
+                                </select>
+                            </div>
+
+                            <div className='flex items-center justify-end gap-3'>
+                                <div
+                                    onClick={() => setOpenLanguage(true)}
+                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                >
+                                    Cancel
+                                </div>
+                                <button
+                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                >
+                                    Add
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
+
                 </div>
             </div>
-
             {/* educations & experiences */}
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
                 {/* educations */}
@@ -480,92 +588,94 @@ const CandidateProfile = ({ candidatesData }) => {
                     <div className={`py-4 space-y-4 ${openEducation ? 'block' : 'hidden'}`}>
                         {
                             newEducations[0].subject !== ''
-                            // newEducations.length >0
-                             ? newEducations.map((edu, index) =>
-                                <div key={index} className='relative group cursor-pointer w-fit'>
-                                    <h3 className='text-dark font-medium text-xl'>{edu.subject}</h3>
-                                    <p className='text-lightGray'>{edu.institute}</p>
-                                    <p className='flex items-center gap-1 text-gray mt-1 font-light'>
-                                        <BiCalendar /> {edu.startDate} to {edu.endDate}
-                                    </p>
+                                // newEducations.length >0
+                                ? newEducations.map((edu, index) =>
+                                    <div key={index} className='relative group cursor-pointer w-fit'>
+                                        <h3 className='text-dark font-medium text-xl'>{edu.subject}</h3>
+                                        <p className='text-lightGray'>{edu.institute}</p>
+                                        <p className='flex items-center gap-1 text-gray mt-1 font-light'>
+                                            <BiCalendar />  {edu.startDate} to  {edu.endDate !== "" ? edu.endDate : 'Present'}
+                                        </p>
 
-                                    <div className='absolute top-0 -right-14 flex gap-2 text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
-                                        <button>
-                                            <FaPencilAlt size='14' />
-                                        </button>
-                                        <button>
-                                            <FaTrashAlt size='14' />
-                                        </button>
+                                        <div className='absolute top-0 -right-14 flex gap-2 text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
+                                            <button>
+                                                <FaPencilAlt size='14' />
+                                            </button>
+                                            <button>
+                                                <FaTrashAlt size='14' />
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                            )
+                                )
                                 : <p className='text-lg text-lightGray'>N/A</p>
                         }
                     </div>
 
                     {/* education edit field */}
-                    <div className={`flex flex-col gap-2 p-3 ${openEducation ? 'hidden' : 'block'}`}>
-                        <input
-                            {...register("subject")}
-                            placeholder='Subject'
-                            className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
-                        />
-                        <input
-                            {...register("institute")}
-                            placeholder='Institute & Country'
-                            className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
-                        />
-                        <label htmlFor="currently_studying"
-                            className='flex items-center gap-2 text-base'
-                        >
+                    <form onSubmit={handleSubmit(handleAddEducation)}>
+                        <div className={`flex flex-col gap-2 p-3 ${openEducation ? 'hidden' : 'block'}`}>
                             <input
-                                id='currently_studying'
-                                type='checkbox'
-                                {...register("currentStudying")}
-                            />
-                            Currently Studying
-                        </label>
-
-                        <div className='flex items-center gap-2'>
-                            <select
-                                {...register("startDate")}
+                                {...register("subject")}
+                                placeholder='Subject'
                                 className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                            />
+                            <input
+                                {...register("institute")}
+                                placeholder='Institute & Country'
+                                className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                            />
+                            <label htmlFor="currently_studying"
+                                className='flex items-center gap-2 text-base'
                             >
-                                <option value="">Start year</option>
-                                {
-                                    years.map((year, index) => <option
-                                        key={index} value={year}>{year}</option>)
-                                }
-                            </select>
-                            {
-                                !watch('currentStudying') && <select
-                                    {...register("endDate")}
+                                <input
+                                    id='currently_studying'
+                                    type='checkbox'
+                                    {...register("currentStudying")}
+                                />
+                                Currently Studying
+                            </label>
+
+                            <div className='flex items-center gap-2'>
+                                <select
+                                    {...register("startDate")}
                                     className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
                                 >
-                                    <option value="">Completed year</option>
+                                    <option value="">Start year</option>
                                     {
                                         years.map((year, index) => <option
                                             key={index} value={year}>{year}</option>)
                                     }
                                 </select>
-                            }
-                        </div>
+                                {
+                                    !watch('currentStudying') && <select
+                                        {...register("endDate")}
+                                        className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                                    >
+                                        <option value="">Completed year</option>
+                                        {
+                                            years.map((year, index) => <option
+                                                key={index} value={year}>{year}</option>)
+                                        }
+                                    </select>
+                                }
+                            </div>
 
-                        <div className='flex items-center justify-end gap-3'>
-                            <button
-                                onClick={() => setOpenEducation(true)}
-                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
-                            >
-                                Cancel
-                            </button>
-                            <button
-                                onClick={() => setOpenEducation(!openEducation)}
-                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
-                            >
-                                Add
-                            </button>
+                            <div className='flex items-center justify-end gap-3'>
+                                <div
+                                    onClick={() => setOpenEducation(true)}
+                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                >
+                                    Cancel
+                                </div>
+                                <button
+                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                >
+                                    Add
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
+
                 </div>
 
                 {/* experiences */}
@@ -586,112 +696,114 @@ const CandidateProfile = ({ candidatesData }) => {
                     {/* experiences body */}
                     <div className={`py-4 space-y-4 ${openExperience ? 'block' : 'hidden'}`}>
                         {
-                            newExperiences[1].position !== '' 
-                            // newExperiences.length>0
-                            ? newExperiences.slice(1,).map((exp, index) =>
-                            (
-                                <div key={index} className='relative group cursor-pointer w-fit flex gap-2'>
-                                    <div className='h-14 w-14 overflow-hidden'>
-                                        <img
-                                            className='w-full object-cover object-center'
-                                            src={exp.logo} alt="" />
-                                    </div>
-                                    <div>
-                                        <h3 className='text-dark font-medium text-xl'>{exp.position} <span className='text-sm text-lightGray'>- {exp.jobType}</span></h3>
-                                        <p className='text-lightGray'>{exp.companyName},{exp.location}</p>
-                                        <p className='flex items-center gap-1 text-gray -mt-1 font-light'>
-                                            <BiCalendar />{exp.startDate} - {exp.currentWorking ? 'Present' : exp.startDate}
-                                        </p>
-                                    </div>
+                            newExperiences[1].position !== ''
+                                // newExperiences.length>0
+                                ? newExperiences.map((exp, index) =>
+                                (
+                                    <div key={index} className='relative group cursor-pointer w-fit flex gap-2'>
+                                        <div className='h-14 w-14 overflow-hidden'>
+                                            <img
+                                                className='w-full object-cover object-center'
+                                                src={exp.logo} alt="" />
+                                        </div>
+                                        <div>
+                                            <h3 className='text-dark font-medium text-xl'>{exp.position} <span className='text-sm text-lightGray'>- {exp.jobType}</span></h3>
+                                            <p className='text-lightGray'>{exp.companyName},{exp.location}</p>
+                                            <p className='flex items-center gap-1 text-gray -mt-1 font-light'>
+                                                <BiCalendar />{exp.startDate} - {exp.endDate !== '' ? exp.startDate : 'Present'}
+                                            </p>
+                                        </div>
 
-                                    <div className='absolute top-0 -right-14 flex gap-2 text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
-                                        <button>
-                                            <FaPencilAlt size='14' />
-                                        </button>
-                                        <button>
-                                            <FaTrashAlt size='14' />
-                                        </button>
+                                        <div className='absolute top-0 -right-14 flex gap-2 text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
+                                            <button>
+                                                <FaPencilAlt size='14' />
+                                            </button>
+                                            <button>
+                                                <FaTrashAlt size='14' />
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                            )) : <p className='text-lg text-lightGray'>N/A</p>
+                                )) : <p className='text-lg text-lightGray'>N/A</p>
                         }
                     </div>
 
                     {/* experience add field */}
-                    <div className={`flex flex-col gap-2 p-3 ${openExperience ? 'hidden' : 'block'}`}>
-                        <input
-                            {...register("logo")}
-                            placeholder='Company logo URL'
-                            className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
-                        />
-                        <input
-                            {...register("position")}
-                            placeholder='Your position'
-                            className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
-                        />
-                        <div className='flex gap-2'>
+                    <form onSubmit={handleSubmit(handleAddExperience)}>
+                        <div className={`flex flex-col gap-2 p-3 ${openExperience ? 'hidden' : 'block'}`}>
                             <input
-                                {...register("companyName")}
-                                placeholder='Company name'
+                                {...register("logo")}
+                                placeholder='Company logo URL'
                                 className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
                             />
                             <input
-                                {...register("workLocation")}
-                                placeholder='Company location'
+                                {...register("position")}
+                                placeholder='Your position'
                                 className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
                             />
-                        </div>
-                        <label htmlFor="currentWorking"
-                            className='flex items-center gap-2 text-base'
-                        >
-                            <input
-                                id='currentWorking'
-                                type='checkbox'
-                                {...register("currentWorking")}
-                            />
-                            Current Working
-                        </label>
-
-                        <div className='flex items-center gap-2'>
-                            <select
-                                {...register("workStartDate")}
-                                className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                            <div className='flex gap-2'>
+                                <input
+                                    {...register("companyName")}
+                                    placeholder='Company name'
+                                    className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                                />
+                                <input
+                                    {...register("workLocation")}
+                                    placeholder='Company location'
+                                    className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                                />
+                            </div>
+                            <label htmlFor="currentWorking"
+                                className='flex items-center gap-2 text-base'
                             >
-                                <option value="">Start year</option>
-                                {
-                                    years.map((year, index) => <option
-                                        key={index} value={year}>{year}</option>)
-                                }
-                            </select>
-                            {
-                                !watch('currentWorking') && <select
-                                    {...register("workEndDate")}
+                                <input
+                                    id='currentWorking'
+                                    type='checkbox'
+                                    {...register("currentWorking")}
+                                />
+                                Current Working
+                            </label>
+
+                            <div className='flex items-center gap-2'>
+                                <select
+                                    {...register("workStartDate")}
                                     className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
                                 >
-                                    <option value="">End year</option>
+                                    <option value="">Start year</option>
                                     {
                                         years.map((year, index) => <option
                                             key={index} value={year}>{year}</option>)
                                     }
                                 </select>
-                            }
-                        </div>
+                                {
+                                    !watch('currentWorking') && <select
+                                        {...register("workEndDate")}
+                                        className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                                    >
+                                        <option value="">End year</option>
+                                        {
+                                            years.map((year, index) => <option
+                                                key={index} value={year}>{year}</option>)
+                                        }
+                                    </select>
+                                }
+                            </div>
 
-                        <div className='flex items-center justify-end gap-3'>
-                            <button
-                                onClick={() => setOpenExperience(true)}
-                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
-                            >
-                                Cancel
-                            </button>
-                            <button
-                                onClick={() => setOpenExperience(true)}
-                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
-                            >
-                                Add
-                            </button>
+                            <div className='flex items-center justify-end gap-3'>
+                                <div
+                                    onClick={() => setOpenExperience(true)}
+                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                >
+                                    Cancel
+                                </div>
+                                <button
+                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                >
+                                    Add
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
+
                 </div>
             </div>
 
@@ -742,14 +854,9 @@ const CandidateProfile = ({ candidatesData }) => {
                         </div> : <p className='text-lg text-lightGray'>N/A</p>
                 }
             </div>
-            <Button>
-                <button className='text-center w-full' type='submit'>
-                    Update
-                </button>
-            </Button>
 
 
-        </form >
+        </div >
     );
 };
 

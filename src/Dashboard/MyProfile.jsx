@@ -9,7 +9,7 @@ import CandidateProfile from '../Sections/DashSections/CandidateProfile';
 
 const MyProfile = () => {
     const { currentUser } = useAuth();
-    const [candidatesData, loading] = useCandidatesData();
+    const [candidatesData, loading ,refetch] = useCandidatesData();
     const [currentCandidate, setCurrentCandidate] = useState({});
     useEffect(() => {
         const getCandidate = candidatesData.find(candidate => candidate.email === currentUser?.email);
@@ -22,7 +22,7 @@ const MyProfile = () => {
 
             {/* My Account */}
             {
-                currentCandidate?.email ? <CandidateProfile candidatesData={currentCandidate} /> : <PageLoader />
+                currentCandidate?.email ? <CandidateProfile candidatesData={currentCandidate} refetch={refetch} /> : <PageLoader />
             }
 
             {/* Generate Resume Button */}
