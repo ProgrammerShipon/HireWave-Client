@@ -33,16 +33,16 @@ const PricingBody = () => {
 
                         <ul className='flex flex-col gap-2 mt-16'>
                             <li className='flex items-center gap-2 text-[15px] text-dark leading-[22px]'>
-                                <img src={CheckIcon} alt="checked" /> More than 100+ components
+                                <img src={CheckIcon} alt="checked" /> Post 03 Jobs Per Month
                             </li>
                             <li className='flex items-center gap-2 text-[15px] text-dark leading-[22px]'>
-                                <img src={CheckIcon} alt="checked" /> Five ready demos
+                                <img src={CheckIcon} alt="checked" /> Hire 01 Candidate in a Month.
                             </li>
                             <li className='flex items-center gap-2 text-[15px] text-dark leading-[22px]'>
-                                <img src={CheckIcon} alt="checked" /> Coming Soon page
+                                <img src={CheckIcon} alt="checked" /> Only One Device Can Login Permission.
                             </li>
                             <li className='flex items-center gap-2 text-[15px] text-dark leading-[22px]'>
-                                <img src={CheckIcon} alt="checked" /> List with check left icon
+                                <img src={CheckIcon} alt="checked" /> Do Not Search Resume
                             </li>
                             <li className='flex items-center gap-2 text-[15px] text-dark leading-[22px]'>
                                 <img src={CheckIcon} alt="checked" /> And much more...
@@ -65,16 +65,16 @@ const PricingBody = () => {
 
                         <ul className='flex flex-col gap-2 mt-16'>
                             <li className='flex items-center gap-2 text-[15px] text-dark leading-[22px]'>
-                                <img src={CheckIcon} alt="checked" /> More than 100+ components
+                                <img src={CheckIcon} alt="checked" /> Post 25 Jobs Per Month
                             </li>
                             <li className='flex items-center gap-2 text-[15px] text-dark leading-[22px]'>
-                                <img src={CheckIcon} alt="checked" /> Five ready demos
+                                <img src={CheckIcon} alt="checked" /> Hire 30 Candidate in a month
                             </li>
                             <li className='flex items-center gap-2 text-[15px] text-dark leading-[22px]'>
-                                <img src={CheckIcon} alt="checked" /> Coming Soon page
+                                <img src={CheckIcon} alt="checked" /> Search By Resume (max 50 Resume)
                             </li>
                             <li className='flex items-center gap-2 text-[15px] text-dark leading-[22px]'>
-                                <img src={CheckIcon} alt="checked" /> List with check left icon
+                                <img src={CheckIcon} alt="checked" /> 04 Device Login Permission
                             </li>
                             <li className='flex items-center gap-2 text-[15px] text-dark leading-[22px]'>
                                 <img src={CheckIcon} alt="checked" /> And much more...
@@ -94,16 +94,16 @@ const PricingBody = () => {
 
                         <ul className='flex flex-col gap-2 mt-16'>
                             <li className='flex items-center gap-2 text-[15px] text-dark leading-[22px]'>
-                                <img src={CheckIcon} alt="checked" /> More than 100+ components
+                                <img src={CheckIcon} alt="checked" /> Post 75 Jobs Per Month .
                             </li>
                             <li className='flex items-center gap-2 text-[15px] text-dark leading-[22px]'>
-                                <img src={CheckIcon} alt="checked" /> Five ready demos
+                                <img src={CheckIcon} alt="checked" /> Hire 100 Candidate in a month
                             </li>
                             <li className='flex items-center gap-2 text-[15px] text-dark leading-[22px]'>
-                                <img src={CheckIcon} alt="checked" /> Coming Soon page
+                                <img src={CheckIcon} alt="checked" /> Search Resume Unlimited.
                             </li>
                             <li className='flex items-center gap-2 text-[15px] text-dark leading-[22px]'>
-                                <img src={CheckIcon} alt="checked" /> List with check left icon
+                                <img src={CheckIcon} alt="checked" /> 10 Device Login Permission
                             </li>
                             <li className='flex items-center gap-2 text-[15px] text-dark leading-[22px]'>
                                 <img src={CheckIcon} alt="checked" /> And much more...
