@@ -71,7 +71,7 @@ const Modal = ({ candidatesData }) => {
                                 <input
                                     {...register("photoURL")}
                                     placeholder='Provide Your Photo Url'
-                                    className='w-full border border-gray/40 py-1 px-2 rounded-md focus:outline-none focus:border-green'
+                                    className='w-full border border-gray/40 py-1 px-2 mt-2 rounded-md focus:outline-none focus:border-green'
                                 />
                                 <button type='submit'
                                     className='flex items-center justify-center gap-1 mt-2 text-lg text-lightGray w-full'>
