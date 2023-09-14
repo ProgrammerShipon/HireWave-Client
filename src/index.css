@@ -61,39 +61,39 @@
   outline: none;
 }
 
-#postJob ul{
+.postJob ul{
   list-style: disc !important;
   padding-left: 24px;
   color: #868894;
 }
 
-#postJob ol{
+.postJob ol{
   list-style: decimal !important;
   padding-left: 24px;
   color: #868894;
 }
 
-#postJob h1 {
+.postJob h1 {
   font-size: xx-large;
 }
 
-#postJob h2 {
+.postJob h2 {
   font-size: x-large;
 }
 
-#postJob h3 {
+.postJob h3 {
   font-size: larger;
 }
 
-#postJob h4 {
+.postJob h4 {
   font-size: large;
 }
 
-#postJob h5 {
+.postJob h5 {
   font-size: medium;
 }
 
-#postJob h6 {
+.postJob h6 {
   font-size: small;
 }
 

@@ -394,7 +394,7 @@ export default function PostJobForm() {
                         handleModal={handlePreviewModal}
                         larger= {true}
                         >
-                        <div id="postJob" className="p-8 -m-8 border rounded-lg border-purple shadow-4xl shadow-gray/40">
+                        <div className="postJob p-8 -m-8 border rounded-lg border-purple shadow-4xl shadow-gray/40">
                             <div>
                                 <h1 className="text-2xl font-medium text-dark">{watch('title')}</h1>
                                 <p className="text-sm italic text-gray">
