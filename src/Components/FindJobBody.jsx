@@ -4,6 +4,7 @@ import Button from "./Button";
 import Divider from "./Divider";
 import GetAgoTime from "./GetAgoTime";
 import JobCard from "./JobCard";
+import ClipboardJS from 'clipboard';
 
 // react icons
 import { AiOutlineCalendar, AiOutlineShareAlt } from "react-icons/ai";
@@ -47,6 +48,39 @@ const FindJobBody = ({ allJobsData }) => {
   } = jobDetails;
 
   const jobInfo = { selectJob: _id, companyLogo, title, companyName, postedDate, location, jobType, salary, skills, candidateMail: user?.email }
+
+  // Share function
+  const shareJobData = () => {
+    const url =
+      window.location.protocol + '//' +
+      window.location.host + window.location.pathname
+    console.log(url)
+    // Create a clipboard instance
+    const clipboard = new ClipboardJS('.copy-button', {
+      text: function () {
+        return url;
+      }
+    });
+
+    clipboard.on('success', function (e) {
+
+      toast.success("Link copied to the Clipboard", {
+        position: "top-right",
+        autoClose: 2500,
+        theme: "light",
+    });
+    });
+
+    clipboard.on('error', function (e) {
+      // Handle error (optional)
+      console.error('Error copying to clipboard:', e);
+    });
+
+    clipboard.onClick({
+      action: 'copy'
+    });
+  }
+
 
   // check already applied
   useEffect(() => {
@@ -142,7 +176,7 @@ const FindJobBody = ({ allJobsData }) => {
             </div>
 
             <div className="flex items-center gap-2">
-              <AiOutlineShareAlt size="24px" className="text-green" />
+              <AiOutlineShareAlt onClick={shareJobData} size="24px" className="text-green cursor-pointer copy-button" />
               {
                 !alreadySaved ? <>
                   {

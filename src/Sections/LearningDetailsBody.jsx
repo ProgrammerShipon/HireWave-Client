@@ -24,7 +24,6 @@ const LearningDetailsBody = () => {
   const sidebarContent = learningData.filter(data => data._id !== _id).slice(0,4)
   console.log(loadData)
   const [commentClick, setCommentClick] = useState('')
-  const [seeAll, setSeeAll] = useState(false);
   const [allLike, setAllLike] = useState(like);
   const [allDisLike, setAllDisLike] = useState(disLike);
   // const [seeAll, setSeeAll] = useState(false);
@@ -55,6 +54,7 @@ const LearningDetailsBody = () => {
       })
       .catch((err) => console.log(err));
   }
+  
   const shareLearningTutorial = () => {
     const url =
       window.location.protocol + '//' +
