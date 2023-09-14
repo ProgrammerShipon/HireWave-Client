@@ -36,7 +36,6 @@ const RecruiterSignUpForm = () => {
             phone: [data.country_code, data.phone],
             image: user?.photoURL,
             banner: null,
-            category: data.category,
             industry: data.industry,
             website: data.website,
             category: data.category,
