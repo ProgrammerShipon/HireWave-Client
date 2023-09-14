@@ -53,14 +53,11 @@ const LineChart = () => {
                 callbacks: {
                     title: () => null,
                 },
-            },
-        },
-        maintainAspectRatio: false,
-        plugins: {
-            legend: {
+            }, legend: {
                 display: false,
             },
         },
+        maintainAspectRatio: false,
     };
     return (
         <div className='shadow-xl shadow-gray/40 px-4 rounded-md'>

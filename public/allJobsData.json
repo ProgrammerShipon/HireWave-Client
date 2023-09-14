@@ -17,8 +17,7 @@
     "skills": ["React", "Javascript", "Redux", "MongoDB"],
     "status": "approved",
     "open": true,
-    "companyEmail" : "adroit@gmail.com",
-    "__v": 0
+    "companyEmail" : "adroit@gmail.com"
   },
   {
     "title": "Web Development Internship Opportunity",
@@ -38,8 +37,7 @@
     "skills": ["HTML", "CSS", "JavaScript", "React", "Git"],
     "status": "approved",
     "open": true,
-    "companyEmail" : "numeric@gmail.com",
-    "__v": 0
+    "companyEmail" : "numeric@gmail.com"
   },
   {
     "title": "Marketing Manager",
@@ -59,8 +57,7 @@
     "skills": [ "Marketing Strategy", "Digital Marketing", "Team Management", "Market Analysis" ],
     "status": "approved",
     "open": true,
-    "companyEmail" : "prevail@gmail.com",
-    "__v": 0
+    "companyEmail" : "prevail@gmail.com"
   },
   {
     "title": "Content Writer",
@@ -77,15 +74,10 @@
     "quantity": "3",
     "applied": 23,
     "description" : "<h2>Overview:</h2>Join Mindpal as a Content Writer and create compelling and engaging written content for various platforms. Enhance your writing skills while contributing to our content marketing efforts.<h2>Responsibilities:</h2><ul><li>Create engaging written content for various platforms.</li><li>Conduct research and write on diverse topics.</li><li>Apply basic SEO principles to content creation (bonus).</li></ul><p><br></p><h2>Skill &amp; Experience:</h2><ul><li>Experience in blog writing or content creation.</li><li>Familiarity with content management systems (CMS).</li><li>Strong attention to detail and ability to meet deadlines.</li></ul><p><br></p><h2>Benefits:</h2><ul><li>Flexible work hours to accommodate your schedule.</li><li>Opportunity to work with a variety of clients and industries.</li><li>Regular feedback and guidance from experienced editors.</li></ul>",
-    "overview": "",
-    "responsibilities": "",
-    "skillsExperience": "",
-    "benefits": "",
     "skills": ["Content Writing", "Research", "SEO", "Time Management"],
     "status": "approved",
     "open": true,
-    "companyEmail" : "mindpal@gmail.com",
-    "__v": 0
+    "companyEmail" : "mindpal@gmail.com"
   },
   {
     "title": "Software Engineer",
@@ -105,8 +97,7 @@
     "skills": ["Java", "Python", "Agile Development", "Problem-Solving"],
     "status": "approved",
     "open": true,
-    "companyEmail" : "yaasir@gmail.com",
-    "__v": 0
+    "companyEmail" : "yaasir@gmail.com"
   },
   {
     "title": "Data Analyst",
@@ -123,15 +114,10 @@
     "quantity": "2",
     "applied": 15,
     "description" : "<h2>Overview:</h2><p>Join Mocdt as a Data Analyst and help organizations make data-driven decisions. Analyze and visualize data to provide valuable insights.</p><p><br></p><h2>Responsibilities:</h2><ul><li>Analyze and visualize data to provide valuable insights.</li><li>Use data visualization tools (e.g., Tableau, Power BI).</li><li>Utilize SQL for data querying and present findings effectively.</li></ul><p><br></p><h2>Skill &amp; Experience:</h2><ul><li>Experience with data visualization tools (e.g., Tableau, Power BI).</li><li>Knowledge of SQL for data querying.</li><li>Excellent communication skills to present findings.</li></ul><p><br></p><h2>Benefits:</h2><ul><li>Competitive salary and performance bonuses.</li><li>Opportunity to work on diverse data projects.</li><li>Professional development and training.</li></ul>",
-    "overview": "",
-    "responsibilities": "",
-    "skillsExperience": "",
-    "benefits": "",
     "skills": ["Data Analysis", "Python", "Data Visualization", "SQL"],
     "status": "approved",
     "open": true,
-    "companyEmail" : "mocdt@gmail.com",
-    "__v": 0
+    "companyEmail" : "mocdt@gmail.com"
   },
   {
     "title": "Artificial Intelligence Researcher",
@@ -148,15 +134,10 @@
     "quantity": "3",
     "applied": 10,
     "description" : "<h2>Overview:</h2><p>Join Ollyo as an Artificial Intelligence Researcher and contribute to cutting-edge AI research projects. Collaborate with a team of experts in advancing AI technologies.</p><p><br></p><h2>Responsibilities:</h2><ul><li>Conduct AI research and development.</li><li>Publish in top AI conferences/journals.</li><li>Utilize deep learning frameworks (e.g., TensorFlow, PyTorch).</li></ul><p><br></p><h2>Skill &amp; Experience:</h2><ul><li>Expertise in deep learning frameworks (e.g., TensorFlow, PyTorch).</li><li>Proficiency in programming languages like Python and C++.</li><li>Experience with large-scale data analysis and modeling.</li></ul><p><br></p><h2>Benefits:</h2><ul><li>Highly competitive salary and performance-based incentives.</li><li>Access to state-of-the-art AI research resources and facilities.</li><li>Opportunity to lead groundbreaking AI projects.</li></ul>",
-    "overview": "",
-    "responsibilities": "",
-    "skillsExperience": "",
-    "benefits": "",
     "skills": ["Artificial Intelligence", "Deep Learning", "Machine Learning", "Research"],
     "status": "approved",
     "open": true,
-    "companyEmail" : "ollyo@gmail.com",
-    "__v": 0
+    "companyEmail" : "ollyo@gmail.com"
   },
   {
     "title": "Product Manager",
@@ -173,15 +154,10 @@
     "quantity": "1",
     "applied": 25,
     "description" : "<h2>Overview:</h2><p>Join Brain Station 23 as a Product Manager and lead the development of innovative tech products. Drive product strategy, development, and growth in a dynamic environment.</p><p><br></p><h2>Responsibilities:</h2><ul><li>Lead the development of tech products.</li><li>Drive product strategy and growth.</li><li>Apply strong analytical and strategic thinking skills.</li></ul><p><br></p><h2>Skill &amp; Experience:</h2><ul><li>Experience with Agile product development methodologies.</li><li>Ability to prioritize and manage product roadmaps.</li><li>Excellent interpersonal and leadership skills.</li></ul><p><br></p><h2>Benefits:</h2><ul><li>Competitive salary with performance-based bonuses.</li><li>Opportunity to shape the future of cutting-edge products.</li><li>Comprehensive healthcare and retirement benefits.</li></ul>",
-    "overview": "",
-    "responsibilities": "",
-    "skillsExperience": "",
-    "benefits": "",
     "skills": ["Product Management", "Agile Development", "Strategic Planning", "Leadership"],
     "status": "approved",
     "open": true,
-    "companyEmail" : "brainstation23@gmail.com",
-    "__v": 0
+    "companyEmail" : "brainstation23@gmail.com"
   },
   {
     "title": "Data Scientist",
@@ -198,15 +174,10 @@
     "quantity": "2",
     "applied": 18,
     "description" : "<h2>Overview:</h2><p>Join Astha IT as a Data Scientist and work on complex data analysis projects. Utilize your data expertise to derive insights and solve challenging business problems.</p><p><br></p><h2>Responsibilities:</h2><ul><li>Perform data analysis using Python and R.</li><li>Develop and implement machine learning algorithms.</li><li>Create data visualizations using Tableau and Matplotlib.</li></ul><p><br></p><h2>Skill &amp; Experience:</h2><ul><li>Hands-on experience with big data technologies (e.g., Hadoop, Spark).</li><li>Data visualization skills using tools like Tableau or Matplotlib.</li><li>Excellent problem-solving and communication skills.</li></ul><p><br></p><h2>Benefits:</h2><ul><li>Competitive compensation package with performance bonuses.</li><li>Opportunity to work on diverse and impactful data projects.</li><li>Professional development and training programs.</li></ul>",
-    "overview": "",
-    "responsibilities": "",
-    "skillsExperience": "",
-    "benefits": "",
     "skills": ["Data Analysis", "Machine Learning", "Big Data", "Data Visualization"],
     "status": "approved",
     "open": true,
-    "companyEmail" : "asthait@gmail.com",
-    "__v": 0
+    "companyEmail" : "asthait@gmail.com"
   },
   {
     "title": "Cybersecurity Analyst",
@@ -223,15 +194,10 @@
     "quantity": "3",
     "applied": 12,
     "description" : "<h2>Overview:</h2><p>Join Bjit Career as a Cybersecurity Analyst and play a crucial role in safeguarding our organization's digital assets. Contribute to the development of robust cybersecurity strategies.</p><p><br></p><h2>Responsibilities:</h2><ul><li>Conduct cybersecurity analysis and incident response activities.</li><li>Utilize expertise in security frameworks and compliance standards.</li><li>Expertise in network security and vulnerability assessment tools.</li><li>Experience with SIEM solutions (e.g., Splunk, ELK).</li><li>Excellent analytical and problem-solving abilities.</li></ul><p><br></p><h2>Skill &amp; Experience:</h2><ul><li>Expertise in network security and vulnerability assessment tools.</li><li>Experience with SIEM solutions (e.g., Splunk, ELK).</li><li>Excellent analytical and problem-solving abilities.</li></ul><p><br></p><h2>Benefits:</h2><ul><li>Competitive salary and performance-based bonuses.</li><li>Opportunity to work on critical cybersecurity initiatives.</li><li>Comprehensive healthcare and retirement benefits.</li></ul>",
-    "overview": "",
-    "responsibilities": "",
-    "skillsExperience": "",
-    "benefits": "",
     "skills": ["Cybersecurity", "Incident Response", "Network Security", "SIEM"],
     "status": "approved",
     "open": true,
-    "companyEmail" : "bjitcareer@gmail.com",
-    "__v": 0
+    "companyEmail" : "bjitcareer@gmail.com"
   },
   {
     "title": "AI Ethics Researcher",
@@ -251,8 +217,7 @@
     "skills": ["AI Ethics", "Ethical Research", "AI Impact Analysis", "Communication"],
     "status": "approved",
     "open": true,
-    "companyEmail" : "vivasoft@gmail.com",
-    "__v": 0
+    "companyEmail" : "vivasoft@gmail.com"
   },
   {
     "title": "Blockchain Developer",
@@ -272,7 +237,6 @@
     "skills": ["Blockchain Development", "Solidity", "Smart Contracts", "Ethereum"],
     "status": "approved",
     "open": true,
-    "companyEmail" : "enosissolutions@gmail.com",
-    "__v": 0
+    "companyEmail" : "enosissolutions@gmail.com"
   }
 ] 

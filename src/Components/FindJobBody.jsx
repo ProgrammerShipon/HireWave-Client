@@ -5,10 +5,9 @@ import Button from "./Button";
 import Divider from "./Divider";
 import GetAgoTime from "./GetAgoTime";
 import JobCard from "./JobCard";
-import ClipboardJS from 'clipboard';
 
 // react icons
-import { AiOutlineCalendar, AiOutlineShareAlt } from "react-icons/ai";
+import { AiOutlineCalendar } from "react-icons/ai";
 import { BiHeart, BiMap } from "react-icons/bi";
 import { BsBuildingGear } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
@@ -22,15 +21,18 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAuth from "../Hooks/useAuth";
 import useMySavedJobs from "../Hooks/useMySavedJobs";
 import useMyAppliedJobs from "../Hooks/useMyAppliedJobs";
+import CopyToClipboardLink from "./CopyToClipboardLink";
+import Pagination from "./Pagination";
 
-const FindJobBody = ({ allJobsData }) => {
+const FindJobBody = ({ allJobsData, date, setDate }) => {
   const [jobDetails, setJobDetails] = useState(allJobsData[0]);
   const [axiosSecure] = useAxiosSecure();
   const [myAppliedJobs] = useMyAppliedJobs();
   const [mySavedJobs, , refetch] = useMySavedJobs();
   let [alreadyApplied, setAlreadyApplied] = useState(false);
   let [alreadySaved, setAlreadySaved] = useState(false);
-  const { user } = useAuth();
+  const { user, currentUser } = useAuth();
+
   const {
     _id,
     title,
@@ -50,43 +52,10 @@ const FindJobBody = ({ allJobsData }) => {
 
   const jobInfo = { selectJob: _id, companyLogo, title, companyName, postedDate, location, jobType, salary, skills, candidateMail: user?.email }
 
-  // Share function
-  const shareJobData = () => {
-    const url =
-      window.location.protocol + '//' +
-      window.location.host + window.location.pathname
-    console.log(url)
-    // Create a clipboard instance
-    const clipboard = new ClipboardJS('.copy-button', {
-      text: function () {
-        return url;
-      }
-    });
-
-    clipboard.on('success', function (e) {
-
-      toast.success("Link copied to the Clipboard", {
-        position: "top-right",
-        autoClose: 2500,
-        theme: "light",
-    });
-    });
-
-    clipboard.on('error', function (e) {
-      // Handle error (optional)
-      console.error('Error copying to clipboard:', e);
-    });
-
-    clipboard.onClick({
-      action: 'copy'
-    });
-  }
-
-
   // check already applied
   useEffect(() => {
     const checkExists = myAppliedJobs.filter((job) =>
-      job.appliedJobId.includes(_id)
+      job.jobId.includes(_id)
     );
 
     if (checkExists.length) {
@@ -109,6 +78,16 @@ const FindJobBody = ({ allJobsData }) => {
     }
   }, [jobDetails, mySavedJobs.length])
 
+  const [currentPage, setCurrentPage]= useState(1)
+  const [jobsPerPage]= useState(4)
+  // Get current posts in pagination
+  const indexOfLastJob= currentPage * jobsPerPage
+  const indexOfFirstJob = indexOfLastJob - jobsPerPage;
+  const currentJobs = allJobsData.slice(indexOfFirstJob, indexOfLastJob)
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
   const handleSaveJob = () => {
     axiosSecure.post("/savedjob", jobInfo)
       .then((data) => {
@@ -130,6 +109,7 @@ const FindJobBody = ({ allJobsData }) => {
       })
       .catch((err) => console.log(err));
   }
+
   return (
     <div className="grid grid-cols-1 gap-5 mt-16 lg:grid-cols-10">
       {/* left content  */}
@@ -149,20 +129,23 @@ const FindJobBody = ({ allJobsData }) => {
             <select
               id="select"
               className="px-2 py-1 border rounded-md cursor-pointer border-purple focus:outline-none"
+              defaultValue={date}
+              onChange={(e) => setDate(e.target.value)}
             >
-              <option>Newest</option>
-              <option>Oldest</option>
-              <option>Features</option>
+              <option value=''>Select</option>
+              <option value='newest'>Newest</option>
+              <option value='oldest'>Oldest</option>
             </select>
           </div>
         </div>
 
         {/* job card */}
         <div className="grid grid-cols-1 gap-5">
-          {allJobsData.map((job, index) => (
+          {currentJobs.map((job, index) => (
             <JobCard key={index} job={job} setJobDetails={setJobDetails} mySavedJobs={mySavedJobs} refetch={refetch} />
           ))}
         </div>
+        <Pagination jobsPerPage={jobsPerPage} totalJobs={allJobsData.length} paginate={paginate} currentPage={currentPage}/>
       </div>
 
       {/* right content */}
@@ -177,19 +160,23 @@ const FindJobBody = ({ allJobsData }) => {
             </div>
 
             <div className="flex items-center gap-2">
-              <AiOutlineShareAlt onClick={shareJobData} size="24px" className="text-green cursor-pointer copy-button" />
+              <CopyToClipboardLink textToCopy={`https://hire-wave.web.app/job_details/${_id}`} />
               {
-                !alreadySaved ? <>
+                currentUser.role === 'candidate' && <>
                   {
-                    user?.email ? <button onClick={handleSaveJob}>
-                      <BiHeart size="24px" className="text-green" />
-                    </button> : <Link to='/login'>
-                      <BiHeart size="24px" className="text-green" />
-                    </Link>
+                    !alreadySaved ? <>
+                      {
+                        user?.email ? <button onClick={handleSaveJob}>
+                          <BiHeart size="24px" className="text-green" />
+                        </button> : <Link to='/login'>
+                          <BiHeart size="24px" className="text-green" />
+                        </Link>
+                      }
+                    </> : <button disabled>
+                      <FaHeart size="24px" className="text-red-400" />
+                    </button>
                   }
-                </> : <button disabled>
-                  <FaHeart size="24px" className="text-red-400" />
-                </button>
+                </>
               }
             </div>
           </div>

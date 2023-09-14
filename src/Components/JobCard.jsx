@@ -9,9 +9,10 @@ import useAuth from "../Hooks/useAuth";
 import { BiHeart, BiSolidCrown, BiMap } from "react-icons/bi";
 import { IoIosFlash } from "react-icons/io";
 import { FaHeart } from "react-icons/fa";
+import CopyToClipboardLink from "./CopyToClipboardLink";
 
 const JobCard = ({ job, setJobDetails, mySavedJobs, refetch }) => {
-    const { user } = useAuth();
+    const { user, currentUser } = useAuth();
     const [alreadySaved, setAlreadySaved] = useState(false);
     const [axiosSecure] = useAxiosSecure();
 
@@ -80,18 +81,23 @@ const JobCard = ({ job, setJobDetails, mySavedJobs, refetch }) => {
                 </div>
 
                 <div className="flex items-center gap-1">
+                    <CopyToClipboardLink textToCopy={`https://hire-wave.web.app/job_details/${_id}`} />
                     {
-                        !alreadySaved ? <>
+                        currentUser.role === 'candidate' && <>
                             {
-                                user?.email ? <button onClick={handleSaveJob}>
-                                    <BiHeart size="20px" className="text-green" />
-                                </button> : <Link to='/login'>
-                                    <BiHeart size="24px" className="text-green" />
-                                </Link>
+                                !alreadySaved ? <>
+                                    {
+                                        user?.email ? <button onClick={handleSaveJob}>
+                                            <BiHeart size="20px" className="text-green" />
+                                        </button> : <Link to='/login'>
+                                            <BiHeart size="24px" className="text-green" />
+                                        </Link>
+                                    }
+                                </> : <button disabled>
+                                    <FaHeart size="18px" className="text-red-400" />
+                                </button>
                             }
-                        </> : <button disabled>
-                            <FaHeart size="18px" className="text-red-400" />
-                        </button>
+                        </>
                     }
                 </div>
             </div>

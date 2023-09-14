@@ -35,7 +35,7 @@ const Chat = () => {
 
     return (
         <div>
-            <h1 className='text-xl text-green p-2'>Welcome {currentUser?.name}</h1>
+            <h1 className='text-xl text-green p-2'>Welcome {currentUser?.name} Your chat ID {state.userInfo.userID}</h1>
             {
                 receiver !== undefined && <h1>Now You Went to Create Chat with {receiver?.name} . Here is {receiver?.name}'s chat Id {receiver?._id?.slice(10, 20)} . please copy this id and insert on new Chat</h1>
             }

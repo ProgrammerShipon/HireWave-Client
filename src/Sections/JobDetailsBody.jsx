@@ -48,7 +48,7 @@ const JobDetailsBody = ({ jobDetails }) => {
     // check already applied
     useEffect(() => {
         const checkExists = myAppliedJobs.filter((job) =>
-            job.appliedJobId.includes(_id)
+            job.jobId.includes(_id)
         );
 
         if (checkExists.length) {

@@ -9,9 +9,10 @@ import { FaBriefcase } from "react-icons/fa";
 import { FaLocationCrosshairs } from "react-icons/fa6";
 import { AiOutlineClear } from "react-icons/ai";
 import useReview from "../Hooks/useReview";
+import PageLoader from "../Components/PageLoader";
 
 const FindCandidate = () => {
-  const [candidatesData] = useCandidatesData();
+  const [candidatesData, loading] = useCandidatesData();
   const [reviewData] = useReview();
   const [filteredData, setFilteredData] = useState([]);
 
@@ -23,13 +24,14 @@ const FindCandidate = () => {
   const searchTerm = watch("searchTerm");
   const location = watch("location");
   const category = watch("category");
+  const approveData = candidatesData.filter(candidate => candidate.status == 'approved')
 
   useEffect(() => {
+
     const searchTitle = searchTerm ? searchTerm.toLowerCase() : "";
     const searchLocation = location ? location.toLowerCase() : "";
     const searchCategory = category ? category.toLowerCase() : "";
-
-    const filter = candidatesData.filter(
+    const filter = approveData.filter(
       (cds) =>
         (!searchTitle || cds.name.toLowerCase().includes(searchTitle)) &&
         (!searchLocation ||
@@ -38,11 +40,15 @@ const FindCandidate = () => {
     );
 
     setFilteredData(filter);
-  }, [searchTerm, location, category, candidatesData]);
+  }, [searchTerm, location, category, candidatesData, approveData]);
 
   useEffect(() => {
     setFilteredData(candidatesData);
   }, [candidatesData]);
+
+  if (loading) {
+    return <div className="h-screen flex items-center justify-center"><PageLoader /></div>
+  }
 
   return (
     <section className="py-20 md:py-[120px] duration-300">

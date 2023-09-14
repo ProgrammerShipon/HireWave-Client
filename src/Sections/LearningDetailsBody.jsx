@@ -1,33 +1,33 @@
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import LearningDetailsComment from './LearningDetailsComment';
-import { Link, useLoaderData } from 'react-router-dom';
 import ClipboardJS from 'clipboard';
-import { FaEye } from "react-icons/fa";
-import { BiDislike, BiLike } from "react-icons/bi";
-import { RiShareForwardLine } from "react-icons/ri";
-import DOMPurify from 'dompurify';
-// react icons
-import { CgComment } from 'react-icons/cg'
+import { useForm } from 'react-hook-form';
+import { Link, useLoaderData } from 'react-router-dom';
+import LearningDetailsComment from './LearningDetailsComment';
 import moment from 'moment';
-import useAxiosSecure from '../Hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
 import useLearningData from '../Hooks/useLearningData';
-import useCandidatesRole from '../Hooks/useCandidatesRole';
+import useCurrentCandidate from '../Hooks/useCurrentCandidate';
+
+// react icons
+import { BiDislike, BiLike } from "react-icons/bi";
+import { FaEye } from "react-icons/fa";
+import { RiShareForwardLine } from "react-icons/ri";
+import { CgComment } from 'react-icons/cg';
+import DOMPurify from 'dompurify';
 
 const LearningDetailsBody = () => {
-  const {learningData} = useLearningData();
-  const [candidatesRole] = useCandidatesRole()
-  console.log(candidatesRole);
+  const { learningData } = useLearningData();
+  const [currentCandidate] = useCurrentCandidate()
   const loadData = useLoaderData();
   const [axiosSecure] = useAxiosSecure();
   const { title, createdAt, updatedAt, videoLink, description, authorImg, authorName, authorEmail, comments, disLike, like, views, _id } = loadData;
-  const sidebarContent = learningData.filter(data => data._id !== _id).slice(0,4)
-  console.log(loadData)
+  const sidebarContent = learningData.filter(data => data._id !== _id).slice(0, 4)
+
+
   const [commentClick, setCommentClick] = useState('')
   const [allLike, setAllLike] = useState(like);
   const [allDisLike, setAllDisLike] = useState(disLike);
-  // const [seeAll, setSeeAll] = useState(false);
 
 
   const { control, register, handleSubmit, formState: { errors } } = useForm();
@@ -36,8 +36,6 @@ const LearningDetailsBody = () => {
   }
 
   const increaseLike = (_id) => {
-    console.log(_id)
-    console.log(like)
     axiosSecure.patch(`/learning/like/${_id}`)
       .then(res => {
         setAllLike(res.data.like)
@@ -46,8 +44,6 @@ const LearningDetailsBody = () => {
       .catch((err) => console.log(err));
   }
   const reduceLike = (_id) => {
-    console.log(_id)
-    console.log(like)
     axiosSecure.patch(`/learning/dislike/${_id}`)
       .then(res => {
         setAllDisLike(res.data.disLike)
@@ -60,7 +56,7 @@ const LearningDetailsBody = () => {
     const url =
       window.location.protocol + '//' +
       window.location.host + window.location.pathname
-    console.log(url)
+    // console.log(url)
     // Create a clipboard instance
     const clipboard = new ClipboardJS('.copy-button', {
       text: function () {
@@ -74,7 +70,7 @@ const LearningDetailsBody = () => {
         position: "top-right",
         autoClose: 2500,
         theme: "light",
-    });
+      });
     });
 
     clipboard.on('error', function (e) {
@@ -111,7 +107,7 @@ const LearningDetailsBody = () => {
                 allowfullscreen
               ></iframe>
             </div>
-            
+
             <div className="md:flex items-center justify-between mb-5">
               {/* Author Details */}
               <div className="flex items-center gap-3">
@@ -159,8 +155,8 @@ const LearningDetailsBody = () => {
               <div className="flex items-center gap-3 mb-5">
                 <img
                   className="rounded-full w-10"
-                  src={candidatesRole?.image}
-                  alt={candidatesRole?.name}
+                  src={currentCandidate?.image}
+                  alt={currentCandidate?.name}
                 />
                 <input
                   className="rounded outline-none h-10 border-b border-dark/20 px-3 w-full"
@@ -196,40 +192,40 @@ const LearningDetailsBody = () => {
             ))}
           </div>
 
-           {/* Sidebar */}
-           <div className='hidden lg:block col-span-1'>
-              {
-                  sidebarContent.map(sidebar => 
-                  <div className="p-2 rounded-lg hover:shadow-xl hover:shadow-green/20 border border-dark/40 hover:border-green duration-300 mb-3">
+          {/* Sidebar */}
+          <div className='hidden lg:block col-span-1'>
+            {
+              sidebarContent.map(sidebar =>
+                <div className="p-2 rounded-lg hover:shadow-xl hover:shadow-green/20 border border-dark/40 hover:border-green duration-300 mb-3">
 
                   {/* Thumbnail */}
                   <img
-                      className="object-cover object-center w-full rounded-lg"
-                      src={sidebar.thumbnail}
-                      alt={sidebar.title}
+                    className="object-cover object-center w-full rounded-lg"
+                    src={sidebar.thumbnail}
+                    alt={sidebar.title}
                   />
-      
+
                   {/* Content */}
                   <div className="flex flex-col justify-between px-2 mt-5 mb-2">
-                      {/* Title & Description */}
-                      <div>
-                          <div className="text-purple duration-300 hover:underline"> {sidebar.category} </div>
-                          <h3 className=" text-green font-semibold"> {sidebar.title} </h3>
-                          <p className="line-clamp-3 mt-2 text-sm">{sidebar.description}</p>
-                      </div>
-      
-                      {/* Author Details */}
-                      <div className="flex items-center gap-3 my-3">
-                          <img className="rounded-full w-6" src={sidebar.authorImg} alt="" />
-                          <h3 className="text-dark">{sidebar.authorName}</h3>
-                      </div>
-  
-                      {/* Detail Button */}
-                      <Link to={`/learning/${sidebar._id}`} className="bg-purple text-white inline-block px-2 py-1 lg:px-3 lg:py-2 rounded-md duration-300 hover:bg-dark shadow-xl shadow-purple/20 hover:shadow-dark/20 mr-3 cursor-pointer text-center">Explore</Link>
+                    {/* Title & Description */}
+                    <div>
+                      <div className="text-purple duration-300 hover:underline"> {sidebar.category} </div>
+                      <h3 className=" text-green font-semibold"> {sidebar.title} </h3>
+                      <p className="line-clamp-3 mt-2 text-sm">{sidebar.description}</p>
+                    </div>
+
+                    {/* Author Details */}
+                    <div className="flex items-center gap-3 my-3">
+                      <img className="rounded-full w-6" src={sidebar.authorImg} alt="" />
+                      <h3 className="text-dark">{sidebar.authorName}</h3>
+                    </div>
+
+                    {/* Detail Button */}
+                    <Link to={`/learning/${sidebar._id}`} className="bg-purple text-white inline-block px-2 py-1 lg:px-3 lg:py-2 rounded-md duration-300 hover:bg-dark shadow-xl shadow-purple/20 hover:shadow-dark/20 mr-3 cursor-pointer text-center">Explore</Link>
                   </div>
-              </div>
+                </div>
               )}
-           </div>
+          </div>
         </div>
       </div>
     </div>

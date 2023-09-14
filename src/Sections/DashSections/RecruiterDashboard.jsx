@@ -8,10 +8,14 @@ import { BsBriefcase } from 'react-icons/bs';
 import { IoDocumentTextOutline, IoAnalyticsOutline } from 'react-icons/io5';
 import { RiChatFollowUpLine } from 'react-icons/ri';
 import { AiOutlineFundView } from 'react-icons/ai';
+import useMyPostedJobs from '../../Hooks/useMyPostedJobs';
+import useMyAppliedCandidates from '../../Hooks/useMyAppliedCandidates';
 
 const RecruiterDashboard = () => {
+    const [myPostedJobs] = useMyPostedJobs();
+    const [myAppliedCandidates] = useMyAppliedCandidates();
     const labels = ['Applications', 'Profile Views', 'Open Jobs'];
-    const chartData = [135, 75, 234];
+    const chartData = [myAppliedCandidates.length, 75, myPostedJobs.length];
 
     const profileViewsData = [80, 200, 160, 260, 220, 400, 350];
     return (
