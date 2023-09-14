@@ -37,10 +37,7 @@ const JobDetailsBody = ({ jobDetails }) => {
         closingDate,
         experience,
         quantity,
-        overview,
-        requirements,
-        skillsExperience,
-        benefits,
+        description,
         skills,
     } = jobDetails;
 
@@ -184,43 +181,8 @@ const JobDetailsBody = ({ jobDetails }) => {
 
                     {/* job description */}
                     <div className="my-6">
-                        <h2 className="text-3xl font-medium text-dark">Description</h2>
-
-                        {/* Overview */}
-                        <div className="mt-5">
-                            <h4 className="text-xl">Overview:</h4>
-                            <p className="text-gray">{overview}</p>
-                        </div>
-
-                        {/* Requirements */}
-                        <div className="mt-5">
-                            <h4 className="text-xl">Requirements:</h4>
-                            <ul className="flex flex-col gap-2 list-disc text-lightGray pl-7">
-                                {requirements.map((item, index) => (
-                                    <li key={index}>{item}</li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        {/* Skill & Experience */}
-                        <div className="mt-5">
-                            <h4 className="text-xl">Skill & Experience:</h4>
-                            <ul className="flex flex-col gap-2 list-disc text-lightGray pl-7">
-                                {skillsExperience.map((item, index) => (
-                                    <li key={index}>{item}</li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        {/* Benefits */}
-                        <div className="mt-5">
-                            <h4 className="text-xl">Benefits:</h4>
-                            <ul className="flex flex-col gap-2 list-disc text-lightGray pl-7">
-                                {benefits.map((item, index) => (
-                                    <li key={index}>{item}</li>
-                                ))}
-                            </ul>
-                        </div>
+                        <h2 className="text-3xl font-medium text-dark mb-5">Description</h2>
+                        <p className="postJob" dangerouslySetInnerHTML={{ __html : description}}></p>
                     </div>
 
                     <Divider />

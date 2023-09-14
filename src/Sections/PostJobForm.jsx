@@ -18,6 +18,7 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useCurrentRecruiter from "../Hooks/useCurrentRecruiter";
 import useSkills from "../Hooks/useSkills";
 import Swal from "sweetalert2";
+import GetAgoTime from "../Components/GetAgoTime";
 
 const modules = {
     toolbar: [
@@ -53,7 +54,6 @@ export default function PostJobForm() {
     const [skillData, loading] = useSkills();
     const subCategories = allCategoriesData?.find(category => category?.name == currentRecruiter?.category)
     const [axiosSecure] = useAxiosSecure();
-    console.log(recruitersRole);
 
     //Modal functions
     const handlePreviewModal = (e) => {
@@ -72,24 +72,24 @@ export default function PostJobForm() {
     const onSubmit = (data) => {
         const location = `${currentRecruiter?.location[0]}, ${currentRecruiter?.location[1]}`
         const newJob = {
-          title: data?.title,
-          category: currentRecruiter?.category,
-          jobType: data?.jobType,
-          salary: data?.salary,
-          experience: data?.experience,
-          quantity: data?.quantity,
-          skills: data?.skills?.map((skill) => skill),
-          closingDate: data?.closingDate,
-          description: description,
-          applied: 0,
-          postedDate: currentDate,
-          open: true,
-          status: "pending",
-          companyName: currentRecruiter?.name,
-          companyEmail: currentRecruiter?.email,
-          companyLogo: currentRecruiter?.image,
-          location: location,
-          sub_category: data?.sub_category,
+            title: data?.title,
+            category: currentRecruiter?.category,
+            jobType: data?.jobType,
+            salary: data?.salary,
+            experience: data?.experience,
+            quantity: data?.quantity,
+            skills: data?.skills?.map((skill) => skill),
+            closingDate: data?.closingDate,
+            description: description,
+            applied: 0,
+            postedDate: currentDate,
+            open: true,
+            status: "pending",
+            companyName: currentRecruiter?.name,
+            companyEmail: currentRecruiter?.email,
+            companyLogo: currentRecruiter?.image,
+            location: location,
+            sub_category: data?.sub_category,
         };
 
         console.log(newJob);
@@ -410,7 +410,7 @@ export default function PostJobForm() {
                                         </p>
 
                                         <p className="text-purple bg-purple/10 px-4 py-[2px] rounded-full shadow-lg shadow-purple/20 flex items-center gap-1">
-                                            <BiMap /> {currentRecruiter?.location[0]}, {currentRecruiter?.location[1]}
+                                            <BiMap /> {currentRecruiter?.location}
                                         </p>
                                     </div>
                                 </div>
