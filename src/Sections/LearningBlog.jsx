@@ -2,7 +2,9 @@ import LearningCard from "../Components/LearningCard";
 import useLearningData from "../Hooks/useLearningData";
 
 const LearningBlog = () => {
-    const {learningData}= useLearningData()
+    const { learningData } = useLearningData()
+    console.log("Learning Data -> ", learningData);
+    
     return (
         <section className="py-20 md:py-[120px] duration-300">
             <div className="container">

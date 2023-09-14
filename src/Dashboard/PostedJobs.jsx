@@ -4,6 +4,7 @@ import PostedJobTableRow from "../Components/DashComponents/PostedJobTableRow";
 import useAllJobs from "../Hooks/useAllJobs";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import PageLoader from "../Components/PageLoader";
 
 const PostedJobs = () => {
     const [allJobsData, loading] = useAllJobs();
@@ -16,6 +17,7 @@ const PostedJobs = () => {
 
     const searchTerm = watch('searchTerm');
     const category = watch('category');
+    const status = watch('status');
     const date = watch('date');
 
     console.log(searchTerm, category, date);
@@ -26,10 +28,20 @@ const PostedJobs = () => {
 
         const filter = allJobsData.filter((job) =>
             (!searchTitle || job.title.toLowerCase().includes(searchTitle)) && 
+            (!status || job.status.toLowerCase().includes(status.toLowerCase())) &&
             (!searchCategory || job.category.toLowerCase().includes(searchCategory))
         );
+        if (date === 'recent') {
+            filter = [...filter].sort(
+                (a, b) => new Date(b.postedDate) - new Date(a.postedDate)
+            );
+        } else if (date === 'oldest') {
+            filter = [...filter].sort(
+                (a, b) => new Date(a.postedDate) - new Date(b.postedDate)
+            );
+        }
         setFilteredData(filter);
-    }, [searchTerm, category]);
+    }, [searchTerm, category, status, date, !loading]);
 
     useEffect(() => {
         setFilteredData(allJobsData);
@@ -111,7 +123,7 @@ const PostedJobs = () => {
                                 <PostedJobTableRow key={job._id} job={job} />
                             ))}
                         </tbody>
-                    </table> : <h1>Loading ...</h1>
+                    </table> : <PageLoader />
                 }
             </div>
         </section>

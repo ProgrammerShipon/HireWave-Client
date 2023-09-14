@@ -48,7 +48,7 @@ const CandidateProfile = ({ candidatesData }) => {
     const newLanguages = [...languages, { name: watch('name'), level: watch('level') }];
     const newEducations = [...education, { subject: watch('subject'), currentStudying: watch('currentStudying'), institute: watch('institute'), startDate: watch('startDate'), endDate: watch('endDate') }];
     const newExperiences = [...experience, { logo: watch('logo'), currentWorking: watch('currentWorking'), companyName: watch('companyName'), position: watch('position'), location: watch('workLocation'), startDate: watch('workStartDate'), endDate: watch('workEndDate') }];
-
+    // console.log()
     const onSubmit = (data) => {
         const updateData = {
             jobType: jobTypes,
@@ -61,15 +61,7 @@ const CandidateProfile = ({ candidatesData }) => {
             experience: newExperiences
         }
         console.log(updateData)
-        // const res = fetch((`https://hire-wave-server.vercel.app/api/candidates/${_id}`), {
-        //     method: 'PATCH',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(updateData),
-        // });
-        // then(res => console.log(response))
-        axiosSecure.patch(`/candidates/${_id}`, updateData)
+        axiosSecure.patch(`/candidates/6502df8ab35ede7e57357874`, updateData)
             .then(res => {
                 console.log(res)
             })
@@ -487,7 +479,9 @@ const CandidateProfile = ({ candidatesData }) => {
                     {/* educations body */}
                     <div className={`py-4 space-y-4 ${openEducation ? 'block' : 'hidden'}`}>
                         {
-                            newEducations.length > 0 ? newEducations.map((edu, index) =>
+                            newEducations[0].subject !== ''
+                            // newEducations.length >0
+                             ? newEducations.map((edu, index) =>
                                 <div key={index} className='relative group cursor-pointer w-fit'>
                                     <h3 className='text-dark font-medium text-xl'>{edu.subject}</h3>
                                     <p className='text-lightGray'>{edu.institute}</p>
@@ -592,7 +586,10 @@ const CandidateProfile = ({ candidatesData }) => {
                     {/* experiences body */}
                     <div className={`py-4 space-y-4 ${openExperience ? 'block' : 'hidden'}`}>
                         {
-                            newExperiences.length > 0 ? newExperiences.map((exp, index) => (
+                            newExperiences[1].position !== '' 
+                            // newExperiences.length>0
+                            ? newExperiences.slice(1,).map((exp, index) =>
+                            (
                                 <div key={index} className='relative group cursor-pointer w-fit flex gap-2'>
                                     <div className='h-14 w-14 overflow-hidden'>
                                         <img

@@ -7,9 +7,9 @@ const PaymentFail = () => {
     console.log(trans_Id)
     return (
         <div>
-            <Lottie className='w-80 mx-auto' animationData={failedAnimation}></Lottie>
-            <h2 className='text-center text-xl text-red-900'>Payment Failed </h2>
-            <h2 className='text-center text-xl text-red-900'>Try again</h2>
+            <Lottie className='w-80 mx-auto ' animationData={failedAnimation}></Lottie>
+            <h2 className='text-center text-xl text-red-900'>You have failed to make payment.</h2>
+            <h2 className='text-center text-xl text-red-900'> Please try again</h2>
         </div>
     );
 };

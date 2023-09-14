@@ -71,7 +71,7 @@ const MyApplications = () => {
                         >
                             <option className="capitalize" value="">Job Type</option>
                             {
-                                myAppliedJobs.map((cnd, index) => <option key={index} className="capitalize" value={cnd.jobType}>{cnd.jobType}</option>)
+                                myAppliedJobs.map((cnd, index) => <option key={index} className="capitalize" value={cnd?.jobType}>{cnd?.jobType}</option>)
                             }
                         </select>
 

@@ -4,37 +4,36 @@ import AppliedCandidatesTable from '../Components/AppliedCandidatesTable';
 // react icons
 import { FaLocationCrosshairs } from 'react-icons/fa6';
 import { BiCheck } from 'react-icons/bi';
-import useCandidatesData from '../Hooks/useCandidatesData';
+import useMyAppliedCandidates from '../Hooks/useMyAppliedCandidates';
 
-const AppliedCandidatesDetails = () => {
-    const [candidatesData] = useCandidatesData();
-    console.log(candidatesData)
-    const [filteredData, setFilteredData] = useState(candidatesData);
+const AppliedCandidatesDetails = ({ appliedData }) => {
+    const [myAppliedCandidates] = useMyAppliedCandidates();
+    const [filteredData, setFilteredData] = useState(myAppliedCandidates);
     const [location, setLocation] = useState('');
     const [checkBoxData, setCheckBoxData] = useState('');
 
     // main filtering
     useEffect(() => {
         if (checkBoxData.length > 0) {
-            const filteredCandidatesData = candidatesData.filter(
+            const filteredCandidatesData = myAppliedCandidates.filter(
                 (candidate) =>
-                    candidate.location[0].toLowerCase().includes(location.toLowerCase()) &&
+                    candidate.location.toLowerCase().includes(location.toLowerCase()) &&
                     checkBoxData.includes(candidate.category)
             );
             setFilteredData(filteredCandidatesData);
         } else if (location.length > 0) {
-            const filterByLocation = candidatesData.filter((rql) =>
-                rql.location[0].toLowerCase().includes(location.toLowerCase())
+            const filterByLocation = myAppliedCandidates.filter((rql) =>
+                rql.location.toLowerCase().includes(location.toLowerCase())
             );
             setFilteredData(filterByLocation);
         } else {
-            setFilteredData(candidatesData);
+            setFilteredData(myAppliedCandidates);
         }
-    }, [location, checkBoxData, candidatesData]);
+    }, [location, checkBoxData, myAppliedCandidates]);
 
     useEffect(() => {
-        setFilteredData(candidatesData);
-    }, [candidatesData]);
+        setFilteredData(myAppliedCandidates);
+    }, [myAppliedCandidates]);
 
     // category filter
     const toggleCheckBox = (item) => {
@@ -44,7 +43,7 @@ const AppliedCandidatesDetails = () => {
             setCheckBoxData([...checkBoxData, item]);
         }
     };
-    const category = [...new Set(candidatesData.map(candidate => candidate.category))]
+    const category = [...new Set(myAppliedCandidates.map(candidate => candidate.category))]
 
     return (
         <div className='py-20 md:py-[120px] duration-300'>
@@ -87,7 +86,7 @@ const AppliedCandidatesDetails = () => {
 
                                         <span className="w-10 h-6 flex text-purple items-center justify-center bg-purple/30 rounded-lg">
                                             {
-                                                candidatesData.length
+                                                myAppliedCandidates.length
                                             }
                                         </span>
                                     </div>
@@ -112,7 +111,7 @@ const AppliedCandidatesDetails = () => {
                                             </div>
                                             <span className="w-10 h-6 flex text-purple items-center justify-center bg-purple/30 rounded-lg">
                                                 {
-                                                    candidatesData.filter(i => i.category === item).length
+                                                    myAppliedCandidates.filter(i => i.category === item).length
                                                 }
                                             </span>
                                         </div>)
@@ -130,7 +129,7 @@ const AppliedCandidatesDetails = () => {
                                     <th className='px-2 py-3 font-medium'>#</th>
                                     <th className='px-2 py-3 font-medium'>Image</th>
                                     <th className='px-2 py-3 font-medium'>Applicant</th>
-                                    <th className='px-2 py-3 font-medium'>Hourly Rate</th>
+                                    <th className='px-2 py-3 font-medium'>Salary</th>
                                     <th className='px-2 py-3 font-medium'>Rating</th>
                                     <th className='px-10 py-3 font-medium'>Location</th>
                                     <th className='px-2 py-3 font-medium'>Action</th>

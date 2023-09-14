@@ -10,9 +10,9 @@ import { SlLocationPin } from 'react-icons/sl';
 const ViewApplicationDetails = ({ jobData, appliedJob }) => {
     const { title, companyName, category, location, postedDate, overview, skills, experience, salary, open } = jobData;
 
-    const { appliedJobId, cover_letter, attachment, expected_salary, appliedDate } = appliedJob;
+    const { jobId, cover_letter, attachment, expected_salary, appliedDate } = appliedJob;
 
-    // const formattedCoverLetter = cover_letter.map(pa => pa === "" ? "\u00A0" : pa);
+    const formattedCoverLetter = cover_letter.map(pa => pa === "" ? "\u00A0" : pa);
 
     return (
         <section className='py-20 md:py-[120px]'>
@@ -28,7 +28,11 @@ const ViewApplicationDetails = ({ jobData, appliedJob }) => {
                         </div>
 
                         <div>
-                            <p className="text-lightGray tracking-wide">{cover_letter}</p>
+                            {
+                                formattedCoverLetter.length > 0 && formattedCoverLetter.map((ab, index) => <p key={index} className="text-lightGray tracking-wide">
+                                    {ab}
+                                </p>)
+                            }
 
 
 
@@ -65,7 +69,7 @@ const ViewApplicationDetails = ({ jobData, appliedJob }) => {
 
                                 <p className='mb-4 text-lightGray text-lg'>{overview}</p>
 
-                                <Link to={`/job_details/${appliedJobId}`} className='text-blue-500 hover:underline'>View Job Posting</Link>
+                                <Link to={`/job_details/${jobId}`} className='text-blue-500 hover:underline'>View Job Posting</Link>
                             </div>
 
                             {/* experience, salary, company name, location */}

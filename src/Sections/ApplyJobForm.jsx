@@ -1,25 +1,32 @@
-import Button from '../Components/Button';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Button from '../Components/Button';
 import GetAgoTime from '../Components/GetAgoTime';
 import useAuth from '../Hooks/useAuth';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
-import Swal from 'sweetalert2';
 
 // react icons
-import { GiLevelEndFlag } from 'react-icons/gi';
 import { BsCurrencyDollar } from 'react-icons/bs';
+import { GiLevelEndFlag } from 'react-icons/gi';
+import { IoMdAddCircleOutline } from 'react-icons/io';
 import { LiaIndustrySolid } from 'react-icons/lia';
 import { SlLocationPin } from 'react-icons/sl';
-import { IoMdAddCircleOutline } from 'react-icons/io';
+import CoverLetterTextarea from '../Components/CoverLetterTextarea';
+import useCurrentCandidate from '../Hooks/useCurrentCandidate';
+import Swal from 'sweetalert2';
 
 const ApplyJobForm = ({ jobData }) => {
     const { currentUser } = useAuth();
     const [axiosSecure] = useAxiosSecure();
-    const { _id, title, companyName, category, location, postedDate, overview, skills, experience, salary, open } = jobData;
+    const [currentCandidate] = useCurrentCandidate();
+    const [coverLetter, setCoverLetter] = useState();
 
-    const { register, handleSubmit } = useForm();
+    const navigate = useNavigate();
+
+    const { _id, title, companyName, companyLogo, companyEmail, category, location, postedDate, overview, skills, experience, salary, open, jobType } = jobData;
+
+    const { register, handleSubmit, reset } = useForm();
     const [attachments, setAttachments] = useState([{ id: 1, value: "" }]);
     const [maximumWarning, setMaximumWarning] = useState(false)
     const handleIncreaseInputField = () => {
@@ -31,26 +38,37 @@ const ApplyJobForm = ({ jobData }) => {
     };
 
     const onApplyJobSubmit = (data) => {
-        const cover_letter = data.cover_letter;
+        const appliedDate = new Date();
+        const cover_letter = coverLetter;
         const expected_salary = data.expected_salary;
         const attachment = data.attachment;
+        const location = `${currentCandidate.location[0]}, ${currentCandidate.location[1]}`
 
         const appliedInfo = {
-            jobId: _id,
-            companyName,
-            companyLogo,
-            title,
-            jobType,
-            cover_letter,
-            expected_salary,
-            attachment,
-            applicantEmail: currentUser?.email
-        }
+          jobId: _id,
+          applicantId: currentCandidate._id,
+          applicantName: currentCandidate.name,
+          applicantEmail: currentUser?.email,
+          applicantImage: currentCandidate.image,
+          location: location,
+          category: currentCandidate.category,
+          companyName,
+          companyLogo,
+          companyEmail,
+          title,
+          jobType,
+          cover_letter,
+          expected_salary,
+          attachment,
+          appliedDate: appliedDate,
+        };
 
-        axiosSecure.post(`/appliedCandidate`, appliedInfo)
+        console.log(appliedInfo);
+
+        axiosSecure.post('/appliedCandidate', appliedInfo)
             .then((res) => {
-                console.log(res)
                 if (res.status === 200) {
+                    reset();
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
@@ -58,6 +76,7 @@ const ApplyJobForm = ({ jobData }) => {
                         showConfirmButton: false,
                         timer: 2500
                     });
+                    navigate('/dashboard/myApplications', { replace: true })
                 }
                 else {
                     Swal.fire({
@@ -68,7 +87,6 @@ const ApplyJobForm = ({ jobData }) => {
                         timer: 2500
                     })
                 }
-
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -146,7 +164,7 @@ const ApplyJobForm = ({ jobData }) => {
                         <h2 className='border-t border-gray/40 group-hover:border-green/40 mb-2 pt-3 duration-300'>Skills and Expertise</h2>
                         <div className='flex gap-2 items-center'>
                             {
-                                skills.map(skill => <p key={skill} className='bg-green/10 text-green px-4 rounded-full'>{skill}</p>)
+                                skills?.map(skill => <p key={skill} className='bg-green/10 text-green px-4 rounded-full'>{skill}</p>)
                             }
                         </div>
                     </div>
@@ -159,9 +177,9 @@ const ApplyJobForm = ({ jobData }) => {
                             <label className='text-dark block mb-1 text-base'>Cover letter</label>
                             <textarea
                                 rows={5}
-                                className='w-full px-3 py-2 border border-gray/40 focus:outline-none focus:border-green rounded-md'
+                                className={`w-full px-3 py-2 border border-gray/40 focus:outline-none focus:border-green rounded-md ${errors.cover_letter && 'border-red-400'}`}
                                 placeholder='Write within 300 words'
-                                {...register("cover_letter")}
+                                {...register("cover_letter", { required: true })}
                             />
                         </div>
 
@@ -170,10 +188,10 @@ const ApplyJobForm = ({ jobData }) => {
                                 <label htmlFor='salary' className='text-dark block mb-1 text-base'>Expected Salary</label>
                                 <input
                                     id='salary'
-                                    className='w-full px-3 py-2 border border-gray/40 focus:outline-none focus:border-green rounded-md'
+                                    className={`w-full px-3 py-2 border border-gray/40 focus:outline-none focus:border-green rounded-md ${errors.experience && 'border-red-400'} `}
                                     type="number"
                                     placeholder='Enter a range (in USD)'
-                                    {...register("expected_salary")}
+                                    {...register("expected_salary", { required: true })}
                                 />
                             </div>
                             <div className='lg:col-span-2'>

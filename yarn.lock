@@ -1141,6 +1141,11 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
+"@emailjs/browser@^3.11.0":
+  "integrity" "sha512-RkY3FKZ3fPdK++OeF46mRTFpmmQWCHUVHZH209P3NE4D5sg2Atg7S2wa3gw5062Gl4clt4Wn5SyC4WhlVZC5pA=="
+  "resolved" "https://registry.npmjs.org/@emailjs/browser/-/browser-3.11.0.tgz"
+  "version" "3.11.0"
+
 "@emoji-mart/data@1.1.2":
   "integrity" "sha512-1HP8BxD2azjqWJvxIaWAMyTySeZY0Osr83ukYjltPVkNXeJvTz7yDrPLBtnrD5uqJ3tg4CcLuuBW09wahqL/fg=="
   "resolved" "https://registry.npmjs.org/@emoji-mart/data/-/data-1.1.2.tgz"

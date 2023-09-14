@@ -63,26 +63,27 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         setLoading(true);
-        const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+        const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
             setUser(authUser)
-            if (authUser?.email) {
-                axiosSecure(`/users/email/${authUser?.email}`)
-                    .then((data) => {
-                        setCurrentUser(data.data);
-                        setLoading(false);
-                    })
-                    .catch((err) => {
-                        console.log(err)
-                        setLoading(false);
-                    });
-            }
+            setLoading(true);
+            authUser?.email && await axiosSecure.get(`/users/email/${authUser?.email}`)
+                .then((data) => {
+                    console.log(data)
+                    setCurrentUser(data.data);
+                    setLoading(false);
+                })
+                .catch((err) => {
+                    console.log(err)
+                    setLoading(false);
+                });
             if (authUser === null) {
+                setCurrentUser({})
                 setLoading(false);
             }
 
             // if (authUser) {
             //     axiosSecure
-            //         .post("/jwt", { email: authUser.email })
+            //         .post("/jwt", { email: authUser?.email })
             //         .then((response) => {
             //             localStorage.setItem("access-token", response.data.token);
             //             setLoading(false);

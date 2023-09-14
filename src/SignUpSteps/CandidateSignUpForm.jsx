@@ -1,14 +1,14 @@
 import { Step, Stepper } from "@tkwant/react-steps";
-import { Country, State } from "country-state-city";
 import { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
-import { useNavigate } from 'react-router-dom';
-import Swal from "sweetalert2";
 import useAuth from '../Hooks/useAuth';
-import useAxiosSecure from '../Hooks/useAxiosSecure';
 import useSkills from '../Hooks/useSkills';
+import { useNavigate } from 'react-router-dom';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import Swal from "sweetalert2";
+import { Country, State } from "country-state-city"
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 
 // react icons
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlinePlus } from 'react-icons/ai';
@@ -87,6 +87,7 @@ const CandidateSignUpForm = () => {
                             timer: 2500
                         });
                         navigate('/', { replace: true })
+                        window.location.reload(true)
                     }
                 })
                 .catch((err) => console.log(err));
@@ -270,7 +271,7 @@ const CandidateSignUpForm = () => {
                                 {/* state */}
                                 <label className='text-gray w-full text-base'>State*
                                     <select name="jobType" id="jobType"
-                                        className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.country && 'border-red-400'}`}
+                                        className={`text-dark rounded-md focus:outline-none border border-gray/40 focus:border-purple w-full px-3 py-2 ${errors.state && 'border-red-400'}`}
                                         {...register("state", { required: true })}
                                     >
                                         <option value="" disable>Select</option>
@@ -301,7 +302,7 @@ const CandidateSignUpForm = () => {
                                   }}
                                 render={({ field }) => (
                                     <PhoneInput
-                                    className={`PhoneInputInput text-dark rounded-md border border-gray/20 focus:border-purple px-3 py-2 ${errors.phone && 'border-red-400'}`}
+                                    className={`PhoneInputInput text-dark rounded-md border border-gray/20 hover:border-purple px-3 py-2 ${errors.phone && 'border-red-400 hover:border-red-400 '}`}
                                     placeholder="Enter phone number"
                                     value={field.value}
                                     
@@ -313,10 +314,7 @@ const CandidateSignUpForm = () => {
                                 )}
                                 />
                             </label>
-                            {errors.phone && (<p className="text-red-400 -mt-5">Invalid Phone Number</p>)}
-
-                            
-
+                            {errors.phone && (<p className="text-red-400 -mt-5">Invalid Phone Number Length</p>)}
 
                             {/* Submit */}
                             <div className='flex items-center justify-between'>
@@ -612,7 +610,7 @@ const CandidateSignUpForm = () => {
     };
 
     if (finishLoading) {
-        return <div className="mt-32"><PageLoader /></div>
+        return <div className='flex h-screen items-center justify-center'><PageLoader /></div>
     }
 
     return (
