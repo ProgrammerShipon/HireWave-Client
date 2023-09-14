@@ -11,6 +11,7 @@ import { LuLayoutTemplate } from "react-icons/lu";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { Link } from "react-router-dom";
+import DOMPurify from 'dompurify';
 import Swal from "sweetalert2";
 import CustomModal from "../Components/CustomModal";
 import Divider from "../Components/Divider";
@@ -466,7 +467,7 @@ export default function PostJobForm() {
                                 </div>
 
                                 {/* Requirements */}
-                                <p dangerouslySetInnerHTML={{__html: description}}></p>
+                                <p dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(description)}}></p>
 
                                 <Divider />
 

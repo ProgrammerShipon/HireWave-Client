@@ -6,6 +6,7 @@ import ClipboardJS from 'clipboard';
 import { FaEye } from "react-icons/fa";
 import { BiDislike, BiLike } from "react-icons/bi";
 import { RiShareForwardLine } from "react-icons/ri";
+import DOMPurify from 'dompurify';
 // react icons
 import { CgComment } from 'react-icons/cg'
 import moment from 'moment';
@@ -139,7 +140,7 @@ const LearningDetailsBody = () => {
 
             {/* Description */}
 
-            <p className='text-lightGray mt-8 mb-5' dangerouslySetInnerHTML={{ __html: description }}></p>
+            <p className='text-lightGray mt-8 mb-5' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}></p>
 
 
             {/* Divider */}

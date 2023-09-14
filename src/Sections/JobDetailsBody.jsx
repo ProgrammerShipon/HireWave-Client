@@ -9,6 +9,7 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useMyAppliedJobs from "../Hooks/useMyAppliedJobs";
 import useMySavedJobs from "../Hooks/useMySavedJobs";
 import useAuth from "../Hooks/useAuth";
+import DOMPurify from 'dompurify';
 
 // react icons
 import { BiHeart, BiMap } from "react-icons/bi";
@@ -215,7 +216,7 @@ const JobDetailsBody = ({ jobDetails }) => {
                     {/* job description */}
                     <div className="my-6">
                         <h2 className="text-3xl font-medium text-dark mb-5">Description</h2>
-                        <p className="postJob" dangerouslySetInnerHTML={{ __html : description}}></p>
+                        <p className="postJob" dangerouslySetInnerHTML={{ __html : DOMPurify.sanitize(description)}}></p>
                     </div>
 
                     <Divider />
