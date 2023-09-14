@@ -111,7 +111,7 @@ const FindJobBody = ({ allJobsData, date, setDate }) => {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-5 mt-16 lg:grid-cols-10">
+    <div className="lg:grid gap-5 mt-16 lg:grid-cols-10">
       {/* left content  */}
       <div className="lg:col-span-4">
         {/* filter bar */}
@@ -149,7 +149,7 @@ const FindJobBody = ({ allJobsData, date, setDate }) => {
       </div>
 
       {/* right content */}
-      <div className="lg:col-span-6">
+      <div className="lg:col-span-6 lg:block hidden mt-14">
         <div className="p-4 border rounded-lg border-purple">
           <div className="flex items-start justify-between">
             <div>

@@ -42,6 +42,7 @@ import CandidateSignUpForm from "../SignUpSteps/CandidateSignUpForm";
 import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
 import SelectRole from "../SignUpSteps/SelectRole";
 import PrivateRoute from "./PrivateRoute";
+import Favorites from "../Dashboard/Favorites";
 
 const baseURL = 'https://hire-wave-server.vercel.app/api';
 // const baseURL = 'http://localhost:3030/api';
@@ -203,6 +204,10 @@ const Router = createBrowserRouter([
       {
         path: "applicant",
         element: <AppliedApplicant />,
+      },
+      {
+        path: "favorites",
+        element: <Favorites />,
       },
 
       //Admin Routes
