@@ -12,8 +12,7 @@ const LearningDetails = () => {
     const { id } = useParams()
     const { learningData, loading } = useLearningData()
 
-    const singleLearningData = learningData?.find(data => data._id === id)
-    console.log(singleLearningData);
+    const singleLearningData = learningData?.find(data => data._id === id);
     return (
         <>
             {/* page title */}
