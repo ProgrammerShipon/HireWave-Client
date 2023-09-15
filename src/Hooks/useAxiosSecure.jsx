@@ -4,7 +4,8 @@ import { useEffect } from 'react';
 
 const axiosSecure = axios.create({
     // baseURL: 'http://localhost:3030/api',
-    baseURL: 'https://hire-wave-server.vercel.app/api/',
+    // baseURL: 'https://hire-wave-server.vercel.app/api/',
+    baseURL: 'https://hire-wave.onrender.com/api',
 });
 
 const useAxiosSecure = () => {

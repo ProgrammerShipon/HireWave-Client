@@ -45,7 +45,8 @@ import PrivateRoute from "./PrivateRoute";
 import PaymentSuccess from "../Pages/PaymentSuccess";
 import PaymentFail from "../Pages/PaymentFail";
 
-const baseURL = 'https://hire-wave-server.vercel.app/api';
+const baseURL = 'https://hire-wave.onrender.com/api';
+// const baseURL = 'https://hire-wave-server.vercel.app/api';
 // const baseURL = 'http://localhost:3030/api';
 
 const Router = createBrowserRouter([

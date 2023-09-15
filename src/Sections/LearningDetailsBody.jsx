@@ -109,7 +109,7 @@ const LearningDetailsBody = () => {
             <p className="flex items-center gap-3 mt-10 mb-3 px-4 md:px-0">
               <CgComment />
               <span>
-                {comments.length}{" "}
+                {comments?.length}{" "}
                 {comments.length === 1 ? "Comment" : "Comments"}
               </span>
             </p>

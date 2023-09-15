@@ -47,7 +47,7 @@ const CandidateCard = ({ candidate, reviewData }) => {
                 <Link to={`/candidate_details/${_id}`} className="text-dark text-3xl font-medium capitalize line-clamp-1">{name}</Link>
 
                 <h3 className="text-lightGray text-lg">{category}</h3>
-                <p className="text-gray text-sm flex items-center justify-center italic"><BiMap /> {location[0]}, {location[1]}</p>
+                <p className="text-gray text-sm flex items-center justify-center italic"><BiMap /> {location}</p>
 
                 <div className="flex flex-wrap items-center justify-center gap-2 mt-4 duration-300">
                     {skills.slice(0, 3).map((skill, index) => (
