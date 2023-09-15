@@ -3239,6 +3239,11 @@
   dependencies:
     "esutils" "^2.0.2"
 
+"dompurify@^3.0.5":
+  "integrity" "sha512-F9e6wPGtY+8KNMRAVfxeCOHU0/NPWMSENNq4pQctuXRqqdEPW7q3CrLbR5Nse044WwacyjHGOMlvNsBe1y6z9A=="
+  "resolved" "https://registry.npmjs.org/dompurify/-/dompurify-3.0.5.tgz"
+  "version" "3.0.5"
+
 "ee-first@1.1.1":
   "integrity" "sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow=="
   "resolved" "https://registry.npmjs.org/ee-first/-/ee-first-1.1.1.tgz"
@@ -5330,11 +5335,6 @@
   "resolved" "https://registry.npmjs.org/object-keys/-/object-keys-1.1.1.tgz"
   "version" "1.1.1"
 
-"object-path@0.6.0":
-  "integrity" "sha512-fxrwsCFi3/p+LeLOAwo/wyRMODZxdGBtUlWRzsEpsUVrisZbEfZ21arxLGfaWfcnqb8oHPNihIb4XPE8CQPN5A=="
-  "resolved" "https://registry.npmjs.org/object-path/-/object-path-0.6.0.tgz"
-  "version" "0.6.0"
-
 "object-sizeof@^1.6.3":
   "integrity" "sha512-LGtilAKuDGKCcvu1Xg3UvAhAeJJlFmblo3faltmOQ80xrGwAHxnauIXucalKdTEksHp/Pq9tZGz1hfyEmjFJPQ=="
   "resolved" "https://registry.npmjs.org/object-sizeof/-/object-sizeof-1.6.3.tgz"
@@ -6451,12 +6451,10 @@
     "@socket.io/component-emitter" "~3.1.0"
     "debug" "~4.3.1"
 
-"sort-by@^1.2.0":
-  "integrity" "sha512-aRyW65r3xMnf4nxJRluCg0H/woJpksU1dQxRtXYzau30sNBOmf5HACpDd9MZDhKh7ALQ5FgSOfMPwZEtUmMqcg=="
-  "resolved" "https://registry.npmjs.org/sort-by/-/sort-by-1.2.0.tgz"
-  "version" "1.2.0"
-  dependencies:
-    "object-path" "0.6.0"
+"sort-by@^0.0.2":
+  "integrity" "sha512-iOX5oHA4a0eqTMFiWrHYqv924UeRKFBLhym7iwSVG37Egg2wApgZKAjyzM9WZjMwKv6+8Zi+nIaJ7FYsO9EkoA=="
+  "resolved" "https://registry.npmjs.org/sort-by/-/sort-by-0.0.2.tgz"
+  "version" "0.0.2"
 
 "source-map-js@^1.0.2":
   "integrity" "sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw=="
@@ -6689,10 +6687,10 @@
   "resolved" "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   "version" "1.0.0"
 
-"sweetalert2@^11.7.27":
-  "integrity" "sha512-QbRXGQn1sb7HEhzA/K2xtWIwQHh/qkSbb1w6jYcTql2xy17876lTREEt1D4X6Q0x2wHtfUjKJ+Cb8IVkRoq7DQ=="
-  "resolved" "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.7.27.tgz"
-  "version" "11.7.27"
+"sweetalert2@^11.6.13":
+  "integrity" "sha512-9895DVuYTDlV4Hx4IJablFKMdSqzwpy0PKycztbO4cXnOeVMmw55weOq4gcZAh3/tAyunCKjApFDrlSAcswwcA=="
+  "resolved" "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.7.28.tgz"
+  "version" "11.7.28"
 
 "swiper@^10.1.0":
   "integrity" "sha512-E+wh+hcSbwlRfXuwBTclcOOikOjNdSF0a2Sdg3J4cIWtHO64A7SaLRfezfrJ67CW3GEc15AduYU2YKlElsjqsQ=="

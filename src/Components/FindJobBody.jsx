@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import DOMPurify from 'dompurify';
 import Button from "./Button";
 import Divider from "./Divider";
 import GetAgoTime from "./GetAgoTime";
 import JobCard from "./JobCard";
 
 // react icons
-import { AiOutlineCalendar, AiOutlineShareAlt } from "react-icons/ai";
+import { AiOutlineCalendar } from "react-icons/ai";
 import { BiHeart, BiMap } from "react-icons/bi";
 import { BsBuildingGear } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
@@ -21,6 +22,7 @@ import useAuth from "../Hooks/useAuth";
 import useMySavedJobs from "../Hooks/useMySavedJobs";
 import useMyAppliedJobs from "../Hooks/useMyAppliedJobs";
 import CopyToClipboardLink from "./CopyToClipboardLink";
+import Pagination from "./Pagination";
 
 const FindJobBody = ({ allJobsData, date, setDate }) => {
   const [jobDetails, setJobDetails] = useState(allJobsData[0]);
@@ -79,6 +81,16 @@ const FindJobBody = ({ allJobsData, date, setDate }) => {
     }
   }, [jobDetails, mySavedJobs.length])
 
+  const [currentPage, setCurrentPage] = useState(1)
+  const [jobsPerPage] = useState(4)
+  // Get current posts in pagination
+  const indexOfLastJob = currentPage * jobsPerPage
+  const indexOfFirstJob = indexOfLastJob - jobsPerPage;
+  const currentJobs = allJobsData.slice(indexOfFirstJob, indexOfLastJob)
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
   const handleSaveJob = () => {
     axiosSecure.post("/savedjob", jobInfo)
       .then((data) => {
@@ -100,8 +112,9 @@ const FindJobBody = ({ allJobsData, date, setDate }) => {
       })
       .catch((err) => console.log(err));
   }
+
   return (
-    <div className="grid grid-cols-1 gap-5 mt-16 lg:grid-cols-10">
+    <div className="lg:grid gap-5 mt-16 lg:grid-cols-10">
       {/* left content  */}
       <div className="lg:col-span-4">
         {/* filter bar */}
@@ -131,14 +144,15 @@ const FindJobBody = ({ allJobsData, date, setDate }) => {
 
         {/* job card */}
         <div className="grid grid-cols-1 gap-5">
-          {allJobsData.slice(0, 4).map((job, index) => (
+          {currentJobs.map((job, index) => (
             <JobCard key={index} job={job} setJobDetails={setJobDetails} mySavedJobs={mySavedJobs} refetch={refetch} />
           ))}
         </div>
+        <Pagination jobsPerPage={jobsPerPage} totalJobs={allJobsData.length} paginate={paginate} currentPage={currentPage} />
       </div>
 
       {/* right content */}
-      <div className="lg:col-span-6">
+      <div className="lg:col-span-6 lg:block hidden mt-14">
         <div className="p-4 border rounded-lg border-purple">
           <div className="flex items-start justify-between">
             <div>
@@ -237,7 +251,7 @@ const FindJobBody = ({ allJobsData, date, setDate }) => {
           {/* job description */}
           <div className="my-6">
             <h2 className="text-3xl font-medium text-dark mb-5">Description</h2>
-            <div className="postJob" dangerouslySetInnerHTML={{ __html: description }}></div>
+            <p className="postJob" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}></p>
           </div>
 
           <Divider />

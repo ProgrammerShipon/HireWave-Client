@@ -2,8 +2,8 @@ import DashLink from './DashLink';
 
 // react icons
 import { AiOutlineFileDone } from 'react-icons/ai';
-import { BsBriefcase, BsFileArrowUp } from 'react-icons/bs';
-import { MdOutlineManageAccounts, } from 'react-icons/md';
+import { BsBookmarkPlus, BsBriefcase, BsFileArrowUp, BsFileEarmarkPerson } from 'react-icons/bs';
+import { MdOutlineManageAccounts, MdOutlinePayments, } from 'react-icons/md';
 import { CgUserList } from 'react-icons/cg';
 import { BiMessageRoundedDetail } from 'react-icons/bi';
 import { LiaIndustrySolid } from 'react-icons/lia';
@@ -59,15 +59,22 @@ const DashNavItemsByRole = ({ role }) => {
                             {/* Applied candidates */}
                             {/* <li className="w-full">
                                 <DashLink to='/applied_candidates'>
-                                    <AiOutlineFileDone size={24} />
-                                    <p className="hidden md:inline">Applicant</p>
+                                    <BsFileEarmarkPerson size={24} />
+                                    <p className="hidden md:inline">Applicants</p>
                                 </DashLink>
                             </li> */}
                             {/* Payment  */}
                             {/* <li className="w-full">
                                 <DashLink to='/pricing'>
-                                    <AiOutlineFileDone size={24} />
-                                    <p className="hidden md:inline">Payment</p>
+                                    <MdOutlinePayments size={24} />
+                                    <p className="hidden md:inline">Payments</p>
+                                </DashLink>
+                            </li>
+                            {/* Payment  */}
+                            <li className="w-full">
+                                <DashLink to='/dashboard/favorites'>
+                                    <BsBookmarkPlus size={24} />
+                                    <p className="hidden md:inline">Favorites</p>
                                 </DashLink>
                             </li> */}
                         </> :

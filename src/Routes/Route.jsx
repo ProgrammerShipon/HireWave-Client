@@ -44,6 +44,7 @@ import SelectRole from "../SignUpSteps/SelectRole";
 import PrivateRoute from "./PrivateRoute";
 import PaymentSuccess from "../Pages/PaymentSuccess";
 import PaymentFail from "../Pages/PaymentFail";
+import Favorites from "../Dashboard/Favorites";
 
 const baseURL = 'https://hire-wave.onrender.com/api';
 // const baseURL = 'https://hire-wave-server.vercel.app/api';
@@ -209,12 +210,8 @@ const Router = createBrowserRouter([
         element: <AppliedApplicant />,
       },
       {
-        path: "payment/successful/:tran_id",
-        element: <PaymentSuccess />,
-      },
-      {
-        path: "payment/fail",
-        element: <PaymentFail />,
+        path: "favorites",
+        element: <Favorites />,
       },
 
       //Admin Routes

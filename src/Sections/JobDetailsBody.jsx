@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import Button from "../Components/Button";
 import GetAgoTime from "../Components/GetAgoTime";
 import Divider from "../Components/Divider";
+import ClipboardJS from 'clipboard';
 import { toast } from "react-toastify";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useMyAppliedJobs from "../Hooks/useMyAppliedJobs";
 import useMySavedJobs from "../Hooks/useMySavedJobs";
 import useAuth from "../Hooks/useAuth";
+import DOMPurify from 'dompurify';
 
 // react icons
 import { BiHeart, BiMap } from "react-icons/bi";
@@ -91,6 +93,38 @@ const JobDetailsBody = ({ jobDetails }) => {
             .catch((err) => console.log(err));
     }
 
+    // Share function
+    const shareJobData = () => {
+        const url =
+            window.location.protocol + '//' +
+            window.location.host + window.location.pathname
+        console.log(url)
+        // Create a clipboard instance
+        const clipboard = new ClipboardJS('.copy-button', {
+            text: function () {
+                return url;
+            }
+        });
+
+        clipboard.on('success', function (e) {
+
+            toast.success("Link copied to the Clipboard", {
+                position: "top-right",
+                autoClose: 2500,
+                theme: "light",
+            });
+        });
+
+        clipboard.on('error', function (e) {
+            // Handle error (optional)
+            console.error('Error copying to clipboard:', e);
+        });
+
+        clipboard.onClick({
+            action: 'copy'
+        });
+    }
+
     return (
         <section className='py-20 md:py-[120px] max-w-5xl mx-auto'>
             <div className="container">
@@ -104,7 +138,7 @@ const JobDetailsBody = ({ jobDetails }) => {
                         </div>
 
                         <div className="flex items-center gap-2">
-                            <AiOutlineShareAlt size="24px" className="text-green" />
+                            <AiOutlineShareAlt onClick={shareJobData} size="24px" className="text-green cursor-pointer copy-button" />
                             {
                                 !alreadySaved ? <button onClick={handleSaveJob}>
                                     <BiHeart size="24px" className="text-green" />
@@ -182,7 +216,7 @@ const JobDetailsBody = ({ jobDetails }) => {
                     {/* job description */}
                     <div className="my-6">
                         <h2 className="text-3xl font-medium text-dark mb-5">Description</h2>
-                        <p className="postJob" dangerouslySetInnerHTML={{ __html: description }}></p>
+                        <div className="postJob" dangerouslySetInnerHTML={{ __html: description }}></div>
                     </div>
 
                     <Divider />

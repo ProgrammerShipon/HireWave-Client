@@ -100,7 +100,7 @@ const LearningDetailsBody = () => {
 
             {/* Description */}
 
-            <div className='text-lightGray mt-8 mb-5 h-40 overflow-hidden px-4 md:px-0' dangerouslySetInnerHTML={{ __html: description }}></div>
+            <div className='postJob text-lightGray mt-8 mb-5 h-40 overflow-hidden px-4 md:px-0' dangerouslySetInnerHTML={{ __html: description }}></div>
 
 
             {/* Divider */}

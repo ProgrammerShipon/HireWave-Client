@@ -11,14 +11,14 @@ import { LuLayoutTemplate } from "react-icons/lu";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import CustomModal from "../Components/CustomModal";
 import Divider from "../Components/Divider";
 import useAllCategories from "../Hooks/useAllCategories";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useCurrentRecruiter from "../Hooks/useCurrentRecruiter";
 import useSkills from "../Hooks/useSkills";
-import Swal from "sweetalert2";
-import GetAgoTime from "../Components/GetAgoTime";
+import DOMPurify from "dompurify";
 
 const modules = {
     toolbar: [
@@ -339,7 +339,7 @@ export default function PostJobForm() {
 
                         <p className="border border-gray my-5"></p>
 
-                        <h2 className="text-purple text-lg md:text-xl">📜 Enlist Job Overview, Responsibilities, Requirements, Benefits and other necessary details <button onClick={() => handleDemoModal("edit")} className="text-sm text-purple bg-purple/20 rounded-full cursor-pointer px-2">View example</button></h2>
+                        <h2 className="text-purple text-lg md:text-xl">📜 Enlist Job Overview, Responsibilities, Requirements, Benefits and other necessary details <span onClick={() => handleDemoModal("edit")} className="text-sm text-purple bg-purple/20 rounded-full cursor-pointer px-2 w-fit">View example</span></h2>
 
                         {/* Job Description */}
                         <div>
@@ -355,7 +355,7 @@ export default function PostJobForm() {
                         {/* Button */}
                         <div className='flex items-center justify-end gap-3 mt-3'>
                             {/* Preview Button */}
-                            <div className='text-green border px-6 py-2 hover:text-green/40 duration-300 flex items-center gap-4 rounded-md hover:bg-green hover:text-white group' onClick={() => handlePreviewModal("edit")}
+                            <div className='text-green border px-6 py-2 hover:text-green/40 duration-300 flex items-center gap-4 rounded-md hover:bg-green hover:text-white group cursor-pointer' onClick={() => handlePreviewModal("edit")}
                             >
                                 <span className="text-dark group-hover:text-white duration-300">Preview</span>
                                 <FaEye size={22} />
@@ -375,7 +375,7 @@ export default function PostJobForm() {
                             handleModal={handlePreviewModal}
                             larger={true}
                         >
-                            <div id="postJob" className="p-8 -m-8 border rounded-lg border-purple shadow-4xl shadow-gray/40 overflow-y-auto h-[80vh]">
+                            <div className="postJob p-8 -m-8 border rounded-lg border-purple shadow-4xl shadow-gray/40 overflow-y-auto h-[80vh]">
                                 <div>
                                     <h1 className="text-2xl font-medium text-dark">{watch('title')}</h1>
                                 </div>
@@ -443,7 +443,7 @@ export default function PostJobForm() {
                                     <h2 className="text-3xl font-medium text-dark mb-4">Description</h2>
 
                                     {/* Requirements */}
-                                    <div className="mb-4" dangerouslySetInnerHTML={{ __html: description }}></div>
+                                    <div className="mb-4" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}></div>
 
                                     <Divider />
 
@@ -473,7 +473,7 @@ export default function PostJobForm() {
                             handleModal={handleDemoModal}
                         >
                             {/* Modal Heading */}
-                            <div className="overflow-y-auto">
+                            <div className="overflow-y-hidden">
                                 <h2 className="pt-2 pb-2 flex items-center gap-3 border-b border-dark/20 text-purple -mt-3">
                                     <LuLayoutTemplate size={20} />
                                     <h3 className="text-xl">Job Description Demo</h3>
