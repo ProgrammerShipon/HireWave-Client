@@ -33,7 +33,6 @@ const CandidateSignUpForm = () => {
     //Form Submit function
     const onSubmit = data => {
         const todayDate = new Date();
-
         const newData = {
             role: 'candidate',
             name: user?.displayName,

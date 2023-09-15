@@ -53,6 +53,8 @@ const RecruiterSignUpForm = () => {
             joinDate: todayDate
         }
 
+        console.log(newData)
+
         setCurStep(curStep + 1)
         if (finish) {
             setFinishLoading(true)
