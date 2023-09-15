@@ -503,7 +503,7 @@ const CandidateSignUpForm = () => {
                                 <div className='flex flex-wrap items-center gap-4'>
 
                                     {/* Suggested skills array map */}
-                                    {['Customer Service', 'Communication skills', 'Leadership', 'Maintenance', 'Problem Solving', 'Stress Management', 'Customer Service', 'Presentation Skill', 'Adaptability'].map((suggestedSkill) => (
+                                    {['Customer Service', 'Communication skills', 'Leadership', 'Maintenance', 'Problem Solving', 'Stress Management', 'Customer Service', 'Presentation Skill', 'Adaptability'].map((suggestedSkill, index) => (
                                         <div
                                             key={index}
                                             className='flex items-center gap-2 px-3 py-2 border border-gray/40 hover:border-purple hover:shadow-lg rounded-md cursor-pointer group duration-300'
