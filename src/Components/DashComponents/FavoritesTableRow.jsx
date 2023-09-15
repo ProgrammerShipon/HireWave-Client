@@ -1,5 +1,6 @@
 import React from 'react';
 import { AiOutlineDelete } from 'react-icons/ai';
+import { BiMessageDetail } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 
 const FavoritesTableRow = ({favorite}) => {
@@ -14,7 +15,10 @@ const FavoritesTableRow = ({favorite}) => {
         <td><Link to={`/candidate_details/${candidateId}`} className="font-medium text-purple hover:underline duration-300">{candidateName}</Link></td>
         <td>{candidateCategory}</td>
         <td>{candidateRate}</td>
-        <td className='flex justify-center items-center mt-5 hover:bg-red-200 text-red-500 rounded-full p-1 cursor-pointer w-fit mx-auto'><AiOutlineDelete size={20}/></td>
+        <td className='flex justify-center items-center gap-5 lg:gap-8 mt-5 cursor-pointer mx-auto'>
+            <AiOutlineDelete className='hover:bg-red-100 text-red-500 rounded-full' size={20}/>
+            <BiMessageDetail className='hover:bg-green/20 text-green rounded-full' size={20} />
+        </td>
     </tr>
     );
 };

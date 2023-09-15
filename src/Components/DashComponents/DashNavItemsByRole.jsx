@@ -70,13 +70,13 @@ const DashNavItemsByRole = ({ role }) => {
                                     <p className="hidden md:inline">Payments</p>
                                 </DashLink>
                             </li>
-                            {/* Payment  */}
-                            <li className="w-full">
+                            {/* favorites  */}
+                            {/* <li className="w-full">
                                 <DashLink to='/dashboard/favorites'>
                                     <BsBookmarkPlus size={24} />
                                     <p className="hidden md:inline">Favorites</p>
                                 </DashLink>
-                            </li>
+                            </li> */}
                         </> :
 
                         // Admin routes

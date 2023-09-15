@@ -161,7 +161,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
 
                         {/* button */}
                         <div className="flex flex-col items-center gap-3">
-                            <button onClick={handleAddToFavorite} className={`flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent rounded-lg shadow-xl  group ${!favorite? "border border-green hover:shadow-green/20 hover:bg-green hover:text-white text-dark" : "bg-[#7c60d5] text-white hover:text-green"}`}>
+                            {/* <button onClick={handleAddToFavorite} className={`flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent rounded-lg shadow-xl  group ${!favorite? "border border-green hover:shadow-green/20 hover:bg-green hover:text-white text-dark" : "bg-[#7c60d5] text-white hover:text-green"}`}>
                                 {
                                     !favorite ?
                                     <>
@@ -173,7 +173,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                                         <BsBookmarkCheck size="21" className="" />
                                     </>
                                 }
-                            </button>
+                            </button> */}
                             <Link to={`/dashboard/messages/${_id}`}>
                                 <button className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
                                     Contact With Me{" "}

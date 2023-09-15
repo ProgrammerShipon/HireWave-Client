@@ -101,9 +101,10 @@ const CandidateSignUpForm = () => {
 
     //Country, State, Province
     const selectedCountry=  watch('country', '');
-    const countryData= Country.getAllCountries()
+    const countryData= Country.getAllCountries();
     const filteredCountry = countryData.find(country=> country.name == selectedCountry)
     const stateData= State.getStatesOfCountry(filteredCountry?.isoCode)
+    console.log(stateData);
 
     // Experience div State
     const [present, setPresent] = useState(false);
@@ -263,7 +264,7 @@ const CandidateSignUpForm = () => {
                                     >
                                         <option value="" disable>Select</option>
                                         {
-                                            countryData?.map(country => <option value={country.name}>{country.name}</option>)
+                                            countryData?.map(country => <option key={country.isoCode} value={country.name}>{country.name}</option>)
                                         }
                                     </select>
                                 </label>
@@ -276,7 +277,7 @@ const CandidateSignUpForm = () => {
                                     >
                                         <option value="" disable>Select</option>
                                         {
-                                            stateData?.map(state => <option value={state.name}>{state.name}</option>)
+                                            stateData?.map(state => <option key={state.isoCode} value={state.name}>{state.name}</option>)
                                         }
                                     </select>
                                 </label>
@@ -500,7 +501,7 @@ const CandidateSignUpForm = () => {
                                 <div className='flex flex-wrap items-center gap-4'>
 
                                     {/* Suggested skills array map */}
-                                    {['Customer Service', 'Communication skills', 'Leadership', 'Maintenance', 'Problem Solving', 'Stress Management', 'Customer Service', 'Presentation Skill', 'Adaptability'].map((suggestedSkill) => (
+                                    {['Customer Service', 'Communication skills', 'Leadership', 'Maintenance', 'Problem Solving', 'Stress Management', 'Presentation Skill', 'Adaptability'].map((suggestedSkill) => (
                                         <div
                                             key={suggestedSkill}
                                             className='flex items-center gap-2 px-3 py-2 border border-gray/40 hover:border-purple hover:shadow-lg rounded-md cursor-pointer group duration-300'

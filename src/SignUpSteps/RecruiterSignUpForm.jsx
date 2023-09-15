@@ -163,7 +163,7 @@ const RecruiterSignUpForm = () => {
                                     >
                                         <option value="" disable>Select</option>
                                         {
-                                            countryData?.map(country => <option value={country.name}>{country.name}</option>)
+                                            countryData?.map(country => <option key={country.isoCode} value={country.name}>{country.name}</option>)
                                         }
                                     </select>
                                 </label>
@@ -176,7 +176,7 @@ const RecruiterSignUpForm = () => {
                                     >
                                         <option value="" disable>Select</option>
                                         {
-                                            stateData?.map(state => <option value={state.name}>{state.name}</option>)
+                                            stateData?.map(state => <option key={state.isoCode} value={state.name}>{state.name}</option>)
                                         }
                                     </select>
                                 </label>
