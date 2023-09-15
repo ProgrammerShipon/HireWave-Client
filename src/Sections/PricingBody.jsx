@@ -17,10 +17,10 @@ const PricingBody = () => {
             recruiterName: currentUser.name,
             companyLogo: currentUser?.image
         }
-        // console.log(paymentInfo)
+        console.log(paymentInfo)
         axiosSecure.post('/payment', paymentInfo)
             .then(res => {
-                // console.log(res.data)
+                console.log(res.data)
                 window.location.replace(res.data.url)
             })
             .catch(error => {
