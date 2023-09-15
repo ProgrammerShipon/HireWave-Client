@@ -57,14 +57,14 @@ const DashNavItemsByRole = ({ role }) => {
                                 </DashLink>
                             </li>
                             {/* Applied candidates */}
-                            <li className="w-full">
+                            {/* <li className="w-full">
                                 <DashLink to='/applied_candidates'>
                                     <BsFileEarmarkPerson size={24} />
                                     <p className="hidden md:inline">Applicants</p>
                                 </DashLink>
-                            </li>
+                            </li> */}
                             {/* Payment  */}
-                            <li className="w-full">
+                            {/* <li className="w-full">
                                 <DashLink to='/pricing'>
                                     <MdOutlinePayments size={24} />
                                     <p className="hidden md:inline">Payments</p>

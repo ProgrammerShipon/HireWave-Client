@@ -43,7 +43,7 @@ const RecruiterSignUpForm = () => {
             website: data.website,
             category: data.category,
             subCategory: data.subCategory,
-            location: [data.country, data.state],
+            location: `${data.country}, ${data.state}`,
             address: data.address,
             about: [],
             specialties: [],
@@ -52,7 +52,8 @@ const RecruiterSignUpForm = () => {
             followers: 0,
             joinDate: todayDate
         }
-        console.log(newData);
+
+        console.log(newData)
 
         setCurStep(curStep + 1)
         if (finish) {
@@ -84,16 +85,16 @@ const RecruiterSignUpForm = () => {
     const countryCodes = ["+1", "+44", "+49", "+33", "+81", "+86", "+91", "+61", "+7", "+55", "+54", "+51", "+52", "+53", "+20", "+27", "+82", "+62", "+92", "+94", "+62", "+63", "+66", "+84", "+95", "+670", "+975", "+380", "+375", "+373", "+377", "+423", "+41", "+46", "+47", "+48", "+351", "+34", "+39", "+31", "+420", "+421", "+386", "+385", "+385", "+352", "+352", "+43", "+353", "+354", "+880"]
 
     // Country, State, Province
-    const selectedCountry=  watch('country', '');
-    const countryData= Country.getAllCountries()
-    const filteredCountry = countryData.find(country=> country.name == selectedCountry)
-    const stateData= State.getStatesOfCountry(filteredCountry?.isoCode)
+    const selectedCountry = watch('country', '');
+    const countryData = Country.getAllCountries()
+    const filteredCountry = countryData.find(country => country.name == selectedCountry)
+    const stateData = State.getStatesOfCountry(filteredCountry?.isoCode)
 
     // Phone number validation check
     const validatePhoneNumber = (value) => {
         if (!value || value.length < 10 || value.length > 15) return false
         return true;
-      };
+    };
 
 
     const renderContent = () => {
@@ -154,7 +155,7 @@ const RecruiterSignUpForm = () => {
                         <h1 className='font-medium text-3xl text-dark drop-shadow-xl'>Address and Contact Information</h1>
 
                         <form className='flex flex-col gap-4 mt-5' onSubmit={handleSubmit(onSubmit)}>
-                        <div className='flex flex-col sm:flex-row items-center gap-3'>
+                            <div className='flex flex-col sm:flex-row items-center gap-3'>
                                 {/* country */}
                                 <label className='text-gray w-full text-base'>Country*
                                     <select name="jobType" id="jobType"
@@ -196,23 +197,23 @@ const RecruiterSignUpForm = () => {
                             <label className="text-gray w-40 text-base outline-none">
                                 Phone Number*
                                 <Controller
-                                name="phone"
-                                control={control}
-                                rules={{
-                                    validate: validatePhoneNumber
-                                  }}
-                                render={({ field }) => (
-                                    <PhoneInput
-                                    className={`PhoneInputInput text-dark rounded-md border border-gray/20 hover:border-purple px-3 py-2 ${errors.phone && 'border-red-400 hover:border-red-400 '}`}
-                                    placeholder="Enter phone number"
-                                    value={field.value}
-                                    
-                                    onChange={(value) => {
-                                        field.onChange(value)
-                                        setPhoneNumber(value)
+                                    name="phone"
+                                    control={control}
+                                    rules={{
+                                        validate: validatePhoneNumber
                                     }}
-                                    />
-                                )}
+                                    render={({ field }) => (
+                                        <PhoneInput
+                                            className={`PhoneInputInput text-dark rounded-md border border-gray/20 hover:border-purple px-3 py-2 ${errors.phone && 'border-red-400 hover:border-red-400 '}`}
+                                            placeholder="Enter phone number"
+                                            value={field.value}
+
+                                            onChange={(value) => {
+                                                field.onChange(value)
+                                                setPhoneNumber(value)
+                                            }}
+                                        />
+                                    )}
                                 />
                             </label>
                             {errors.phone && (<p className="text-red-400 -mt-5">Invalid Phone Number Length</p>)}

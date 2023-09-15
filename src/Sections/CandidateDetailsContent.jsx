@@ -136,7 +136,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                             </p>
 
                             <p className="flex items-center gap-[2px] font-light text-dark ">
-                                <BiMap className="text-lightGray" /> {location[0]}, {location[1]}
+                                <BiMap className="text-lightGray" /> {location}
                             </p>
                             <p className="text-gray">Member since {joinDate}</p>
                         </div>

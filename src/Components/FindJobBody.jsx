@@ -50,6 +50,9 @@ const FindJobBody = ({ allJobsData, date, setDate }) => {
     skills,
   } = jobDetails;
 
+  const newUrl = window.location.protocol + '//' + window.location.host;
+  const url = `${newUrl}/job_details/${_id}`;
+
   const jobInfo = { selectJob: _id, companyLogo, title, companyName, postedDate, location, jobType, salary, skills, candidateMail: user?.email }
 
   // check already applied
@@ -78,10 +81,10 @@ const FindJobBody = ({ allJobsData, date, setDate }) => {
     }
   }, [jobDetails, mySavedJobs.length])
 
-  const [currentPage, setCurrentPage]= useState(1)
-  const [jobsPerPage]= useState(4)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [jobsPerPage] = useState(4)
   // Get current posts in pagination
-  const indexOfLastJob= currentPage * jobsPerPage
+  const indexOfLastJob = currentPage * jobsPerPage
   const indexOfFirstJob = indexOfLastJob - jobsPerPage;
   const currentJobs = allJobsData.slice(indexOfFirstJob, indexOfLastJob)
 
@@ -145,7 +148,7 @@ const FindJobBody = ({ allJobsData, date, setDate }) => {
             <JobCard key={index} job={job} setJobDetails={setJobDetails} mySavedJobs={mySavedJobs} refetch={refetch} />
           ))}
         </div>
-        <Pagination jobsPerPage={jobsPerPage} totalJobs={allJobsData.length} paginate={paginate} currentPage={currentPage}/>
+        <Pagination jobsPerPage={jobsPerPage} totalJobs={allJobsData.length} paginate={paginate} currentPage={currentPage} />
       </div>
 
       {/* right content */}
@@ -160,7 +163,7 @@ const FindJobBody = ({ allJobsData, date, setDate }) => {
             </div>
 
             <div className="flex items-center gap-2">
-              <CopyToClipboardLink textToCopy={`https://hire-wave.web.app/job_details/${_id}`} />
+              <CopyToClipboardLink url={url} />
               {
                 currentUser.role === 'candidate' && <>
                   {
@@ -248,7 +251,7 @@ const FindJobBody = ({ allJobsData, date, setDate }) => {
           {/* job description */}
           <div className="my-6">
             <h2 className="text-3xl font-medium text-dark mb-5">Description</h2>
-            <p className="postJob" dangerouslySetInnerHTML={{ __html : DOMPurify.sanitize(description)}}></p>
+            <p className="postJob" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}></p>
           </div>
 
           <Divider />
@@ -257,7 +260,7 @@ const FindJobBody = ({ allJobsData, date, setDate }) => {
           <div className="mt-6">
             <h2 className="text-3xl font-medium text-dark">Skills</h2>
             <div className="flex flex-wrap items-center gap-2 mt-4 duration-300">
-              {skills.map((skill, index) => (
+              {skills?.map((skill, index) => (
                 <p
                   key={index}
                   className="bg-purple/20 hover:bg-white text-purple px-4 py-[2px] shadow-lg shadow-purple/10 hover:shadow-dark/20 rounded-md cursor-pointer duration-300 capitalize"

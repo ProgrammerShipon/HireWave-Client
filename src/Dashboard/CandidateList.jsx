@@ -129,8 +129,8 @@ const CandidateList = () => {
                             </thead>
                             <tbody>
                                 {
-                                    filteredData.map((candidate) => (
-                                        <CandidateListTableRow key={candidate._id} candidate={candidate} />))
+                                    filteredData.length > 0 ? filteredData.map((candidate) => (
+                                        <CandidateListTableRow key={candidate._id} candidate={candidate} />)) : <h2 className="py-4 text-lg text-center">No data available!</h2>
                                 }
                             </tbody>
                         </table> : <PageLoader />

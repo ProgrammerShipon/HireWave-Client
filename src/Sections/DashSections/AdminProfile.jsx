@@ -7,8 +7,8 @@ import { MdOutlineAdminPanelSettings } from 'react-icons/md';
 const AdminProfile = ({ currentUser }) => {
     const { name, email, role, image } = currentUser;
     return (
-        <div className='py-10 md:py-16 flex items-center justify-center duration-300'>
-            <div className="relative bg-white w-72 flex flex-col items-center justify-center py-8 shadow-xl rounded-md border border-gray/40 hover:border-green duration-300 group">
+        <div className='py-10 md:py-16 duration-300'>
+            <div className="relative w-full bg-white flex flex-col md:flex-row items-center justify-center md:gap-12 py-8 shadow-xl rounded-md border border-gray/40 hover:border-green duration-300 group">
                 <div className="relative h-40 w-40 rounded-full">
                     <img className="w-full h-full rounded-full object-cover object-center" src={image} alt={name} />
 
@@ -20,7 +20,7 @@ const AdminProfile = ({ currentUser }) => {
                     </div>
                 </div>
 
-                <div className="text-center mt-6">
+                <div className="mt-6 md:mt-0 space-y-0 md:space-y-3 text-center md:text-left">
                     <p className="text-lightGray underline mb-1 italic">{role}</p>
                     <h2 className="text-4xl font-medium text-dark drop-shadow-lg">{name}</h2>
                     <p className="text-purple tracking-widest">{email}</p>

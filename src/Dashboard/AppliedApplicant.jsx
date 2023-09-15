@@ -30,7 +30,7 @@ const AppliedApplicant = () => {
         const searchTitle = searchTerm ? searchTerm.toLowerCase() : "";
         const searchCategory = category ? category.toLowerCase() : "";
 
-        const filter = allJobsData.filter((job) =>
+        let filter = allJobsData.filter((job) =>
             (!searchTitle || job.title.toLowerCase().includes(searchTitle)) &&
             (!status || job.status.toLowerCase().includes(status.toLowerCase())) &&
             (!searchCategory || job.category.toLowerCase().includes(searchCategory))

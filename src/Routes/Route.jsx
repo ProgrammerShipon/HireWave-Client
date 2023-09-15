@@ -42,10 +42,13 @@ import CandidateSignUpForm from "../SignUpSteps/CandidateSignUpForm";
 import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
 import SelectRole from "../SignUpSteps/SelectRole";
 import PrivateRoute from "./PrivateRoute";
+import PaymentSuccess from "../Pages/PaymentSuccess";
+import PaymentFail from "../Pages/PaymentFail";
 import Favorites from "../Dashboard/Favorites";
 
-// const baseURL = 'https://hire-wave-server.vercel.app/api';
 const baseURL = 'https://hire-wave.onrender.com/api';
+// const baseURL = 'https://hire-wave-server.vercel.app/api';
+// const baseURL = 'http://localhost:3030/api';
 
 const Router = createBrowserRouter([
   {
@@ -156,6 +159,7 @@ const Router = createBrowserRouter([
         path: "/event_details/:name",
         element: <EventDetails />,
       },
+
     ],
   },
   {

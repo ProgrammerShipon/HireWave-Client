@@ -93,35 +93,35 @@ const JobDetailsBody = ({ jobDetails }) => {
             .catch((err) => console.log(err));
     }
 
-     // Share function
+    // Share function
     const shareJobData = () => {
         const url =
-        window.location.protocol + '//' +
-        window.location.host + window.location.pathname
+            window.location.protocol + '//' +
+            window.location.host + window.location.pathname
         console.log(url)
         // Create a clipboard instance
         const clipboard = new ClipboardJS('.copy-button', {
-        text: function () {
-            return url;
-        }
+            text: function () {
+                return url;
+            }
         });
 
         clipboard.on('success', function (e) {
 
-        toast.success("Link copied to the Clipboard", {
-            position: "top-right",
-            autoClose: 2500,
-            theme: "light",
-        });
+            toast.success("Link copied to the Clipboard", {
+                position: "top-right",
+                autoClose: 2500,
+                theme: "light",
+            });
         });
 
         clipboard.on('error', function (e) {
-        // Handle error (optional)
-        console.error('Error copying to clipboard:', e);
+            // Handle error (optional)
+            console.error('Error copying to clipboard:', e);
         });
 
         clipboard.onClick({
-        action: 'copy'
+            action: 'copy'
         });
     }
 
@@ -216,7 +216,7 @@ const JobDetailsBody = ({ jobDetails }) => {
                     {/* job description */}
                     <div className="my-6">
                         <h2 className="text-3xl font-medium text-dark mb-5">Description</h2>
-                        <p className="postJob" dangerouslySetInnerHTML={{ __html : DOMPurify.sanitize(description)}}></p>
+                        <div className="postJob" dangerouslySetInnerHTML={{ __html: description }}></div>
                     </div>
 
                     <Divider />
@@ -225,7 +225,7 @@ const JobDetailsBody = ({ jobDetails }) => {
                     <div className="mt-6">
                         <h2 className="text-3xl font-medium text-dark">Skills</h2>
                         <div className="flex flex-wrap items-center gap-2 mt-4 duration-300">
-                            {skills.map((skill, index) => (
+                            {skills?.map((skill, index) => (
                                 <p
                                     key={index}
                                     className="bg-purple/20 hover:bg-white text-purple px-4 py-[2px] shadow-lg shadow-purple/10 hover:shadow-dark/20 rounded-md cursor-pointer duration-300 capitalize"
