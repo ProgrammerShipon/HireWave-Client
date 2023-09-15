@@ -1,12 +1,63 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import GetAgoTime from "./GetAgoTime";
+import { toast } from "react-toastify";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useAuth from "../Hooks/useAuth";
 
 // react icons
 import { BiHeart, BiSolidCrown, BiMap } from "react-icons/bi";
 import { IoIosFlash } from "react-icons/io";
+import { FaHeart } from "react-icons/fa";
+import CopyToClipboardLink from "./CopyToClipboardLink";
 
-const JobCard = ({ job, setJobDetails }) => {
-    const { _id, title, companyName, companyLogo, category, location, jobType, applied, salary, postedDate } = job;
+const JobCard = ({ job, setJobDetails, mySavedJobs, refetch }) => {
+    const { user, currentUser } = useAuth();
+    const [alreadySaved, setAlreadySaved] = useState(false);
+    const [axiosSecure] = useAxiosSecure();
+
+
+    const { _id, title, companyName, skills, companyLogo, category, location, jobType, applied, salary, postedDate } = job;
+
+    const newUrl = window.location.protocol + '//' + window.location.host;
+    const url = `${newUrl}/job_details/${_id}`;
+
+    const jobInfo = { selectJob: _id, companyLogo, title, companyName, postedDate, location, jobType, salary, skills, candidateMail: user?.email }
+
+    // check saved job
+    useEffect(() => {
+        const checkExists = mySavedJobs.filter((job) =>
+            job.selectJob.includes(_id)
+        );
+
+        if (checkExists.length) {
+            setAlreadySaved(true)
+        } else {
+            setAlreadySaved(false)
+        }
+    }, [job, mySavedJobs.length])
+
+    const handleSaveJob = () => {
+        axiosSecure.post("/savedjob", jobInfo)
+            .then((data) => {
+                if (data.status === 200) {
+                    refetch();
+                    toast.success("Saved Successfully", {
+                        position: "top-right",
+                        autoClose: 2500,
+                        theme: "light",
+                    });
+                }
+                else {
+                    toast.warning("Already Saved", {
+                        position: "top-right",
+                        autoClose: 2500,
+                        theme: "light",
+                    });
+                }
+            })
+            .catch((err) => console.log(err));
+    }
     return (
         <div className="sticky top-28 bg-white border border-purple p-4 rounded-lg hover:shadow-4xl hover:shadow-green/20 duration-300 cursor-pointer"
             onClick={() => setJobDetails(job)}
@@ -28,15 +79,30 @@ const JobCard = ({ job, setJobDetails }) => {
                             by
                             <Link to={`/job_details/${_id}`} className="text-dark hover:text-green duration-300">{companyName}</Link>
                             in
-                            <Link to={`/recruiters_details/${_id}`} className="text-dark hover:text-green duration-300">{category}</Link>
+                            <Link to={`/job_details/${_id}`} className="text-dark hover:text-green duration-300">{category}</Link>
                         </p>
                     </div>
                 </div>
 
                 <div className="flex items-center gap-1">
-                    <BiSolidCrown title="Featured" size='22px' className="text-yellow-500" />
-                    <IoIosFlash title="Urgent" size='22px' className="text-red-500" />
-                    <BiHeart size='22px' className="text-green" />
+                    <CopyToClipboardLink url={url} />
+                    {
+                        currentUser.role === 'candidate' && <>
+                            {
+                                !alreadySaved ? <>
+                                    {
+                                        user?.email ? <button onClick={handleSaveJob}>
+                                            <BiHeart size="20px" className="text-green" />
+                                        </button> : <Link to='/login'>
+                                            <BiHeart size="24px" className="text-green" />
+                                        </Link>
+                                    }
+                                </> : <button disabled>
+                                    <FaHeart size="18px" className="text-red-400" />
+                                </button>
+                            }
+                        </>
+                    }
                 </div>
             </div>
 
@@ -64,7 +130,7 @@ const JobCard = ({ job, setJobDetails }) => {
                     </p>
                 </div>
 
-                <Link to='/' className="lg:hidden bg-green text-white px-5 py-2 rounded-lg border border-green shadow-xl shadow-green/20 text-center">
+                <Link to={`/job_details/${_id}`} className="lg:hidden bg-green text-white px-5 py-2 rounded-lg border border-green shadow-xl shadow-green/20 text-center">
                     View Details
                 </Link>
             </div>

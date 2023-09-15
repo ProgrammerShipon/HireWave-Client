@@ -1,5 +1,5 @@
 import SocialLogin from "../Components/SocialLogin";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import useAuth from "../Hooks/useAuth";
@@ -10,11 +10,12 @@ import { BiUserPin } from 'react-icons/bi';
 import { BsShieldCheck } from 'react-icons/bs';
 
 const SignUpForm = () => {
-  const { signUpUser, profileUpdate } = useAuth();
+  const { signUpUser, profileUpdate, setLoading } = useAuth();
 
   // navigate
   const navigate = useNavigate();
-  const from = "/select_role";
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
 
   const {
     register,
@@ -44,6 +45,7 @@ const SignUpForm = () => {
             navigate(from, { replace: true });
           })
           .catch((error) => {
+            setLoading(false)
             toast.error(error.message, {
               position: "top-right",
               autoClose: 4000,

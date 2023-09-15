@@ -1,10 +1,10 @@
 
-const DescriptionTextarea = ({ about, setAboutData }) => {
+const DescriptionTextarea = ({ about, setUserAbout }) => {
 
     const handleTextareaChange = (event) => {
         const textareaValue = event.target.value;
         const lines = textareaValue.split('\n');
-        setAboutData(lines);
+        setUserAbout(lines)
     };
 
     return (

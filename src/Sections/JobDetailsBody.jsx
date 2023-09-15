@@ -1,15 +1,31 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../Components/Button";
 import GetAgoTime from "../Components/GetAgoTime";
 import Divider from "../Components/Divider";
+import ClipboardJS from 'clipboard';
+import { toast } from "react-toastify";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useMyAppliedJobs from "../Hooks/useMyAppliedJobs";
+import useMySavedJobs from "../Hooks/useMySavedJobs";
+import useAuth from "../Hooks/useAuth";
+import DOMPurify from 'dompurify';
 
 // react icons
 import { BiHeart, BiMap } from "react-icons/bi";
 import { BsBuildingGear } from "react-icons/bs";
+import { FaHeart } from "react-icons/fa";
 import { HiOutlineCurrencyDollar, HiOutlineUserGroup } from "react-icons/hi";
 import { AiOutlineShareAlt, AiOutlineCalendar } from "react-icons/ai";
 
 const JobDetailsBody = ({ jobDetails }) => {
+    const { user } = useAuth();
+    const [axiosSecure] = useAxiosSecure();
+    const [myAppliedJobs] = useMyAppliedJobs();
+    const [mySavedJobs, , refetch] = useMySavedJobs();
+    let [alreadyApplied, setAlreadyApplied] = useState(false);
+    let [alreadySaved, setAlreadySaved] = useState(false);
+
     const {
         _id,
         title,
@@ -23,12 +39,91 @@ const JobDetailsBody = ({ jobDetails }) => {
         closingDate,
         experience,
         quantity,
-        overview,
-        requirements,
-        skillsExperience,
-        benefits,
+        description,
         skills,
     } = jobDetails;
+
+    const jobInfo = { selectJob: _id, companyLogo, title, companyName, postedDate, location, jobType, salary, skills, candidateMail: user?.email }
+
+    // check already applied
+    useEffect(() => {
+        const checkExists = myAppliedJobs.filter((job) =>
+            job.jobId.includes(_id)
+        );
+
+        if (checkExists.length) {
+            setAlreadyApplied(true)
+        } else {
+            setAlreadyApplied(false)
+        }
+    }, [jobDetails, myAppliedJobs.length, user?.email])
+
+    // check saved job
+    useEffect(() => {
+        const checkExists = mySavedJobs.filter((job) =>
+            job.selectJob.includes(_id)
+        );
+
+        if (checkExists.length) {
+            setAlreadySaved(true)
+        } else {
+            setAlreadySaved(false)
+        }
+    }, [jobDetails, mySavedJobs.length])
+
+    const handleSaveJob = () => {
+        axiosSecure.post("/savedjob", jobInfo)
+            .then((data) => {
+                if (data.status === 200) {
+                    refetch()
+                    toast.success("Saved Successfully", {
+                        position: "top-right",
+                        autoClose: 2500,
+                        theme: "light",
+                    });
+                }
+                else {
+                    toast.warning("Already Saved", {
+                        position: "top-right",
+                        autoClose: 2500,
+                        theme: "light",
+                    });
+                }
+            })
+            .catch((err) => console.log(err));
+    }
+
+    // Share function
+    const shareJobData = () => {
+        const url =
+            window.location.protocol + '//' +
+            window.location.host + window.location.pathname
+        console.log(url)
+        // Create a clipboard instance
+        const clipboard = new ClipboardJS('.copy-button', {
+            text: function () {
+                return url;
+            }
+        });
+
+        clipboard.on('success', function (e) {
+
+            toast.success("Link copied to the Clipboard", {
+                position: "top-right",
+                autoClose: 2500,
+                theme: "light",
+            });
+        });
+
+        clipboard.on('error', function (e) {
+            // Handle error (optional)
+            console.error('Error copying to clipboard:', e);
+        });
+
+        clipboard.onClick({
+            action: 'copy'
+        });
+    }
 
     return (
         <section className='py-20 md:py-[120px] max-w-5xl mx-auto'>
@@ -43,8 +138,14 @@ const JobDetailsBody = ({ jobDetails }) => {
                         </div>
 
                         <div className="flex items-center gap-2">
-                            <AiOutlineShareAlt size="24px" className="text-green" />
-                            <BiHeart size="24px" className="text-green" />
+                            <AiOutlineShareAlt onClick={shareJobData} size="24px" className="text-green cursor-pointer copy-button" />
+                            {
+                                !alreadySaved ? <button onClick={handleSaveJob}>
+                                    <BiHeart size="24px" className="text-green" />
+                                </button> : <button disabled>
+                                    <FaHeart size="24px" className="text-red-400" />
+                                </button>
+                            }
                         </div>
                     </div>
 
@@ -79,9 +180,12 @@ const JobDetailsBody = ({ jobDetails }) => {
                                 <BiMap /> {location}
                             </p>
                         </div>
-                        <Link to={`/apply_job/${_id}`}>
-                            <Button>Apply Now</Button>
-                        </Link>
+                        {
+                            !alreadyApplied ?
+                                <Link to={`/apply_job/${_id}`} >
+                                    <Button>Apply Now</Button>
+                                </Link> : <Link to={`/view_application/${_id}`} className="bg-green text-white px-5 py-2 rounded-lg border border-green shadow-xl shadow-green/20">View Application</Link>
+                        }
                     </div>
 
                     <div className="flex flex-col items-start mb-6 md:flex-row md:gap-8">
@@ -111,43 +215,8 @@ const JobDetailsBody = ({ jobDetails }) => {
 
                     {/* job description */}
                     <div className="my-6">
-                        <h2 className="text-3xl font-medium text-dark">Description</h2>
-
-                        {/* Overview */}
-                        <div className="mt-5">
-                            <h4 className="text-xl">Overview:</h4>
-                            <p className="text-gray">{overview}</p>
-                        </div>
-
-                        {/* Requirements */}
-                        <div className="mt-5">
-                            <h4 className="text-xl">Requirements:</h4>
-                            <ul className="flex flex-col gap-2 list-disc text-lightGray pl-7">
-                                {requirements.map((item, index) => (
-                                    <li key={index}>{item}</li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        {/* Skill & Experience */}
-                        <div className="mt-5">
-                            <h4 className="text-xl">Skill & Experience:</h4>
-                            <ul className="flex flex-col gap-2 list-disc text-lightGray pl-7">
-                                {skillsExperience.map((item, index) => (
-                                    <li key={index}>{item}</li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        {/* Benefits */}
-                        <div className="mt-5">
-                            <h4 className="text-xl">Benefits:</h4>
-                            <ul className="flex flex-col gap-2 list-disc text-lightGray pl-7">
-                                {benefits.map((item, index) => (
-                                    <li key={index}>{item}</li>
-                                ))}
-                            </ul>
-                        </div>
+                        <h2 className="text-3xl font-medium text-dark mb-5">Description</h2>
+                        <div className="postJob" dangerouslySetInnerHTML={{ __html: description }}></div>
                     </div>
 
                     <Divider />
@@ -156,7 +225,7 @@ const JobDetailsBody = ({ jobDetails }) => {
                     <div className="mt-6">
                         <h2 className="text-3xl font-medium text-dark">Skills</h2>
                         <div className="flex flex-wrap items-center gap-2 mt-4 duration-300">
-                            {skills.map((skill, index) => (
+                            {skills?.map((skill, index) => (
                                 <p
                                     key={index}
                                     className="bg-purple/20 hover:bg-white text-purple px-4 py-[2px] shadow-lg shadow-purple/10 hover:shadow-dark/20 rounded-md cursor-pointer duration-300 capitalize"

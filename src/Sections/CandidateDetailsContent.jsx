@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RecentReviewSlider from "../Components/RecentReviewSlider";
 import useReview from "../Hooks/useReview";
 
@@ -21,12 +21,12 @@ import "@smastrom/react-rating/style.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const CandidateDetailsContent = ({ candidateDetails }) => {
+    const { currentUser } = useAuth();
     const [reviewData, loading] = useReview();
-    const [axiosSecure] = useAxiosSecure();
     const {
+        _id,
         name,
         email,
         image,
@@ -43,7 +43,6 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
         experience,
         skills,
     } = candidateDetails;
-    const { userId } = useAuth();
     const navigate = useNavigate();
 
     const [review, setReview] = useState([]);
@@ -64,13 +63,15 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
 
     // chat
     const handleCreateChat = () => {
-        const senderId = userId;
-        const receiverId = _id;
-        const members = { senderId, receiverId }
-        axiosSecure.post('/chat', members)
-            .then(data => {
-                navigate('/dashboard/messages')
-            })
+        navigate('/dashboard/messages')
+    }
+
+    const handleAddToFavorite =() => {
+        const newData={
+            candidateId: _id,
+            recruiterEmail: currentUser?.email
+        }
+        console.log(newData);
     }
 
     return (
@@ -127,7 +128,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                             </p>
 
                             <p className="flex items-center gap-[2px] font-light text-dark ">
-                                <BiMap className="text-lightGray" /> {location[0]}, {location[1]}
+                                <BiMap className="text-lightGray" /> {location}
                             </p>
                             <p className="text-gray">Member since {joinDate}</p>
                         </div>
@@ -140,33 +141,35 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                             {
                                 socialLink.map((link, index) => <p
                                     key={index}
-                                    className={`h-9 w-9 flex items-center justify-center rounded-lg border text-green border-green shadow-lg shadow-green/20`}
+                                    className={`h-9 w-9 flex items-center justify-center rounded-lg border text-green border-green shadow-lg shadow-green/20 cursor-pointer`}
                                 >
-                                    {link.linkedin && <FaLinkedin size="20px" />}
-                                    {link.github && <FaGithub size="20px" />}
-                                    {link.twitter && <FaTwitter size="20px" />}
-                                    {link.facebook && <FaFacebookF size="20px" />}
+                                    {link?.linkedin && <FaLinkedin size="20px" />}
+                                    {link?.github && <FaGithub size="20px" />}
+                                    {link?.twitter && <FaTwitter size="20px" />}
+                                    {link?.facebook && <FaFacebookF size="20px" />}
                                 </p>)
                             }
                         </div>
 
                         {/* button */}
                         <div className="flex flex-col items-center gap-3">
-                            <button className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
+                            <button onClick={handleAddToFavorite} className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
                                 Add to Favorite{" "}
                                 <BsBookmarkPlus
                                     size="21"
                                     className="text-green group-hover:text-white"
                                 />
                             </button>
+                            <Link to={`/dashboard/messages/${_id}`}>
+                                <button className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
+                                    Contact With Me{" "}
+                                    <AiOutlineMessage
+                                        size="22"
+                                        className="text-green group-hover:text-white"
+                                    />
+                                </button>
+                            </Link>
 
-                            <button onClick={handleCreateChat} className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
-                                Contact With Me{" "}
-                                <AiOutlineMessage
-                                    size="22"
-                                    className="text-green group-hover:text-white"
-                                />
-                            </button>
                         </div>
                     </div>
                 </div>

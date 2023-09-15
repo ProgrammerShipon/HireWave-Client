@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import useAllJobs from "../Hooks/useAllJobs";
 import FindJobBody from "../Components/FindJobBody";
 
 // react icons
@@ -9,10 +8,9 @@ import { FaBriefcase } from "react-icons/fa";
 import { FaLocationCrosshairs } from "react-icons/fa6";
 import { AiOutlineClear } from "react-icons/ai";
 
-const FindJobs = () => {
-    const [allJobsData] = useAllJobs();
+const FindJobs = ({ allJobsData }) => {
     const [filteredData, setFilteredData] = useState(allJobsData);
-
+    const [date, setDate] = useState('');
     const { register, watch, handleSubmit, reset } = useForm();
     const onSubmit = () => {
         reset();
@@ -27,14 +25,24 @@ const FindJobs = () => {
         const searchLocation = location ? location.toLowerCase() : "";
         const searchCategory = category ? category.toLowerCase() : "";
 
-        const filter = allJobsData.filter((job) =>
+        let filter = allJobsData.filter((job) =>
             (!searchTitle || job.title.toLowerCase().includes(searchTitle) || job.companyName.toLowerCase().includes(searchTitle)) &&
             (!searchLocation || job.location.toLowerCase().includes(searchLocation)) &&
             (!searchCategory || job.category.toLowerCase().includes(searchCategory))
         );
 
+        if (date === 'newest') {
+            filter = [...filter].sort(
+                (a, b) => new Date(b.postedDate) - new Date(a.postedDate)
+            );
+        } else if (date === 'oldest') {
+            filter = [...filter].sort(
+                (a, b) => new Date(a.postedDate) - new Date(b.postedDate)
+            );
+        }
+
         setFilteredData(filter);
-    }, [searchTerm, location, category, allJobsData]);
+    }, [searchTerm, location, category, allJobsData, date]);
 
     useEffect(() => {
         setFilteredData(allJobsData);
@@ -110,7 +118,7 @@ const FindJobs = () => {
                 </div>
 
                 {
-                    filteredData.length > 0 ? <FindJobBody allJobsData={filteredData} /> : <p className="text-4xl text-center py-6 mt-6">Job Not Found!</p>
+                    filteredData.length > 0 ? <FindJobBody allJobsData={filteredData} date={date} setDate={setDate} /> : <p className="text-4xl text-center py-6 mt-6">Job Not Found!</p>
                 }
             </div>
         </section>

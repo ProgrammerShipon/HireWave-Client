@@ -1,32 +1,14 @@
-import React from 'react';
-import DashTitle from '../Components/DashComponents/DashTitle';
-import useAllJobs from '../Hooks/useAllJobs';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useEffect } from 'react';
-import useRecruiterRole from '../Hooks/useRecruiterRole';
+import DashTitle from '../Components/DashComponents/DashTitle';
+import PostedJobTableRow from '../Components/DashComponents/PostedJobTableRow';
+import PageLoader from '../Components/PageLoader';
+import useAllJobs from '../Hooks/useAllJobs';
 import useAppliedCompany from '../Hooks/useAppliedCompany';
 
 const AppliedApplicant = () => {
 
-
     const [appliedCompany] = useAppliedCompany();
-    console.log(appliedCompany)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     const [allJobsData, loading] = useAllJobs();
     const [filteredData, setFilteredData] = useState(allJobsData);
     const { register, watch, handleSubmit, reset } = useForm();
@@ -35,6 +17,7 @@ const AppliedApplicant = () => {
     }
     const searchTerm = watch('searchTerm');
     const category = watch('category');
+    const status = watch('status');
     const date = watch('date');
 
     // console.log(searchTerm, category, date);
@@ -43,12 +26,24 @@ const AppliedApplicant = () => {
         const searchTitle = searchTerm ? searchTerm.toLowerCase() : "";
         const searchCategory = category ? category.toLowerCase() : "";
 
-        const filter = allJobsData.filter((job) =>
+        let filter = allJobsData.filter((job) =>
             (!searchTitle || job.title.toLowerCase().includes(searchTitle)) &&
+            (!status || job.status.toLowerCase().includes(status.toLowerCase())) &&
             (!searchCategory || job.category.toLowerCase().includes(searchCategory))
         );
+
+        if (date === 'recent') {
+            filter = [...filter].sort(
+                (a, b) => new Date(b.postedDate) - new Date(a.postedDate)
+            );
+        } else if (date === 'oldest') {
+            filter = [...filter].sort(
+                (a, b) => new Date(a.postedDate) - new Date(b.postedDate)
+            );
+        }
+
         setFilteredData(filter);
-    }, [searchTerm, category]);
+    }, [searchTerm, category, status, date, !loading]);
 
     useEffect(() => {
         setFilteredData(allJobsData);
@@ -112,7 +107,7 @@ const AppliedApplicant = () => {
 
 
             {/* posted jobs table */}
-            {/* <div className="w-full overflow-x-auto duration-300 rounded-md shadow-4xl shadow-gray/40 bg-white mt-4">
+            <div className="w-full overflow-x-auto duration-300 rounded-md shadow-4xl shadow-gray/40 bg-white mt-4">
                 {
                     !loading ? <table className="table lg:w-full w-[800px] text-left">
                         <thead className="text-lg text-green border-b border-green/40">
@@ -129,9 +124,9 @@ const AppliedApplicant = () => {
                                 <PostedJobTableRow key={job._id} job={job} />
                             ))}
                         </tbody>
-                    </table> : <h1>Loading ...</h1>
+                    </table> : <PageLoader />
                 }
-            </div> */}
+            </div>
 
         </section>
     );

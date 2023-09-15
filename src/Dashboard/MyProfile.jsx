@@ -1,40 +1,59 @@
 import { useEffect, useState } from 'react';
-import Button from '../Components/Button';
 import { AiOutlineFileAdd } from 'react-icons/ai';
-import useCandidatesData from '../Hooks/useCandidatesData';
+import Button from '../Components/Button';
 import DashTitle from '../Components/DashComponents/DashTitle';
-import CandidateProfile from '../Sections/DashSections/CandidateProfile';
-import useAuth from '../Hooks/useAuth';
 import PageLoader from '../Components/PageLoader';
+import useAuth from '../Hooks/useAuth';
+import useCandidatesData from '../Hooks/useCandidatesData';
+import CandidateProfile from '../Sections/DashSections/CandidateProfile';
+import AdminProfile from '../Sections/DashSections/AdminProfile';
+import useCurrentCandidate from '../Hooks/useCurrentCandidate';
+import useCurrentRecruiter from '../Hooks/useCurrentRecruiter';
+import RecruitersProfile from '../Sections/DashSections/RecruitersProfile';
 
 const MyProfile = () => {
-    const { user } = useAuth();
-    const [candidatesData, loading] = useCandidatesData();
-    const [currentCandidate, setCurrentCandidate] = useState();
+    const { currentUser } = useAuth();
+    const [currentRecruiter, loadingRecruiters, refetchRecruiters] = useCurrentRecruiter();
+    const [currentCandidate, loading, refetch] = useCurrentCandidate();
 
-    useEffect(() => {
-        const getCandidate = candidatesData.find(candidate => candidate.email === user?.email);
-        setCurrentCandidate(getCandidate)
-    }, [!loading, user?.email])
 
+    // console.log(currentUser)
+    // console.log(currentRecruiter)
     return (
         <section className='m-5 rounded-md'>
             <DashTitle title='My Profile' />
 
             {/* My Account */}
             {
-                currentCandidate?.email ? <CandidateProfile candidatesData={currentCandidate} /> : <PageLoader />
+                currentUser.role === 'candidate' && <>
+                    {
+                        currentCandidate?.email ? <CandidateProfile candidatesData={currentCandidate} refetch={refetch} /> : <PageLoader />
+                    }
+                </>
+
+            }
+
+            {
+                currentUser.role === "recruiter" && <>
+                    {
+                        currentRecruiter?.email ? <RecruitersProfile recruitersData={currentRecruiter} refetch={refetchRecruiters} /> : <PageLoader />
+                    }
+                </>
+            }
+
+            {
+                currentUser.role === 'admin' && <AdminProfile currentUser={currentUser} />
             }
 
             {/* Generate Resume Button */}
-            <div className='mt-7'>
+            {/* <div className='mt-7'>
                 <Button>
                     <div className='flex items-center gap-2'>
                         <AiOutlineFileAdd />
                         <p>Generate Resume</p>
                     </div>
                 </Button>
-            </div>
+            </div> */}
         </section>
     );
 };

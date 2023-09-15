@@ -1,22 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import DOMPurify from 'dompurify';
 import Button from "./Button";
 import Divider from "./Divider";
 import GetAgoTime from "./GetAgoTime";
 import JobCard from "./JobCard";
 
 // react icons
-import { AiOutlineCalendar, AiOutlineShareAlt } from "react-icons/ai";
+import { AiOutlineCalendar } from "react-icons/ai";
 import { BiHeart, BiMap } from "react-icons/bi";
 import { BsBuildingGear } from "react-icons/bs";
+import { FaHeart } from "react-icons/fa";
 import {
   HiOutlineCurrencyDollar,
   HiOutlineFilter,
   HiOutlineUserGroup,
 } from "react-icons/hi";
+import { toast } from "react-toastify";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useAuth from "../Hooks/useAuth";
+import useMySavedJobs from "../Hooks/useMySavedJobs";
+import useMyAppliedJobs from "../Hooks/useMyAppliedJobs";
+import CopyToClipboardLink from "./CopyToClipboardLink";
+import Pagination from "./Pagination";
 
-const FindJobBody = ({ allJobsData }) => {
+const FindJobBody = ({ allJobsData, date, setDate }) => {
   const [jobDetails, setJobDetails] = useState(allJobsData[0]);
+  const [axiosSecure] = useAxiosSecure();
+  const [myAppliedJobs] = useMyAppliedJobs();
+  const [mySavedJobs, , refetch] = useMySavedJobs();
+  let [alreadyApplied, setAlreadyApplied] = useState(false);
+  let [alreadySaved, setAlreadySaved] = useState(false);
+  const { user, currentUser } = useAuth();
 
   const {
     _id,
@@ -31,23 +46,75 @@ const FindJobBody = ({ allJobsData }) => {
     closingDate,
     experience,
     quantity,
-    overview,
-    requirements,
-    skillsExperience,
-    benefits,
+    description,
     skills,
   } = jobDetails;
-  console.log("jobDetails" , jobDetails);
-  // const handleApplyJob = () => {
-  //   const appliedInfo = {
-  //     companyName: companyName,
-  //     companyMail: category,
-  //     JobId: "64e78e7663f90b252c6891d0"
-  //   }
-  //   console.log(appliedInfo)
-  // }
+
+  const newUrl = window.location.protocol + '//' + window.location.host;
+  const url = `${newUrl}/job_details/${_id}`;
+
+  const jobInfo = { selectJob: _id, companyLogo, title, companyName, postedDate, location, jobType, salary, skills, candidateMail: user?.email }
+
+  // check already applied
+  useEffect(() => {
+    const checkExists = myAppliedJobs.filter((job) =>
+      job.jobId.includes(_id)
+    );
+
+    if (checkExists.length) {
+      setAlreadyApplied(true)
+    } else {
+      setAlreadyApplied(false)
+    }
+  }, [jobDetails, myAppliedJobs.length])
+
+  // check saved job
+  useEffect(() => {
+    const checkExists = mySavedJobs.filter((job) =>
+      job.selectJob.includes(_id)
+    );
+
+    if (checkExists.length) {
+      setAlreadySaved(true)
+    } else {
+      setAlreadySaved(false)
+    }
+  }, [jobDetails, mySavedJobs.length])
+
+  const [currentPage, setCurrentPage] = useState(1)
+  const [jobsPerPage] = useState(4)
+  // Get current posts in pagination
+  const indexOfLastJob = currentPage * jobsPerPage
+  const indexOfFirstJob = indexOfLastJob - jobsPerPage;
+  const currentJobs = allJobsData.slice(indexOfFirstJob, indexOfLastJob)
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
+  const handleSaveJob = () => {
+    axiosSecure.post("/savedjob", jobInfo)
+      .then((data) => {
+        if (data.status === 200) {
+          refetch()
+          toast.success("Saved Successfully", {
+            position: "top-right",
+            autoClose: 2500,
+            theme: "light",
+          });
+        }
+        else {
+          toast.warning("Already Saved", {
+            position: "top-right",
+            autoClose: 2500,
+            theme: "light",
+          });
+        }
+      })
+      .catch((err) => console.log(err));
+  }
+
   return (
-    <div className="grid grid-cols-1 gap-5 mt-16 lg:grid-cols-10">
+    <div className="lg:grid gap-5 mt-16 lg:grid-cols-10">
       {/* left content  */}
       <div className="lg:col-span-4">
         {/* filter bar */}
@@ -65,24 +132,27 @@ const FindJobBody = ({ allJobsData }) => {
             <select
               id="select"
               className="px-2 py-1 border rounded-md cursor-pointer border-purple focus:outline-none"
+              defaultValue={date}
+              onChange={(e) => setDate(e.target.value)}
             >
-              <option>Newest</option>
-              <option>Oldest</option>
-              <option>Features</option>
+              <option value=''>Select</option>
+              <option value='newest'>Newest</option>
+              <option value='oldest'>Oldest</option>
             </select>
           </div>
         </div>
 
         {/* job card */}
         <div className="grid grid-cols-1 gap-5">
-          {allJobsData.map((job, index) => (
-            <JobCard key={index} job={job} setJobDetails={setJobDetails} />
+          {currentJobs.map((job, index) => (
+            <JobCard key={index} job={job} setJobDetails={setJobDetails} mySavedJobs={mySavedJobs} refetch={refetch} />
           ))}
         </div>
+        <Pagination jobsPerPage={jobsPerPage} totalJobs={allJobsData.length} paginate={paginate} currentPage={currentPage} />
       </div>
 
       {/* right content */}
-      <div className="lg:col-span-6">
+      <div className="lg:col-span-6 lg:block hidden mt-14">
         <div className="p-4 border rounded-lg border-purple">
           <div className="flex items-start justify-between">
             <div>
@@ -93,8 +163,24 @@ const FindJobBody = ({ allJobsData }) => {
             </div>
 
             <div className="flex items-center gap-2">
-              <AiOutlineShareAlt size="24px" className="text-green" />
-              <BiHeart size="24px" className="text-green" />
+              <CopyToClipboardLink url={url} />
+              {
+                currentUser.role === 'candidate' && <>
+                  {
+                    !alreadySaved ? <>
+                      {
+                        user?.email ? <button onClick={handleSaveJob}>
+                          <BiHeart size="24px" className="text-green" />
+                        </button> : <Link to='/login'>
+                          <BiHeart size="24px" className="text-green" />
+                        </Link>
+                      }
+                    </> : <button disabled>
+                      <FaHeart size="24px" className="text-red-400" />
+                    </button>
+                  }
+                </>
+              }
             </div>
           </div>
 
@@ -109,7 +195,7 @@ const FindJobBody = ({ allJobsData }) => {
             </div>
             <div className="mt-1">
               <Link
-                to="/"
+                to={`/recruiters_details/${_id}`}
                 className="text-xl font-medium duration-300 text-dark drop-shadow-lg hover:text-green line-clamp-2"
               >
                 {companyName}
@@ -129,9 +215,12 @@ const FindJobBody = ({ allJobsData }) => {
                 <BiMap /> {location}
               </p>
             </div>
-            <Link to={`/apply_job/${_id}`} >
-              <Button>Apply Now</Button>
-            </Link>
+            {
+              !alreadyApplied ?
+                <Link to={`/apply_job/${_id}`} >
+                  <Button>Apply Now</Button>
+                </Link> : <Link to={`/view_application/${_id}`} className="bg-green text-white px-5 py-2 rounded-lg border border-green shadow-xl shadow-green/20">View Application</Link>
+            }
           </div>
 
           <div className="flex flex-col items-start mb-6 md:flex-row md:gap-8">
@@ -161,43 +250,8 @@ const FindJobBody = ({ allJobsData }) => {
 
           {/* job description */}
           <div className="my-6">
-            <h2 className="text-3xl font-medium text-dark">Description</h2>
-
-            {/* Overview */}
-            <div className="mt-5">
-              <h4 className="text-xl">Overview:</h4>
-              <p className="text-gray">{overview}</p>
-            </div>
-
-            {/* Requirements */}
-            <div className="mt-5">
-              <h4 className="text-xl">Requirements:</h4>
-              <ul className="flex flex-col gap-2 list-disc text-lightGray pl-7">
-                {requirements.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Skill & Experience */}
-            <div className="mt-5">
-              <h4 className="text-xl">Skill & Experience:</h4>
-              <ul className="flex flex-col gap-2 list-disc text-lightGray pl-7">
-                {skillsExperience.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Benefits */}
-            <div className="mt-5">
-              <h4 className="text-xl">Benefits:</h4>
-              <ul className="flex flex-col gap-2 list-disc text-lightGray pl-7">
-                {benefits.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            </div>
+            <h2 className="text-3xl font-medium text-dark mb-5">Description</h2>
+            <p className="postJob" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}></p>
           </div>
 
           <Divider />
@@ -206,7 +260,7 @@ const FindJobBody = ({ allJobsData }) => {
           <div className="mt-6">
             <h2 className="text-3xl font-medium text-dark">Skills</h2>
             <div className="flex flex-wrap items-center gap-2 mt-4 duration-300">
-              {skills.map((skill, index) => (
+              {skills?.map((skill, index) => (
                 <p
                   key={index}
                   className="bg-purple/20 hover:bg-white text-purple px-4 py-[2px] shadow-lg shadow-purple/10 hover:shadow-dark/20 rounded-md cursor-pointer duration-300 capitalize"

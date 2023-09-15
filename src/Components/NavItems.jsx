@@ -1,30 +1,31 @@
 import { Link } from "react-router-dom";
 import ActiveLink from "./ActiveLink";
+import useAuth from "../Hooks/useAuth";
+import Profile from "./Profile";
 
 // react icons
 import { PiUser } from "react-icons/pi";
-import useAuth from "../Hooks/useAuth";
-import useCurrentUser from "../Hooks/useCurrentUser";
-import Profile from "./Profile";
 
 const NavItems = () => {
-    const { user } = useAuth();
-    const [currentUser] = useCurrentUser();
-    // const role = 'user';
+    const { user, currentUser } = useAuth();
     // const role = 'candidate';
     // const role = 'recruiter';
-    const role = currentUser.role;
+    let role = currentUser.role;
+
+    if (!user?.email) {
+        role = "user"
+    }
 
     return (
         <>
-        
+
             <li>
                 <ActiveLink to='/'>
                     Home
                 </ActiveLink>
             </li>
             {
-                role !== 'candidate' && role !== 'recruiter' && role !== 'admin' && <>
+                role !== 'candidate' && role !== 'recruiter' && <>
                     <li>
                         <ActiveLink to='/browse_jobs'>
                             Browse Jobs
@@ -71,7 +72,6 @@ const NavItems = () => {
 
             {/* recruiters route */}
             {
-
                 role === 'recruiter' && <>
                     <li>
                         <ActiveLink to='/find_talents'>

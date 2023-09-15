@@ -10,9 +10,34 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 const ChangePassword = () => {
     const { changePassword } = useAuth();
     const [newPass, setNewPass] = useState('');
+    const [confirmNewPass, setConfirmNewPass] = useState('');
     const [show, setShow] = useState(false);
+    const [showConfirm, setShowConfirm] = useState(false);
 
     const handlePassChange = () => {
+        if (newPass.length < 6) {
+            return toast.warn('Password must be 5 character!', {
+                position: "top-right",
+                autoClose: 2500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                theme: "light",
+            });
+        }
+
+        if (newPass !== confirmNewPass) {
+            return toast.warn('Password did not match!', {
+                position: "top-right",
+                autoClose: 2500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                theme: "light",
+            });
+        }
         changePassword(newPass)
             .then(() => {
                 Swal.fire({
@@ -34,9 +59,9 @@ const ChangePassword = () => {
         <section className="m-5 rounded-md">
             <DashTitle title="Change Password" />
 
-            <div className="py-28 max-w-xl mx-auto">
-                <div className="flex flex-col items-start justify-center gap-4 bg-white p-6 rounded-md shadow-4xl shadow-gray/40">
-                    <h2 className="mt-5 text-4xl text-green/80 font-semibold text-left">
+            <div className="py-20 max-w-xl mx-auto">
+                <div className="flex flex-col items-start justify-center gap-2 bg-white p-6 rounded-md shadow-4xl shadow-gray/40">
+                    <h2 className="mt-5 mb-6 text-3xl text-dark/80 font-medium drop-shadow-lg text-left">
                         Enter New Password
                     </h2>
                     <label htmlFor="password"
@@ -50,6 +75,21 @@ const ChangePassword = () => {
                         <button onClick={() => setShow(!show)} className="absolute top-1/2 right-1 -translate-x-1/2 -translate-y-1/2 text-gray">
                             {
                                 !show ? <AiOutlineEye size={24} /> :
+                                    <AiOutlineEyeInvisible size={24} />
+                            }
+                        </button>
+                    </label>
+                    <label htmlFor="confirmPassword"
+                        className="w-full relative text-base"
+                    >
+                        <input type={`${showConfirm ? "text" : "password"}`}
+                            placeholder="Confirm new password"
+                            onChange={(e) => setConfirmNewPass(e.target.value)}
+                            className="w-full border border-gray/40 focus:outline-none focus:border-green py-3 px-4 rounded-md text-lg"
+                        />
+                        <button onClick={() => setShowConfirm(!showConfirm)} className="absolute top-1/2 right-1 -translate-x-1/2 -translate-y-1/2 text-gray">
+                            {
+                                !showConfirm ? <AiOutlineEye size={24} /> :
                                     <AiOutlineEyeInvisible size={24} />
                             }
                         </button>

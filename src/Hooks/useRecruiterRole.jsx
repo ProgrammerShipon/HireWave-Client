@@ -1,11 +1,10 @@
-import useAxiosSecure from './useAxiosSecure';
 import useAuth from './useAuth';
+import useAxiosSecure from './useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 
 const useRecruiterRole = () => {
     const [axiosSecure] = useAxiosSecure();
     const { user } = useAuth();
-    console.log(user.email)
     const {
         data: recruitersRole = [], isLoading: loading, refetch, } = useQuery({
             queryKey: ["recruitersRole"],
@@ -15,7 +14,6 @@ const useRecruiterRole = () => {
             },
 
         });
-    // console.log(recruitersRole)
 
     return [recruitersRole, loading, refetch];
 };

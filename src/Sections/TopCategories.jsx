@@ -24,18 +24,18 @@ const TopCategories = () => {
 
                 {/* categories 2nd row */}
                 <Marquee pauseOnHover={true} direction="right" speed={80}>
-                    <div className="grid grid-cols-10 gap-5 pl-5 pt-16 md:pt-16 mb-10">
+                    <div className="grid grid-cols-10 gap-5 pl-5 pt-16 md:pt-16">
                         {categoriesData?.slice(10, 20).map((category) => (
                             <TopCategoryCard key={category._id} category={category} />
                         ))}
                     </div>
                 </Marquee>
 
-                <div className="text-center mt-16 md:mt-20">
+                {/* <div className="text-center mt-16 md:mt-20">
                     <Link to="/all_categories" className="bg-transparent text-dark hover:text-white px-5 py-2 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20">
                         All Category
                     </Link>
-                </div>
+                </div> */}
             </div>
         </section>
     );

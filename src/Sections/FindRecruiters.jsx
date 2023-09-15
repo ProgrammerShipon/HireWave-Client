@@ -12,24 +12,26 @@ const FindRecruiters = () => {
     const [location, setLocation] = useState('');
     const [checkBoxData, setCheckBoxData] = useState('');
 
+    const approveData = recruiterData.filter(recruiter => recruiter.status == 'approved')
+
     // main filtering
     useEffect(() => {
         if (checkBoxData.length > 0) {
-            const filteredRecruiterData = recruiterData.filter(
+            const filteredRecruiterData = approveData.filter(
                 (recruiter) =>
                     recruiter.location.toLowerCase().includes(location.toLowerCase()) &&
                     checkBoxData.includes(recruiter.industry)
             );
             setFilteredData(filteredRecruiterData);
         } else if (location.length > 0) {
-            const filterByLocation = recruiterData.filter((rql) =>
+            const filterByLocation = approveData.filter((rql) =>
                 rql.location.toLowerCase().includes(location.toLowerCase())
             );
             setFilteredData(filterByLocation);
         } else {
-            setFilteredData(recruiterData);
+            setFilteredData(approveData);
         }
-    }, [location, checkBoxData, recruiterData]);
+    }, [location, checkBoxData, recruiterData, approveData]);
 
     useEffect(() => {
         setFilteredData(recruiterData);

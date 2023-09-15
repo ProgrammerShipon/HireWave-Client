@@ -17,10 +17,10 @@ const CandidateListTableRow = ({ candidate }) => {
                 {category}
             </td>
 
-            <td className="px-3 py-4 text-center text-lightGray">{location[0]}, {location[1]}</td>
+            <td className="px-3 py-4 text-center text-lightGray">{location}</td>
 
             <td className="px-3 py-4 text-center">
-                <div className={`relative flex gap-1 items-center justify-center px-2 rounded-full capitalize w-fit mx-auto ${status === 'approved' && 'bg-green/10 text-green font-medium shadow-lg shadow-green/20'} ${status === 'pending' && 'bg-orange-4s00/10 text-orange-400'} ${status === 'rejected' && 'bg-red-500/10 text-red-500'}`}
+                <div className={`relative flex gap-1 items-center justify-center px-2 rounded-full capitalize w-fit mx-auto ${status === 'approved' && 'bg-green/10 text-green font-medium shadow-lg shadow-green/20'} ${status === 'pending' && 'bg-orange-400/10 text-orange-400'} ${status === 'rejected' && 'bg-red-500/10 text-red-500'}`}
                 >
                     <select name="status" id="status" defaultValue={status}
                         className="focus:outline-none bg-transparent"
@@ -32,7 +32,7 @@ const CandidateListTableRow = ({ candidate }) => {
                 </div>
             </td>
             <td className="px-3 py-4 text-center">
-                <Link to={`/candidate_details/${_id}`} className="border border-green px-4 rounded-md hover:bg-green hover:text-white duration-300">View</Link>
+                <button className="border border-green px-4 rounded-md hover:bg-green hover:text-white duration-300">Action</button>
             </td>
         </tr>
     );

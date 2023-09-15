@@ -4,17 +4,15 @@ import { Link, useLocation } from "react-router-dom";
 import { BiMap } from "react-icons/bi";
 
 // react rating
-import { Rating, Star } from '@smastrom/react-rating'
-import '@smastrom/react-rating/style.css'
-import { useEffect } from "react";
-import { useState } from "react";
+import { Rating, Star } from '@smastrom/react-rating';
+import '@smastrom/react-rating/style.css';
+import { useEffect, useState } from "react";
 import useReview from "../Hooks/useReview";
 
 const RecruiterCard = ({ recruiter }) => {
 	const [reviewData, loading] = useReview();
 	const { pathname } = useLocation();
 	const { _id, name, email, image, location } = recruiter;
-
 	const [review, setReview] = useState([]);
 
 	useEffect(() => {
@@ -57,7 +55,7 @@ const RecruiterCard = ({ recruiter }) => {
 			{/* location */}
 			<div className="flex items-center gap-1 mt-3 text-gray">
 				<BiMap />
-				<p className="">{location[0]}, {location[1]}</p>
+				<p className="">{location}</p>
 			</div>
 
 

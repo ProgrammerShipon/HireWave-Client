@@ -1,16 +1,17 @@
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updatePassword, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from 'react';
-import app from '../firebase/firebase.config';
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import app from '../firebase/firebase.config';
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
     const [axiosSecure] = useAxiosSecure();
     const [user, setUser] = useState({});
-    const [userId, setUserId] = useState('');
+    const [currentUser, setCurrentUser] = useState({});
     const [loading, setLoading] = useState(true);
 
+    // auth initialize
     const auth = getAuth(app);
 
     // sign up user
@@ -48,7 +49,7 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, googleProvider)
     }
 
-    // google sign in
+    // github sign in
     const gitHubSignIn = () => {
         setLoading(true);
         const gitHubProvider = new GithubAuthProvider();
@@ -62,35 +63,47 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         setLoading(true);
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-            setLoading(false);
-
-            if (currentUser) {
-                // console.log('res');
-                axiosSecure.post('/jwt', { email: currentUser.email })
-                    .then(response => {
-                        // console.log('res', response.data.token);
-                        localStorage.setItem('access-token', response.data.token);
-
-                    })
-                    .catch(error => {
-                        console.log(error)
-                    })
-
+        const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
+            setUser(authUser)
+            setLoading(true);
+            authUser?.email && await axiosSecure.get(`/users/email/${authUser?.email}`)
+                .then((data) => {
+                    setCurrentUser(data.data);
+                    setLoading(false);
+                })
+                .catch((err) => {
+                    console.log(err)
+                    setLoading(false);
+                });
+            if (authUser === null) {
+                setCurrentUser({})
+                setLoading(false);
             }
-            localStorage.removeItem('access-token')
 
+            // if (authUser) {
+            //     axiosSecure
+            //         .post("/jwt", { email: authUser?.email })
+            //         .then((response) => {
+            //             localStorage.setItem("access-token", response.data.token);
+            //             setLoading(false);
+            //         })
+            //         .catch((error) => {
+            //             console.log(error);
+            //         });
+            // }
+            // localStorage.removeItem("access-token");
         });
 
         return () => {
             return unsubscribe();
         }
-    }, [user]);
+    }, []);
 
     const authInfo = {
         user,
         loading,
+        setLoading,
+        currentUser,
         signUpUser,
         signIn,
         profileUpdate,

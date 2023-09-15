@@ -152,8 +152,8 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="duration-300 hover:text-green">
-                  Contact
+                <Link to="/pricing" className="duration-300 hover:text-green">
+                  Pricing
                 </Link>
               </li>
               <li>
@@ -164,6 +164,11 @@ const Footer = () => {
               <li>
                 <Link to="/learning" className="duration-300 hover:text-green">
                   Learning
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="duration-300 hover:text-green">
+                  Contact
                 </Link>
               </li>
             </ul>

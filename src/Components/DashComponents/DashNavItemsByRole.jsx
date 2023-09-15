@@ -2,12 +2,13 @@ import DashLink from './DashLink';
 
 // react icons
 import { AiOutlineFileDone } from 'react-icons/ai';
-import { BsBriefcase, BsFileArrowUp } from 'react-icons/bs';
-import { MdOutlineManageAccounts, } from 'react-icons/md';
+import { BsBookmarkPlus, BsBriefcase, BsFileArrowUp, BsFileEarmarkPerson } from 'react-icons/bs';
+import { MdOutlineHistory, MdOutlineManageAccounts, MdOutlinePayments, } from 'react-icons/md';
 import { CgUserList } from 'react-icons/cg';
 import { BiMessageRoundedDetail } from 'react-icons/bi';
 import { LiaIndustrySolid } from 'react-icons/lia';
 import { FaChalkboardUser } from 'react-icons/fa6';
+import { FaHistory } from 'react-icons/fa';
 
 const DashNavItemsByRole = ({ role }) => {
     return (
@@ -18,9 +19,15 @@ const DashNavItemsByRole = ({ role }) => {
                     <>
                         {/* applied Jobs */}
                         <li className="w-full">
-                            <DashLink to='/dashboard/appliedJobs'>
+                            <DashLink to='/dashboard/myApplications'>
                                 <BsFileArrowUp size={24} />
                                 <p className="hidden md:inline">My Applications</p>
+                            </DashLink>
+                        </li>
+                        <li className="w-full">
+                            <DashLink to='/dashboard/messages'>
+                                <BiMessageRoundedDetail size={24} />
+                                <p className="hidden md:inline">Messages</p>
                             </DashLink>
                         </li>
                     </> :
@@ -50,12 +57,38 @@ const DashNavItemsByRole = ({ role }) => {
                                     <p className="hidden md:inline">Posted Jobs</p>
                                 </DashLink>
                             </li>
+                            {/* Applied candidates */}
+
+                            {/* <li className="w-full">
+                                <DashLink to='/applied_candidates'>
+                                    <BsFileEarmarkPerson size={24} />
+                                    <p className="hidden md:inline">Applicants</p>
+                                </DashLink>
+                            </li> */}
+
+                            {/* Payment  */}
+
                             <li className="w-full">
-                                <DashLink to='/dashboard/applicant'>
-                                    <AiOutlineFileDone size={24} />
-                                    <p className="hidden md:inline">Applicant</p>
+                                <DashLink to='/pricing'>
+                                    <MdOutlinePayments size={24} />
+                                    <p className="hidden md:inline">Payments</p>
                                 </DashLink>
                             </li>
+
+                            {/* Payment History */}
+                            <li className="w-full">
+                                <DashLink to='/dashboard/payment_history'>
+                                    <MdOutlineHistory size={24} />
+                                    <p className="hidden md:inline">Payments History</p>
+                                </DashLink>
+                            </li>
+                            {/* Favorites  */}
+                            {/* <li className="w-full">
+                                <DashLink to='/dashboard/favorites'>
+                                    <BsBookmarkPlus size={24} />
+                                    <p className="hidden md:inline">Favorites</p>
+                                </DashLink>
+                            </li> */}
                         </> :
 
                         // Admin routes

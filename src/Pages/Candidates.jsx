@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet';
 import Breadcrumbs from '../Components/Breadcrumbs';
 import FindCandidate from '../Sections/FindCandidate';
-import Divider from '../Components/Divider';
 import GetStart from '../Sections/GetStart';
 
 const Candidates = () => {

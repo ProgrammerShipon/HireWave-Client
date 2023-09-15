@@ -10,8 +10,11 @@ import TopCandidates from '../Sections/TopCandidates';
 import TopCategories from '../Sections/TopCategories';
 import TopRecruiters from '../Sections/TopRecruiters';
 import GetStart from '../Sections/GetStart';
+import useAuth from '../Hooks/useAuth';
 
 const Home = () => {
+    const { currentUser } = useAuth();
+
     return (
         <>
             {/* page title */}
@@ -21,25 +24,43 @@ const Home = () => {
 
             <HeroBanner />
             <TopCategories />
-            <FeaturedJobs />
-            {/* border */}
-            <Divider />
+            {
+                currentUser.role !== 'recruiter' && <>
+                    <FeaturedJobs />
+                    {/* border */}
+                    <Divider />
+                </>
+
+            }
 
             <SpecialFeatures />
             {/* border */}
             <Divider />
 
-            <TopCandidates />
-            {/* border */}
-            <Divider />
+            {
+                currentUser.role !== 'candidate' &&
+                <>
+                    <TopCandidates />
+                    {/* border */}
+                    <Divider />
+                </>
+            }
 
-            <TopRecruiters />
-            {/* border */}
-            <Divider />
+            {
+                currentUser.role !== 'recruiter' &&
+                <><TopRecruiters />
+                    {/* border */}
+                    <Divider />
+                </>
+            }
 
-            <JobByLocation />
-            {/* border */}
-            <Divider />
+            {
+                currentUser.role !== 'recruiter' &&
+                <><JobByLocation />
+                    {/* border */}
+                    <Divider />
+                </>
+            }
 
             <Partners />
             {/* border */}
