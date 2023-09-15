@@ -40,7 +40,7 @@ const PostedJobs = () => {
             );
         }
         setFilteredData(filter);
-    }, [searchTerm, category, status, date, !loading]);
+    }, [searchTerm, category, status, date, myPostedJobs.length]);
 
     return (
         <section className='m-5 rounded-md'>
