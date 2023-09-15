@@ -45,10 +45,11 @@ import PrivateRoute from "./PrivateRoute";
 import PaymentSuccess from "../Pages/PaymentSuccess";
 import PaymentFail from "../Pages/PaymentFail";
 import Favorites from "../Dashboard/Favorites";
+import PaymentHistory from "../Components/DashComponents/PaymentHistory";
 
-const baseURL = 'https://hire-wave.onrender.com/api';
+// const baseURL = 'https://hire-wave.onrender.com/api';
 // const baseURL = 'https://hire-wave-server.vercel.app/api';
-// const baseURL = 'http://localhost:3030/api';
+const baseURL = 'http://localhost:3030/api';
 
 const Router = createBrowserRouter([
   {
@@ -208,6 +209,10 @@ const Router = createBrowserRouter([
       {
         path: "applicant",
         element: <AppliedApplicant />,
+      },
+      {
+        path: "payment_history",
+        element: <PaymentHistory />,
       },
       {
         path: "payment/successful/:tran_id",
