@@ -3,7 +3,7 @@ import DashLink from './DashLink';
 // react icons
 import { AiOutlineFileDone } from 'react-icons/ai';
 import { BsBookmarkPlus, BsBriefcase, BsFileArrowUp, BsFileEarmarkPerson } from 'react-icons/bs';
-import { MdOutlineHistory, MdOutlineManageAccounts, MdOutlinePayments, } from 'react-icons/md';
+import { MdOutlineManageAccounts, MdOutlinePayments, } from 'react-icons/md';
 import { CgUserList } from 'react-icons/cg';
 import { BiMessageRoundedDetail } from 'react-icons/bi';
 import { LiaIndustrySolid } from 'react-icons/lia';
@@ -36,19 +36,19 @@ const DashNavItemsByRole = ({ role }) => {
                     role === 'recruiter' ?
                         <>
                             {/* Messages */}
-                            <li className="w-full">
+                            {/* <li className="w-full">
                                 <DashLink to='/dashboard/messages'>
                                     <BiMessageRoundedDetail size={24} />
                                     <p className="hidden md:inline">Messages</p>
                                 </DashLink>
-                            </li>
+                            </li> */}
 
-                            <li className="w-full">
+                            {/* <li className="w-full">
                                 <DashLink to='/dashboard/room'>
                                     <FaChalkboardUser size={24} />
                                     <p className="hidden md:inline">Interview</p>
                                 </DashLink>
-                            </li>
+                            </li> */}
 
                             {/* Posted job */}
                             <li className="w-full">
@@ -72,6 +72,21 @@ const DashNavItemsByRole = ({ role }) => {
                                 <DashLink to='/pricing'>
                                     <MdOutlinePayments size={24} />
                                     <p className="hidden md:inline">Payments</p>
+                                </DashLink>
+                            </li>
+
+                            {/* Payment History */}
+                            <li className="w-full">
+                                <DashLink to='/dashboard/payment_history'>
+                                    <FaHistory size={24} />
+                                    <p className="hidden md:inline">Payments History</p>
+                                </DashLink>
+                            </li>
+                            {/* Favorites  */}
+                            <li className="w-full">
+                                <DashLink to='/dashboard/favorites'>
+                                    <BsBookmarkPlus size={24} />
+                                    <p className="hidden md:inline">Favorites</p>
                                 </DashLink>
                             </li>
 

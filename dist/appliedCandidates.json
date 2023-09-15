@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "applicantName": "John Smith",
+        "applicantImage": "https://i.ibb.co/jDPFM9F/req-1.jpg",
+        "jobTitle": "Software Developer",
+        "applicantHourlyRate": 40,
+        "applicantRating": 4.7,
+        "applicantLocation": "San Francisco, CA",
+        "requiredJobSkills": ["JavaScript", "React", "Node.js"],
+        "applicantSkills": ["JavaScript", "React", "Node.js", "Python"],
+        "applicationDate": "2023-08-15"
+    },
+    {
+        "id": 2,
+        "applicantName": "Jane Doe",
+        "applicantImage": "https://i.ibb.co/41bpfKJ/req-2.jpg",
+        "jobTitle": "Software Developer",
+        "applicantHourlyRate": 45,
+        "applicantRating": 4.9,
+        "applicantLocation": "New York, NY",
+        "requiredJobSkills": ["Java", "Spring", "SQL"],
+        "applicantSkills": ["Java", "Spring", "SQL", "Hibernate"],
+        "applicationDate": "2023-08-16"
+    },
+    {
+        "id": 3,
+        "applicantName": "Alex Johnson",
+        "applicantImage": "https://digity.netlify.app/assets/images/team/1.png",
+        "jobTitle": "Software Developer",
+        "applicantHourlyRate": 50,
+        "applicantRating": 4.5,
+        "applicantLocation": "Seattle, WA",
+        "requiredJobSkills": ["Python", "Django", "REST API"],
+        "applicantSkills": ["Python", "Django", "REST API", "JavaScript"],
+        "applicationDate": "2023-08-17"
+    },
+    {
+        "id": 4,
+        "applicantName": "Emily Brown",
+        "applicantImage": "https://i.ibb.co/QnB7nyK/customer-4.png",
+        "jobTitle": "Software Developer",
+        "applicantHourlyRate": 42,
+        "applicantRating": 4.8,
+        "applicantLocation": "Austin, TX",
+        "requiredJobSkills": ["C#", ".NET", "Azure"],
+        "applicantSkills": ["C#", ".NET", "Azure", "SQL Server"],
+        "applicationDate": "2023-08-18"
+    },
+    {
+        "id": 5,
+        "applicantName": "Mark Wilson",
+        "applicantImage": "https://digity.netlify.app/assets/images/team/7.png",
+        "jobTitle": "Graphic Designer",
+        "applicantHourlyRate": 35,
+        "applicantRating": 4.6,
+        "applicantLocation": "Los Angeles, CA",
+        "requiredJobSkills": ["Adobe Photoshop", "Illustrator", "Typography"],
+        "applicantSkills": ["Adobe Photoshop", "Illustrator", "Typography", "InDesign"],
+        "applicationDate": "2023-08-19"
+    },
+    {
+        "id": 6,
+        "applicantName": "Sarah Lee",
+        "applicantImage": "https://digity.netlify.app/assets/images/team/8.png",
+        "jobTitle": "Graphic Designer",
+        "applicantHourlyRate": 30,
+        "applicantRating": 4.4,
+        "applicantLocation": "Chicago, IL",
+        "requiredJobSkills": ["Illustrator", "Logo Design", "Color Theory"],
+        "applicantSkills": ["Illustrator", "Logo Design", "Color Theory", "Sketch"],
+        "applicationDate": "2023-08-20"
+    },
+    {
+        "id": 7,
+        "applicantName": "Michael Chen",
+        "applicantImage": "https://digity.netlify.app/assets/images/team/4.png",
+        "jobTitle": "Graphic Designer",
+        "applicantHourlyRate": 38,
+        "applicantRating": 4.7,
+        "applicantLocation": "San Francisco, CA",
+        "requiredJobSkills": ["Adobe Creative Suite", "Layout Design", "Print Production"],
+        "applicantSkills": ["Adobe Creative Suite", "Layout Design", "Print Production", "Photoshop"],
+        "applicationDate": "2023-08-21"
+    },
+    {
+        "id": 8,
+        "applicantName": "Jessica Adams",
+        "applicantImage": "https://digity.netlify.app/assets/images/team/6.png",
+        "jobTitle": "Sales Representative",
+        "applicantHourlyRate": 25,
+        "applicantRating": 4.2,
+        "applicantLocation": "New York, NY",
+        "requiredJobSkills": ["Communication", "Negotiation", "CRM"],
+        "applicantSkills": ["Communication", "Negotiation", "CRM", "Lead Generation"],
+        "applicationDate": "2023-08-22"
+    },
+    {
+        "id": 9,
+        "applicantName": "David Miller",
+        "applicantImage": "https://i.ibb.co/6gPj1nr/customer-1.png",
+        "jobTitle": "Sales Representative",
+        "applicantHourlyRate": 28,
+        "applicantRating": 4.5,
+        "applicantLocation": "Los Angeles, CA",
+        "requiredJobSkills": ["Presentation", "Relationship Building", "Prospecting"],
+        "applicantSkills": ["Presentation", "Relationship Building", "Prospecting", "Salesforce"],
+        "applicationDate": "2023-08-23"
+    },
+    {
+        "id": 10,
+        "applicantName": "Olivia Clark",
+        "applicantImage": "https://i.ibb.co/C23DwmC/customer-2.png",
+        "jobTitle": "Sales Representative",
+        "applicantHourlyRate": 23,
+        "applicantRating": 4.0,
+        "applicantLocation": "Chicago, IL",
+        "requiredJobSkills": ["Cold Calling", "Closing Deals", "Market Research"],
+        "applicantSkills": ["Cold Calling", "Closing Deals", "Market Research", "HubSpot"],
+        "applicationDate": "2023-08-24"
+    }
+]

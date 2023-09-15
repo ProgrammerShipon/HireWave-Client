@@ -20,7 +20,7 @@ import ApplyJob from "../Pages/ApplyJob";
 import BrowseJobs from "../Pages/BrowseJobs";
 import CandidateDetails from "../Pages/CandidateDetails";
 import Candidates from "../Pages/Candidates";
-import Conference from "../Pages/Conference";
+// import Conference from "../Pages/Conference";
 import Contact from "../Pages/Contact";
 import EventDetails from "../Pages/EventDetails";
 import Events from "../Pages/Events";
@@ -30,7 +30,6 @@ import JobDetails from "../Pages/JobDetails";
 import Learning from "../Pages/Learning";
 import LearningDetails from "../Pages/LearningDetails";
 import Login from "../Pages/Login";
-import PaymentFail from "../Pages/PaymentFail";
 import PostJob from "../Pages/PostJob";
 import Pricing from "../Pages/Pricing";
 import Recruiters from "../Pages/Recruiters";
@@ -44,6 +43,8 @@ import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
 import SelectRole from "../SignUpSteps/SelectRole";
 import PrivateRoute from "./PrivateRoute";
 import Favorites from "../Dashboard/Favorites";
+import PaymentSuccess from "../Pages/PaymentSuccess";
+import PaymentFail from "../Pages/PaymentFail";
 import PaymentHistory from "../Components/DashComponents/PaymentHistory";
 
 const baseURL = 'https://hire-wave.onrender.com/api';
@@ -188,19 +189,19 @@ const Router = createBrowserRouter([
       },
 
       // Recruiter routes
-      {
-        path: "messages",
-        element: < Chat />
-      },
-      {
-        path: "messages/:id",
-        element: < Chat />,
-        loader: ({ params }) => fetch(`${baseURL}/candidates/${params.id}`)
-      },
-      {
-        path: "room",
-        element: <Conference />,
-      },
+      // {
+      //   path: "messages",
+      //   element: < Chat />
+      // },
+      // {
+      //   path: "messages/:id",
+      //   element: < Chat />,
+      //   loader: ({ params }) => fetch(`${baseURL}/candidates/${params.id}`)
+      // },
+      // {
+      //   path: "room",
+      //   element: <Conference />,
+      // },
       {
         path: "postedJobs",
         element: <PostedJobs />,
@@ -213,10 +214,10 @@ const Router = createBrowserRouter([
         path: "payment_history",
         element: <PaymentHistory />,
       },
-      // {
-      //   path: "payment/successful/:tran_id",
-      //   element: <PaymentSuccess />,
-      // },
+      {
+        path: "payment/successful/:tran_id",
+        element: <PaymentSuccess />,
+      },
       {
         path: "payment/fail",
         element: <PaymentFail />,
