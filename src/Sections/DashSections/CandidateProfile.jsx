@@ -254,17 +254,6 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                                 />
                             </label>
 
-                            <div className='flex gap-2'>
-                                <input
-                                    id='openToWork'
-                                    type="checkbox"
-                                    {...register("openToWork")}
-                                />
-                                <label htmlFor="openToWork" className='text-black text-base'>
-                                    Open to contract to hire
-                                </label>
-                            </div>
-
                             <select
                                 {...register("jobType")}
                                 className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
