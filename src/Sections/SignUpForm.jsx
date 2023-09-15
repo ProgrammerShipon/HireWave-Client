@@ -10,7 +10,7 @@ import { BiUserPin } from 'react-icons/bi';
 import { BsShieldCheck } from 'react-icons/bs';
 
 const SignUpForm = () => {
-  const { signUpUser, profileUpdate } = useAuth();
+  const { signUpUser, profileUpdate, setLoading } = useAuth();
 
   // navigate
   const navigate = useNavigate();
@@ -45,6 +45,7 @@ const SignUpForm = () => {
             navigate(from, { replace: true });
           })
           .catch((error) => {
+            setLoading(false)
             toast.error(error.message, {
               position: "top-right",
               autoClose: 4000,
