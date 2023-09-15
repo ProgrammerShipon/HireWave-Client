@@ -72,7 +72,6 @@ const NavItems = () => {
 
             {/* recruiters route */}
             {
-
                 role === 'recruiter' && <>
                     <li>
                         <ActiveLink to='/find_talents'>

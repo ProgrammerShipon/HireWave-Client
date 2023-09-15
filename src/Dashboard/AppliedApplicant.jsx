@@ -1,18 +1,14 @@
-import React from 'react';
-import DashTitle from '../Components/DashComponents/DashTitle';
-import useAllJobs from '../Hooks/useAllJobs';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useEffect } from 'react';
-import useRecruiterRole from '../Hooks/useRecruiterRole';
-import useAppliedCompany from '../Hooks/useAppliedCompany';
-import PageLoader from '../Components/PageLoader';
+import DashTitle from '../Components/DashComponents/DashTitle';
 import PostedJobTableRow from '../Components/DashComponents/PostedJobTableRow';
+import PageLoader from '../Components/PageLoader';
+import useAllJobs from '../Hooks/useAllJobs';
+import useAppliedCompany from '../Hooks/useAppliedCompany';
 
 const AppliedApplicant = () => {
 
     const [appliedCompany] = useAppliedCompany();
-    console.log(appliedCompany)
     const [allJobsData, loading] = useAllJobs();
     const [filteredData, setFilteredData] = useState(allJobsData);
     const { register, watch, handleSubmit, reset } = useForm();

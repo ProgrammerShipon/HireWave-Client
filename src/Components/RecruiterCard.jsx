@@ -4,10 +4,9 @@ import { Link, useLocation } from "react-router-dom";
 import { BiMap } from "react-icons/bi";
 
 // react rating
-import { Rating, Star } from '@smastrom/react-rating'
-import '@smastrom/react-rating/style.css'
-import { useEffect } from "react";
-import { useState } from "react";
+import { Rating, Star } from '@smastrom/react-rating';
+import '@smastrom/react-rating/style.css';
+import { useEffect, useState } from "react";
 import useReview from "../Hooks/useReview";
 
 const RecruiterCard = ({ recruiter }) => {
