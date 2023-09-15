@@ -6,7 +6,7 @@ import useAuth from '../Hooks/useAuth';
 import { FaGithub } from 'react-icons/fa';
 
 const SocialLogin = () => {
-  const { googleSignIn, gitHubSignIn } = useAuth();
+  const { googleSignIn, gitHubSignIn, setLoading } = useAuth();
 
   // navigate
   const navigate = useNavigate();
@@ -21,6 +21,7 @@ const SocialLogin = () => {
         return navigate(from, { replace: true });
       })
       .catch((error) => {
+        setLoading(false)
         if (error.message) {
           toast.error(error.message, {
             position: "top-center",
@@ -43,6 +44,7 @@ const SocialLogin = () => {
         return navigate(from, { replace: true });
       })
       .catch((error) => {
+        setLoading(false)
         if (error.message) {
           toast.error(error.message, {
             position: "top-center",

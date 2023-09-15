@@ -1,26 +1,46 @@
 import { useState } from 'react';
 import CheckIcon from '../assets/images/check.png';
-import useAuth from '../Hooks/useAuth';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
+import useCurrentRecruiter from '../Hooks/useCurrentRecruiter';
 
 const PricingBody = () => {
     const [onOff, setOnOff] = useState(true);
-    const { currentUser } = useAuth();
+    const [currentRecruiter, loadingRecruiters, refetchRecruiters] = useCurrentRecruiter();
     const [axiosSecure] = useAxiosSecure();
     // console.log(currentUser)
-    const handlePayment = () => {
+    const handlePayment71 = () => {
         const paymentInfo = {
-            recruiterId: currentUser?._id,
+            recruiterId: currentRecruiter?._id,
             receiver: "HireWave",
-            amount: 700,
+            amount: 71,
             paymentTimeline: "monthly",
-            recruiterName: currentUser.name,
-            companyLogo: currentUser?.image
+            recruiterName: currentRecruiter.name,
+            companyLogo: currentRecruiter?.image
         }
-        // console.log(paymentInfo)
+        console.log(paymentInfo)
         axiosSecure.post('/payment', paymentInfo)
             .then(res => {
-                // console.log(res.data)
+                console.log(res.data)
+                window.location.replace(res.data.url)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+    const handlePayment121 = () => {
+        const paymentInfo = {
+            recruiterId: currentRecruiter?._id,
+            receiver: "HireWave",
+            amount: 121,
+            paymentTimeline: "monthly",
+            recruiterName: currentRecruiter.name,
+            companyLogo: currentRecruiter?.image
+        }
+        console.log(paymentInfo)
+        axiosSecure.post('/payment', paymentInfo)
+            .then(res => {
+                console.log(res.data)
                 window.location.replace(res.data.url)
             })
             .catch(error => {
@@ -105,7 +125,7 @@ const PricingBody = () => {
                             </li>
                         </ul>
 
-                        <button onClick={handlePayment} className='bg-green py-4 border border-green text-white uppercase rounded-md hover:bg-white hover:text-dark shadow-lg duration-300 w-full mt-8'>Buy Now</button>
+                        <button onClick={handlePayment71} className='bg-green py-4 border border-green text-white uppercase rounded-md hover:bg-white hover:text-dark shadow-lg duration-300 w-full mt-8'>Buy Now</button>
                     </div>
 
                     {/* single card */}
@@ -134,7 +154,7 @@ const PricingBody = () => {
                             </li>
                         </ul>
 
-                        <button className='bg-green py-4 border border-green text-white uppercase rounded-md hover:bg-white hover:text-dark shadow-lg duration-300 w-full mt-8'>Buy Now</button>
+                        <button onClick={handlePayment121} className='bg-green py-4 border border-green text-white uppercase rounded-md hover:bg-white hover:text-dark shadow-lg duration-300 w-full mt-8'>Buy Now</button>
                     </div>
 
 

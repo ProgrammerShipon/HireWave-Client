@@ -10,7 +10,7 @@ import { HiOutlineCurrencyDollar, HiOutlineUserGroup } from "react-icons/hi";
 import { LuLayoutTemplate } from "react-icons/lu";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import CustomModal from "../Components/CustomModal";
 import Divider from "../Components/Divider";
@@ -65,15 +65,15 @@ export default function PostJobForm() {
         else if (e == "cancel") setIsDemoModalOpen(false)
     }
 
-    const currentDate = moment().format('ddd MMM YYYY HH:mm:ss [GMT]ZZ');
+    const currentDate = new Date();
     const selectedSubCategory = watch('sub_category', '');
-
+    const navigate = useNavigate();
     //onSubmit function
     const onSubmit = (data) => {
-        const location = `${currentRecruiter?.location[0]}, ${currentRecruiter?.location[1]}`
+        const location = `${currentRecruiter?.location}`
         const newJob = {
             title: data?.title,
-            category: currentRecruiter?.category,
+            category: selectedSubCategory,
             jobType: data?.jobType,
             salary: data?.salary,
             experience: data?.experience,
@@ -103,6 +103,7 @@ export default function PostJobForm() {
                         timer: 2500
                     });
                     reset();
+                    navigate('/dashboard/postedJobs', { replace: true })
                 }
             });
     }
