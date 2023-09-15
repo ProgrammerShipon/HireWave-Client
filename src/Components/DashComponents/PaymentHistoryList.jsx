@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { BsCurrencyDollar } from "react-icons/bs";
 
 const PaymentHistoryList = ({ pay }) => {
     const { recruiterId, receiver, amount, tran_id, paymentTimeline, recruiterName, companyLogo, purchaseDate } = pay;
@@ -17,7 +17,7 @@ const PaymentHistoryList = ({ pay }) => {
                         to={`/candidate_details/${_id}`}
                         className="font-medium text-dark group-hover:text-green duration-300"
                     > */}
-                        {recruiterName}
+                    {recruiterName}
                     {/* </Link> */}
                     {/* <p className="text-lightGray">{email}</p> */}
                 </div>
@@ -26,7 +26,9 @@ const PaymentHistoryList = ({ pay }) => {
             <td className="px-3 py-4 text-center capitalize">{receiver}</td>
 
             <td className="px-3 py-4 text-center">
-                {amount}
+                <div className='flex gap-1 items-center justify-center'>
+                    <BsCurrencyDollar /> {amount}
+                </div>
             </td>
             <td className="px-3 py-4 text-center">
                 {tran_id}

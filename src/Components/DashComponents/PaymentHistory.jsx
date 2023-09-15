@@ -23,7 +23,7 @@ const PaymentHistory = () => {
                 </thead>
                 <tbody>
                     {
-                        paymentHistory.length > 0 ? paymentHistory.map((pay) => (
+                        paymentHistory?.length > 0 ? paymentHistory?.map((pay) => (
                             <PaymentHistoryList
                                 key={pay._id}
                                 pay={pay}
