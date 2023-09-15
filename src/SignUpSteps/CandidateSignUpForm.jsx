@@ -49,7 +49,7 @@ const CandidateSignUpForm = () => {
             about: [],
             education: [],
             experience:
-                data.position == "" && data.organization == "" && data.companyLocation == "" && data.startDate == "" && data.endDate == "" ?
+                data.position === "" && data.organization === "" && data.companyLocation === "" && data.startDate === "" && data.endDate === "" ?
                     [] :
                     [
                         {
@@ -72,6 +72,7 @@ const CandidateSignUpForm = () => {
 
         // Step Finish 
         if (finish) {
+            console.log(newData)
             setFinishLoading(true)
             return axiosSecure.post("/candidates", newData)
                 .then((data) => {
@@ -199,9 +200,9 @@ const CandidateSignUpForm = () => {
                             <h1 className='font-medium text-xl text-lightGray drop-shadow-lg'>Choose category that fits best with your job title</h1>
 
                             <div className='flex flex-wrap gap-4'>
-                                {allCategoriesData.map((category) => (
+                                {allCategoriesData.map((category, index) => (
                                     <div
-                                        key={category.name}
+                                        key={index}
                                         className={`w-fit ${selectedCategory === category.name
                                             ? 'bg-purple/20 text-purple font-medium drop-shadow-lg shadow-lg cursor-pointer'
                                             : errors.job_category ? 'border border-red-500'
@@ -261,7 +262,7 @@ const CandidateSignUpForm = () => {
                                     >
                                         <option value="" disable>Select</option>
                                         {
-                                            countryData?.map(country => <option key={country.isoCode} value={country.name}>{country.name}</option>)
+                                            countryData?.map((country, index) => <option key={index} value={country.name}>{country.name}</option>)
                                         }
                                     </select>
                                 </label>
@@ -274,7 +275,7 @@ const CandidateSignUpForm = () => {
                                     >
                                         <option value="" disable>Select</option>
                                         {
-                                            stateData?.map(state => <option key={state.isoCode} value={state.name}>{state.name}</option>)
+                                            stateData?.map(state => <option value={state.name}>{state.name}</option>)
                                         }
                                     </select>
                                 </label>
@@ -498,9 +499,9 @@ const CandidateSignUpForm = () => {
                                 <div className='flex flex-wrap items-center gap-4'>
 
                                     {/* Suggested skills array map */}
-                                    {['Customer Service', 'Communication skills', 'Leadership', 'Maintenance', 'Problem Solving', 'Stress Management', 'Presentation Skill', 'Adaptability'].map((suggestedSkill) => (
+                                    {['Customer Service', 'Communication skills', 'Leadership', 'Maintenance', 'Problem Solving', 'Stress Management', 'Customer Service', 'Presentation Skill', 'Adaptability'].map((suggestedSkill, index) => (
                                         <div
-                                            key={suggestedSkill}
+                                            key={index}
                                             className='flex items-center gap-2 px-3 py-2 border border-gray/40 hover:border-purple hover:shadow-lg rounded-md cursor-pointer group duration-300'
                                             onClick={() => selectSkill(suggestedSkill)}
                                         >

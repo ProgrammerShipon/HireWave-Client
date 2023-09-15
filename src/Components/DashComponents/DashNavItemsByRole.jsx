@@ -70,7 +70,7 @@ const DashNavItemsByRole = ({ role }) => {
                                     <p className="hidden md:inline">Payments</p>
                                 </DashLink>
                             </li>
-                            {/* favorites  */}
+                            {/* Payment  */}
                             {/* <li className="w-full">
                                 <DashLink to='/dashboard/favorites'>
                                     <BsBookmarkPlus size={24} />

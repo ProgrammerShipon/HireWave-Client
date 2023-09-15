@@ -195,7 +195,7 @@ const Router = createBrowserRouter([
       {
         path: "messages/:id",
         element: < Chat />,
-        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/candidates/${params.id}`)
+        loader: ({ params }) => fetch(`${baseURL}/candidates/${params.id}`)
       },
       {
         path: "room",
@@ -208,6 +208,14 @@ const Router = createBrowserRouter([
       {
         path: "applicant",
         element: <AppliedApplicant />,
+      },
+      {
+        path: "payment/successful/:tran_id",
+        element: <PaymentSuccess />,
+      },
+      {
+        path: "payment/fail",
+        element: <PaymentFail />,
       },
       {
         path: "favorites",
