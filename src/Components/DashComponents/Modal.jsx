@@ -4,8 +4,8 @@ import { Tooltip } from 'react-tooltip';
 import { useForm } from 'react-hook-form';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
-const Modal = ({ candidatesData }) => {
-    const { image, title, name } = candidatesData;
+const Modal = ({ candidatesData, refetch }) => {
+    const { _id, image, title, name } = candidatesData;
     const [axiosSecure] = useAxiosSecure()
     const [isOpen, setIsOpen] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -14,14 +14,15 @@ const Modal = ({ candidatesData }) => {
     const handleImageUpload = (data) => {
 
         const profile = {
-            url:data.photoURL
+            url: data.photoURL
         }
         console.log(profile)
-        axiosSecure.patch(`/candidates/profilePhoto/64fde9b326697aabef2730c7`, profile)
+        axiosSecure.patch(`/candidates/profilePhoto/${_id}`, profile)
             .then(res => {
                 console.log(res.data)
                 if (res.status === 200) {
                     setIsOpen(!isOpen)
+                    refetch()
                 }
 
             })
@@ -37,11 +38,12 @@ const Modal = ({ candidatesData }) => {
             visibility: data.visibility
         }
         console.log(updateData)
-        axiosSecure.patch(`/candidates/profile/64fde9b326697aabef2730c7`, updateData)
+        axiosSecure.patch(`/candidates/profile/${_id}`, updateData)
             .then(res => {
                 console.log(res.data)
                 if (res.status === 200) {
                     setIsOpen(!isOpen)
+                    refetch()
                 }
 
             })

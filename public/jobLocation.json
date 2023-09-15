@@ -1,6 +1,6 @@
 [
   {
-    "_id": "01",
+    
     "name": "United States",
     "status": "hot",
     "image": "https://i.ibb.co/bvHKfZn/1.jpg",
@@ -8,7 +8,7 @@
     "companies": 1200
   },
   {
-    "_id": "02",
+    
     "name": "Canada",
     "status": "trending",
     "image": "https://i.ibb.co/wYFtfjT/2.jpg",
@@ -16,7 +16,7 @@
     "companies": 800
   },
   {
-    "_id": "03",
+    
     "name": "United Kingdom",
     "status": "hot",
     "image": "https://i.ibb.co/Dths4CF/3.jpg",
@@ -24,7 +24,7 @@
     "companies": 1000
   },
   {
-    "_id": "04",
+    
     "name": "Australia",
     "status": "trending",
     "image": "https://i.ibb.co/qx41jYs/4.jpg",
@@ -32,7 +32,7 @@
     "companies": 600
   },
   {
-    "_id": "05",
+    
     "name": "Germany",
     "status": "hot",
     "image": "https://i.ibb.co/xq0VpvQ/5.jpg",
@@ -40,7 +40,7 @@
     "companies": 900
   },
   {
-    "_id": "06",
+    
     "name": "Italy",
     "status": "trending",
     "image": "https://i.ibb.co/FXXkxq0/6.jpg",
