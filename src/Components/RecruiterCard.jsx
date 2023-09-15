@@ -13,7 +13,6 @@ const RecruiterCard = ({ recruiter }) => {
 	const [reviewData, loading] = useReview();
 	const { pathname } = useLocation();
 	const { _id, name, email, image, location } = recruiter;
-
 	const [review, setReview] = useState([]);
 
 	useEffect(() => {

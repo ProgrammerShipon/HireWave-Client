@@ -15,6 +15,7 @@ import { SlLocationPin } from 'react-icons/sl';
 import CoverLetterTextarea from '../Components/CoverLetterTextarea';
 import useCurrentCandidate from '../Hooks/useCurrentCandidate';
 import Swal from 'sweetalert2';
+import DOMPurify from 'dompurify';
 
 const ApplyJobForm = ({ jobData }) => {
     const { currentUser } = useAuth();
@@ -112,7 +113,7 @@ const ApplyJobForm = ({ jobData }) => {
                                     <GetAgoTime datetime={postedDate} />
                                 </div>
 
-                                <div className="postJob" dangerouslySetInnerHTML={{ __html: description }}></div>
+                                <div className="postJob" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}></div>
 
                                 <Link to={`/job_details/${_id}`} className='text-blue-500 hover:underline'>View Job Posting</Link>
                             </div>

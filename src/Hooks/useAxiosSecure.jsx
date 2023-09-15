@@ -20,7 +20,6 @@ const useAxiosSecure = () => {
             return config;
         });
     }, []);
-
     return [axiosSecure];
 };
 

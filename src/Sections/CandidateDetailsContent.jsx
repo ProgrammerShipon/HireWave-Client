@@ -66,6 +66,14 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
         navigate('/dashboard/messages')
     }
 
+    const handleAddToFavorite =() => {
+        const newData={
+            candidateId: _id,
+            recruiterEmail: currentUser?.email
+        }
+        console.log(newData);
+    }
+
     return (
         <section className="py-20 md:py-[120px] duration-300">
             <div className="container">
@@ -120,7 +128,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                             </p>
 
                             <p className="flex items-center gap-[2px] font-light text-dark ">
-                                <BiMap className="text-lightGray" /> {location[0]}, {location[1]}
+                                <BiMap className="text-lightGray" /> {location}
                             </p>
                             <p className="text-gray">Member since {joinDate}</p>
                         </div>
@@ -133,19 +141,19 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                             {
                                 socialLink.map((link, index) => <p
                                     key={index}
-                                    className={`h-9 w-9 flex items-center justify-center rounded-lg border text-green border-green shadow-lg shadow-green/20`}
+                                    className={`h-9 w-9 flex items-center justify-center rounded-lg border text-green border-green shadow-lg shadow-green/20 cursor-pointer`}
                                 >
-                                    {link.linkedin && <FaLinkedin size="20px" />}
-                                    {link.github && <FaGithub size="20px" />}
-                                    {link.twitter && <FaTwitter size="20px" />}
-                                    {link.facebook && <FaFacebookF size="20px" />}
+                                    {link?.linkedin && <FaLinkedin size="20px" />}
+                                    {link?.github && <FaGithub size="20px" />}
+                                    {link?.twitter && <FaTwitter size="20px" />}
+                                    {link?.facebook && <FaFacebookF size="20px" />}
                                 </p>)
                             }
                         </div>
 
                         {/* button */}
                         <div className="flex flex-col items-center gap-3">
-                            <button className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
+                            <button onClick={handleAddToFavorite} className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
                                 Add to Favorite{" "}
                                 <BsBookmarkPlus
                                     size="21"

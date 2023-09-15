@@ -6,6 +6,7 @@ import { GiLevelEndFlag } from 'react-icons/gi';
 import { BsLink45Deg, BsCurrencyDollar } from 'react-icons/bs';
 import { LiaIndustrySolid } from 'react-icons/lia';
 import { SlLocationPin } from 'react-icons/sl';
+import DOMPurify from "dompurify";
 
 const ViewApplicationDetails = ({ jobData, appliedJob }) => {
     const { title, companyName, category, location, postedDate, description, skills, experience, salary, open } = jobData;
@@ -67,7 +68,7 @@ const ViewApplicationDetails = ({ jobData, appliedJob }) => {
                                     <GetAgoTime datetime={postedDate} />
                                 </div>
 
-                                <div className="jobId" dangerouslySetInnerHTML={{ __html: description }}></div>
+                                <div className="postJob" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}></div>
 
                                 <Link to={`/job_details/${jobId}`} className='text-blue-500 hover:underline'>View Job Posting</Link>
                             </div>
