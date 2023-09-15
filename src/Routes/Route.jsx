@@ -45,6 +45,7 @@ import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
 import SelectRole from "../SignUpSteps/SelectRole";
 import PrivateRoute from "./PrivateRoute";
 import Favorites from "../Dashboard/Favorites";
+import PaymentHistory from "../Components/DashComponents/PaymentHistory";
 
 const baseURL = 'https://hire-wave.onrender.com/api';
 // const baseURL = 'https://hire-wave-server.vercel.app/api';
@@ -208,6 +209,10 @@ const Router = createBrowserRouter([
       {
         path: "applicant",
         element: <AppliedApplicant />,
+      },
+      {
+        path: "payment_history",
+        element: <PaymentHistory />,
       },
       {
         path: "payment/successful/:tran_id",

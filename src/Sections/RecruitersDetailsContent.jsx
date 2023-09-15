@@ -115,7 +115,7 @@ export default function RecruitersDetailsContent({ recruiterData }) {
                                     <h3 className="text-xl font-light text-lightGray">{industry}</h3>
 
                                     <p className="hidden md:flex items-center gap-[2px] font-light text-dark">
-                                        <BiMap className="text-lightGray" /> {location[0]}, {location[1]}
+                                        <BiMap className="text-lightGray" />dsfad {location}
                                     </p>
                                 </div>
                             </div>
