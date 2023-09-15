@@ -1,13 +1,10 @@
-import React from 'react';
-import DashTitle from '../Components/DashComponents/DashTitle';
-import useAllJobs from '../Hooks/useAllJobs';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useEffect } from 'react';
-import useRecruiterRole from '../Hooks/useRecruiterRole';
-import useAppliedCompany from '../Hooks/useAppliedCompany';
-import PageLoader from '../Components/PageLoader';
+import DashTitle from '../Components/DashComponents/DashTitle';
 import PostedJobTableRow from '../Components/DashComponents/PostedJobTableRow';
+import PageLoader from '../Components/PageLoader';
+import useAllJobs from '../Hooks/useAllJobs';
+import useAppliedCompany from '../Hooks/useAppliedCompany';
 
 const AppliedApplicant = () => {
 
@@ -30,7 +27,7 @@ const AppliedApplicant = () => {
         const searchTitle = searchTerm ? searchTerm.toLowerCase() : "";
         const searchCategory = category ? category.toLowerCase() : "";
 
-        const filter = allJobsData.filter((job) =>
+        let filter = allJobsData.filter((job) =>
             (!searchTitle || job.title.toLowerCase().includes(searchTitle)) &&
             (!status || job.status.toLowerCase().includes(status.toLowerCase())) &&
             (!searchCategory || job.category.toLowerCase().includes(searchCategory))

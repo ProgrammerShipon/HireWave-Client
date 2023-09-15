@@ -30,6 +30,8 @@ import JobDetails from "../Pages/JobDetails";
 import Learning from "../Pages/Learning";
 import LearningDetails from "../Pages/LearningDetails";
 import Login from "../Pages/Login";
+import PaymentFail from "../Pages/PaymentFail";
+import PaymentSuccess from "../Pages/PaymentSuccess";
 import PostJob from "../Pages/PostJob";
 import Pricing from "../Pages/Pricing";
 import Recruiters from "../Pages/Recruiters";
@@ -42,11 +44,9 @@ import CandidateSignUpForm from "../SignUpSteps/CandidateSignUpForm";
 import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
 import SelectRole from "../SignUpSteps/SelectRole";
 import PrivateRoute from "./PrivateRoute";
-import PaymentSuccess from "../Pages/PaymentSuccess";
-import PaymentFail from "../Pages/PaymentFail";
 
-const baseURL = 'https://hire-wave-server.vercel.app/api';
-// const baseURL = 'http://localhost:3030/api';
+// const baseURL = 'https://hire-wave-server.vercel.app/api';
+const baseURL = 'http://localhost:3030/api';
 
 const Router = createBrowserRouter([
   {
