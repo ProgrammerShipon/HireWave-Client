@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import AppliedApplicant from "../Dashboard/AppliedApplicant";
 import CandidateList from "../Dashboard/CandidateList";
 import ChangePassword from "../Dashboard/ChangePassword";
-import Chat from "../Dashboard/Chat";
+// import Chat from "../Dashboard/Chat";
 import DashboardHome from "../Dashboard/DashboardHome";
 import ManageJobs from "../Dashboard/ManageJobs";
 import ManageUsers from "../Dashboard/ManageUsers";
@@ -20,7 +20,7 @@ import ApplyJob from "../Pages/ApplyJob";
 import BrowseJobs from "../Pages/BrowseJobs";
 import CandidateDetails from "../Pages/CandidateDetails";
 import Candidates from "../Pages/Candidates";
-import Conference from "../Pages/Conference";
+// import Conference from "../Pages/Conference";
 import Contact from "../Pages/Contact";
 import EventDetails from "../Pages/EventDetails";
 import Events from "../Pages/Events";
@@ -47,9 +47,9 @@ import PaymentFail from "../Pages/PaymentFail";
 import Favorites from "../Dashboard/Favorites";
 import PaymentHistory from "../Components/DashComponents/PaymentHistory";
 
-const baseURL = 'https://hire-wave.onrender.com/api';
+// const baseURL = 'https://hire-wave.onrender.com/api';
 // const baseURL = 'https://hire-wave-server.vercel.app/api';
-// const baseURL = 'http://localhost:3030/api';
+const baseURL = 'http://localhost:3030/api';
 
 const Router = createBrowserRouter([
   {
@@ -189,19 +189,19 @@ const Router = createBrowserRouter([
       },
 
       // Recruiter routes
-      {
-        path: "messages",
-        element: < Chat />
-      },
-      {
-        path: "messages/:id",
-        element: < Chat />,
-        loader: ({ params }) => fetch(`${baseURL}/candidates/${params.id}`)
-      },
-      {
-        path: "room",
-        element: <Conference />,
-      },
+      // {
+      //   path: "messages",
+      //   element: < Chat />
+      // },
+      // {
+      //   path: "messages/:id",
+      //   element: < Chat />,
+      //   loader: ({ params }) => fetch(`${baseURL}/candidates/${params.id}`)
+      // },
+      // {
+      //   path: "room",
+      //   element: <Conference />,
+      // },
       {
         path: "postedJobs",
         element: <PostedJobs />,

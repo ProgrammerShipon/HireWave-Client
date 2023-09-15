@@ -18,7 +18,7 @@ import useAllCategories from "../Hooks/useAllCategories";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useCurrentRecruiter from "../Hooks/useCurrentRecruiter";
 import useSkills from "../Hooks/useSkills";
-import DOMPurify from "dompurify";
+// import DOMPurify from "dompurify";
 
 const modules = {
     toolbar: [
@@ -443,7 +443,7 @@ export default function PostJobForm() {
                                     <h2 className="text-3xl font-medium text-dark mb-4">Description</h2>
 
                                     {/* Requirements */}
-                                    <div className="mb-4" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}></div>
+                                    {/* <div className="mb-4" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}></div> */}
 
                                     <Divider />
 

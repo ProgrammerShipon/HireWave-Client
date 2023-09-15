@@ -54,7 +54,7 @@ const LearningDetailsBody = () => {
           {/* left content */}
           <div className="lg:col-span-2">
             {/* Video */}
-            <div className=" rounded-lg overflow-hidden">
+            {/* <div className=" rounded-lg overflow-hidden">
               <iframe
                 className="w-full h-52 sm:h-[300px] md:h-[400px] lg:h-[450px] duration-300"
                 src={videoLink}
@@ -62,7 +62,7 @@ const LearningDetailsBody = () => {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen
               ></iframe>
-            </div>
+            </div> */}
 
 
             {/* Title */}

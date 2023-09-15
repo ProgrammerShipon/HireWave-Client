@@ -18,56 +18,56 @@ const Home = () => {
     return (
         <>
             {/* page title */}
-            <Helmet>
+            {/* <Helmet>
                 <title>Hire Wave - Hiring agency and communication platform</title>
-            </Helmet>
+            </Helmet> */}
 
-            <HeroBanner />
+            {/* <HeroBanner /> */}
             <TopCategories />
-            {
+            {/* {
                 currentUser.role !== 'recruiter' && <>
                     <FeaturedJobs />
-                    {/* border */}
+                    border
                     <Divider />
                 </>
 
-            }
+            } */}
 
-            <SpecialFeatures />
-            {/* border */}
-            <Divider />
+            {/* <SpecialFeatures />
+            border
+            <Divider /> */}
 
-            {
+            {/* {
                 currentUser.role !== 'candidate' &&
                 <>
                     <TopCandidates />
-                    {/* border */}
+                    border
                     <Divider />
                 </>
-            }
+            } */}
 
-            {
+            {/* {
                 currentUser.role !== 'recruiter' &&
                 <><TopRecruiters />
-                    {/* border */}
+                    border
                     <Divider />
                 </>
-            }
+            } */}
 
-            {
+            {/* {
                 currentUser.role !== 'recruiter' &&
                 <><JobByLocation />
-                    {/* border */}
+                    border
                     <Divider />
                 </>
-            }
+            } */}
 
-            <Partners />
+            {/* <Partners /> */}
             {/* border */}
-            <Divider />
+            {/* <Divider /> */}
 
-            <Reviews />
-            <GetStart />
+            {/* <Reviews /> */}
+            {/* <GetStart /> */}
         </>
     );
 };

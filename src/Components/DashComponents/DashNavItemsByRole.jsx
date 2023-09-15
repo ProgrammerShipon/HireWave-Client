@@ -24,31 +24,31 @@ const DashNavItemsByRole = ({ role }) => {
                                 <p className="hidden md:inline">My Applications</p>
                             </DashLink>
                         </li>
-                        <li className="w-full">
+                        {/* <li className="w-full">
                             <DashLink to='/dashboard/messages'>
                                 <BiMessageRoundedDetail size={24} />
                                 <p className="hidden md:inline">Messages</p>
                             </DashLink>
-                        </li>
+                        </li> */}
                     </> :
 
                     // recruiter routes
                     role === 'recruiter' ?
                         <>
                             {/* Messages */}
-                            <li className="w-full">
+                            {/* <li className="w-full">
                                 <DashLink to='/dashboard/messages'>
                                     <BiMessageRoundedDetail size={24} />
                                     <p className="hidden md:inline">Messages</p>
                                 </DashLink>
-                            </li>
+                            </li> */}
 
-                            <li className="w-full">
+                            {/* <li className="w-full">
                                 <DashLink to='/dashboard/room'>
                                     <FaChalkboardUser size={24} />
                                     <p className="hidden md:inline">Interview</p>
                                 </DashLink>
-                            </li>
+                            </li> */}
 
                             {/* Posted job */}
                             <li className="w-full">
