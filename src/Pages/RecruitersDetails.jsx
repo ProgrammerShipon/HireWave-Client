@@ -3,6 +3,7 @@ import Breadcrumbs from "../Components/Breadcrumbs";
 import RecruitersDetailsContent from "../Sections/RecruitersDetailsContent";
 import Divider from "../Components/Divider";
 import { useLoaderData } from "react-router-dom";
+import PageLoader from "../Components/PageLoader";
 
 export default function RecruitersDetails() {
   const singleRecruiter = useLoaderData();
@@ -17,7 +18,7 @@ export default function RecruitersDetails() {
 
       {/* sections */}
       {
-        singleRecruiter.length > 0 ? <RecruitersDetailsContent recruiterData={singleRecruiter} /> : <h1 className="text-4xl">Loading ...</h1>
+        singleRecruiter.length > 0 ? <RecruitersDetailsContent recruiterData={singleRecruiter} /> : <PageLoader />
       }
 
       {/* border */}
