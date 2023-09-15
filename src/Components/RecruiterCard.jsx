@@ -57,7 +57,7 @@ const RecruiterCard = ({ recruiter }) => {
 			{/* location */}
 			<div className="flex items-center gap-1 mt-3 text-gray">
 				<BiMap />
-				<p className="">{location[0]}, {location[1]}</p>
+				<p className="">{location}</p>
 			</div>
 
 

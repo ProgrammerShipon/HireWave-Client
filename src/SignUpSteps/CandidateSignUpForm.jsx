@@ -72,6 +72,7 @@ const CandidateSignUpForm = () => {
 
         // Step Finish 
         if (finish) {
+            console.log(newData)
             setFinishLoading(true)
             return axiosSecure.post("/candidates", newData)
                 .then((data) => {

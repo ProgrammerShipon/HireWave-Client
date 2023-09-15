@@ -210,6 +210,14 @@ const Router = createBrowserRouter([
         element: <AppliedApplicant />,
       },
       {
+        path: "payment/successful/:tran_id",
+        element: <PaymentSuccess />,
+      },
+      {
+        path: "payment/fail",
+        element: <PaymentFail />,
+      },
+      {
         path: "favorites",
         element: <Favorites />,
       },
