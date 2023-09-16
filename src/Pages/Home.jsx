@@ -52,16 +52,9 @@ const Home = () => {
 
             {
                 currentUser.role !== 'recruiter' &&
-                <><JobByLocation />
+                <>
+                    <JobByLocation />
                     {/* border */}
-                    <Divider />
-                </>
-            }
-
-            {
-                currentUser.role !== 'recruiter' &&
-                <><JobByLocation />
-                    border
                     <Divider />
                 </>
             }
