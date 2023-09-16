@@ -43,7 +43,6 @@ const ApplyJobForm = ({ jobData }) => {
         const cover_letter = coverLetter;
         const expected_salary = data.expected_salary;
         const attachment = data.attachment;
-        const location = `${currentCandidate.location[0]}, ${currentCandidate.location[1]}`
 
         const appliedInfo = {
             jobId: _id,
@@ -51,7 +50,7 @@ const ApplyJobForm = ({ jobData }) => {
             applicantName: currentCandidate.name,
             applicantEmail: currentUser?.email,
             applicantImage: currentCandidate.image,
-            location: location,
+            location: currentCandidate.location,
             category: currentCandidate.category,
             companyName,
             companyLogo,

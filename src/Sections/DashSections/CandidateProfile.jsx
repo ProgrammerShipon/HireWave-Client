@@ -24,7 +24,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     const [languagesData] = useLanguagesData();
     const [axiosSecure] = useAxiosSecure()
     const { _id, name, title, image, location, status, hourlyRate, jobType, address, languages, about, education, experience, skills, openToWork, socialLink } = candidatesData;
-    // console.log(candidatesData)
+    console.log(candidatesData)
     const formattedAbout = about.map(pa => pa === "" ? "\u00A0" : pa);
 
     const [userAbout, setUserAbout] = useState(about)
@@ -55,7 +55,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             hourlyRate: data.hourlyRate
         }
         console.log(updateData)
-        axiosSecure.patch(`/candidates/availability/64fde9b326697aabef2730c7`, updateData)
+        axiosSecure.patch(`/candidates/availability/${_id}`, updateData)
             .then(res => {
                 console.log(res.data)
                 if (res.status === 200) {
@@ -72,7 +72,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     // Update Candidate Availability 
     const handleModifyAbout = (data) => {
         console.log(userAbout)
-        axiosSecure.patch(`/candidates/about/64fde9b326697aabef2730c7`, userAbout)
+        axiosSecure.patch(`/candidates/about/${_id}`, userAbout)
             .then(res => {
                 console.log(res.data)
                 if (res.status === 200) {
@@ -94,7 +94,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             address: data.address
         }
         console.log(updateData)
-        axiosSecure.patch(`/candidates/location/64fde9b326697aabef2730c7`, updateData)
+        axiosSecure.patch(`/candidates/location/${_id}`, updateData)
             .then(res => {
                 if (res.status === 200) {
                     setEditLocation(!editLocation)
@@ -109,7 +109,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     };
     // Update Candidate Location 
     const handleAddSkills = (data) => {
-        axiosSecure.patch(`/candidates/skill/64fde9b326697aabef2730c7`, newSkills)
+        axiosSecure.patch(`/candidates/skill/${_id}`, newSkills)
             .then(res => {
                 console.log(res)
                 if (res.status === 200) {
@@ -125,7 +125,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     // Update Candidate Location 
     const handleAddLanguage = (data) => {
         console.log(newLanguage)
-        axiosSecure.patch(`/candidates/language/64fde9b326697aabef2730c7`, newLanguage)
+        axiosSecure.patch(`/candidates/language/${_id}`, newLanguage)
             .then(res => {
                 console.log(res)
                 if (res.status === 200) {
@@ -142,7 +142,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     // Update Candidate Location 
     const handleAddEducation = (data) => {
         console.log(newEducations)
-        axiosSecure.patch(`/candidates/education/64fde9b326697aabef2730c7`, newEducations)
+        axiosSecure.patch(`/candidates/education/${_id}`, newEducations)
             .then(res => {
                 console.log(res.data)
                 if (res.status === 200) {
@@ -159,7 +159,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     // Update Candidate Location 
     const handleAddExperience = (data) => {
         console.log(newExperiences)
-        axiosSecure.patch(`/candidates/experience/64fde9b326697aabef2730c7`, newExperiences)
+        axiosSecure.patch(`/candidates/experience/${_id}`, newExperiences)
             .then(res => {
                 console.log(res.data)
                 if (res.status === 200) {
@@ -213,7 +213,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                     <Link to={`/candidate_details/${_id}`}><Button>See Public View</Button></Link>
                 </div>
 
-                <Modal candidatesData={candidatesData} />
+                <Modal candidatesData={candidatesData} refetch={refetch} />
             </div>
 
             {/* availability & locations */}
@@ -253,17 +253,6 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                                     className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
                                 />
                             </label>
-
-                            <div className='flex gap-2'>
-                                <input
-                                    id='openToWork'
-                                    type="checkbox"
-                                    {...register("openToWork")}
-                                />
-                                <label htmlFor="openToWork" className='text-black text-base'>
-                                    Open to contract to hire
-                                </label>
-                            </div>
 
                             <select
                                 {...register("jobType")}
@@ -360,10 +349,10 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             {/* about */}
 
             <div className='border border-transparent hover:border-green px-4 rounded-md bg-white shadow-xl shadow-gray/40 duration-300'>
-                about top
+                {/* about top */}
                 <div className='flex items-center justify-between border-b border-green/40 py-2'>
                     <h2 className='flex items-center gap-1 text-xl text-green'><BiSolidUserDetail /> About</h2>
-                    edit button
+                    {/* edit button */}
                     <Tooltip id="about" />
                     <button
                         onClick={() => setEditAbout(!editAbout)}

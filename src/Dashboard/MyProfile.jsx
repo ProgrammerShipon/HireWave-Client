@@ -7,16 +7,18 @@ import useAuth from '../Hooks/useAuth';
 import useCandidatesData from '../Hooks/useCandidatesData';
 import CandidateProfile from '../Sections/DashSections/CandidateProfile';
 import AdminProfile from '../Sections/DashSections/AdminProfile';
+import useCurrentCandidate from '../Hooks/useCurrentCandidate';
+import useCurrentRecruiter from '../Hooks/useCurrentRecruiter';
+import RecruitersProfile from '../Sections/DashSections/RecruitersProfile';
 
 const MyProfile = () => {
     const { currentUser } = useAuth();
-    const [candidatesData, loading, refetch] = useCandidatesData();
-    const [currentCandidate, setCurrentCandidate] = useState({});
-    useEffect(() => {
-        const getCandidate = candidatesData.find(candidate => candidate.email === currentUser?.email);
-        setCurrentCandidate(getCandidate)
-    }, [!loading, currentUser?.email])
+    const [currentRecruiter, loadingRecruiters, refetchRecruiters] = useCurrentRecruiter();
+    const [currentCandidate, loading, refetch] = useCurrentCandidate();
 
+
+    // console.log(currentUser)
+    // console.log(currentRecruiter)
     return (
         <section className='m-5 rounded-md'>
             <DashTitle title='My Profile' />
@@ -25,7 +27,16 @@ const MyProfile = () => {
             {
                 currentUser.role === 'candidate' && <>
                     {
-                        currentCandidate?.email ? <CandidateProfile candidatesData={currentCandidate} /> : <PageLoader />
+                        currentCandidate?.email ? <CandidateProfile candidatesData={currentCandidate} refetch={refetch} /> : <PageLoader />
+                    }
+                </>
+
+            }
+
+            {
+                currentUser.role === "recruiter" && <>
+                    {
+                        currentRecruiter?.email ? <RecruitersProfile recruitersData={currentRecruiter} refetch={refetchRecruiters} /> : <PageLoader />
                     }
                 </>
             }

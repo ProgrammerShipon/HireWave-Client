@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import PaymentHistory from "../Components/DashComponents/PaymentHistory";
 import AppliedApplicant from "../Dashboard/AppliedApplicant";
 import CandidateList from "../Dashboard/CandidateList";
 import ChangePassword from "../Dashboard/ChangePassword";
@@ -31,6 +32,8 @@ import JobDetails from "../Pages/JobDetails";
 import Learning from "../Pages/Learning";
 import LearningDetails from "../Pages/LearningDetails";
 import Login from "../Pages/Login";
+import PaymentFail from "../Pages/PaymentFail";
+import PaymentSuccess from "../Pages/PaymentSuccess";
 import PostJob from "../Pages/PostJob";
 import Pricing from "../Pages/Pricing";
 import Recruiters from "../Pages/Recruiters";
@@ -193,7 +196,7 @@ const Router = createBrowserRouter([
       {
         path: "messages/:id",
         element: < Chat />,
-        loader: ({ params }) => fetch(`https://hire-wave-server.vercel.app/api/candidates/${params.id}`)
+        loader: ({ params }) => fetch(`${baseURL}/candidates/${params.id}`)
       },
       {
         path: "room",
@@ -206,6 +209,18 @@ const Router = createBrowserRouter([
       {
         path: "applicant",
         element: <AppliedApplicant />,
+      },
+      {
+        path: "payment_history",
+        element: <PaymentHistory />,
+      },
+      {
+        path: "payment/successful/:tran_id",
+        element: <PaymentSuccess />,
+      },
+      {
+        path: "payment/fail",
+        element: <PaymentFail />,
       },
       {
         path: "favorites",
