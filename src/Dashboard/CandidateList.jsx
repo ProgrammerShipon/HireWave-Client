@@ -39,10 +39,11 @@ const CandidateList = () => {
         filter = [...filter].sort(
           (a, b) => new Date(a.joinDate) - new Date(b.joinDate)
         );
-        }
-        
+      }
+
       setFilteredData(filter);
-    }, [name, status, category, date, !loading ]);
+    }, [name, status, category, date, !loading, candidatesData]);
+  
     return (
       <>
         {/* page title */}
@@ -141,6 +142,7 @@ const CandidateList = () => {
                     <th className="py-3 text-center font-medium">Action</th>
                   </tr>
                 </thead>
+
                 <tbody>
                   {filteredData.length > 0 ? (
                     filteredData.map((candidate) => (

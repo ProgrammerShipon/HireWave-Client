@@ -1,4 +1,3 @@
-import React from 'react';
 import usePaymentHistory from '../../Hooks/usePaymentHistory';
 import useAuth from '../../Hooks/useAuth';
 import PaymentHistoryList from './PaymentHistoryList';
@@ -23,12 +22,12 @@ const PaymentHistory = () => {
                 </thead>
                 <tbody>
                     {
-                        paymentHistory.length > 0 ? paymentHistory.map((pay) => (
+                        paymentHistory?.length > 0 ? paymentHistory?.map((pay) => (
                             <PaymentHistoryList
                                 key={pay._id}
                                 pay={pay}
                             />
-                        )) : <PageLoader/>
+                        )) : <PageLoader />
                     }
                 </tbody>
             </table>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const ManageUserTableRow = ({ user, refetch }) => {
   const { _id, name, email, image, role, status } = user;
@@ -12,34 +12,37 @@ const ManageUserTableRow = ({ user, refetch }) => {
   const statusChanges = () => {
     const statusData = {
       status: statusUpdate,
+      email
     };
 
-    if (statusData != "undefined") {
+    if (statusUpdate != "undefined") {
       Swal.fire({
-        title: 'Are you sure?',
-        icon: 'warning',
+        title: "Are you sure?",
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, update it!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, update it!",
       }).then((result) => {
         if (result.isConfirmed) {
+          // updated data send server
           axiosSecure
-            .patch(`/users/${_id}`, statusData)
+            .patch(`/users`, statusData)
             .then((res) => {
               if (res.status == 200) {
-                refetch()
+                refetch();
                 Swal.fire({
-                  icon: 'success',
-                  title: 'Updated Successfully!',
+                  icon: "success",
+                  title: "Updated Successfully!",
                   showConfirmButton: false,
-                  timer: 1500
-                })
+                  timer: 1500,
+                });
               }
             })
             .catch((err) => console.log(err));
+          
         }
-      })
+      });
     }
   };
 
@@ -93,7 +96,7 @@ const ManageUserTableRow = ({ user, refetch }) => {
           className={`border border-green text-dark px-4 rounded-md duration-300 ${isChange ? "bg-gray-300" : "hover:bg-green hover:text-white"
             }`}
         >
-          Apply
+          Save
         </button>
       </td>
     </tr>

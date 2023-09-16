@@ -3,7 +3,6 @@ import PaymentHistory from "../Components/DashComponents/PaymentHistory";
 import AppliedApplicant from "../Dashboard/AppliedApplicant";
 import CandidateList from "../Dashboard/CandidateList";
 import ChangePassword from "../Dashboard/ChangePassword";
-import Chat from "../Dashboard/Chat";
 import DashboardHome from "../Dashboard/DashboardHome";
 import Favorites from "../Dashboard/Favorites";
 import ManageJobs from "../Dashboard/ManageJobs";
@@ -22,7 +21,7 @@ import ApplyJob from "../Pages/ApplyJob";
 import BrowseJobs from "../Pages/BrowseJobs";
 import CandidateDetails from "../Pages/CandidateDetails";
 import Candidates from "../Pages/Candidates";
-import Conference from "../Pages/Conference";
+// import Conference from "../Pages/Conference";
 import Contact from "../Pages/Contact";
 import EventDetails from "../Pages/EventDetails";
 import Events from "../Pages/Events";
@@ -189,19 +188,19 @@ const Router = createBrowserRouter([
       },
 
       // Recruiter routes
-      {
-        path: "messages",
-        element: < Chat />
-      },
-      {
-        path: "messages/:id",
-        element: < Chat />,
-        loader: ({ params }) => fetch(`${baseURL}/candidates/${params.id}`)
-      },
-      {
-        path: "room",
-        element: <Conference />,
-      },
+      // {
+      //   path: "messages",
+      //   element: < Chat />
+      // },
+      // {
+      //   path: "messages/:id",
+      //   element: < Chat />,
+      //   loader: ({ params }) => fetch(`${baseURL}/candidates/${params.id}`)
+      // },
+      // {
+      //   path: "room",
+      //   element: <Conference />,
+      // },
       {
         path: "postedJobs",
         element: <PostedJobs />,

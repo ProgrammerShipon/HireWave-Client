@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const CandidateListTableRow = ({ candidate, refetch }) => {
@@ -14,26 +14,38 @@ const CandidateListTableRow = ({ candidate, refetch }) => {
 
   // Status Updates
   const StatusChangeHandle = () => {
-    if (newStatus != undefined && newStatus != status) {
-      const updateStatus = {
-        status: newStatus,
-      };
+    const statusData = {
+      status: newStatus,
+      email
+    };
 
-      console.log("undefined", updateStatus);
-
-      axiosSecure
-        .patch(`/candidates/${_id}`, updateStatus)
-        .then((res) => {
-          refetch()
-          console.log(res);
-          if (res.status == 200) {
-            toast.success(`Updated Success.`);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          toast.error("Some thinks wrong");
-        });
+    if (newStatus != "undefined") {
+      Swal.fire({
+        title: "Are you sure?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, update it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // updated data send server
+          axiosSecure
+            .patch(`/candidates`, statusData)
+            .then((res) => {
+              if (res.status == 200) {
+                refetch();
+                Swal.fire({
+                  icon: "success",
+                  title: "Updated Successfully!",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
+            })
+            .catch((err) => console.log(err));
+        }
+      });
     }
   };
 
@@ -73,7 +85,7 @@ const CandidateListTableRow = ({ candidate, refetch }) => {
             className="focus:outline-none bg-transparent"
             onChange={(e) => setNewStatus(e.target.value)}
           >
-            <option value="approve">Approved</option>
+            <option value="approved">Approved</option>
             <option value="pending">Pending</option>
             <option value="rejected">Rejected</option>
           </select>

@@ -200,49 +200,53 @@ const CandidateSignUpForm = () => {
                             <h1 className='font-medium text-xl text-lightGray drop-shadow-lg'>Choose category that fits best with your job title</h1>
 
                             <div className='flex flex-wrap gap-4'>
-                                {allCategoriesData.map((category, index) => (
-                                    <div
-                                        key={index}
-                                        className={`w-fit ${selectedCategory === category.name
-                                            ? 'bg-purple/20 text-purple font-medium drop-shadow-lg shadow-lg cursor-pointer'
-                                            : errors.job_category ? 'border border-red-500'
-                                                : 'bg-gray/30 text-lightGray font-medium hover:bg-purple/20 hover:text-purple duration-300'
-                                            } px-4 rounded-full cursor-pointer`}
-                                        onClick={() => setValue('job_category', category.name)}
-                                    >
-                                        <Controller
-                                            name="job_category"
-                                            control={control}
-                                            rules={{ required: true }}
-                                            render={({ field }) => (
-                                                <label className="text-base" htmlFor={category.name}>
-                                                    {category.name}
-                                                    <input
-                                                        id={category.name}
-                                                        type="radio"
-                                                        value={category.name}
-                                                        className='hidden'
-                                                        {...register("category", { required: true })}
-                                                    />
-                                                </label>
-                                            )}
-                                        />
-                                    </div>
+                                {
+                                    allCategoriesData.map((category, index) => (
+                                        <div
+                                            key={index}
+                                            className={`w-fit ${selectedCategory === category.name
+                                                ? 'bg-purple/20 text-purple font-medium drop-shadow-lg shadow-lg cursor-pointer'
+                                                : errors.job_category ? 'border border-red-500'
+                                                    : 'bg-gray/30 text-lightGray font-medium hover:bg-purple/20 hover:text-purple duration-300'
+                                                } px-4 rounded-full cursor-pointer`}
+                                            onClick={() => setValue('job_category', category.name)}
+                                        >
+                                            <Controller
+                                                name="job_category"
+                                                control={control}
+                                                rules={{ required: true }}
+                                                render={({ field }) => (
+                                                    <label className="text-base" htmlFor={category.name}>
+                                                        {category.name}
+                                                        <input
+                                                            id={category.name}
+                                                            type="radio"
+                                                            value={category.name}
+                                                            className='hidden'
+                                                            {...register("category", { required: true })}
+                                                        />
+                                                    </label>
+                                                )}
+                                            />
+                                        </div>
 
-                                ))}
-                            </div>
+                                    ))
+                                }
+                            </div >
 
                             {/* Submit */}
-                            <div className='text-right'>
+                            < div className='text-right' >
                                 {/* Next Button */}
-                                {curStep < 6 && (
-                                    <button className='bg-dark text-white hover:bg-green px-8 py-[6px] rounded-md duration-300 shadow-xl hover:shadow-green/20' type="submit" value="Next">
-                                        Next
-                                    </button>
-                                )}
-                            </div>
-                        </form>
-                    </div>
+                                {
+                                    curStep < 6 && (
+                                        <button className='bg-dark text-white hover:bg-green px-8 py-[6px] rounded-md duration-300 shadow-xl hover:shadow-green/20' type="submit" value="Next">
+                                            Next
+                                        </button>
+                                    )
+                                }
+                            </div >
+                        </form >
+                    </div >
                 );
 
             //Location
@@ -508,26 +512,31 @@ const CandidateSignUpForm = () => {
                                             <AiOutlinePlus className='group-hover:text-purple duration-300' />
                                             <p className='text-lightGray capitalize'>{suggestedSkill}</p>
                                         </div>
-                                    ))}
-                                </div>
-                            </div>
+                                    ))
+                                    }
+                                </div >
+                            </div >
 
                             {/* Submit */}
-                            <div className='flex items-center justify-between'>
+                            < div className='flex items-center justify-between' >
                                 {/* Previous Button */}
-                                {curStep > 0 && (
-                                    <button className='bg-gray text-dark hover:bg-transparent hover:text- px-8 py-[6px] rounded-md duration-300 shadow-lg hover:shadow-gray/40' onClick={handlePreviousStep}>Previous</button>
-                                )}
+                                {
+                                    curStep > 0 && (
+                                        <button className='bg-gray text-dark hover:bg-transparent hover:text- px-8 py-[6px] rounded-md duration-300 shadow-lg hover:shadow-gray/40' onClick={handlePreviousStep}>Previous</button>
+                                    )
+                                }
 
                                 {/* Next Button */}
-                                {curStep < 6 && (
-                                    <button className='bg-dark text-white hover:bg-green px-8 py-[6px] rounded-md duration-300 shadow-xl hover:shadow-green/20' type="submit" value="Next">
-                                        Next
-                                    </button>
-                                )}
-                            </div>
-                        </form>
-                    </div>
+                                {
+                                    curStep < 6 && (
+                                        <button className='bg-dark text-white hover:bg-green px-8 py-[6px] rounded-md duration-300 shadow-xl hover:shadow-green/20' type="submit" value="Next">
+                                            Next
+                                        </button>
+                                    )
+                                }
+                            </div >
+                        </form >
+                    </div >
                 );
 
             //visibility
