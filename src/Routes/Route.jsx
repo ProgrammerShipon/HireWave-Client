@@ -46,6 +46,7 @@ import SelectRole from "../SignUpSteps/SelectRole";
 import PrivateRoute from "./PrivateRoute";
 import Favorites from "../Dashboard/Favorites";
 import PaymentHistory from "../Components/DashComponents/PaymentHistory";
+import Following from "../Dashboard/Following";
 
 const baseURL = 'https://hire-wave.onrender.com/api';
 // const baseURL = 'https://hire-wave-server.vercel.app/api';
@@ -186,6 +187,10 @@ const Router = createBrowserRouter([
       {
         path: "myApplications",
         element: <MyApplications />,
+      },
+      {
+        path: "following",
+        element: <Following />
       },
 
       // Recruiter routes

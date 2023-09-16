@@ -16,17 +16,23 @@ import { BiMap } from 'react-icons/bi';
 import { FaStar } from 'react-icons/fa';
 import { AiOutlinePlus } from "react-icons/ai";
 import { LuExternalLink } from "react-icons/lu";
+import useAuth from "../Hooks/useAuth";
+import { SlUserFollow, SlUserFollowing } from "react-icons/sl";
 
 export default function RecruitersDetailsContent({ recruiterData }) {
+    const { currentUser } = useAuth();
     const [reviewData,] = useReview();
     const [allJobsData, loading] = useAllJobs();
+    const [follow, setFollow] = useState(false)
     const [postedJob, setPostedJob] = useState([]);
 
     const {
+        _id,
         name,
         email,
         image,
         banner,
+        category,
         location,
         address,
         industry,
@@ -55,6 +61,21 @@ export default function RecruitersDetailsContent({ recruiterData }) {
         activeFillColor: "#ffb33e",
         inactiveFillColor: "#a78f6d",
     };
+
+    const handleFollow = () => {
+        const newData={
+            recruiterId: _id,
+            recruiterImage: image,
+            recruiterLocation: location,
+            recruiterCategory: category,
+            recruiterName: name,
+            candidateEmail: currentUser?.email
+        }
+        console.log(newData);
+
+        //TODO: add to favorite in backend
+        setFollow(true)
+    }
     return (
         <section className="py-20 md:py-[120px] duration-300">
             <div className="container">
@@ -127,11 +148,19 @@ export default function RecruitersDetailsContent({ recruiterData }) {
                                 >
                                     Website <LuExternalLink size='20' />
                                 </a>
-                                <Link to='/'
-                                    className="flex items-center gap-1 px-5 py-1 text-xl bg-green text-white rounded-md hover:bg-dark shadow-lg shadow-green/40 hover:shadow-dark/50 duration-300"
-                                >
-                                    <AiOutlinePlus size='22' /> Follow
-                                </Link>
+                                <button onClick={handleFollow} className={`flex items-center gap-2 px-5 py-1 text-xl text-white rounded-md sm:mb-3 shadow-lg shadow-green/40 hover:shadow-dark/50 duration-300 w-full ${!follow? "bg-green hover:bg-dark" : "bg-dark" }`}>
+                                {
+                                    !follow ?
+                                    <>
+                                        <p>Follow{" "}</p>
+                                        <SlUserFollow/>
+                                    </>:
+                                    <>
+                                        <p>Following {" "}</p>
+                                        <SlUserFollowing/>
+                                    </>
+                                }
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -8,7 +8,7 @@ import { CgUserList } from 'react-icons/cg';
 import { BiMessageRoundedDetail } from 'react-icons/bi';
 import { LiaIndustrySolid } from 'react-icons/lia';
 import { FaChalkboardUser } from 'react-icons/fa6';
-import { FaHistory } from 'react-icons/fa';
+import { SlUserFollow } from 'react-icons/sl';
 
 const DashNavItemsByRole = ({ role }) => {
     return (
@@ -24,10 +24,18 @@ const DashNavItemsByRole = ({ role }) => {
                                 <p className="hidden md:inline">My Applications</p>
                             </DashLink>
                         </li>
+                        {/* Messages */}
                         <li className="w-full">
                             <DashLink to='/dashboard/messages'>
                                 <BiMessageRoundedDetail size={24} />
                                 <p className="hidden md:inline">Messages</p>
+                            </DashLink>
+                        </li>
+                        {/* Following */}
+                        <li className="w-full">
+                            <DashLink to='/dashboard/following'>
+                                <SlUserFollow size={24} />
+                                <p className="hidden md:inline">Following</p>
                             </DashLink>
                         </li>
                     </> :
@@ -59,12 +67,12 @@ const DashNavItemsByRole = ({ role }) => {
                             </li>
                             {/* Applied candidates */}
 
-                            {/* <li className="w-full">
+                            <li className="w-full">
                                 <DashLink to='/applied_candidates'>
                                     <BsFileEarmarkPerson size={24} />
                                     <p className="hidden md:inline">Applicants</p>
                                 </DashLink>
-                            </li> */}
+                            </li>
 
                             {/* Payment  */}
 
@@ -83,12 +91,12 @@ const DashNavItemsByRole = ({ role }) => {
                                 </DashLink>
                             </li>
                             {/* Favorites  */}
-                            {/* <li className="w-full">
+                            <li className="w-full">
                                 <DashLink to='/dashboard/favorites'>
                                     <BsBookmarkPlus size={24} />
                                     <p className="hidden md:inline">Favorites</p>
                                 </DashLink>
-                            </li> */}
+                            </li>
                         </> :
 
                         // Admin routes
