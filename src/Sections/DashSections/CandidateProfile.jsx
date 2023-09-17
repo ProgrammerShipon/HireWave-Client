@@ -19,13 +19,12 @@ import { HiLanguage } from 'react-icons/hi2';
 import { LiaIndustrySolid } from 'react-icons/lia';
 import { FaFacebookF, FaGithub, FaLinkedin, FaTwitter, FaPencilAlt, FaTrashAlt, FaGraduationCap } from 'react-icons/fa';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import { BsCamera } from 'react-icons/bs';
 
 const CandidateProfile = ({ candidatesData, refetch }) => {
     const [languagesData] = useLanguagesData();
     const [axiosSecure] = useAxiosSecure()
     const { _id, name, title, image, location, status, hourlyRate, jobType, address, languages, about, education, experience, skills, openToWork, socialLink } = candidatesData;
-    console.log(candidatesData)
-    const formattedAbout = about.map(pa => pa === "" ? "\u00A0" : pa);
 
     const [userAbout, setUserAbout] = useState(about)
 
@@ -70,7 +69,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
 
     };
     // Update Candidate Availability 
-    const handleModifyAbout = (data) => {
+    const handleModifyAbout = () => {
         console.log(userAbout)
         axiosSecure.patch(`/candidates/about/${_id}`, userAbout)
             .then(res => {
@@ -108,7 +107,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
 
     };
     // Update Candidate Location 
-    const handleAddSkills = (data) => {
+    const handleAddSkills = () => {
         axiosSecure.patch(`/candidates/skill/${_id}`, newSkills)
             .then(res => {
                 console.log(res)
@@ -123,7 +122,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
 
     };
     // Update Candidate Location 
-    const handleAddLanguage = (data) => {
+    const handleAddLanguage = () => {
         console.log(newLanguage)
         axiosSecure.patch(`/candidates/language/${_id}`, newLanguage)
             .then(res => {
@@ -140,7 +139,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     };
 
     // Update Candidate Location 
-    const handleAddEducation = (data) => {
+    const handleAddEducation = () => {
         console.log(newEducations)
         axiosSecure.patch(`/candidates/education/${_id}`, newEducations)
             .then(res => {
@@ -157,7 +156,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     };
 
     // Update Candidate Location 
-    const handleAddExperience = (data) => {
+    const handleAddExperience = () => {
         console.log(newExperiences)
         axiosSecure.patch(`/candidates/experience/${_id}`, newExperiences)
             .then(res => {
@@ -173,6 +172,31 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
 
     };
 
+    // Image hosting
+    const image_hosting_token= import.meta.env.VITE_Image_Upload_Token;
+    const image_hosting_url =`https://api.imgbb.com/1/upload?key=${image_hosting_token}`
+
+    const handlePictureUpload = event => {
+        const picture= event.target.files[0]
+        const formData= new FormData()
+        formData.append('image', picture)
+        fetch(image_hosting_url, {
+            method: "POST",
+            body: formData
+        })
+            .then(res=> res.json())
+            .then(imageResponse => {
+                if(imageResponse.success){
+                    const image= imageResponse.data.display_url
+                    console.log(image);
+                    // axiosSecure.put(`/candidates/image/${_id}`, image)
+                    // .then(data=> {
+                    //     console.log('after posting new menu item', data.data)
+                    //     refetch()
+                    // })
+                }
+            })
+    } 
 
     const years = [
         1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969,
@@ -186,14 +210,32 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     return (
         <div className='mt-10 space-y-7'>
             {/* profile top */}
-            <div className='relative bg-white shadow-xl shadow-gray/40 p-6 rounded-md flex flex-col lg:flex-row items-start lg:items-end justify-between'>
+            <div className='bg-white shadow-xl shadow-gray/40 p-6 rounded-md flex flex-col lg:flex-row items-start lg:items-end justify-between'>
                 <div className='flex flex-col lg:flex-row items-center gap-8 mb-6 lg:mb-0 w-full lg:w-auto'>
+
                     {/* image */}
                     <div className='w-48 h-48 rounded-full overflow-hidden shadow-xl shadow-gray/40'>
-                        <img
-                            className='w-full h-full object-cover object-center'
-                            src={image} alt={name} />
+                        {
+                            image?
+                            <img
+                            className='object-cover object-center'
+                            src={image} alt={name} /> :
+                            <img
+                            className='object-cover object-center'
+                            src="https://i.ibb.co/wNJtyRX/image-14.png" /> 
+                        }   
                     </div>
+                    <label className='rounded-full border border-green bg-white text-2xl p-[5px] z-20 cursor-pointer text-green duration-300 -mt-[84px] ml-32 lg:mt-28 lg:-ml-[70px]'>
+ 
+                            <input
+                                name='picture'
+                                type='file'
+                                style={{ display: 'none' }}
+                                onChange={handlePictureUpload}
+                            />
+                            <BsCamera />
+ 
+                    </label>
 
                     {/* content */}
                     <div className='flex flex-col items-center lg:items-start justify-center'>
@@ -267,7 +309,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                             <div className='flex items-end justify-end gap-3'>
                                 <div
                                     onClick={() => setAvailability(true)}
-                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20 cursor-pointer"
                                 >
                                     Cancel
                                 </div>
@@ -292,7 +334,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                         <Tooltip id="editLocations" />
                         <button
                             onClick={() => setEditLocation(!editLocation)}
-                            data-tooltip-id="editLocations" data-tooltip-content="Edit editLocation!"
+                            data-tooltip-id="editLocations" data-tooltip-content="Edit Location!"
                             className='h-8 w-8 text-green border border-green rounded-full flex items-center justify-center'>
                             <FaPencilAlt size='14' />
                         </button>
@@ -330,7 +372,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                             <div className='flex items-end justify-end gap-3'>
                                 <div
                                     onClick={() => setEditLocation(true)}
-                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20 cursor-pointer"
                                 >
                                     Cancel
                                 </div>
@@ -347,7 +389,6 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             </div>
 
             {/* about */}
-
             <div className='border border-transparent hover:border-green px-4 rounded-md bg-white shadow-xl shadow-gray/40 duration-300'>
                 {/* about top */}
                 <div className='flex items-center justify-between border-b border-green/40 py-2'>
@@ -381,7 +422,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                         <div className='flex items-center justify-end gap-3'>
                             <div
                                 onClick={() => setEditAbout(true)}
-                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20 cursor-pointer"
                             >
                                 Cancel
                             </div>
@@ -409,7 +450,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                         <div
                             onClick={() => setIsSkills(!isSkills)}
                             data-tooltip-id="add_skill" data-tooltip-content="Add Skill!"
-                            className='h-8 w-8 text-green border border-green rounded-full flex items-center justify-center'>
+                            className='h-8 w-8 text-green border border-green rounded-full flex items-center justify-center cursor-pointer'>
                             <IoMdAdd size='20' />
                         </div>
                     </div>
@@ -450,7 +491,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                             <div className='flex items-center justify-end gap-3'>
                                 <div
                                     onClick={() => setIsSkills(true)}
-                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20 cursor-pointer"
                                 >
                                     Cancel
                                 </div>
@@ -540,7 +581,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                             <div className='flex items-center justify-end gap-3'>
                                 <div
                                     onClick={() => setOpenLanguage(true)}
-                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20 cursor-pointer"
                                 >
                                     Cancel
                                 </div>
@@ -555,6 +596,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
 
                 </div>
             </div>
+
             {/* educations & experiences */}
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
                 {/* educations */}
@@ -652,7 +694,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                             <div className='flex items-center justify-end gap-3'>
                                 <div
                                     onClick={() => setOpenEducation(true)}
-                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20 cursor-pointer"
                                 >
                                     Cancel
                                 </div>
@@ -685,7 +727,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                     {/* experiences body */}
                     <div className={`py-4 space-y-4 ${openExperience ? 'block' : 'hidden'}`}>
                         {
-                            newExperiences[1].position !== ''
+                            newExperiences[1]?.position !== ''
                                 // newExperiences.length>0
                                 ? newExperiences.map((exp, index) =>
                                 (
@@ -780,7 +822,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                             <div className='flex items-center justify-end gap-3'>
                                 <div
                                     onClick={() => setOpenExperience(true)}
-                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                                    className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20 cursor-pointer"
                                 >
                                     Cancel
                                 </div>
@@ -805,7 +847,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                     {/* edit button */}
                     <Tooltip id="add_education" />
                     <button
-                        data-tooltip-id="add_education" data-tooltip-content="Add Education!"
+                        data-tooltip-id="add_education" data-tooltip-content="Add Social Links!"
                         className='h-8 w-8 text-green border border-green rounded-full flex items-center justify-center'>
                         <IoMdAdd size='20' />
                     </button>
@@ -843,8 +885,6 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                         </div> : <p className='text-lg text-lightGray'>N/A</p>
                 }
             </div>
-
-
         </div >
     );
 };
