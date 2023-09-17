@@ -2,13 +2,11 @@ import DashLink from './DashLink';
 
 // react icons
 import { AiOutlineFileDone } from 'react-icons/ai';
-import { BsBookmarkPlus, BsBriefcase, BsFileArrowUp, BsFileEarmarkPerson } from 'react-icons/bs';
-import { MdOutlineHistory, MdOutlineManageAccounts, MdOutlinePayments, } from 'react-icons/md';
-import { CgUserList } from 'react-icons/cg';
 import { BiMessageRoundedDetail } from 'react-icons/bi';
+import { BsBriefcase, BsFileArrowUp } from 'react-icons/bs';
+import { CgUserList } from 'react-icons/cg';
 import { LiaIndustrySolid } from 'react-icons/lia';
-import { FaChalkboardUser } from 'react-icons/fa6';
-import { FaHistory } from 'react-icons/fa';
+import { MdOutlineHistory, MdOutlineManageAccounts, MdOutlinePayments, } from 'react-icons/md';
 
 const DashNavItemsByRole = ({ role }) => {
     return (
@@ -24,6 +22,7 @@ const DashNavItemsByRole = ({ role }) => {
                                 <p className="hidden md:inline">My Applications</p>
                             </DashLink>
                         </li>
+
                         <li className="w-full">
                             <DashLink to='/dashboard/messages'>
                                 <BiMessageRoundedDetail size={24} />
@@ -82,21 +81,7 @@ const DashNavItemsByRole = ({ role }) => {
                                     <p className="hidden md:inline">Payments History</p>
                                 </DashLink>
                             </li>
-                            {/* Favorites  */}
-                            {/* <li className="w-full">
-                                <DashLink to='/dashboard/favorites'>
-                                    <BsBookmarkPlus size={24} />
-                                    <p className="hidden md:inline">Favorites</p>
-                                </DashLink>
-                            </li>
 
-                            {/* Payment History */}
-                            <li className="w-full">
-                                <DashLink to='/dashboard/payment_history'>
-                                    <MdOutlineHistory size={24} />
-                                    <p className="hidden md:inline">Payments History</p>
-                                </DashLink>
-                            </li>
                             {/* Favorites  */}
                             {/* <li className="w-full">
                                 <DashLink to='/dashboard/favorites'>
