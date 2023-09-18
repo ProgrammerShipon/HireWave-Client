@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import RecentReviewSlider from "../Components/RecentReviewSlider";
-import GetAgoTime from "../Components/GetAgoTime";
-import useAllJobs from "../Hooks/useAllJobs";
-import JobCard from "../Components/JobCard";
-import useReview from "../Hooks/useReview";
 import moment from 'moment';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import GetAgoTime from "../Components/GetAgoTime";
+import JobCard from "../Components/JobCard";
+import RecentReviewSlider from "../Components/RecentReviewSlider";
+import useAllJobs from "../Hooks/useAllJobs";
+import useReview from "../Hooks/useReview";
 
 // react rating
 import { Rating, Star } from "@smastrom/react-rating";
@@ -14,10 +14,11 @@ import "@smastrom/react-rating/style.css";
 // react icons
 import { BiMap } from 'react-icons/bi';
 import { FaStar } from 'react-icons/fa';
-import { AiOutlinePlus } from "react-icons/ai";
 import { LuExternalLink } from "react-icons/lu";
-import useAuth from "../Hooks/useAuth";
 import { SlUserFollow, SlUserFollowing } from "react-icons/sl";
+import useAuth from "../Hooks/useAuth";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useUsers from "../Hooks/useUsers";
 
 export default function RecruitersDetailsContent({ recruiterData }) {
     const { currentUser } = useAuth();
@@ -25,7 +26,9 @@ export default function RecruitersDetailsContent({ recruiterData }) {
     const [allJobsData, loading] = useAllJobs();
     const [follow, setFollow] = useState(false)
     const [postedJob, setPostedJob] = useState([]);
-
+    const [userData] = useUsers();
+    const [axiosSecure] = useAxiosSecure();
+    const navigate = useNavigate()
     const {
         _id,
         name,
@@ -44,6 +47,12 @@ export default function RecruitersDetailsContent({ recruiterData }) {
     } = recruiterData[0];
 
     const [review, setReview] = useState([]);
+    const [receiverId, setReceiverId] = useState('');
+    useEffect(() => {
+        const user = userData?.find(user => user.email === email)
+        // setReceiverId(user)
+        setReceiverId(user?._id)
+    }, [userData]);
 
     useEffect(() => {
         const getReview = reviewData.filter(rvw => rvw.email.toLowerCase() === email.toLowerCase());
@@ -76,6 +85,24 @@ export default function RecruitersDetailsContent({ recruiterData }) {
         //TODO: add to favorite in backend
         setFollow(true)
     }
+
+    const createChat = () => {
+        const chatMembers = {
+            sender: currentUser?._id,
+            receiver: receiverId,
+
+        }
+        console.log(chatMembers)
+        axiosSecure.post('/chat', chatMembers)
+            .then(res => {
+                navigate('/dashboard/messages')
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+
     return (
         <section className="py-20 md:py-[120px] duration-300">
             <div className="container">
@@ -131,6 +158,7 @@ export default function RecruitersDetailsContent({ recruiterData }) {
                         <div className="mx-5 md:mx-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-0 mb-6 mt-4">
                             <div className="duration-300">
                                 <h1 className="text-4xl font-medium text-dark drop-shadow-xl">{name}</h1>
+                                <button onClick={createChat}>Contact</button>
 
                                 <div className="flex items-center gap-2">
                                     <h3 className="text-xl font-light text-lightGray">{industry}</h3>

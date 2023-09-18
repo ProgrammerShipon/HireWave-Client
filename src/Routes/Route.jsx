@@ -22,6 +22,7 @@ import BrowseJobs from "../Pages/BrowseJobs";
 import CandidateDetails from "../Pages/CandidateDetails";
 import Candidates from "../Pages/Candidates";
 // import Conference from "../Pages/Conference";
+import Chat from "../Dashboard/Chat";
 import Following from "../Dashboard/Following";
 import HiredCandidates from "../Dashboard/HiredCandidates";
 import Contact from "../Pages/Contact";
@@ -179,6 +180,15 @@ const Router = createBrowserRouter([
         element: <MyProfile />,
       },
       {
+        path: "messages",
+        element: < Chat />
+      },
+      {
+        path: "messages/:id",
+        element: < Chat />,
+        loader: ({ params }) => fetch(`${baseURL}/candidates/${params.id}`)
+      },
+      {
         path: "changePassword",
         element: <ChangePassword />,
       },
@@ -194,15 +204,7 @@ const Router = createBrowserRouter([
       },
 
       // Recruiter routes
-      // {
-      //   path: "messages",
-      //   element: < Chat />
-      // },
-      // {
-      //   path: "messages/:id",
-      //   element: < Chat />,
-      //   loader: ({ params }) => fetch(`${baseURL}/candidates/${params.id}`)
-      // },
+
       // {
       //   path: "room",
       //   element: <Conference />,

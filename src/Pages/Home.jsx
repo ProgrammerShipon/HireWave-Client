@@ -14,60 +14,61 @@ import useAuth from '../Hooks/useAuth';
 
 const Home = () => {
     const { currentUser } = useAuth();
-
+    // console.log(currentUser)
     return (
-      <>
-        {/* page title */}
-        <Helmet>
-          <title>Hire Wave - Hiring agency and communication platform</title>
-        </Helmet>
+        <>
+            {/* page title */}
+            <Helmet>
+                <title>Hire Wave - Hiring agency and communication platform</title>
+            </Helmet>
 
-        {/* <HeroBanner /> */}
-        <HeroBanner />
-        {/* border */}
-            
-        <Divider />
+            <HeroBanner />
+            <TopCategories />
+            {
+                currentUser.role !== 'recruiter' && <>
+                    <FeaturedJobs />
+                    {/* border */}
+                    <Divider />
+                </>
 
-        <TopCategories />
-        {currentUser.role !== "recruiter" && (
-          <>
-            <FeaturedJobs />
+            }
+
+            <SpecialFeatures />
             {/* border */}
             <Divider />
-          </>
-        )}
 
-        {currentUser.role !== "candidate" && (
-          <>
-            <TopCandidates />
+            {
+                currentUser.role !== 'candidate' &&
+                <>
+                    <TopCandidates />
+                    {/* border */}
+                    <Divider />
+                </>
+            }
+
+            {
+                currentUser.role !== 'recruiter' &&
+                <><TopRecruiters />
+                    {/* border */}
+                    <Divider />
+                </>
+            }
+
+            {
+                currentUser.role !== 'recruiter' &&
+                <><JobByLocation />
+                    {/* border */}
+                    <Divider />
+                </>
+            }
+
+            <Partners />
             {/* border */}
             <Divider />
-          </>
-        )}
 
-        {currentUser.role !== "recruiter" && (
-          <>
-            <TopRecruiters />
-            {/* border */}
-            <Divider />
-          </>
-        )}
-
-        {currentUser.role !== "recruiter" && (
-          <>
-            <JobByLocation />
-            {/* border */}
-            <Divider />
-          </>
-        )}
-
-        <Partners />
-        {/* border */}
-        <Divider />
-
-        <Reviews />
-        <GetStart />
-      </>
+            <Reviews />
+            <GetStart />
+        </>
     );
 };
 

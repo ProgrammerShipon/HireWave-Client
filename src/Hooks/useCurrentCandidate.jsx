@@ -7,7 +7,7 @@ const useCurrentCandidate = () => {
     const [axiosSecure] = useAxiosSecure();
 
     const {
-        data: currentCandidate = [], isLoading: loading, refetch, } = useQuery({
+        data: currentCandidate = [], isLoading: candidateLoading, refetch, } = useQuery({
             queryKey: ["currentCandidate"],
             queryFn: async () => {
                 const res = await axiosSecure.get(`/candidates/email/${user?.email}`);
@@ -15,7 +15,7 @@ const useCurrentCandidate = () => {
             },
         });
 
-    return [currentCandidate, loading, refetch];
+    return [currentCandidate, candidateLoading, refetch];
 };
 
 export default useCurrentCandidate;

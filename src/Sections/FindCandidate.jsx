@@ -10,10 +10,13 @@ import { FaLocationCrosshairs } from "react-icons/fa6";
 import { AiOutlineClear } from "react-icons/ai";
 import useReview from "../Hooks/useReview";
 import PageLoader from "../Components/PageLoader";
+import useAuth from "../Hooks/useAuth";
 
 const FindCandidate = () => {
   const [candidatesData, loading] = useCandidatesData();
   const [reviewData] = useReview();
+  const { currentUser } = useAuth();
+  // console.log(currentUser)
   const [filteredData, setFilteredData] = useState([]);
 
   const { register, watch, handleSubmit, reset } = useForm();
