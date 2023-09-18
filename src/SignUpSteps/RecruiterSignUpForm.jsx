@@ -49,7 +49,6 @@ const RecruiterSignUpForm = () => {
             specialties: [],
             status: "pending",
             active: false,
-            followers: 0,
             joinDate: todayDate
         }
 
