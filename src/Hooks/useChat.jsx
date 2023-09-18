@@ -5,7 +5,7 @@ const useChat = () => {
   const { data: chatHistory = [], isLoading: loading, refetch } = useQuery({
     queryKey: ['chatHistory'],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:3030/api/chat/${userId}`);
+      const res = await fetch(`https://hire-wave.onrender.com/api/chat/${userId}`);
       const data = await res.json();
       return data;
     },

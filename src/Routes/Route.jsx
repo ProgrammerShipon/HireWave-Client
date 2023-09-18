@@ -22,6 +22,8 @@ import BrowseJobs from "../Pages/BrowseJobs";
 import CandidateDetails from "../Pages/CandidateDetails";
 import Candidates from "../Pages/Candidates";
 // import Conference from "../Pages/Conference";
+import Following from "../Dashboard/Following";
+import HiredCandidates from "../Dashboard/HiredCandidates";
 import Contact from "../Pages/Contact";
 import EventDetails from "../Pages/EventDetails";
 import Events from "../Pages/Events";
@@ -46,9 +48,9 @@ import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
 import SelectRole from "../SignUpSteps/SelectRole";
 import PrivateRoute from "./PrivateRoute";
 
-// const baseURL = 'https://hire-wave.onrender.com/api';
+const baseURL = 'https://hire-wave.onrender.com/api';
 // const baseURL = 'https://hire-wave-server.vercel.app/api';
-const baseURL = 'http://localhost:3030/api';
+// const baseURL = 'http://localhost:3030/api';
 
 const Router = createBrowserRouter([
   {
@@ -186,6 +188,10 @@ const Router = createBrowserRouter([
         path: "myApplications",
         element: <MyApplications />,
       },
+      {
+        path: "following",
+        element: <Following />
+      },
 
       // Recruiter routes
       // {
@@ -208,6 +214,10 @@ const Router = createBrowserRouter([
       {
         path: "applicant",
         element: <AppliedApplicant />,
+      },
+      {
+        path: "hired_candidates",
+        element: <HiredCandidates />
       },
       {
         path: "payment_history",

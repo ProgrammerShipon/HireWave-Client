@@ -15,11 +15,13 @@ import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlinePlus } from 'react-icons/
 import { FaXmark } from 'react-icons/fa6';
 import PageLoader from "../Components/PageLoader";
 import useAllCategories from "../Hooks/useAllCategories";
+import UserManual from "../Components/UserManual";
 
 const CandidateSignUpForm = () => {
     const [allCategoriesData] = useAllCategories();
     const [curStep, setCurStep] = useState(0);
     const [finish, setFinish] = useState(false);
+    const [showUserManual, setShowUserManual] = useState(false);
     const [phoneNumber, setPhoneNumber] = useState()
     const [skillData, loading] = useSkills();
     const [finishLoading, setFinishLoading] = useState(false);
@@ -81,10 +83,11 @@ const CandidateSignUpForm = () => {
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
-                            title: 'Sign Up successfully',
+                            title: 'Sign Up successful',
                             showConfirmButton: false,
                             timer: 2500
                         });
+                        setShowUserManual(true);
                         navigate('/', { replace: true })
                         window.location.reload(true)
                     }
@@ -279,7 +282,7 @@ const CandidateSignUpForm = () => {
                                     >
                                         <option value="" disable>Select</option>
                                         {
-                                            stateData?.map((state, index) => <option key={index} value={state.name}>{state.name}</option>)
+                                            stateData?.map(state => <option value={state.name}>{state.name}</option>)
                                         }
                                     </select>
                                 </label>
@@ -635,6 +638,7 @@ const CandidateSignUpForm = () => {
                     <Step />
                     <Step />
                 </Stepper>
+                {showUserManual && <UserManual />}
             </div>
             <div className='py-10'>
                 {renderContent()}

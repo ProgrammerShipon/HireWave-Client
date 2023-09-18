@@ -4,7 +4,7 @@ import useReview from "../Hooks/useReview";
 
 // react icons
 import { BiMap } from "react-icons/bi";
-import { BsBookmarkPlus, BsCurrencyDollar } from "react-icons/bs";
+import { BsBookmarkCheck, BsBookmarkPlus, BsCurrencyDollar } from "react-icons/bs";
 import { AiOutlineMessage } from "react-icons/ai";
 import {
     FaFacebookF,
@@ -25,6 +25,7 @@ import useAuth from "../Hooks/useAuth";
 const CandidateDetailsContent = ({ candidateDetails }) => {
     const { currentUser } = useAuth();
     const [reviewData, loading] = useReview();
+    const [favorite, setFavorite] = useState(false)
     const {
         _id,
         name,
@@ -69,9 +70,16 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
     const handleAddToFavorite =() => {
         const newData={
             candidateId: _id,
+            candidateImage: image,
+            candidateRate: hourlyRate,
+            candidateCategory: category,
+            candidateName: name,
             recruiterEmail: currentUser?.email
         }
         console.log(newData);
+
+        //TODO: add to favorite in backend
+        setFavorite(true)
     }
 
     return (
@@ -153,12 +161,18 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
 
                         {/* button */}
                         <div className="flex flex-col items-center gap-3">
-                            <button onClick={handleAddToFavorite} className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
-                                Add to Favorite{" "}
-                                <BsBookmarkPlus
-                                    size="21"
-                                    className="text-green group-hover:text-white"
-                                />
+                            <button onClick={handleAddToFavorite} className={`flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 rounded-lg shadow-xl  group ${!favorite? "border border-green hover:shadow-green/20 hover:bg-green hover:text-white text-dark bg-transparent " : "bg-green text-white"}`}>
+                                {
+                                    !favorite ?
+                                    <>
+                                        <p>Add to Favorite{" "}</p>
+                                        <BsBookmarkPlus size="21" className="text-green group-hover:text-white" />
+                                    </>:
+                                    <>
+                                        <p>Added to Favorite {" "}</p>
+                                        <BsBookmarkCheck size="21" className="" />
+                                    </>
+                                }
                             </button>
                             <Link to={`/dashboard/messages/${_id}`}>
                                 <button className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
