@@ -7,7 +7,7 @@ const PaymentHistoryList = ({ pay }) => {
     const purchaseDateFormat = moment(purchaseDate).format('L');
     const stringPurchaseDate = purchaseDateFormat.toString()
     const givenDate = new Date(stringPurchaseDate);
-
+    
     // Add 30 days
     givenDate.setDate(givenDate.getDate() + 30);
 

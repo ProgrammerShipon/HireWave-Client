@@ -11,6 +11,8 @@ import { FaChalkboardUser } from 'react-icons/fa6';
 import { FaHistory } from 'react-icons/fa';
 
 const DashNavItemsByRole = ({ role }) => {
+    const CreateNewId = (Math.floor(Math.random() * 1000000)).toString()
+
     return (
         <>
             {
@@ -24,16 +26,16 @@ const DashNavItemsByRole = ({ role }) => {
                                 <p className="hidden md:inline">My Applications</p>
                             </DashLink>
                         </li>
-                       
+
                     </> :
 
                     // recruiter routes
                     role === 'recruiter' ?
                         <>
-                           
+
 
                             <li className="w-full">
-                                <DashLink to='/dashboard/room'>
+                                <DashLink to={`/dashboard/room/${CreateNewId}`}>
                                     <FaChalkboardUser size={24} />
                                     <p className="hidden md:inline">Interview</p>
                                 </DashLink>
@@ -64,7 +66,7 @@ const DashNavItemsByRole = ({ role }) => {
                                 </DashLink>
                             </li>
 
-                              {/* Payment History */}
+                            {/* Payment History */}
                             <li className="w-full">
                                 <DashLink to='/dashboard/payment_history'>
                                     <FaHistory size={24} />

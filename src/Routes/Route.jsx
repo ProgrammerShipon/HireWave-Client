@@ -200,7 +200,7 @@ const Router = createBrowserRouter([
       // Recruiter routes
 
       {
-        path: "room",
+        path: `room/:roomId`,
         element: <Conference />,
       },
       {
