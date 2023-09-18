@@ -12,18 +12,18 @@ const PaymentSuccess = () => {
     console.log(tran_id)
     const [RecruiterPaymentHistory, loading, refetch] = useRecruiterPaymentHistory();
     if (loading) {
-        return <h1>Loading</h1>
+        
+        return <h1>...</h1>
     }
-    console.log(RecruiterPaymentHistory[0])
     const { amount, paymentTimeline, purchaseDate, receiver, recruiterName } = RecruiterPaymentHistory[0]
 
 
     return (
 
         <div className=''>
-            <Lottie className='w-[480px] mx-auto ' animationData={successAnimation}></Lottie>
-            <p className='text-center text-xl text-green'>
-                Payment {amount}.00 USD {currentUser.name} to {receiver} is successful.  TrxID {tran_id} at {moment(purchaseDate).format('MMMM Do YYYY, h:mm:ss a')}
+            <Lottie className='w-[400px] mx-auto' animationData={successAnimation}></Lottie>
+            <p className='text-center text-xl text-green px-3'>
+                Payment {amount}.00 USD From {currentUser.name} to {receiver} is successful.  TrxID {tran_id} at {moment(purchaseDate).format('MMMM Do YYYY, h:mm:ss a')}
             </p>
         </div>
     );

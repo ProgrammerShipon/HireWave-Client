@@ -32,12 +32,12 @@ const DashNavItemsByRole = ({ role }) => {
                         <>
                            
 
-                            {/* <li className="w-full">
+                            <li className="w-full">
                                 <DashLink to='/dashboard/room'>
                                     <FaChalkboardUser size={24} />
                                     <p className="hidden md:inline">Interview</p>
                                 </DashLink>
-                            </li> */}
+                            </li>
 
                             {/* Posted job */}
                             <li className="w-full">

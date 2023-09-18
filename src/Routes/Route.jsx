@@ -45,6 +45,7 @@ import PaymentFail from "../Pages/PaymentFail";
 import Favorites from "../Dashboard/Favorites";
 import PaymentHistory from "../Components/DashComponents/PaymentHistory";
 import Chat from "../Dashboard/Chat";
+import Conference from "../Pages/Conference";
 
 // const baseURL = 'https://hire-wave.onrender.com/api';
 // const baseURL = 'https://hire-wave-server.vercel.app/api';
@@ -198,10 +199,10 @@ const Router = createBrowserRouter([
 
       // Recruiter routes
 
-      // {
-      //   path: "room",
-      //   element: <Conference />,
-      // },
+      {
+        path: "room",
+        element: <Conference />,
+      },
       {
         path: "postedJobs",
         element: <PostedJobs />,

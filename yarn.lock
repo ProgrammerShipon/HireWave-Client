@@ -2320,6 +2320,11 @@
     "@babel/plugin-transform-react-jsx-source" "^7.22.5"
     "react-refresh" "^0.14.0"
 
+"@zegocloud/zego-uikit-prebuilt@^1.8.11":
+  "integrity" "sha512-hLgNCbJasVQKD3lglarbaV/eoyk0WeJs2Po47esUmMLx1zU0FrUNB8RYhYsNaFFnpjn4v4glHavwP0PobzdQnA=="
+  "resolved" "https://registry.npmjs.org/@zegocloud/zego-uikit-prebuilt/-/zego-uikit-prebuilt-1.8.11.tgz"
+  "version" "1.8.11"
+
 "abort-controller@^3.0.0":
   "integrity" "sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg=="
   "resolved" "https://registry.npmjs.org/abort-controller/-/abort-controller-3.0.0.tgz"
