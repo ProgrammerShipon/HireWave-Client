@@ -35,41 +35,38 @@ const RecruiterCard = ({ recruiter }) => {
 		inactiveFillColor: '#d6c293'
 	}
 
-    const viewsCount = () => {
-        console.log(candidate);
-        const viewsData = {candidateEmail: currentUser?.email}
-        console.log(viewsData);
-        
-        axiosSecure
-          .patch(`/recruiters/viewsCount/${_id}`, viewsData)
-          .then((res) => {
-            if (res.status == 200 || res.status == 201) {
-            }
-          })
-          .catch((err) => console.log(err));
-	}
-	
+      // const viewsCount = () => {
+      //   const viewsData = { candidateEmail: currentUser?.email };
+
+      //   axiosSecure
+      //     .patch(`/recruiters/viewsCount/${singleRecruiter[0]?._id}`, viewsData)
+      //     .then((res) => {
+      //       if (res.status == 200 || res.status == 201) {
+      //       }
+      //     })
+      //     .catch((err) => console.log(err));
+      // };
+
 	return (
     <div className="w-64 sm:w-full mx-auto p-3 border border-purple hover:border-green cursor-pointer rounded-lg hover:shadow-xl hover:shadow-green/20 duration-300 group">
       <div className="flex items-center gap-3">
         {/* image */}
-        <Link onClick={() => viewsCount()} to={`/recruiters_details/${_id}`}>
-          <img
-            className="w-14 h-14 rounded-lg shadow-xl shadow-purple/30"
-            src={image}
-            alt={name}
-          />
-        </Link>
+          <Link to={`/recruiters_details/${_id}`}>
+            <img
+              className="w-14 h-14 rounded-lg shadow-xl shadow-purple/30"
+              src={image}
+              alt={name}
+            />
+          </Link>
 
         <div>
           {/* company name */}
-          <Link
-            onClick={() => viewsCount()}
-            to={`/recruiters_details/${_id}`}
-            className="text-xl text-purple font-medium duration-300 hover:text-green mb-1 drop-shadow-lg line-clamp-1"
-          >
-            {name}
-          </Link>
+            <Link
+              to={`/recruiters_details/${_id}`}
+              className="text-xl text-purple font-medium duration-300 hover:text-green mb-1 drop-shadow-lg line-clamp-1"
+            >
+              {name}
+            </Link>
 
           {/* company ratings */}
           <div className="flex items-center gap-1">
@@ -99,12 +96,12 @@ const RecruiterCard = ({ recruiter }) => {
         </div>
       ) : (
         <div className="text-right mt-6 mb-2">
-          <Link
-            to={`/recruiters_details/${_id}`}
-            className="text-gray group-hover:text-white px-5 py-2 rounded-md bg-purple/20 group-hover:bg-green duration-300 shadow-xl group-hover:shadow-green/20"
-          >
-            20 Open Jobs
-          </Link>
+            <Link
+              to={`/recruiters_details/${_id}`}
+              className="text-gray group-hover:text-white px-5 py-2 rounded-md bg-purple/20 group-hover:bg-green duration-300 shadow-xl group-hover:shadow-green/20"
+            >
+              20 Open Jobs
+            </Link>
         </div>
       )}
     </div>

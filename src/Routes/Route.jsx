@@ -49,9 +49,9 @@ import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
 import SelectRole from "../SignUpSteps/SelectRole";
 import PrivateRoute from "./PrivateRoute";
 
-const baseURL = 'https://hire-wave.onrender.com/api';
+// const baseURL = 'https://hire-wave.onrender.com/api';
 // const baseURL = 'https://hire-wave-server.vercel.app/api';
-// const baseURL = 'http://localhost:3030/api';
+const baseURL = 'http://localhost:3030/api';
 
 const Router = createBrowserRouter([
   {
