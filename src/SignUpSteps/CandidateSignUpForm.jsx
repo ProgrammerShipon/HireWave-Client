@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
 import useAuth from '../Hooks/useAuth';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
@@ -15,19 +15,18 @@ import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlinePlus } from 'react-icons/
 import { FaXmark } from 'react-icons/fa6';
 import PageLoader from "../Components/PageLoader";
 import useAllCategories from "../Hooks/useAllCategories";
-import UserManual from "../Components/UserManual";
 
 const CandidateSignUpForm = () => {
     const [allCategoriesData] = useAllCategories();
     const [curStep, setCurStep] = useState(0);
     const [finish, setFinish] = useState(false);
-    const [showUserManual, setShowUserManual] = useState(false);
     const [phoneNumber, setPhoneNumber] = useState()
     const [skillData, loading] = useSkills();
     const [finishLoading, setFinishLoading] = useState(false);
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const { control, register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
     const selectedCategory = watch('job_category', '');
@@ -76,7 +75,7 @@ const CandidateSignUpForm = () => {
         if (finish) {
             console.log(newData)
             setFinishLoading(true)
-            return axiosSecure.post("/candidates", newData)
+            axiosSecure.post("/candidates", newData)
                 .then((data) => {
                     if (data.status === 200) {
                         setFinishLoading(false)
@@ -88,9 +87,8 @@ const CandidateSignUpForm = () => {
                             showConfirmButton: false,
                             timer: 2500
                         });
-                        setShowUserManual(true);
-                        navigate('/', { replace: true })
-                        window.location.reload(true)
+                        navigate('/', { state: { from: location }, replace: true });
+                        window.location.reload(true);
                     }
                 })
                 .catch((err) => console.log(err));
@@ -639,7 +637,7 @@ const CandidateSignUpForm = () => {
                     <Step />
                     <Step />
                 </Stepper>
-                {showUserManual && <UserManual />}
+               
             </div>
             <div className='py-10'>
                 {renderContent()}
