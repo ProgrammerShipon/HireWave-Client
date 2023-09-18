@@ -27,7 +27,7 @@ const Home = () => {
             {
                 currentUser.role !== 'recruiter' && <>
                     <FeaturedJobs />
-                    border
+                    {/* border */}
                     <Divider />
                 </>
 
@@ -41,7 +41,7 @@ const Home = () => {
                 currentUser.role !== 'candidate' &&
                 <>
                     <TopCandidates />
-                    border
+                    {/* border */}
                     <Divider />
                 </>
             }
@@ -49,7 +49,7 @@ const Home = () => {
             {
                 currentUser.role !== 'recruiter' &&
                 <><TopRecruiters />
-                    border
+                    {/* border */}
                     <Divider />
                 </>
             }
@@ -57,7 +57,7 @@ const Home = () => {
             {
                 currentUser.role !== 'recruiter' &&
                 <><JobByLocation />
-                    border
+                    {/* border */}
                     <Divider />
                 </>
             }

@@ -1,16 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import DashTitle from "../Components/DashComponents/DashTitle";
 import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useChat from "../Hooks/useChat";
-import useCurrentCandidate from "../Hooks/useCurrentCandidate";
-import useCurrentRecruiter from "../Hooks/useCurrentRecruiter";
 import PageLoader from "../Components/PageLoader";
 import Conversation from "../Components/Conversation";
 import ChatBox from "./ChatBox";
-import { useQuery } from "@tanstack/react-query";
-
+import { PiHandTapThin } from "react-icons/pi";
 const Chat = () => {
   const [chats, chatLoading, chatRefetch] = useChat();
   const [axiosSecure] = useAxiosSecure()
@@ -106,17 +103,12 @@ const Chat = () => {
     return <PageLoader />
   }
 
-
-
-  // console.log(chats)
-  // console.log(currentChat)
-
   return (
     <section className="m-5 rounded-md">
       <DashTitle title="Messages" />
 
       <div className="grid grid-cols-12 gap-4 min-h-full">
-        <div className="col-span-4 px-2  bg-gray/20 p-2">
+        <div className="col-span-4 px-2 bg-gray/20 p-2 rounded-md">
           {chats?.map((chat, index) => (
             <div key={index} className="cursor-pointer"
               onClick={() => setCurrentChat(chat)}>
@@ -145,9 +137,12 @@ const Chat = () => {
             // setSendMessage={setSendMessage}
             />
           </div>
-        ) : (
-          <h3 className="text-green">Tap To Create A New Chat </h3>
-        )}
+        ) : <div className="flex flex-col justify-center items-center col-span-7 ">
+          <PiHandTapThin className="text-5xl text-gray"/>
+          <h3 className="text-gray text-2xl border-b-2 rounded-b-xl ">Tap To Create A New Chat </h3>
+        </div>
+        }
+
       </div>
     </section>
   );

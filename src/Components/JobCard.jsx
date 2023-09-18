@@ -35,7 +35,7 @@ const JobCard = ({ job, setJobDetails, mySavedJobs, refetch }) => {
         } else {
             setAlreadySaved(false)
         }
-    }, [job, mySavedJobs.length])
+    }, [job, mySavedJobs])
 
     const handleSaveJob = () => {
         axiosSecure.post("/savedjob", jobInfo)

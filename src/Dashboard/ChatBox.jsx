@@ -39,19 +39,19 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
 
     return (
         <div>
-            <div className='flex gap-2'>
+            <div className='flex items-center gap-2 bg-black/20 mb-2 p-2 rounded-md'>
                 <img src={messageReceiver?.image} className='w-11 h-11 rounded-full border border-gray' alt={messageReceiver?.name} />
-                <div className='flex flex-col gap-0'>
-                    <p>{messageReceiver?.name}</p>
+                <div className='flex flex-col justify-center gap-0'>
+                    <p className='text-xl'>{messageReceiver?.name}</p>
                     <p className='-mt-2'>{onlineUser ? "online " : "offline"}</p>
                 </div>
             </div>
-            <div className='h-[70vh] overflow-y-scroll bg-black/20 p2'>
+            <div className='h-[70vh] overflow-y-scroll bg-black/20 p-2 rounded-md'>
 
                 {
-                    message.length > 0 ? message.map((sms, index) =>
+                    message.length !==0 ?message.map((sms, index) =>
                         <StartMessage sms={sms} key={index} />
-                    ) : "Start New Conversation"
+                    ) :<p className='flex justify-center items-center pt-52'>Send A New Message</p>
                 }
 
             </div>
