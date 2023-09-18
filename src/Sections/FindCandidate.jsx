@@ -27,7 +27,6 @@ const FindCandidate = () => {
   const approveData = candidatesData.filter(candidate => candidate.status == 'approved')
 
   useEffect(() => {
-
     const searchTitle = searchTerm ? searchTerm.toLowerCase() : "";
     const searchLocation = location ? location.toLowerCase() : "";
     const searchCategory = category ? category.toLowerCase() : "";
