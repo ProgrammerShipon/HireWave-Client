@@ -22,7 +22,7 @@ const Home = () => {
                 <title>Hire Wave - Hiring agency and communication platform</title>
             </Helmet>
 
-            {/* <HeroBanner /> */}
+            <HeroBanner />
             <TopCategories />
             {
                 currentUser.role !== 'recruiter' && <>
@@ -32,6 +32,10 @@ const Home = () => {
                 </>
 
             }
+
+            <SpecialFeatures />
+            {/* border */}
+            <Divider />
 
             {
                 currentUser.role !== 'candidate' &&
