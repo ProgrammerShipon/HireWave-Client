@@ -5,7 +5,7 @@ import DashNavItemsByRole from "./DashNavItemsByRole";
 // react icons
 import { LiaHomeSolid } from "react-icons/lia";
 import { LuLayoutDashboard } from "react-icons/lu";
-import { BiLogOutCircle } from "react-icons/bi";
+import { BiLogOutCircle, BiMessageRoundedDetail } from "react-icons/bi";
 import { TbLockCog } from "react-icons/tb";
 import { VscAccount } from "react-icons/vsc";
 
@@ -24,11 +24,21 @@ const DashNavItems = () => {
           </DashLink>
         </li>
 
+
         {/* My Profile */}
         <li className="w-full">
           <DashLink to="/dashboard/myProfile">
             <VscAccount size={24} />
             <p className="hidden md:inline">My Profile</p>
+          </DashLink>
+        </li>
+
+        {/* Message  */}
+
+        <li className="w-full">
+          <DashLink to='/dashboard/messages'>
+            <BiMessageRoundedDetail size={24} />
+            <p className="hidden md:inline">Messages</p>
           </DashLink>
         </li>
 

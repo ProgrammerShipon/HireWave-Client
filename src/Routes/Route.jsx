@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import AppliedApplicant from "../Dashboard/AppliedApplicant";
 import CandidateList from "../Dashboard/CandidateList";
 import ChangePassword from "../Dashboard/ChangePassword";
-// import Chat from "../Dashboard/Chat";
 import DashboardHome from "../Dashboard/DashboardHome";
 import ManageJobs from "../Dashboard/ManageJobs";
 import ManageUsers from "../Dashboard/ManageUsers";
@@ -20,7 +19,6 @@ import ApplyJob from "../Pages/ApplyJob";
 import BrowseJobs from "../Pages/BrowseJobs";
 import CandidateDetails from "../Pages/CandidateDetails";
 import Candidates from "../Pages/Candidates";
-// import Conference from "../Pages/Conference";
 import Contact from "../Pages/Contact";
 import EventDetails from "../Pages/EventDetails";
 import Events from "../Pages/Events";
@@ -46,6 +44,7 @@ import PaymentSuccess from "../Pages/PaymentSuccess";
 import PaymentFail from "../Pages/PaymentFail";
 import Favorites from "../Dashboard/Favorites";
 import PaymentHistory from "../Components/DashComponents/PaymentHistory";
+import Chat from "../Dashboard/Chat";
 
 // const baseURL = 'https://hire-wave.onrender.com/api';
 // const baseURL = 'https://hire-wave-server.vercel.app/api';
@@ -178,6 +177,15 @@ const Router = createBrowserRouter([
         element: <MyProfile />,
       },
       {
+        path: "messages",
+        element: < Chat />
+      },
+      {
+        path: "messages/:id",
+        element: < Chat />,
+        loader: ({ params }) => fetch(`${baseURL}/candidates/${params.id}`)
+      },
+      {
         path: "changePassword",
         element: <ChangePassword />,
       },
@@ -189,15 +197,7 @@ const Router = createBrowserRouter([
       },
 
       // Recruiter routes
-      // {
-      //   path: "messages",
-      //   element: < Chat />
-      // },
-      // {
-      //   path: "messages/:id",
-      //   element: < Chat />,
-      //   loader: ({ params }) => fetch(`${baseURL}/candidates/${params.id}`)
-      // },
+
       // {
       //   path: "room",
       //   element: <Conference />,

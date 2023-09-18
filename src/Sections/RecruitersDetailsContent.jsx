@@ -16,12 +16,17 @@ import { BiMap } from 'react-icons/bi';
 import { FaStar } from 'react-icons/fa';
 import { AiOutlinePlus } from "react-icons/ai";
 import { LuExternalLink } from "react-icons/lu";
+import useUsers from "../Hooks/useUsers";
+import useAuth from "../Hooks/useAuth";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 export default function RecruitersDetailsContent({ recruiterData }) {
     const [reviewData,] = useReview();
     const [allJobsData, loading] = useAllJobs();
     const [postedJob, setPostedJob] = useState([]);
-
+    // const [userData] = useUsers();
+    // const { currentUser } = useAuth();
+    // const [axiosSecure] = useAxiosSecure();
     const {
         name,
         email,
@@ -38,7 +43,14 @@ export default function RecruitersDetailsContent({ recruiterData }) {
     } = recruiterData[0];
 
     const [review, setReview] = useState([]);
-
+    // const [receiverId, setReceiverId] = useState('');
+    // useEffect(() => {
+    //     const user = userData?.find(user => user.email === email)
+    //     // setReceiverId(user)
+    //     setReceiverId(user?._id)
+    // }, [userData]);
+    // console.log(receiverId)
+   
     useEffect(() => {
         const getReview = reviewData.filter(rvw => rvw.email.toLowerCase() === email.toLowerCase());
         setReview(getReview)
@@ -55,6 +67,26 @@ export default function RecruitersDetailsContent({ recruiterData }) {
         activeFillColor: "#ffb33e",
         inactiveFillColor: "#a78f6d",
     };
+
+
+    // const createChat = () => {
+    //     const chatMembers = {
+    //         sender: currentUser?._id,
+    //         receiver: receiverId,
+
+    //     }
+    //     console.log(chatMembers)
+    //     axiosSecure.post('/chat', chatMembers)
+    //         .then(res => {
+    //             console.log(res.data)
+    //             console.log(chats.length)
+    //         })
+    //         .catch(error => {
+    //             console.log(error)
+    //         })
+    // }
+
+
     return (
         <section className="py-20 md:py-[120px] duration-300">
             <div className="container">

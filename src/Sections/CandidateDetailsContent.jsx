@@ -21,10 +21,20 @@ import "@smastrom/react-rating/style.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
+import useCurrentUserId from "../Hooks/useCurrentUserId";
+import useCurrentRecruiter from "../Hooks/useCurrentRecruiter";
+import useCurrentCandidate from "../Hooks/useCurrentCandidate";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useChat from "../Hooks/useChat";
+import useUsers from "../Hooks/useUsers";
 
 const CandidateDetailsContent = ({ candidateDetails }) => {
     const { currentUser } = useAuth();
+    const [axiosSecure] = useAxiosSecure();
     const [reviewData, loading] = useReview();
+    const [receiverId, setReceiverId] = useState();
+    const [userData] = useUsers();
+    // console.log(userData)
     const {
         _id,
         name,
@@ -43,8 +53,16 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
         experience,
         skills,
     } = candidateDetails;
-    const navigate = useNavigate();
+    useEffect(() => {
+        const user = userData.find(user => user.email === email)
+        setReceiverId(user._id)
+    }, []);
 
+
+    // console.log(receiverId)
+
+    const navigate = useNavigate();
+    const [chats] = useChat();
     const [review, setReview] = useState([]);
 
     useEffect(() => {
@@ -62,12 +80,25 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
     };
 
     // chat
-    const handleCreateChat = () => {
-        navigate('/dashboard/messages')
+    const createChat = () => {
+        const chatMembers = {
+            sender: currentUser?._id,
+            receiver: receiverId,
+
+        }
+        console.log(chatMembers)
+        axiosSecure.post('/chat', chatMembers)
+            .then(res => {
+                console.log(res.data)
+                navigate('/dashboard/messages')
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
-    const handleAddToFavorite =() => {
-        const newData={
+    const handleAddToFavorite = () => {
+        const newData = {
             candidateId: _id,
             recruiterEmail: currentUser?.email
         }
@@ -160,8 +191,12 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                                     className="text-green group-hover:text-white"
                                 />
                             </button>
-                            <Link to={`/dashboard/messages/${_id}`}>
-                                <button className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
+                            <Link
+                            // to={`/dashboard/messages/${_id}`}
+                            >
+                                <button
+                                    onClick={createChat}
+                                    className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
                                     Contact With Me{" "}
                                     <AiOutlineMessage
                                         size="22"
