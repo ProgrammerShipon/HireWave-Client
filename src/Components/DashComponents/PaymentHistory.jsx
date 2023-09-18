@@ -19,6 +19,7 @@ const PaymentHistory = () => {
                             Amount
                         </th>
                         <th className="py-3 text-center font-medium">Trans ID</th>
+                        <th className="py-3 text-center font-medium">Expire</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -13,7 +13,7 @@ const PricingBody = () => {
             recruiterId: currentRecruiter?._id,
             receiver: "HireWave",
             amount: 71,
-            paymentTimeline: "monthly",
+            package: "Professional",
             recruiterName: currentRecruiter.name,
             companyLogo: currentRecruiter?.image
         }
@@ -31,9 +31,9 @@ const PricingBody = () => {
     const handlePayment121 = () => {
         const paymentInfo = {
             recruiterId: currentRecruiter?._id,
-            receiver: "HireWave mahfuz",
+            receiver: "HireWave",
             amount: 121,
-            paymentTimeline: "monthly",
+            package: "Enterprise",
             recruiterName: currentRecruiter.name,
             companyLogo: currentRecruiter?.image
         }
