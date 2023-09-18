@@ -1,9 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
+import PaymentHistory from "../Components/DashComponents/PaymentHistory";
 import AppliedApplicant from "../Dashboard/AppliedApplicant";
 import CandidateList from "../Dashboard/CandidateList";
 import ChangePassword from "../Dashboard/ChangePassword";
-import Chat from "../Dashboard/Chat";
 import DashboardHome from "../Dashboard/DashboardHome";
+import Favorites from "../Dashboard/Favorites";
 import ManageJobs from "../Dashboard/ManageJobs";
 import ManageUsers from "../Dashboard/ManageUsers";
 import MyApplications from "../Dashboard/MyApplications";
@@ -30,6 +31,8 @@ import JobDetails from "../Pages/JobDetails";
 import Learning from "../Pages/Learning";
 import LearningDetails from "../Pages/LearningDetails";
 import Login from "../Pages/Login";
+import PaymentFail from "../Pages/PaymentFail";
+import PaymentSuccess from "../Pages/PaymentSuccess";
 import PostJob from "../Pages/PostJob";
 import Pricing from "../Pages/Pricing";
 import Recruiters from "../Pages/Recruiters";
@@ -42,14 +45,10 @@ import CandidateSignUpForm from "../SignUpSteps/CandidateSignUpForm";
 import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
 import SelectRole from "../SignUpSteps/SelectRole";
 import PrivateRoute from "./PrivateRoute";
-import Favorites from "../Dashboard/Favorites";
-import PaymentSuccess from "../Pages/PaymentSuccess";
-import PaymentFail from "../Pages/PaymentFail";
-import PaymentHistory from "../Components/DashComponents/PaymentHistory";
 
-const baseURL = 'https://hire-wave.onrender.com/api';
+// const baseURL = 'https://hire-wave.onrender.com/api';
 // const baseURL = 'https://hire-wave-server.vercel.app/api';
-// const baseURL = 'http://localhost:3030/api';
+const baseURL = 'http://localhost:3030/api';
 
 const Router = createBrowserRouter([
   {

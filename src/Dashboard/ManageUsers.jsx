@@ -26,7 +26,7 @@ const ManageUsers = () => {
   useEffect(() => {
     const pendingUser = userData.filter(user => user.status === "pending");
     setPendingUsers(pendingUser)
-  }, [!loading])
+  }, [!loading]);
 
   const { register, watch, handleSubmit, reset } = useForm();
   const onSubmit = () => {
