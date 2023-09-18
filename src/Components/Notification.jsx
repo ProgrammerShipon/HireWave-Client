@@ -12,8 +12,8 @@ const Notification = () => {
     const { currentUser } = useAuth();
     const [notificationData, loading, refetch] = useNotification()
 
-    console.log('notificationData -> ', notificationData);
-    console.log("currentUser -> ", currentUser);
+    // console.log('notificationData -> ', notificationData);
+    // console.log("currentUser -> ", currentUser);
 
 
     return (

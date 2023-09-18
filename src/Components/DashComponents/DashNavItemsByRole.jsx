@@ -2,8 +2,8 @@ import DashLink from './DashLink';
 
 // react icons
 import { AiOutlineFileDone } from 'react-icons/ai';
-import { BsBookmarkPlus, BsBriefcase, BsFileArrowUp, BsFileEarmarkPerson } from 'react-icons/bs';
-import { MdOutlineHistory, MdOutlineManageAccounts, MdOutlinePayments, } from 'react-icons/md';
+import { BsBookmarkPlus, BsBriefcase, BsFileArrowUp, BsFileEarmarkPerson, BsSendCheck } from 'react-icons/bs';
+import { MdOutlineAssignment, MdOutlineAssignmentTurnedIn, MdOutlineHistory, MdOutlineManageAccounts, MdOutlinePayments, } from 'react-icons/md';
 import { CgUserList } from 'react-icons/cg';
 import { FaChalkboardUser } from 'react-icons/fa6';
 import { BiMessageRoundedDetail } from 'react-icons/bi';
@@ -98,6 +98,23 @@ const DashNavItemsByRole = ({ role }) => {
                                     <p className="hidden md:inline">Payment History</p>
                                 </DashLink>
                             </li>
+
+                            {/* Requested Offers */}
+                            <li className="w-full">
+                                <DashLink to='/dashboard/offers'>
+                                    <BsSendCheck size={24} />
+                                    <p className="hidden md:inline">Requested Offers</p>
+                                </DashLink>
+                            </li>
+
+                            {/* Tasks Sent */}
+                            <li className="w-full">
+                                <DashLink to='/dashboard/tasks'>
+                                    <MdOutlineAssignment size={24} />
+                                    <p className="hidden md:inline">Tasks Received</p>
+                                </DashLink>
+                            </li>
+
                             {/* Favorites  */}
                             <li className="w-full">
                                 <DashLink to='/dashboard/favorites'>
