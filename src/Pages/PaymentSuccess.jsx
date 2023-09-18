@@ -1,6 +1,6 @@
 import Lottie from 'lottie-react';
 import { Link, useParams } from 'react-router-dom';
-import successAnimation from '../../public/97987-success.json'
+import successAnimation from '../Assets/97987-success.json'
 import usePaymentHistory from '../Hooks/usePaymentHistory';
 import useAuth from '../Hooks/useAuth';
 import moment from 'moment';

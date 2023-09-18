@@ -5,9 +5,10 @@ import { AiOutlineFileDone } from 'react-icons/ai';
 import { BsBookmarkPlus, BsBriefcase, BsFileArrowUp, BsFileEarmarkPerson } from 'react-icons/bs';
 import { MdOutlineHistory, MdOutlineManageAccounts, MdOutlinePayments, } from 'react-icons/md';
 import { CgUserList } from 'react-icons/cg';
+import { FaChalkboardUser } from 'react-icons/fa6';
 import { BiMessageRoundedDetail } from 'react-icons/bi';
 import { LiaIndustrySolid } from 'react-icons/lia';
-import { FaChalkboardUser } from 'react-icons/fa6';
+import { PiHandshakeDuotone } from 'react-icons/pi';
 import { SlUserFollow } from 'react-icons/sl';
 
 const DashNavItemsByRole = ({ role }) => {
@@ -44,7 +45,7 @@ const DashNavItemsByRole = ({ role }) => {
                     role === 'recruiter' ?
                         <>
                             {/* Messages */}
-                            <li className="w-full">
+                            {/* <li className="w-full">
                                 <DashLink to='/dashboard/messages'>
                                     <BiMessageRoundedDetail size={24} />
                                     <p className="hidden md:inline">Messages</p>
@@ -56,7 +57,7 @@ const DashNavItemsByRole = ({ role }) => {
                                     <FaChalkboardUser size={24} />
                                     <p className="hidden md:inline">Interview</p>
                                 </DashLink>
-                            </li>
+                            </li> */}
 
                             {/* Posted job */}
                             <li className="w-full">
@@ -65,8 +66,8 @@ const DashNavItemsByRole = ({ role }) => {
                                     <p className="hidden md:inline">Posted Jobs</p>
                                 </DashLink>
                             </li>
-                            {/* Applied candidates */}
 
+                            {/* Applied candidates */}
                             <li className="w-full">
                                 <DashLink to='/applied_candidates'>
                                     <BsFileEarmarkPerson size={24} />
@@ -74,8 +75,15 @@ const DashNavItemsByRole = ({ role }) => {
                                 </DashLink>
                             </li>
 
-                            {/* Payment  */}
+                            {/* Hired Candidates */}
+                            <li className="w-full">
+                                <DashLink to='/dashboard/hired_candidates'>
+                                    <PiHandshakeDuotone size={24} />
+                                    <p className="hidden md:inline">Hired Candidates</p>
+                                </DashLink>
+                            </li>
 
+                            {/* Payment  */}
                             <li className="w-full">
                                 <DashLink to='/pricing'>
                                     <MdOutlinePayments size={24} />
@@ -87,7 +95,7 @@ const DashNavItemsByRole = ({ role }) => {
                             <li className="w-full">
                                 <DashLink to='/dashboard/payment_history'>
                                     <MdOutlineHistory size={24} />
-                                    <p className="hidden md:inline">Payments History</p>
+                                    <p className="hidden md:inline">Payment History</p>
                                 </DashLink>
                             </li>
                             {/* Favorites  */}

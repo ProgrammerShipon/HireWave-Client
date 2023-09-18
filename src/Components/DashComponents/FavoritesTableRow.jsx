@@ -17,8 +17,8 @@ const FavoritesTableRow = ({favorite}) => {
         <td>{candidateCategory}</td>
         <td>{candidateRate}</td>
         <td className='flex justify-center items-center gap-5 lg:gap-8 mt-5 cursor-pointer mx-auto'>
-            <AiOutlineDelete className='hover:bg-red-100 text-red-500 rounded-full' size={20}/>
-            <BiMessageDetail className='hover:bg-green/20 text-green rounded-full' size={20} />
+            <AiOutlineDelete className='hover:bg-red-100 text-red-500 rounded-full text-3xl p-1'/>
+            <BiMessageDetail className='hover:bg-green/20 text-green rounded-full text-3xl p-1' />
         </td>
     </tr>
     );

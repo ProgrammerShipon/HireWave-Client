@@ -70,6 +70,11 @@ const Profile = () => {
                                 Learning</Link>
                         </li>
                         <li>
+                            <Link to='/learning' className='text-purple flex items-center gap-4 hover:gap-5 hover:bg-purple/20 py-2 pl-4 hover:underline duration-300'>
+                                <BiBookReader />
+                                Learning</Link>
+                        </li>
+                        <li>
                             <Link to='/dashboard/dashboardHome' className='text-purple flex items-center gap-4 hover:gap-5 hover:bg-purple/20 py-2 pl-4 hover:underline duration-300'>
                                 <LuLayoutDashboard />
                                 Dashboard
