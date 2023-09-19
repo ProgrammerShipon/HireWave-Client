@@ -1,16 +1,14 @@
 import { Link } from 'react-router-dom';
 
 // react icons
-import { HiOutlineExternalLink } from 'react-icons/hi';
+import { useEffect, useState } from 'react';
 import { BiSolidStar } from "react-icons/bi";
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { HiOutlineExternalLink } from 'react-icons/hi';
 import useReview from '../Hooks/useReview';
 
 const AppliedCandidatesTable = ({ index, candidate }) => {
     const [reviewData, loading] = useReview();
     const { _id, applicantId, applicantName, applicantEmail, applicantImage, expected_salary, location } = candidate;
-
     const [review, setReview] = useState([]);
     useEffect(() => {
         const getReview = reviewData.filter(rvl => rvl.email === applicantEmail);
@@ -18,7 +16,7 @@ const AppliedCandidatesTable = ({ index, candidate }) => {
     }, [!loading])
     return (
         <tr
-            key={candidate.id}
+            key={candidate._id}
             className='even:bg-black/50 text-black even:text-white group'
         >
             <td className='px-5 py-3 text-green group-even:text-white'>{index + 1}</td>
