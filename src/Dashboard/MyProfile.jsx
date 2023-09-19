@@ -36,7 +36,7 @@ const MyProfile = () => {
             {
                 currentUser.role === "recruiter" && <>
                     {
-                        currentRecruiter?.email ? <RecruitersProfile recruitersData={currentRecruiter} refetch={refetchRecruiters} /> : <PageLoader />
+                        currentRecruiter?.email ? <RecruitersProfile recruitersData={currentRecruiter} refetchRecruiters={refetchRecruiters} /> : <PageLoader />
                     }
                 </>
             }

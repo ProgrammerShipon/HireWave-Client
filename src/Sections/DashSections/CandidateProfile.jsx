@@ -24,7 +24,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     const [languagesData] = useLanguagesData();
     const [axiosSecure] = useAxiosSecure()
     const { _id, name, title, image, location, status, hourlyRate, jobType, address, languages, about, education, experience, skills, openToWork, socialLink } = candidatesData;
-    console.log(candidatesData)
+    // console.log(candidatesData)
     const formattedAbout = about.map(pa => pa === "" ? "\u00A0" : pa);
 
     const [userAbout, setUserAbout] = useState(about)
