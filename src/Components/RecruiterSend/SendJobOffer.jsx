@@ -29,6 +29,7 @@ const SendJobOffer = ({ handleSendOffer, candidateDetails }) => {
     jobType,
     companyLogo,
     companyEmail,
+    companyName,
     title,
   } = candidateDetails;
     
@@ -51,7 +52,7 @@ const SendJobOffer = ({ handleSendOffer, candidateDetails }) => {
         image: applicantImage,
       },
       company: {
-        name: companyEmail,
+        name: companyName,
         email: companyEmail,
         image: companyLogo,
       },
