@@ -3,38 +3,41 @@ import RecentReviewSlider from "../Components/RecentReviewSlider";
 import useReview from "../Hooks/useReview";
 
 // react icons
+import { AiOutlineMessage } from "react-icons/ai";
 import { BiMap } from "react-icons/bi";
 import { BsBookmarkCheck, BsBookmarkPlus, BsCurrencyDollar } from "react-icons/bs";
-import { AiOutlineMessage } from "react-icons/ai";
 import {
     FaFacebookF,
     FaGithub,
     FaLinkedin,
-    FaTwitter,
     FaRegCalendarAlt,
+    FaTwitter,
 } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 
 // react rating
 import { Rating, Star } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import PageLoader from "../Components/PageLoader";
 import useAuth from "../Hooks/useAuth";
-import useCurrentUserId from "../Hooks/useCurrentUserId";
-import useCurrentRecruiter from "../Hooks/useCurrentRecruiter";
-import useCurrentCandidate from "../Hooks/useCurrentCandidate";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useChat from "../Hooks/useChat";
-import useUsers from "../Hooks/useUsers";
+import useSingleUser from "../Hooks/useSingleUser";
 
 const CandidateDetailsContent = ({ candidateDetails }) => {
-    const { currentUser } = useAuth();
+    const { currentUser, loading: authLoading } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const [reviewData, loading] = useReview();
     const [favorite, setFavorite] = useState(false)
     const [receiverId, setReceiverId] = useState();
-    const [userData] = useUsers();
+    const [senderId, setSenderId] = useState();
+    const [singleUser, UserDataLoading] = useSingleUser();
+    
+    const navigate = useNavigate();
+    const [chats] = useChat();
+    const [review, setReview] = useState([]);
+
     // console.log(userData)
     const {
         _id,
@@ -54,17 +57,14 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
         experience,
         skills,
     } = candidateDetails;
+    
+    // Using Loading
+    UserDataLoading && authLoading && <PageLoader />;
+
     useEffect(() => {
-        const user = userData.find(user => user.email === email)
-        setReceiverId(user._id)
-    }, []);
-
-
-    // console.log(receiverId)
-
-    const navigate = useNavigate();
-    const [chats] = useChat();
-    const [review, setReview] = useState([]);
+      setReceiverId(singleUser?._id);
+      setSenderId(currentUser?._id);
+    }, [singleUser, currentUser]);
 
     useEffect(() => {
         const getReview = reviewData.filter(rvl => rvl.email.toLowerCase() === email.toLowerCase());
@@ -83,11 +83,10 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
     // chat
     const createChat = () => {
         const chatMembers = {
-            sender: currentUser?._id,
-            receiver: receiverId,
-
-        }
-        console.log(chatMembers)
+          sender: senderId,
+          receiver: receiverId,
+        };
+        
         axiosSecure.post('/chat', chatMembers)
             .then(res => {
                 console.log(res.data)
@@ -107,7 +106,6 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
             candidateName: name,
             recruiterEmail: currentUser?.email
         }
-        console.log(newData);
 
         //TODO: add to favorite in backend
         setFavorite(true)
