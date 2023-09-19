@@ -1,14 +1,14 @@
 import { Step, Stepper } from "@tkwant/react-steps";
+import { Country, State } from "country-state-city";
 import { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import useAuth from '../Hooks/useAuth';
-import useSkills from '../Hooks/useSkills';
-import { useNavigate } from 'react-router-dom';
-import useAxiosSecure from '../Hooks/useAxiosSecure';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
-import { Country, State } from "country-state-city"
-import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
+import useAuth from '../Hooks/useAuth';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import useSkills from '../Hooks/useSkills';
 
 // react icons
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlinePlus } from 'react-icons/ai';
@@ -26,6 +26,7 @@ const CandidateSignUpForm = () => {
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const { control, register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
     const selectedCategory = watch('job_category', '');
@@ -74,7 +75,7 @@ const CandidateSignUpForm = () => {
         if (finish) {
             console.log(newData)
             setFinishLoading(true)
-            return axiosSecure.post("/candidates", newData)
+            axiosSecure.post("/candidates", newData)
                 .then((data) => {
                     if (data.status === 200) {
                         setFinishLoading(false)
@@ -82,12 +83,12 @@ const CandidateSignUpForm = () => {
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
-                            title: 'Sign Up successfully',
+                            title: 'Sign Up successful',
                             showConfirmButton: false,
                             timer: 2500
                         });
-                        navigate('/', { replace: true })
-                        window.location.reload(true)
+                        navigate('/', { state: { from: location }, replace: true });
+                        window.location.reload(true);
                     }
                 })
                 .catch((err) => console.log(err));
@@ -99,7 +100,7 @@ const CandidateSignUpForm = () => {
         setCurStep(curStep - 1);
     };
 
-    //Country, State, Province
+    // Country, State, Province
     const selectedCountry = watch('country', '');
     const countryData = Country.getAllCountries()
     const filteredCountry = countryData.find(country => country.name == selectedCountry)
@@ -280,7 +281,7 @@ const CandidateSignUpForm = () => {
                                     >
                                         <option value="" disable>Select</option>
                                         {
-                                            stateData?.map((state, index) => <option key={index} value={state.name}>{state.name}</option>)
+                                            stateData?.map(state => <option value={state.name}>{state.name}</option>)
                                         }
                                     </select>
                                 </label>
@@ -636,6 +637,7 @@ const CandidateSignUpForm = () => {
                     <Step />
                     <Step />
                 </Stepper>
+               
             </div>
             <div className='py-10'>
                 {renderContent()}

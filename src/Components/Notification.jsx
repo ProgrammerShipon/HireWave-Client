@@ -10,10 +10,7 @@ const Notification = () => {
   const [open, setOpen] = useState(false);
   const [read, setRead] = useState(false);
   const { currentUser } = useAuth();
-  const [notificationData, loading, refetch] = useNotification()
-
-  // console.log('notificationData -> ', notificationData);
-
+  const [notificationData, loading, refetch] = useNotification();
 
   return (
     <div className="relative">

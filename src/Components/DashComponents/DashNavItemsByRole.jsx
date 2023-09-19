@@ -2,13 +2,14 @@ import DashLink from './DashLink';
 
 // react icons
 import { AiOutlineFileDone } from 'react-icons/ai';
-import { BsBookmarkPlus, BsBriefcase, BsFileArrowUp, BsFileEarmarkPerson } from 'react-icons/bs';
-import { MdOutlineHistory, MdOutlineManageAccounts, MdOutlinePayments, } from 'react-icons/md';
+import { BsBookmarkPlus, BsBriefcase, BsFileArrowUp, BsFileEarmarkPerson, BsSendCheck } from 'react-icons/bs';
+import { MdOutlineAssignment, MdOutlineAssignmentTurnedIn, MdOutlineHistory, MdOutlineManageAccounts, MdOutlinePayments, } from 'react-icons/md';
 import { CgUserList } from 'react-icons/cg';
+import { FaChalkboardUser } from 'react-icons/fa6';
 import { BiMessageRoundedDetail } from 'react-icons/bi';
 import { LiaIndustrySolid } from 'react-icons/lia';
-import { FaChalkboardUser } from 'react-icons/fa6';
-import { FaHistory } from 'react-icons/fa';
+import { PiHandshakeDuotone } from 'react-icons/pi';
+import { SlUserFollow } from 'react-icons/sl';
 
 const DashNavItemsByRole = ({ role }) => {
     return (
@@ -24,7 +25,6 @@ const DashNavItemsByRole = ({ role }) => {
                                 <p className="hidden md:inline">My Applications</p>
                             </DashLink>
                         </li>
-
                     </> :
 
                     // recruiter routes
@@ -32,12 +32,12 @@ const DashNavItemsByRole = ({ role }) => {
                         <>
 
 
-                            {/* <li className="w-full">
+                            <li className="w-full">
                                 <DashLink to='/dashboard/room'>
                                     <FaChalkboardUser size={24} />
                                     <p className="hidden md:inline">Interview</p>
                                 </DashLink>
-                            </li> */}
+                            </li>
 
                             {/* Posted job */}
                             <li className="w-full">
@@ -46,17 +46,24 @@ const DashNavItemsByRole = ({ role }) => {
                                     <p className="hidden md:inline">Posted Jobs</p>
                                 </DashLink>
                             </li>
-                            {/* Applied candidates */}
 
-                            {/* <li className="w-full">
+                            {/* Applied candidates */}
+                            <li className="w-full">
                                 <DashLink to='/applied_candidates'>
                                     <BsFileEarmarkPerson size={24} />
                                     <p className="hidden md:inline">Applicants</p>
                                 </DashLink>
-                            </li> */}
+                            </li>
+
+                            {/* Hired Candidates */}
+                            <li className="w-full">
+                                <DashLink to='/dashboard/hired_candidates'>
+                                    <PiHandshakeDuotone size={24} />
+                                    <p className="hidden md:inline">Hired Candidates</p>
+                                </DashLink>
+                            </li>
 
                             {/* Payment  */}
-
                             <li className="w-full">
                                 <DashLink to='/pricing'>
                                     <MdOutlinePayments size={24} />
@@ -68,16 +75,33 @@ const DashNavItemsByRole = ({ role }) => {
                             <li className="w-full">
                                 <DashLink to='/dashboard/payment_history'>
                                     <MdOutlineHistory size={24} />
-                                    <p className="hidden md:inline">Payments History</p>
+                                    <p className="hidden md:inline">Payment History</p>
                                 </DashLink>
                             </li>
+
+                            {/* Requested Offers */}
+                            <li className="w-full">
+                                <DashLink to='/dashboard/offers'>
+                                    <BsSendCheck size={24} />
+                                    <p className="hidden md:inline">Requested Offers</p>
+                                </DashLink>
+                            </li>
+
+                            {/* Tasks Sent */}
+                            <li className="w-full">
+                                <DashLink to='/dashboard/tasks'>
+                                    <MdOutlineAssignment size={24} />
+                                    <p className="hidden md:inline">Tasks Received</p>
+                                </DashLink>
+                            </li>
+
                             {/* Favorites  */}
-                            {/* <li className="w-full">
+                            <li className="w-full">
                                 <DashLink to='/dashboard/favorites'>
                                     <BsBookmarkPlus size={24} />
                                     <p className="hidden md:inline">Favorites</p>
                                 </DashLink>
-                            </li> */}
+                            </li>
                         </> :
 
                         // Admin routes

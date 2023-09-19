@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import RecentReviewSlider from "../Components/RecentReviewSlider";
-import GetAgoTime from "../Components/GetAgoTime";
-import useAllJobs from "../Hooks/useAllJobs";
-import JobCard from "../Components/JobCard";
-import useReview from "../Hooks/useReview";
 import moment from 'moment';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import GetAgoTime from "../Components/GetAgoTime";
+import JobCard from "../Components/JobCard";
+import RecentReviewSlider from "../Components/RecentReviewSlider";
+import useAllJobs from "../Hooks/useAllJobs";
+import useReview from "../Hooks/useReview";
 
 // react rating
 import { Rating, Star } from "@smastrom/react-rating";
@@ -14,25 +14,28 @@ import "@smastrom/react-rating/style.css";
 // react icons
 import { BiMap } from 'react-icons/bi';
 import { FaStar } from 'react-icons/fa';
-import { AiOutlinePlus } from "react-icons/ai";
 import { LuExternalLink } from "react-icons/lu";
-import useUsers from "../Hooks/useUsers";
+import { SlUserFollow, SlUserFollowing } from "react-icons/sl";
 import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useUsers from "../Hooks/useUsers";
 
 export default function RecruitersDetailsContent({ recruiterData }) {
+    const { currentUser } = useAuth();
     const [reviewData,] = useReview();
     const [allJobsData, loading] = useAllJobs();
+    const [follow, setFollow] = useState(false)
     const [postedJob, setPostedJob] = useState([]);
     const [userData] = useUsers();
-    const { currentUser } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const navigate = useNavigate()
     const {
+        _id,
         name,
         email,
         image,
         banner,
+        category,
         location,
         address,
         industry,
@@ -68,6 +71,20 @@ export default function RecruitersDetailsContent({ recruiterData }) {
         inactiveFillColor: "#a78f6d",
     };
 
+    const handleFollow = () => {
+        const newData={
+            recruiterId: _id,
+            recruiterImage: image,
+            recruiterLocation: location,
+            recruiterCategory: category,
+            recruiterName: name,
+            candidateEmail: currentUser?.email
+        }
+        console.log(newData);
+
+        //TODO: add to favorite in backend
+        setFollow(true)
+    }
 
     const createChat = () => {
         const chatMembers = {
@@ -159,11 +176,19 @@ export default function RecruitersDetailsContent({ recruiterData }) {
                                 >
                                     Website <LuExternalLink size='20' />
                                 </a>
-                                <Link to='/'
-                                    className="flex items-center gap-1 px-5 py-1 text-xl bg-green text-white rounded-md hover:bg-dark shadow-lg shadow-green/40 hover:shadow-dark/50 duration-300"
-                                >
-                                    <AiOutlinePlus size='22' /> Follow
-                                </Link>
+                                <button onClick={handleFollow} className={`flex items-center gap-2 px-5 py-1 text-xl text-white rounded-md sm:mb-3 shadow-lg shadow-green/40 hover:shadow-dark/50 duration-300 w-full ${!follow? "bg-green hover:bg-dark" : "bg-dark" }`}>
+                                {
+                                    !follow ?
+                                    <>
+                                        <p>Follow{" "}</p>
+                                        <SlUserFollow/>
+                                    </>:
+                                    <>
+                                        <p>Following {" "}</p>
+                                        <SlUserFollowing/>
+                                    </>
+                                }
+                                </button>
                             </div>
                         </div>
                     </div>
