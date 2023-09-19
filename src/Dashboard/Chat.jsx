@@ -39,7 +39,7 @@ const Chat = () => {
 
   // Connect with AiOutlineRocket.io 
   useEffect(() => {
-    const newSocket = io("http://localhost:3000")
+    const newSocket = io("https://hire-wave-chat.onrender.com")
     setSocket(newSocket)
     return () => {
       newSocket.disconnect()

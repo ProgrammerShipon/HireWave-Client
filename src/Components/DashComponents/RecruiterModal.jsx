@@ -57,10 +57,10 @@ const RecruiterModal = ({ recruitersData, refetchRecruiters }) => {
                                         src={image} alt="" />
                                 </div>
 
-                                <button type='submit'
+                                {/* <button type='submit'
                                     className='flex items-center justify-center gap-1 mt-2 text-lg text-lightGray w-full'>
                                     <BsCamera size='24' /> Upload
-                                </button>
+                                </button> */}
                             </div>
 
 

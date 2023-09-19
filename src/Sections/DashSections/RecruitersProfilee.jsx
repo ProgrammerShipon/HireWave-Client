@@ -15,7 +15,7 @@ import { LuExternalLink } from "react-icons/lu";
 import { BsTelephoneOutbound } from "react-icons/bs";
 import RecruiterModal from "../../Components/DashComponents/RecruiterModal";
 
-const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
+const RecruitersProfilee = ({ recruitersData, refetchRecruiters }) => {
     const [axiosSecure] = useAxiosSecure()
     // console.log(recruitersData)
     const { _id, name, image, email, banner, phone, industry, website, category, subCategory, location, address, about, specialties, status, active, followers, joinDate, } = recruitersData;
@@ -129,7 +129,7 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
                     <div className={`flex flex-col gap-2 p-3 ${editAbout ? 'hidden' : 'block'}`}>
                         <form
                         //  onSubmit={handleSubmit(handleModifyAbout)}
-                         >
+                        >
                             <label htmlFor="newAbout" className='text-lightGray text-base'>
                                 Edit About
                                 <DescriptionTextarea about={about} setUserAbout={setUserAbout} />
@@ -336,4 +336,4 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
     );
 };
 
-export default RecruitersProfile;
+export default RecruitersProfilee;
