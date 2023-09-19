@@ -3,14 +3,14 @@ import useAxiosSecure from './useAxiosSecure';
 
 const useUsers = () => {
     const [axiosSecure] = useAxiosSecure();
-    const { data: userData = [], isLoading: loading, refetch } = useQuery({
+    const { data: userData = [], isLoading: UserDataLoading, refetch } = useQuery({
         queryKey: ['userData'],
         queryFn: async () => {
             const res = await axiosSecure('/users');
             return res.data;
         },
     });
-    return [userData, loading, refetch];
+    return [userData, UserDataLoading, refetch];
 };
 
 export default useUsers;

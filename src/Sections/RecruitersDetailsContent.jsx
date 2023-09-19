@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RecentReviewSlider from "../Components/RecentReviewSlider";
 import GetAgoTime from "../Components/GetAgoTime";
 import useAllJobs from "../Hooks/useAllJobs";
@@ -16,12 +16,18 @@ import { BiMap } from 'react-icons/bi';
 import { FaStar } from 'react-icons/fa';
 import { AiOutlinePlus } from "react-icons/ai";
 import { LuExternalLink } from "react-icons/lu";
+import useUsers from "../Hooks/useUsers";
+import useAuth from "../Hooks/useAuth";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 export default function RecruitersDetailsContent({ recruiterData }) {
     const [reviewData,] = useReview();
     const [allJobsData, loading] = useAllJobs();
     const [postedJob, setPostedJob] = useState([]);
-
+    const [userData] = useUsers();
+    const { currentUser } = useAuth();
+    const [axiosSecure] = useAxiosSecure();
+    const navigate = useNavigate()
     const {
         name,
         email,
@@ -38,6 +44,12 @@ export default function RecruitersDetailsContent({ recruiterData }) {
     } = recruiterData[0];
 
     const [review, setReview] = useState([]);
+    const [receiverId, setReceiverId] = useState('');
+    useEffect(() => {
+        const user = userData?.find(user => user.email === email)
+        // setReceiverId(user)
+        setReceiverId(user?._id)
+    }, [userData]);
 
     useEffect(() => {
         const getReview = reviewData.filter(rvw => rvw.email.toLowerCase() === email.toLowerCase());
@@ -55,6 +67,25 @@ export default function RecruitersDetailsContent({ recruiterData }) {
         activeFillColor: "#ffb33e",
         inactiveFillColor: "#a78f6d",
     };
+
+
+    const createChat = () => {
+        const chatMembers = {
+            sender: currentUser?._id,
+            receiver: receiverId,
+
+        }
+        console.log(chatMembers)
+        axiosSecure.post('/chat', chatMembers)
+            .then(res => {
+                navigate('/dashboard/messages')
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+
     return (
         <section className="py-20 md:py-[120px] duration-300">
             <div className="container">
@@ -110,6 +141,7 @@ export default function RecruitersDetailsContent({ recruiterData }) {
                         <div className="mx-5 md:mx-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-0 mb-6 mt-4">
                             <div className="duration-300">
                                 <h1 className="text-4xl font-medium text-dark drop-shadow-xl">{name}</h1>
+                                <button onClick={createChat}>Contact</button>
 
                                 <div className="flex items-center gap-2">
                                     <h3 className="text-xl font-light text-lightGray">{industry}</h3>

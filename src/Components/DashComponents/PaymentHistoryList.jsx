@@ -3,7 +3,7 @@ import { BsCurrencyDollar } from "react-icons/bs";
 
 const PaymentHistoryList = ({ pay }) => {
     const { recruiterId, receiver, amount, tran_id, paymentTimeline, recruiterName, companyLogo, purchaseDate } = pay;
-
+console.log(pay)
     return (
         <tr className="border-b border-green/20 hover:bg-green/10 duration-300 group">
             <td className="px-3 py-3 flex gap-2">
@@ -32,6 +32,9 @@ const PaymentHistoryList = ({ pay }) => {
             </td>
             <td className="px-3 py-4 text-center">
                 {tran_id}
+            </td>
+            <td className="px-3 py-4 text-center">
+                {purchaseDate}
             </td>
         </tr>
     );

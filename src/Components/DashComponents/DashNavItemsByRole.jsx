@@ -24,24 +24,13 @@ const DashNavItemsByRole = ({ role }) => {
                                 <p className="hidden md:inline">My Applications</p>
                             </DashLink>
                         </li>
-                        <li className="w-full">
-                            <DashLink to='/dashboard/messages'>
-                                <BiMessageRoundedDetail size={24} />
-                                <p className="hidden md:inline">Messages</p>
-                            </DashLink>
-                        </li>
+
                     </> :
 
                     // recruiter routes
                     role === 'recruiter' ?
                         <>
-                            {/* Messages */}
-                            {/* <li className="w-full">
-                                <DashLink to='/dashboard/messages'>
-                                    <BiMessageRoundedDetail size={24} />
-                                    <p className="hidden md:inline">Messages</p>
-                                </DashLink>
-                            </li> */}
+
 
                             {/* <li className="w-full">
                                 <DashLink to='/dashboard/room'>
@@ -72,21 +61,6 @@ const DashNavItemsByRole = ({ role }) => {
                                 <DashLink to='/pricing'>
                                     <MdOutlinePayments size={24} />
                                     <p className="hidden md:inline">Payments</p>
-                                </DashLink>
-                            </li>
-
-                            {/* Payment History */}
-                            <li className="w-full">
-                                <DashLink to='/dashboard/payment_history'>
-                                    <MdOutlineHistory size={24} />
-                                    <p className="hidden md:inline">Payments History</p>
-                                </DashLink>
-                            </li>
-                            {/* Favorites  */}
-                            {/* <li className="w-full">
-                                <DashLink to='/dashboard/favorites'>
-                                    <BsBookmarkPlus size={24} />
-                                    <p className="hidden md:inline">Favorites</p>
                                 </DashLink>
                             </li>
 

@@ -16,7 +16,7 @@ import { BsTelephoneOutbound } from "react-icons/bs";
 
 const RecruitersProfile = ({ recruitersData, refetch }) => {
     const [axiosSecure] = useAxiosSecure()
-    console.log(recruitersData)
+    // console.log(recruitersData)
     const { _id, name, image, email, banner, phone, industry, website, category, subCategory, location, address, about, specialties, status, active, followers, joinDate, } = recruitersData;
 
     const { register, handleSubmit, formState: { errors }, watch } = useForm();

@@ -14,7 +14,7 @@ import useAuth from '../Hooks/useAuth';
 
 const Home = () => {
     const { currentUser } = useAuth();
-
+    // console.log(currentUser)
     return (
         <>
             {/* page title */}
@@ -56,8 +56,7 @@ const Home = () => {
 
             {
                 currentUser.role !== 'recruiter' &&
-                <>
-                    <JobByLocation />
+                <><JobByLocation />
                     {/* border */}
                     <Divider />
                 </>

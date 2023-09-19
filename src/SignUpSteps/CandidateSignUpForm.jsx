@@ -78,6 +78,7 @@ const CandidateSignUpForm = () => {
                 .then((data) => {
                     if (data.status === 200) {
                         setFinishLoading(false)
+                        console.log(data.data)
                         Swal.fire({
                             position: 'center',
                             icon: 'success',

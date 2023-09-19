@@ -9,8 +9,8 @@ const useCurrentRecruiter = () => {
         data: currentRecruiter = [], isLoading: loadingRecruiters, refetch:refetchRecruiters } = useQuery({
             queryKey: ["currentRecruiter"],
             queryFn: async () => {
-                const res = await axiosSecure.get(`/recruiters/email/charlie@gmail.com`);
-                // const res = await axiosSecure.get(`/recruiters/email/${user?.email}`);
+                // const res = await axiosSecure.get(`/recruiters/email/charlie@gmail.com`);
+                const res = await axiosSecure.get(`/recruiters/email/${user?.email}`);
                 return res.data;
             },
 
