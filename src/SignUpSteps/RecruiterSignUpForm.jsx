@@ -2,7 +2,7 @@ import { Step, Stepper } from "@tkwant/react-steps";
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import useAllCategories from '../Hooks/useAllCategories';
 import useAuth from '../Hooks/useAuth';
 import Swal from 'sweetalert2';
@@ -20,6 +20,7 @@ const RecruiterSignUpForm = () => {
     const [finishLoading, setFinishLoading] = useState(false);
     const [phoneNumber, setPhoneNumber] = useState()
     const navigate = useNavigate();
+    const location = useLocation();
 
     const { control, register, handleSubmit, setValue, watch, reset, formState: { errors } } = useForm();
 
@@ -49,7 +50,6 @@ const RecruiterSignUpForm = () => {
             specialties: [],
             status: "pending",
             active: false,
-            followers: 0,
             joinDate: todayDate
         }
 
@@ -69,7 +69,7 @@ const RecruiterSignUpForm = () => {
                             showConfirmButton: false,
                             timer: 2500
                         });
-                        navigate('/', { replace: true })
+                        navigate('/', { state: { from: location }, replace: true });
                         window.location.reload(true)
                     }
                 })
@@ -164,7 +164,7 @@ const RecruiterSignUpForm = () => {
                                     >
                                         <option value="" disable>Select</option>
                                         {
-                                            countryData?.map(country => <option value={country.name}>{country.name}</option>)
+                                            countryData?.map(country => <option key={country.isoCode} value={country.name}>{country.name}</option>)
                                         }
                                     </select>
                                 </label>
@@ -177,7 +177,7 @@ const RecruiterSignUpForm = () => {
                                     >
                                         <option value="" disable>Select</option>
                                         {
-                                            stateData?.map(state => <option value={state.name}>{state.name}</option>)
+                                            stateData?.map(state => <option key={state.isoCode} value={state.name}>{state.name}</option>)
                                         }
                                     </select>
                                 </label>

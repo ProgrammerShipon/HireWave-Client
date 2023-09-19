@@ -1,14 +1,14 @@
 import { Step, Stepper } from "@tkwant/react-steps";
+import { Country, State } from "country-state-city";
 import { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import useAuth from '../Hooks/useAuth';
-import useSkills from '../Hooks/useSkills';
-import { useNavigate } from 'react-router-dom';
-import useAxiosSecure from '../Hooks/useAxiosSecure';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
-import { Country, State } from "country-state-city"
-import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
+import useAuth from '../Hooks/useAuth';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import useSkills from '../Hooks/useSkills';
 
 // react icons
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlinePlus } from 'react-icons/ai';
@@ -26,6 +26,7 @@ const CandidateSignUpForm = () => {
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const { control, register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
     const selectedCategory = watch('job_category', '');
@@ -49,7 +50,7 @@ const CandidateSignUpForm = () => {
             about: [],
             education: [],
             experience:
-                data.position == "" && data.organization == "" && data.companyLocation == "" && data.startDate == "" && data.endDate == "" ?
+                data.position === "" && data.organization === "" && data.companyLocation === "" && data.startDate === "" && data.endDate === "" ?
                     [] :
                     [
                         {
@@ -74,7 +75,7 @@ const CandidateSignUpForm = () => {
         if (finish) {
             console.log(newData)
             setFinishLoading(true)
-            return axiosSecure.post("/candidates", newData)
+            axiosSecure.post("/candidates", newData)
                 .then((data) => {
                     if (data.status === 200) {
                         setFinishLoading(false)
@@ -82,12 +83,12 @@ const CandidateSignUpForm = () => {
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
-                            title: 'Sign Up successfully',
+                            title: 'Sign Up successful',
                             showConfirmButton: false,
                             timer: 2500
                         });
-                        navigate('/', { replace: true })
-                        window.location.reload(true)
+                        navigate('/', { state: { from: location }, replace: true });
+                        window.location.reload(true);
                     }
                 })
                 .catch((err) => console.log(err));
@@ -99,7 +100,7 @@ const CandidateSignUpForm = () => {
         setCurStep(curStep - 1);
     };
 
-    //Country, State, Province
+    // Country, State, Province
     const selectedCountry = watch('country', '');
     const countryData = Country.getAllCountries()
     const filteredCountry = countryData.find(country => country.name == selectedCountry)
@@ -201,49 +202,53 @@ const CandidateSignUpForm = () => {
                             <h1 className='font-medium text-xl text-lightGray drop-shadow-lg'>Choose category that fits best with your job title</h1>
 
                             <div className='flex flex-wrap gap-4'>
-                                {allCategoriesData.map((category) => (
-                                    <div
-                                        key={category.name}
-                                        className={`w-fit ${selectedCategory === category.name
-                                            ? 'bg-purple/20 text-purple font-medium drop-shadow-lg shadow-lg cursor-pointer'
-                                            : errors.job_category ? 'border border-red-500'
-                                                : 'bg-gray/30 text-lightGray font-medium hover:bg-purple/20 hover:text-purple duration-300'
-                                            } px-4 rounded-full cursor-pointer`}
-                                        onClick={() => setValue('job_category', category.name)}
-                                    >
-                                        <Controller
-                                            name="job_category"
-                                            control={control}
-                                            rules={{ required: true }}
-                                            render={({ field }) => (
-                                                <label className="text-base" htmlFor={category.name}>
-                                                    {category.name}
-                                                    <input
-                                                        id={category.name}
-                                                        type="radio"
-                                                        value={category.name}
-                                                        className='hidden'
-                                                        {...register("category", { required: true })}
-                                                    />
-                                                </label>
-                                            )}
-                                        />
-                                    </div>
+                                {
+                                    allCategoriesData.map((category, index) => (
+                                        <div
+                                            key={index}
+                                            className={`w-fit ${selectedCategory === category.name
+                                                ? 'bg-purple/20 text-purple font-medium drop-shadow-lg shadow-lg cursor-pointer'
+                                                : errors.job_category ? 'border border-red-500'
+                                                    : 'bg-gray/30 text-lightGray font-medium hover:bg-purple/20 hover:text-purple duration-300'
+                                                } px-4 rounded-full cursor-pointer`}
+                                            onClick={() => setValue('job_category', category.name)}
+                                        >
+                                            <Controller
+                                                name="job_category"
+                                                control={control}
+                                                rules={{ required: true }}
+                                                render={({ field }) => (
+                                                    <label className="text-base" htmlFor={category.name}>
+                                                        {category.name}
+                                                        <input
+                                                            id={category.name}
+                                                            type="radio"
+                                                            value={category.name}
+                                                            className='hidden'
+                                                            {...register("category", { required: true })}
+                                                        />
+                                                    </label>
+                                                )}
+                                            />
+                                        </div>
 
-                                ))}
-                            </div>
+                                    ))
+                                }
+                            </div >
 
                             {/* Submit */}
-                            <div className='text-right'>
+                            < div className='text-right' >
                                 {/* Next Button */}
-                                {curStep < 6 && (
-                                    <button className='bg-dark text-white hover:bg-green px-8 py-[6px] rounded-md duration-300 shadow-xl hover:shadow-green/20' type="submit" value="Next">
-                                        Next
-                                    </button>
-                                )}
-                            </div>
-                        </form>
-                    </div>
+                                {
+                                    curStep < 6 && (
+                                        <button className='bg-dark text-white hover:bg-green px-8 py-[6px] rounded-md duration-300 shadow-xl hover:shadow-green/20' type="submit" value="Next">
+                                            Next
+                                        </button>
+                                    )
+                                }
+                            </div >
+                        </form >
+                    </div >
                 );
 
             //Location
@@ -263,7 +268,7 @@ const CandidateSignUpForm = () => {
                                     >
                                         <option value="" disable>Select</option>
                                         {
-                                            countryData?.map(country => <option value={country.name}>{country.name}</option>)
+                                            countryData?.map((country, index) => <option key={index} value={country.name}>{country.name}</option>)
                                         }
                                     </select>
                                 </label>
@@ -500,35 +505,40 @@ const CandidateSignUpForm = () => {
                                 <div className='flex flex-wrap items-center gap-4'>
 
                                     {/* Suggested skills array map */}
-                                    {['Customer Service', 'Communication skills', 'Leadership', 'Maintenance', 'Problem Solving', 'Stress Management', 'Customer Service', 'Presentation Skill', 'Adaptability'].map((suggestedSkill) => (
+                                    {['Customer Service', 'Communication skills', 'Leadership', 'Maintenance', 'Problem Solving', 'Stress Management', 'Customer Service', 'Presentation Skill', 'Adaptability'].map((suggestedSkill, index) => (
                                         <div
-                                            key={suggestedSkill}
+                                            key={index}
                                             className='flex items-center gap-2 px-3 py-2 border border-gray/40 hover:border-purple hover:shadow-lg rounded-md cursor-pointer group duration-300'
                                             onClick={() => selectSkill(suggestedSkill)}
                                         >
                                             <AiOutlinePlus className='group-hover:text-purple duration-300' />
                                             <p className='text-lightGray capitalize'>{suggestedSkill}</p>
                                         </div>
-                                    ))}
-                                </div>
-                            </div>
+                                    ))
+                                    }
+                                </div >
+                            </div >
 
                             {/* Submit */}
-                            <div className='flex items-center justify-between'>
+                            < div className='flex items-center justify-between' >
                                 {/* Previous Button */}
-                                {curStep > 0 && (
-                                    <button className='bg-gray text-dark hover:bg-transparent hover:text- px-8 py-[6px] rounded-md duration-300 shadow-lg hover:shadow-gray/40' onClick={handlePreviousStep}>Previous</button>
-                                )}
+                                {
+                                    curStep > 0 && (
+                                        <button className='bg-gray text-dark hover:bg-transparent hover:text- px-8 py-[6px] rounded-md duration-300 shadow-lg hover:shadow-gray/40' onClick={handlePreviousStep}>Previous</button>
+                                    )
+                                }
 
                                 {/* Next Button */}
-                                {curStep < 6 && (
-                                    <button className='bg-dark text-white hover:bg-green px-8 py-[6px] rounded-md duration-300 shadow-xl hover:shadow-green/20' type="submit" value="Next">
-                                        Next
-                                    </button>
-                                )}
-                            </div>
-                        </form>
-                    </div>
+                                {
+                                    curStep < 6 && (
+                                        <button className='bg-dark text-white hover:bg-green px-8 py-[6px] rounded-md duration-300 shadow-xl hover:shadow-green/20' type="submit" value="Next">
+                                            Next
+                                        </button>
+                                    )
+                                }
+                            </div >
+                        </form >
+                    </div >
                 );
 
             //visibility
@@ -627,6 +637,7 @@ const CandidateSignUpForm = () => {
                     <Step />
                     <Step />
                 </Stepper>
+               
             </div>
             <div className='py-10'>
                 {renderContent()}

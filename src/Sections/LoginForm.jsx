@@ -10,7 +10,7 @@ import { MdAlternateEmail, MdLockOutline } from 'react-icons/md';
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 
 const LoginForm = () => {
-    const { signIn } = useAuth();
+    const { signIn, setLoading } = useAuth();
     // navigate
     const navigate = useNavigate();
     const location = useLocation();
@@ -24,6 +24,7 @@ const LoginForm = () => {
                 navigate(from, { replace: true })
             })
             .catch(error => {
+                setLoading(false)
                 toast.error(error.message, {
                     position: "top-center",
                     autoClose: 3000,

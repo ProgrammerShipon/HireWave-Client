@@ -80,7 +80,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
 
     // chat
 
-  
+
 
     const createChat = () => {
         const chatMembers = {

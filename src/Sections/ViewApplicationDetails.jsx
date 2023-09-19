@@ -68,7 +68,7 @@ const ViewApplicationDetails = ({ jobData, appliedJob }) => {
                                     <GetAgoTime datetime={postedDate} />
                                 </div>
 
-                                {/* <div className="postJob" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}></div> */}
+                                <div className="postJob" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}></div>
 
                                 <Link to={`/job_details/${jobId}`} className='text-blue-500 hover:underline'>View Job Posting</Link>
                             </div>

@@ -39,7 +39,7 @@ const Chat = () => {
 
   // Connect with AiOutlineRocket.io 
   useEffect(() => {
-    const newSocket = io("https://hire-wave-chat.onrender.com")
+    const newSocket = io("https://hire-wave-chat.onrender.com/")
     setSocket(newSocket)
     return () => {
       newSocket.disconnect()
@@ -143,7 +143,6 @@ const Chat = () => {
           </div> :
           <h1>create new chat</h1>
       }
-
 
 
     </section>

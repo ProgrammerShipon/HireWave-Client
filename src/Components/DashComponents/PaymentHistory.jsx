@@ -1,4 +1,3 @@
-import React from 'react';
 import usePaymentHistory from '../../Hooks/usePaymentHistory';
 import useAuth from '../../Hooks/useAuth';
 import PaymentHistoryList from './PaymentHistoryList';

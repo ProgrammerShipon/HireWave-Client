@@ -15,7 +15,7 @@ import { SlLocationPin } from 'react-icons/sl';
 import CoverLetterTextarea from '../Components/CoverLetterTextarea';
 import useCurrentCandidate from '../Hooks/useCurrentCandidate';
 import Swal from 'sweetalert2';
-// import DOMPurify from 'dompurify';
+import DOMPurify from 'dompurify';
 
 const ApplyJobForm = ({ jobData }) => {
     const { currentUser } = useAuth();
@@ -43,7 +43,6 @@ const ApplyJobForm = ({ jobData }) => {
         const cover_letter = coverLetter;
         const expected_salary = data.expected_salary;
         const attachment = data.attachment;
-        const location = `${currentCandidate.location[0]}, ${currentCandidate.location[1]}`
 
         const appliedInfo = {
             jobId: _id,
@@ -51,7 +50,7 @@ const ApplyJobForm = ({ jobData }) => {
             applicantName: currentCandidate.name,
             applicantEmail: currentUser?.email,
             applicantImage: currentCandidate.image,
-            location: location,
+            location: currentCandidate.location,
             category: currentCandidate.category,
             companyName,
             companyLogo,
@@ -113,7 +112,7 @@ const ApplyJobForm = ({ jobData }) => {
                                     <GetAgoTime datetime={postedDate} />
                                 </div>
 
-                                {/* <div className="postJob" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}></div> */}
+                                <div className="postJob" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}></div>
 
                                 <Link to={`/job_details/${_id}`} className='text-blue-500 hover:underline'>View Job Posting</Link>
                             </div>

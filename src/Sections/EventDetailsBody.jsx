@@ -43,7 +43,7 @@ const EventDetailsBody = ({ eventData }) => {
                     <h1 className='text-xl md:text-2xl font-medium text-green bg-green/10 w-fit px-4 rounded-full tracking-widest drop-shadow-lg mt-20 capitalize'>About the Event</h1>
 
                     <div className='max-w-4xl mt-4'>
-                        <p className='text-lightGray' dangerouslySetInnerHTML={{ __html: DOMPuryify.sanitize(singleEvent.about) }}></p>
+                        <p className='text-lightGray' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(singleEvent.about) }}></p>
                         <p className='mt-8'><span className='font-semibold text-red-500'>Where: </span>{singleEvent.location}</p>
                     </div>
                 </div>

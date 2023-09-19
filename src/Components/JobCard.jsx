@@ -79,7 +79,7 @@ const JobCard = ({ job, setJobDetails, mySavedJobs, refetch }) => {
                             by
                             <Link to={`/job_details/${_id}`} className="text-dark hover:text-green duration-300">{companyName}</Link>
                             in
-                            <Link to={`/recruiters_details/${_id}`} className="text-dark hover:text-green duration-300">{category}</Link>
+                            <Link to={`/job_details/${_id}`} className="text-dark hover:text-green duration-300">{category}</Link>
                         </p>
                     </div>
                 </div>

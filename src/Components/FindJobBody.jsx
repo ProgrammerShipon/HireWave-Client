@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import DOMPurify from 'dompurify';
+import DOMPurify from 'dompurify';
 import Button from "./Button";
 import Divider from "./Divider";
 import GetAgoTime from "./GetAgoTime";
@@ -251,8 +251,7 @@ const FindJobBody = ({ allJobsData, date, setDate }) => {
           {/* job description */}
           <div className="my-6">
             <h2 className="text-3xl font-medium text-dark mb-5">Description</h2>
-            <p className="postJob" dangerouslySetInnerHTML={{ __html: description }}></p>
-            
+            <div className="postJob" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}></div>
           </div>
 
           <Divider />

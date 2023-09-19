@@ -1,5 +1,5 @@
 import Lottie from 'lottie-react';
-import {  useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import successAnimation from '../../public/97987-success.json'
 import useAuth from '../Hooks/useAuth';
 import moment from 'moment';
@@ -9,7 +9,7 @@ const PaymentSuccess = () => {
     const { tran_id } = useParams();
     const [RecruiterPaymentHistory, loading, refetch] = useRecruiterPaymentHistory();
     if (loading) {
-        
+
         return <h1>...</h1>
     }
     const { amount, paymentTimeline, purchaseDate, receiver, recruiterName } = RecruiterPaymentHistory[0]

@@ -11,9 +11,9 @@ const CandidateDetails = () => {
     return (
         <>
             {
-                singleData.email &&
+                singleData?.email &&
                 <Helmet>
-                    <title>{singleData.name} - Hire Wave</title>
+                    <title>{singleData?.name} - Hire Wave</title>
                 </Helmet>
             }
 
@@ -21,7 +21,7 @@ const CandidateDetails = () => {
 
             {/* sections */}
             {
-                singleData.email ? <CandidateDetailsContent candidateDetails={singleData} /> : <PageLoader />
+                singleData?.email ? <CandidateDetailsContent candidateDetails={singleData} /> : <PageLoader />
             }
 
             {/* border */}

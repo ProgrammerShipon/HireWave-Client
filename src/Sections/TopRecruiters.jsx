@@ -8,6 +8,7 @@ const TopRecruiters = () => {
     if (loading) {
         return <PageLoader />
     }
+
     return (
         <section className="py-20 md:py-[120px] duration-300">
             <div className="container">
