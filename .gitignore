@@ -6,7 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-yarn.lock 
 
 node_modules
 dist
@@ -23,9 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-<<<<<<< HEAD
-=======
-npm ci                
-npm run build:debug
-npm run build
->>>>>>> 81e5e790d5050aa3037f548eeca3cc8022ac9dfd

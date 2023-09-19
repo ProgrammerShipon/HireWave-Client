@@ -3,42 +3,36 @@ import RecentReviewSlider from "../Components/RecentReviewSlider";
 import useReview from "../Hooks/useReview";
 
 // react icons
-import { AiOutlineMessage } from "react-icons/ai";
 import { BiMap } from "react-icons/bi";
-import { BsBookmarkCheck, BsBookmarkPlus, BsCurrencyDollar } from "react-icons/bs";
+import { BsBookmarkPlus, BsCurrencyDollar } from "react-icons/bs";
+import { AiOutlineMessage } from "react-icons/ai";
 import {
     FaFacebookF,
     FaGithub,
     FaLinkedin,
-    FaRegCalendarAlt,
     FaTwitter,
+    FaRegCalendarAlt,
 } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 
 // react rating
 import { Rating, Star } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-import { useEffect, useState } from "react";
-import PageLoader from "../Components/PageLoader";
+import { useEffect } from "react";
+import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useChat from "../Hooks/useChat";
-import useSingleUser from "../Hooks/useSingleUser";
+import useUsers from "../Hooks/useUsers";
 
 const CandidateDetailsContent = ({ candidateDetails }) => {
-    const { currentUser, loading: authLoading } = useAuth();
+    const { currentUser } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const [reviewData, loading] = useReview();
-    const [favorite, setFavorite] = useState(false)
     const [receiverId, setReceiverId] = useState();
-    const [senderId, setSenderId] = useState();
-    const [singleUser, UserDataLoading] = useSingleUser();
-
-    const navigate = useNavigate();
-    const [chats] = useChat();
-    const [review, setReview] = useState([]);
-
+    const [userData] = useUsers();
     // console.log(userData)
+
     const {
         _id,
         name,
@@ -58,13 +52,17 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
         skills,
     } = candidateDetails;
 
-    // Using Loading
-    UserDataLoading && authLoading && <PageLoader />;
-
     useEffect(() => {
-        setReceiverId(singleUser?._id);
-        setSenderId(currentUser?._id);
-    }, [singleUser, currentUser]);
+        const user = userData.find(user => user.email === email)
+        setReceiverId(user?._id)
+    }, []);
+
+
+    // console.log(receiverId)
+
+    const navigate = useNavigate();
+    const [chats] = useChat();
+    const [review, setReview] = useState([]);
 
     useEffect(() => {
         const getReview = reviewData.filter(rvl => rvl.email.toLowerCase() === email.toLowerCase());
@@ -81,12 +79,15 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
     };
 
     // chat
+
+
+
     const createChat = () => {
         const chatMembers = {
-            sender: senderId,
+            sender: currentUser?._id,
             receiver: receiverId,
-        };
 
+        }
         axiosSecure.post('/chat', chatMembers)
             .then(res => {
                 console.log(res.data)
@@ -100,15 +101,9 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
     const handleAddToFavorite = () => {
         const newData = {
             candidateId: _id,
-            candidateImage: image,
-            candidateRate: hourlyRate,
-            candidateCategory: category,
-            candidateName: name,
             recruiterEmail: currentUser?.email
         }
-
-        //TODO: add to favorite in backend
-        setFavorite(true)
+        console.log(newData);
     }
 
     return (
@@ -190,18 +185,12 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
 
                         {/* button */}
                         <div className="flex flex-col items-center gap-3">
-                            <button onClick={handleAddToFavorite} className={`flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 rounded-lg shadow-xl  group ${!favorite ? "border border-green hover:shadow-green/20 hover:bg-green hover:text-white text-dark bg-transparent " : "bg-green text-white"}`}>
-                                {
-                                    !favorite ?
-                                        <>
-                                            <p>Add to Favorite{" "}</p>
-                                            <BsBookmarkPlus size="21" className="text-green group-hover:text-white" />
-                                        </> :
-                                        <>
-                                            <p>Added to Favorite {" "}</p>
-                                            <BsBookmarkCheck size="21" className="" />
-                                        </>
-                                }
+                            <button onClick={handleAddToFavorite} className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
+                                Add to Favorite{" "}
+                                <BsBookmarkPlus
+                                    size="21"
+                                    className="text-green group-hover:text-white"
+                                />
                             </button>
                             <Link
                             // to={`/dashboard/messages/${_id}`}

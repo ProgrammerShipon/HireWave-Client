@@ -12,6 +12,8 @@ import { PiHandshakeDuotone } from 'react-icons/pi';
 import { SlUserFollow } from 'react-icons/sl';
 
 const DashNavItemsByRole = ({ role }) => {
+    const CreateNewId = (Math.floor(Math.random() * 1000000)).toString()
+
     return (
         <>
             {
@@ -33,7 +35,7 @@ const DashNavItemsByRole = ({ role }) => {
 
 
                             <li className="w-full">
-                                <DashLink to='/dashboard/room'>
+                                <DashLink to={`/dashboard/room/${CreateNewId}`}>
                                     <FaChalkboardUser size={24} />
                                     <p className="hidden md:inline">Interview</p>
                                 </DashLink>

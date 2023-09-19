@@ -1,53 +1,38 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { BsCamera, BsThreeDotsVertical } from 'react-icons/bs';
 import { Tooltip } from 'react-tooltip';
-import { useForm } from 'react-hook-form';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
-const Modal = ({ candidatesData, refetch }) => {
-    const { _id, image, title, name , email } = candidatesData;
-    const [axiosSecure] = useAxiosSecure()
+const RecruiterModal = ({ recruitersData, refetchRecruiters }) => {
+    const { _id, image, email, name, banner } = recruitersData;
+    const [axiosSecure] = useAxiosSecure();
+    // console.log(recruitersData)
     const [isOpen, setIsOpen] = useState(false);
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
+    const [newName, setNewName] = useState(name);
+    const [newImage, setNewImage] = useState(image);
+    const [newBanner, setNewBanner] = useState(banner);
+    // console.log(newName)
 
 
-    const handleImageUpload = (data) => {
-
-        const profile = {
-            url: data.photoURL,
-            email:email
-        }
-        console.log(profile)
-        axiosSecure.patch(`/candidates/profilePhoto/${_id}`, profile)
-            .then(res => {
-                console.log(res.data)
-                if (res.status === 200) {
-                    setIsOpen(!isOpen)
-                    refetch()
-                }
-
-            })
-            .catch(error => {
-                console.log(error);
-            })
-
-    };
     const updateProfile = (data) => {
         const updateData = {
-            title: data.title,
-            name: data.name,
+            name: newName,
             email: email,
-            visibility: data.visibility
+            image: newImage,
+            banner: newBanner
         }
-        console.log(updateData)
-        axiosSecure.patch(`/candidates/profile/${_id}`, updateData)
+        // console.log(updateData)
+        axiosSecure.patch(`/recruiters/profile/${_id}`, updateData)
             .then(res => {
                 console.log(res.data)
                 if (res.status === 200) {
+                    refetchRecruiters()
                     setIsOpen(!isOpen)
-                    refetch()
-                }
 
+                }
             })
             .catch(error => {
                 console.log(error);
@@ -55,6 +40,7 @@ const Modal = ({ candidatesData, refetch }) => {
 
 
     };
+
 
     return (
         <>
@@ -64,24 +50,18 @@ const Modal = ({ candidatesData, refetch }) => {
                     <div className='flex items-center gap-8 p-6'>
                         {/* image */}
                         <div className=' w-56'>
-                            <div className='w-48 h-48 rounded-full overflow-hidden shadow-xl shadow-gray/40'>
-                                <img
-                                    className='w-full h-full object-cover object-center'
-                                    src={image} alt="" />
+                            <div className='flex flex-col justify-center items-center'>
+                                <div className='w-48 h-48 rounded-full overflow-hidden shadow-xl shadow-gray/40'>
+                                    <img
+                                        className='w-full h-full object-cover object-center'
+                                        src={image} alt="" />
+                                </div>
 
-                            </div>
-
-                            <form onSubmit={handleSubmit(handleImageUpload)}>
-                                <input
-                                    {...register("photoURL")}
-                                    placeholder='Provide Your Photo Url'
-                                    className='w-full border border-gray/40 py-1 px-2 mt-2 rounded-md focus:outline-none focus:border-green'
-                                />
                                 <button type='submit'
                                     className='flex items-center justify-center gap-1 mt-2 text-lg text-lightGray w-full'>
                                     <BsCamera size='24' /> Upload
                                 </button>
-                            </form>
+                            </div>
 
 
                             {/* <div className='flex flex-col items-center justify-center mt-4'>
@@ -105,22 +85,22 @@ const Modal = ({ candidatesData, refetch }) => {
                                 <input
                                     {...register("name")}
                                     defaultValue={name}
+                                    onChange={(e) => setNewName(e.target.value)}
                                     className='w-full border border-gray/40 p-2 rounded-md focus:outline-none focus:border-green'
+                                />
+
+                                <input
+                                    {...register("photoURL")}
+                                    onChange={(e) => setNewImage(e.target.value)}
+                                    placeholder='Provide Your Photo Url'
+                                    className='w-full border border-gray/40 py-1 px-2 mt-2 rounded-md focus:outline-none focus:border-green'
                                 />
                                 <input
-                                    {...register("title")}
-                                    defaultValue={title}
-                                    className='w-full border border-gray/40 p-2 rounded-md focus:outline-none focus:border-green'
+                                    {...register("bannerURL")}
+                                    onChange={(e) => setNewBanner(e.target.value)}
+                                    placeholder='Provide Your Banner Url'
+                                    className='w-full border border-gray/40 py-1 px-2 mt-2 rounded-md focus:outline-none focus:border-green'
                                 />
-
-                                <select
-                                    {...register("visibility")}
-                                    className='w-full border border-gray/40 p-2 rounded-md focus:outline-none focus:border-green'
-                                >
-                                    <option value="Available Now">Available Now</option>
-                                    <option value="Not Available">Not Available</option>
-                                </select>
-
                                 <div className='flex items-end justify-end gap-3 mt-3'>
                                     <div
                                         onClick={() => setIsOpen(!isOpen)}
@@ -153,4 +133,4 @@ const Modal = ({ candidatesData, refetch }) => {
     );
 };
 
-export default Modal;
+export default RecruiterModal;
