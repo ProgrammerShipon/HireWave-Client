@@ -10,6 +10,7 @@ import AdminProfile from '../Sections/DashSections/AdminProfile';
 import useCurrentCandidate from '../Hooks/useCurrentCandidate';
 import useCurrentRecruiter from '../Hooks/useCurrentRecruiter';
 import RecruitersProfile from '../Sections/DashSections/RecruitersProfile';
+import RecruitersProfilee from '../Sections/DashSections/RecruitersProfilee';
 
 const MyProfile = () => {
     const { currentUser } = useAuth();
