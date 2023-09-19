@@ -46,6 +46,8 @@ import Favorites from "../Dashboard/Favorites";
 import PaymentHistory from "../Components/DashComponents/PaymentHistory";
 import Chat from "../Dashboard/Chat";
 import Conference from "../Pages/Conference";
+import TasksReceived from "../Dashboard/TasksReceived";
+import RequestedOffers from "../Dashboard/RequestedOffers";
 
 const baseURL = 'https://hire-wave.onrender.com/api';
 // const baseURL = 'http://localhost:3030/api';
@@ -207,8 +209,12 @@ const Router = createBrowserRouter([
         element: <PostedJobs />,
       },
       {
-        path: "applicant",
-        element: <AppliedApplicant />,
+        path: "tasks",
+        element: <TasksReceived />,
+      },
+      {
+        path: "offers",
+        element: < RequestedOffers/>,
       },
       {
         path: "payment_history",
