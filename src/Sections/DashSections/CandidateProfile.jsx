@@ -40,15 +40,17 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     const [openLanguage, setOpenLanguage] = useState(true);
     const [openEducation, setOpenEducation] = useState(true);
     const [openExperience, setOpenExperience] = useState(true);
+    const [openSocial, setOpenSocial] = useState(true);
 
 
 
     const newSkills = [...skills, watch('newSkill')]
-    // const newAbout = [...about, watch('newSkill')]
-    const newLanguage = [...languages, { name: watch('name'), level: 'Native' }]
     const newLanguages = [...languages, { name: watch('name'), level: watch('level') }];
     const newEducations = [...education, { subject: watch('subject'), institute: watch('institute'), startDate: watch('startDate'), endDate: watch('endDate') }];
     const newExperiences = [...experience, { logo: watch('logo'), companyName: watch('companyName'), position: watch('position'), location: watch('workLocation'), startDate: watch('workStartDate'), endDate: watch('workEndDate') }];
+
+
+    // socialLink.map(sc=>console.log(sc))
 
     // Update Candidate Availability 
     const handleAvailability = (data) => {
@@ -126,8 +128,8 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     };
     // Update Candidate Location 
     const handleAddLanguage = () => {
-        console.log(newLanguage)
-        axiosSecure.patch(`/candidates/language/${_id}`, newLanguage)
+        console.log(newLanguages)
+        axiosSecure.patch(`/candidates/language/${_id}`, newLanguages)
             .then(res => {
                 console.log(res)
                 if (res.status === 200) {
@@ -166,6 +168,28 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                 console.log(res.data)
                 if (res.status === 200) {
                     setOpenExperience(!openExperience)
+                    refetch()
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    };
+    // Update Candidate Location 
+    const handleAddSocialLink = (data) => {
+        const socialLink = {
+            facebook: data.facebook,
+            twitter: data.twitter,
+            linkedin: data.linkedin,
+            github: data.github,
+        }
+        console.log(socialLink)
+        axiosSecure.patch(`/candidates/social/${_id}`, socialLink)
+            .then(res => {
+                console.log(res.data)
+                if (res.status === 200) {
+                    setOpenSocial(!openSocial)
                     refetch()
                 }
             })
@@ -463,7 +487,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                     <div className={`py-4 flex items-center flex-wrap gap-2 ${isSkills ? 'block' : 'hidden'}`}>
 
                         {
-                            newSkills.map((skl, index) => <div key={index} className='relative text-purple bg-purple/10 px-3 rounded-md capitalize group cursor-pointer'>
+                            skills.map((skl, index) => <div key={index} className='relative text-purple bg-purple/10 px-3 rounded-md capitalize group cursor-pointer'>
                                 <span>{skl}</span>
 
                                 <div className='absolute top-0 -right-14 flex gap-2 bg-white text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
@@ -527,7 +551,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                     {/* languages body */}
                     <div className={`py-4 space-y-1 ${openLanguage ? 'block' : 'hidden'}`}>
                         {
-                            newLanguages.length > 0 ? newLanguages.map((lan, index) => <div
+                            languages.length !== 0 ? languages.map((lan, index) => <div
                                 key={index}
                                 className='relative capitalize group cursor-pointer w-fit'>
                                 <p className='text-black flex items-center gap-1'>{lan.name} <span className='inline-block w-2 border-t border-gray'></span>
@@ -621,26 +645,24 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                     {/* educations body */}
                     <div className={`py-4 space-y-4 ${openEducation ? 'block' : 'hidden'}`}>
                         {
-                            newEducations[0].subject !== ''
-                                // newEducations.length >0
-                                ? newEducations.map((edu, index) =>
-                                    <div key={index} className='relative group cursor-pointer w-fit'>
-                                        <h3 className='text-dark font-medium text-xl'>{edu.subject}</h3>
-                                        <p className='text-lightGray'>{edu.institute}</p>
-                                        <p className='flex items-center gap-1 text-gray mt-1 font-light'>
-                                            <BiCalendar />  {edu.startDate} to  {edu.endDate !== "" ? edu.endDate : 'Present'}
-                                        </p>
+                            education ? education.map((edu, index) =>
+                                <div key={index} className='relative group cursor-pointer w-fit'>
+                                    <h3 className='text-dark font-medium text-xl'>{edu.subject}</h3>
+                                    <p className='text-lightGray'>{edu.institute}</p>
+                                    <p className='flex items-center gap-1 text-gray mt-1 font-light'>
+                                        <BiCalendar />  {edu.startDate} to  {edu.endDate !== "" ? edu.endDate : 'Present'}
+                                    </p>
 
-                                        <div className='absolute top-0 -right-14 flex gap-2 text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
-                                            <button>
-                                                <FaPencilAlt size='14' />
-                                            </button>
-                                            <button>
-                                                <FaTrashAlt size='14' />
-                                            </button>
-                                        </div>
+                                    <div className='absolute top-0 -right-14 flex gap-2 text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
+                                        <button>
+                                            <FaPencilAlt size='14' />
+                                        </button>
+                                        <button>
+                                            <FaTrashAlt size='14' />
+                                        </button>
                                     </div>
-                                )
+                                </div>
+                            )
                                 : <p className='text-lg text-lightGray'>N/A</p>
                         }
                     </div>
@@ -730,9 +752,8 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                     {/* experiences body */}
                     <div className={`py-4 space-y-4 ${openExperience ? 'block' : 'hidden'}`}>
                         {
-                            newExperiences[1]?.position !== ''
-                                // newExperiences.length>0
-                                ? newExperiences.map((exp, index) =>
+                            experience.length !== 0
+                                ? experience.map((exp, index) =>
                                 (
                                     <div key={index} className='relative group cursor-pointer w-fit flex gap-2'>
                                         <div className='h-14 w-14 overflow-hidden'>
@@ -848,45 +869,86 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                     <h2 className='flex items-center gap-1 text-xl text-green'><IoShareSocialOutline /> Social Links</h2>
 
                     {/* edit button */}
-                    <Tooltip id="add_education" />
+                    <Tooltip id="add_social_link" />
                     <button
-                        data-tooltip-id="add_education" data-tooltip-content="Add Social Links!"
+                        onClick={() => setOpenSocial(!openSocial)}
+                        data-tooltip-id="add_social_link" data-tooltip-content="Add Social Links!"
                         className='h-8 w-8 text-green border border-green rounded-full flex items-center justify-center'>
                         <IoMdAdd size='20' />
                     </button>
                 </div>
+                
                 {
-                    socialLink.length > 0 ?
+                    socialLink ?
                         <div className="flex items-center gap-2 py-4">
-                            <Link
-                                to="/"
+                            <a
+                                href={socialLink.facebook}
                                 className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
                             >
                                 <FaFacebookF size="20px" />
-                            </Link>
+                            </a>
 
                             <Link
-                                to="/"
+                                to={socialLink.twitter}
                                 className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
                             >
                                 <FaTwitter size="20px" />
                             </Link>
 
                             <Link
-                                to="/"
+                                to={socialLink.linkedin}
                                 className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
                             >
                                 <FaLinkedin size="20px" />
                             </Link>
 
                             <Link
-                                to="/"
+                                to={socialLink.github}
                                 className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
                             >
                                 <FaGithub size="20px" />
                             </Link>
-                        </div> : <p className='text-lg text-lightGray'>N/A</p>
+                        </div> : <p className={`text-lg text-lightGray  ${openSocial ? 'block' : 'hidden'}`}>N/A</p>
                 }
+                <form onSubmit={handleSubmit(handleAddSocialLink)}>
+                    <div className={`flex flex-col gap-2 p-3 ${openSocial ? 'hidden' : 'block'}`}>
+                        <input
+                            {...register("facebook")}
+                            placeholder='facebook Account Link'
+                            className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                        />
+                        <input
+                            {...register("twitter")}
+                            placeholder='twitter Account Link'
+                            className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                        />
+                        <input
+                            {...register("linkedin")}
+                            placeholder='linkedin Account Link'
+                            className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                        />
+                        <input
+                            {...register("github")}
+                            placeholder='Github Account Link'
+                            className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                        />
+
+
+                        <div className='flex items-center justify-end gap-3'>
+                            <div
+                                onClick={() => setOpenSocial(!openSocial)}
+                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20 cursor-pointer"
+                            >
+                                Cancel
+                            </div>
+                            <button
+                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                            >
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
 
             {/* Generate Resume */}
