@@ -26,6 +26,9 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     const [languagesData] = useLanguagesData();
     const [axiosSecure] = useAxiosSecure()
     const { _id, name, title, image, location, status, hourlyRate, jobType, address, languages, about, education, experience, skills, openToWork, socialLink } = candidatesData;
+    // console.log(candidatesData)
+    const formattedAbout = about.map(pa => pa === "" ? "\u00A0" : pa);
+
     const [userAbout, setUserAbout] = useState(about)
 
     // console.log(userAbout)
@@ -173,21 +176,21 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     };
 
     // Image hosting
-    const image_hosting_token= import.meta.env.VITE_Image_Upload_Token;
-    const image_hosting_url =`https://api.imgbb.com/1/upload?key=${image_hosting_token}`
+    const image_hosting_token = import.meta.env.VITE_Image_Upload_Token;
+    const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`
 
     const handlePictureUpload = event => {
-        const picture= event.target.files[0]
-        const formData= new FormData()
+        const picture = event.target.files[0]
+        const formData = new FormData()
         formData.append('image', picture)
         fetch(image_hosting_url, {
             method: "POST",
             body: formData
         })
-            .then(res=> res.json())
+            .then(res => res.json())
             .then(imageResponse => {
-                if(imageResponse.success){
-                    const image= imageResponse.data.display_url
+                if (imageResponse.success) {
+                    const image = imageResponse.data.display_url
                     console.log(image);
                     // axiosSecure.put(`/candidates/image/${_id}`, image)
                     // .then(data=> {
@@ -196,7 +199,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                     // })
                 }
             })
-    } 
+    }
 
     const years = [
         1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969,
@@ -216,25 +219,25 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                     {/* image */}
                     <div className='w-48 h-48 rounded-full overflow-hidden shadow-xl shadow-gray/40'>
                         {
-                            image?
-                            <img
-                            className='object-cover object-center'
-                            src={image} alt={name} /> :
-                            <img
-                            className='object-cover object-center'
-                            src="https://i.ibb.co/wNJtyRX/image-14.png" /> 
-                        }   
+                            image ?
+                                <img
+                                    className='object-cover object-center'
+                                    src={image} alt={name} /> :
+                                <img
+                                    className='object-cover object-center'
+                                    src="https://i.ibb.co/wNJtyRX/image-14.png" />
+                        }
                     </div>
                     <label className='rounded-full border border-green bg-white text-2xl p-[5px] z-20 cursor-pointer text-green duration-300 -mt-[84px] ml-32 lg:mt-28 lg:-ml-[70px]'>
- 
-                            <input
-                                name='picture'
-                                type='file'
-                                style={{ display: 'none' }}
-                                onChange={handlePictureUpload}
-                            />
-                            <BsCamera />
- 
+
+                        <input
+                            name='picture'
+                            type='file'
+                            style={{ display: 'none' }}
+                            onChange={handlePictureUpload}
+                        />
+                        <BsCamera />
+
                     </label>
 
                     {/* content */}

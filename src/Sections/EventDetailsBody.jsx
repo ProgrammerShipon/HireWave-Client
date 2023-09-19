@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import Button from '../Components/Button';
-import DOMPurify from 'dompurify';
+// import DOMPurify from 'dompurify';
 
 // react icons
 import { BsFillEnvelopePaperFill } from 'react-icons/bs';

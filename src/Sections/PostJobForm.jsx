@@ -18,7 +18,7 @@ import useAllCategories from "../Hooks/useAllCategories";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useCurrentRecruiter from "../Hooks/useCurrentRecruiter";
 import useSkills from "../Hooks/useSkills";
-import DOMPurify from "dompurify";
+// import DOMPurify from "dompurify";
 
 const modules = {
     toolbar: [

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { RxDotFilled } from "react-icons/rx";
-import useCurrentCandidate from '../Hooks/useCurrentCandidate';
-import useCurrentRecruiter from '../Hooks/useCurrentRecruiter';
 import useAuth from '../Hooks/useAuth';
 import useUsers from '../Hooks/useUsers';
 import PageLoader from './PageLoader';
@@ -18,7 +16,7 @@ const Conversation = ({ chat, onlineUser, setMessageReceiver }) => {
     }
     console.log(chat)
     // console.log(userData)
-    // console.log(currentUser)
+    console.log(currentUser._id)
 
     useEffect(() => {
         const receiver = chat?.members.find(id => id !== currentUser?._id)
@@ -26,6 +24,7 @@ const Conversation = ({ chat, onlineUser, setMessageReceiver }) => {
 
         axiosSecure.get(`/users/id/${receiver}`)
             .then(res => {
+                console.log(res.data)
                 setChatReceiver(res.data)
                 setMessageReceiver(res.data)
             })
@@ -33,7 +32,7 @@ const Conversation = ({ chat, onlineUser, setMessageReceiver }) => {
                 console.log(error)
             })
 
-    }, [chat]);
+    }, [chat, currentUser]);
 
     const searchOnlineUser = onlineUser?.some(user => user.userId === chatReceiver?._id)
 
