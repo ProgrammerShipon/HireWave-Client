@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom';
 
 const Conference = () => {
     const { currentUser } = useAuth();
-    const roomId=useParams();
+    const roomId = useParams();
     console.log(roomId)
     const interviewConference = async (element) => {
-        const roomID =roomId.roomId
+        const roomID = roomId.roomId
         // generate Kit Token
         const appID = 1281063325;
         const serverSecret = "012c5ab5c910ebebd7b55310b534709f"

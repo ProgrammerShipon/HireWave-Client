@@ -54,11 +54,11 @@ const LoginForm = () => {
 
                             <input type={type} className='w-full border-none outline-none' id='password' placeholder="password" {...register("password", { required: true })} />
 
-                            <button onClick={() => setType(type === 'password' ? 'text' : 'password')}>
+                            <div className='cursor-pointer' onClick={() => setType(type === 'password' ? 'text' : 'password')}>
                                 {
                                     type === 'password' ? <AiOutlineEye /> : <AiOutlineEyeInvisible />
                                 }
-                            </button>
+                            </div>
                         </div>
                         {errors.password && <span className='text-sm text-red-400 ml-1'>Password is required</span>}
 

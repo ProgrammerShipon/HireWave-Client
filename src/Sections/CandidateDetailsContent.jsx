@@ -21,9 +21,6 @@ import "@smastrom/react-rating/style.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
-import useCurrentUserId from "../Hooks/useCurrentUserId";
-import useCurrentRecruiter from "../Hooks/useCurrentRecruiter";
-import useCurrentCandidate from "../Hooks/useCurrentCandidate";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useChat from "../Hooks/useChat";
 import useUsers from "../Hooks/useUsers";
@@ -35,6 +32,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
     const [receiverId, setReceiverId] = useState();
     const [userData] = useUsers();
     // console.log(userData)
+
     const {
         _id,
         name,
@@ -53,9 +51,10 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
         experience,
         skills,
     } = candidateDetails;
+
     useEffect(() => {
         const user = userData.find(user => user.email === email)
-        setReceiverId(user._id)
+        setReceiverId(user?._id)
     }, []);
 
 
@@ -80,13 +79,15 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
     };
 
     // chat
+
+  
+
     const createChat = () => {
         const chatMembers = {
             sender: currentUser?._id,
             receiver: receiverId,
 
         }
-        console.log(chatMembers)
         axiosSecure.post('/chat', chatMembers)
             .then(res => {
                 console.log(res.data)

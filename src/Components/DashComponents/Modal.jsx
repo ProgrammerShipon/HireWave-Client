@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const Modal = ({ candidatesData, refetch }) => {
-    const { _id, image, title, name } = candidatesData;
+    const { _id, image, title, name , email } = candidatesData;
     const [axiosSecure] = useAxiosSecure()
     const [isOpen, setIsOpen] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -14,7 +14,8 @@ const Modal = ({ candidatesData, refetch }) => {
     const handleImageUpload = (data) => {
 
         const profile = {
-            url: data.photoURL
+            url: data.photoURL,
+            email:email
         }
         console.log(profile)
         axiosSecure.patch(`/candidates/profilePhoto/${_id}`, profile)
@@ -35,6 +36,7 @@ const Modal = ({ candidatesData, refetch }) => {
         const updateData = {
             title: data.title,
             name: data.name,
+            email: email,
             visibility: data.visibility
         }
         console.log(updateData)

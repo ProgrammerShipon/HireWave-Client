@@ -45,11 +45,12 @@ export default function RecruitersDetailsContent({ recruiterData }) {
 
     const [review, setReview] = useState([]);
     const [receiverId, setReceiverId] = useState('');
-    useEffect(() => {
-        const user = userData?.find(user => user.email === email)
-        // setReceiverId(user)
-        setReceiverId(user?._id)
-    }, [userData]);
+
+    // useEffect(() => {
+    //     const user = userData?.find(user => user.email === email)
+    //     // setReceiverId(user)
+    //     setReceiverId(user?._id)
+    // }, [userData]);
 
     useEffect(() => {
         const getReview = reviewData.filter(rvw => rvw.email.toLowerCase() === email.toLowerCase());

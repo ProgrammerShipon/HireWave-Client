@@ -98,52 +98,54 @@ const Chat = () => {
   }, [socket, currentChat, message]);
 
 
-  console.log("notification", notification)
-  if (chats.length === 0) {
-    return <PageLoader />
-  }
+  // console.log("notification", notification)
+
 
   return (
     <section className="m-5 rounded-md">
       <DashTitle title="Messages" />
 
-      <div className="grid grid-cols-12 gap-4 min-h-full">
-        <div className="col-span-4 px-2 bg-gray/20 p-2 rounded-md">
-          {chats?.map((chat, index) => (
-            <div key={index} className="cursor-pointer"
-              onClick={() => setCurrentChat(chat)}>
-              <Conversation
-                chat={chat}
-                onlineUser={onlineUser}
-                setMessageReceiver={setMessageReceiver}
-              />
+
+      {
+        chats.length !== 0 ?
+          <div className="grid grid-cols-12 gap-4 min-h-full">
+            <div className="col-span-4 px-2 bg-gray/20 p-2 rounded-md">
+              {chats?.map((chat, index) => (
+                <div key={index} className="cursor-pointer"
+                  onClick={() => setCurrentChat(chat)}>
+                  <Conversation
+                    chat={chat}
+                    onlineUser={onlineUser}
+                    setMessageReceiver={setMessageReceiver}
+                  />
+                </div>
+
+              ))}
             </div>
 
-          ))}
-        </div>
+            {currentChat !== undefined && (
+              <div className="col-span-7 rounded-md ">
+                <ChatBox
+                  currentChat={currentChat}
+                  currentUser={currentUser}
+                  textMessage={textMessage}
+                  setNewMessage={setNewMessage}
+                  setMessage={setMessage}
+                  message={message}
+                  setTextMessage={setTextMessage}
+                  messageReceiver={messageReceiver}
+                  onlineUser={onlineUser}
+                // setSendMessage={setSendMessage}
+                />
+              </div>
+            )}
 
-        {currentChat !== undefined ? (
-          <div className="col-span-7 rounded-md ">
-            <ChatBox
-              currentChat={currentChat}
-              currentUser={currentUser}
-              textMessage={textMessage}
-              setNewMessage={setNewMessage}
-              setMessage={setMessage}
-              message={message}
-              setTextMessage={setTextMessage}
-              messageReceiver={messageReceiver}
-              onlineUser={onlineUser}
-            // setSendMessage={setSendMessage}
-            />
-          </div>
-        ) : <div className="flex flex-col justify-center items-center col-span-7 ">
-          <PiHandTapThin className="text-5xl text-gray"/>
-          <h3 className="text-gray text-2xl border-b-2 rounded-b-xl ">Tap To Create A New Chat </h3>
-        </div>
-        }
+          </div> :
+          <h1>create new chat</h1>
+      }
 
-      </div>
+
+
     </section>
   );
 };
