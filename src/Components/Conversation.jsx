@@ -14,17 +14,17 @@ const Conversation = ({ chat, onlineUser, setMessageReceiver }) => {
     if (loading && UserDataLoading) {
         return <PageLoader />
     }
-    console.log(chat)
+    // console.log(chat)
     // console.log(userData)
-    console.log(currentUser._id)
+    // console.log(currentUser._id)
 
     useEffect(() => {
         const receiver = chat?.members.find(id => id !== currentUser?._id)
-        console.log(receiver)
+        // console.log(receiver)
 
         axiosSecure.get(`/users/id/${receiver}`)
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 setChatReceiver(res.data)
                 setMessageReceiver(res.data)
             })

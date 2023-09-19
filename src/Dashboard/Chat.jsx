@@ -21,16 +21,13 @@ const Chat = () => {
   const { currentUser } = useAuth();
   const [messageReceiver, setMessageReceiver] = useState()
 
-
+  console.log(message)
   useEffect(() => {
     axiosSecure.get(`/message/${currentChat?._id}`)
       .then(res => {
         const newData = res.data
-        console.log(newData)
-        // setNewMessageData(newData)
-        // setMessage(pre => [...pre, res.data])  // Problem here
-        setMessage(...message, newData)  // Problem here
-
+        // console.log(newData)
+        setMessage(...message, newData)
       })
       .catch(error => {
         console.log(error)
@@ -66,7 +63,6 @@ const Chat = () => {
   useEffect(() => {
     if (socket === null) return;
     const receiver = currentChat?.members.find(id => id !== currentUser?._id)
-    // console.log(receiver)
     socket.emit("sendMessage", { ...newMessage, receiver })
   }, [newMessage]);
 
@@ -77,9 +73,7 @@ const Chat = () => {
     socket.on("getMessages", res => {
       // console.log('getMessages', res)
       if (currentChat?._id !== res.chatId) return;
-      // setMessage(pre => [...pre, res]); //problem here
-      setMessage([...message, res]); //problem here
-      // console.log(message)
+      setMessage([...message, res]);
     });
 
     socket.on("getNotification", (res) => {
@@ -88,7 +82,6 @@ const Chat = () => {
         setNotification(pre => [{ ...res, isRead: true }, ...pre])
       }
       setNotification(pre => [...pre, res])
-      console.log(isChatOpen)
     })
 
     return () => {
@@ -97,19 +90,14 @@ const Chat = () => {
     }
   }, [socket, currentChat, message]);
 
-
-  // console.log("notification", notification)
-
-
   return (
     <section className="m-5 rounded-md">
       <DashTitle title="Messages" />
 
-
       {
         chats.length !== 0 ?
-          <div className="grid grid-cols-12 gap-4 min-h-full">
-            <div className="col-span-4 px-2 bg-gray/20 p-2 rounded-md">
+          <div className="grid grid-cols-3 gap-4 mt-10">
+            <div className="px-2 bg-gray/20 p-2 rounded-md h-96">
               {chats?.map((chat, index) => (
                 <div key={index} className="cursor-pointer"
                   onClick={() => setCurrentChat(chat)}>
@@ -124,7 +112,7 @@ const Chat = () => {
             </div>
 
             {currentChat !== undefined && (
-              <div className="col-span-7 rounded-md ">
+              <div className="md:col-span-2 rounded-md">
                 <ChatBox
                   currentChat={currentChat}
                   currentUser={currentUser}

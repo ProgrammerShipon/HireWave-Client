@@ -11,8 +11,7 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
     const searchOnlineUser = onlineUser?.some(user => user.userId === messageReceiver?._id)
 
 
-    console.log(messageReceiver)
-    console.log(searchOnlineUser)
+    console.log(message)
 
     const sendNewMessage = () => {
         const newMessage = {
@@ -20,14 +19,15 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
             senderId: currentUser._id,
             text: textMessage
         }
-        console.log(newMessage)
-        axiosSecure.post('/message', newMessage)
+        const updateMsg = [...message, newMessage]
+        console.log(updateMsg)
+        axiosSecure.post('/message', updateMsg)
             .then(res => {
                 console.log(res.data);
                 if (res.status === 200) {
                     // console.log(res.data)
                     setNewMessage(res.data)
-                    setMessage([...message, res.data])
+                    // setMessage([...message, res.data])
                     setTextMessage('')
                 }
             })
