@@ -166,10 +166,10 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
         <div className="rounded-lg border border-gray/40 hover:border-green p-5 md:p-8 mt-8 shadow-lg">
           <h2 className="text-lightGray text-xl mb-3">Provided Links</h2>
           {attachment.map((link, index) => (
-            <>
+            <span
+                key={index}>
               {" "}
               <a
-                key={index}
                 href={link}
                 target="_blank"
                 referrerPolicy="no-referrer"
@@ -178,7 +178,7 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
                 {link}
               </a>
               <br />
-            </>
+            </span>
           ))}
         </div>
 

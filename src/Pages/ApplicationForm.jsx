@@ -1,10 +1,10 @@
 import React from 'react';
 import { Helmet } from "react-helmet";
+import { useLoaderData } from 'react-router-dom';
 import Breadcrumbs from "../Components/Breadcrumbs";
 import Divider from "../Components/Divider";
-import ApplicationFormDetails from '../Sections/ApplicationFormDetails';
-import { useLoaderData } from 'react-router-dom';
 import PageLoader from '../Components/PageLoader';
+import ApplicationFormDetails from '../Sections/ApplicationFormDetails';
 
 const ApplicationForm = () => {
     const singleData = useLoaderData();
@@ -13,7 +13,7 @@ const ApplicationForm = () => {
         <>
             {/* page title */}
             {
-                singleData.email &&
+                singleData?.email &&
                 <Helmet>
                     <title>{singleData.name}'s Form - Hire Wave</title>
                 </Helmet>
@@ -23,7 +23,7 @@ const ApplicationForm = () => {
 
             {/* section */}
             {
-                singleData.applicantEmail ? <ApplicationFormDetails candidateDetails={singleData} /> : <PageLoader />
+                singleData?.applicantEmail ? <ApplicationFormDetails candidateDetails={singleData} /> : <PageLoader />
             }
 
             {/* border */}

@@ -1,13 +1,12 @@
-import Breadcrumbs from "../Components/Breadcrumbs";
-import CandidateDetailsContent from "../Sections/CandidateDetailsContent";
-import Divider from "../Components/Divider";
 import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
+import Breadcrumbs from "../Components/Breadcrumbs";
+import Divider from "../Components/Divider";
 import PageLoader from "../Components/PageLoader";
+import CandidateDetailsContent from "../Sections/CandidateDetailsContent";
 
 const CandidateDetails = () => {
     const singleData = useLoaderData();
-
     return (
         <>
             {
