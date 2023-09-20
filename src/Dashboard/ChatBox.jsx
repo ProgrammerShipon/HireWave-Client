@@ -8,7 +8,6 @@ import { BsFillSendFill } from 'react-icons/bs';
 const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNewMessage, setMessage, message, onlineUser }) => {
     const [axiosSecure] = useAxiosSecure();
     const [chatReceiver, setChatReceiver] = useState();
-    const searchOnlineUser = onlineUser?.some(user => user.userId === chatReceiver?._id)
     console.log(chatReceiver)
 
 
@@ -28,7 +27,7 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
 
     }, [currentChat, currentUser]);
 
-
+    const searchOnlineUser = onlineUser?.some(user => user.userId === chatReceiver?._id)
 
     const sendNewMessage = () => {
         const newMessage = {
@@ -60,7 +59,7 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
                 <img src={chatReceiver?.image} className='w-11 h-11 rounded-full border border-gray' alt={chatReceiver?.name} />
                 <div className='flex flex-col justify-center gap-0'>
                     <p className='text-xl'>{chatReceiver?.name}</p>
-                    <p className='-mt-2'>{onlineUser ? "online " : "offline"}</p>
+                    <p className='-mt-2'>{searchOnlineUser ? "online " : "offline"}</p>
                 </div>
             </div>
             <div className='h-[70vh] overflow-y-scroll bg-black/20 p-2 rounded-md'>
