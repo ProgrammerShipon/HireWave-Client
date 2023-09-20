@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
+import useAuth from '../Hooks/useAuth';
 
 // react icons
 import { AiOutlineUserAdd } from "react-icons/ai";
-import useAuth from '../Hooks/useAuth';
 import { HiOutlineClipboardDocumentList } from 'react-icons/hi2';
 import { BiFileFind } from 'react-icons/bi';
 
@@ -18,7 +18,7 @@ const GetStart = () => {
     let description
     let buttonText
 
-    if (role === "user") {
+    if (role === "user" || role === "admin") {
         title = "Get Start Your New Job With Us !"
         description = "Ride the wave of success with Hire Wave, your dedicated partner in finding the perfect job match through our expert hiring services."
         buttonText = <><AiOutlineUserAdd /> Create an Account</>
