@@ -10,13 +10,13 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BiMap, BiSolidUserDetail } from "react-icons/bi";
 import DescriptionTextarea from "../../Components/DashComponents/DescriptionTextarea";
-import { BsTelephoneOutbound } from "react-icons/bs";
+import { BsCamera, BsTelephoneOutbound } from "react-icons/bs";
 import RecruiterModal from "../../Components/DashComponents/RecruiterModal";
 
 const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
     const [axiosSecure] = useAxiosSecure()
     console.log(recruitersData)
-    const { _id, name, image, email, banner, phone,  location, address, about, specialties, status,} = recruitersData;
+    const { _id, name, image, email, banner, phone, location, address, about, specialties, status, } = recruitersData;
 
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
 
@@ -28,6 +28,8 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
     const [userAbout, setUserAbout] = useState(about);
     const [specialtiesOf, setSpecialtiesOf] = useState(specialties);
 
+    const formattedAbout = about.map(pa => pa === "" ? "\u00A0" : pa);
+    const formattedSpecialties = specialties.map(pa => pa === "" ? "\u00A0" : pa);
 
     const handleModifyAbout = (data) => {
         console.log("handleModifyAbout", userAbout)
@@ -95,8 +97,6 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
             })
     }
     return (
-
-
         <div className='mt-10 space-y-7'>
             {/* profile top */}
             <div className='relative bg-white shadow-xl shadow-gray/40 p-6 rounded-md flex flex-col lg:flex-row items-start lg:items-end justify-between'>
@@ -111,13 +111,25 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
                     <div className='flex flex-col lg:flex-row items-center gap-8 mb-6 lg:mb-0 w-full lg:w-auto'>
 
                         {/* image & rating */}
-                        <div className="-mt-16 ml-5 md:ml-10 w-40 h-40 rounded-md p-2 border border-purple overflow-hidden duration-300 shadow-4xl shadow-gray/40">
+                        <div className="relative -mt-16 ml-5 md:ml-10 w-40 h-40 rounded-md p-2 border border-purple overflow-hidden duration-300 shadow-4xl shadow-gray/40">
                             <img
                                 src={image}
                                 className="object-cover object-center w-full h-full shadow-3xl shadow-white rounded-md"
                                 alt={name}
                             />
+                            <label className='absolute rounded-full border border-green bg-white text-2xl p-[5px] z-50 cursor-pointer text-green duration-300 right-0'>
+
+                                <input
+                                    name='picture'
+                                    type='file'
+                                    style={{ display: 'none' }}
+                                // onChange={handlePictureUpload}
+                                />
+                                <BsCamera />
+
+                            </label>
                         </div>
+
 
                         {/* content */}
                         <div className='flex flex-col items-center lg:items-start justify-center'>
@@ -138,7 +150,7 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
                 </div>
 
                 <div>
-                <RecruiterModal recruitersData={recruitersData} refetchRecruiters={refetchRecruiters} />
+                    <RecruiterModal recruitersData={recruitersData} refetchRecruiters={refetchRecruiters} />
                 </div>
             </div>
 
@@ -161,7 +173,7 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
 
                 <div className={`py-4 ${editAbout ? 'block' : 'hidden'}`}>
                     {
-                        userAbout.length > 0 ? userAbout.map((ab, index) => <p key={index} className='text-lightGray text-lg leading-relaxed capitalize'>
+                        formattedAbout.length > 0 ? formattedAbout.map((ab, index) => <p key={index} className='text-lightGray text-lg leading-relaxed capitalize'>
                             {ab}
                         </p>) : <p className='text-lg text-lightGray'>N/A</p>
                     }
@@ -212,7 +224,7 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
 
                 <div className={`py-4 ${editSpecialties ? 'block' : 'hidden'}`}>
                     {
-                        specialtiesOf.length > 0 ? specialtiesOf.map((ab, index) => <p key={index} className='text-lightGray text-lg leading-relaxed capitalize'>
+                        formattedSpecialties.length > 0 ? formattedSpecialties.map((ab, index) => <p key={index} className='text-lightGray text-lg leading-relaxed capitalize'>
                             {ab}
                         </p>) : <p className='text-lg text-lightGray'>N/A</p>
                     }

@@ -246,7 +246,7 @@ console.log(image_hosting_token)
     return (
         <div className='mt-10 space-y-7'>
             {/* profile top */}
-            <div className='bg-white shadow-xl shadow-gray/40 p-6 rounded-md flex flex-col lg:flex-row items-start lg:items-end justify-between'>
+            <div className= 'relative bg-white shadow-xl shadow-gray/40 p-6 rounded-md flex flex-col lg:flex-row items-start lg:items-end justify-between'>
                 <div className='flex flex-col lg:flex-row items-center gap-8 mb-6 lg:mb-0 w-full lg:w-auto'>
 
                     {/* image */}
@@ -453,7 +453,7 @@ console.log(image_hosting_token)
                 <div className={`flex flex-col gap-2 p-3 ${editAbout ? 'hidden' : 'block'}`}>
                     <form onSubmit={handleSubmit(handleModifyAbout)}>
                         <label htmlFor="newAbout" className='text-lightGray text-base'>
-                            Edit About
+                            {/* Edit About */}
                             <DescriptionTextarea about={about} setUserAbout={setUserAbout} />
                         </label>
 

@@ -4,10 +4,8 @@ import DashTitle from "../Components/DashComponents/DashTitle";
 import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useChat from "../Hooks/useChat";
-import PageLoader from "../Components/PageLoader";
 import Conversation from "../Components/Conversation";
 import ChatBox from "./ChatBox";
-import { PiHandTapThin } from "react-icons/pi";
 const Chat = () => {
   const [chats, chatLoading, chatRefetch] = useChat();
   const [axiosSecure] = useAxiosSecure()

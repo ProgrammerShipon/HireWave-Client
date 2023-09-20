@@ -1,10 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
 import useAxiosSecure from "./useAxiosSecure";
-import useCurrentCandidate from "./useCurrentCandidate";
-import useCurrentRecruiter from "./useCurrentRecruiter";
-import { useState } from "react";
-import useCurrentUserId from "./useCurrentUserId";
 
 const useChat = () => {
   const { currentUser } = useAuth();

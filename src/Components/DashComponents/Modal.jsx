@@ -7,7 +7,7 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 const Modal = ({ candidatesData, refetch }) => {
     const { _id, image, title, name , email } = candidatesData;
     const [axiosSecure] = useAxiosSecure()
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
 
 
