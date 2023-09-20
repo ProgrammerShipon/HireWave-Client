@@ -1,10 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import failedAnimation from '../Assets/107311-failed-red.json'
 import Lottie from 'lottie-react';
+
 const PaymentFail = () => {
-    const { trans_Id } = useParams();
-    console.log(trans_Id)
     return (
         <div>
             <Lottie className='w-80 mx-auto ' animationData={failedAnimation}></Lottie>

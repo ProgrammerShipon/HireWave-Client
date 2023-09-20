@@ -6,11 +6,12 @@ import { useQuery } from '@tanstack/react-query';
 const useRecruiterPaymentHistory = () => {
     const [axiosSecure]=useAxiosSecure();
     const {currentUser}=useAuth();
+    console.log(currentUser.name)
     const {
         data: RecruiterPaymentHistory = [], isLoading: loading, refetch, } = useQuery({
             queryKey: ["RecruiterPaymentHistory"],
             queryFn: async () => {
-                const res = await axiosSecure.get(`/payment/history/${currentUser?.name}`);
+                const res = await axiosSecure.get(`payment/history/${currentUser?.name}`);
                 return res.data;
             },
 
