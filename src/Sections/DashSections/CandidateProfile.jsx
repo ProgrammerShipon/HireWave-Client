@@ -20,12 +20,12 @@ import { LiaIndustrySolid } from 'react-icons/lia';
 import { FaFacebookF, FaGithub, FaLinkedin, FaTwitter, FaPencilAlt, FaTrashAlt, FaGraduationCap } from 'react-icons/fa';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { BsCamera } from 'react-icons/bs';
+import Resume from '../../Components/Resume';
 
 const CandidateProfile = ({ candidatesData, refetch }) => {
     const [languagesData] = useLanguagesData();
     const [axiosSecure] = useAxiosSecure()
     const { _id, name, title, image, location, status, hourlyRate, jobType, address, languages, about, education, experience, skills, openToWork, socialLink } = candidatesData;
-
     const [userAbout, setUserAbout] = useState(about)
 
     // console.log(userAbout)
@@ -885,6 +885,9 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                         </div> : <p className='text-lg text-lightGray'>N/A</p>
                 }
             </div>
+
+            {/* Generate Resume */}
+            <Resume candidatesData={candidatesData} refetch={refetch} />
         </div >
     );
 };
