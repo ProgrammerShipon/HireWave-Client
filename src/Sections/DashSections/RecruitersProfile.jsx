@@ -12,7 +12,7 @@ import { SlLocationPin } from "react-icons/sl";
 import { IoIosFlash } from "react-icons/io";
 import { MdLocationPin } from "react-icons/md";
 import { FaPencilAlt } from "react-icons/fa";
-import { BsTelephoneOutbound, BsCamera} from "react-icons/bs";
+import { BsTelephoneOutbound, BsCamera } from "react-icons/bs";
 import { BiSolidUserDetail } from "react-icons/bi";
 
 
@@ -94,7 +94,7 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
     return (
         <div className='mt-10 space-y-7'>
             {/* profile top */}
-            <div className='relative bg-white shadow-xl shadow-gray/40 p-6 rounded-md flex flex-col lg:flex-row items-start lg:items-end justify-between'>
+            <div className=' bg-white shadow-xl shadow-gray/40 p-6 rounded-md flex flex-col lg:flex-row items-start lg:items-end justify-between'>
                 <div>
                     <div className="w-full h-40 ">
                         <img
@@ -105,14 +105,16 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
                     </div>
                     <div className='flex flex-col lg:flex-row items-center gap-8 mb-6 lg:mb-0 w-full lg:w-auto'>
 
-                        {/* image & rating */}
-                        <div className="relative -mt-16 ml-5 md:ml-10 w-40 h-40 rounded-md p-2 border border-purple overflow-hidden duration-300 shadow-4xl shadow-gray/40">
+                        {/* image & name */}
+                        <div className="-mt-16 ml-5 md:ml-10 w-40 h-40 rounded-md p-2 border border-purple overflow-hidden duration-300 shadow-4xl shadow-gray/40">
                             <img
                                 src={image}
                                 className="object-cover object-center w-full h-full shadow-3xl shadow-white rounded-md"
                                 alt={name}
                             />
-                            <label className='absolute rounded-full border border-green bg-white text-2xl p-[5px] z-50 cursor-pointer text-green duration-300 right-0'>
+                        </div>
+                        <div>
+                            <label className=' rounded-full  text-2xl  cursor-pointer text-green duration-300 -ml-20'>
 
                                 <input
                                     name='picture'
