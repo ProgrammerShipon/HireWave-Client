@@ -19,6 +19,12 @@ import ApplyJob from "../Pages/ApplyJob";
 import BrowseJobs from "../Pages/BrowseJobs";
 import CandidateDetails from "../Pages/CandidateDetails";
 import Candidates from "../Pages/Candidates";
+import Following from "../Dashboard/Following";
+import OffersReceived from "../Dashboard/OffersReceived";
+import TasksReceived from "../Dashboard/TasksReceived";
+// import Conference from "../Pages/Conference";
+import HiredCandidates from "../Dashboard/HiredCandidates";
+import OffersSent from "../Dashboard/OffersSent";
 import Contact from "../Pages/Contact";
 import EventDetails from "../Pages/EventDetails";
 import Events from "../Pages/Events";
@@ -195,6 +201,14 @@ const Router = createBrowserRouter([
         path: "myApplications",
         element: <MyApplications />,
       },
+      {
+        path: "following",
+        element: <Following />
+      },
+      {
+        path: "offersReceived",
+        element: <OffersReceived />
+      },
 
       // Recruiter routes
 
@@ -221,6 +235,14 @@ const Router = createBrowserRouter([
       {
         path: "payment/fail",
         element: <PaymentFail />,
+      },
+      {
+        path: "offersSent",
+        element: <OffersSent />
+      },
+      {
+        path: "tasks",
+        element: <TasksReceived />
       },
       {
         path: "favorites",

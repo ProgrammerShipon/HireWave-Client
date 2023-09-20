@@ -18,9 +18,7 @@ import CustomModal from '../Components/CustomModal';
 
 const Home = () => {
     const { currentUser } = useAuth();
-    console.log(currentUser);
     const location = useLocation()
-    console.log(location);
 
     //Use manual states and functions
     const [isCandidateManualOpen, setIsCandidateManualOpen] = useState(false);
