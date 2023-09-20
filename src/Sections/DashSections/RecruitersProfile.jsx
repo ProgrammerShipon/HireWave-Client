@@ -1,34 +1,33 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import Button from "../../Components/Button";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import DescriptionTextarea from "../../Components/DashComponents/DescriptionTextarea";
 import RecruiterModal from "../../Components/DashComponents/RecruiterModal";
+import DescriptionTextarea from "../../Components/DashComponents/DescriptionTextarea";
 
-// react iocns
-import { IoIosFlash } from "react-icons/io";
-import { BiSolidUserDetail } from "react-icons/bi";
-import { BsTelephoneOutbound } from "react-icons/bs";
+// react icons
 import { SlLocationPin } from "react-icons/sl";
+import { IoIosFlash } from "react-icons/io";
 import { MdLocationPin } from "react-icons/md";
 import { FaPencilAlt } from "react-icons/fa";
+import { BsTelephoneOutbound } from "react-icons/bs";
+import { BiSolidUserDetail } from "react-icons/bi";
 
 const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
     const [axiosSecure] = useAxiosSecure()
-    const { _id, name, image, email, banner, phone, location, address, about, specialties, status } = recruitersData;
+    const { _id, name, image, email, banner, phone, location, address, about, specialties, status, } = recruitersData;
 
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
 
     const [contact, setContact] = useState(true);
     const [editAbout, setEditAbout] = useState(true);
     const [editLocation, setEditLocation] = useState(true);
-    const [editSpecialties, setEditSpecialties] = useState();
+    const [editSpecialties, setEditSpecialties] = useState(true);
 
     const [userAbout, setUserAbout] = useState(about);
     const [specialtiesOf, setSpecialtiesOf] = useState(specialties);
-
 
     const handleModifyAbout = (data) => {
         axiosSecure.patch(`/recruiters/about/${_id}`, userAbout)
@@ -75,7 +74,6 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
             address: data.address,
             location: data.location,
         }
-
         axiosSecure.patch(`/recruiters/location/${_id}`, updateData)
             .then(res => {
                 if (res.status === 200) {
@@ -128,7 +126,9 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
                     <Link to={`/recruiters_details/${_id}`}><Button>See Public View</Button></Link>
                 </div>
 
-                <RecruiterModal recruitersData={recruitersData} refetchRecruiters={refetchRecruiters} />
+                <div>
+                    <RecruiterModal recruitersData={recruitersData} refetchRecruiters={refetchRecruiters} />
+                </div>
             </div>
 
 
@@ -198,15 +198,16 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
                     </button>
                 </div>
 
-                <div className={`py-4 ${!editSpecialties ? 'block' : 'hidden'}`}>
+                <div className={`py-4 ${editSpecialties ? 'block' : 'hidden'}`}>
                     {
                         specialtiesOf.length > 0 ? specialtiesOf.map((ab, index) => <p key={index} className='text-lightGray text-lg leading-relaxed capitalize'>
                             {ab}
                         </p>) : <p className='text-lg text-lightGray'>N/A</p>
                     }
+
                 </div>
 
-                <div className={`flex flex-col gap-2 p-3 ${!editSpecialties ? 'hidden' : 'block'}`}>
+                <div className={`flex flex-col gap-2 p-3 ${editSpecialties ? 'hidden' : 'block'}`}>
                     <form onSubmit={handleSubmit(handleModifySpecialties)}>
                         <label htmlFor="newAbout" className='text-lightGray text-base'>
                             {/* Edit Specialties */}
@@ -227,6 +228,7 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
                             </button>
                         </div>
                     </form>
+
                 </div>
             </div>
 
@@ -363,12 +365,9 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
                             </div>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
-
-
     );
 };
 

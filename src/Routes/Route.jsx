@@ -220,10 +220,7 @@ const Router = createBrowserRouter([
         path: "postedJobs",
         element: <PostedJobs />,
       },
-      {
-        path: "applicant",
-        element: <AppliedApplicant />,
-      },
+
       {
         path: "payment_history",
         element: <PaymentHistory />,
@@ -247,6 +244,10 @@ const Router = createBrowserRouter([
       {
         path: "favorites",
         element: <Favorites />,
+      },
+      {
+        path: "tasks",
+        element: <TasksReceived />,
       },
 
       //Admin Routes

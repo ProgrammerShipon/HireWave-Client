@@ -8,11 +8,12 @@ const PaymentSuccess = () => {
     const { currentUser } = useAuth();
     const { tran_id } = useParams();
     const [RecruiterPaymentHistory, loading, refetch] = useRecruiterPaymentHistory();
+    console.log(RecruiterPaymentHistory)
     if (loading) {
 
         return <h1>...</h1>
     }
-    const { amount, paymentTimeline, purchaseDate, receiver, recruiterName } = RecruiterPaymentHistory[0]
+    const { amount,  purchaseDate, receiver } = RecruiterPaymentHistory[0]
 
 
     return (

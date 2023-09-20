@@ -1,17 +1,31 @@
 
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import StartMessage from './StartMessage';
 import InputEmoji from "react-input-emoji";
+import { Tooltip } from 'react-tooltip';
+import Swal from 'sweetalert2'
+
+// react icons
 import { BsFillSendFill } from 'react-icons/bs';
+import { MdDeleteOutline } from 'react-icons/md';
 
-const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNewMessage, setMessage, message, messageReceiver, onlineUser }) => {
+const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNewMessage, setMessage, message, onlineUser, chatRefetch }) => {
     const [axiosSecure] = useAxiosSecure();
+    const [chatReceiver, setChatReceiver] = useState();
 
-    const searchOnlineUser = onlineUser?.some(user => user.userId === messageReceiver?._id)
+    useEffect(() => {
+        const receiver = currentChat?.members.find(id => id !== currentUser?._id)
+        axiosSecure.get(`/users/id/${receiver}`)
+            .then(res => {
+                setChatReceiver(res.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }, [currentChat, currentUser]);
 
-
-    console.log(message)
+    const searchOnlineUser = onlineUser?.some(user => user.userId === chatReceiver?._id)
 
     const sendNewMessage = () => {
         const newMessage = {
@@ -19,15 +33,11 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
             senderId: currentUser._id,
             text: textMessage
         }
-        const updateMsg = [...message, newMessage]
-        console.log(updateMsg)
-        axiosSecure.post('/message', updateMsg)
+        axiosSecure.post('/message', newMessage)
             .then(res => {
-                console.log(res.data);
                 if (res.status === 200) {
-                    // console.log(res.data)
                     setNewMessage(res.data)
-                    // setMessage([...message, res.data])
+                    setMessage([...message, res.data])
                     setTextMessage('')
                 }
             })
@@ -36,17 +46,60 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
             })
 
     }
+    const deleteChat = () => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/chat/delete/${currentChat._id}`)
+                    .then(res => {
+                        if (res.status === 200) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Conversation has been deleted.',
+                                'success'
+                            )
+                            chatRefetch()
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            }
+        })
+    }
 
     return (
-        <div>
-            <div className='flex items-center gap-2 bg-black/20 mb-2 p-2 rounded-md'>
-                <img src={messageReceiver?.image} className='w-11 h-11 rounded-full border border-gray' alt={messageReceiver?.name} />
-                <div className='flex flex-col justify-center gap-0'>
-                    <p className='text-xl'>{messageReceiver?.name}</p>
-                    <p className='-mt-2'>{onlineUser ? "online " : "offline"}</p>
+        <div className=''>
+            <div className='flex justify-between gap-2 items-center bg-green/20 mb-2 p-3 pr-5 mr-3 rounded-md'>
+                <div className='flex items-center gap-2 '>
+                    <img src={chatReceiver?.image} className='w-11 h-11 rounded-full border border-gray' alt={chatReceiver?.name} />
+                    <div className='flex flex-col justify-center gap-0'>
+                        <p className='text-xl'>{chatReceiver?.name}</p>
+                        <p className='-mt-2'>{searchOnlineUser ? "online " : "offline"}</p>
+                    </div>
+                </div>
+                <div>
+                    <Tooltip id="delete_chat"
+
+                    />
+                    <button
+                        onClick={deleteChat}
+                        data-tooltip-id="delete_chat" data-tooltip-content="Delete Conversation"
+                    >
+
+                        <MdDeleteOutline className='text-3xl shadow-md shadow-green text-green rounded-full' />
+                    </button>
+
                 </div>
             </div>
-            <div className='h-[70vh] overflow-y-scroll bg-black/20 p-2 rounded-md'>
+            <div className='h-[70vh] overflow-y-scroll bg-green/40 p-3 rounded-md'>
 
                 {
                     message.length !== 0 ? message.map((sms, index) =>

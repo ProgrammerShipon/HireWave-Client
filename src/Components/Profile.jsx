@@ -25,15 +25,15 @@ const Profile = () => {
                     className="relative flex items-center cursor-pointer"
                 >
                     {
-                        user?.photoURL ? <img
+                        currentUser?.image ? <img
                             className="h-12 w-12 rounded-full object-cover shadow-lg group-hover:shadow-green/20 duration-300"
-                            src={user?.photoURL}
-                            alt={user?.displayName}
+                            src={currentUser?.image}
+                            alt={currentUser?.name}
                         /> :
                             <p
                                 className="h-14 w-14 bg-blue text-dark text-xl flex items-center justify-center font-bold rounded-full shadow-lg group-hover:shadow-blue duration-300 drop-shadow-xl uppercase"
                             >
-                                {user?.displayName?.slice(0, 2)}
+                                {currentUser?.name?.slice(0, 2)}
                             </p>
                     }
                     <div className='absolute top-0 -right-0'>

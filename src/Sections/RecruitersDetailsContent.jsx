@@ -100,7 +100,6 @@ export default function RecruitersDetailsContent({ recruiterData }) {
         candidateName: currentUser?.name,
         candidateImage: currentUser?.image,
       };
-      console.log(newData);
 
       if (newData) {
         axiosSecure.post("/follow", newData).then((res) => {
@@ -131,7 +130,7 @@ export default function RecruitersDetailsContent({ recruiterData }) {
       sender: currentUser?._id,
       receiver: receiverId,
     };
-    console.log(chatMembers);
+
     axiosSecure
       .post("/chat", chatMembers)
       .then((res) => {

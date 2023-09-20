@@ -4,6 +4,8 @@ import useAuth from '../Hooks/useAuth';
 import useUsers from '../Hooks/useUsers';
 import PageLoader from './PageLoader';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
+import { Tooltip } from 'react-tooltip';
+import { MdDeleteOutline } from 'react-icons/md';
 
 
 const Conversation = ({ chat, onlineUser, setMessageReceiver }) => {
@@ -37,19 +39,18 @@ const Conversation = ({ chat, onlineUser, setMessageReceiver }) => {
     const searchOnlineUser = onlineUser?.some(user => user.userId === chatReceiver?._id)
 
 
-    // console.log(chatReceiver?.name)
-
+   
     return (
         <div>
             <div className='border-b-2 border-b-green p-2 rounded-md mb-2'>
-                <div className='flex gap-2 items-center'>
-                    <div className='relative'>
-                        <img src={chatReceiver?.image} className='w-11 h-11 rounded-full' alt="" />
-                        <RxDotFilled className={searchOnlineUser ? "text-3xl absolute top-7 right-0 text-green" : "hidden"} />
+                    <div className='flex gap-2 items-center'>
+                        <div className='relative'>
+                            <img src={chatReceiver?.image} className='w-11 h-11 rounded-full' alt="" />
+                            <RxDotFilled className={searchOnlineUser ? "text-3xl absolute top-7 right-0 text-green" : "hidden"} />
+                        </div>
+                        <p>{chatReceiver?.name}</p>
                     </div>
-
-                    <p>{chatReceiver?.name}</p>
-                </div>
+                   
 
             </div>
 
