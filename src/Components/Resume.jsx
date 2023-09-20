@@ -1,13 +1,11 @@
 import React, { useRef, useState } from 'react';
-import ReactDOM from "react-dom";
-import Button from './Button';
-import {AiOutlineEye, AiOutlineMail} from "react-icons/ai"
+import { AiOutlineEye, AiOutlineMail } from "react-icons/ai";
+import { BiCalendar, BiCurrentLocation } from 'react-icons/bi';
 import { BsTelephone } from 'react-icons/bs';
 import { FiDownload } from 'react-icons/fi';
-import { BiCalendar, BiCurrentLocation } from 'react-icons/bi';
 import { LiaFileDownloadSolid } from 'react-icons/lia';
-import CustomModal from './CustomModal';
 import generatePDF from 'react-to-pdf';
+import CustomModal from './CustomModal';
 
 
 const Resume = ({ candidatesData, refetch }) => {

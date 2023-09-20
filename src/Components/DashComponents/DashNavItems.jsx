@@ -34,7 +34,6 @@ const DashNavItems = () => {
         </li>
 
         {/* Message  */}
-
         <li className="w-full">
           <DashLink to='/dashboard/messages'>
             <BiMessageRoundedDetail size={24} />
