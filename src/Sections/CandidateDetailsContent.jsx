@@ -7,11 +7,11 @@ import { AiOutlineMessage } from "react-icons/ai";
 import { BiMap } from "react-icons/bi";
 import { BsBookmarkCheck, BsBookmarkPlus, BsCurrencyDollar } from "react-icons/bs";
 import {
-    FaFacebookF,
-    FaGithub,
-    FaLinkedin,
-    FaRegCalendarAlt,
-    FaTwitter,
+  FaFacebookF,
+  FaGithub,
+  FaLinkedin,
+  FaRegCalendarAlt,
+  FaTwitter,
 } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 
@@ -30,15 +30,14 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
   const [axiosSecure] = useAxiosSecure();
   const [reviewData, loading] = useReview();
   const [favorite, setFavorite] = useState(false);
+  const [favoriteData, setFavoriteData] = useState();
   const [receiverId, setReceiverId] = useState();
   const [senderId, setSenderId] = useState();
   const [singleUser] = useSingleUser();
-
   const navigate = useNavigate();
   const [chats] = useChat();
   const [review, setReview] = useState([]);
 
-  // console.log(userData)
   const {
     _id,
     name,
@@ -58,6 +57,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
     skills,
   } = candidateDetails;
 
+  // userId & SenderId
   useEffect(() => {
     setReceiverId(singleUser?._id);
     setSenderId(currentUser?._id);
@@ -81,13 +81,55 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
 
   // check favorite
   useEffect(() => {
-    axiosSecure
-      .get(`/favorite/recruiter_email/${currentUser?.email}`)
-      .then((res) => {
-        setFavorite(true);
-      })
-      .catch((err) => console.log(err));
-  }, [currentUser]);
+    if (currentUser.email) {
+      axiosSecure
+        .get(`/favorite/recruiter_email/${currentUser?.email}`)
+        .then((res) => {
+          if (res.status == 200 && res.data != "") {
+            setFavorite(true);
+            setFavoriteData(res?.data);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [currentUser, favorite]);
+
+  // Add to Favorite
+  const handleAddToFavorite = () => {
+    if (!favorite) {
+      const newData = {
+        candidateId: _id,
+        candidateImage: image,
+        candidateHourlyRate: hourlyRate,
+        candidateName: name,
+        candidateEmail: email,
+        recruiterName: currentUser?.name,
+        recruiterImage: currentUser?.image,
+        recruiterEmail: currentUser?.email,
+      };
+      if (newData) {
+        axiosSecure.post("/favorite", newData).then((res) => {
+          if (res.status == 200) {
+            toast.success("Favorite Added Success");
+            setFavorite(true);
+            setFavoriteData(res?.data);
+          }
+        });
+      }
+    } else if (favorite) {
+      if (favoriteData) {
+        axiosSecure
+          .delete(`/favorite/${favoriteData._id}`)
+          .then((res) => {
+            if (res.status == 200) {
+              toast.success("Favorite remove Success");
+              setFavorite(false);
+            }
+          })
+          .catch((err) => console.log(err));
+      }
+    }
+  };
 
   // chat
   const createChat = () => {
@@ -99,36 +141,11 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
     axiosSecure
       .post("/chat", chatMembers)
       .then((res) => {
-        console.log(res.data);
         navigate("/dashboard/messages");
       })
       .catch((error) => {
         console.log(error);
       });
-  };
-
-  // Add to Favorite
-  const handleAddToFavorite = () => {
-    const newData = {
-      candidateId: _id,
-      candidateImage: image,
-      candidateHourlyRate: hourlyRate,
-      candidateName: name,
-      candidateEmail: email,
-      recruiterName: currentUser?.name,
-      recruiterImage: currentUser?.image,
-      recruiterEmail: currentUser?.email,
-    };
-
-    console.log(newData);
-    if (newData) {
-      axiosSecure.post("/favorite", newData).then((res) => {
-        if (res.status == 200 || res.status == 201) {
-          toast.success("Favorite Added Success");
-          setFavorite(true);
-        }
-      });
-    }
   };
 
   return (
