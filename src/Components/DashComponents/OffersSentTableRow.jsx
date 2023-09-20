@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const RequestedOffersTableRow = ({ offer }) => {
+const OffersSentTableRow = ({ offer }) => {
     const { name, image, category, _id, title, position, salary } = offer
 
     return (
@@ -15,10 +15,9 @@ const RequestedOffersTableRow = ({ offer }) => {
             <td>{category}</td>
             <td>{title}</td>
             <td>{position}</td>
-            <td>{salary}$</td>
-            
+            <td>{salary}$</td>           
         </tr>
     );
 };
 
-export default RequestedOffersTableRow;
+export default OffersSentTableRow;

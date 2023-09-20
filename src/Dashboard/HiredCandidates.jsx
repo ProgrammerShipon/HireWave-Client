@@ -9,6 +9,7 @@ const HiredCandidates = () => {
             name: "Saiful Islam",
             image: "https://randomuser.me/api/portraits/men/22.jpg",
             title: "React.js Developer",
+            category: "Web Development",
             position: "Junior web developer",
             salary: 2000
         },
@@ -17,6 +18,7 @@ const HiredCandidates = () => {
             name: "Alamgir Bhuiyan",
             image: "https://randomuser.me/api/portraits/men/80.jpg",
             title: "Business Analyst",
+            category: "Business",
             position: "Manager",
             salary: 3000
         },
@@ -25,6 +27,7 @@ const HiredCandidates = () => {
             name: "S.M. Anik Mahmud",
             image: "https://randomuser.me/api/portraits/men/10.jpg",
             title: "Ui/UX Designer",
+            category: "Web Development",
             position: "Front-End Developer",
             salary: 25000
         },
@@ -40,10 +43,10 @@ const HiredCandidates = () => {
                         <tr>
                             <th className="px-3 py-3 font-medium text-center">Image</th>
                             <th className="px-3 py-3 font-medium text-center">Name</th>
+                            <th className="px-3 py-3 font-medium text-center">Category</th>
                             <th className="px-3 py-3 font-medium text-center">Title</th>
                             <th className="px-3 py-3 font-medium text-center">Position</th>
                             <th className="px-3 py-3 font-medium text-center">Salary</th>
-                            <th className="px-3 py-3 font-medium text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
