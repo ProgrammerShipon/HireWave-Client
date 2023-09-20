@@ -6,7 +6,6 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useChat from "../Hooks/useChat";
 import Conversation from "../Components/Conversation";
 import ChatBox from "./ChatBox";
-
 const Chat = () => {
     const [chats, , chatRefetch] = useChat();
     const [axiosSecure] = useAxiosSecure()

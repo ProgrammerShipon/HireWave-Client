@@ -101,11 +101,11 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
                 </div>
             </div>
 
-            <div className='h-[44vh] overflow-y-scroll p-3 rounded-md'>
+            <div className='h-[50vh] overflow-y-scroll p-3 rounded-md'>
                 {
                     message.length !== 0 ? message.map((sms, index) =>
                         <StartMessage sms={sms} key={index} />
-                    ) : <p className='flex justify-center items-center pt-52'>Send A New Message</p>
+                    ) : <p className='flex justify-center items-center pt-44'>Send A New Message</p>
                 }
             </div>
             <div className='flex items-center'>
