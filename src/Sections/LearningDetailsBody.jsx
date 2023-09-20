@@ -64,41 +64,6 @@ const LearningDetailsBody = () => {
               ></iframe>
             </div>
 
-
-            {/* Title */}
-            <div className='mt-3 mb-6 px-4 md:px-0'>
-              <h1 className="text-2xl md:text-3xl text-dark drop-shadow-lg">
-                {title}
-              </h1>
-              <p>{views} Views  {moment((createdAt), "YYYYMMDD").fromNow()}</p>
-            </div>
-
-            <div className="flex flex-col-reverse md:flex-row items-start justify-between gap-4 mb-5 px-4 md:px-0">
-              {/* Author Details */}
-              <div className="flex items-center gap-3">
-                <div className="h-14 w-14 rounded-full overflow-hidden shadow-xl shadow-gray/40">
-                  <img className="w-full h-full object-cover object-center" src={authorImg} alt={authorName} />
-                </div>
-                <div className="w-[150px] lg:w-auto">
-                  <h3 className="lg:text-xl text-dark drop-shadow-lg line-clamp-1">{authorName}</h3>
-                  <p className="text-sm text-lightGray line-clamp-1">{authorEmail}</p>
-                </div>
-              </div>
-
-              {/* Like, Unlike, View, Share */}
-              <div className='rounded-lg px-5 shadow-lg flex items-center mx-auto md:mx-0 gap-4 text-purple duration-300'>
-                <p className=' my-2 flex items-center gap-2'>
-                  <BiLike onClick={() => increaseLike(_id)} size='24' className='cursor-pointer' /> {allLike} </p>
-
-                <p className=' my-2 flex items-center gap-2'><BiDislike onClick={() => reduceLike(_id)} size='24' className='cursor-pointer' /> {allDisLike} </p>
-                <p className="flex items-center gap-2">
-                  <AiOutlineEye size='24' /> {views}
-                </p>
-                <CopyToClipboardLink url={url} />
-              </div>
-            </div>
-
-
             {/* Title */}
             <div className='mt-3 mb-6 px-4 md:px-0'>
               <h1 className="text-2xl md:text-3xl text-dark drop-shadow-lg">

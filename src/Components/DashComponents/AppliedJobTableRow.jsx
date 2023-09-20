@@ -33,10 +33,13 @@ const AppliedJobTableRow = ({ job }) => {
                         alt={companyName}
                     />
                 </div>
-                {companyName}
+
+                <Link to={`/myApplications`} className="line-clamp-2 font-medium group-hover:text-purple duration-300">
+                    {companyName}
+                </Link>
             </td>
             <td className="px-3 py-3 w-56">
-                <Link to={`/jobDetails/${_id}`} className="w-full line-clamp-2 font-medium group-hover:text-green duration-300">
+                <Link to={`/job_details/${jobId}`} className="w-full line-clamp-2 font-medium group-hover:text-green duration-300">
                     {title}
                 </Link>
             </td>

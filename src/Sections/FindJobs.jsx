@@ -44,6 +44,7 @@ const FindJobs = ({ allJobsData }) => {
         setFilteredData(filter);
     }, [searchTerm, location, category, allJobsData, date]);
 
+
     useEffect(() => {
         setFilteredData(allJobsData);
     }, [allJobsData])

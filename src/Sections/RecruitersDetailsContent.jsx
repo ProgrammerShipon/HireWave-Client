@@ -73,7 +73,7 @@ export default function RecruitersDetailsContent({ recruiterData }) {
     };
 
     const handleFollow = () => {
-        const newData={
+        const newData = {
             recruiterId: _id,
             recruiterImage: image,
             recruiterLocation: location,
@@ -156,10 +156,9 @@ export default function RecruitersDetailsContent({ recruiterData }) {
                         </div>
 
                         {/* content */}
-                        <div className="mx-5 md:mx-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-0 mb-6 mt-4">
+                        <div className="mx-5 md:mx-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-0 mb-6">
                             <div className="duration-300">
                                 <h1 className="text-4xl font-medium text-dark drop-shadow-xl">{name}</h1>
-                                <button onClick={createChat}>Contact</button>
 
                                 <div className="flex items-center gap-2">
                                     <h3 className="text-xl font-light text-lightGray">{industry}</h3>
@@ -177,18 +176,18 @@ export default function RecruitersDetailsContent({ recruiterData }) {
                                 >
                                     Website <LuExternalLink size='20' />
                                 </a>
-                                <button onClick={handleFollow} className={`flex items-center gap-2 px-5 py-1 text-xl text-white rounded-md sm:mb-3 shadow-lg shadow-green/40 hover:shadow-dark/50 duration-300 w-full ${!follow? "bg-green hover:bg-dark" : "bg-dark" }`}>
-                                {
-                                    !follow ?
-                                    <>
-                                        <p>Follow{" "}</p>
-                                        <SlUserFollow/>
-                                    </>:
-                                    <>
-                                        <p>Following {" "}</p>
-                                        <SlUserFollowing/>
-                                    </>
-                                }
+                                <button onClick={handleFollow} className={`flex items-center gap-2 px-5 py-1 text-xl text-white rounded-md sm:mb-3 shadow-lg shadow-green/40 hover:shadow-dark/50 duration-300 w-full ${!follow ? "bg-green hover:bg-dark" : "bg-dark"}`}>
+                                    {
+                                        !follow ?
+                                            <>
+                                                <p>Follow{" "}</p>
+                                                <SlUserFollow />
+                                            </> :
+                                            <>
+                                                <p>Following {" "}</p>
+                                                <SlUserFollowing />
+                                            </>
+                                    }
                                 </button>
                             </div>
                         </div>
