@@ -86,10 +86,11 @@ const Chat = () => {
             <DashTitle title="Messages" />
             {
                 chats.length !== 0 &&
-                <div className="grid  md:grid-cols-12 gap-4 bg-green/10 rounded-md p-6 min-h-full">
-                    <div className=" md:col-span-4 px-2 w-full bg-green/20 p-2 rounded-md">
+                <div className="grid md:grid-cols-3 gap-6 rounded-md mt-10">
+
+                    <div className="bg-white p-3 rounded-md shadow-lg md:min-h-[68vh]">
                         {chats?.map((chat, index) => (
-                            <div key={index} className="cursor-pointer "
+                            <div key={index} className="cursor-pointer"
                                 onClick={() => setCurrentChat(chat)}>
                                 <Conversation
                                     chat={chat}
@@ -101,7 +102,7 @@ const Chat = () => {
                     </div>
 
                     {currentChat !== undefined && (
-                        <div className="md:col-span-7 rounded-md ">
+                        <div className="md:col-span-2 rounded-md">
                             <ChatBox
                                 currentChat={currentChat}
                                 currentUser={currentUser}

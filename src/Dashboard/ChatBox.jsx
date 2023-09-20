@@ -76,46 +76,48 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
     }
 
     return (
-        <div className=''>
-            <div className='flex justify-between gap-2 items-center bg-green/20 mb-2 p-3 pr-5 mr-3 rounded-md'>
+        <div className='bg-white shadow-lg p-3 rounded-md'>
+            <div className='bg-purple flex items-center justify-between shadow-lg shadow-gray/40 p-2 rounded-md mb-2 duration-300'>
                 <div className='flex items-center gap-2 '>
-                    <img src={chatReceiver?.image} className='w-11 h-11 rounded-full border border-gray' alt={chatReceiver?.name} />
-                    <div className='flex flex-col justify-center gap-0'>
-                        <p className='text-xl'>{chatReceiver?.name}</p>
-                        <p className='-mt-2'>{searchOnlineUser ? "online " : "offline"}</p>
+                    <div className='relative w-12 h-12 shadow-md rounded-full overflow-hidden'>
+                        <img src={chatReceiver?.image} className='w-full h-full object-cover object-center rounded-full' alt={chatReceiver?.name} />
+                    </div>
+
+                    <div className='flex flex-col justify-center'>
+                        <h2 className='text-white text-xl capitalize'>{chatReceiver?.name}</h2>
+                        <p className='text-sm text-dark'>{searchOnlineUser ? "online " : "offline"}</p>
                     </div>
                 </div>
                 <div>
                     <Tooltip id="delete_chat"
-
                     />
                     <button
                         onClick={deleteChat}
                         data-tooltip-id="delete_chat" data-tooltip-content="Delete Conversation"
+                        className='h-10 w-10 bg-white rounded-full shadow-md text-purple flex items-center justify-center hover:text-red-400 duration-300'
                     >
-
-                        <MdDeleteOutline className='text-3xl shadow-md shadow-green text-green rounded-full' />
+                        <MdDeleteOutline size='24' />
                     </button>
-
                 </div>
             </div>
-            <div className='h-[70vh] overflow-y-scroll bg-green/40 p-3 rounded-md'>
 
+            <div className='h-[44vh] overflow-y-scroll p-3 rounded-md'>
                 {
                     message.length !== 0 ? message.map((sms, index) =>
                         <StartMessage sms={sms} key={index} />
                     ) : <p className='flex justify-center items-center pt-52'>Send A New Message</p>
                 }
-
             </div>
-            <div className='flex'>
+            <div className='flex items-center'>
                 <InputEmoji
                     value={textMessage}
                     onChange={setTextMessage}
                     placeholder="Type a message"
                 />
-                <button onClick={sendNewMessage}>
-                    <BsFillSendFill className='text-3xl text-green border border-green rounded-full p-1' />
+                <button onClick={sendNewMessage}
+                    className='h-10 w-14 bg-green rounded-md shadow-md text-white flex items-center justify-center duration-300 mr-5'
+                >
+                    <BsFillSendFill size='20' />
                 </button>
             </div>
         </div>
