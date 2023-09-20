@@ -1,21 +1,25 @@
-import { SlLocationPin } from "react-icons/sl";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import { IoIosFlash } from "react-icons/io";
-import Button from "../../Components/Button";
-import { Link } from "react-router-dom";
-import { Tooltip } from "react-tooltip";
-import { MdLocationPin } from "react-icons/md";
-import { FaPencilAlt } from "react-icons/fa";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { BiMap, BiSolidUserDetail } from "react-icons/bi";
 import DescriptionTextarea from "../../Components/DashComponents/DescriptionTextarea";
-import { BsCamera, BsTelephoneOutbound } from "react-icons/bs";
 import RecruiterModal from "../../Components/DashComponents/RecruiterModal";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
+import Button from "../../Components/Button";
+import { Tooltip } from "react-tooltip";
+
+// react icons
+import { SlLocationPin } from "react-icons/sl";
+import { IoIosFlash } from "react-icons/io";
+import { MdLocationPin } from "react-icons/md";
+import { FaPencilAlt } from "react-icons/fa";
+import { BsTelephoneOutbound, BsCamera} from "react-icons/bs";
+import { BiSolidUserDetail } from "react-icons/bi";
+
+
 
 const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
     const [axiosSecure] = useAxiosSecure()
-    console.log(recruitersData)
+    // console.log(recruitersData)
     const { _id, name, image, email, banner, phone, location, address, about, specialties, status, } = recruitersData;
 
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
@@ -23,7 +27,7 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
     const [contact, setContact] = useState(true);
     const [editAbout, setEditAbout] = useState(true);
     const [editLocation, setEditLocation] = useState(true);
-    const [editSpecialties, setEditSpecialties] = useState();
+    const [editSpecialties, setEditSpecialties] = useState(true);
 
     const [userAbout, setUserAbout] = useState(about);
     const [specialtiesOf, setSpecialtiesOf] = useState(specialties);
@@ -32,10 +36,8 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
     const formattedSpecialties = specialties.map(pa => pa === "" ? "\u00A0" : pa);
 
     const handleModifyAbout = (data) => {
-        console.log("handleModifyAbout", userAbout)
         axiosSecure.patch(`/recruiters/about/${_id}`, userAbout)
             .then(res => {
-                console.log(res.data)
                 if (res.status === 200) {
                     setEditAbout(!editAbout)
                     refetchRecruiters()
@@ -45,11 +47,10 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
                 console.log(error);
             })
     }
+
     const handleModifySpecialties = (data) => {
-        console.log("handleModifyAbout", specialtiesOf)
         axiosSecure.patch(`/recruiters/specialties/${_id}`, specialtiesOf)
             .then(res => {
-                console.log(res.data)
                 if (res.status === 200) {
                     setEditSpecialties(!editSpecialties)
                     refetchRecruiters()
@@ -61,11 +62,8 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
     }
 
     const handleContact = (data) => {
-        console.log(data)
-
         axiosSecure.patch(`/recruiters/contact/${_id}`, data)
             .then(res => {
-                console.log(res.data)
                 if (res.status === 200) {
                     setEditAbout(!editAbout)
                     refetchRecruiters()
@@ -78,15 +76,12 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
     };
 
     const handleLocation = (data) => {
-
         const updateData = {
             address: data.address,
             location: data.location,
         }
-        console.log(updateData)
         axiosSecure.patch(`/recruiters/location/${_id}`, updateData)
             .then(res => {
-                console.log(res.data)
                 if (res.status === 200) {
                     setEditLocation(!editLocation)
                     refetchRecruiters()
@@ -156,7 +151,6 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
 
 
             {/* about */}
-
             <div className='border border-transparent hover:border-green px-4 rounded-md bg-white shadow-xl shadow-gray/40 duration-300'>
                 {/* about top */}
                 <div className='flex items-center justify-between border-b border-green/40 py-2'>
@@ -206,8 +200,8 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
 
                 </div>
             </div>
-            {/* Specialties */}
 
+            {/* Specialties */}
             <div className='border border-transparent hover:border-green px-4 rounded-md bg-white shadow-xl shadow-gray/40 duration-300'>
                 {/* Specialties top */}
                 <div className='flex items-center justify-between border-b border-green/40 py-2'>
@@ -389,12 +383,9 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
                             </div>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
-
-
     );
 };
 

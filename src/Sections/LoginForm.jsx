@@ -8,16 +8,17 @@ import useAuth from '../Hooks/useAuth';
 // react icons
 import { MdAlternateEmail, MdLockOutline } from 'react-icons/md';
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
+import Swal from 'sweetalert2';
 
 const LoginForm = () => {
-    const { signIn, setLoading } = useAuth();
+    const { signIn, setLoading, resetPassword } = useAuth();
     // navigate
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
     const [type, setType] = useState('password');
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
         signIn(data.email, data.password)
             .then(() => {
@@ -32,6 +33,39 @@ const LoginForm = () => {
                 });
             })
     };
+
+    // reset password
+    const handlePassReset = () => {
+        const email = watch('email');
+        if (errors.email || email === '') {
+            return Swal.fire({
+                icon: 'error',
+                title: 'Write your email!',
+                text: '',
+                showConfirmButton: false,
+                timer: 2500
+            })
+        }
+
+        resetPassword(email)
+            .then(() => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Check your email!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                setLoading(false)
+            })
+            .catch(error => {
+                setLoading(false)
+                toast.error(error.message, {
+                    position: "top-center",
+                    autoClose: 3000,
+                    theme: "light",
+                });
+            })
+    }
     return (
         <section className='py-20 md:py-[120px] duration-300'>
             <div className="container">
@@ -63,9 +97,9 @@ const LoginForm = () => {
                         </div>
                         {errors.password && <span className='text-sm text-red-400 ml-1'>Password is required</span>}
 
-                        <Link to='/login' className='text-right text-sm text-gray block'>Forget password?</Link>
+                        <div onClick={handlePassReset} className='text-right text-sm text-gray block cursor-pointer z-30'>Forget password?</div>
 
-                        <button className='bg-dark text-white w-full hover:text-white px-5 py-3 rounded-lg hover:bg-green duration-300 shadow-xl hover:shadow-green/20 mt-4' type='submit'>Login</button>
+                        <button disabled={errors.password} className='bg-dark text-white w-full hover:text-white px-5 py-3 rounded-lg hover:bg-green duration-300 shadow-xl hover:shadow-green/20 mt-4' type='submit'>Login</button>
                     </form>
 
                     <div className='flex items-center gap-3 mx-5 my-5'>

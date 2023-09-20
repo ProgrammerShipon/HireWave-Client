@@ -8,11 +8,11 @@ const TopCategoryCard = ({ category }) => {
                 <img className='w-full' src={category.img} alt="" />
             </div>
 
-            <Link to='/' className="text-dark font-semibold mt-3 drop-shadow-lg line-clamp-1">
+            <Link to='/' className="text-dark font-semibold mt-5 drop-shadow-lg line-clamp-1">
                 {category.category_name}
             </Link>
 
-            <p className="text-gray">{category.jobs.length} Jobs</p>
+            {/* <p className="text-gray">{category.jobs.length} Jobs</p> */}
         </div>
     );
 };

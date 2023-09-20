@@ -101,7 +101,7 @@ const ManageJobTable = ({ job, refetch }) => {
           className={`border border-green text-dark px-4 rounded-md duration-300 ${isChange ? "bg-gray-300" : "hover:bg-green hover:text-white"
             }`}
         >
-          Apply
+          Save
         </button>
       </td>
     </tr>

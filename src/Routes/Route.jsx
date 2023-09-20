@@ -19,6 +19,12 @@ import ApplyJob from "../Pages/ApplyJob";
 import BrowseJobs from "../Pages/BrowseJobs";
 import CandidateDetails from "../Pages/CandidateDetails";
 import Candidates from "../Pages/Candidates";
+import Following from "../Dashboard/Following";
+import OffersReceived from "../Dashboard/OffersReceived";
+import TasksReceived from "../Dashboard/TasksReceived";
+// import Conference from "../Pages/Conference";
+import HiredCandidates from "../Dashboard/HiredCandidates";
+import OffersSent from "../Dashboard/OffersSent";
 import Contact from "../Pages/Contact";
 import EventDetails from "../Pages/EventDetails";
 import Events from "../Pages/Events";
@@ -46,7 +52,6 @@ import Favorites from "../Dashboard/Favorites";
 import PaymentHistory from "../Components/DashComponents/PaymentHistory";
 import Chat from "../Dashboard/Chat";
 import Conference from "../Pages/Conference";
-import TasksReceived from "../Dashboard/TasksReceived";
 
 const baseURL = 'https://hire-wave.onrender.com/api';
 // const baseURL = 'http://localhost:3030/api';
@@ -196,6 +201,14 @@ const Router = createBrowserRouter([
         path: "myApplications",
         element: <MyApplications />,
       },
+      {
+        path: "following",
+        element: <Following />
+      },
+      {
+        path: "offersReceived",
+        element: <OffersReceived />
+      },
 
       // Recruiter routes
 
@@ -207,7 +220,7 @@ const Router = createBrowserRouter([
         path: "postedJobs",
         element: <PostedJobs />,
       },
-     
+
       {
         path: "payment_history",
         element: <PaymentHistory />,
@@ -221,12 +234,20 @@ const Router = createBrowserRouter([
         element: <PaymentFail />,
       },
       {
+        path: "offersSent",
+        element: <OffersSent />
+      },
+      {
+        path: "tasks",
+        element: <TasksReceived />
+      },
+      {
         path: "favorites",
         element: <Favorites />,
       },
       {
         path: "tasks",
-        element: <TasksReceived/>,
+        element: <TasksReceived />,
       },
 
       //Admin Routes

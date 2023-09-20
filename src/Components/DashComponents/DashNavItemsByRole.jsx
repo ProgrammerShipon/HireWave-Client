@@ -2,14 +2,12 @@ import DashLink from './DashLink';
 
 // react icons
 import { AiOutlineFileDone } from 'react-icons/ai';
-import { BsBookmarkPlus, BsBriefcase, BsFileArrowUp, BsFileEarmarkPerson, BsSendCheck } from 'react-icons/bs';
-import { MdOutlineAssignment, MdOutlineAssignmentTurnedIn, MdOutlineHistory, MdOutlineManageAccounts, MdOutlinePayments, } from 'react-icons/md';
+import { BsBookmarkPlus, BsBriefcase, BsFileArrowUp, BsSendCheck } from 'react-icons/bs';
 import { CgUserList } from 'react-icons/cg';
 import { FaChalkboardUser } from 'react-icons/fa6';
-import { BiMessageRoundedDetail } from 'react-icons/bi';
 import { LiaIndustrySolid } from 'react-icons/lia';
+import { MdOutlineAssignment, MdOutlineHistory, MdOutlineManageAccounts } from 'react-icons/md';
 import { PiHandshakeDuotone } from 'react-icons/pi';
-import { SlUserFollow } from 'react-icons/sl';
 
 const DashNavItemsByRole = ({ role }) => {
     const CreateNewId = (Math.floor(Math.random() * 1000000)).toString()
@@ -32,8 +30,6 @@ const DashNavItemsByRole = ({ role }) => {
                     // recruiter routes
                     role === 'recruiter' ?
                         <>
-
-
                             <li className="w-full">
                                 <DashLink to={`/dashboard/room/${CreateNewId}`}>
                                     <FaChalkboardUser size={24} />
@@ -49,27 +45,11 @@ const DashNavItemsByRole = ({ role }) => {
                                 </DashLink>
                             </li>
 
-                            {/* Applied candidates */}
-                            <li className="w-full">
-                                <DashLink to='/applied_candidates'>
-                                    <BsFileEarmarkPerson size={24} />
-                                    <p className="hidden md:inline">Applicants</p>
-                                </DashLink>
-                            </li>
-
                             {/* Hired Candidates */}
                             <li className="w-full">
                                 <DashLink to='/dashboard/hired_candidates'>
                                     <PiHandshakeDuotone size={24} />
                                     <p className="hidden md:inline">Hired Candidates</p>
-                                </DashLink>
-                            </li>
-
-                            {/* Payment  */}
-                            <li className="w-full">
-                                <DashLink to='/pricing'>
-                                    <MdOutlinePayments size={24} />
-                                    <p className="hidden md:inline">Payments</p>
                                 </DashLink>
                             </li>
 
@@ -83,9 +63,9 @@ const DashNavItemsByRole = ({ role }) => {
 
                             {/* Requested Offers */}
                             <li className="w-full">
-                                <DashLink to='/dashboard/offers'>
+                                <DashLink to='/dashboard/offersSent'>
                                     <BsSendCheck size={24} />
-                                    <p className="hidden md:inline">Requested Offers</p>
+                                    <p className="hidden md:inline">Offers </p>
                                 </DashLink>
                             </li>
 
@@ -93,7 +73,7 @@ const DashNavItemsByRole = ({ role }) => {
                             <li className="w-full">
                                 <DashLink to='/dashboard/tasks'>
                                     <MdOutlineAssignment size={24} />
-                                    <p className="hidden md:inline">Tasks Received</p>
+                                    <p className="hidden md:inline">Tasks</p>
                                 </DashLink>
                             </li>
 

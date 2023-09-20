@@ -3,10 +3,11 @@ import Button from '../../Components/Button';
 import Modal from '../../Components/DashComponents/Modal';
 import useLanguagesData from '../../Hooks/useLanguagesData';
 import DescriptionTextarea from '../../Components/DashComponents/DescriptionTextarea';
-
 import { Link } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
-import { Form, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import Resume from '../../Components/Resume';
 
 // react icons
 import { SlLocationPin } from 'react-icons/sl';
@@ -18,14 +19,12 @@ import { GiSkills } from 'react-icons/gi';
 import { HiLanguage } from 'react-icons/hi2';
 import { LiaIndustrySolid } from 'react-icons/lia';
 import { FaFacebookF, FaGithub, FaLinkedin, FaTwitter, FaPencilAlt, FaTrashAlt, FaGraduationCap } from 'react-icons/fa';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { BsCamera } from 'react-icons/bs';
-import Resume from '../../Components/Resume';
 
 const CandidateProfile = ({ candidatesData, refetch }) => {
     const [languagesData] = useLanguagesData();
     const [axiosSecure] = useAxiosSecure()
-    const { _id, name, title,email, image, location, status, hourlyRate, jobType, address, languages, about, education, experience, skills, openToWork, socialLink } = candidatesData;
+    const { _id, name, title, email, image, location, status, hourlyRate, jobType, address, languages, about, education, experience, skills, openToWork, socialLink } = candidatesData;
 
     const [userAbout, setUserAbout] = useState(about)
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
@@ -37,8 +36,6 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     const [openEducation, setOpenEducation] = useState(true);
     const [openExperience, setOpenExperience] = useState(true);
     const [openSocial, setOpenSocial] = useState(true);
-
-
 
     const newSkills = [...skills, watch('newSkill')]
     const newLanguages = [...languages, { name: watch('name'), level: watch('level') }];
@@ -52,37 +49,30 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             jobType: data.jobType,
             hourlyRate: data.hourlyRate
         }
-        console.log(updateData)
         axiosSecure.patch(`/candidates/availability/${_id}`, updateData)
             .then(res => {
-                console.log(res.data)
                 if (res.status === 200) {
                     setAvailability(!availability)
                     refetch()
                 }
-
             })
             .catch(error => {
                 console.log(error);
             })
-
     };
+
     // Update Candidate Availability 
     const handleModifyAbout = () => {
-        console.log(userAbout)
         axiosSecure.patch(`/candidates/about/${_id}`, userAbout)
             .then(res => {
-                console.log(res.data)
                 if (res.status === 200) {
                     setEditAbout(!editAbout)
                     refetch()
                 }
-
             })
             .catch(error => {
                 console.log(error);
             })
-
     };
 
     // Update Candidate Location 
@@ -91,7 +81,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             location: data.location,
             address: data.address
         }
-        console.log(updateData)
+
         axiosSecure.patch(`/candidates/location/${_id}`, updateData)
             .then(res => {
                 if (res.status === 200) {
@@ -103,13 +93,12 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             .catch(error => {
                 console.log(error);
             })
-
     };
+
     // Update Candidate Location 
     const handleAddSkills = () => {
         axiosSecure.patch(`/candidates/skill/${_id}`, newSkills)
             .then(res => {
-                console.log(res)
                 if (res.status === 200) {
                     setIsSkills(!isSkills)
                     refetch()
@@ -118,14 +107,11 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             .catch(error => {
                 console.log(error);
             })
-
     };
     // Update Candidate Location 
     const handleAddLanguage = () => {
-        console.log(newLanguages)
         axiosSecure.patch(`/candidates/language/${_id}`, newLanguages)
             .then(res => {
-                console.log(res)
                 if (res.status === 200) {
                     setOpenLanguage(!openLanguage)
                     refetch()
@@ -134,15 +120,12 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             .catch(error => {
                 console.log(error);
             })
-
     };
 
     // Update Candidate Location 
     const handleAddEducation = () => {
-        console.log(newEducations)
         axiosSecure.patch(`/candidates/education/${_id}`, newEducations)
             .then(res => {
-                console.log(res.data)
                 if (res.status === 200) {
                     setOpenEducation(!openEducation)
                     refetch()
@@ -151,15 +134,12 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             .catch(error => {
                 console.log(error);
             })
-
     };
 
     // Update Candidate Location 
     const handleAddExperience = () => {
-        console.log(newExperiences)
         axiosSecure.patch(`/candidates/experience/${_id}`, newExperiences)
             .then(res => {
-                console.log(res.data)
                 if (res.status === 200) {
                     setOpenExperience(!openExperience)
                     refetch()
@@ -168,7 +148,6 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             .catch(error => {
                 console.log(error);
             })
-
     };
     // Update Candidate Location 
     const handleAddSocialLink = (data) => {
@@ -178,10 +157,9 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             linkedin: data.linkedin,
             github: data.github,
         }
-        console.log(socialLink)
+
         axiosSecure.patch(`/candidates/social/${_id}`, socialLink)
             .then(res => {
-                console.log(res.data)
                 if (res.status === 200) {
                     setOpenSocial(!openSocial)
                     refetch()
@@ -190,17 +168,14 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             .catch(error => {
                 console.log(error);
             })
-
     };
 
     // Image hosting
     const image_hosting_token = import.meta.env.VITE_Image_Upload_Token;
-    const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`
-console.log(image_hosting_token)
+    const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
+
     const handlePictureUpload = event => {
-        // console.log(event)
         const picture = event.target.files[0]
-        // console.log(picture)
         const formData = new FormData()
         formData.append('image', picture)
 
@@ -212,20 +187,16 @@ console.log(image_hosting_token)
             .then(imageResponse => {
                 if (imageResponse.success) {
                     const image = imageResponse.data.display_url
-
-                    console.log(image);
                     const profile = {
                         url: image,
-                        email:email
+                        email: email
                     }
-                    console.log(profile)
+
                     axiosSecure.patch(`/candidates/profilePhoto/${_id}`, profile)
                         .then(res => {
-                            console.log(res.data)
                             if (res.status === 200) {
                                 refetch()
                             }
-            
                         })
                         .catch(error => {
                             console.log(error);
@@ -243,10 +214,12 @@ console.log(image_hosting_token)
         2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
         2020, 2021, 2022, 2023
     ]
+
+    const formattedAbout = about.map(pa => pa === "" ? "\u00A0" : pa);
     return (
         <div className='mt-10 space-y-7'>
             {/* profile top */}
-            <div className= 'relative bg-white shadow-xl shadow-gray/40 p-6 rounded-md flex flex-col lg:flex-row items-start lg:items-end justify-between'>
+            <div className='relative bg-white shadow-xl shadow-gray/40 p-6 rounded-md flex flex-col lg:flex-row items-start lg:items-end justify-between'>
                 <div className='flex flex-col lg:flex-row items-center gap-8 mb-6 lg:mb-0 w-full lg:w-auto'>
 
                     {/* image */}
@@ -254,10 +227,10 @@ console.log(image_hosting_token)
                         {
                             image ?
                                 <img
-                                    className='object-cover object-center'
+                                    className='w-full h-full object-cover object-center'
                                     src={image} alt={name} /> :
                                 <img
-                                    className='object-cover object-center'
+                                    className='w-full h-full object-cover object-center'
                                     src="https://i.ibb.co/wNJtyRX/image-14.png" />
                         }
                     </div>
@@ -291,9 +264,7 @@ console.log(image_hosting_token)
                     <Link to={`/candidate_details/${_id}`}><Button>See Public View</Button></Link>
                 </div>
 
-                    <Modal candidatesData={candidatesData} refetch={refetch} />
-
-
+                <Modal candidatesData={candidatesData} refetch={refetch} />
             </div>
 
             {/* availability & locations */}
@@ -443,7 +414,7 @@ console.log(image_hosting_token)
 
                 <div className={`py-4 ${editAbout ? 'block' : 'hidden'}`}>
                     {
-                        about.length > 0 ? about.map((ab, index) => <p key={index} className='text-lightGray text-lg leading-relaxed'>
+                        about.length > 0 ? formattedAbout.map((ab, index) => <p key={index} className="text-lightGray tracking-wide">
                             {ab}
                         </p>) : <p className='text-lg text-lightGray'>N/A</p>
                     }
@@ -453,8 +424,8 @@ console.log(image_hosting_token)
                 <div className={`flex flex-col gap-2 p-3 ${editAbout ? 'hidden' : 'block'}`}>
                     <form onSubmit={handleSubmit(handleModifyAbout)}>
                         <label htmlFor="newAbout" className='text-lightGray text-base'>
-                            {/* Edit About */}
-                            <DescriptionTextarea about={about} setUserAbout={setUserAbout} />
+                            Edit About
+                            <DescriptionTextarea description={about} setDescription={setUserAbout} />
                         </label>
 
                         <div className='flex items-center justify-end gap-3'>
@@ -656,7 +627,7 @@ console.log(image_hosting_token)
                     {/* educations body */}
                     <div className={`py-4 space-y-4 ${openEducation ? 'block' : 'hidden'}`}>
                         {
-                            education ? education.map((edu, index) =>
+                            education.length > 0 ? education.map((edu, index) =>
                                 <div key={index} className='relative group cursor-pointer w-fit'>
                                     <h3 className='text-dark font-medium text-xl'>{edu.subject}</h3>
                                     <p className='text-lightGray'>{edu.institute}</p>
@@ -767,11 +738,6 @@ console.log(image_hosting_token)
                                 ? experience.map((exp, index) =>
                                 (
                                     <div key={index} className='relative group cursor-pointer w-fit flex gap-2'>
-                                        <div className='h-14 w-14 overflow-hidden'>
-                                            <img
-                                                className='w-full object-cover object-center'
-                                                src={exp.logo} alt="" />
-                                        </div>
                                         <div>
                                             <h3 className='text-dark font-medium text-xl'>{exp.position} <span className='text-sm text-lightGray'>- {exp.jobType}</span></h3>
                                             <p className='text-lightGray'>{exp.companyName},{exp.location}</p>
