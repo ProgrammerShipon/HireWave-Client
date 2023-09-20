@@ -17,7 +17,6 @@ const Chat = () => {
   const [textMessage, setTextMessage] = useState('')
   const [newMessage, setNewMessage] = useState(null)
   const [message, setMessage] = useState([])
-  const [notification, setNotification] = useState([])
   const { currentUser } = useAuth();
   const [messageReceiver, setMessageReceiver] = useState()
 
@@ -27,7 +26,7 @@ const Chat = () => {
       .then(res => {
         const newData = res.data
         // console.log(newData)
-        setMessage(newData)  
+        setMessage(newData)
 
       })
       .catch(error => {
@@ -75,11 +74,9 @@ const Chat = () => {
     socket.on("getMessages", res => {
       console.log('getMessages', res)
       if (currentChat?._id !== res.chatId) return;
-      // setMessage(pre => [...pre, res]); //problem here
-      setMessage([...message, res]); //problem here
-      console.log(message)
+      setMessage([...message, res]); 
+      // console.log(message)
     });
-
     socket.on("getNotification", (res) => {
       const isChatOpen = currentChat?.members.some(id => id === res.senderId)
       if (isChatOpen) {
@@ -101,47 +98,44 @@ const Chat = () => {
   return (
     <section className="m-5 rounded-md">
       <DashTitle title="Messages" />
-
-
       {
-        chats.length !== 0 ?
-          <div className="grid grid-cols-12 gap-4 min-h-full">
-            <div className="col-span-4 px-2 bg-gray/20 p-2 rounded-md">
-              {chats?.map((chat, index) => (
-                <div key={index} className="cursor-pointer"
-                  onClick={() => setCurrentChat(chat)}>
-                  <Conversation
-                    chat={chat}
-                    onlineUser={onlineUser}
-                    setMessageReceiver={setMessageReceiver}
-                  />
-                </div>
-
-              ))}
-            </div>
-
-            {currentChat !== undefined && (
-              <div className="col-span-7 rounded-md ">
-                <ChatBox
-                  currentChat={currentChat}
-                  currentUser={currentUser}
-                  textMessage={textMessage}
-                  setNewMessage={setNewMessage}
-                  setMessage={setMessage}
-                  message={message}
-                  setTextMessage={setTextMessage}
-                  messageReceiver={messageReceiver}
+        chats.length !==0 &&
+        <div className="grid  md:grid-cols-12 gap-4 bg-green/10 rounded-md p-6 min-h-full">
+          <div className=" md:col-span-4 px-2 w-full bg-green/20 p-2 rounded-md">
+            {chats?.map((chat, index) => (
+              <div key={index} className="cursor-pointer "
+                onClick={() => setCurrentChat(chat)}>
+                <Conversation
+                  chat={chat}
                   onlineUser={onlineUser}
-                // setSendMessage={setSendMessage}
+                  setMessageReceiver={setMessageReceiver}
+
                 />
               </div>
-            )}
 
-          </div> :
-          <h1>create new chat</h1>
+            ))}
+          </div>
+
+          {currentChat !== undefined && (
+            <div className="md:col-span-7 rounded-md ">
+              <ChatBox
+                currentChat={currentChat}
+                currentUser={currentUser}
+                textMessage={textMessage}
+                setNewMessage={setNewMessage}
+                setMessage={setMessage}
+                message={message}
+                setTextMessage={setTextMessage}
+                messageReceiver={messageReceiver}
+                onlineUser={onlineUser}
+                chatRefetch={chatRefetch}
+              // setSendMessage={setSendMessage}
+              />
+            </div>
+          )}
+
+        </div>
       }
-
-
     </section>
   );
 };
