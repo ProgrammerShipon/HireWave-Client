@@ -1,18 +1,34 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import StartMessage from './StartMessage';
 import InputEmoji from "react-input-emoji";
 import { BsFillSendFill } from 'react-icons/bs';
 
-const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNewMessage, setMessage, message, messageReceiver, onlineUser }) => {
+const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNewMessage, setMessage, message, onlineUser }) => {
     const [axiosSecure] = useAxiosSecure();
+    const [chatReceiver, setChatReceiver] = useState();
+    const searchOnlineUser = onlineUser?.some(user => user.userId === chatReceiver?._id)
+    console.log(chatReceiver)
 
-    const searchOnlineUser = onlineUser?.some(user => user.userId === messageReceiver?._id)
 
 
-    console.log(messageReceiver)
-    console.log(searchOnlineUser)
+    useEffect(() => {
+        const receiver = currentChat?.members.find(id => id !== currentUser?._id)
+        console.log(receiver)
+
+        axiosSecure.get(`/users/id/${receiver}`)
+            .then(res => {
+                console.log(res.data)
+                setChatReceiver(res.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+    }, [currentChat, currentUser]);
+
+
 
     const sendNewMessage = () => {
         const newMessage = {
@@ -20,12 +36,13 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
             senderId: currentUser._id,
             text: textMessage
         }
-        console.log(newMessage)
+        console.log(message, newMessage)
+        const mg = [...message, newMessage]
+        console.log(mg)
         axiosSecure.post('/message', newMessage)
             .then(res => {
                 console.log(res.data);
                 if (res.status === 200) {
-                    // console.log(res.data)
                     setNewMessage(res.data)
                     setMessage([...message, res.data])
                     setTextMessage('')
@@ -40,9 +57,9 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
     return (
         <div>
             <div className='flex items-center gap-2 bg-black/20 mb-2 p-2 rounded-md'>
-                <img src={messageReceiver?.image} className='w-11 h-11 rounded-full border border-gray' alt={messageReceiver?.name} />
+                <img src={chatReceiver?.image} className='w-11 h-11 rounded-full border border-gray' alt={chatReceiver?.name} />
                 <div className='flex flex-col justify-center gap-0'>
-                    <p className='text-xl'>{messageReceiver?.name}</p>
+                    <p className='text-xl'>{chatReceiver?.name}</p>
                     <p className='-mt-2'>{onlineUser ? "online " : "offline"}</p>
                 </div>
             </div>

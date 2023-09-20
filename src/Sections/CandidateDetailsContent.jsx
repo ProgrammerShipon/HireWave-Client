@@ -51,14 +51,15 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
         experience,
         skills,
     } = candidateDetails;
+    console.log(candidateDetails.email)
 
     useEffect(() => {
-        const user = userData.find(user => user.email === email)
+        const user = userData.find(user => user?.email === email)
         setReceiverId(user?._id)
-    }, []);
+    }, [candidateDetails]);
 
 
-    // console.log(receiverId)
+    console.log(receiverId, currentUser?._id)
 
     const navigate = useNavigate();
     const [chats] = useChat();
@@ -83,11 +84,16 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
 
 
     const createChat = () => {
+
+        if (receiverId === undefined || currentUser?._id === undefined) {
+            return
+        }
         const chatMembers = {
             sender: currentUser?._id,
             receiver: receiverId,
 
         }
+        // console.log(chatMembers)
         axiosSecure.post('/chat', chatMembers)
             .then(res => {
                 console.log(res.data)

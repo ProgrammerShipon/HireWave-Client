@@ -24,13 +24,9 @@ import { BsCamera } from 'react-icons/bs';
 const CandidateProfile = ({ candidatesData, refetch }) => {
     const [languagesData] = useLanguagesData();
     const [axiosSecure] = useAxiosSecure()
-    const { _id, name, title, image, location, status, hourlyRate, jobType, address, languages, about, education, experience, skills, openToWork, socialLink } = candidatesData;
-    // console.log(candidatesData)
-    const formattedAbout = about.map(pa => pa === "" ? "\u00A0" : pa);
+    const { _id, name, title,email, image, location, status, hourlyRate, jobType, address, languages, about, education, experience, skills, openToWork, socialLink } = candidatesData;
 
     const [userAbout, setUserAbout] = useState(about)
-
-    // console.log(userAbout)
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
     const [availability, setAvailability] = useState(true);
     const [editAbout, setEditAbout] = useState(true);
@@ -48,8 +44,6 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     const newEducations = [...education, { subject: watch('subject'), institute: watch('institute'), startDate: watch('startDate'), endDate: watch('endDate') }];
     const newExperiences = [...experience, { logo: watch('logo'), companyName: watch('companyName'), position: watch('position'), location: watch('workLocation'), startDate: watch('workStartDate'), endDate: watch('workEndDate') }];
 
-
-    // socialLink.map(sc=>console.log(sc))
 
     // Update Candidate Availability 
     const handleAvailability = (data) => {
@@ -201,11 +195,14 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     // Image hosting
     const image_hosting_token = import.meta.env.VITE_Image_Upload_Token;
     const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`
-
+console.log(image_hosting_token)
     const handlePictureUpload = event => {
+        // console.log(event)
         const picture = event.target.files[0]
+        // console.log(picture)
         const formData = new FormData()
         formData.append('image', picture)
+
         fetch(image_hosting_url, {
             method: "POST",
             body: formData
@@ -214,12 +211,24 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             .then(imageResponse => {
                 if (imageResponse.success) {
                     const image = imageResponse.data.display_url
+
                     console.log(image);
-                    // axiosSecure.put(`/candidates/image/${_id}`, image)
-                    // .then(data=> {
-                    //     console.log('after posting new menu item', data.data)
-                    //     refetch()
-                    // })
+                    const profile = {
+                        url: image,
+                        email:email
+                    }
+                    console.log(profile)
+                    axiosSecure.patch(`/candidates/profilePhoto/${_id}`, profile)
+                        .then(res => {
+                            console.log(res.data)
+                            if (res.status === 200) {
+                                refetch()
+                            }
+            
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
                 }
             })
     }
@@ -281,7 +290,9 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                     <Link to={`/candidate_details/${_id}`}><Button>See Public View</Button></Link>
                 </div>
 
-                <Modal candidatesData={candidatesData} refetch={refetch} />
+                    <Modal candidatesData={candidatesData} refetch={refetch} />
+
+
             </div>
 
             {/* availability & locations */}
@@ -876,7 +887,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                         <IoMdAdd size='20' />
                     </button>
                 </div>
-                
+
                 {
                     socialLink ?
                         <div className="flex items-center gap-2 py-4">

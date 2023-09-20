@@ -1,6 +1,5 @@
 import { SlLocationPin } from "react-icons/sl";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import useLanguagesData from "../../Hooks/useLanguagesData";
 import { IoIosFlash } from "react-icons/io";
 import Button from "../../Components/Button";
 import { Link } from "react-router-dom";
@@ -11,25 +10,19 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BiMap, BiSolidUserDetail } from "react-icons/bi";
 import DescriptionTextarea from "../../Components/DashComponents/DescriptionTextarea";
-import { LuExternalLink } from "react-icons/lu";
 import { BsTelephoneOutbound } from "react-icons/bs";
 import RecruiterModal from "../../Components/DashComponents/RecruiterModal";
 
 const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
     const [axiosSecure] = useAxiosSecure()
     console.log(recruitersData)
-    const { _id, name, image, email, banner, phone, industry, website, category, subCategory, location, address, about, specialties, status, active, followers, joinDate, } = recruitersData;
+    const { _id, name, image, email, banner, phone,  location, address, about, specialties, status,} = recruitersData;
 
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
 
     const [contact, setContact] = useState(true);
     const [editAbout, setEditAbout] = useState(true);
-    // const [editAbout, setEditAbout] = useState(true);
     const [editLocation, setEditLocation] = useState(true);
-    const [isSkills, setIsSkills] = useState(true);
-    const [openLanguage, setOpenLanguage] = useState(true);
-    const [openEducation, setOpenEducation] = useState(true);
-    const [openExperience, setOpenExperience] = useState(true);
     const [editSpecialties, setEditSpecialties] = useState();
 
     const [userAbout, setUserAbout] = useState(about);
@@ -144,7 +137,9 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
                     <Link to={`/recruiters_details/${_id}`}><Button>See Public View</Button></Link>
                 </div>
 
+                <div>
                 <RecruiterModal recruitersData={recruitersData} refetchRecruiters={refetchRecruiters} />
+                </div>
             </div>
 
 

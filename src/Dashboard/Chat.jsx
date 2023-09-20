@@ -26,10 +26,8 @@ const Chat = () => {
     axiosSecure.get(`/message/${currentChat?._id}`)
       .then(res => {
         const newData = res.data
-        console.log(newData)
-        // setNewMessageData(newData)
-        // setMessage(pre => [...pre, res.data])  // Problem here
-        setMessage(...message, newData)  // Problem here
+        // console.log(newData)
+        setMessage(newData)  
 
       })
       .catch(error => {
@@ -37,7 +35,7 @@ const Chat = () => {
       })
   }, [currentChat]);
 
-  // Connect with AiOutlineRocket.io 
+  // Connect with Socket.io 
   useEffect(() => {
     const newSocket = io("https://hire-wave-chat.onrender.com/")
     setSocket(newSocket)
@@ -75,11 +73,11 @@ const Chat = () => {
   useEffect(() => {
     if (socket === null) return;
     socket.on("getMessages", res => {
-      // console.log('getMessages', res)
+      console.log('getMessages', res)
       if (currentChat?._id !== res.chatId) return;
       // setMessage(pre => [...pre, res]); //problem here
       setMessage([...message, res]); //problem here
-      // console.log(message)
+      console.log(message)
     });
 
     socket.on("getNotification", (res) => {
@@ -98,8 +96,7 @@ const Chat = () => {
   }, [socket, currentChat, message]);
 
 
-  // console.log("notification", notification)
-
+  console.log(currentChat)
 
   return (
     <section className="m-5 rounded-md">

@@ -7,31 +7,11 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 const Modal = ({ candidatesData, refetch }) => {
     const { _id, image, title, name , email } = candidatesData;
     const [axiosSecure] = useAxiosSecure()
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     const { register, handleSubmit, formState: { errors } } = useForm();
 
 
-    const handleImageUpload = (data) => {
-
-        const profile = {
-            url: data.photoURL,
-            email:email
-        }
-        console.log(profile)
-        axiosSecure.patch(`/candidates/profilePhoto/${_id}`, profile)
-            .then(res => {
-                console.log(res.data)
-                if (res.status === 200) {
-                    setIsOpen(!isOpen)
-                    refetch()
-                }
-
-            })
-            .catch(error => {
-                console.log(error);
-            })
-
-    };
+    
     const updateProfile = (data) => {
         const updateData = {
             title: data.title,
@@ -60,45 +40,8 @@ const Modal = ({ candidatesData, refetch }) => {
         <>
             <div className={`fixed inset-0 z-50 flex items-center justify-center transition-opacity duration-300 bg-dark/30 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
 
-                <div className='bg-white rounded-md'>
-                    <div className='flex items-center gap-8 p-6'>
-                        {/* image */}
-                        <div className=' w-56'>
-                            <div className='w-48 h-48 rounded-full overflow-hidden shadow-xl shadow-gray/40'>
-                                <img
-                                    className='w-full h-full object-cover object-center'
-                                    src={image} alt="" />
-
-                            </div>
-
-                            <form onSubmit={handleSubmit(handleImageUpload)}>
-                                <input
-                                    {...register("photoURL")}
-                                    placeholder='Provide Your Photo Url'
-                                    className='w-full border border-gray/40 py-1 px-2 mt-2 rounded-md focus:outline-none focus:border-green'
-                                />
-                                <button type='submit'
-                                    className='flex items-center justify-center gap-1 mt-2 text-lg text-lightGray w-full'>
-                                    <BsCamera size='24' /> Upload
-                                </button>
-                            </form>
-
-
-                            {/* <div className='flex flex-col items-center justify-center mt-4'>
-                                <div className='flex items-center'>
-                                    Profile Photo Upload Via
-                                     <div
-                                        className="bg-transparent text-dark hover:text-white px-5 py-2 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
-                                    >
-                                       
-                                    </div>
-                                </div>
-                                <input type="file" className='w-44' onChange={handleImageChange} />
-                                
-                            </div> */}
-                        </div>
-
-                        {/* content */}
+                <div className='bg-white rounded-md py-6 px-12'>
+                    
                         <form onSubmit={handleSubmit(updateProfile)}>
                             <div
                                 className='flex flex-col gap-2 w-80' >
@@ -136,7 +79,6 @@ const Modal = ({ candidatesData, refetch }) => {
                                 </div>
                             </div>
                         </form>
-                    </div>
 
                 </div>
             </div>
