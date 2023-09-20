@@ -376,7 +376,7 @@ export default function PostJobForm() {
                             handleModal={handlePreviewModal}
                             larger={true}
                         >
-                            <div className="postJob p-8 -m-8 border rounded-lg border-purple shadow-4xl shadow-gray/40 overflow-y-auto h-[80vh]">
+                            <div className="postJob overflow-y-auto custom-scrollbar h-[80vh]">
                                 <div>
                                     <h1 className="text-2xl font-medium text-dark">{watch('title')}</h1>
                                 </div>
