@@ -1,8 +1,8 @@
 import React from 'react';
 import DashTitle from '../Components/DashComponents/DashTitle';
-import RequestedOffersTableRow from '../Components/DashComponents/RequestedOffersTableRow';
+import OffersSentTableRow from '../Components/DashComponents/OffersSentTableRow';
 
-const RequestedOffers = () => {
+const OffersSent = () => {
     const offers =[
         {
             _id: "1",
@@ -34,9 +34,9 @@ const RequestedOffers = () => {
     ]
     return (
         <section className='m-5 rounded-md'>
-            <DashTitle title='Requested Offers' />
+            <DashTitle title='Offers Sent' />
 
-            {/* posted jobs table */}
+            {/* Offers Sent table */}
             <div className="w-full overflow-x-auto duration-300 rounded-md shadow-4xl shadow-gray/40 bg-white mt-4">
                 <table className="table lg:w-full w-[800px] text-left">
                     <thead className="text-lg text-green border-b border-green/40">
@@ -51,7 +51,7 @@ const RequestedOffers = () => {
                     </thead>
                     <tbody>
                         {offers.map((offer) => (
-                            <RequestedOffersTableRow key={offer._id} offer={offer} />
+                            <OffersSentTableRow key={offer._id} offer={offer} />
                         ))}
                     </tbody>
                 </table>
@@ -60,4 +60,4 @@ const RequestedOffers = () => {
     );
 };
 
-export default RequestedOffers;
+export default OffersSent;

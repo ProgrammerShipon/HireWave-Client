@@ -3,15 +3,15 @@ import RecentReviewSlider from "../Components/RecentReviewSlider";
 import useReview from "../Hooks/useReview";
 
 // react icons
+import { AiOutlineMessage } from "react-icons/ai";
 import { BiMap } from "react-icons/bi";
 import { BsBookmarkPlus, BsCurrencyDollar } from "react-icons/bs";
-import { AiOutlineMessage } from "react-icons/ai";
 import {
-    FaFacebookF,
-    FaGithub,
-    FaLinkedin,
-    FaTwitter,
-    FaRegCalendarAlt,
+  FaFacebookF,
+  FaGithub,
+  FaLinkedin,
+  FaRegCalendarAlt,
+  FaTwitter,
 } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 
@@ -64,6 +64,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
     const [chats] = useChat();
     const [review, setReview] = useState([]);
 
+  // userId & SenderId
   useEffect(() => {
     setReceiverId(singleUser?._id);
     setSenderId(currentUser?._id);
@@ -87,13 +88,55 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
 
   // check favorite
   useEffect(() => {
-    axiosSecure
-      .get(`/favorite/recruiter_email/${currentUser?.email}`)
-      .then((res) => {
-        setFavorite(true);
-      })
-      .catch((err) => console.log(err));
-  }, [currentUser]);
+    if (currentUser.email) {
+      axiosSecure
+        .get(`/favorite/recruiter_email/${currentUser?.email}`)
+        .then((res) => {
+          if (res.status == 200 && res.data != "") {
+            setFavorite(true);
+            setFavoriteData(res?.data);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [currentUser, favorite]);
+
+  // Add to Favorite
+  const handleAddToFavorite = () => {
+    if (!favorite) {
+      const newData = {
+        candidateId: _id,
+        candidateImage: image,
+        candidateHourlyRate: hourlyRate,
+        candidateName: name,
+        candidateEmail: email,
+        recruiterName: currentUser?.name,
+        recruiterImage: currentUser?.image,
+        recruiterEmail: currentUser?.email,
+      };
+      if (newData) {
+        axiosSecure.post("/favorite", newData).then((res) => {
+          if (res.status == 200) {
+            toast.success("Favorite Added Success");
+            setFavorite(true);
+            setFavoriteData(res?.data);
+          }
+        });
+      }
+    } else if (favorite) {
+      if (favoriteData) {
+        axiosSecure
+          .delete(`/favorite/${favoriteData._id}`)
+          .then((res) => {
+            if (res.status == 200) {
+              toast.success("Favorite remove Success");
+              setFavorite(false);
+            }
+          })
+          .catch((err) => console.log(err));
+      }
+    }
+  };
 
     const createChat = () => {
         const chatMembers = {
@@ -108,29 +151,6 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                 console.log(error)
             })
     }
-
-  // Add to Favorite
-  const handleAddToFavorite = () => {
-    const newData = {
-      candidateId: _id,
-      candidateImage: image,
-      candidateHourlyRate: hourlyRate,
-      candidateName: name,
-      candidateEmail: email,
-      recruiterName: currentUser?.name,
-      recruiterImage: currentUser?.image,
-      recruiterEmail: currentUser?.email,
-    };
-    
-    if (newData) {
-      axiosSecure.post("/favorite", newData).then((res) => {
-        if (res.status == 200 || res.status == 201) {
-          toast.success("Favorite Added Success");
-          setFavorite(true);
-        }
-      });
-    }
-  };
 
   return (
     <section className="py-20 md:py-[120px] duration-300">
@@ -434,20 +454,25 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                   </>
                 )}
               </button>
+
               <Link
-              // to={`/dashboard/messages/${_id}`}
-              >
+                to={`/dashboard/messages/${_id}`}
+                >
                 <button
                   onClick={createChat}
                   className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group"
                 >
-                  Contact With Me{" "}
+                  Contact With Me
                   <AiOutlineMessage
                     size="22"
                     className="text-green group-hover:text-white"
                   />
                 </button>
               </Link>
+
+              {/* Hiring Process button */}
+              {/* <HiringProcessButton /> */}
+              
             </div>
           </div>
         </div>
