@@ -12,7 +12,7 @@ const BrowseJobs = () => {
   let sortedData;
 
   // Sort digital marketing category jobs first
-  if (currentCandidate.category !== null) {
+  if (currentCandidate?.category !== null) {
     sortedData = allJobsData.sort((a, b) => {
       if (a.category === currentCandidate?.category && b.category !== currentCandidate?.category) {
         return -1;
