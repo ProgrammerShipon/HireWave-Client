@@ -15,11 +15,8 @@ import { FaPencilAlt } from "react-icons/fa";
 import { BsTelephoneOutbound, BsCamera } from "react-icons/bs";
 import { BiSolidUserDetail } from "react-icons/bi";
 
-
-
 const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
-    const [axiosSecure] = useAxiosSecure()
-    // console.log(recruitersData)
+    const [axiosSecure] = useAxiosSecure();
     const { _id, name, image, email, banner, phone, location, address, about, specialties, status, } = recruitersData;
 
     const { register, handleSubmit, formState: { errors }, watch } = useForm();

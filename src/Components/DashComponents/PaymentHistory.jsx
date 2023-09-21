@@ -7,9 +7,10 @@ import DashTitle from './DashTitle';
 const PaymentHistory = () => {
     const [paymentHistory,] = useRecruiterPaymentHistory();
     return (
-        <section className='pt-8 px-3'>
+        <section className='m-5 rounded-md'>
             <DashTitle title='Payment History' />
-            <div className="w-full overflow-x-auto duration-300 rounded-md shadow-4xl shadow-gray/40 bg-white mt-4">
+
+            <div className="w-full overflow-x-auto duration-300 rounded-md shadow-4xl shadow-gray/40 bg-white mt-10">
                 {
                     paymentHistory.length !== 0 ? <table className="table lg:w-full w-[800px] text-left">
                         <thead className="text-lg text-green border-b border-green/40 ">
@@ -30,9 +31,9 @@ const PaymentHistory = () => {
                                 ))
                             }
                         </tbody>
-                    </table> : 
-                    <h3 className='py-8 text-3xl text-center text-gray capitalize'>You haven't made any payment yet </h3>
-               }
+                    </table> :
+                        <h3 className='py-8 text-3xl text-center text-gray capitalize'>You haven't made any payment yet </h3>
+                }
             </div>
 
         </section>
