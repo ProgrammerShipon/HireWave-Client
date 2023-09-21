@@ -6,19 +6,17 @@ import DashTitle from "../Components/DashComponents/DashTitle";
 import generatePDF from 'react-to-pdf';
 import useCurrentCandidate from "../Hooks/useCurrentCandidate";
 import ResumeSection from "../Components/ResumeSection";
-import PageLoader from "../Components/PageLoader";
 
 // react icons
 import { AiOutlineEye } from "react-icons/ai"
 import { FiDownload } from 'react-icons/fi';
+import { useEffect } from "react";
 
 const DownloadResume = () => {
     const [currentCandidate, loading] = useCurrentCandidate();
 
-    if (loading) {
-        return <div className="h-screen flex items-center justify-center"><PageLoader /></div>
-    }
     const { name, title, location, phone, languages, education, experience, skills, email } = currentCandidate;
+
     const colors = ["#1b0e3d", "#7c60d5", "#33e2a0", "#0bc5ea", "#ed8936"];
     const [activeColor, setActiveColor] = useState(colors[0]);
     const targetRef = useRef();
@@ -85,6 +83,11 @@ const DownloadResume = () => {
             return arrayMove(sections, oldIndex, newIndex)
         })
     }
+
+    useEffect(() => {
+        setSections(allSections)
+    }, [!loading])
+
     return (
         <>
             {/* page title */}
@@ -145,7 +148,7 @@ const DownloadResume = () => {
                         <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
                             <SortableContext items={sections} strategy={verticalListSortingStrategy}>
                                 {
-                                    sections.map((sec) => (
+                                    !loading && sections.map((sec) => (
                                         <ResumeSection key={sec.id} sec={sec} activeColor={activeColor} />
                                     ))
                                 }
