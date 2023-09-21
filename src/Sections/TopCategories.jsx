@@ -2,7 +2,6 @@ import SectionTitle from "../Components/SectionTitle";
 import TopCategoryCard from "../Components/TopCategoryCard";
 import useCategoriesData from "../Hooks/useCategoriesData";
 import Marquee from "react-fast-marquee";
-import { Link } from "react-router-dom";
 
 const TopCategories = () => {
     const [categoriesData] = useCategoriesData();
@@ -24,7 +23,7 @@ const TopCategories = () => {
 
                 {/* categories 2nd row */}
                 <Marquee pauseOnHover={true} direction="right" speed={80}>
-                    <div className="grid grid-cols-10 gap-5 pl-5 pt-16 md:pt-16">
+                    <div className="grid grid-cols-10 gap-5 pl-5 pt-16 md:pt-16 mb-4">
                         {categoriesData?.slice(10, 20).map((category) => (
                             <TopCategoryCard key={category._id} category={category} />
                         ))}

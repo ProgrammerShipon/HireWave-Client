@@ -8,7 +8,6 @@ import useMyAppliedJobs from "../Hooks/useMyAppliedJobs";
 
 const MyApplications = () => {
     const [myAppliedJobs, loading] = useMyAppliedJobs();
-    console.log(myAppliedJobs)
     const [filteredData, setFilteredData] = useState(myAppliedJobs);
 
     const { register, watch, handleSubmit, reset } = useForm();

@@ -43,6 +43,7 @@ const AppliedCandidatesDetails = ({ appliedData }) => {
             setCheckBoxData([...checkBoxData, item]);
         }
     };
+    
     const category = [...new Set(myAppliedCandidates.map(candidate => candidate.category))]
 
     return (

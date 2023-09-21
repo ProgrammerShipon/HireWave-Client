@@ -1,38 +1,42 @@
-import usePaymentHistory from '../../Hooks/usePaymentHistory';
 import useAuth from '../../Hooks/useAuth';
 import PaymentHistoryList from './PaymentHistoryList';
 import PageLoader from '../PageLoader';
+import useRecruiterPaymentHistory from '../../Hooks/useRecruiterPaymentHistory';
+import DashTitle from './DashTitle';
 
 const PaymentHistory = () => {
-    const [paymentHistory, loading, refetch] = usePaymentHistory();
-    const { currentUser } = useAuth()
-    console.log(currentUser)
+    const [paymentHistory,] = useRecruiterPaymentHistory();
     return (
-        <div className='pt-8'>
-            <table className="table lg:w-full w-[800px] text-left">
-                <thead className="text-lg text-green border-b border-green/40">
-                    <tr>
-                        <th className="px-3 py-3 font-medium">Sender</th>
-                        <th className="px-3 py-3 font-medium text-center">Receiver</th>
-                        <th className="px-3 py-3 font-medium text-center">
-                            Amount
-                        </th>
-                        <th className="py-3 text-center font-medium">Trans ID</th>
-                        <th className="py-3 text-center font-medium">Expire</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        paymentHistory?.length > 0 ? paymentHistory?.map((pay) => (
-                            <PaymentHistoryList
-                                key={pay._id}
-                                pay={pay}
-                            />
-                        )) : <PageLoader />
-                    }
-                </tbody>
-            </table>
-        </div>
+        <section className='m-5 rounded-md'>
+            <DashTitle title='Payment History' />
+
+            <div className="w-full overflow-x-auto duration-300 rounded-md shadow-4xl shadow-gray/40 bg-white mt-10">
+                {
+                    paymentHistory.length !== 0 ? <table className="table lg:w-full w-[800px] text-left">
+                        <thead className="text-lg text-green border-b border-green/40 ">
+                            <tr>
+                                <th className="px-3 py-3 font-medium">Package</th>
+                                <th className="px-3 py-3 font-medium">Amount</th>
+                                <th className="py-3 text-center font-medium">Transaction ID</th>
+                                <th className="py-3 text-center font-medium">Expire</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                paymentHistory?.map((pay) => (
+                                    <PaymentHistoryList
+                                        key={pay._id}
+                                        pay={pay}
+                                    />
+                                ))
+                            }
+                        </tbody>
+                    </table> :
+                        <h3 className='py-8 text-3xl text-center text-gray capitalize'>You haven't made any payment yet </h3>
+                }
+            </div>
+
+        </section>
     );
 };
 

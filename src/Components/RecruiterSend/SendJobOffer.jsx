@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsSendCheck } from "react-icons/bs";
-import { toast } from "react-toastify";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import ArrayTextarea from "../ArrayTextarea";
 import Button from "../Button";
 import CustomModal from "../CustomModal";
+import Swal from "sweetalert2";
 
 const SendJobOffer = ({ handleSendOffer, candidateDetails }) => {
-  const [ axiosSecure ] = useAxiosSecure()
+  const [axiosSecure] = useAxiosSecure()
   const {
     register,
     handleSubmit,
@@ -20,21 +20,18 @@ const SendJobOffer = ({ handleSendOffer, candidateDetails }) => {
 
   // Job Offer Send
   const onJobOffer = (data) => {
-  const {
-    applicantName,
-    applicantImage,
-    category,
-    applicantEmail,
-    jobId,
-    jobType,
-    companyLogo,
-    companyEmail,
-    companyName,
-    title,
-  } = candidateDetails;
-    
-    console.log("candidateDetails", candidateDetails);
-    console.log("from data -> ", data);
+    const {
+      applicantName,
+      applicantImage,
+      category,
+      applicantEmail,
+      jobId,
+      jobType,
+      companyLogo,
+      companyEmail,
+      companyName,
+      title,
+    } = candidateDetails;
 
     // offer data object
     const offerData = {
@@ -59,19 +56,23 @@ const SendJobOffer = ({ handleSendOffer, candidateDetails }) => {
       read: true,
       sendedDate: new Date(),
     };
-    
-    console.log("onJobOffer", offerData);
 
     axiosSecure.post("job_offer", offerData)
       .then(res => {
         if (res.status == 200) {
-          toast.success("Sending Offer...");
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Task Assign Send Success',
+            showConfirmButton: false,
+            timer: 1500
+          })
           reset();
           setIsOfferModalOpen(false);
         }
       }).catch(err => {
-      console.log(err)
-    })
+        console.log(err)
+      })
   };
 
   return (

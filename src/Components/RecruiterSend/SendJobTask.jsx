@@ -1,68 +1,72 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdOutlineAssignment } from "react-icons/md";
-import { toast } from "react-toastify";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import ArrayTextarea from "../ArrayTextarea";
 import Button from "../Button";
 import CustomModal from "../CustomModal";
+import Swal from "sweetalert2";
 
 const SendJobTask = ({ handleAssignTest, candidateDetails }) => {
   const { currentUser } = useAuth();
-  const [ axiosSecure ] = useAxiosSecure();
+  const [axiosSecure] = useAxiosSecure();
   const [isSentTaskModalOpen, setIsSentTaskModalOpen] = useState(true);
   const [testDetails, setTestDetails] = useState([]);
   const {
-      register,
-      handleSubmit,
-      reset,
-      formState: { errors },
-   } = useForm();
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
-   const { jobId ,
-       applicantId ,
-       applicantName ,
-       applicantEmail ,
-       applicantImage ,
-       category ,
-       companyName ,
-       companyLogo ,
-       companyEmail ,
-       title } = candidateDetails
+  const { jobId,
+    applicantId,
+    applicantName,
+    applicantEmail,
+    applicantImage,
+    category,
+    companyName,
+    companyLogo,
+    companyEmail,
+    title } = candidateDetails
 
   // Assign Test  Submit
   const onAssignTest = (data) => {
-     // task Data
-     const taskData = {
-       jobId,
-       applicantId,
-       applicantName,
-       applicantEmail,
-       applicantImage,
-       category,
-       companyName,
-       companyLogo,
-       companyEmail,
-       title,
-       appliedId: candidateDetails?._id,
-       companyId: currentUser?._id,
-       tasks: [
-         {
-           given: testDetails,
-           startTime: new Date(),
-           submissionTime: data?.submissionData,
-         },
-       ],
-     };
+    // task Data
+    const taskData = {
+      jobId,
+      applicantId,
+      applicantName,
+      applicantEmail,
+      applicantImage,
+      category,
+      companyName,
+      companyLogo,
+      companyEmail,
+      title,
+      appliedId: candidateDetails?._id,
+      companyId: currentUser?._id,
+      tasks: [
+        {
+          given: testDetails,
+          startTime: new Date(),
+          submissionTime: data?.submissionData,
+        },
+      ],
+    };
 
     // send data client or store database
     axiosSecure.post("/task", taskData)
       .then((res) => {
         if (res.status == 200) {
-          toast.success("Task Assign Send Success");
-
-          // model and form reset
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Task Assign Send Success',
+            showConfirmButton: false,
+            timer: 1500
+          })
           reset();
           setIsSentTaskModalOpen(false);
         }

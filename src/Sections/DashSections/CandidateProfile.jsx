@@ -3,10 +3,10 @@ import Button from '../../Components/Button';
 import Modal from '../../Components/DashComponents/Modal';
 import useLanguagesData from '../../Hooks/useLanguagesData';
 import DescriptionTextarea from '../../Components/DashComponents/DescriptionTextarea';
-
 import { Link } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
-import { Form, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 // react icons
 import { SlLocationPin } from 'react-icons/sl';
@@ -18,17 +18,14 @@ import { GiSkills } from 'react-icons/gi';
 import { HiLanguage } from 'react-icons/hi2';
 import { LiaIndustrySolid } from 'react-icons/lia';
 import { FaFacebookF, FaGithub, FaLinkedin, FaTwitter, FaPencilAlt, FaTrashAlt, FaGraduationCap } from 'react-icons/fa';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
-import { BsCamera } from 'react-icons/bs';
-import Resume from '../../Components/Resume';
+import { BsCamera, BsFillFileEarmarkPersonFill } from 'react-icons/bs';
 
 const CandidateProfile = ({ candidatesData, refetch }) => {
     const [languagesData] = useLanguagesData();
     const [axiosSecure] = useAxiosSecure()
-    const { _id, name, title, image, location, status, hourlyRate, jobType, address, languages, about, education, experience, skills, openToWork, socialLink } = candidatesData;
-    const [userAbout, setUserAbout] = useState(about)
+    const { _id, name, title, email, image, location, status, hourlyRate, jobType, address, languages, about, education, experience, skills, openToWork, socialLink } = candidatesData;
 
-    // console.log(userAbout)
+    const [userAbout, setUserAbout] = useState(about)
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
     const [availability, setAvailability] = useState(true);
     const [editAbout, setEditAbout] = useState(true);
@@ -37,15 +34,13 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     const [openLanguage, setOpenLanguage] = useState(true);
     const [openEducation, setOpenEducation] = useState(true);
     const [openExperience, setOpenExperience] = useState(true);
-
-
+    const [openSocial, setOpenSocial] = useState(true);
 
     const newSkills = [...skills, watch('newSkill')]
-    // const newAbout = [...about, watch('newSkill')]
-    const newLanguage = [...languages, { name: watch('name'), level: 'Native' }]
     const newLanguages = [...languages, { name: watch('name'), level: watch('level') }];
     const newEducations = [...education, { subject: watch('subject'), institute: watch('institute'), startDate: watch('startDate'), endDate: watch('endDate') }];
     const newExperiences = [...experience, { logo: watch('logo'), companyName: watch('companyName'), position: watch('position'), location: watch('workLocation'), startDate: watch('workStartDate'), endDate: watch('workEndDate') }];
+
 
     // Update Candidate Availability 
     const handleAvailability = (data) => {
@@ -53,37 +48,30 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             jobType: data.jobType,
             hourlyRate: data.hourlyRate
         }
-        console.log(updateData)
         axiosSecure.patch(`/candidates/availability/${_id}`, updateData)
             .then(res => {
-                console.log(res.data)
                 if (res.status === 200) {
                     setAvailability(!availability)
                     refetch()
                 }
-
             })
             .catch(error => {
                 console.log(error);
             })
-
     };
+
     // Update Candidate Availability 
     const handleModifyAbout = () => {
-        console.log(userAbout)
         axiosSecure.patch(`/candidates/about/${_id}`, userAbout)
             .then(res => {
-                console.log(res.data)
                 if (res.status === 200) {
                     setEditAbout(!editAbout)
                     refetch()
                 }
-
             })
             .catch(error => {
                 console.log(error);
             })
-
     };
 
     // Update Candidate Location 
@@ -92,7 +80,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             location: data.location,
             address: data.address
         }
-        console.log(updateData)
+
         axiosSecure.patch(`/candidates/location/${_id}`, updateData)
             .then(res => {
                 if (res.status === 200) {
@@ -104,13 +92,12 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             .catch(error => {
                 console.log(error);
             })
-
     };
+
     // Update Candidate Location 
     const handleAddSkills = () => {
         axiosSecure.patch(`/candidates/skill/${_id}`, newSkills)
             .then(res => {
-                console.log(res)
                 if (res.status === 200) {
                     setIsSkills(!isSkills)
                     refetch()
@@ -119,14 +106,11 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             .catch(error => {
                 console.log(error);
             })
-
     };
     // Update Candidate Location 
     const handleAddLanguage = () => {
-        console.log(newLanguage)
-        axiosSecure.patch(`/candidates/language/${_id}`, newLanguage)
+        axiosSecure.patch(`/candidates/language/${_id}`, newLanguages)
             .then(res => {
-                console.log(res)
                 if (res.status === 200) {
                     setOpenLanguage(!openLanguage)
                     refetch()
@@ -135,15 +119,12 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             .catch(error => {
                 console.log(error);
             })
-
     };
 
     // Update Candidate Location 
     const handleAddEducation = () => {
-        console.log(newEducations)
         axiosSecure.patch(`/candidates/education/${_id}`, newEducations)
             .then(res => {
-                console.log(res.data)
                 if (res.status === 200) {
                     setOpenEducation(!openEducation)
                     refetch()
@@ -152,15 +133,12 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             .catch(error => {
                 console.log(error);
             })
-
     };
 
     // Update Candidate Location 
     const handleAddExperience = () => {
-        console.log(newExperiences)
         axiosSecure.patch(`/candidates/experience/${_id}`, newExperiences)
             .then(res => {
-                console.log(res.data)
                 if (res.status === 200) {
                     setOpenExperience(!openExperience)
                     refetch()
@@ -169,34 +147,62 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             .catch(error => {
                 console.log(error);
             })
+    };
+    // Update Candidate Location 
+    const handleAddSocialLink = (data) => {
+        const socialLink = {
+            facebook: data.facebook,
+            twitter: data.twitter,
+            linkedin: data.linkedin,
+            github: data.github,
+        }
 
+        axiosSecure.patch(`/candidates/social/${_id}`, socialLink)
+            .then(res => {
+                if (res.status === 200) {
+                    setOpenSocial(!openSocial)
+                    refetch()
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
     };
 
     // Image hosting
-    const image_hosting_token= import.meta.env.VITE_Image_Upload_Token;
-    const image_hosting_url =`https://api.imgbb.com/1/upload?key=${image_hosting_token}`
+    const image_hosting_token = import.meta.env.VITE_Image_Upload_Token;
+    const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
 
     const handlePictureUpload = event => {
-        const picture= event.target.files[0]
-        const formData= new FormData()
+        const picture = event.target.files[0]
+        const formData = new FormData()
         formData.append('image', picture)
+
         fetch(image_hosting_url, {
             method: "POST",
             body: formData
         })
-            .then(res=> res.json())
+            .then(res => res.json())
             .then(imageResponse => {
-                if(imageResponse.success){
-                    const image= imageResponse.data.display_url
-                    console.log(image);
-                    // axiosSecure.put(`/candidates/image/${_id}`, image)
-                    // .then(data=> {
-                    //     console.log('after posting new menu item', data.data)
-                    //     refetch()
-                    // })
+                if (imageResponse.success) {
+                    const image = imageResponse.data.display_url
+                    const profile = {
+                        url: image,
+                        email: email
+                    }
+
+                    axiosSecure.patch(`/candidates/profilePhoto/${_id}`, profile)
+                        .then(res => {
+                            if (res.status === 200) {
+                                refetch()
+                            }
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
                 }
             })
-    } 
+    }
 
     const years = [
         1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969,
@@ -207,34 +213,36 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
         2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
         2020, 2021, 2022, 2023
     ]
+
+    const formattedAbout = about.map(pa => pa === "" ? "\u00A0" : pa);
     return (
         <div className='mt-10 space-y-7'>
             {/* profile top */}
-            <div className='bg-white shadow-xl shadow-gray/40 p-6 rounded-md flex flex-col lg:flex-row items-start lg:items-end justify-between'>
+            <div className='relative bg-white shadow-xl shadow-gray/40 p-6 rounded-md flex flex-col lg:flex-row items-start lg:items-end justify-between'>
                 <div className='flex flex-col lg:flex-row items-center gap-8 mb-6 lg:mb-0 w-full lg:w-auto'>
 
                     {/* image */}
                     <div className='w-48 h-48 rounded-full overflow-hidden shadow-xl shadow-gray/40'>
                         {
-                            image?
-                            <img
-                            className='object-cover object-center'
-                            src={image} alt={name} /> :
-                            <img
-                            className='object-cover object-center'
-                            src="https://i.ibb.co/wNJtyRX/image-14.png" /> 
-                        }   
+                            image ?
+                                <img
+                                    className='w-full h-full object-cover object-center'
+                                    src={image} alt={name} /> :
+                                <img
+                                    className='w-full h-full object-cover object-center'
+                                    src="https://i.ibb.co/wNJtyRX/image-14.png" />
+                        }
                     </div>
                     <label className='rounded-full border border-green bg-white text-2xl p-[5px] z-20 cursor-pointer text-green duration-300 -mt-[84px] ml-32 lg:mt-28 lg:-ml-[70px]'>
- 
-                            <input
-                                name='picture'
-                                type='file'
-                                style={{ display: 'none' }}
-                                onChange={handlePictureUpload}
-                            />
-                            <BsCamera />
- 
+
+                        <input
+                            name='picture'
+                            type='file'
+                            style={{ display: 'none' }}
+                            onChange={handlePictureUpload}
+                        />
+                        <BsCamera />
+
                     </label>
 
                     {/* content */}
@@ -405,7 +413,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
 
                 <div className={`py-4 ${editAbout ? 'block' : 'hidden'}`}>
                     {
-                        about.length > 0 ? about.map((ab, index) => <p key={index} className='text-lightGray text-lg leading-relaxed'>
+                        about.length > 0 ? formattedAbout.map((ab, index) => <p key={index} className="text-lightGray tracking-wide">
                             {ab}
                         </p>) : <p className='text-lg text-lightGray'>N/A</p>
                     }
@@ -416,7 +424,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                     <form onSubmit={handleSubmit(handleModifyAbout)}>
                         <label htmlFor="newAbout" className='text-lightGray text-base'>
                             Edit About
-                            <DescriptionTextarea about={about} setUserAbout={setUserAbout} />
+                            <DescriptionTextarea description={about} setDescription={setUserAbout} />
                         </label>
 
                         <div className='flex items-center justify-end gap-3'>
@@ -460,7 +468,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                     <div className={`py-4 flex items-center flex-wrap gap-2 ${isSkills ? 'block' : 'hidden'}`}>
 
                         {
-                            newSkills.map((skl, index) => <div key={index} className='relative text-purple bg-purple/10 px-3 rounded-md capitalize group cursor-pointer'>
+                            skills.map((skl, index) => <div key={index} className='relative text-purple bg-purple/10 px-3 rounded-md capitalize group cursor-pointer'>
                                 <span>{skl}</span>
 
                                 <div className='absolute top-0 -right-14 flex gap-2 bg-white text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
@@ -524,7 +532,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                     {/* languages body */}
                     <div className={`py-4 space-y-1 ${openLanguage ? 'block' : 'hidden'}`}>
                         {
-                            newLanguages.length > 0 ? newLanguages.map((lan, index) => <div
+                            languages.length !== 0 ? languages.map((lan, index) => <div
                                 key={index}
                                 className='relative capitalize group cursor-pointer w-fit'>
                                 <p className='text-black flex items-center gap-1'>{lan.name} <span className='inline-block w-2 border-t border-gray'></span>
@@ -618,26 +626,24 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                     {/* educations body */}
                     <div className={`py-4 space-y-4 ${openEducation ? 'block' : 'hidden'}`}>
                         {
-                            newEducations[0].subject !== ''
-                                // newEducations.length >0
-                                ? newEducations.map((edu, index) =>
-                                    <div key={index} className='relative group cursor-pointer w-fit'>
-                                        <h3 className='text-dark font-medium text-xl'>{edu.subject}</h3>
-                                        <p className='text-lightGray'>{edu.institute}</p>
-                                        <p className='flex items-center gap-1 text-gray mt-1 font-light'>
-                                            <BiCalendar />  {edu.startDate} to  {edu.endDate !== "" ? edu.endDate : 'Present'}
-                                        </p>
+                            education.length > 0 ? education.map((edu, index) =>
+                                <div key={index} className='relative group cursor-pointer w-fit'>
+                                    <h3 className='text-dark font-medium text-xl'>{edu.subject}</h3>
+                                    <p className='text-lightGray'>{edu.institute}</p>
+                                    <p className='flex items-center gap-1 text-gray mt-1 font-light'>
+                                        <BiCalendar />  {edu.startDate} to  {edu.endDate !== "" ? edu.endDate : 'Present'}
+                                    </p>
 
-                                        <div className='absolute top-0 -right-14 flex gap-2 text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
-                                            <button>
-                                                <FaPencilAlt size='14' />
-                                            </button>
-                                            <button>
-                                                <FaTrashAlt size='14' />
-                                            </button>
-                                        </div>
+                                    <div className='absolute top-0 -right-14 flex gap-2 text-gray h-full px-2 rounded-md group-hover:-right-12 opacity-0 group-hover:opacity-100 invisible group-hover:visible duration-300 z-20'>
+                                        <button>
+                                            <FaPencilAlt size='14' />
+                                        </button>
+                                        <button>
+                                            <FaTrashAlt size='14' />
+                                        </button>
                                     </div>
-                                )
+                                </div>
+                            )
                                 : <p className='text-lg text-lightGray'>N/A</p>
                         }
                     </div>
@@ -727,16 +733,10 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                     {/* experiences body */}
                     <div className={`py-4 space-y-4 ${openExperience ? 'block' : 'hidden'}`}>
                         {
-                            newExperiences[1]?.position !== ''
-                                // newExperiences.length>0
-                                ? newExperiences.map((exp, index) =>
+                            experience.length !== 0
+                                ? experience.map((exp, index) =>
                                 (
                                     <div key={index} className='relative group cursor-pointer w-fit flex gap-2'>
-                                        <div className='h-14 w-14 overflow-hidden'>
-                                            <img
-                                                className='w-full object-cover object-center'
-                                                src={exp.logo} alt="" />
-                                        </div>
                                         <div>
                                             <h3 className='text-dark font-medium text-xl'>{exp.position} <span className='text-sm text-lightGray'>- {exp.jobType}</span></h3>
                                             <p className='text-lightGray'>{exp.companyName},{exp.location}</p>
@@ -845,49 +845,93 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
                     <h2 className='flex items-center gap-1 text-xl text-green'><IoShareSocialOutline /> Social Links</h2>
 
                     {/* edit button */}
-                    <Tooltip id="add_education" />
+                    <Tooltip id="add_social_link" />
                     <button
-                        data-tooltip-id="add_education" data-tooltip-content="Add Social Links!"
+                        onClick={() => setOpenSocial(!openSocial)}
+                        data-tooltip-id="add_social_link" data-tooltip-content="Add Social Links!"
                         className='h-8 w-8 text-green border border-green rounded-full flex items-center justify-center'>
                         <IoMdAdd size='20' />
                     </button>
                 </div>
+
                 {
-                    socialLink.length > 0 ?
+                    socialLink ?
                         <div className="flex items-center gap-2 py-4">
-                            <Link
-                                to="/"
+                            <a
+                                href={socialLink.facebook}
                                 className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
                             >
                                 <FaFacebookF size="20px" />
-                            </Link>
+                            </a>
 
                             <Link
-                                to="/"
+                                to={socialLink.twitter}
                                 className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
                             >
                                 <FaTwitter size="20px" />
                             </Link>
 
                             <Link
-                                to="/"
+                                to={socialLink.linkedin}
                                 className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
                             >
                                 <FaLinkedin size="20px" />
                             </Link>
 
                             <Link
-                                to="/"
+                                to={socialLink.github}
                                 className="text-green h-9 w-9 flex items-center justify-center rounded-lg border border-green shadow-lg shadow-green/20 duration-500 ease-in-out hover:rounded-[100%]"
                             >
                                 <FaGithub size="20px" />
                             </Link>
-                        </div> : <p className='text-lg text-lightGray'>N/A</p>
+                        </div> : <p className={`text-lg text-lightGray  ${openSocial ? 'block' : 'hidden'}`}>N/A</p>
                 }
+                <form onSubmit={handleSubmit(handleAddSocialLink)}>
+                    <div className={`flex flex-col gap-2 p-3 ${openSocial ? 'hidden' : 'block'}`}>
+                        <input
+                            {...register("facebook")}
+                            placeholder='facebook Account Link'
+                            className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                        />
+                        <input
+                            {...register("twitter")}
+                            placeholder='twitter Account Link'
+                            className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                        />
+                        <input
+                            {...register("linkedin")}
+                            placeholder='linkedin Account Link'
+                            className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                        />
+                        <input
+                            {...register("github")}
+                            placeholder='Github Account Link'
+                            className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
+                        />
+
+
+                        <div className='flex items-center justify-end gap-3'>
+                            <div
+                                onClick={() => setOpenSocial(!openSocial)}
+                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20 cursor-pointer"
+                            >
+                                Cancel
+                            </div>
+                            <button
+                                className="bg-transparent text-dark hover:text-white px-5 py-1 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20"
+                            >
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
 
             {/* Generate Resume */}
-            <Resume candidatesData={candidatesData} refetch={refetch} />
+            <Link to='/dashboard/downloadResume' className="bg-purple w-fit text-white px-5 lg:px-5 py-3 rounded-md duration-300 hover:bg-dark shadow-xl shadow-purple/20 hover:shadow-dark/20 flex items-center gap-3">
+                <BsFillFileEarmarkPersonFill className='text-xl animate-bounce' />
+                <p>Generate Resume</p>
+            </Link>
         </div >
     );
 };

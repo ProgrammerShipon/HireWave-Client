@@ -15,10 +15,6 @@ const MyProfile = () => {
     const { currentUser } = useAuth();
     const [currentRecruiter, loadingRecruiters, refetchRecruiters] = useCurrentRecruiter();
     const [currentCandidate, loading, refetch] = useCurrentCandidate();
-
-
-    // console.log(currentUser)
-    // console.log(currentRecruiter)
     return (
         <section className='m-5 rounded-md'>
             <DashTitle title='My Profile' />
@@ -36,7 +32,7 @@ const MyProfile = () => {
             {
                 currentUser.role === "recruiter" && <>
                     {
-                        currentRecruiter?.email ? <RecruitersProfile recruitersData={currentRecruiter} refetch={refetchRecruiters} /> : <PageLoader />
+                        currentRecruiter?.email ? <RecruitersProfile recruitersData={currentRecruiter} refetchRecruiters={refetchRecruiters} /> : <PageLoader />
                     }
                 </>
             }

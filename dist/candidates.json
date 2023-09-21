@@ -560,17 +560,11 @@
     "email": "Mia.Anderson@example.com",
     "image": "https://digity.netlify.app/assets/images/team/6.png",
     "title": "UI/UX Designer",
-    "phone": [
-      "+1",
-      "555-8765"
-    ],
+    "phone": "+1555-8765",
     "category": "Design",
-    "hourlyRate": 40,
+    "hourlyRate": "40",
     "jobType": "Freelance",
-    "location": [
-      "San Diego",
-      "CA"
-    ],
+    "location": "San Diego, CA",
     "address": "123 Beach Avenue, Apt 15",
     "skills": [
       "UI/UX Design",
@@ -633,7 +627,10 @@
     "recommendations": 6,
     "status": "approved",
     "active": true,
+    "earning": 0,
+    "viewsCount": 0,
     "visibility": "visible",
-    "joinDate": "June 20, 2018"
+    "joinDate": "June 20, 2018",
+    "__v": 0
   }
 ]

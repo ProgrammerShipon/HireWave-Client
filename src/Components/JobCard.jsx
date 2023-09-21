@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import GetAgoTime from "./GetAgoTime";
 import { toast } from "react-toastify";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAuth from "../Hooks/useAuth";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import GetAgoTime from "./GetAgoTime";
 
 // react icons
-import { BiHeart, BiSolidCrown, BiMap } from "react-icons/bi";
-import { IoIosFlash } from "react-icons/io";
+import { BiHeart, BiMap } from "react-icons/bi";
 import { FaHeart } from "react-icons/fa";
 import CopyToClipboardLink from "./CopyToClipboardLink";
 
@@ -26,11 +25,11 @@ const JobCard = ({ job, setJobDetails, mySavedJobs, refetch }) => {
 
     // check saved job
     useEffect(() => {
-        const checkExists = mySavedJobs.filter((job) =>
+        const checkExists = mySavedJobs?.filter((job) =>
             job.selectJob.includes(_id)
         );
 
-        if (checkExists.length) {
+        if (checkExists?.length) {
             setAlreadySaved(true)
         } else {
             setAlreadySaved(false)

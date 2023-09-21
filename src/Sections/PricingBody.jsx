@@ -13,7 +13,7 @@ const PricingBody = () => {
             recruiterId: currentRecruiter?._id,
             receiver: "HireWave",
             amount: 71,
-            package: "Professional",
+            packages: "Professional",
             recruiterName: currentRecruiter.name,
             companyLogo: currentRecruiter?.image
         }
@@ -33,7 +33,7 @@ const PricingBody = () => {
             recruiterId: currentRecruiter?._id,
             receiver: "HireWave",
             amount: 121,
-            package: "Enterprise",
+            packages: "Enterprise",
             recruiterName: currentRecruiter.name,
             companyLogo: currentRecruiter?.image
         }

@@ -1,16 +1,17 @@
 import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 import useAuth from '../Hooks/useAuth';
-import { streaming_App_Id, streaming_ServerSecret } from '../Zegocloud/ZegocloudSecret';
+import { useParams } from 'react-router-dom';
 
 const Conference = () => {
-    const { user } = useAuth();
-    console.log(user)
+    const { currentUser } = useAuth();
+    const roomId = useParams();
+    console.log(roomId)
     const interviewConference = async (element) => {
-        const roomID = '123456'
+        const roomID = roomId.roomId
         // generate Kit Token
-        const appID = streaming_App_Id;
-        const serverSecret = streaming_ServerSecret
-        const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, Date.now().toString(), user?.displayName);
+        const appID = 1281063325;
+        const serverSecret = "012c5ab5c910ebebd7b55310b534709f"
+        const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, Date.now().toString(), currentUser?.name);
 
         // Create instance object from Kit Token.
         const zp = ZegoUIKitPrebuilt.create(kitToken);
@@ -24,7 +25,7 @@ const Conference = () => {
             showScreenSharingButton: true,
             showRoomDetailsButton: true,
             onLiveEnd: true,
-            // turnOnCameraWhenJoining:false,
+            showcurrentUserList: true,
 
             sharedLinks: [
                 {
