@@ -35,10 +35,10 @@ const SetJobInterView = ({ handleInterviewModal }) => {
            handleModal={handleInterviewModal}
          >
            {/* Modal Heading */}
-           <h2 className="text-purple text-2xl pb-2 drop-shadow-lg flex items-center gap-2 border-b border-purple/60">
+           <div className="text-purple text-2xl pb-2 drop-shadow-lg flex items-center gap-2 border-b border-purple/60">
              <BsCameraVideo size={24} />
              Take Interview
-           </h2>
+           </div>
 
            {/* Modal content */}
            <form onSubmit={handleSubmit(onInterviewSubmit)}>

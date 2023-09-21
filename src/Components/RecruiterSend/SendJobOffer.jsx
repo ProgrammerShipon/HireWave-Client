@@ -84,10 +84,10 @@ const SendJobOffer = ({ handleSendOffer, candidateDetails }) => {
           handleModal={handleSendOffer}
         >
           {/* Modal Heading */}
-          <h2 className="text-purple text-2xl pb-2 drop-shadow-lg flex items-center gap-2 border-b border-purple/60">
+          <div className="text-purple text-2xl pb-2 drop-shadow-lg flex items-center gap-2 border-b border-purple/60">
             <BsSendCheck size={24} />
             Send Offer
-          </h2>
+          </div>
 
           {/* Modal content */}
           <form onSubmit={handleSubmit(onJobOffer)} className="mt-4">

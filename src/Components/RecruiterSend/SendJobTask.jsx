@@ -80,10 +80,10 @@ const SendJobTask = ({ handleAssignTest, candidateDetails }) => {
           handleModal={handleAssignTest}
         >
           {/* Modal Heading */}
-          <h2 className="text-purple text-2xl pb-2 drop-shadow-lg flex items-center gap-2 border-b border-purple/60">
+          <div className="text-purple text-2xl pb-2 drop-shadow-lg flex items-center gap-2 border-b border-purple/60">
             <MdOutlineAssignment size={24} />
             Assessment Tests
-          </h2>
+          </div>
 
           {/* Modal content */}
           <form onSubmit={handleSubmit(onAssignTest)} className="mt-4">
