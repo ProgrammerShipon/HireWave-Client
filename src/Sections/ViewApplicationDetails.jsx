@@ -70,7 +70,6 @@ const ViewApplicationDetails = ({ jobData, appliedJob }) => {
 
                                 <div className="postJob" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}></div>
 
-                                <Link to={`/job_details/${jobId}`} className='text-blue-500 hover:underline'>View Job Posting</Link>
                             </div>
 
                             {/* experience, salary, company name, location */}

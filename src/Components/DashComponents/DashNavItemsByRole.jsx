@@ -8,6 +8,7 @@ import { FaChalkboardUser } from 'react-icons/fa6';
 import { LiaIndustrySolid } from 'react-icons/lia';
 import { MdOutlineAssignment, MdOutlineHistory, MdOutlineManageAccounts } from 'react-icons/md';
 import { PiHandshakeDuotone } from 'react-icons/pi';
+import { SlUserFollow } from 'react-icons/sl';
 
 const DashNavItemsByRole = ({ role }) => {
     const CreateNewId = (Math.floor(Math.random() * 1000000)).toString()
@@ -31,6 +32,14 @@ const DashNavItemsByRole = ({ role }) => {
                             <DashLink to='/dashboard/downloadResume'>
                                 <AiOutlineFilePdf size={24} />
                                 <p className="hidden md:inline">Download Resume</p>
+                            </DashLink>
+                        </li>
+
+                         {/* Following */}
+                         <li className="w-full">
+                            <DashLink to='/dashboard/following'>
+                                <SlUserFollow size={24} />
+                                <p className="hidden md:inline">Following</p>
                             </DashLink>
                         </li>
                     </> :
