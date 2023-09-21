@@ -17,7 +17,6 @@ const MyProfile = () => {
     const [currentRecruiter, loadingRecruiters, refetchRecruiters] = useCurrentRecruiter();
     const [currentCandidate, loading, refetch] = useCurrentCandidate();
 
-
     // console.log(currentUser)
     // console.log(currentRecruiter)
     return (

@@ -1,14 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
-import AppliedApplicant from "../Dashboard/AppliedApplicant";
+import JobOffers from "../Dashboard/Candidate/JobOffers";
 import CandidateList from "../Dashboard/CandidateList";
 import ChangePassword from "../Dashboard/ChangePassword";
 import DashboardHome from "../Dashboard/DashboardHome";
+import Following from "../Dashboard/Following";
 import ManageJobs from "../Dashboard/ManageJobs";
 import ManageUsers from "../Dashboard/ManageUsers";
 import MyApplications from "../Dashboard/MyApplications";
 import MyProfile from "../Dashboard/MyProfile";
 import PostedJobs from "../Dashboard/PostedJobs";
 import RecruiterList from "../Dashboard/RecruiterList";
+import TasksReceived from "../Dashboard/TasksReceived";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Dashboard from "../Layout/Dashboard";
 import Main from "../Layout/Main";
@@ -19,12 +21,12 @@ import ApplyJob from "../Pages/ApplyJob";
 import BrowseJobs from "../Pages/BrowseJobs";
 import CandidateDetails from "../Pages/CandidateDetails";
 import Candidates from "../Pages/Candidates";
-import Following from "../Dashboard/Following";
-import OffersReceived from "../Dashboard/OffersReceived";
-import TasksReceived from "../Dashboard/TasksReceived";
 // import Conference from "../Pages/Conference";
-import HiredCandidates from "../Dashboard/HiredCandidates";
+import PaymentHistory from "../Components/DashComponents/PaymentHistory";
+import Chat from "../Dashboard/Chat";
+import Favorites from "../Dashboard/Favorites";
 import OffersSent from "../Dashboard/OffersSent";
+import Conference from "../Pages/Conference";
 import Contact from "../Pages/Contact";
 import EventDetails from "../Pages/EventDetails";
 import Events from "../Pages/Events";
@@ -34,6 +36,8 @@ import JobDetails from "../Pages/JobDetails";
 import Learning from "../Pages/Learning";
 import LearningDetails from "../Pages/LearningDetails";
 import Login from "../Pages/Login";
+import PaymentFail from "../Pages/PaymentFail";
+import PaymentSuccess from "../Pages/PaymentSuccess";
 import PostJob from "../Pages/PostJob";
 import Pricing from "../Pages/Pricing";
 import Recruiters from "../Pages/Recruiters";
@@ -46,15 +50,9 @@ import CandidateSignUpForm from "../SignUpSteps/CandidateSignUpForm";
 import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
 import SelectRole from "../SignUpSteps/SelectRole";
 import PrivateRoute from "./PrivateRoute";
-import PaymentSuccess from "../Pages/PaymentSuccess";
-import PaymentFail from "../Pages/PaymentFail";
-import Favorites from "../Dashboard/Favorites";
-import PaymentHistory from "../Components/DashComponents/PaymentHistory";
-import Chat from "../Dashboard/Chat";
-import Conference from "../Pages/Conference";
 
-const baseURL = 'https://hire-wave.onrender.com/api';
-// const baseURL = 'http://localhost:3030/api';
+// const baseURL = 'https://hire-wave.onrender.com/api';
+const baseURL = 'http://localhost:3030/api';
 
 const Router = createBrowserRouter([
   {
@@ -206,12 +204,11 @@ const Router = createBrowserRouter([
         element: <Following />
       },
       {
-        path: "offersReceived",
-        element: <OffersReceived />
+        path: "jobOffers",
+        element: <JobOffers />
       },
 
       // Recruiter routes
-
       {
         path: `room/:roomId`,
         element: <Conference />,

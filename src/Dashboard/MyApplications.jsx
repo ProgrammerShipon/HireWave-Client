@@ -11,6 +11,7 @@ const MyApplications = () => {
     const [filteredData, setFilteredData] = useState(myAppliedJobs);
 
     const { register, watch, handleSubmit, reset } = useForm();
+    
     const onSubmit = () => {
         reset();
     }
