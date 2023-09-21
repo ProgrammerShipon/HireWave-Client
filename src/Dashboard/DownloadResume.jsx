@@ -100,7 +100,10 @@ const DownloadResume = () => {
 
                 {/* Modal Heading */}
                 <div className="mt-10 bg-white p-4 rounded-md shadow-lg">
-                    <h2 className="pt-3 text-2xl ml-5 text-purple ">Choose Preferred Color for Resume</h2>
+                    <div className="-mt-1 pb-2 flex items-center gap-3  text-purple border-b border-dark/20">
+                        <AiOutlineEye size={20} />
+                        <h3 className="text-xl">Resume Preview</h3>
+                    </div>
 
                     <div className='flex justify-between gap-5 items-center mt-3 px-5 border-b border-dark/20 pb-2'>
                         {/* Color choice */}
@@ -116,7 +119,7 @@ const DownloadResume = () => {
                                     />
                                 ))}
                             </div>
-                            <p className='mt-2'>N.B. Sections of the resume are <span draggable className='cursor-grab font-semibold text-purple'>draggable</span>. You can drag them to preferred position.</p>
+                            <p className='mt-2 text-sm'>N.B. Sections of the resume are <span className='font-semibold text-purple'>draggable</span>. You can drag them to preferred position.</p>
                         </div>
 
                         {/* Download Button */}
@@ -130,31 +133,29 @@ const DownloadResume = () => {
                     </div>
 
                     {/* Modal content */}
-                    <div className="border border-dark mt-5 rounded-lg w-fit mx-auto" >
-                        <div ref={targetRef} className='p-5 max-w-[780px]'>
-                            {/* name and title */}
-                            <h3 className='text-4xl' style={{ color: activeColor }}>{name}</h3>
-                            <p className='text-xl mt-3 font-semibold'>{title}</p>
+                    <div ref={targetRef} className='p-5 max-w-[780px]'>
+                        {/* name and title */}
+                        <h3 className='text-4xl' style={{ color: activeColor }}>{name}</h3>
+                        <p className='text-xl mt-3 font-semibold'>{title}</p>
 
-                            {/* Contact Details */}
-                            <div className='flex items-center gap-5 mb-5'>
-                                <p>✉️ {email}</p>
-                                <p>☎ {phone}</p>
-                                <p>📍 {location}</p>
-                            </div>
-
-                            <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
-                                <SortableContext items={sections} strategy={verticalListSortingStrategy}>
-                                    {
-                                        !loading && sections.map((sec) => (
-                                            <ResumeSection key={sec.id} sec={sec} activeColor={activeColor} />
-                                        ))
-                                    }
-                                </SortableContext>
-                            </DndContext>
+                        {/* Contact Details */}
+                        <div className='flex items-center gap-5 mb-5'>
+                            <p>✉️ {email}</p>
+                            <p>☎ {phone}</p>
+                            <p>📍 {location}</p>
                         </div>
+
+                        <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+                            <SortableContext items={sections} strategy={verticalListSortingStrategy}>
+                                {
+                                    !loading && sections.map((sec) => (
+                                        <ResumeSection key={sec.id} sec={sec} activeColor={activeColor} />
+                                    ))
+                                }
+                            </SortableContext>
+                        </DndContext>
                     </div>
-                    </div>
+                </div>
             </section>
         </>
     );
