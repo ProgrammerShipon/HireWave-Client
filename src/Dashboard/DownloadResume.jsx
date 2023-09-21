@@ -133,7 +133,7 @@ const DownloadResume = () => {
                     </div>
 
                     {/* Modal content */}
-                    <div ref={targetRef} className='p-5'>
+                    <div ref={targetRef} className='p-5 max-w-[780px]'>
                         {/* name and title */}
                         <h3 className='text-4xl' style={{ color: activeColor }}>{name}</h3>
                         <p className='text-xl mt-3 font-semibold'>{title}</p>
