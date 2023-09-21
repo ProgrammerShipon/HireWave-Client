@@ -225,6 +225,10 @@ const Router = createBrowserRouter([
         path: "postedJobs",
         element: <PostedJobs />,
       },
+      {
+        path: "payment",
+        element: <Pricing />,
+      },
 
       {
         path: "payment_history",

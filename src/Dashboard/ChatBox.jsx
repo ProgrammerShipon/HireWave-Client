@@ -46,6 +46,26 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
             })
 
     }
+
+    const handleOnEnter = (event) => {
+        const newMessage = {
+            chatId: currentChat._id,
+            senderId: currentUser._id,
+            text: event
+        }
+        axiosSecure.post('/message', newMessage)
+            .then(res => {
+                if (res.status === 200) {
+                    setNewMessage(res.data)
+                    setMessage([...message, res.data])
+                    setTextMessage('')
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    };
+
     const deleteChat = () => {
         Swal.fire({
             title: 'Are you sure?',
@@ -112,6 +132,7 @@ const ChatBox = ({ currentChat, currentUser, textMessage, setTextMessage, setNew
                 <InputEmoji
                     value={textMessage}
                     onChange={setTextMessage}
+                    onEnter={handleOnEnter}
                     placeholder="Type a message"
                 />
                 <button onClick={sendNewMessage}

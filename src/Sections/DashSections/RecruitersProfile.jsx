@@ -25,14 +25,14 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
     const [editAbout, setEditAbout] = useState(true);
     const [editLocation, setEditLocation] = useState(true);
     const [editSpecialties, setEditSpecialties] = useState(true);
-
     const [userAbout, setUserAbout] = useState(about);
     const [specialtiesOf, setSpecialtiesOf] = useState(specialties);
 
     const formattedAbout = about.map(pa => pa === "" ? "\u00A0" : pa);
     const formattedSpecialties = specialties.map(pa => pa === "" ? "\u00A0" : pa);
 
-    const handleModifyAbout = (data) => {
+    // Update about 
+    const handleModifyAbout = () => {
         axiosSecure.patch(`/recruiters/about/${_id}`, userAbout)
             .then(res => {
                 if (res.status === 200) {
@@ -44,7 +44,7 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
                 console.log(error);
             })
     }
-
+    // Update specialties 
     const handleModifySpecialties = (data) => {
         axiosSecure.patch(`/recruiters/specialties/${_id}`, specialtiesOf)
             .then(res => {
@@ -57,7 +57,7 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
                 console.log(error);
             })
     }
-
+    // Update contactInfo 
     const handleContact = (data) => {
         axiosSecure.patch(`/recruiters/contact/${_id}`, data)
             .then(res => {
@@ -71,7 +71,7 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
             })
 
     };
-
+    // Update Location 
     const handleLocation = (data) => {
         const updateData = {
             address: data.address,
@@ -88,36 +88,115 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
                 console.log(error);
             })
     }
+    // Image hosting
+    const image_hosting_token = import.meta.env.VITE_Image_Upload_Token;
+    const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`;
+
+    // Update Recruiter ProfilePhoto 
+    const handlePictureUpload = event => {
+        const picture = event.target.files[0]
+        const formData = new FormData()
+        formData.append('image', picture)
+
+        fetch(image_hosting_url, {
+            method: "POST",
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imageResponse => {
+                if (imageResponse.success) {
+                    const image = imageResponse.data.display_url
+                    const profile = {
+                        email: email,
+                        image: image
+                    }
+
+                    console.log(profile)
+                    axiosSecure.patch(`/recruiters/profilePhoto/${_id}`, profile)
+                        .then(res => {
+                            if (res.status === 200) {
+                                refetchRecruiters()
+                            }
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                }
+            })
+    }
+    // Update Recruiter banner 
+    const handleBannerUpload = event => {
+        const picture = event.target.files[0]
+        const formData = new FormData()
+        formData.append('image', picture)
+
+        fetch(image_hosting_url, {
+            method: "POST",
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imageResponse => {
+                if (imageResponse.success) {
+                    const banner = imageResponse.data.display_url
+                    const profile = {
+                        banner: banner
+                    }
+
+                    axiosSecure.patch(`/recruiters/banner/${_id}`, profile)
+                        .then(res => {
+                            if (res.status === 200) {
+                                refetchRecruiters()
+                            }
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                }
+            })
+    }
     return (
         <div className='mt-10 space-y-7'>
             {/* profile top */}
             <div className='relative bg-white shadow-xl shadow-gray/40 p-6 rounded-md flex flex-col lg:flex-row items-start lg:items-end justify-between'>
                 <div>
-                    <div className="w-full h-40 ">
+                    <div className="w-[600px] h-40 flex items-end relative">
                         <img
                             src={banner}
-                            className="object-cover object-center w-full h-full"
+                            className="w-full object-center rounded-md h-full "
                             alt={name}
                         />
+                        <label className='absolute bottom-0 right-0 -mb-1 -mr-1 p-1 cursor-pointer text-green  rounded-full border border-green bg-white'>
+                            <input
+                                name='banner'
+                                type='file'
+                                style={{ display: 'none' }}
+                                onChange={handleBannerUpload}
+                            />
+                            <BsCamera className="text-3xl" />
+
+                        </label>
+
                     </div>
                     <div className='flex flex-col lg:flex-row items-center gap-8 mb-6 lg:mb-0 w-full lg:w-auto'>
 
-                        {/* image & rating */}
-                        <div className="relative -mt-16 ml-5 md:ml-10 w-40 h-40 rounded-md p-2 border border-purple overflow-hidden duration-300 shadow-4xl shadow-gray/40">
-                            <img
-                                src={image}
-                                className="object-cover object-center w-full h-full shadow-3xl shadow-white rounded-md"
-                                alt={name}
-                            />
-                            <label className='absolute rounded-full border border-green bg-white text-2xl p-[5px] z-50 cursor-pointer text-green duration-300 right-0'>
+                        {/* image & name */}
+                        <div className="relative">
+                            <div className="-mt-16 ml-5 md:ml-10 w-40 h-44 rounded-md p-2 border border-purple overflow-hidden duration-300 shadow-4xl shadow-gray/40">
+                                <img
+                                    src={image}
+                                    className="object-cover object-center w-full h-full shadow-3xl shadow-white rounded-md"
+                                    alt={name}
+                                />
 
+                            </div>
+                            <label className='absolute bottom-0 right-0 -mb-2 -mr-3 p-1 cursor-pointer text-green  rounded-full border border-green bg-white'>
                                 <input
                                     name='picture'
                                     type='file'
                                     style={{ display: 'none' }}
-                                // onChange={handlePictureUpload}
+                                    onChange={handlePictureUpload}
                                 />
-                                <BsCamera />
+                                <BsCamera className="text-3xl" />
 
                             </label>
                         </div>
