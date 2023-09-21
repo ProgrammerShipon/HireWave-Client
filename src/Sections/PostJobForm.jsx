@@ -18,7 +18,7 @@ import useAllCategories from "../Hooks/useAllCategories";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useCurrentRecruiter from "../Hooks/useCurrentRecruiter";
 import useSkills from "../Hooks/useSkills";
-// import DOMPurify from "dompurify";
+import DOMPurify from "dompurify";
 
 const modules = {
     toolbar: [
@@ -376,7 +376,7 @@ export default function PostJobForm() {
                             handleModal={handlePreviewModal}
                             larger={true}
                         >
-                            <div className="postJob p-8 -m-8 border rounded-lg border-purple shadow-4xl shadow-gray/40 overflow-y-auto h-[80vh]">
+                            <div className="postJob overflow-y-auto custom-scrollbar h-[80vh]">
                                 <div>
                                     <h1 className="text-2xl font-medium text-dark">{watch('title')}</h1>
                                 </div>

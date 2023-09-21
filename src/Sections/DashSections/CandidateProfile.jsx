@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
 import { useForm } from 'react-hook-form';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
-import Resume from '../../Components/Resume';
 
 // react icons
 import { SlLocationPin } from 'react-icons/sl';
@@ -19,7 +18,7 @@ import { GiSkills } from 'react-icons/gi';
 import { HiLanguage } from 'react-icons/hi2';
 import { LiaIndustrySolid } from 'react-icons/lia';
 import { FaFacebookF, FaGithub, FaLinkedin, FaTwitter, FaPencilAlt, FaTrashAlt, FaGraduationCap } from 'react-icons/fa';
-import { BsCamera } from 'react-icons/bs';
+import { BsCamera, BsFillFileEarmarkPersonFill } from 'react-icons/bs';
 
 const CandidateProfile = ({ candidatesData, refetch }) => {
     const [languagesData] = useLanguagesData();
@@ -929,7 +928,10 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
             </div>
 
             {/* Generate Resume */}
-            <Resume candidatesData={candidatesData} refetch={refetch} />
+            <Link to='/dashboard/downloadResume' className="bg-purple w-fit text-white px-5 lg:px-5 py-3 rounded-md duration-300 hover:bg-dark shadow-xl shadow-purple/20 hover:shadow-dark/20 flex items-center gap-3">
+                <BsFillFileEarmarkPersonFill className='text-xl animate-bounce' />
+                <p>Generate Resume</p>
+            </Link>
         </div >
     );
 };

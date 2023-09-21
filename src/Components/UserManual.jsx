@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import CustomModal from './CustomModal';
+import useAuth from '../Hooks/useAuth';
 
 const UserManual = () => {
+    const { currentUser } = useAuth();
     const location = useLocation()
 
     //Use manual states and functions

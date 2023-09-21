@@ -1,7 +1,7 @@
 import DashLink from './DashLink';
 
 // react icons
-import { AiOutlineFileDone } from 'react-icons/ai';
+import { AiOutlineFileDone, AiOutlineFilePdf } from 'react-icons/ai';
 import { BsBookmarkPlus, BsBriefcase, BsFileArrowUp, BsSendCheck } from 'react-icons/bs';
 import { CgUserList } from 'react-icons/cg';
 import { FaChalkboardUser } from 'react-icons/fa6';
@@ -23,6 +23,14 @@ const DashNavItemsByRole = ({ role }) => {
                             <DashLink to='/dashboard/myApplications'>
                                 <BsFileArrowUp size={24} />
                                 <p className="hidden md:inline">My Applications</p>
+                            </DashLink>
+                        </li>
+
+                        {/* download resume */}
+                        <li className="w-full">
+                            <DashLink to='/dashboard/downloadResume'>
+                                <AiOutlineFilePdf size={24} />
+                                <p className="hidden md:inline">Download Resume</p>
                             </DashLink>
                         </li>
                     </> :

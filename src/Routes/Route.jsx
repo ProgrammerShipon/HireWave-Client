@@ -52,6 +52,7 @@ import Favorites from "../Dashboard/Favorites";
 import PaymentHistory from "../Components/DashComponents/PaymentHistory";
 import Chat from "../Dashboard/Chat";
 import Conference from "../Pages/Conference";
+import DownloadResume from "../Dashboard/DownloadResume";
 
 const baseURL = 'https://hire-wave.onrender.com/api';
 // const baseURL = 'http://localhost:3030/api';
@@ -200,6 +201,10 @@ const Router = createBrowserRouter([
       {
         path: "myApplications",
         element: <MyApplications />,
+      },
+      {
+        path: "downloadResume",
+        element: <DownloadResume />,
       },
       {
         path: "following",

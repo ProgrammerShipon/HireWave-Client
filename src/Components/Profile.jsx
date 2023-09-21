@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import useAuth from '../Hooks/useAuth';
 import Message from './Message';
@@ -13,6 +13,7 @@ import { VscAccount } from "react-icons/vsc";
 
 const Profile = () => {
     const { user, currentUser, logOut } = useAuth();
+    const navigate= useNavigate()
     return (
         <div className='flex items-center gap-3'>
             <div className='flex items-center'>
@@ -79,7 +80,10 @@ const Profile = () => {
 
                     <button
                         className="w-full text-purple hover:text-white flex items-center justify-center gap-3 hover:gap-4 hover:bg-red-400/80 py-2 hover:underline duration-300"
-                        onClick={() => logOut()}
+                        onClick={() => {
+                            logOut()
+                            navigate("/login")
+                        }}
                     >
                         <BiLogOutCircle />   LogOut
                     </button>
