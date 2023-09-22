@@ -4,7 +4,7 @@ import useOffers from '../Hooks/useOffers';
 
 const OffersSent = () => {
     const [offerData, loading, refetch] = useOffers();
-    console.log(offerData)
+
     return (
         <section className="m-5 rounded-md">
             <DashTitle title="Offers" />
