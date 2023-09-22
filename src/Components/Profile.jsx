@@ -10,14 +10,17 @@ import { LuLayoutDashboard } from "react-icons/lu";
 import { BiLogOutCircle, BiBookReader } from "react-icons/bi";
 import { BsCalendar2Event } from "react-icons/bs";
 import { VscAccount } from "react-icons/vsc";
+import useChat from '../Hooks/useChat';
 
 const Profile = () => {
     const { user, currentUser, logOut } = useAuth();
     const navigate= useNavigate()
+    const [chats, chatRefetch] = useChat();
     return (
         <div className='flex items-center gap-3'>
             <div className='flex items-center'>
                 <Notification />
+                
                 <Message />
             </div>
 

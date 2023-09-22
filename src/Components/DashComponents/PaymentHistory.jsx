@@ -5,7 +5,7 @@ import useRecruiterPaymentHistory from '../../Hooks/useRecruiterPaymentHistory';
 import DashTitle from './DashTitle';
 
 const PaymentHistory = () => {
-    const [paymentHistory,] = useRecruiterPaymentHistory();
+    const [paymentHistory] = useRecruiterPaymentHistory();
     return (
         <section className='m-5 rounded-md'>
             <DashTitle title='Payment History' />

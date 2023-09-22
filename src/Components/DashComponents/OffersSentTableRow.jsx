@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
+import useCurrentRecruiter from '../../Hooks/useCurrentRecruiter';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const OffersSentTableRow = ({ offer }) => {
+    const [currentRecruiter] = useCurrentRecruiter();
+    const [axiosSecure] = useAxiosSecure();
     const {
         applicant,
         position,
@@ -8,6 +12,29 @@ const OffersSentTableRow = ({ offer }) => {
         status,
     } = offer;
 
+    const payment = () => {
+        const paymentInfo = {
+            recruiterEmail :currentRecruiter?.email ,
+            recruiterId: currentRecruiter?._id,
+            receiver: applicant?.name,
+            receiverImage: applicant?.image,
+            position: position,
+            applicantEmail:applicant?.email,
+            amount: salary,
+            recruiterName: currentRecruiter.name,
+            companyLogo: currentRecruiter?.image,
+
+        }
+        console.log(paymentInfo)
+        axiosSecure.post('/payment', paymentInfo)
+            .then(res => {
+                console.log(res.data)
+                window.location.replace(res.data.url)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
     return (
         <tr className="border-b border-green/20 hover:bg-green/10 duration-300 group text-center">
             <td className="py-3">
@@ -48,9 +75,10 @@ const OffersSentTableRow = ({ offer }) => {
 
             <td className="px-3 py-4 text-center">
                 {
-                    status === 'accept' ? <Link to='payment'
+                    status === 'accept' ? <button
+                        onClick={payment}
                         className='bg-green text-white px-4 py-1 rounded-md duration-300 hover:bg-dark hover:text-white'
-                    >Payment Now</Link> : <button
+                    >Payment Now</button> : <button
                         disabled={status === 'open' ? false : true}
                         className={`border text-dark px-4 rounded-md duration-300 hover:text-white ${status === 'reject' || status === 'expire' ? "bg-gray/40 border-gray/40 text-white" : "bg-transparent border-green hover:bg-green"
                             }`}
@@ -58,6 +86,7 @@ const OffersSentTableRow = ({ offer }) => {
                         {status === 'reject' || status === 'expire' ? 'Canceled' : 'Cancel'}
                     </button>
                 }
+
             </td>
         </tr>
     );
