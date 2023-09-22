@@ -1,31 +1,11 @@
 import React from 'react';
 import DashTitle from '../Components/DashComponents/DashTitle';
 import FavoritesTableRow from '../Components/DashComponents/FavoritesTableRow';
+import useFavorite from '../Hooks/useFavorite';
 
 const Favorites = () => {
-    const favorites =[
-        {
-            candidateId: "1",
-            candidateName: "Rakibul Hasan",
-            candidateImage: "https://digity.netlify.app/assets/images/team/4.png",
-            candidateCategory: "Graphics & Design",
-            candidateRate: 34
-        },
-        {
-            candidateId: "2",
-            candidateName: "Tonmoy",
-            candidateImage: "https://digity.netlify.app/assets/images/team/6.png",
-            candidateCategory: "Video & Animation",
-            candidateRate: 13
-        },
-        {
-            candidateId: "3",
-            candidateName: "Anik",
-            candidateImage: "https://digity.netlify.app/assets/images/team/8.png",
-            candidateCategory: "Music & Audio",
-            candidateRate: 39
-        },
-    ]
+    const [favoriteData, loading, refetch] = useFavorite();
+    console.log(favoriteData);
     return (
         <section className='m-5 rounded-md'>
             <DashTitle title='Favorites' />
@@ -37,15 +17,20 @@ const Favorites = () => {
                         <tr>
                             <th className="px-3 py-3 font-medium text-center">Image</th>
                             <th className="px-3 py-3 font-medium text-center">Name</th>
-                            <th className="px-3 py-3 font-medium text-center">Category</th>
                             <th className="px-3 py-3 font-medium text-center">Hourly Rate</th>
                             <th className="px-3 py-3 font-medium text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {favorites.map((favorite) => (
-                            <FavoritesTableRow key={favorite._id} favorite={favorite} />
-                        ))}
+                        {!loading && favoriteData.length > 0 ?
+                            favoriteData.map((favorite) => (
+                                <FavoritesTableRow
+                                    key={favorite._id}
+                                    favorite={favorite}
+                                    refetch={refetch}
+                                />
+                            )) : <p className="py-4 text-lg text-center">No data available!</p>
+                        }
                     </tbody>
                 </table>
             </div>
