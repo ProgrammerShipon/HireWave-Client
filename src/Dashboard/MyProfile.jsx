@@ -15,6 +15,7 @@ const MyProfile = () => {
     const { currentUser } = useAuth();
     const [currentRecruiter, , refetchRecruiters] = useCurrentRecruiter();
     const [currentCandidate, , refetch] = useCurrentCandidate();
+
     return (
         <section className='m-5 rounded-md'>
             <DashTitle title='My Profile' />

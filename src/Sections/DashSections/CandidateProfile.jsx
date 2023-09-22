@@ -36,7 +36,7 @@ const CandidateProfile = ({ candidatesData, refetch }) => {
     const [openExperience, setOpenExperience] = useState(true);
     const [openSocial, setOpenSocial] = useState(true);
 
-    const newSkills = [...skills, watch('newSkill')]
+    const newSkills = [...skills, watch('newSkill')];
     const newLanguages = [...languages, { name: watch('name'), level: watch('level') }];
     const newEducations = [...education, { subject: watch('subject'), institute: watch('institute'), startDate: watch('startDate'), endDate: watch('endDate') }];
     const newExperiences = [...experience, { logo: watch('logo'), companyName: watch('companyName'), position: watch('position'), location: watch('workLocation'), startDate: watch('workStartDate'), endDate: watch('workEndDate') }];

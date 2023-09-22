@@ -21,9 +21,7 @@ const CandidateCard = ({ candidate, reviewData }) => {
     }, []);
 
     const viewsCount = () => {
-        console.log(candidate);
         const viewsData = {recruiterEmail: currentUser?.email}
-        console.log(viewsData);
         
         axiosSecure
           .patch(`/candidates/viewsCount/${_id}`, viewsData)

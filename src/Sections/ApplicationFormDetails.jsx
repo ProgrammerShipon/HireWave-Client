@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import GetAgoTime from "../Components/GetAgoTime";
 import SendJobOffer from "../Components/RecruiterSend/SendJobOffer";
 import SendJobTask from "../Components/RecruiterSend/SendJobTask";
@@ -12,8 +12,16 @@ import { BiTimeFive } from "react-icons/bi";
 import { BsCameraVideo, BsCaretDownFill, BsSendCheck } from "react-icons/bs";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { MdOutlineAssignment } from "react-icons/md";
+import useAuth from "../Hooks/useAuth";
+import useUsers from "../Hooks/useUsers";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const ApplicationFormDetails = ({ candidateDetails }) => {
+  const { currentUser, loading: authLoading } = useAuth();
+  const [receiverId, setReceiverId] = useState();
+  const [userData] = useUsers();
+  const [axiosSecure] = useAxiosSecure();
+  const navigate = useNavigate();
   const {
     applicantId,
     applicantName,
@@ -23,8 +31,10 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
     cover_letter,
     location,
     attachment,
-    appliedDate
+    appliedDate,
+    applicantEmail
   } = candidateDetails;
+
   const {
     register,
     handleSubmit,
@@ -32,7 +42,32 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
     formState: { errors },
   } = useForm();
 
-  // Modal On or Close state
+  useEffect(() => {
+    const user = userData.find(user => user?.email === applicantEmail)
+    setReceiverId(user?._id)
+  }, [candidateDetails]);
+
+  // Create New chat
+  const createNewChat = () => {
+    const chatMembers = {
+      sender: currentUser?._id,
+      receiver: receiverId,
+    };
+    if (receiverId === undefined || currentUser?._id === undefined) {
+      return
+    }
+    axiosSecure
+      .post("/chat", chatMembers)
+      .then((res) => {
+        navigate("/dashboard/messages");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
+  // Modal Open or Close state
   const [isOfferModalOpen, setIsOfferModalOpen] = useState(false);
   const [isInterviewModalOpen, setIsInterviewModalOpen] = useState(false);
   const [isSentTaskModalOpen, setIsSentTaskModalOpen] = useState(false);
@@ -131,7 +166,9 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
               </button>
 
               {/* Contact Now */}
-              <button className="flex items-center gap-4 text-purple hover:underline hover:bg-purple/20 w-full px-3 py-2 duration-300">
+              <button
+                onClick={createNewChat}
+                className="flex items-center gap-4 text-purple hover:underline hover:bg-purple/20 w-full px-3 py-2 duration-300">
                 <AiOutlineMessage /> Contact Now
               </button>
             </div>
@@ -152,7 +189,7 @@ const ApplicationFormDetails = ({ candidateDetails }) => {
           <h2 className="text-lightGray text-xl mb-3">Provided Links</h2>
           {attachment.map((link, index) => (
             <span
-                key={index}>
+              key={index}>
               {" "}
               <a
                 href={link}

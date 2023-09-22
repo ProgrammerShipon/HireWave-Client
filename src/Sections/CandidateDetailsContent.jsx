@@ -28,18 +28,17 @@ import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useChat from "../Hooks/useChat";
 import useSingleUser from "../Hooks/useSingleUser";
+import useUsers from "../Hooks/useUsers";
 
 const CandidateDetailsContent = ({ candidateDetails }) => {
   const { currentUser, loading: authLoading } = useAuth();
   const [axiosSecure] = useAxiosSecure();
+  const [userData] = useUsers();
   const [reviewData, loading] = useReview();
   const [favorite, setFavorite] = useState(false);
   const [favoriteData, setFavoriteData] = useState();
   const [receiverId, setReceiverId] = useState();
-  const [senderId, setSenderId] = useState();
-  const [singleUser] = useSingleUser();
   const navigate = useNavigate();
-  const [chats] = useChat();
   const [review, setReview] = useState([]);
 
   const {
@@ -61,11 +60,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
     skills,
   } = candidateDetails;
 
-  // userId & SenderId
-  useEffect(() => {
-    setReceiverId(singleUser?._id);
-    setSenderId(currentUser?._id);
-  }, [singleUser, currentUser]);
+
 
   useEffect(() => {
     const getReview = reviewData.filter(
@@ -135,13 +130,19 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
     }
   };
 
+  useEffect(() => {
+    const user = userData.find(user => user?.email === email)
+    setReceiverId(user?._id)
+  }, [candidateDetails]);
   // chat
   const createChat = () => {
     const chatMembers = {
-      sender: senderId,
+      sender: currentUser?._id,
       receiver: receiverId,
     };
-
+    if (receiverId === undefined || currentUser?._id === undefined) {
+      return
+    }
     axiosSecure
       .post("/chat", chatMembers)
       .then((res) => {
@@ -269,8 +270,8 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
               <button
                 onClick={handleAddToFavorite}
                 className={`flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 rounded-lg shadow-xl  group ${!favorite
-                    ? "border border-green hover:shadow-green/20 hover:bg-green hover:text-white text-dark bg-transparent "
-                    : "bg-green text-white"
+                  ? "border border-green hover:shadow-green/20 hover:bg-green hover:text-white text-dark bg-transparent "
+                  : "bg-green text-white"
                   }`}
               >
                 {!favorite ? (
@@ -370,8 +371,8 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                 <div
                   key={index}
                   className={`border-s pl-6 py-2 ml-3 relative before:absolute before:h-6 before:w-6 before:rounded-full before:top-[10px] before:-left-3 after:absolute after:h-3 after:w-3 after:rounded-full after:top-4 after:-left-[6px] ${edu.endDate === "Present"
-                      ? "before:bg-green/40 after:bg-green border-green/50"
-                      : "before:bg-purple/40 after:bg-purple border-purple/50"
+                    ? "before:bg-green/40 after:bg-green border-green/50"
+                    : "before:bg-purple/40 after:bg-purple border-purple/50"
                     }`}
                 >
                   <h3

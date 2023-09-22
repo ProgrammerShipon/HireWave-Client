@@ -11,10 +11,10 @@ const UserManual = () => {
     const [isCandidateManualOpen, setIsCandidateManualOpen] = useState(false);
     const [isRecruiterManualOpen, setIsRecruiterManualOpen] = useState(false);
     const handleCandidateManualModal = (e) => {
-        if (e == "cancel") setIsCandidateManualOpen(false)
+        if (e == "cancel") setIsCandidateManualOpen(true)
     }
     const handleRecruiterManualModal = (e) => {
-        if (e == "cancel") setIsCandidateManualOpen(false)
+        if (e == "cancel") setIsCandidateManualOpen(true)
     }
 
     useEffect(() => {
@@ -40,7 +40,7 @@ const UserManual = () => {
                     {/* Modal Heading */}
                     <div className="overflow-y-hidden">
                         <div className="pt-2 pb-2 flex flex-col gap-1 border-b border-dark/20 text-green -mt-3">
-                        <h3 className="text-3xl">👋 Welcome {currentUser?.name}</h3>
+                            <h3 className="text-3xl">👋 Welcome {currentUser?.name}</h3>
                         </div>
 
                         {/* Modal content */}
