@@ -8,7 +8,6 @@ import useCurrentCandidate from "../Hooks/useCurrentCandidate";
 import ResumeSection from "../Components/ResumeSection";
 
 // react icons
-import { AiOutlineEye } from "react-icons/ai"
 import { FiDownload } from 'react-icons/fi';
 import { useEffect } from "react";
 
@@ -129,7 +128,7 @@ const DownloadResume = () => {
                         </button>
                     </div>
 
-                    {/* Modal content */}
+                    {/* content */}
                     <div className="border border-dark mt-5 rounded-lg w-fit mx-auto" >
                         <div ref={targetRef} className='p-5 max-w-[780px]'>
                             {/* name and title */}
