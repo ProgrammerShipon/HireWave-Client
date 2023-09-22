@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsCameraVideo } from "react-icons/bs";
+import Button from "../Button";
 import CustomModal from "../CustomModal";
 
 const SetJobInterView = ({ handleInterviewModal }) => {
