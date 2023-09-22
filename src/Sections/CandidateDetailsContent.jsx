@@ -109,7 +109,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
       if (newData) {
         axiosSecure.post("/favorite", newData).then((res) => {
           if (res.status == 200) {
-            toast.success("Favorite Added Success");
+            toast.success("Added to Favorite");
             setFavorite(true);
             setFavoriteData(res?.data);
           }
@@ -121,7 +121,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
           .delete(`/favorite/${favoriteData._id}`)
           .then((res) => {
             if (res.status == 200) {
-              toast.success("Favorite remove Success");
+              toast.success("Removed from Favorite");
               setFavorite(false);
             }
           })

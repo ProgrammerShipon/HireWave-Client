@@ -37,7 +37,6 @@ export default function RecruitersDetailsContent({ recruiterData }) {
     email,
     image,
     banner,
-    category,
     location,
     address,
     industry,
@@ -104,7 +103,7 @@ export default function RecruitersDetailsContent({ recruiterData }) {
       if (newData) {
         axiosSecure.post("/follow", newData).then((res) => {
           if (res.status == 200) {
-            toast.success("Favorite Added Success");
+            toast.success("Following Successful");
             setFollow(true);
             setFollowData(res?.data);
           }
@@ -117,7 +116,7 @@ export default function RecruitersDetailsContent({ recruiterData }) {
           .then((res) => {
             if (res.status == 200) {
               setFollow(false);
-              toast.success("Favorite remove Success");
+              toast.success("Removed from Following");
             }
           })
           .catch((err) => console.log(err));
