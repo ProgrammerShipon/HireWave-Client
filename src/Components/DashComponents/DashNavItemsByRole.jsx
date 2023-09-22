@@ -2,9 +2,9 @@ import DashLink from './DashLink';
 
 // react icons
 import { AiOutlineFileDone, AiOutlineFilePdf } from 'react-icons/ai';
-import { BsBookmarkPlus, BsBriefcase, BsFileArrowUp, BsJournalBookmark, BsSendCheck } from 'react-icons/bs';
+import { BsBriefcase, BsJournalBookmark, BsSendCheck } from 'react-icons/bs';
 import { CgUserList } from 'react-icons/cg';
-import { FaChalkboardUser, FaTarpDroplet } from 'react-icons/fa6';
+import { FaChalkboardUser } from 'react-icons/fa6';
 import { HiOutlineClipboardDocumentList } from 'react-icons/hi2';
 import { LiaIndustrySolid } from 'react-icons/lia';
 import { MdOutlineAssignment, MdOutlineHistory, MdOutlineManageAccounts, MdOutlineMarkAsUnread } from 'react-icons/md';
@@ -33,6 +33,14 @@ const DashNavItemsByRole = ({ role }) => {
                             <DashLink to="/dashboard/jobOffers">
                                 <MdOutlineMarkAsUnread size={24} />
                                 <p className="hidden md:inline"> Job Offers </p>
+                            </DashLink>
+                        </li>
+
+                        {/* Assign task */}
+                        <li className="w-full">
+                            <DashLink to="/dashboard/assignTask">
+                                <MdOutlineAssignment size={24} />
+                                <p className="hidden md:inline">Assign Task</p>
                             </DashLink>
                         </li>
 

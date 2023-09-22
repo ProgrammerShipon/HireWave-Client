@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import CustomModal from '../CustomModal';
 
@@ -21,7 +20,7 @@ const TasksReceivedTableRow = ({ task }) => {
             <td><a className='text-gray underline cursor-pointer' href={submission} target='_blank'>Submission Link</a></td>
             <td>{submissionTime}</td>
             <td>
-                <button  onClick={() => handleTaskModal("edit")} className="bg-transparent text-dark hover:text-white px-3 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20 m-auto">View Details</button>
+                <button onClick={() => handleTaskModal("edit")} className="bg-transparent text-dark hover:text-white px-3 rounded-lg border border-green hover:bg-green duration-300 shadow-xl hover:shadow-green/20 m-auto">View Details</button>
             </td>
             {
                 isTaskModalOpen && (

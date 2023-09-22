@@ -51,6 +51,7 @@ import RecruiterSignUpForm from "../SignUpSteps/RecruiterSignUpForm";
 import SelectRole from "../SignUpSteps/SelectRole";
 import PrivateRoute from "./PrivateRoute";
 import DownloadResume from "../Dashboard/DownloadResume";
+import AssignTask from "../Dashboard/Candidate/AssignTask";
 
 const baseURL = 'https://hire-wave.onrender.com/api';
 // const baseURL = 'http://localhost:3030/api';
@@ -212,6 +213,10 @@ const Router = createBrowserRouter([
         path: "jobOffers",
         element: <JobOffers />
       },
+      {
+        path: "assignTask",
+        element: <AssignTask />
+      },
 
       // Recruiter routes
       {
@@ -226,7 +231,6 @@ const Router = createBrowserRouter([
         path: "payment",
         element: <Pricing />,
       },
-
       {
         path: "payment_history",
         element: <PaymentHistory />,
@@ -250,10 +254,6 @@ const Router = createBrowserRouter([
       {
         path: "favorites",
         element: <Favorites />,
-      },
-      {
-        path: "tasks",
-        element: <TasksReceived />,
       },
 
       //Admin Routes

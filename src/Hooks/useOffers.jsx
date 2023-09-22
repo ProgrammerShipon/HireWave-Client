@@ -2,26 +2,26 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
 import useAxiosSecure from "./useAxiosSecure";
 
-const useJobOffer = () => {
+
+const useOffers = () => {
     const [axiosSecure] = useAxiosSecure()
     const { currentUser, loading: authLoading } = useAuth()
 
     const {
-        data: jobOfferData = [],
+        data: offerData = [],
         isLoading: loading,
         refetch,
     } = useQuery({
-        queryKey: ["jobOfferData"],
-        //  enabled: [authLoading],
+        queryKey: ["offerData"],
         queryFn: async () => {
             const res = await axiosSecure(
-                `/job_offer/candidate-email/${currentUser?.email}`
+                `/job_offer/recruiter-email/${currentUser?.email}`
             );
             return await res.data;
         },
     });
 
-    return [jobOfferData, loading, refetch];
+    return [offerData, loading, refetch];
 };
 
-export default useJobOffer;
+export default useOffers;
