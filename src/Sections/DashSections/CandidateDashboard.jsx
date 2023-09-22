@@ -8,10 +8,30 @@ import { BsBriefcase, BsCurrencyDollar } from 'react-icons/bs';
 import { IoAnalyticsOutline } from 'react-icons/io5';
 import { AiOutlineFundView } from 'react-icons/ai';
 import { HiOutlineMailOpen } from 'react-icons/hi';
+import useAuth from '../../Hooks/useAuth';
+import useMyAppliedJobs from '../../Hooks/useMyAppliedJobs';
+import useJobOffer from '../../Hooks/useJobOffer';
+import usePaymentHistory from '../../Hooks/usePaymentHistory';
 
 const CandidateDashboard = () => {
+    const { currentUser } = useAuth();
+    const [paymentHistory] = usePaymentHistory();
+    const [jobOfferData] = useJobOffer();
+    const [myAppliedJobs] = useMyAppliedJobs();
+    const filterPayment = paymentHistory.filter(can => can.applicantEmail === currentUser?.email);
+
+    let totalAmount
+
+    if (Array.isArray(filterPayment)) {
+        totalAmount = filterPayment.reduce((accumulator, payment) => {
+            return accumulator + payment.amount;
+        }, 0);
+    } else {
+        console.error('filterPayment is not an array.');
+    }
+
     const labels = ['Earnings', 'Profile View', 'Applied Jobs'];
-    const chartData = [135, 25, 16];
+    const chartData = [totalAmount, 25, myAppliedJobs?.length];
 
     const profileViewsData = [80, 200, 160, 260, 220, 400, 350];
     return (
@@ -77,7 +97,7 @@ const CandidateDashboard = () => {
                     </p>
                 </div>
 
-                {/* invitations */}
+                {/* Job Offers */}
                 <div className='bg-white shadow-4xl shadow-gray/40 rounded-md px-3 group'>
                     <div className='flex items-center justify-between border-b border-[#18025B]/40'>
                         <div className='w-16 h-16 bg-[#18025B] text-white flex items-center justify-center rounded-lg shadow-xl shadow-[#18025B]/50 -mt-10 group-hover:-mt-14 duration-300'>
@@ -85,9 +105,9 @@ const CandidateDashboard = () => {
                         </div>
                         <div className='text-right pt-1 pb-2'>
                             <span className='text-[#18025B] text-4xl drop-shadow-xl count__up'>
-                                <CountUp duration={3} end={32} />
+                                <CountUp duration={3} end={jobOfferData?.length} />
                             </span>
-                            <h3 className='text-dark tracking-wider drop-shadow-xl'>Invitations</h3>
+                            <h3 className='text-dark tracking-wider drop-shadow-xl'>Job Offers</h3>
                         </div>
                     </div>
                     <p className='py-2 text-lightGray flex gap-2 line-clamp-1'>

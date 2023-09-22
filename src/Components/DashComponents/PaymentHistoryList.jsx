@@ -1,9 +1,7 @@
 import moment from 'moment';
-import React from 'react';
 import { BsCurrencyDollar } from "react-icons/bs";
 
 const PaymentHistoryList = ({ pay }) => {
-    console.log(pay)
     const { amount, tran_id, receiverImage, receiver, paymentDate, } = pay;
 
 
