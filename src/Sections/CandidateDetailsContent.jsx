@@ -1,8 +1,3 @@
-import { useState, useEffect } from "react";
-import useAuth from "../Hooks/useAuth";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
-import useUsers from "../Hooks/useUsers";
-import moment from "moment";
 import { Link, useNavigate } from "react-router-dom";
 import RecentReviewSlider from "../Components/RecentReviewSlider";
 import useReview from "../Hooks/useReview";
@@ -10,7 +5,11 @@ import useReview from "../Hooks/useReview";
 // react icons
 import { AiOutlineMessage } from "react-icons/ai";
 import { BiMap } from "react-icons/bi";
-import { BsBookmarkPlus, BsCurrencyDollar } from "react-icons/bs";
+import {
+  BsBookmarkCheck,
+  BsBookmarkPlus,
+  BsCurrencyDollar,
+} from "react-icons/bs";
 import {
   FaFacebookF,
   FaGithub,
@@ -23,13 +22,24 @@ import { LuGraduationCap } from "react-icons/lu";
 // react rating
 import { Rating, Star } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import useAuth from "../Hooks/useAuth";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useChat from "../Hooks/useChat";
+import useSingleUser from "../Hooks/useSingleUser";
+import useUsers from "../Hooks/useUsers";
 
 const CandidateDetailsContent = ({ candidateDetails }) => {
-  const { currentUser } = useAuth();
+  const { currentUser, loading: authLoading } = useAuth();
   const [axiosSecure] = useAxiosSecure();
-  const [reviewData, loading] = useReview();
-  const [receiverId, setReceiverId] = useState();
   const [userData] = useUsers();
+  const [reviewData, loading] = useReview();
+  const [favorite, setFavorite] = useState(false);
+  const [favoriteData, setFavoriteData] = useState();
+  const [receiverId, setReceiverId] = useState();
+  const navigate = useNavigate();
+  const [review, setReview] = useState([]);
 
   const {
     _id,
@@ -50,20 +60,16 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
     skills,
   } = candidateDetails;
 
-  useEffect(() => {
-    const user = userData.find(user => user?.email === email)
-    setReceiverId(user?._id)
-  }, [candidateDetails]);
 
-  const navigate = useNavigate();
-  const [review, setReview] = useState([]);
 
   useEffect(() => {
-    const getReview = reviewData.filter(rvl => rvl.email.toLowerCase() === email.toLowerCase());
-    setReview(getReview)
-  }, [reviewData.length])
+    const getReview = reviewData.filter(
+      (rvl) => rvl.email.toLowerCase() === email.toLowerCase()
+    );
+    setReview(getReview);
+  }, [reviewData.length]);
 
-  const formattedAbout = about.map(pa => pa === "" ? "\u00A0" : pa);
+  const formattedAbout = about.map((pa) => (pa === "" ? "\u00A0" : pa));
 
   // rating style
   const myStyles = {
@@ -72,33 +78,80 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
     inactiveFillColor: "#a78f6d",
   };
 
+  // check favorite
+  useEffect(() => {
+    if (currentUser.email) {
+      axiosSecure
+        .get(`/favorite/recruiter_email/${currentUser?.email}`)
+        .then((res) => {
+          if (res.status == 200 && res.data != "") {
+            setFavorite(true);
+            setFavoriteData(res?.data);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [currentUser, favorite]);
+
+  // Add to Favorite
+  const handleAddToFavorite = () => {
+    if (!favorite) {
+      const newData = {
+        candidateId: _id,
+        candidateImage: image,
+        candidateHourlyRate: hourlyRate,
+        candidateName: name,
+        candidateEmail: email,
+        recruiterName: currentUser?.name,
+        recruiterImage: currentUser?.image,
+        recruiterEmail: currentUser?.email,
+      };
+      if (newData) {
+        axiosSecure.post("/favorite", newData).then((res) => {
+          if (res.status == 200) {
+            toast.success("Favorite Added Success");
+            setFavorite(true);
+            setFavoriteData(res?.data);
+          }
+        });
+      }
+    } else if (favorite) {
+      if (favoriteData) {
+        axiosSecure
+          .delete(`/favorite/${favoriteData._id}`)
+          .then((res) => {
+            if (res.status == 200) {
+              toast.success("Favorite remove Success");
+              setFavorite(false);
+            }
+          })
+          .catch((err) => console.log(err));
+      }
+    }
+  };
+
+  useEffect(() => {
+    const user = userData.find(user => user?.email === email)
+    setReceiverId(user?._id)
+  }, [candidateDetails]);
   // chat
   const createChat = () => {
-
-    if (receiverId === undefined || currentUser?._id === undefined) {
-      return
-    }
     const chatMembers = {
       sender: currentUser?._id,
       receiver: receiverId,
-
+    };
+    if (receiverId === undefined || currentUser?._id === undefined) {
+      return
     }
-
-    axiosSecure.post('/chat', chatMembers)
-      .then(res => {
-        navigate('/dashboard/messages')
+    axiosSecure
+      .post("/chat", chatMembers)
+      .then((res) => {
+        navigate("/dashboard/messages");
       })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
-  const handleAddToFavorite = () => {
-    const newData = {
-      candidateId: _id,
-      recruiterEmail: currentUser?.email
-    }
-  }
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <section className="py-20 md:py-[120px] duration-300">
@@ -125,7 +178,9 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
 
               {/* rating */}
               <div className="flex items-center justify-center gap-1 mt-5">
-                <p className="px-2 text-purple bg-purple/30">{review.length > 0 && review[0].rating}</p>
+                <p className="px-2 text-purple bg-purple/30">
+                  {review.length > 0 && review[0].rating}
+                </p>
 
                 <Rating
                   className="max-w-[110px]"
@@ -156,42 +211,91 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
               <p className="flex items-center gap-[2px] font-light text-dark ">
                 <BiMap className="text-lightGray" /> {location}
               </p>
-              <p className="text-gray">Member since : {moment(joinDate).format("MMM Do YY")}</p>
+              <p className="text-gray">Member since {joinDate}</p>
             </div>
           </div>
 
           {/* right side */}
           <div className="flex flex-col items-center justify-between gap-4 py-6 duration-300 max-w-48 sm:flex-row lg:flex-col sm:items-end sm:gap-0 sm:-mt-16 lg:-mt-0">
+
             {/* social links */}
             <div className="flex justify-center items-center gap-2">
-              {
-                socialLink.map((link, index) => <p
+              {socialLink.map((link, index) => (
+                <p
                   key={index}
                   className={`flex items-center justify-center gap-5`}
                 >
-                  {link?.linkedin && <a className="rounded p-2 border text-green border-green shadow-lg shadow-green/20 cursor-pointer" target="_blank" href={link.linkedin}><FaLinkedin size="20px" /></a>}
-                  {link?.github && <a className="rounded p-2 border text-green border-green shadow-lg shadow-green/20 cursor-pointer" target="_blank" href={link.github}><FaGithub size="20px" /></a>}
-                  {link?.twitter && <a className="rounded p-2 border text-green border-green shadow-lg shadow-green/20 cursor-pointer" target="_blank" href={link.twitter}><FaTwitter size="20px" /></a>}
-                  {link?.facebook && <a className="rounded p-2 border text-green border-green shadow-lg shadow-green/20 cursor-pointer" target="_blank" href={link.facebook}><FaFacebookF size="20px" /></a>}
-                </p>)
-              }
+                  {link?.linkedin && (
+                    <a
+                      className="rounded p-2 border text-green border-green shadow-lg shadow-green/20 cursor-pointer"
+                      target="_blank"
+                      href={link.linkedin}
+                    >
+                      <FaLinkedin size="20px" />
+                    </a>
+                  )}
+                  {link?.github && (
+                    <a
+                      className="rounded p-2 border text-green border-green shadow-lg shadow-green/20 cursor-pointer"
+                      target="_blank"
+                      href={link.github}
+                    >
+                      <FaGithub size="20px" />
+                    </a>
+                  )}
+                  {link?.twitter && (
+                    <a
+                      className="rounded p-2 border text-green border-green shadow-lg shadow-green/20 cursor-pointer"
+                      target="_blank"
+                      href={link.twitter}
+                    >
+                      <FaTwitter size="20px" />
+                    </a>
+                  )}
+                  {link?.facebook && (
+                    <a
+                      className="rounded p-2 border text-green border-green shadow-lg shadow-green/20 cursor-pointer"
+                      target="_blank"
+                      href={link.facebook}
+                    >
+                      <FaFacebookF size="20px" />
+                    </a>
+                  )}
+                </p>
+              ))}
             </div>
 
             {/* button */}
             <div className="flex flex-col items-center gap-3">
-              <button onClick={handleAddToFavorite} className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
-                Add to Favorite{" "}
-                <BsBookmarkPlus
-                  size="21"
-                  className="text-green group-hover:text-white"
-                />
+              <button
+                onClick={handleAddToFavorite}
+                className={`flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 rounded-lg shadow-xl  group ${!favorite
+                  ? "border border-green hover:shadow-green/20 hover:bg-green hover:text-white text-dark bg-transparent "
+                  : "bg-green text-white"
+                  }`}
+              >
+                {!favorite ? (
+                  <>
+                    <p>Add to Favorite </p>
+                    <BsBookmarkPlus
+                      size="21"
+                      className="text-green group-hover:text-white"
+                    />
+                  </>
+                ) : (
+                  <>
+                    <p>Added to Favorite </p>
+                    <BsBookmarkCheck size="21" className="" />
+                  </>
+                )}
               </button>
               <Link
               // to={`/dashboard/messages/${_id}`}
               >
                 <button
                   onClick={createChat}
-                  className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group">
+                  className="flex items-center justify-center w-full gap-2 px-5 py-3 capitalize duration-300 bg-transparent border rounded-lg shadow-xl text-dark hover:text-white border-green hover:bg-green hover:shadow-green/20 group"
+                >
                   Contact With Me{" "}
                   <AiOutlineMessage
                     size="22"
@@ -199,7 +303,6 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                   />
                 </button>
               </Link>
-
             </div>
           </div>
         </div>
@@ -214,9 +317,7 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                 Recent Review{" "}
                 <span className="text-gray">(0{review.length})</span>
               </h2>
-              {
-                !loading ? <RecentReviewSlider recentReview={review} /> : ''
-              }
+              {!loading ? <RecentReviewSlider recentReview={review} /> : ""}
             </div>
 
             {/* languages */}
@@ -256,12 +357,11 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
             {/* about */}
             <div>
               <h2 className="mb-1 text-3xl font-medium text-dark">About</h2>
-              {
-                formattedAbout.map((para, index) => <p
-                  key={index}
-                  className="text-lg text-lightGray"
-                >{para}</p>)
-              }
+              {formattedAbout.map((para, index) => (
+                <p key={index} className="text-lg text-lightGray">
+                  {para}
+                </p>
+              ))}
             </div>
 
             {/* education */}
@@ -306,7 +406,12 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
                   className="flex items-start gap-4 mb-7 last:mb-0"
                 >
                   <div className="w-16 h-16 overflow-hidden rounded-md shadow-xl shadow-purple/30 flex items-center justify-center">
-                    <h1 className={`text-3xl uppercase font-semibold drop-shadow-lg ${exp.endDate === "Present" ? "text-green" : "text-purple"}`}>{exp.companyName.slice(0, 2)}</h1>
+                    <h1
+                      className={`text-3xl uppercase font-semibold drop-shadow-lg ${exp.endDate === "Present" ? "text-green" : "text-purple"
+                        }`}
+                    >
+                      {exp.companyName.slice(0, 2)}
+                    </h1>
                   </div>
 
                   <div>

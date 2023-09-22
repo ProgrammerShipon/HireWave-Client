@@ -1,6 +1,3 @@
-import { useEffect, useState } from 'react';
-import { AiOutlineFileAdd } from 'react-icons/ai';
-import Button from '../Components/Button';
 import DashTitle from '../Components/DashComponents/DashTitle';
 import PageLoader from '../Components/PageLoader';
 import useAuth from '../Hooks/useAuth';
@@ -12,11 +9,8 @@ import RecruitersProfile from '../Sections/DashSections/RecruitersProfile';
 
 const MyProfile = () => {
     const { currentUser } = useAuth();
-    const [currentRecruiter, loadingRecruiters, refetchRecruiters] = useCurrentRecruiter();
-    const [currentCandidate, loading, refetch] = useCurrentCandidate();
-    console.log(currentCandidate)
-    console.log(currentUser)
-    
+    const [currentRecruiter, ,refetchRecruiters] = useCurrentRecruiter();
+    const [currentCandidate, ,refetch] = useCurrentCandidate();
     return (
         <section className='m-5 rounded-md'>
             <DashTitle title='My Profile' />
@@ -42,16 +36,6 @@ const MyProfile = () => {
             {
                 currentUser.role === 'admin' && <AdminProfile currentUser={currentUser} />
             }
-
-            {/* Generate Resume Button */}
-            {/* <div className='mt-7'>
-                <Button>
-                    <div className='flex items-center gap-2'>
-                        <AiOutlineFileAdd />
-                        <p>Generate Resume</p>
-                    </div>
-                </Button>
-            </div> */}
         </section>
     );
 };

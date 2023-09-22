@@ -52,6 +52,7 @@ import SelectRole from "../SignUpSteps/SelectRole";
 import PrivateRoute from "./PrivateRoute";
 import DownloadResume from "../Dashboard/DownloadResume";
 import AssignTask from "../Dashboard/Candidate/AssignTask";
+import HiredCandidates from "../Dashboard/HiredCandidates";
 
 const baseURL = 'https://hire-wave.onrender.com/api';
 // const baseURL = 'http://localhost:3030/api';
@@ -226,6 +227,10 @@ const Router = createBrowserRouter([
       {
         path: "postedJobs",
         element: <PostedJobs />,
+      },
+      {
+        path: "hired_candidates",
+        element: <HiredCandidates />,
       },
       {
         path: "payment",

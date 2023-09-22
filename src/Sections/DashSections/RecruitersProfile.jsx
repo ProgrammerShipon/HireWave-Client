@@ -159,20 +159,21 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
             {/* profile top */}
             <div className='relative bg-white shadow-xl shadow-gray/40 p-6 rounded-md flex flex-col lg:flex-row items-start lg:items-end justify-between'>
                 <div>
-                    <div className="w-[600px] h-40 flex items-end relative">
+                    <div className="w-[700px] h-48 flex items-end relative">
                         <img
                             src={banner}
-                            className="w-full object-center rounded-md h-full "
+                            className="w-full object-cover object-center rounded-md h-full "
                             alt={name}
                         />
-                        <label className='absolute bottom-0 right-0 -mb-1 -mr-1 p-1 cursor-pointer text-green  rounded-full border border-green bg-white'>
+                        <label className='absolute flex items-center gap-2 px-2  bottom-0 right-0 mb-1 mr-1 p-1 rounded-md bg-gray/60 cursor-pointer text-white border border-green'>
                             <input
                                 name='banner'
                                 type='file'
                                 style={{ display: 'none' }}
                                 onChange={handleBannerUpload}
                             />
-                            <BsCamera className="text-3xl" />
+                            <BsCamera className="text-3xl " />
+                            <p className="text-lg">Upload cover Photo</p>
 
                         </label>
 

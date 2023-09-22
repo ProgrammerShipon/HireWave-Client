@@ -35,6 +35,7 @@ const UserManual = () => {
                     isModalOpen={isCandidateManualOpen}
                     setIsModalOpen={setIsCandidateManualOpen}
                     handleModal={handleCandidateManualModal}
+                    larger={true}
                 >
                     {/* Modal Heading */}
                     <div className="overflow-y-hidden">
@@ -70,6 +71,7 @@ const UserManual = () => {
                     isModalOpen={isRecruiterManualOpen}
                     setIsModalOpen={setIsRecruiterManualOpen}
                     handleModal={handleRecruiterManualModal}
+                    larger={true}
                 >
                     {/* Modal Heading */}
                     <div className="overflow-y-hidden">

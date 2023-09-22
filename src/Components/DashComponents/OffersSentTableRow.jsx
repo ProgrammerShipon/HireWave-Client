@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import useCurrentRecruiter from '../../Hooks/useCurrentRecruiter';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
@@ -7,8 +6,6 @@ const OffersSentTableRow = ({ offer }) => {
     const [currentRecruiter] = useCurrentRecruiter();
     const [axiosSecure] = useAxiosSecure();
     const {
-        _id,
-        jobId,
         applicant,
         position,
         salary,
