@@ -2,29 +2,7 @@ import DashTitle from '../Components/DashComponents/DashTitle';
 import TasksReceivedTableRow from '../Components/DashComponents/TasksReceivedTableRow';
 
 const TasksReceived = () => {
-    const tasks = [
-        {
-            _id: "1",
-            applicantName: "Raiyan Hossain",
-            applicantImage: "https://i.ibb.co/jDPFM9F/req-1.jpg",
-            submission: "https://netlify-submission.com",
-            submissionTime: "23 June, 2023"
-        },
-        {
-            _id: "2",
-            applicantName: "Munna Mia",
-            applicantImage: "https://i.ibb.co/nbjYRxQ/req-5.jpg",
-            submission: "https://netlify-submission.com",
-            submissionTime: "08 July, 2023"
-        },
-        {
-            _id: "3",
-            applicantName: "Linkon",
-            applicantImage: "https://digity.netlify.app/assets/images/team/1.png",
-            submission: "https://netlify-submission.com",
-            submissionTime: "28 May, 2023"
-        },
-    ]
+
     return (
         <section className='m-5 rounded-md'>
             <DashTitle title='Tasks Received' />

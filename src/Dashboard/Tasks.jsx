@@ -1,15 +1,13 @@
-import AssignTaskTableRow from "../../Components/DashComponents/AssignTaskTableRow";
-import DashTitle from "../../Components/DashComponents/DashTitle";
-import useTask from "../../Hooks/useTask";
+import DashTitle from "../Components/DashComponents/DashTitle";
+import TaskTableRow from "../Components/DashComponents/TaskTableRow";
+import useTask from "../Hooks/useTask";
 
-
-const AssignTask = () => {
+const Tasks = () => {
     const [taskData, loading] = useTask();
-    console.log(taskData)
 
     return (
         <section className="m-5 rounded-md">
-            <DashTitle title="Assign Task" />
+            <DashTitle title="Tasks" />
 
             {/* task table */}
             <div className="w-full overflow-x-auto duration-300 rounded-md shadow-4xl shadow-gray/40 bg-white mt-10">
@@ -18,7 +16,7 @@ const AssignTask = () => {
                         <tr>
                             <th className="px-3 py-3 font-medium text-center">Image</th>
                             <th className="px-3 py-3 font-medium text-center">Name</th>
-                            <th className="px-3 py-3 font-medium text-left">Job Title</th>
+                            <th className="px-3 py-3 font-medium text-center">Category</th>
                             <th className="px-3 py-3 font-medium text-center">Submission Date</th>
                             <th className="px-3 py-3 font-medium text-center">Action</th>
                         </tr>
@@ -26,7 +24,7 @@ const AssignTask = () => {
                     <tbody>
                         {!loading && taskData.length > 0 ?
                             taskData.map((task) => (
-                                <AssignTaskTableRow
+                                <TaskTableRow
                                     key={task._id}
                                     task={task}
                                 />
@@ -39,4 +37,4 @@ const AssignTask = () => {
     );
 };
 
-export default AssignTask;
+export default Tasks;

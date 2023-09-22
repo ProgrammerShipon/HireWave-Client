@@ -53,6 +53,7 @@ import PrivateRoute from "./PrivateRoute";
 import DownloadResume from "../Dashboard/DownloadResume";
 import AssignTask from "../Dashboard/Candidate/AssignTask";
 import HiredCandidates from "../Dashboard/HiredCandidates";
+import Tasks from "../Dashboard/Tasks";
 
 const baseURL = 'https://hire-wave.onrender.com/api';
 // const baseURL = 'http://localhost:3030/api';
@@ -254,7 +255,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "tasks",
-        element: <TasksReceived />
+        element: <Tasks />
       },
       {
         path: "favorites",
