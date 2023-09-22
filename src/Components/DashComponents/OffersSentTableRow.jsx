@@ -4,7 +4,6 @@ import useAxiosSecure from '../../Hooks/useAxiosSecure';
 const OffersSentTableRow = ({ offer }) => {
     const [currentRecruiter] = useCurrentRecruiter();
     const [axiosSecure] = useAxiosSecure();
-
     const {
         applicant,
         position,
