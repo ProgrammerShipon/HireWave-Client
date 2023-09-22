@@ -159,12 +159,11 @@ const JobDetailsBody = ({ jobDetails }) => {
                             />
                         </div>
                         <div className="mt-1">
-                            <Link
-                                to="/"
+                            <div
                                 className="text-xl font-medium duration-300 text-dark drop-shadow-lg hover:text-green line-clamp-2"
                             >
                                 {companyName}
-                            </Link>
+                            </div>
                             <p className="text-gray">{category}</p>
                         </div>
                     </div>

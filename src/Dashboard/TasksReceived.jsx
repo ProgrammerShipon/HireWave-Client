@@ -1,9 +1,8 @@
-import React from 'react';
 import DashTitle from '../Components/DashComponents/DashTitle';
 import TasksReceivedTableRow from '../Components/DashComponents/TasksReceivedTableRow';
 
 const TasksReceived = () => {
-    const tasks =[
+    const tasks = [
         {
             _id: "1",
             applicantName: "Raiyan Hossain",

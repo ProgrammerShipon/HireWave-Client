@@ -1,13 +1,10 @@
-import JobOffersTableRow from '../../Components/DashComponents/Candidate/JobOffersTableRow';
-import DashTitle from '../../Components/DashComponents/DashTitle';
-import useJobOffer from '../../Hooks/useJobOffer';
+import DashTitle from "../../Components/DashComponents/DashTitle";
 
-const JobOffers = () => {
-    const [jobOfferData, loading, refetch] = useJobOffer();
 
+const AssignTask = () => {
     return (
         <section className="m-5 rounded-md">
-            <DashTitle title="Job Offers" />
+            <DashTitle title="Assign Task" />
 
             {/* Offers Received table */}
             <div className="w-full overflow-x-auto duration-300 rounded-md shadow-4xl shadow-gray/40 bg-white mt-10">
@@ -23,14 +20,14 @@ const JobOffers = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {!loading &&
-                            jobOfferData.map((offer) => (
+                        {/* {isJobOfferData &&
+                            isJobOfferData.map((offer) => (
                                 <JobOffersTableRow
                                     key={offer._id}
                                     offer={offer}
                                     refetch={refetch}
                                 />
-                            ))}
+                            ))} */}
                     </tbody>
                 </table>
             </div>
@@ -38,4 +35,4 @@ const JobOffers = () => {
     );
 };
 
-export default JobOffers;
+export default AssignTask;

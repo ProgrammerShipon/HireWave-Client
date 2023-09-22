@@ -5,7 +5,6 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 
 const JobOffersTableRow = ({ offer, refetch }) => {
     const [axiosSecure] = useAxiosSecure();
-    console.log(offer)
     const {
         _id,
         jobId,
@@ -32,7 +31,7 @@ const JobOffersTableRow = ({ offer, refetch }) => {
             }).then((result) => {
                 if (result.isConfirmed) {
                     axiosSecure
-                        .patch(`/job_offer/candidate-status/${_id}`, statusData) // Just Add Api Here
+                        .patch(`/job_offer/candidate-status/${_id}`, statusData)
                         .then((data) => {
                             if (data.status == 200) {
                                 refetch();
@@ -64,7 +63,7 @@ const JobOffersTableRow = ({ offer, refetch }) => {
 
             <td>
                 <Link
-                    to={`/recruiters_details/${jobId}`}
+                    to={`/job_details/${jobId}`}
                     className="font-medium text-dark group-hover:text-purple group-hover:underline duration-300"
                 >
                     {company?.name}
