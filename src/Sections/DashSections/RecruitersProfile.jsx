@@ -162,7 +162,7 @@ const RecruitersProfile = ({ recruitersData, refetchRecruiters }) => {
                     <div className="w-[700px] h-48 flex items-end relative">
                         <img
                             src={banner}
-                            className="w-full object-cover object-center rounded-md h-full "
+                            className="w-full  object-center rounded-md h-full "
                             alt={name}
                         />
                         <label className='absolute flex items-center gap-2 px-2  bottom-0 right-0 mb-1 mr-1 p-1 rounded-md bg-gray/60 cursor-pointer text-white border border-green'>
