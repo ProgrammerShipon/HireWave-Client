@@ -1,12 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from './useAxiosSecure';
-import useCurrentRecruiter from './useCurrentRecruiter';
 import useAuth from './useAuth';
 
 const usePaymentHistory = () => {
     const [axiosSecure] = useAxiosSecure();
-    const {currentUser}=useAuth()
-    const [currentRecruiter, loadingRecruiters, refetchRecruiters] = useCurrentRecruiter();
+    const { currentUser } = useAuth();
 
     const {
         data: paymentHistory = [], isLoading: loading, refetch, } = useQuery({
