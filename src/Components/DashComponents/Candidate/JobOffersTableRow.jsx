@@ -20,12 +20,6 @@ const JobOffersTableRow = ({ offer, refetch }) => {
   } = offer;
   const [isChange, setIsChange] = useState(false);
   const [statusUpdate, setStatusUpdate] = useState(status);
-  // let newStatus;
-  // if (statusUpdate === '' || statusUpdate === undefined) {
-  //   newStatus = status
-  // } else {
-  //   newStatus = statusUpdate
-  // }
   const statusChanges = () => {
     const statusData = {
       status: statusUpdate,
@@ -41,9 +35,8 @@ const JobOffersTableRow = ({ offer, refetch }) => {
         confirmButtonText: "Save Status",
       }).then((result) => {
         if (result.isConfirmed) {
-          console.log("Offer Status is being updated");
           axiosSecure
-            .patch(`/job_offer/candidate-status/${_id}`, statusData) // Just Add Api Here
+            .patch(`/job_offer/candidate-status/${_id}`, statusData) 
             .then((data) => {
               if (data.status == 200) {
                 refetch();
