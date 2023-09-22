@@ -32,7 +32,7 @@ const CandidateDashboard = () => {
         console.error('filterPayment is not an array.');
     }
 
-    const labels = ['Earnings', 'Profile View', 'Applied Jobs'];
+    const labels = ['Earnings', 'Followings', 'Applied Jobs'];
     const chartData = [totalAmount, followingData?.length, myAppliedJobs?.length];
 
     const profileViewsData = [80, 200, 160, 260, 220, 400, 350];
@@ -89,7 +89,7 @@ const CandidateDashboard = () => {
                             <span className='text-[#FF9671] text-4xl drop-shadow-xl count__up'>
                                 <CountUp duration={3} end={chartData[1]} />
                             </span>
-                            <h3 className='text-dark tracking-wider drop-shadow-xl'>Following</h3>
+                            <h3 className='text-dark tracking-wider drop-shadow-xl'>Followings</h3>
                         </div>
                     </div>
                     <p className='py-2 text-lightGray flex gap-2 line-clamp-1'>

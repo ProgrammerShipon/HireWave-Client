@@ -11,14 +11,16 @@ import { AiOutlineFundView } from 'react-icons/ai';
 import useMyPostedJobs from '../../Hooks/useMyPostedJobs';
 import useMyAppliedCandidates from '../../Hooks/useMyAppliedCandidates';
 import useFavorite from '../../Hooks/useFavorite';
+import useOffers from '../../Hooks/useOffers';
 
 const RecruiterDashboard = () => {
     const [myPostedJobs] = useMyPostedJobs();
     const [favoriteData] = useFavorite();
-
+    const [offerData] = useOffers();
+    const filterOffer = offerData.filter(offer => offer.status === 'accept');
     const [myAppliedCandidates] = useMyAppliedCandidates();
-    const labels = ['Applications', 'Profile Views', 'Open Jobs'];
-    const chartData = [myAppliedCandidates.length, 23, myPostedJobs.length];
+    const labels = ['Applications', 'Hired Candidates', 'Open Jobs'];
+    const chartData = [myAppliedCandidates.length, filterOffer?.length, myPostedJobs.length];
 
     const profileViewsData = [80, 200, 160, 260, 220, 400, 350];
     return (
@@ -64,7 +66,7 @@ const RecruiterDashboard = () => {
                     </p>
                 </div>
 
-                {/* profile view */}
+                {/* Hired Candidates */}
                 <div className='bg-white shadow-4xl shadow-gray/40 rounded-md px-3 group'>
                     <div className='flex items-center justify-between border-b border-[#FF9671]/40'>
                         <div className='w-16 h-16 bg-[#FF9671] text-white flex items-center justify-center rounded-lg shadow-xl shadow-[#FF9671]/50 -mt-10 group-hover:-mt-14 duration-300'>
@@ -74,7 +76,7 @@ const RecruiterDashboard = () => {
                             <span className='text-[#FF9671] text-4xl drop-shadow-xl count__up'>
                                 <CountUp duration={3} end={chartData[1]} />
                             </span>
-                            <h3 className='text-dark tracking-wider drop-shadow-xl'>Profile Views</h3>
+                            <h3 className='text-dark tracking-wider drop-shadow-xl'>Hired Candidates</h3>
                         </div>
                     </div>
                     <p className='py-2 text-lightGray flex gap-2 line-clamp-1'>

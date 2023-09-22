@@ -2,14 +2,17 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import usePaymentHistory from '../../Hooks/usePaymentHistory';
 import CustomModal from '../CustomModal';
+import useCandidatesData from '../../Hooks/useCandidatesData';
 
 const HiredCandidatesTableRow = ({ offer }) => {
   const [isHiredCandidate, setIsHiredCandidate] = useState();
   const { applicant, position, salary } = offer;
 
+  const [candidatesData] = useCandidatesData();
   const [paymentHistory] = usePaymentHistory();
   const findCandidate = paymentHistory.find(can => can.applicantEmail === applicant.email);
-
+  const filterCandidate = candidatesData.find(can => can.email === applicant.email);
+  console.log(filterCandidate)
   const handleHiredModel = (e) => {
     if (e == "edit") setIsHiredCandidate(true);
     else if (e == "cancel") setIsHiredCandidate(false);
@@ -59,7 +62,30 @@ const HiredCandidatesTableRow = ({ offer }) => {
           </div>
 
           {/* Modal content */}
-          <div>Modal Details</div>
+          <div>
+            <p className='text-lg py-2'>{filterCandidate?.email}</p>
+            {
+              filterCandidate?.socialLink.map((link, index) => {
+                <div key={index} className='space-y-2 text-lg text-purple hover:text-green duration-300'>
+                  {
+                    link === "linkedin" && <a href={link.linkedin}>Linkedin: {link.linkedin}</a>
+                  }
+                  {
+                    link === "facebook" && <a href={link.facebook}>Facebook: {link.facebook}</a>
+                  }
+                  {
+
+                    link === "github" && <a href={link.github}>GitHub: {link.github}</a>
+                  }
+                  {
+
+                    link === "twitter" && <a href={link.twitter}>Twitter: {link.twitter}</a>
+                  }
+                </div>
+              })
+            }
+            <a href=""></a>
+          </div>
         </CustomModal>
       )}
     </>
