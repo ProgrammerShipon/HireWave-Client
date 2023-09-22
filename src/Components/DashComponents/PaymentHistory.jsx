@@ -4,6 +4,10 @@ import DashTitle from './DashTitle';
 
 const PaymentHistory = () => {
     const [paymentHistory] = useRecruiterPaymentHistory();
+    // let sum = 0;
+    // paymentHistory?.forEach(item => {
+    //     sum += item.amount;
+    // });
     return (
         <section className='m-5 rounded-md'>
             <DashTitle title='Payment History' />

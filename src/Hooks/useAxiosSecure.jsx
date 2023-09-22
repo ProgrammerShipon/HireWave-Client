@@ -3,8 +3,9 @@ import axios from 'axios';
 // import useAuth from './useAuth';
 
 const axiosSecure = axios.create({
+    baseURL: 'https://hire-wave-server-qkye4f8zn-radifkhanrafin.vercel.app/api',
     // baseURL: 'http://localhost:3030/api',
-    baseURL: 'https://hire-wave.onrender.com/api',
+    // baseURL: 'https://hire-wave.onrender.com/api',
 });
 
 const useAxiosSecure = () => {

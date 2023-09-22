@@ -3,10 +3,7 @@ import React from 'react';
 import { BsCurrencyDollar } from "react-icons/bs";
 
 const PaymentHistoryList = ({ pay }) => {
-    console.log(pay)
     const { amount, tran_id, receiverImage, receiver, paymentDate, } = pay;
-
-
     return (
         <tr className="border-b border-green/20 hover:bg-green/10 duration-300 group text-center">
             <td className="py-3 ">
