@@ -4,7 +4,6 @@ import Button from '../Components/Button';
 import DashTitle from '../Components/DashComponents/DashTitle';
 import PageLoader from '../Components/PageLoader';
 import useAuth from '../Hooks/useAuth';
-import useCandidatesData from '../Hooks/useCandidatesData';
 import CandidateProfile from '../Sections/DashSections/CandidateProfile';
 import AdminProfile from '../Sections/DashSections/AdminProfile';
 import useCurrentCandidate from '../Hooks/useCurrentCandidate';
@@ -15,6 +14,9 @@ const MyProfile = () => {
     const { currentUser } = useAuth();
     const [currentRecruiter, loadingRecruiters, refetchRecruiters] = useCurrentRecruiter();
     const [currentCandidate, loading, refetch] = useCurrentCandidate();
+    console.log(currentCandidate)
+    console.log(currentUser)
+    
     return (
         <section className='m-5 rounded-md'>
             <DashTitle title='My Profile' />
@@ -23,7 +25,7 @@ const MyProfile = () => {
             {
                 currentUser.role === 'candidate' && <>
                     {
-                        currentCandidate?.email ? <CandidateProfile candidatesData={currentCandidate} refetch={refetch} /> : <PageLoader />
+                        currentCandidate ? <CandidateProfile candidatesData={currentCandidate} refetch={refetch} /> : <PageLoader />
                     }
                 </>
 
