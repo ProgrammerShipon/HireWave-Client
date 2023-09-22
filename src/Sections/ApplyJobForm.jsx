@@ -114,7 +114,6 @@ const ApplyJobForm = ({ jobData }) => {
 
                                 <div className="postJob" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }}></div>
 
-                                <Link to={`/job_details/${_id}`} className='text-blue-500 hover:underline'>View Job Posting</Link>
                             </div>
 
                             {/* experience, salary, company name, location */}

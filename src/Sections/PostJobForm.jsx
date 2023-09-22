@@ -376,7 +376,7 @@ export default function PostJobForm() {
                             handleModal={handlePreviewModal}
                             larger={true}
                         >
-                            <div className="postJob p-8 -m-8 border rounded-lg border-purple shadow-4xl shadow-gray/40 overflow-y-auto h-[80vh]">
+                            <div className="postJob overflow-y-auto custom-scrollbar h-[80vh]">
                                 <div>
                                     <h1 className="text-2xl font-medium text-dark">{watch('title')}</h1>
                                 </div>
@@ -477,10 +477,10 @@ export default function PostJobForm() {
                             >
                                 {/* Modal Heading */}
                                 <div className="overflow-y-hidden">
-                                    <h2 className="pt-2 pb-2 flex items-center gap-3 border-b border-dark/20 text-purple -mt-3">
+                                    <div className="pt-2 pb-2 flex items-center gap-3 border-b border-dark/20 text-purple -mt-3">
                                         <LuLayoutTemplate size={20} />
                                         <h3 className="text-xl">Job Description Demo</h3>
-                                    </h2>
+                                    </div>
 
                                     {/* Modal content */}
                                     <h2 className="text-xl text-dark mb-2 mt-3">Overview:</h2>

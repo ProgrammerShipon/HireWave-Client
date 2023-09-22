@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { Tooltip } from "react-tooltip";
 import DashTitle from "../Components/DashComponents/DashTitle";
 import PostedJobTableRow from "../Components/DashComponents/PostedJobTableRow";
-import { useForm } from "react-hook-form";
 import PageLoader from "../Components/PageLoader";
 import useMyPostedJobs from "../Hooks/useMyPostedJobs";
-import { Tooltip } from "react-tooltip";
 
 const PostedJobs = () => {
     const [myPostedJobs, loading] = useMyPostedJobs();

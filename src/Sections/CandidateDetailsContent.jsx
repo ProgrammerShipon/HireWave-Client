@@ -163,16 +163,16 @@ const CandidateDetailsContent = ({ candidateDetails }) => {
           {/* right side */}
           <div className="flex flex-col items-center justify-between gap-4 py-6 duration-300 max-w-48 sm:flex-row lg:flex-col sm:items-end sm:gap-0 sm:-mt-16 lg:-mt-0">
             {/* social links */}
-            <div className="flex items-center gap-2">
+            <div className="flex justify-center items-center gap-2">
               {
                 socialLink.map((link, index) => <p
                   key={index}
-                  className={`h-9 w-9 flex items-center justify-center rounded-lg border text-green border-green shadow-lg shadow-green/20 cursor-pointer`}
+                  className={`flex items-center justify-center gap-5`}
                 >
-                  {link?.linkedin && <FaLinkedin size="20px" />}
-                  {link?.github && <FaGithub size="20px" />}
-                  {link?.twitter && <FaTwitter size="20px" />}
-                  {link?.facebook && <FaFacebookF size="20px" />}
+                  {link?.linkedin && <a className="rounded p-2 border text-green border-green shadow-lg shadow-green/20 cursor-pointer" target="_blank" href={link.linkedin}><FaLinkedin size="20px" /></a>}
+                  {link?.github && <a className="rounded p-2 border text-green border-green shadow-lg shadow-green/20 cursor-pointer" target="_blank" href={link.github}><FaGithub size="20px" /></a>}
+                  {link?.twitter && <a className="rounded p-2 border text-green border-green shadow-lg shadow-green/20 cursor-pointer" target="_blank" href={link.twitter}><FaTwitter size="20px" /></a>}
+                  {link?.facebook && <a className="rounded p-2 border text-green border-green shadow-lg shadow-green/20 cursor-pointer" target="_blank" href={link.facebook}><FaFacebookF size="20px" /></a>}
                 </p>)
               }
             </div>

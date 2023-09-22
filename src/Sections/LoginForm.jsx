@@ -26,6 +26,18 @@ const LoginForm = () => {
             })
             .catch(error => {
                 setLoading(false)
+                error.message == "Firebase: Error (auth/user-not-found)."?
+                toast.error("User Not Found", {
+                    position: "top-center",
+                    autoClose: 3000,
+                    theme: "light",
+                }):
+                error.message == "Firebase: Error (auth/invalid-email)."?
+                toast.error("Invalid Mail Provided", {
+                    position: "top-center",
+                    autoClose: 3000,
+                    theme: "light",
+                }):
                 toast.error(error.message, {
                     position: "top-center",
                     autoClose: 3000,

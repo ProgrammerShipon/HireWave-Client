@@ -10,8 +10,8 @@ const DescriptionTextarea = ({ description, setDescription }) => {
     return (
         <textarea
             rows={8}
-            className='w-full border border-gray/40 p-1 rounded-md focus:outline-none focus:border-green'
-            placeholder="Write your about..."
+            className='w-full border border-gray/40 p-2 rounded-md focus:outline-none focus:border-green'
+            placeholder="Write about yourself..."
             defaultValue={description ? description.join('\n') : ''}
             onChange={handleTextareaChange}
         ></textarea>
