@@ -8,9 +8,9 @@ import useCurrentCandidate from "../Hooks/useCurrentCandidate";
 import ResumeSection from "../Components/ResumeSection";
 
 // react icons
-import { AiOutlineEye } from "react-icons/ai"
 import { FiDownload } from 'react-icons/fi';
 import { useEffect } from "react";
+import { AiOutlineEye } from "react-icons/ai";
 
 const DownloadResume = () => {
     const [currentCandidate, loading] = useCurrentCandidate();

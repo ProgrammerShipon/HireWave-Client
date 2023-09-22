@@ -13,8 +13,8 @@ import RecruitersProfile from '../Sections/DashSections/RecruitersProfile';
 
 const MyProfile = () => {
     const { currentUser } = useAuth();
-    const [currentRecruiter, loadingRecruiters, refetchRecruiters] = useCurrentRecruiter();
-    const [currentCandidate, loading, refetch] = useCurrentCandidate();
+    const [currentRecruiter, , refetchRecruiters] = useCurrentRecruiter();
+    const [currentCandidate, , refetch] = useCurrentCandidate();
     return (
         <section className='m-5 rounded-md'>
             <DashTitle title='My Profile' />
@@ -40,16 +40,6 @@ const MyProfile = () => {
             {
                 currentUser.role === 'admin' && <AdminProfile currentUser={currentUser} />
             }
-
-            {/* Generate Resume Button */}
-            {/* <div className='mt-7'>
-                <Button>
-                    <div className='flex items-center gap-2'>
-                        <AiOutlineFileAdd />
-                        <p>Generate Resume</p>
-                    </div>
-                </Button>
-            </div> */}
         </section>
     );
 };

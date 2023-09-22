@@ -195,7 +195,7 @@ const FindJobBody = ({ allJobsData, date, setDate }) => {
             </div>
             <div className="mt-1">
               <Link
-                to={`/recruiters_details/${_id}`}
+                to={`/job_details/${_id}`}
                 className="text-xl font-medium duration-300 text-dark drop-shadow-lg hover:text-green line-clamp-2"
               >
                 {companyName}
