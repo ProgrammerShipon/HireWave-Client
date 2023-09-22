@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
 import useCurrentRecruiter from '../../Hooks/useCurrentRecruiter';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const OffersSentTableRow = ({ offer }) => {
     const [currentRecruiter] = useCurrentRecruiter();
     const [axiosSecure] = useAxiosSecure();
+
     const {
         applicant,
         position,
@@ -13,19 +13,23 @@ const OffersSentTableRow = ({ offer }) => {
     } = offer;
 
     const payment = () => {
+        const timestamp = new Date().getTime();
+        const random = Math.floor(Math.random() * 1000);
+        const tran_id = `${timestamp}_${random}`
+
         const paymentInfo = {
-            recruiterEmail :currentRecruiter?.email ,
+            recruiterEmail: currentRecruiter?.email,
             recruiterId: currentRecruiter?._id,
             receiver: applicant?.name,
             receiverImage: applicant?.image,
             position: position,
-            applicantEmail:applicant?.email,
+            applicantEmail: applicant?.email,
             amount: salary,
             recruiterName: currentRecruiter.name,
             companyLogo: currentRecruiter?.image,
-
+            tran_id: tran_id,
         }
-        console.log(paymentInfo)
+
         axiosSecure.post('/payment', paymentInfo)
             .then(res => {
                 console.log(res.data)

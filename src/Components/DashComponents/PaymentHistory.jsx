@@ -1,6 +1,4 @@
-import useAuth from '../../Hooks/useAuth';
 import PaymentHistoryList from './PaymentHistoryList';
-import PageLoader from '../PageLoader';
 import useRecruiterPaymentHistory from '../../Hooks/useRecruiterPaymentHistory';
 import DashTitle from './DashTitle';
 
@@ -15,10 +13,11 @@ const PaymentHistory = () => {
                     paymentHistory.length !== 0 ? <table className="table lg:w-full w-[800px] text-left">
                         <thead className="text-lg text-green border-b border-green/40 ">
                             <tr>
-                                <th className="px-3 py-3 font-medium">Package</th>
+                                <th className="px-3 py-3 text-center  font-medium">Image</th>
+                                <th className="px-3 py-3 text-center  font-medium">Name</th>
                                 <th className="px-3 py-3 font-medium">Amount</th>
                                 <th className="py-3 text-center font-medium">Transaction ID</th>
-                                <th className="py-3 text-center font-medium">Expire</th>
+                                <th className="py-3 text-center font-medium">Date</th>
                             </tr>
                         </thead>
                         <tbody>
