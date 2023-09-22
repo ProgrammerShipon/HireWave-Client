@@ -13,7 +13,7 @@ const PaymentSuccess = () => {
 
         return <h1>...</h1>
     }
-    const { amount,  purchaseDate, receiver } = RecruiterPaymentHistory[0]
+    const { amount, purchaseDate, receiver } = RecruiterPaymentHistory[0]
 
 
     return (

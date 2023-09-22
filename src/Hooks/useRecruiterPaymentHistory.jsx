@@ -11,7 +11,7 @@ const useRecruiterPaymentHistory = () => {
         data: RecruiterPaymentHistory = [], isLoading: loading, refetch, } = useQuery({
             queryKey: ["RecruiterPaymentHistory"],
             queryFn: async () => {
-                const res = await axiosSecure.get(`payment/history/${currentUser?.name}`);
+                const res = await axiosSecure.get(`payment/history/Mahfuz private`);
                 return res.data;
             },
 

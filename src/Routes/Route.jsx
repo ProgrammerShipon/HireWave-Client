@@ -22,7 +22,6 @@ import Candidates from "../Pages/Candidates";
 import Following from "../Dashboard/Following";
 import OffersReceived from "../Dashboard/OffersReceived";
 import TasksReceived from "../Dashboard/TasksReceived";
-// import Conference from "../Pages/Conference";
 import HiredCandidates from "../Dashboard/HiredCandidates";
 import OffersSent from "../Dashboard/OffersSent";
 import Contact from "../Pages/Contact";
