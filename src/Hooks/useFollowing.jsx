@@ -5,7 +5,6 @@ import useAxiosSecure from "./useAxiosSecure";
 const useFollowing = () => {
     const [axiosSecure] = useAxiosSecure()
     const { currentUser, loading: authLoading } = useAuth()
-    console.log(currentUser?.email);
 
     const {
         data: followingData = [],

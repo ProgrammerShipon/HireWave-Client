@@ -10,12 +10,15 @@ import { RiChatFollowUpLine } from 'react-icons/ri';
 import { AiOutlineFundView } from 'react-icons/ai';
 import useMyPostedJobs from '../../Hooks/useMyPostedJobs';
 import useMyAppliedCandidates from '../../Hooks/useMyAppliedCandidates';
+import useFavorite from '../../Hooks/useFavorite';
 
 const RecruiterDashboard = () => {
     const [myPostedJobs] = useMyPostedJobs();
+    const [favoriteData] = useFavorite();
+
     const [myAppliedCandidates] = useMyAppliedCandidates();
     const labels = ['Applications', 'Profile Views', 'Open Jobs'];
-    const chartData = [myAppliedCandidates.length, 75, myPostedJobs.length];
+    const chartData = [myAppliedCandidates.length, 23, myPostedJobs.length];
 
     const profileViewsData = [80, 200, 160, 260, 220, 400, 350];
     return (
@@ -81,7 +84,7 @@ const RecruiterDashboard = () => {
                     </p>
                 </div>
 
-                {/* followers */}
+                {/* Favorites */}
                 <div className='bg-white shadow-4xl shadow-gray/40 rounded-md px-3 group'>
                     <div className='flex items-center justify-between border-b border-[#18025B]/40'>
                         <div className='w-16 h-16 bg-[#18025B] text-white flex items-center justify-center rounded-lg shadow-xl shadow-[#18025B]/50 -mt-10 group-hover:-mt-14 duration-300'>
@@ -89,13 +92,13 @@ const RecruiterDashboard = () => {
                         </div>
                         <div className='text-right pt-1 pb-2'>
                             <span className='text-[#18025B] text-4xl drop-shadow-xl count__up'>
-                                <CountUp duration={3} end={122} />
+                                <CountUp duration={3} end={favoriteData?.length} />
                             </span>
-                            <h3 className='text-dark tracking-wider drop-shadow-xl'>Followers</h3>
+                            <h3 className='text-dark tracking-wider drop-shadow-xl'>Favorites</h3>
                         </div>
                     </div>
                     <p className='py-2 text-lightGray flex gap-2 line-clamp-1'>
-                        <span className='text-[#18025B] flex gap-1'>
+                        <span className='text-[#36353a] flex gap-1'>
                             +10 <IoAnalyticsOutline />
                         </span> Than Last Week
                     </p>

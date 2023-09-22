@@ -12,10 +12,12 @@ import useAuth from '../../Hooks/useAuth';
 import useMyAppliedJobs from '../../Hooks/useMyAppliedJobs';
 import useJobOffer from '../../Hooks/useJobOffer';
 import usePaymentHistory from '../../Hooks/usePaymentHistory';
+import useFollowing from '../../Hooks/useFollowing';
 
 const CandidateDashboard = () => {
     const { currentUser } = useAuth();
     const [paymentHistory] = usePaymentHistory();
+    const [followingData] = useFollowing();
     const [jobOfferData] = useJobOffer();
     const [myAppliedJobs] = useMyAppliedJobs();
     const filterPayment = paymentHistory.filter(can => can.applicantEmail === currentUser?.email);
@@ -31,7 +33,7 @@ const CandidateDashboard = () => {
     }
 
     const labels = ['Earnings', 'Profile View', 'Applied Jobs'];
-    const chartData = [totalAmount, 25, myAppliedJobs?.length];
+    const chartData = [totalAmount, followingData?.length, myAppliedJobs?.length];
 
     const profileViewsData = [80, 200, 160, 260, 220, 400, 350];
     return (
@@ -77,7 +79,7 @@ const CandidateDashboard = () => {
                     </p>
                 </div>
 
-                {/* profile view */}
+                {/* Following */}
                 <div className='bg-white shadow-4xl shadow-gray/40 rounded-md px-3 group'>
                     <div className='flex items-center justify-between border-b border-[#FF9671]/40'>
                         <div className='w-16 h-16 bg-[#FF9671] text-white flex items-center justify-center rounded-lg shadow-xl shadow-[#FF9671]/50 -mt-10 group-hover:-mt-14 duration-300'>
@@ -87,7 +89,7 @@ const CandidateDashboard = () => {
                             <span className='text-[#FF9671] text-4xl drop-shadow-xl count__up'>
                                 <CountUp duration={3} end={chartData[1]} />
                             </span>
-                            <h3 className='text-dark tracking-wider drop-shadow-xl'>Profile Views</h3>
+                            <h3 className='text-dark tracking-wider drop-shadow-xl'>Following</h3>
                         </div>
                     </div>
                     <p className='py-2 text-lightGray flex gap-2 line-clamp-1'>
